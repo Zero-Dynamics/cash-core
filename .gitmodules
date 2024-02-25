@@ -5,4 +5,4 @@
 [submodule "src/libtorrent"]
 	path = src/libtorrent
 	url = https://github.com/Zero-Dynamics/libbdaptorrent.git
-	branch = incompatible
+	branch = master
