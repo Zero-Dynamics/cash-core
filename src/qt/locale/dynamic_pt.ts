@@ -415,12 +415,12 @@
         <translation>Abrir arquivo de configuração</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>Abrir arquivo de configuração de Dynode</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>Abrir arquivo de configuração de ServiceNode</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Abrir arquivo de configuração de Dynode</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>Abrir arquivo de configuração de ServiceNode</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -904,16 +904,16 @@ Endereço: %4
         <translation>Por favor seleccione um nível de privacidade.</translation>
     </message>
     <message>
-        <source>Use 2 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Usar 2 dynodes distintos para misturar os fundos até 1000DRK</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Usar 2 servicenodes distintos para misturar os fundos até 1000DRK</translation>
     </message>
     <message>
-        <source>Use 8 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Usar 8 dynodes distintos para misturar os fundos até 1000DRK</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Usar 8 servicenodes distintos para misturar os fundos até 1000DRK</translation>
     </message>
     <message>
-        <source>Use 16 separate dynodes</source>
-        <translation>Usar 16 dynodes</translation>
+        <source>Use 16 separate servicenodes</source>
+        <translation>Usar 16 servicenodes</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1096,11 +1096,11 @@ Você mantém o controle do seu dinheiro o tempo todo.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 O PrivateSend começa dividindo suas entradas de transação em denominações padrão.
 Essas denominações são 0,001, 0,01 DYN, 0,1 DYN, 1 DYN, 10 DYN - mais ou menos como o papel-moeda que você usa todos os dias.&lt;/li&gt;
-Sua carteira envia solicitações para nós de software especialmente configurados na rede, chamados "Dynodes".
-Esses Dynodes são informados que você está interessado em misturar uma determinada denominação.
-Nenhuma informação identificável é enviada aos Dynodes, para que eles nunca saibam quem é quem. você é.&lt;/li&gt;
+Sua carteira envia solicitações para nós de software especialmente configurados na rede, chamados "ServiceNodes".
+Esses ServiceNodes são informados que você está interessado em misturar uma determinada denominação.
+Nenhuma informação identificável é enviada aos ServiceNodes, para que eles nunca saibam quem é quem. você é.&lt;/li&gt;
 Quando duas outras pessoas enviam mensagens semelhantes, indicando que desejam misturar a mesma denominação, inicia-se uma sessão de mixagem.
-O Dynode combina as entradas e instrui todos os três usuários&#39; carteiras para pagar de volta a entrada agora transformada.
+O ServiceNode combina as entradas e instrui todos os três usuários&#39; carteiras para pagar de volta a entrada agora transformada.
 Sua carteira paga essa denominação diretamente para si mesma, mas em um endereço diferente (chamado de endereço de alteração).&lt;/li&gt;
 Para ocultar totalmente seus fundos, sua carteira deve repetir esse processo várias vezes com cada denominação.
 Cada vez que o processo é concluído, ele é chamado de rodada. Cada rodada do PrivateSend torna exponencialmente mais difícil determinar a origem dos seus fundos.&lt;/li&gt;
@@ -1259,8 +1259,8 @@ Conseqüentemente, os usuários com backups desabilitados também terão o Priva
         <translation>Avançado</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Esta opção determina o número de dynodes pelos quais uma entrada será anonimizada. &lt;br/&gt; Mais rondas de anonimização fornecem um maior grau de privacidade, mas também tem um custo mais elevado em taxas.</translation>
+        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Esta opção determina o número de servicenodes pelos quais uma entrada será anonimizada. &lt;br/&gt; Mais rondas de anonimização fornecem um maior grau de privacidade, mas também tem um custo mais elevado em taxas.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1536,8 +1536,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Pare de Misturar</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>As denominações que foram submetidas para o Dynode.&lt;br&gt;Para misturar, outros utilizadores terão que submeter denominações iguais.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>As denominações que foram submetidas para o ServiceNode.&lt;br&gt;Para misturar, outros utilizadores terão que submeter denominações iguais.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1925,8 +1925,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Cadeia de blocos</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Número de Dynodes</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>Número de ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3401,7 +3401,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>Modelo</translation>
@@ -3415,16 +3415,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Contagem de nós:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
-        <translation>Meus Dynodes</translation>
+        <source>My ServiceNodes</source>
+        <translation>Meus ServiceNodes</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
-        <translation>Todos os Dynodes</translation>
+        <source>All ServiceNodes</source>
+        <translation>Todos os ServiceNodes</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Nota: O status dos seus Dynodes na carteira local pode estar um pouco incorreto.&lt;br /&gt;Sempre espere a carteira sincronizar dados adicionais e verifique novamente em outro&lt;br /&gt;nó se o seu Dynode estiver em execução, mas você ainda não vê &quot;ENABLED&quot; no campo &quot;Status&quot;.</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Nota: O status dos seus ServiceNodes na carteira local pode estar um pouco incorreto.&lt;br /&gt;Sempre espere a carteira sincronizar dados adicionais e verifique novamente em outro&lt;br /&gt;nó se o seu ServiceNode estiver em execução, mas você ainda não vê &quot;ENABLED&quot; no campo &quot;Status&quot;.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3479,16 +3479,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>Tem certeza de que deseja iniciar TODOS os Dynodes?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>Tem certeza de que deseja iniciar TODOS os ServiceNodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>Tem certeza de que deseja iniciar o MISSING Dynodes?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>Tem certeza de que deseja iniciar o MISSING ServiceNodes?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>Confirme a falta do início dos Dynodes</translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>Confirme a falta do início dos ServiceNodes</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3499,16 +3499,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>O comando não está disponível no momento</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>Você não pode usar este comando até a lista Dynode ser sincronizada</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>Você não pode usar este comando até a lista ServiceNode ser sincronizada</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Confirme o início do Dynode</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>Confirme o início do ServiceNode</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Tem certeza de que deseja iniciar o Dynode %1?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>Tem certeza de que deseja iniciar o ServiceNode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3519,12 +3519,12 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Atualizando...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Iniciado com sucesso o Dynode.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>Iniciado com sucesso o ServiceNode.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
-        <translation>%d Dynodes iniciados com êxito, falha ao iniciar %d, total %d</translation>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <translation>%d ServiceNodes iniciados com êxito, falha ao iniciar %d, total %d</translation>
     </message>
 </context>
 <context>
@@ -3598,8 +3598,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Isso mostra o tempo médio entre os blocos que você minou</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain / Dynodes não são sincronizados, aguarde até que estejam totalmente sincronizados antes da mineração!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain / ServiceNodes não são sincronizados, aguarde até que estejam totalmente sincronizados antes da mineração!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -3824,8 +3824,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Aviso: wallet.dar corrompido mas os dados foram recuperados! A carteira original foi gravada como wallet{data/hora}.bak in %s; se o seu saldo ou transacções forem incorrectos deverá recuperar a partir de uma cópia de segurança.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Tem que especificar uma dynodepairingkey na configuração. Por favor verifique a documentação para ajuda.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Tem que especificar uma servicenodepairingkey na configuração. Por favor verifique a documentação para ajuda.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4146,12 +4146,12 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Desactivar safemode, ultrapassar o evento de modo de segurança real (default: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a dynode (0-1, default: %u)</source>
-        <translation>Permitir ao cliente actuar como um dynode (0-1, omissão: %u)</translation>
+        <source>Enable the client to act as a servicenode (0-1, default: %u)</source>
+        <translation>Permitir ao cliente actuar como um servicenode (0-1, omissão: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Erro conectando ao Dynode</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Erro conectando ao ServiceNode</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -4290,11 +4290,11 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Carregando cache de orçamentos...</translation>
     </message>
     <message>
-        <source>Loading dynode cache...</source>
-        <translation>A carregar a cache de dynodes...</translation>
+        <source>Loading servicenode cache...</source>
+        <translation>A carregar a cache de servicenodes...</translation>
     </message>
     <message>
-        <source>Loading dynode payment cache...</source>
+        <source>Loading servicenode payment cache...</source>
         <translation>Carregando cache de pagamento de maternodes...</translation>
     </message>
     <message>
@@ -4302,8 +4302,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Bloqueio já efectuado.</translation>
     </message>
     <message>
-        <source>Lock dynodes from dynode configuration file (default: %u)</source>
-        <translation>Bloquear dynode presentes no ficheiro de configuração (omissão: %u)</translation>
+        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
+        <translation>Bloquear servicenode presentes no ficheiro de configuração (omissão: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4326,16 +4326,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Necessita especificar a porta com -whitebind: '%s'</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Nenhum Dynode detectado.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>Nenhum ServiceNode detectado.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Nenhum Dynode compatível encontrado.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Nenhum ServiceNode compatível encontrado.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Não está na lista de Dynodes.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Não está na lista de ServiceNodes.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4374,8 +4374,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Chave privada do servidor (default: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this dynode (example: %s)</source>
-        <translation>Definir endereço:porta externo para ligação a este dynode (ex: %s)</translation>
+        <source>Set external address:port to get to this servicenode (example: %s)</source>
+        <translation>Definir endereço:porta externo para ligação a este servicenode (ex: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4406,8 +4406,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Especificar timeout da conexão em milisegundos  (minimum: 1, default: %d)</translation>
     </message>
     <message>
-        <source>Specify dynode configuration file (default: %s)</source>
-        <translation>Especificar ficheiro de configuração dynode (default: %s)</translation>
+        <source>Specify servicenode configuration file (default: %s)</source>
+        <translation>Especificar ficheiro de configuração servicenode (default: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4422,36 +4422,36 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Para de correr após importação de blocos do disco (default: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to dynode: %u / %d</source>
-        <translation>Apresentadas as seguintes entradas ao dynode:  %u / %d </translation>
+        <source>Submitted following entries to servicenode: %u / %d</source>
+        <translation>Apresentadas as seguintes entradas ao servicenode:  %u / %d </translation>
     </message>
     <message>
-        <source>Submitted to dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Apresentado ao dynode, esperando por mais entradas ( %u / %d ) %s</translation>
+        <source>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Apresentado ao servicenode, esperando por mais entradas ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to dynode, waiting in queue %s</source>
-        <translation>Apresentado ao dynode, esperando na fila %s </translation>
+        <source>Submitted to servicenode, waiting in queue %s</source>
+        <translation>Apresentado ao servicenode, esperando na fila %s </translation>
     </message>
     <message>
         <source>Synchronizing budgets...</source>
         <translation>A sincronizar orçamentos...</translation>
     </message>
     <message>
-        <source>Synchronizing dynode winners...</source>
-        <translation>A sincronizar dynodes vencedores...</translation>
+        <source>Synchronizing servicenode winners...</source>
+        <translation>A sincronizar servicenodes vencedores...</translation>
     </message>
     <message>
-        <source>Synchronizing dynodes...</source>
-        <translation>A sincronizar dynodes...</translation>
+        <source>Synchronizing servicenodes...</source>
+        <translation>A sincronizar servicenodes...</translation>
     </message>
     <message>
         <source>Synchronizing sporks...</source>
         <translation>A sincronizar sporks...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>Este não é um Dynode</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>Este não é um ServiceNode</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4462,8 +4462,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Utilize integração KeePass 2 usando plugin KeePassHttp (default: %u)</translation>
     </message>
     <message>
-        <source>Use N separate dynodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Utilize N dynode distintos para anonimizar fundos (2-8, default: %u)</translation>
+        <source>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Utilize N servicenode distintos para anonimizar fundos (2-8, default: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4486,32 +4486,32 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Tentar de novo...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>dynodepairingkey inválida. Por favor reveja a documentação.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>servicenodepairingkey inválida. Por favor reveja a documentação.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(deve ser 33300 para mainnet)</translation>
     </message>
     <message>
-        <source>Can't find random Dynode.</source>
-        <translation>Incapaz de encontrar Dynode aleatório.</translation>
+        <source>Can't find random ServiceNode.</source>
+        <translation>Incapaz de encontrar ServiceNode aleatório.</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
         <translation>Incapaz de misturar enquanto sincronização está a decorrer.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation>Incapaz de analizar dynode.conf</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>Incapaz de analizar servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: '%s'</source>
         <translation>Netmask especificado invalido na -whitelist: '%s'</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>Port inválido detectado em dynode.conf</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>Port inválido detectado em servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4570,16 +4570,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Certifique-se de criptografar sua carteira e excluir todos os backups não criptografados depois de verificar se a carteira funciona!</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Opções de dynode:</translation>
+        <source>ServiceNode options:</source>
+        <translation>Opções de servicenode:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>A fila do dynode está cheia.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>A fila do servicenode está cheia.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4682,8 +4682,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Define o tamanho máximo do bloco em bytes (omissão %d)</translation>
     </message>
     <message>
-        <source>Set the dynode private key</source>
-        <translation>Define a chave privada do dynode</translation>
+        <source>Set the servicenode private key</source>
+        <translation>Define a chave privada do servicenode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

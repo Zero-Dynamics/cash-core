@@ -3,13 +3,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "activedynode.h"
+#include "activeservicenode.h"
 #include "base58.h"
 #include "clientversion.h"
-#include "dynode-payments.h"
-#include "dynode-sync.h"
-#include "dynodeconfig.h"
-#include "dynodeman.h"
+#include "servicenode-payments.h"
+#include "servicenode-sync.h"
+#include "servicenodeconfig.h"
+#include "servicenodeman.h"
 #include "init.h"
 #include "netbase.h"
 #include "validation.h"
@@ -26,7 +26,7 @@
 #include <fstream>
 #include <iomanip>
 
-UniValue dynodelist(const JSONRPCRequest& request);
+UniValue servicenodelist(const JSONRPCRequest& request);
 
 bool EnsureWalletIsAvailable(bool avoidException);
 
@@ -48,8 +48,8 @@ UniValue privatesend(const JSONRPCRequest& request)
             "  stop        - Stop mixing\n"
             "  reset       - Reset mixing\n");
 
-    if (fDynodeMode)
-        throw JSONRPCError(RPC_INTERNAL_ERROR, "Client-side mixing is not supported on dynodes");
+    if (fServiceNodeMode)
+        throw JSONRPCError(RPC_INTERNAL_ERROR, "Client-side mixing is not supported on servicenodes");
 
     if (request.params[0].get_str() == "start") {
         {
@@ -85,7 +85,7 @@ UniValue getpoolinfo(const JSONRPCRequest& request)
             "Returns an object containing mixing pool related information.\n");
 
 #ifdef ENABLE_WALLET
-    CPrivateSendBaseManager* pprivateSendBaseManager = fDynodeMode ? (CPrivateSendBaseManager*)&privateSendServer : (CPrivateSendBaseManager*)&privateSendClient;
+    CPrivateSendBaseManager* pprivateSendBaseManager = fServiceNodeMode ? (CPrivateSendBaseManager*)&privateSendServer : (CPrivateSendBaseManager*)&privateSendClient;
 
     UniValue obj(UniValue::VOBJ);
     // TODO:
@@ -94,8 +94,8 @@ UniValue getpoolinfo(const JSONRPCRequest& request)
     // obj.push_back(Pair("entries",            pprivateSendBase->GetEntriesCount()));
     obj.push_back(Pair("status", privateSendClient.GetStatuses()));
 
-    std::vector<dynode_info_t> vecDnInfo;
-    if (privateSendClient.GetMixingDynodesInfo(vecDnInfo)) {
+    std::vector<servicenode_info_t> vecDnInfo;
+    if (privateSendClient.GetMixingServiceNodesInfo(vecDnInfo)) {
         UniValue pools(UniValue::VARR);
         for (const auto& dnInfo : vecDnInfo) {
             UniValue pool(UniValue::VOBJ);
@@ -121,7 +121,7 @@ UniValue getpoolinfo(const JSONRPCRequest& request)
 }
 
 
-UniValue dynode(const JSONRPCRequest& request)
+UniValue servicenode(const JSONRPCRequest& request)
 {
     std::string strCommand;
     if (request.params.size() >= 1) {
@@ -143,24 +143,24 @@ UniValue dynode(const JSONRPCRequest& request)
             strCommand != "debug" && strCommand != "current" && strCommand != "winner" && strCommand != "winners" && strCommand != "genkey" &&
             strCommand != "connect" && strCommand != "status"))
         throw std::runtime_error(
-            "dynode \"command\"...\n"
-            "Set of commands to execute dynode related actions\n"
+            "servicenode \"command\"...\n"
+            "Set of commands to execute servicenode related actions\n"
             "\nArguments:\n"
             "1. \"command\"        (string or set of strings, required) The command to execute\n"
             "\nAvailable commands:\n"
-            "  count        - Get information about number of dynodes (DEPRECATED options: 'total', 'ps', 'enabled', 'qualify', 'all')\n"
-            "  current      - Print info on current dynode winner to be paid the next block (calculated locally)\n"
-            "  genkey       - Generate new dynodepairingkey\n"
+            "  count        - Get information about number of servicenodes (DEPRECATED options: 'total', 'ps', 'enabled', 'qualify', 'all')\n"
+            "  current      - Print info on current servicenode winner to be paid the next block (calculated locally)\n"
+            "  genkey       - Generate new servicenodepairingkey\n"
 #ifdef ENABLE_WALLET
-            "  outputs      - Print dynode compatible outputs\n"
-            "  start-alias  - Start single remote dynode by assigned alias configured in dynode.conf\n"
-            "  start-<mode> - Start remote dynodes configured in dynode.conf (<mode>: 'all', 'missing', 'disabled')\n"
+            "  outputs      - Print servicenode compatible outputs\n"
+            "  start-alias  - Start single remote servicenode by assigned alias configured in servicenode.conf\n"
+            "  start-<mode> - Start remote servicenodes configured in servicenode.conf (<mode>: 'all', 'missing', 'disabled')\n"
 #endif // ENABLE_WALLET
-            "  status       - Print dynode status information\n"
-            "  list         - Print list of all known dynodes (see dynodelist for more info)\n"
-            "  list-conf    - Print dynode.conf in JSON format\n"
-            "  winner       - Print info on next dynode winner to vote for\n"
-            "  winners      - Print list of dynode winners\n");
+            "  status       - Print servicenode status information\n"
+            "  list         - Print list of all known servicenodes (see servicenodelist for more info)\n"
+            "  list-conf    - Print servicenode.conf in JSON format\n"
+            "  winner       - Print info on next servicenode winner to vote for\n"
+            "  winners      - Print list of servicenode winners\n");
 
     if (strCommand == "list") {
         JSONRPCRequest newRequest = request;
@@ -169,23 +169,23 @@ UniValue dynode(const JSONRPCRequest& request)
         for (unsigned int i = 1; i < request.params.size(); i++) {
             newRequest.params.push_back(request.params[i]);
         }
-        return dynodelist(newRequest);
+        return servicenodelist(newRequest);
     }
 
     if (strCommand == "connect") {
         if (request.params.size() < 2)
-            throw JSONRPCError(RPC_INVALID_PARAMETER, "Dynode address required");
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "ServiceNode address required");
 
         std::string strAddress = request.params[1].get_str();
 
         CService addr;
         if (!Lookup(strAddress.c_str(), addr, 0, false))
-            throw JSONRPCError(RPC_INTERNAL_ERROR, strprintf("Incorrect dynode address %s", strAddress));
+            throw JSONRPCError(RPC_INTERNAL_ERROR, strprintf("Incorrect servicenode address %s", strAddress));
 
         // TODO: Pass CConnman instance somehow and don't use global variable.
-        g_connman->OpenDynodeConnection(CAddress(addr, NODE_NETWORK));
+        g_connman->OpenServiceNodeConnection(CAddress(addr, NODE_NETWORK));
         if (!g_connman->IsConnected(CAddress(addr, NODE_NETWORK), CConnman::AllNodes))
-            throw JSONRPCError(RPC_INTERNAL_ERROR, strprintf("Couldn't connect to dynode %s", strAddress));
+            throw JSONRPCError(RPC_INTERNAL_ERROR, strprintf("Couldn't connect to servicenode %s", strAddress));
 
         return "successfully connected";
     }
@@ -195,8 +195,8 @@ UniValue dynode(const JSONRPCRequest& request)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Too many parameters");
 
         int nCount;
-        dynode_info_t dnInfo;
-        dnodeman.GetNextDynodeInQueueForPayment(true, nCount, dnInfo);
+        servicenode_info_t dnInfo;
+        dnodeman.GetNextServiceNodeInQueueForPayment(true, nCount, dnInfo);
 
         int total = dnodeman.size();
         int ps = dnodeman.CountEnabled(MIN_PRIVATESEND_PEER_PROTO_VERSION);
@@ -235,7 +235,7 @@ UniValue dynode(const JSONRPCRequest& request)
     if (strCommand == "current" || strCommand == "winner") {
         int nCount;
         int nHeight;
-        dynode_info_t dnInfo;
+        servicenode_info_t dnInfo;
         CBlockIndex* pindex = NULL;
         {
             LOCK(cs_main);
@@ -244,7 +244,7 @@ UniValue dynode(const JSONRPCRequest& request)
         nHeight = pindex->nHeight + (strCommand == "current" ? 1 : 10);
         dnodeman.UpdateLastPaid(pindex);
 
-        if (!dnodeman.GetNextDynodeInQueueForPayment(nHeight, true, nCount, dnInfo))
+        if (!dnodeman.GetNextServiceNodeInQueueForPayment(nHeight, true, nCount, dnInfo))
             return "unknown";
 
         UniValue obj(UniValue::VOBJ);
@@ -279,16 +279,16 @@ UniValue dynode(const JSONRPCRequest& request)
         UniValue statusObj(UniValue::VOBJ);
         statusObj.push_back(Pair("alias", strAlias));
 
-        for (const auto& dne : dynodeConfig.getEntries()) {
+        for (const auto& dne : servicenodeConfig.getEntries()) {
             if (dne.getAlias() == strAlias) {
                 fFound = true;
                 std::string strError;
-                CDynodeBroadcast dnb;
+                CServiceNodeBroadcast dnb;
 
-                bool fResult = CDynodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
+                bool fResult = CServiceNodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
 
                 int nDoS;
-                if (fResult && !dnodeman.CheckDnbAndUpdateDynodeList(NULL, dnb, nDoS, *g_connman)) {
+                if (fResult && !dnodeman.CheckDnbAndUpdateServiceNodeList(NULL, dnb, nDoS, *g_connman)) {
                     strError = "Failed to verify DNB";
                     fResult = false;
                 }
@@ -297,7 +297,7 @@ UniValue dynode(const JSONRPCRequest& request)
                 if (!fResult) {
                     statusObj.push_back(Pair("errorMessage", strError));
                 }
-                dnodeman.NotifyDynodeUpdates(*g_connman);
+                dnodeman.NotifyServiceNodeUpdates(*g_connman);
                 break;
             }
         }
@@ -319,8 +319,8 @@ UniValue dynode(const JSONRPCRequest& request)
             EnsureWalletIsUnlocked();
         }
 
-        if ((strCommand == "start-missing" || strCommand == "start-disabled") && !dynodeSync.IsDynodeListSynced()) {
-            throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "You can't use this command until dynode list is synced");
+        if ((strCommand == "start-missing" || strCommand == "start-disabled") && !servicenodeSync.IsServiceNodeListSynced()) {
+            throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "You can't use this command until servicenode list is synced");
         }
 
         int nSuccessful = 0;
@@ -328,23 +328,23 @@ UniValue dynode(const JSONRPCRequest& request)
 
         UniValue resultsObj(UniValue::VOBJ);
 
-        for (const auto& dne : dynodeConfig.getEntries()) {
+        for (const auto& dne : servicenodeConfig.getEntries()) {
             std::string strError;
 
             COutPoint outpoint = COutPoint(uint256S(dne.getTxHash()), (uint32_t)atoi(dne.getOutputIndex()));
-            CDynode dn;
+            CServiceNode dn;
             bool fFound = dnodeman.Get(outpoint, dn);
-            CDynodeBroadcast dnb;
+            CServiceNodeBroadcast dnb;
 
             if (strCommand == "start-missing" && fFound)
                 continue;
             if (strCommand == "start-disabled" && fFound && dn.IsEnabled())
                 continue;
 
-            bool fResult = CDynodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
+            bool fResult = CServiceNodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
 
             int nDoS;
-            if (fResult && !dnodeman.CheckDnbAndUpdateDynodeList(NULL, dnb, nDoS, *g_connman)) {
+            if (fResult && !dnodeman.CheckDnbAndUpdateServiceNodeList(NULL, dnb, nDoS, *g_connman)) {
                 strError = "Failed to verify DNB";
                 fResult = false;
             }
@@ -362,10 +362,10 @@ UniValue dynode(const JSONRPCRequest& request)
 
             resultsObj.push_back(Pair("status", statusObj));
         }
-        dnodeman.NotifyDynodeUpdates(*g_connman);
+        dnodeman.NotifyServiceNodeUpdates(*g_connman);
 
         UniValue returnObj(UniValue::VOBJ);
-        returnObj.push_back(Pair("overall", strprintf("Successfully started %d dynodes, failed to start %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
+        returnObj.push_back(Pair("overall", strprintf("Successfully started %d servicenodes, failed to start %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
         returnObj.push_back(Pair("detail", resultsObj));
 
         return returnObj;
@@ -382,9 +382,9 @@ UniValue dynode(const JSONRPCRequest& request)
     if (strCommand == "list-conf") {
         UniValue resultObj(UniValue::VOBJ);
 
-        for (const auto& dne : dynodeConfig.getEntries()) {
+        for (const auto& dne : servicenodeConfig.getEntries()) {
             COutPoint outpoint = COutPoint(uint256S(dne.getTxHash()), (uint32_t)atoi(dne.getOutputIndex()));
-            CDynode dn;
+            CServiceNode dn;
             bool fFound = dnodeman.Get(outpoint, dn);
 
             std::string strStatus = fFound ? dn.GetStatus() : "MISSING";
@@ -420,20 +420,20 @@ UniValue dynode(const JSONRPCRequest& request)
 #endif // ENABLE_WALLET
 
     if (strCommand == "status") {
-        if (!fDynodeMode)
-            throw JSONRPCError(RPC_INTERNAL_ERROR, "This is not a dynode");
+        if (!fServiceNodeMode)
+            throw JSONRPCError(RPC_INTERNAL_ERROR, "This is not a servicenode");
 
         UniValue dnObj(UniValue::VOBJ);
 
-        dnObj.push_back(Pair("outpoint", activeDynode.outpoint.ToStringShort()));
-        dnObj.push_back(Pair("service", activeDynode.service.ToString()));
+        dnObj.push_back(Pair("outpoint", activeServiceNode.outpoint.ToStringShort()));
+        dnObj.push_back(Pair("service", activeServiceNode.service.ToString()));
 
-        CDynode dn;
-        if (dnodeman.Get(activeDynode.outpoint, dn)) {
+        CServiceNode dn;
+        if (dnodeman.Get(activeServiceNode.outpoint, dn)) {
             dnObj.push_back(Pair("payee", CDynamicAddress(dn.pubKeyCollateralAddress.GetID()).ToString()));
         }
 
-        dnObj.push_back(Pair("status", activeDynode.GetStatus()));
+        dnObj.push_back(Pair("status", activeServiceNode.GetStatus()));
         return dnObj;
     }
 
@@ -460,7 +460,7 @@ UniValue dynode(const JSONRPCRequest& request)
         }
 
         if (request.params.size() > 3)
-            throw JSONRPCError(RPC_INVALID_PARAMETER, "Correct usage is 'dynode winners ( \"count\" \"filter\" )'");
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "Correct usage is 'servicenode winners ( \"count\" \"filter\" )'");
 
         UniValue obj(UniValue::VOBJ);
 
@@ -477,7 +477,7 @@ UniValue dynode(const JSONRPCRequest& request)
     return NullUniValue;
 }
 
-UniValue dynodelist(const JSONRPCRequest& request)
+UniValue servicenodelist(const JSONRPCRequest& request)
 {
     std::string strMode = "json";
     std::string strFilter = "";
@@ -492,17 +492,17 @@ UniValue dynodelist(const JSONRPCRequest& request)
                              strMode != "protocol" && strMode != "payee" && strMode != "pubkey" &&
                              strMode != "rank" && strMode != "sentinel" && strMode != "status")) {
         throw std::runtime_error(
-            "dynodelist ( \"mode\" \"filter\" )\n"
-            "Get a list of dynodes in different modes\n"
+            "servicenodelist ( \"mode\" \"filter\" )\n"
+            "Get a list of servicenodes in different modes\n"
             "\nArguments:\n"
             "1. \"mode\"      (string, optional/required to use filter, defaults = json) The mode to run list in\n"
             "2. \"filter\"    (string, optional) Filter results. Partial match by outpoint by default in all modes,\n"
             "                                    additional matches in some modes are also available\n"
             "\nAvailable modes:\n"
-            "  activeseconds  - Print number of seconds dynode recognized by the network as enabled\n"
-            "                   (since latest issued \"dynode start/start-many/start-alias\")\n"
-            "  addr           - Print ip address associated with a dynode (can be additionally filtered, partial match)\n"
-            "  daemon         - Print daemon version of a dynode (can be additionally filtered, exact match)\n"
+            "  activeseconds  - Print number of seconds servicenode recognized by the network as enabled\n"
+            "                   (since latest issued \"servicenode start/start-many/start-alias\")\n"
+            "  addr           - Print ip address associated with a servicenode (can be additionally filtered, partial match)\n"
+            "  daemon         - Print daemon version of a servicenode (can be additionally filtered, exact match)\n"
             "  full           - Print info in format 'status protocol payee lastseen activeseconds lastpaidtime lastpaidblock IP'\n"
             "                   (can be additionally filtered, partial match)\n"
             "  info           - Print info in format 'status protocol payee lastseen activeseconds sentinelversion sentinelstate IP'\n"
@@ -510,14 +510,14 @@ UniValue dynodelist(const JSONRPCRequest& request)
             "  json           - Print info in JSON format (can be additionally filtered, partial match)\n"
             "  lastpaidblock  - Print the last block height a node was paid on the network\n"
             "  lastpaidtime   - Print the last time a node was paid on the network\n"
-            "  lastseen       - Print timestamp of when a dynode was last seen on the network\n"
-            "  payee          - Print Dynamic address associated with a dynode (can be additionally filtered,\n"
+            "  lastseen       - Print timestamp of when a servicenode was last seen on the network\n"
+            "  payee          - Print Dynamic address associated with a servicenode (can be additionally filtered,\n"
             "                   partial match)\n"
-            "  protocol       - Print protocol of a dynode (can be additionally filtered, exact match)\n"
-            "  pubkey         - Print the dynode (not collateral) public key\n"
-            "  rank           - Print rank of a dynode based on current block\n"
-            "  sentinel       - Print sentinel version of a dynode (can be additionally filtered, exact match)\n"
-            "  status         - Print dynode status: PRE_ENABLED / ENABLED / EXPIRED / SENTINEL_PING_EXPIRED / NEW_START_REQUIRED /\n"
+            "  protocol       - Print protocol of a servicenode (can be additionally filtered, exact match)\n"
+            "  pubkey         - Print the servicenode (not collateral) public key\n"
+            "  rank           - Print rank of a servicenode based on current block\n"
+            "  sentinel       - Print sentinel version of a servicenode (can be additionally filtered, exact match)\n"
+            "  status         - Print servicenode status: PRE_ENABLED / ENABLED / EXPIRED / SENTINEL_PING_EXPIRED / NEW_START_REQUIRED /\n"
             "                   UPDATE_REQUIRED / POSE_BAN / OUTPOINT_SPENT (can be additionally filtered, partial match)\n");
     }
 
@@ -532,18 +532,18 @@ UniValue dynodelist(const JSONRPCRequest& request)
 
     UniValue obj(UniValue::VOBJ);
     if (strMode == "rank") {
-        CDynodeMan::rank_pair_vec_t vDynodeRanks;
-        dnodeman.GetDynodeRanks(vDynodeRanks);
-        for (const auto& rankpair : vDynodeRanks) {
+        CServiceNodeMan::rank_pair_vec_t vServiceNodeRanks;
+        dnodeman.GetServiceNodeRanks(vServiceNodeRanks);
+        for (const auto& rankpair : vServiceNodeRanks) {
             std::string strOutpoint = rankpair.second.outpoint.ToStringShort();
             if (strFilter != "" && strOutpoint.find(strFilter) == std::string::npos)
                 continue;
             obj.push_back(Pair(strOutpoint, rankpair.first));
         }
     } else {
-        std::map<COutPoint, CDynode> mapDynodes = dnodeman.GetFullDynodeMap();
-        for (const auto& dnpair : mapDynodes) {
-            CDynode dn = dnpair.second;
+        std::map<COutPoint, CServiceNode> mapServiceNodes = dnodeman.GetFullServiceNodeMap();
+        for (const auto& dnpair : mapServiceNodes) {
+            CServiceNode dn = dnpair.second;
             std::string strOutpoint = dnpair.first.ToStringShort();
             if (strMode == "activeseconds") {
                 if (strFilter != "" && strOutpoint.find(strFilter) == std::string::npos)
@@ -630,7 +630,7 @@ UniValue dynodelist(const JSONRPCRequest& request)
             } else if (strMode == "pubkey") {
                 if (strFilter != "" && strOutpoint.find(strFilter) == std::string::npos)
                     continue;
-                obj.push_back(Pair(strOutpoint, HexStr(dn.pubKeyDynode)));
+                obj.push_back(Pair(strOutpoint, HexStr(dn.pubKeyServiceNode)));
             } else if (strMode == "status") {
                 std::string strStatus = dn.GetStatus();
                 if (strFilter != "" && strStatus.find(strFilter) == std::string::npos &&
@@ -643,7 +643,7 @@ UniValue dynodelist(const JSONRPCRequest& request)
     return obj;
 }
 
-bool DecodeHexVecDnb(std::vector<CDynodeBroadcast>& vecDnb, std::string strHexDnb)
+bool DecodeHexVecDnb(std::vector<CServiceNodeBroadcast>& vecDnb, std::string strHexDnb)
 {
     if (!IsHex(strHexDnb))
         return false;
@@ -659,7 +659,7 @@ bool DecodeHexVecDnb(std::vector<CDynodeBroadcast>& vecDnb, std::string strHexDn
     return true;
 }
 
-UniValue dynodebroadcast(const JSONRPCRequest& request)
+UniValue servicenodebroadcast(const JSONRPCRequest& request)
 {
     std::string strCommand;
     if (request.params.size() >= 1)
@@ -672,17 +672,17 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
 #endif // ENABLE_WALLET
             strCommand != "decode" && strCommand != "relay"))
         throw std::runtime_error(
-            "dynodebroadcast \"command\"...\n"
-            "Set of commands to create and relay dynode broadcast messages\n"
+            "servicenodebroadcast \"command\"...\n"
+            "Set of commands to create and relay servicenode broadcast messages\n"
             "\nArguments:\n"
             "1. \"command\"        (string or set of strings, required) The command to execute\n"
             "\nAvailable commands:\n"
 #ifdef ENABLE_WALLET
-            "  create-alias  - Create single remote dynode broadcast message by assigned alias configured in dynode.conf\n"
-            "  create-all    - Create remote dynode broadcast messages for all dynodes configured in dynode.conf\n"
+            "  create-alias  - Create single remote servicenode broadcast message by assigned alias configured in servicenode.conf\n"
+            "  create-all    - Create remote servicenode broadcast messages for all servicenodes configured in servicenode.conf\n"
 #endif // ENABLE_WALLET
-            "  decode        - Decode dynode broadcast message\n"
-            "  relay         - Relay dynode broadcast message to the network\n");
+            "  decode        - Decode servicenode broadcast message\n"
+            "  relay         - Relay servicenode broadcast message to the network\n");
 
 #ifdef ENABLE_WALLET
     if (strCommand == "create-alias") {
@@ -705,17 +705,17 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
         std::string strAlias = request.params[1].get_str();
 
         UniValue statusObj(UniValue::VOBJ);
-        std::vector<CDynodeBroadcast> vecDnb;
+        std::vector<CServiceNodeBroadcast> vecDnb;
 
         statusObj.push_back(Pair("alias", strAlias));
 
-        for (const auto& dne : dynodeConfig.getEntries()) {
+        for (const auto& dne : servicenodeConfig.getEntries()) {
             if (dne.getAlias() == strAlias) {
                 fFound = true;
                 std::string strError;
-                CDynodeBroadcast dnb;
+                CServiceNodeBroadcast dnb;
 
-                bool fResult = CDynodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb, true);
+                bool fResult = CServiceNodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb, true);
 
                 statusObj.push_back(Pair("result", fResult ? "successful" : "failed"));
                 if (fResult) {
@@ -755,13 +755,13 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
         int nFailed = 0;
 
         UniValue resultsObj(UniValue::VOBJ);
-        std::vector<CDynodeBroadcast> vecDnb;
+        std::vector<CServiceNodeBroadcast> vecDnb;
 
-        for (const auto& dne : dynodeConfig.getEntries()) {
+        for (const auto& dne : servicenodeConfig.getEntries()) {
             std::string strError;
-            CDynodeBroadcast dnb;
+            CServiceNodeBroadcast dnb;
 
-            bool fResult = CDynodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb, true);
+            bool fResult = CServiceNodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb, true);
 
             UniValue statusObj(UniValue::VOBJ);
             statusObj.push_back(Pair("alias", dne.getAlias()));
@@ -781,7 +781,7 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
         CDataStream ssVecDnb(SER_NETWORK, PROTOCOL_VERSION);
         ssVecDnb << vecDnb;
         UniValue returnObj(UniValue::VOBJ);
-        returnObj.push_back(Pair("overall", strprintf("Successfully created broadcast messages for %d dynodes, failed to create %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
+        returnObj.push_back(Pair("overall", strprintf("Successfully created broadcast messages for %d servicenodes, failed to create %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
         returnObj.push_back(Pair("detail", resultsObj));
         returnObj.push_back(Pair("hex", HexStr(ssVecDnb.begin(), ssVecDnb.end())));
 
@@ -791,12 +791,12 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
 
     if (strCommand == "decode") {
         if (request.params.size() != 2)
-            throw JSONRPCError(RPC_INVALID_PARAMETER, "Correct usage is 'dynodebroadcast decode \"hexstring\"'");
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "Correct usage is 'servicenodebroadcast decode \"hexstring\"'");
 
-        std::vector<CDynodeBroadcast> vecDnb;
+        std::vector<CServiceNodeBroadcast> vecDnb;
 
         if (!DecodeHexVecDnb(vecDnb, request.params[1].get_str()))
-            throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Dynode broadcast message decode failed");
+            throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "ServiceNode broadcast message decode failed");
 
         int nSuccessful = 0;
         int nFailed = 0;
@@ -811,14 +811,14 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
                 resultObj.push_back(Pair("outpoint", dnb.outpoint.ToStringShort()));
                 resultObj.push_back(Pair("addr", dnb.addr.ToString()));
                 resultObj.push_back(Pair("pubKeyCollateralAddress", CDynamicAddress(dnb.pubKeyCollateralAddress.GetID()).ToString()));
-                resultObj.push_back(Pair("pubKeyDynode", CDynamicAddress(dnb.pubKeyDynode.GetID()).ToString()));
+                resultObj.push_back(Pair("pubKeyServiceNode", CDynamicAddress(dnb.pubKeyServiceNode.GetID()).ToString()));
                 resultObj.push_back(Pair("vchSig", EncodeBase64(&dnb.vchSig[0], dnb.vchSig.size())));
                 resultObj.push_back(Pair("sigTime", dnb.sigTime));
                 resultObj.push_back(Pair("protocolVersion", dnb.nProtocolVersion));
                 resultObj.push_back(Pair("nLastPsq", dnb.nLastPsq));
 
                 UniValue lastPingObj(UniValue::VOBJ);
-                lastPingObj.push_back(Pair("outpoint", dnb.lastPing.dynodeOutpoint.ToStringShort()));
+                lastPingObj.push_back(Pair("outpoint", dnb.lastPing.servicenodeOutpoint.ToStringShort()));
                 lastPingObj.push_back(Pair("blockHash", dnb.lastPing.blockHash.ToString()));
                 lastPingObj.push_back(Pair("sigTime", dnb.lastPing.sigTime));
                 lastPingObj.push_back(Pair("vchSig", EncodeBase64(&dnb.lastPing.vchSig[0], dnb.lastPing.vchSig.size())));
@@ -826,27 +826,27 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
                 resultObj.push_back(Pair("lastPing", lastPingObj));
             } else {
                 nFailed++;
-                resultObj.push_back(Pair("errorMessage", "Dynode broadcast signature verification failed"));
+                resultObj.push_back(Pair("errorMessage", "ServiceNode broadcast signature verification failed"));
             }
 
             returnObj.push_back(Pair(dnb.GetHash().ToString(), resultObj));
         }
 
-        returnObj.push_back(Pair("overall", strprintf("Successfully decoded broadcast messages for %d dynodes, failed to decode %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
+        returnObj.push_back(Pair("overall", strprintf("Successfully decoded broadcast messages for %d servicenodes, failed to decode %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
 
         return returnObj;
     }
 
     if (strCommand == "relay") {
         if (request.params.size() < 2 || request.params.size() > 3)
-            throw JSONRPCError(RPC_INVALID_PARAMETER, "dynodebroadcast relay \"hexstring\"\n"
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "servicenodebroadcast relay \"hexstring\"\n"
                                                       "\nArguments:\n"
                                                       "1. \"hex\"      (string, required) Broadcast messages hex string\n");
 
-        std::vector<CDynodeBroadcast> vecDnb;
+        std::vector<CServiceNodeBroadcast> vecDnb;
 
         if (!DecodeHexVecDnb(vecDnb, request.params[1].get_str()))
-            throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Dynode broadcast message decode failed");
+            throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "ServiceNode broadcast message decode failed");
 
         int nSuccessful = 0;
         int nFailed = 0;
@@ -862,8 +862,8 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
             int nDos = 0;
             bool fResult;
             if (dnb.CheckSignature(nDos)) {
-                fResult = dnodeman.CheckDnbAndUpdateDynodeList(NULL, dnb, nDos, *g_connman);
-                dnodeman.NotifyDynodeUpdates(*g_connman);
+                fResult = dnodeman.CheckDnbAndUpdateServiceNodeList(NULL, dnb, nDos, *g_connman);
+                dnodeman.NotifyServiceNodeUpdates(*g_connman);
             } else
                 fResult = false;
 
@@ -872,13 +872,13 @@ UniValue dynodebroadcast(const JSONRPCRequest& request)
                 resultObj.push_back(Pair(dnb.GetHash().ToString(), "successful"));
             } else {
                 nFailed++;
-                resultObj.push_back(Pair("errorMessage", "Dynode broadcast signature verification failed"));
+                resultObj.push_back(Pair("errorMessage", "ServiceNode broadcast signature verification failed"));
             }
 
             returnObj.push_back(Pair(dnb.GetHash().ToString(), resultObj));
         }
 
-        returnObj.push_back(Pair("overall", strprintf("Successfully relayed broadcast messages for %d dynodes, failed to relay %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
+        returnObj.push_back(Pair("overall", strprintf("Successfully relayed broadcast messages for %d servicenodes, failed to relay %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
 
         return returnObj;
     }
@@ -900,7 +900,7 @@ UniValue sentinelping(const JSONRPCRequest& request)
             HelpExampleCli("sentinelping", "1.0.2") + HelpExampleRpc("sentinelping", "1.0.2"));
     }
 
-    activeDynode.UpdateSentinelPing(StringVersionToInt(request.params[0].get_str()));
+    activeServiceNode.UpdateSentinelPing(StringVersionToInt(request.params[0].get_str()));
     return true;
 }
 
@@ -909,9 +909,9 @@ static const CRPCCommand commands[] =
         //  category                 name                     actor (function)     okSafe argNames
         //  ---------------------    ----------------------   -------------------  ------ ----
         /* Dynamic features */
-        {"dynamic", "dynode", &dynode, true, {}},
-        {"dynamic", "dynodelist", &dynodelist, true, {}},
-        {"dynamic", "dynodebroadcast", &dynodebroadcast, true, {}},
+        {"dynamic", "servicenode", &servicenode, true, {}},
+        {"dynamic", "servicenodelist", &servicenodelist, true, {}},
+        {"dynamic", "servicenodebroadcast", &servicenodebroadcast, true, {}},
         {"dynamic", "getpoolinfo", &getpoolinfo, true, {}},
         {"dynamic", "sentinelping", &sentinelping, true, {}},
 #ifdef ENABLE_WALLET
@@ -919,7 +919,7 @@ static const CRPCCommand commands[] =
 #endif // ENABLE_WALLET
 };
 
-void RegisterDynodeRPCCommands(CRPCTable& t)
+void RegisterServiceNodeRPCCommands(CRPCTable& t)
 {
     for (unsigned int vcidx = 0; vcidx < ARRAYLEN(commands); vcidx++)
         t.appendCommand(commands[vcidx].name, &commands[vcidx]);

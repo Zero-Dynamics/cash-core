@@ -241,8 +241,8 @@ private:
     //   value - expiration time for deleted objects
     hash_time_m_t mapErasedGovernanceObjects;
 
-    object_info_m_t mapDynodeOrphanObjects;
-    txout_int_m_t mapDynodeOrphanCounter;
+    object_info_m_t mapServiceNodeOrphanObjects;
+    txout_int_m_t mapServiceNodeOrphanCounter;
 
     object_m_t mapPostponedObjects;
     hash_s_t setAdditionalRelayObjects;
@@ -253,7 +253,7 @@ private:
 
     vote_cmm_t cmmapOrphanVotes;
 
-    txout_m_t mapLastDynodeObject;
+    txout_m_t mapLastServiceNodeObject;
 
     hash_s_t setRequestedObjects;
 
@@ -325,7 +325,7 @@ public:
         cmapVoteToObject.Clear();
         cmapInvalidVotes.Clear();
         cmmapOrphanVotes.Clear();
-        mapLastDynodeObject.clear();
+        mapLastServiceNodeObject.clear();
     }
 
     std::string ToString() const;
@@ -349,7 +349,7 @@ public:
         READWRITE(cmapInvalidVotes);
         READWRITE(cmmapOrphanVotes);
         READWRITE(mapObjects);
-        READWRITE(mapLastDynodeObject);
+        READWRITE(mapLastServiceNodeObject);
         if (ser_action.ForRead() && (strVersion != SERIALIZATION_VERSION_STRING)) {
             Clear();
             return;
@@ -383,11 +383,11 @@ public:
 
     void AddSeenVote(const uint256& nHash, int status);
 
-    void DynodeRateUpdate(const CGovernanceObject& govobj);
+    void ServiceNodeRateUpdate(const CGovernanceObject& govobj);
 
-    bool DynodeRateCheck(const CGovernanceObject& govobj, bool fUpdateFailStatus = false);
+    bool ServiceNodeRateCheck(const CGovernanceObject& govobj, bool fUpdateFailStatus = false);
 
-    bool DynodeRateCheck(const CGovernanceObject& govobj, bool fUpdateFailStatus, bool fForce, bool& fRateCheckBypassed);
+    bool ServiceNodeRateCheck(const CGovernanceObject& govobj, bool fUpdateFailStatus, bool fForce, bool& fRateCheckBypassed);
 
     bool ProcessVoteAndRelay(const CGovernanceVote& vote, CGovernanceException& exception, CConnman& connman)
     {
@@ -398,9 +398,9 @@ public:
         return fOK;
     }
 
-    void CheckDynodeOrphanVotes(CConnman& connman);
+    void CheckServiceNodeOrphanVotes(CConnman& connman);
 
-    void CheckDynodeOrphanObjects(CConnman& connman);
+    void CheckServiceNodeOrphanObjects(CConnman& connman);
 
     void CheckPostponedObjects(CConnman& connman);
 

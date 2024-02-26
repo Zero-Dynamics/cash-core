@@ -6,7 +6,7 @@
 #ifndef PRIVATESENDCLIENT_H
 #define PRIVATESENDCLIENT_H
 
-#include "dynode.h"
+#include "servicenode.h"
 #include "privatesend-util.h"
 #include "privatesend.h"
 #include "wallet/wallet.h"
@@ -91,7 +91,7 @@ private:
     std::string strLastMessage;
     std::string strAutoDenomResult;
 
-    dynode_info_t infoMixingDynode;
+    servicenode_info_t infoMixingServiceNode;
     CMutableTransaction txMyCollateral; // client side collateral
     CPendingPsaRequest pendingPsaRequest;
 
@@ -115,7 +115,7 @@ private:
     /// step 2: send denominated inputs and outputs prepared in step 1
     bool SendDenominate(const std::vector<std::pair<CTxPSIn, CTxOut> >& vecPSInOutPairsIn, CConnman& connman);
 
-    /// Get Dynodes updates about the progress of mixing
+    /// Get ServiceNodes updates about the progress of mixing
     bool CheckPoolStateUpdate(PoolState nStateNew, int nEntriesCountNew, PoolStatusUpdate nStatusUpdate, PoolMessage nMessageID, int nSessionIDNew = 0);
     // Set the 'state' value, with some logging and capturing when the state changed
     void SetState(PoolState nStateNew);
@@ -137,7 +137,7 @@ public:
                                   fLastEntryAccepted(false),
                                   strLastMessage(),
                                   strAutoDenomResult(),
-                                  infoMixingDynode(),
+                                  infoMixingServiceNode(),
                                   txMyCollateral(),
                                   pendingPsaRequest(),
                                   keyHolderStorage()
@@ -152,12 +152,12 @@ public:
 
     std::string GetStatus(bool fWaitForBlock);
 
-    bool GetMixingDynodeInfo(dynode_info_t& dnInfoRet) const;
+    bool GetMixingServiceNodeInfo(servicenode_info_t& dnInfoRet) const;
 
     /// Passively run mixing in the background according to the configuration in settings
     bool DoAutomaticDenominating(CConnman& connman, bool fDryRun = false);
 
-    /// As a client, submit part of a future mixing transaction to a Dynode to start the process
+    /// As a client, submit part of a future mixing transaction to a ServiceNode to start the process
     bool SubmitDenominate(CConnman& connman);
 
     bool ProcessPendingPsaRequest(CConnman& connman);
@@ -170,8 +170,8 @@ public:
 class CPrivateSendClientManager : public CPrivateSendBaseManager
 {
 private:
-    // Keep track of the used Dynodes
-    std::vector<COutPoint> vecDynodesUsed;
+    // Keep track of the used ServiceNodes
+    std::vector<COutPoint> vecServiceNodesUsed;
 
     std::vector<CAmount> vecDenominationsSkipped;
 
@@ -202,7 +202,7 @@ public:
     int nCachedNumBlocks;    //used for the overview screen
     bool fCreateAutoBackups; //builtin support for automatic backups
 
-    CPrivateSendClientManager() : vecDynodesUsed(),
+    CPrivateSendClientManager() : vecServiceNodesUsed(),
                                   vecDenominationsSkipped(),
                                   peqSessions(),
                                   nCachedLastSuccessBlock(0),
@@ -232,7 +232,7 @@ public:
     std::string GetStatuses();
     std::string GetSessionDenoms();
 
-    bool GetMixingDynodesInfo(std::vector<dynode_info_t>& vecDnInfoRet) const;
+    bool GetMixingServiceNodesInfo(std::vector<servicenode_info_t>& vecDnInfoRet) const;
 
     /// Passively run mixing in the background according to the configuration in settings
     bool DoAutomaticDenominating(CConnman& connman, bool fDryRun = false);
@@ -241,8 +241,8 @@ public:
 
     void ProcessPendingPsaRequest(CConnman& connman);
 
-    void AddUsedDynode(const COutPoint& outpointDn);
-    dynode_info_t GetNotUsedDynode();
+    void AddUsedServiceNode(const COutPoint& outpointDn);
+    servicenode_info_t GetNotUsedServiceNode();
 
     void UpdatedSuccessBlock();
 

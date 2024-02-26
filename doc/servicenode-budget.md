@@ -1,4 +1,4 @@
-Dynode Budget API
+ServiceNode Budget API
 =======================
 
 Dynamic supports full decentralized budgets that are paid directly from the blockchain via superblocks once per month.
@@ -9,7 +9,7 @@ Budgets go through a series of stages before being paid:
  * voting - lobby for votes on your proposal
  * get enough votes - make it into the budget
  * finalization - at the end of each payment period, proposals are sorted then compiled into a finalized budget
- * finalized budget voting - Dynodes that agree with the finalization will vote on that budget
+ * finalized budget voting - ServiceNodes that agree with the finalization will vote on that budget
  * payment - the winning finalized budget is paid
 
 
@@ -72,7 +72,7 @@ Example: ```sngovernance getproposal a2b29778ae82e45a973a94309ffa6aa2e2388b8f95b
 }
 ```
 
-If everything looks correct, you can ask for votes from other Dynodes. To vote on a proposal, load a wallet with _dynode.conf_ file. You do not need to access your cold wallet to vote for proposals.
+If everything looks correct, you can ask for votes from other ServiceNodes. To vote on a proposal, load a wallet with _servicenode.conf_ file. You do not need to access your cold wallet to vote for proposals.
 
 Format: ```sngovernance vote proposal-hash [yes|no]```
 
@@ -81,7 +81,7 @@ Example: ```sngovernance vote a2b29778ae82e45a973a94309ffa6aa2e2388b8f95b39ab373
 4.  Make it into the budget
 --
 
-After you get enough votes, execute ```sngovernance projection``` to see if you made it into the budget. If you the budget was finalized at this moment which proposals would be in it. Note: Proposals must be active at least 1 day on the network and receive 10% of the Dynode network in yes votes in order to qualify (E.g. if there is 3500 Dynodes, you will need 350 yes votes.)
+After you get enough votes, execute ```sngovernance projection``` to see if you made it into the budget. If you the budget was finalized at this moment which proposals would be in it. Note: Proposals must be active at least 1 day on the network and receive 10% of the ServiceNode network in yes votes in order to qualify (E.g. if there is 3500 ServiceNodes, you will need 350 yes votes.)
 
 ```sngovernance projection```:￼
 ```
@@ -143,8 +143,8 @@ The following RPC commands are supported:
   - nextblock          - Get info about next superblock for budget system
   - nextsuperblocksize - Get superblock size for a given blockheight
   - projection         - Show the projection of which proposals will be paid the next cycle
-  - vote               - Vote on a proposal by single Dynode (using dynamic.conf setup)
-  - vote-many          - Vote on a proposal by all Dynodes (using dynode.conf setup)
+  - vote               - Vote on a proposal by single ServiceNode (using dynamic.conf setup)
+  - vote-many          - Vote on a proposal by all ServiceNodes (using servicenode.conf setup)
   - vote-alias         - Vote on a proposal by alias
  - snfinalbudget "command"... ( "passphrase" )
   - vote-many   - Vote on a finalized budget

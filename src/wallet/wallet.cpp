@@ -22,7 +22,7 @@
 #include "consensus/consensus.h"
 #include "consensus/validation.h"
 #include "core_io.h"
-#include "dynode-sync.h"
+#include "servicenode-sync.h"
 #include "fluid/fluid.h"
 #include "fluid/fluiddb.h"
 #include "governance.h"
@@ -1384,7 +1384,7 @@ bool CWallet::AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlockIndex
             return false;
 
         bool fIsMyStealth = false;
-        if (fStealthTx || dynodeSync.IsBlockchainSynced()) {
+        if (fStealthTx || servicenodeSync.IsBlockchainSynced()) {
             // Check if stealth address belongs to this wallet
             fIsMyStealth = ScanForStealthOwnedOutputs(tx);
         }
@@ -3566,7 +3566,7 @@ bool CWallet::SelectCoinsGroupedByAddresses(std::vector<CompactTallyItem>& vecTa
                 // ignore collaterals
                 if (CPrivateSend::IsCollateralAmount(wtx.tx->vout[i].nValue))
                     continue;
-                if (fDynodeMode && wtx.tx->vout[i].nValue == 1000 * COIN)
+                if (fServiceNodeMode && wtx.tx->vout[i].nValue == 1000 * COIN)
                     continue;
                 // ignore outputs that are 10 times smaller then the smallest denomination
                 // otherwise they will just lead to higher fee / lower priority
@@ -3637,8 +3637,8 @@ bool CWallet::SelectPrivateCoins(CAmount nValueMin, CAmount nValueMax, std::vect
         //do not allow collaterals to be selected
         if (CPrivateSend::IsCollateralAmount(out.tx->tx->vout[out.i].nValue))
             continue;
-        if (fDynodeMode && out.tx->tx->vout[out.i].nValue == 1000 * COIN)
-            continue; //dynode input
+        if (fServiceNodeMode && out.tx->tx->vout[out.i].nValue == 1000 * COIN)
+            continue; //servicenode input
 
         if (nValueRet + out.tx->tx->vout[out.i].nValue <= nValueMax) {
             CTxIn txin = CTxIn(out.tx->GetHash(), out.i);
@@ -3676,7 +3676,7 @@ bool CWallet::GetCollateralTxPSIn(CTxPSIn& txpsinRet, CAmount& nValueRet) const
     return false;
 }
 
-bool CWallet::GetDynodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pubKeyRet, CKey& keyRet, std::string strTxHash, std::string strOutputIndex)
+bool CWallet::GetServiceNodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pubKeyRet, CKey& keyRet, std::string strTxHash, std::string strOutputIndex)
 {
     // wait for reindex and/or import to finish
     if (fImporting || fReindex)
@@ -3686,7 +3686,7 @@ bool CWallet::GetDynodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pubKeyRe
     std::vector<COutput> vPossibleCoins;
     AvailableCoins(vPossibleCoins, true, NULL, false, ONLY_1000);
     if (vPossibleCoins.empty()) {
-        LogPrintf("CWallet::GetDynodeOutpointAndKeys -- Could not locate any valid dynode vin\n");
+        LogPrintf("CWallet::GetServiceNodeOutpointAndKeys -- Could not locate any valid servicenode vin\n");
         return false;
     }
 
@@ -3701,7 +3701,7 @@ bool CWallet::GetDynodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pubKeyRe
         if (out.tx->GetHash() == txHash && out.i == nOutputIndex) // found it!
             return GetOutpointAndKeysFromOutput(out, outpointRet, pubKeyRet, keyRet);
 
-    LogPrintf("CWallet::GetDynodeOutpointAndKeys -- Could not locate specified dynode vin\n");
+    LogPrintf("CWallet::GetServiceNodeOutpointAndKeys -- Could not locate specified servicenode vin\n");
     return false;
 }
 
@@ -4569,9 +4569,9 @@ DBErrors CWallet::LoadWallet(bool& fFirstRunRet, const bool fImportMnemonic)
     return DB_LOAD_OK;
 }
 
-// Goes through all wallet transactions and checks if they are dynode collaterals, in which case these are locked
+// Goes through all wallet transactions and checks if they are servicenode collaterals, in which case these are locked
 // This avoids accidential spending of collaterals. They can still be unlocked manually if a spend is really intended.
-void CWallet::AutoLockDynodeCollaterals()
+void CWallet::AutoLockServiceNodeCollaterals()
 {
     LOCK2(cs_main, cs_wallet);
     for (const auto& pair : mapWallet) {

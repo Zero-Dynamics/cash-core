@@ -9,7 +9,7 @@
 #include "consensus/merkle.h"
 #include "consensus/validation.h"
 #include "validation.h"
-#include "dynode-payments.h"
+#include "servicenode-payments.h"
 #include "miner/miner.h"
 #include "pubkey.h"
 #include "script/standard.h"

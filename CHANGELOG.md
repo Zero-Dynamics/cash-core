@@ -23,8 +23,8 @@
 **Dynamic v2.4.4.1**
 
 * Use std::function and std::bind in scheduler instead of boost/std mix
-* [Dynode] Do not call sentinel methods when spork is inactive
-* [Dynode] Remove dncache.dat file
+* [ServiceNode] Do not call sentinel methods when spork is inactive
+* [ServiceNode] Remove dncache.dat file
 
 
 **Dynamic v2.4.4.0**
@@ -38,7 +38,7 @@
 * [Util] Refactor add months to epoch functions
 * [Test] Add unit tests for new format ISO date and time
 * [BDAP] Fix comparison between signed and unsigned warning
-* [RPC] Fix dynode-list bug
+* [RPC] Fix servicenode-list bug
 
 
 **Dynamic v2.4.3.0**
@@ -68,7 +68,7 @@
 * [Wallet] Prevent ed25519 keypool crash when trying to erase from an empty set
 * [FIX] Fix locked wallet upgrade issues.
 * [RPC] Refactor all RPC code files in a seperate directory
-* [LOG] Silence LogPrint when not finding Dynodes with votes
+* [LOG] Silence LogPrint when not finding ServiceNodes with votes
 * [DHT] Return an empty JSON array when the denylink record is not found
 * [HD] Move mnemonic wordlists to separate directory
 * [FIX] Correct versioning for alert max version
@@ -128,7 +128,7 @@
 * [DHT] Fix segfault when shutdown before libtorrent session init
 * Add mnemonic import
 * Improve menu title
-* Update fluiddynode.cpp
+* Update fluidservicenode.cpp
 * Add second spork address to testnet
 * [DHT] Fixes to wallet encryption for Ed25519 keys
 * [DHT] Fix libtorrent event map for bootstrap event
@@ -343,7 +343,7 @@
 * Use VersionBitsState instead of VersionBitsTipState to avoid cs_main lock
 * Remove unused instantsenddepth from init
 * Do not hold cs_main while emitting messages in WalletModel::prepareTransaction
-* Base psq/pstx thresholold on the total number of up to date dynodes
+* Base psq/pstx thresholold on the total number of up to date servicenodes
 * Workaround for MacOS Mojave Dark Mode
 * Rename SnTimer to DnTimer
 * BIP147
@@ -387,7 +387,7 @@
 * Repair nActiveStatePrev
 * Repair 'GUI: QColor::setRgb: RGB parameters out of range' warning
 * Fix segfault with nRefCount in net
-* Amend Check in dynode.cpp
+* Amend Check in servicenode.cpp
 * minor things i missed
 * update sync.cpp/h
 * amend some versioning
@@ -426,10 +426,10 @@
 * Protect CSporkManager with critical section
 * Fix wallet lock check in DoAutomaticDenominating
 * Move block template specific stuff from CBlock to CBlockTemplate
-* Fix activeDynode task scheduler
+* Fix activeServiceNode task scheduler
 * Show some info about the wallet dumped via dumpwallet and show warning
 * Make sure pwalletMain is not null whenever it's used in PS client
-* Update rpcdynode and add helpers
+* Update rpcservicenode and add helpers
 * Switch RequestGovernanceObjectVotes from pointers to hashes
 * remove/update dns seeders
 * [GPU] Update obsolete macro AC_HELP_STRING
@@ -440,7 +440,7 @@
 * Fix comparator and supress warning
 * Supress MacOS build warnings for deprecated code
 * [Qt] Fix styling of PrivateSend option on sendcoinsdialog.ui
-* Increase Min Peer Protocol Version to 70900(v2.3) for Peers/DynodePayments/InstantSend/PrivateSend
+* Increase Min Peer Protocol Version to 70900(v2.3) for Peers/ServiceNodePayments/InstantSend/PrivateSend
 * [GPU] Fix GPU found block nonce before ProcessFoundSolution
 * [GPU] Update README for GPU Mining
 * [GPU] Seperate CPU and GPU miners to fix hashmeters
@@ -585,8 +585,8 @@
 * RPC: Add description for InstantSend-related fields of mempool entry
 * RPC: fix wallet lock check in
 * minor reformatting
-* Remove explicit wallet lock in DynodeList::StartAll()
-* Do not create dnb until dynodeSync is finished
+* Remove explicit wallet lock in ServiceNodeList::StartAll()
+* Do not create dnb until servicenodeSync is finished
 * Don't drop dnb's for outdated DN's
 * Fix previous commit and fix 2 Spork issues
 * PrepareDenominate fix
@@ -612,11 +612,11 @@
 
 **Dynamic v2.3.0.0**
 
-* Skip existing Dynodes connections on mixing
+* Skip existing ServiceNodes connections on mixing
 * Protect CKeyHolderStorage via mutex
 * Fix Boost 1.66 Compatibility
 * Net Overhaul and BTC Inlining
-* Bump Versions/Protocol (Updated Dynodes must get a fresh "Start" Signal with the new Binaries)
+* Bump Versions/Protocol (Updated ServiceNodes must get a fresh "Start" Signal with the new Binaries)
 * Update Tests
 * util: Add ParseUInt32 and ParseUInt64
 * [RPC] getmempoolancestors/getmempooldescendants
@@ -732,17 +732,17 @@
 * Return txid even if ATMP fails for new transaction
 * Do not run functions with necessary side-effects in assert()
 * Use EXIT_FAILURE when calling exit()
-* Stop DynodeBroadcast::Relay() when not synced
-* Add missing locks to dynode.cpp
+* Stop ServiceNodeBroadcast::Relay() when not synced
+* Add missing locks to servicenode.cpp
 * Move over to Sentinel Ping from Watchdog
 * Remove zero-fee transactions as an option
 * Update miningpage for out of sync situation + add tooltips
 * Add Sexy Sliders
-* Remove unused declaration in dynodeman.cpp
+* Remove unused declaration in servicenodeman.cpp
 * Add check to ensure that generatetoaddress doesn't function on Main or TestNet
-* [Miner] check for dynode sync before mining
+* [Miner] check for servicenode sync before mining
 * Hash Rate Widget for Mining Page
-* [Dynode] Remove lock in ReadBlockFromDisk
+* [ServiceNode] Remove lock in ReadBlockFromDisk
 * Initial complete Korean translation added
 * add include to enable wallet to be built disabled
 * Fix Unlocking Error When Mixing
@@ -757,10 +757,10 @@
 * Qt/Intro: Various fixes
 * [net]Fix close socket loop
 * Bugfix: ancestor modifed fees were incorrect for descendants
-* Fix Dynode List
+* Fix ServiceNode List
 * Remove some locking in net.h/net.cpp
-* Fix connectivity check in CActiveDynode::ManageStateInitial
-* Force Dynodes to have listen=1 and maxconnections to be at least DEFAULT_MAX_PEER_CONNECTIONS
+* Fix connectivity check in CActiveServiceNode::ManageStateInitial
+* Force ServiceNodes to have listen=1 and maxconnections to be at least DEFAULT_MAX_PEER_CONNECTIONS
 * fix SelectCoinsByDenominations
 * [Init] Avoid segfault when called with -enableinstantsend=0
 * Use correct version for fee estimates db
@@ -772,9 +772,9 @@
 * Fix nStart warning and actually use it
 * Fix LevelDB warning in leveldb/util/logging.cc
 * Update univalue and secp256k1 libraries (June 2018)
-* Bump dynodeman versionCDynodeMan-Version to 2
+* Bump servicenodeman versionCServiceNodeMan-Version to 2
 * Bump CGovernanceManager version to 23 to signify v2.3
-* Change DyNode to DynodeMode to avoid confusion
+* Change ServiceNodeMode to ServiceNodeMode to avoid confusion
 * [BDAP] Increase OP_RETURN relay size for larger DAP entries
 * [Fluid] Fix getfluidhistoryraw RPC command
 * [Fluid] Fix getfluidsovereigns RPC command
@@ -836,9 +836,9 @@
 * Fix lockunspent help message
 * [RPC] add missing abandon status documentation
 * [RPC] Add import/removeprunedfunds rpc call
-* [RPC] Rename dynodeprivkey->Dynode Pairing Key
+* [RPC] Rename servicenodeprivkey->ServiceNode Pairing Key
 * P2P: add maxtimeadjustment command line option
-* dynodeprivkey->dynodepairingkey
+* servicenodeprivkey->servicenodepairingkey
 * [Qt] remove trailing output-index from transaction-id
 * [build-aux] Update Boost & check macros to latest serials
 * Strip colour profiles from png's
@@ -901,13 +901,13 @@
 **Dynamic v2.0.0.0**
 
 * Fix Network Time Protocol (NTP)
-* Introduce, OP_MINT, OP_REWARD_DYNODE and OP_REWARD_MINING opcode for Fluid Protocol
+* Introduce, OP_MINT, OP_REWARD_SERVICENODE and OP_REWARD_MINING opcode for Fluid Protocol
 * Add string generation/parsing system to generate tokens for Fluid Protocol
 * Set authentication keys for token generation to statically-defined addresses
 * Update CBlockIndex and CChain models for storing Fluid Protocol derived variables
 * Allow opcodes to carry token instruction and to detect tokens
 * Implement derivation of token data into datasets
-* Derive parameters (One-Time Reward, Dynode & PoW Reward) from datasets
+* Derive parameters (One-Time Reward, ServiceNode & PoW Reward) from datasets
 * Implement token-history indexing and prevent replay attacks
 * Change statically-defined addresses to identity-derived addresses (dynamic)
 * Introduce RPC Calls maketoken, getrawpubkey, burndynamic, sendfluidtransaction, signtoken, consenttoken, verifyquorum, fluidcommandshistory, getfluidsovereigns
@@ -917,7 +917,7 @@
 * Amend CPU Core Count
 * Revert/Update and Strip Argon2d code
 * Update LevelDB to 1.20
-* Add Dynode checks to prevent payments until 500 are active
+* Add ServiceNode checks to prevent payments until 500 are active
 * Reduce nPowTargetTimespan to 1920 seconds
 * Reduce nMinerConfirmationWindow to 30 blocks
 * [Qt] Reduce a significant cs_main lock freeze 
@@ -929,7 +929,7 @@
 * Multiple Fixes/Implement connman broadly
 * Add more logging for DN votes and DNs missing votes
 * Remove bogus assert on number of oubound connections.
-* update nCollateralMinConfBlockHash for local (hot) dynode on dn start
+* update nCollateralMinConfBlockHash for local (hot) servicenode on dn start
 * Fix sync reset on lack of activity
 * fix nLastWatchdogVoteTime updates
 * Fix bug: nCachedBlockHeight was not updated on start
@@ -942,15 +942,15 @@
 * Keep track of wallet UTXOs and use them for PS balances and rounds calculations
 * speedup MakeCollateralAmounts by skiping denominated inputs early
 * Reduce min relay tx fee
-* more vin -> outpoint in dynode rpc output
-* Move some (spamy) CDynodeSync log messages to new log category
+* more vin -> outpoint in servicenode rpc output
+* Move some (spamy) CServiceNodeSync log messages to new log category
 * Eliminate g_connman use in InstantSend module.
 * Remove some recursive locks
-* Fix dynode score/rank calculations (#1620)
+* Fix servicenode score/rank calculations (#1620)
 * InstandSend overhaul & TXMempool Fixes
 * fix TrafficGraphData bandwidth calculation
 * Fix losing keys on PrivateSend
-* Refactor dynode management
+* Refactor servicenode management
 * Multiple Selection for peer and ban tables
 * qt: Fixing division by zero in time remaining
 * [qt] sync-overlay: Don't show progress twice
@@ -971,18 +971,18 @@
 * net: resolve outside of storage structures
 * net: disable resolving from storage structures
 * net: No longer send local address in addrMe
-* safe version of GetDynodeByRank
+* safe version of GetServiceNodeByRank
 * Do not add random inbound peers to addrman.
 * Partially backport Bitcoin PR#9626: Clean up a few CConnman cs_vNodes/CNode things
 * Delete some unused (and broken) functions in CConnman
 * Ensure cs_vNodes is held when using the return value from FindNode
 * Use GetAdjustedTime instead of GetTime when dealing with network-wide timestamps
 * slightly refactor CPSNotificationInterface
-* drop dynode index
+* drop servicenode index
 * drop pCurrentBlockIndex and use cached block height instead (nCachedBlockHeight)
 * add/use GetUTXO[Coins/Confirmations] helpers instead of GetInputAge[InstantSend]
 * net: Consistently use GetTimeMicros() for inactivity checks 
-* Fix DynodeRateCheck
+* Fix ServiceNodeRateCheck
 * Always good to initialise
 * Necessary split of main.h to validation.cpp/net_processing.cpp
 * Relay tx in sendrawtransaction according to its inv.type
@@ -995,14 +995,14 @@
 * Make sure mixing messages are relayed/accepted properly
 * backport 9008: Remove assert(nMaxInbound > 0)
 * Backport Bitcoin PR#8049: Expose information on whether transaction relay is enabled in (#1545)
-* fix potential deadlock in CDynodeMan::CheckDnbAndUpdateDynodeList
+* fix potential deadlock in CServiceNodeMan::CheckDnbAndUpdateServiceNodeList
 * fix potential deadlock in CGovernanceManager::ProcessVote
 * add 6 to strAllowedChars
 * Backport Bitcoin PR#8085: p2p: Begin encapsulation
 * change invalid version string constant
 * Added feeler connections increasing good addrs in the tried table.
 * Backport Bitcoin PR#8113: Rework addnode behaviour (#1525) 
-* Fix vulnerability with mapDynodeOrphanObjects
+* Fix vulnerability with mapServiceNodeOrphanObjects
 * Remove bad chain alert partition check
 * Fix potential deadlocks in InstantSend
 * fix CDSNotificationInterface::UpdatedBlockTip signature to match the one in CValidationInterface
@@ -1017,7 +1017,7 @@
 * fix MakeCollateralAmounts
 * Removal of Unused Files and CleanUp
 * Further fixes to PrivateSend
-* New rpc call 'dynodelist info'
+* New rpc call 'servicenodelist info'
 * Backport Bitcoin PR#7749: Enforce expected outbound services
 * Backport Bitcoin PR#7696: Fix de-serialization bug where AddrMan is corrupted after exception
 * Fixed issues with propagation of governance objects and update governance
@@ -1041,9 +1041,9 @@
 * Explicitly pass const CChainParams& to UpdateTip()
 * Change Class to Struct/Change int to unsigned int
 * Fix copy elision warning
-* Fix comparison of integers of different signs in dynodeman
+* Fix comparison of integers of different signs in servicenodeman
 * Remove unused int
-* Drop GetDynodeByRank
+* Drop GetServiceNodeByRank
 * [GUI] Remove Multiple Signatures GUI from Client
 * [DDNS] Remove DDNS and DynDNS System from Dynamic
 * Fix Conflicts/Remove Files from qt.pro
@@ -1054,7 +1054,7 @@
 * Fix missing initializer in ntp.cpp
 * [Fluid] Add help and example to getfluidsovereigns command 
 * Add undocumented -forcecompactdb to force LevelDB compactions
-* Remove ability to run Hot/Local Dynodes
+* Remove ability to run Hot/Local ServiceNodes
 * [Fluid] Add fluid history RPC command in clear text 
 * make CheckPSTXes() private, execute it on both client and server
 * Use IsPayToPublicKeyHash
@@ -1225,7 +1225,7 @@
 * Remove old HD wallet code
 * Move InitLoadWallet to init.cpp
 * Revert Tick Changes/Fix UI Thread Issue
-* Sentinel/Dynode Fixes
+* Sentinel/ServiceNode Fixes
 * Remove unused functions/cleanup code
 * Reduce Keypool to 1000
 * Optimise Reindex

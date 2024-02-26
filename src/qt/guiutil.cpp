@@ -431,9 +431,9 @@ void openConfigfile()
 
 void openDNConfigfile()
 {
-    boost::filesystem::path pathConfig = GetDynodeConfigFile();
+    boost::filesystem::path pathConfig = GetServiceNodeConfigFile();
 
-    /* Open dynode.conf with the associated application */
+    /* Open servicenode.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }

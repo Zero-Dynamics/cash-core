@@ -16,7 +16,7 @@
 
 #include "amount.h"
 #ifdef ENABLE_WALLET
-#include "dynodeconfig.h"
+#include "servicenodeconfig.h"
 #endif
 #include "init.h"
 #include "net.h"
@@ -96,8 +96,8 @@ void OptionsModel::Init(bool resetSettings)
     if (!settings.contains("digits"))
         settings.setValue("digits", "2");
 
-    if (!settings.contains("fShowDynodesTab"))
-        settings.setValue("fShowDynodesTab", true);
+    if (!settings.contains("fShowServiceNodesTab"))
+        settings.setValue("fShowServiceNodesTab", true);
 
     if (!settings.contains("fShowAdvancedPSUI"))
         settings.setValue("fShowAdvancedPSUI", false);
@@ -275,8 +275,8 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
 #ifdef ENABLE_WALLET
         case SpendZeroConfChange:
             return settings.value("bSpendZeroConfChange");
-        case ShowDynodesTab:
-            return settings.value("fShowDynodesTab");
+        case ShowServiceNodesTab:
+            return settings.value("fShowServiceNodesTab");
         case ShowAdvancedPSUI:
             return fShowAdvancedPSUI;
         case ShowPrivateSendPopups:
@@ -416,9 +416,9 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
                 setRestartRequired(true);
             }
             break;
-        case ShowDynodesTab:
-            if (settings.value("fShowDynodesTab") != value) {
-                settings.setValue("fShowDynodesTab", value);
+        case ShowServiceNodesTab:
+            if (settings.value("fShowServiceNodesTab") != value) {
+                settings.setValue("fShowServiceNodesTab", value);
                 setRestartRequired(true);
             }
             break;

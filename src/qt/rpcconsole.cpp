@@ -526,8 +526,8 @@ void RPCConsole::setClientModel(ClientModel* model)
         setNumBlocks(model->getNumBlocks(), model->getLastBlockDate(), model->getVerificationProgress(NULL), false);
         connect(model, SIGNAL(numBlocksChanged(int, QDateTime, double, bool)), this, SLOT(setNumBlocks(int, QDateTime, double, bool)));
 
-        setDynodeCount(model->getDynodeCountString());
-        connect(model, SIGNAL(strDynodesChanged(QString)), this, SLOT(setDynodeCount(QString)));
+        setServiceNodeCount(model->getServiceNodeCountString());
+        connect(model, SIGNAL(strServiceNodesChanged(QString)), this, SLOT(setServiceNodeCount(QString)));
 
         updateTrafficStats(model->getTotalBytesRecv(), model->getTotalBytesSent());
         connect(model, SIGNAL(bytesChanged(quint64, quint64)), this, SLOT(updateTrafficStats(quint64, quint64)));
@@ -844,9 +844,9 @@ void RPCConsole::setNumBlocks(int count, const QDateTime& blockDate, double nVer
     }
 }
 
-void RPCConsole::setDynodeCount(const QString& strDynodes)
+void RPCConsole::setServiceNodeCount(const QString& strServiceNodes)
 {
-    ui->dynodeCount->setText(strDynodes);
+    ui->servicenodeCount->setText(strServiceNodes);
 }
 
 void RPCConsole::on_lineEdit_returnPressed()

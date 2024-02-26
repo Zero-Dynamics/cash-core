@@ -115,8 +115,8 @@ public:
         strNetworkID = "main";
         
         consensus.nRewardsStart = 5137;               // PoW Rewards begin on block 5137
-        consensus.nDynodePaymentsStartBlock = 10273;  // Dynode Payments begin on block 10273
-        consensus.nMinCountDynodesPaymentStart = 500; // Dynode Payments begin once 500 Dynodes exist or more.
+        consensus.nServiceNodePaymentsStartBlock = 10273;  // ServiceNode Payments begin on block 10273
+        consensus.nMinCountServiceNodesPaymentStart = 500; // ServiceNode Payments begin once 500 ServiceNodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 11;
         consensus.nInstantSendKeepLock = 24;
         consensus.nBudgetPaymentsStartBlock = 2055;   // actual historical value
@@ -128,7 +128,7 @@ public:
         consensus.nSuperblockCycle = 20545; // 675 (Blocks per day) x 365.25 (Days per Year) / 12 = 20545
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
-        consensus.nDynodeMinimumConfirmations = 15;
+        consensus.nServiceNodeMinimumConfirmations = 15;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -276,8 +276,8 @@ public:
         strNetworkID = "test";
 
         consensus.nRewardsStart = 0; // Rewards starts on block 0
-        consensus.nDynodePaymentsStartBlock = 0;
-        consensus.nMinCountDynodesPaymentStart = 1; // Dynode Payments begin once 1 Dynode exists or more.
+        consensus.nServiceNodePaymentsStartBlock = 0;
+        consensus.nMinCountServiceNodesPaymentStart = 1; // ServiceNode Payments begin once 1 ServiceNode exists or more.
         consensus.nInstantSendConfirmationsRequired = 11;
         consensus.nInstantSendKeepLock = 24;
         consensus.nBudgetPaymentsStartBlock = 200;
@@ -289,7 +289,7 @@ public:
         consensus.nSuperblockCycle = 24;            // Superblocks can be issued hourly on testnet
         consensus.nGovernanceMinQuorum = 1;
         consensus.nGovernanceFilterElements = 500;
-        consensus.nDynodeMinimumConfirmations = 1;
+        consensus.nServiceNodeMinimumConfirmations = 1;
         consensus.nMajorityEnforceBlockUpgrade = 510;
         consensus.nMajorityRejectBlockOutdated = 750;
         consensus.nMajorityWindow = 1000;
@@ -418,8 +418,8 @@ public:
         strNetworkID = "regtest";
 
         consensus.nRewardsStart = 0; // Rewards starts on block 0
-        consensus.nDynodePaymentsStartBlock = 0;
-        consensus.nMinCountDynodesPaymentStart = 1; // Dynode Payments begin once 1 Dynode exists or more.
+        consensus.nServiceNodePaymentsStartBlock = 0;
+        consensus.nMinCountServiceNodesPaymentStart = 1; // ServiceNode Payments begin once 1 ServiceNode exists or more.
         consensus.nInstantSendConfirmationsRequired = 11;
         consensus.nInstantSendKeepLock = 24;
         consensus.nBudgetPaymentsStartBlock = 1000;
@@ -431,7 +431,7 @@ public:
         consensus.nSuperblockCycle = 10;
         consensus.nGovernanceMinQuorum = 1;
         consensus.nGovernanceFilterElements = 100;
-        consensus.nDynodeMinimumConfirmations = 1;
+        consensus.nServiceNodeMinimumConfirmations = 1;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -553,8 +553,8 @@ public:
         strNetworkID = "privatenet";
 
         consensus.nRewardsStart = 0; // Rewards starts on block 0
-        consensus.nDynodePaymentsStartBlock = 0;
-        consensus.nMinCountDynodesPaymentStart = 1; // Dynode Payments begin once 1 Dynode exists or more.
+        consensus.nServiceNodePaymentsStartBlock = 0;
+        consensus.nMinCountServiceNodesPaymentStart = 1; // ServiceNode Payments begin once 1 ServiceNode exists or more.
         consensus.nInstantSendConfirmationsRequired = 11;
         consensus.nInstantSendKeepLock = 24;
         consensus.nBudgetPaymentsStartBlock = 200;
@@ -566,7 +566,7 @@ public:
         consensus.nSuperblockCycle = 24;            // Superblocks can be issued hourly on testnet
         consensus.nGovernanceMinQuorum = 1;
         consensus.nGovernanceFilterElements = 500;
-        consensus.nDynodeMinimumConfirmations = 1;
+        consensus.nServiceNodeMinimumConfirmations = 1;
         consensus.nMajorityEnforceBlockUpgrade = 510;
         consensus.nMajorityRejectBlockOutdated = 750;
         consensus.nMajorityWindow = 1000;

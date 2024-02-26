@@ -1,7 +1,7 @@
 // Copyright (c) 2019-2021 Duality Blockchain Solutions Developers
 
-#ifndef FLUID_DYNODE_H
-#define FLUID_DYNODE_H
+#ifndef FLUID_SERVICENODE_H
+#define FLUID_SERVICENODE_H
 
 #include "amount.h"
 #include "dbwrapper.h"
@@ -13,30 +13,30 @@
 class CScript;
 class CTransaction;
 
-class CFluidDynode
+class CFluidServiceNode
 {
 public:
     static const int CURRENT_VERSION = 1;
     int nVersion;
     std::vector<unsigned char> FluidScript;
-    CAmount DynodeReward;
+    CAmount ServiceNodeReward;
     int64_t nTimeStamp;
     std::vector<std::vector<unsigned char> > SovereignAddresses;
     uint256 txHash;
     unsigned int nHeight;
 
-    CFluidDynode()
+    CFluidServiceNode()
     {
         SetNull();
     }
 
-    CFluidDynode(const CTransaction& tx)
+    CFluidServiceNode(const CTransaction& tx)
     {
         SetNull();
         UnserializeFromTx(tx);
     }
 
-    CFluidDynode(const CScript& fluidScript)
+    CFluidServiceNode(const CScript& fluidScript)
     {
         SetNull();
         UnserializeFromScript(fluidScript);
@@ -44,9 +44,9 @@ public:
 
     inline void SetNull()
     {
-        nVersion = CFluidDynode::CURRENT_VERSION;
+        nVersion = CFluidServiceNode::CURRENT_VERSION;
         FluidScript.clear();
-        DynodeReward = -1;
+        ServiceNodeReward = -1;
         nTimeStamp = 0;
         SovereignAddresses.clear();
         txHash.SetNull();
@@ -60,37 +60,37 @@ public:
     {
         READWRITE(this->nVersion);
         READWRITE(FluidScript);
-        READWRITE(DynodeReward);
+        READWRITE(ServiceNodeReward);
         READWRITE(VARINT(nTimeStamp));
         READWRITE(SovereignAddresses);
         READWRITE(txHash);
         READWRITE(VARINT(nHeight));
     }
 
-    inline friend bool operator==(const CFluidDynode& a, const CFluidDynode& b)
+    inline friend bool operator==(const CFluidServiceNode& a, const CFluidServiceNode& b)
     {
-        return (a.FluidScript == b.FluidScript && a.DynodeReward == b.DynodeReward && a.nTimeStamp == b.nTimeStamp);
+        return (a.FluidScript == b.FluidScript && a.ServiceNodeReward == b.ServiceNodeReward && a.nTimeStamp == b.nTimeStamp);
     }
 
-    inline friend bool operator!=(const CFluidDynode& a, const CFluidDynode& b)
+    inline friend bool operator!=(const CFluidServiceNode& a, const CFluidServiceNode& b)
     {
         return !(a == b);
     }
 
-    friend bool operator<(const CFluidDynode& a, const CFluidDynode& b)
+    friend bool operator<(const CFluidServiceNode& a, const CFluidServiceNode& b)
     {
         return (a.nTimeStamp < b.nTimeStamp);
     }
 
-    friend bool operator>(const CFluidDynode& a, const CFluidDynode& b)
+    friend bool operator>(const CFluidServiceNode& a, const CFluidServiceNode& b)
     {
         return (a.nTimeStamp > b.nTimeStamp);
     }
 
-    inline CFluidDynode operator=(const CFluidDynode& b)
+    inline CFluidServiceNode operator=(const CFluidServiceNode& b)
     {
         FluidScript = b.FluidScript;
-        DynodeReward = b.DynodeReward;
+        ServiceNodeReward = b.ServiceNodeReward;
         nTimeStamp = b.nTimeStamp;
         SovereignAddresses.clear(); //clear out previous entries
         for (const std::vector<unsigned char>& vchAddress : b.SovereignAddresses) {
@@ -107,23 +107,23 @@ public:
     void Serialize(std::vector<unsigned char>& vchData);
 };
 
-static CCriticalSection cs_fluid_dynode;
+static CCriticalSection cs_fluid_servicenode;
 
-class CFluidDynodeDB : public CDBWrapper
+class CFluidServiceNodeDB : public CDBWrapper
 {
 public:
-    CFluidDynodeDB(size_t nCacheSize, bool fMemory, bool fWipe, bool obfuscate);
-    bool AddFluidDynodeEntry(const CFluidDynode& entry, const int op);
-    bool GetLastFluidDynodeRecord(CFluidDynode& returnEntry, const int nHeight);
-    bool GetAllFluidDynodeRecords(std::vector<CFluidDynode>& entries);
+    CFluidServiceNodeDB(size_t nCacheSize, bool fMemory, bool fWipe, bool obfuscate);
+    bool AddFluidServiceNodeEntry(const CFluidServiceNode& entry, const int op);
+    bool GetLastFluidServiceNodeRecord(CFluidServiceNode& returnEntry, const int nHeight);
+    bool GetAllFluidServiceNodeRecords(std::vector<CFluidServiceNode>& entries);
     bool IsEmpty();
     bool RecordExists(const std::vector<unsigned char>& vchFluidScript);
 };
 
-bool GetFluidDynodeData(const CScript& scriptPubKey, CFluidDynode& entry);
-bool GetFluidDynodeData(const CTransaction& tx, CFluidDynode& entry, int& nOut);
-bool CheckFluidDynodeDB();
+bool GetFluidServiceNodeData(const CScript& scriptPubKey, CFluidServiceNode& entry);
+bool GetFluidServiceNodeData(const CTransaction& tx, CFluidServiceNode& entry, int& nOut);
+bool CheckFluidServiceNodeDB();
 
-extern CFluidDynodeDB* pFluidDynodeDB;
+extern CFluidServiceNodeDB* pFluidServiceNodeDB;
 
-#endif // FLUID_DYNODE_H
+#endif // FLUID_SERVICENODE_H

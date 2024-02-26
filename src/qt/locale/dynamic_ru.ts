@@ -267,8 +267,8 @@
         <translation>&amp;Операции</translation>
     </message>
     <message>
-        <source>&amp;Dynodes</source>
-        <translation>&amp;Dynodes</translation>
+        <source>&amp;ServiceNodes</source>
+        <translation>&amp;ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Mining</source>
@@ -279,8 +279,8 @@
         <translation>Просмотр истории транзакций</translation>
     </message>
     <message>
-        <source>Browse Dynodes</source>
-        <translation>Обзор узлов (Dynodes)</translation>
+        <source>Browse ServiceNodes</source>
+        <translation>Обзор узлов (ServiceNodes)</translation>
     </message>
     <message>
         <source>Mine Dynamic(DYN)</source>
@@ -427,12 +427,12 @@
         <translation>Открыть файл конфигурации</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>Открыть &amp;файл конфигурации Dynode</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>Открыть &amp;файл конфигурации ServiceNode</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Открыть файл конфигурации Dynode</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>Открыть файл конфигурации ServiceNode</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -952,16 +952,16 @@ DirecciГіn: %4
         <translation>Пожалуйста, выберите уровень конфиденциальности.</translation>
     </message>
     <message>
-        <source>Use 2 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Используйте 2 отдельных Dynodes для смешивания средств до 1000 DYN</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Используйте 2 отдельных ServiceNodes для смешивания средств до 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 8 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Используйте 8 отдельных Dynodes для смешивания средств до 1000 DYN</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Используйте 8 отдельных ServiceNodes для смешивания средств до 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 16 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Используйте 16 отдельных Dynodes для смешивания средств до 1000 DYN</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Используйте 16 отдельных ServiceNodes для смешивания средств до 1000 DYN</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1140,9 +1140,9 @@ DirecciГіn: %4
     &lt;b&gt; Процесс PrivateSend работает следующим образом &lt;/b&gt;
     &lt; ol type =&#39;1&#39;&gt;
     &lt; li> PrivateSend начинается с разделения записей вашей транзакции на деноминированные значения (деноминации). Эти номиналы равны 0,01 Дина, 0,1 Дина, 1 Дина, 10 Дина, аналогично валютам и ценностям (наличными), которые вы используете каждый день. &lt;/li&gt;
-    Ваш кошелек отправляет запросы на специально настроенные узлы программного обеспечения в сети, называемые &#39;Dynodes.&#39;
-    Эти диноды информированы о том, что они заинтересованы в смешении определенной деноминации. Никакая идентифицируемая информация не отправляется на Dynodes, так что вы никогда не узнаете. &#39;кто&#39; это ты &lt;/li&gt;
-    &lt;li&gt; Когда два других человека отправляют похожие сообщения, протокол указывает, что они хотят смешать одинаковые номиналы, начиная сеанс микширования. het &#39;mix.&#39; Dynode смешивает билеты и дает указание трем активным кошелькам восстановить преобразованную запись. Ваш кошелек оплачивается этими номиналами сам по себе, но с другого адреса (направление изменения) &lt;/li&gt;
+    Ваш кошелек отправляет запросы на специально настроенные узлы программного обеспечения в сети, называемые &#39;ServiceNodes.&#39;
+    Эти диноды информированы о том, что они заинтересованы в смешении определенной деноминации. Никакая идентифицируемая информация не отправляется на ServiceNodes, так что вы никогда не узнаете. &#39;кто&#39; это ты &lt;/li&gt;
+    &lt;li&gt; Когда два других человека отправляют похожие сообщения, протокол указывает, что они хотят смешать одинаковые номиналы, начиная сеанс микширования. het &#39;mix.&#39; ServiceNode смешивает билеты и дает указание трем активным кошелькам восстановить преобразованную запись. Ваш кошелек оплачивается этими номиналами сам по себе, но с другого адреса (направление изменения) &lt;/li&gt;
     Чтобы полностью скрыть свои деньги, ваш кошелек должен повторять один и тот же процесс с каждой купюрой. Каждый раз, когда процесс завершается, круглый вызов завершается. Каждый раунд PrivateSend значительно усложняет определение того, откуда поступают ваши деньги. &lt;/li&gt; Этот процесс микширования выполняется в фоновом режиме без какого-либо вмешательства с вашей стороны. Когда вы хотите совершить транзакцию, ваши деньги уже будут анонимными. Дополнительное время ожидания не требуется. &lt;/li&gt;
     &lt;/ol&gt;&lt;hr&gt;
     &lt;b&gt;ВАЖНО:&lt;/b&gt; Ваш кошелек содержит только 2000 из этих адресов обмена. Каждый раз, когда создается микс, используется до 9 его адресов. Это означает, что эти 2000 адресов будут длиться около 200 смешанных событий. Когда 1900 из этих адресов были использованы, ваш кошелек должен создать больше направлений. Однако вы можете сделать это, только если вы включили автоматическое резервное копирование. &lt;br&gt; По логике, PrivateSend будет отключен, если резервные копии отключены. &lt;hr&gt;</translation>
@@ -1327,8 +1327,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Эксперт</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual Dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Этот параметр определяет количество отдельных Dynodes, через которые будет анонимизирован вход. &lt;br/&gt; Больше циклов анонимизации обеспечивает более высокую степень конфиденциальности, но при этом комиссия стоит дороже.</translation>
+        <source>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Этот параметр определяет количество отдельных ServiceNodes, через которые будет анонимизирован вход. &lt;br/&gt; Больше циклов анонимизации обеспечивает более высокую степень конфиденциальности, но при этом комиссия стоит дороже.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1339,12 +1339,12 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Включить функции управления монеты </translation>
     </message>
     <message>
-        <source>Show Dynodes Tab</source>
-        <translation>Показать вкладку Dynodes</translation>
+        <source>Show ServiceNodes Tab</source>
+        <translation>Показать вкладку ServiceNodes</translation>
     </message>
     <message>
-        <source>Show additional tab listing all your Dynodes in first sub-tab&lt;br/&gt;and all Dynodes on the network in second sub-tab.</source>
-        <translation>Показать дополнительную вкладку, в которой перечислены все ваши Dynodes в первой вложенной вкладке &lt;br/&gt; и все Dynodes в сети во второй вложенной вкладке.</translation>
+        <source>Show additional tab listing all your ServiceNodes in first sub-tab&lt;br/&gt;and all ServiceNodes on the network in second sub-tab.</source>
+        <translation>Показать дополнительную вкладку, в которой перечислены все ваши ServiceNodes в первой вложенной вкладке &lt;br/&gt; и все ServiceNodes в сети во второй вложенной вкладке.</translation>
     </message>
     <message>
         <source>Enable advanced PrivateSend interface</source>
@@ -1644,8 +1644,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Прекратить смешивание</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>Номиналы, которые вы отправили в Dynode. &lt;br&gt;Другие пользователи, чтобы смешать должны предоставить точно такие же номиналы.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>Номиналы, которые вы отправили в ServiceNode. &lt;br&gt;Другие пользователи, чтобы смешать должны предоставить точно такие же номиналы.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -2051,8 +2051,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Блокчейн</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Количество Dynodes</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>Количество ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3585,7 +3585,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>Форма</translation>
@@ -3599,16 +3599,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Количество узлов:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
-        <translation>Мои Dynodes</translation>
+        <source>My ServiceNodes</source>
+        <translation>Мои ServiceNodes</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
-        <translation>Все Dynodes</translation>
+        <source>All ServiceNodes</source>
+        <translation>Все ServiceNodes</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Примечание: Состояние ваших Dynodes в локальном кошельке может немного отличаться. &lt;br /&gt; Всегда ждите, чтобы кошелек синхронизировал дополнительные данные, а затем дважды проверьте другой узел &lt;br/&gt; если ваш Dynode должен работать, но вы по-прежнему не видите &quot;ВКЛЮЧЕНО&quot; в поле &quot;Статус&quot;.</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Примечание: Состояние ваших ServiceNodes в локальном кошельке может немного отличаться. &lt;br /&gt; Всегда ждите, чтобы кошелек синхронизировал дополнительные данные, а затем дважды проверьте другой узел &lt;br/&gt; если ваш ServiceNode должен работать, но вы по-прежнему не видите &quot;ВКЛЮЧЕНО&quot; в поле &quot;Статус&quot;.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3663,16 +3663,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Отключен</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>Вы уверены, что хотите запустить ВСЕ Dynodes?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>Вы уверены, что хотите запустить ВСЕ ServiceNodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>Вы уверены, что хотите начать отключенные Dynodes?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>Вы уверены, что хотите начать отключенные ServiceNodes?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>Подтвердите запуск отключенных Dynodes</translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>Подтвердите запуск отключенных ServiceNodes</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3683,16 +3683,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Команда сейчас недоступна</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>Вы не&apos;можете использовать эту команду, пока список Dynode не будет синхронизирован</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>Вы не&apos;можете использовать эту команду, пока список ServiceNode не будет синхронизирован</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Подтвердите запуск Dynode</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>Подтвердите запуск ServiceNode</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Вы уверены, что хотите запустить Dynode %1?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>Вы уверены, что хотите запустить ServiceNode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3703,12 +3703,12 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Обновление...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Dynode успешно запущен.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>ServiceNode успешно запущен.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
-        <translation>Успешно запущено %d Dynodes, не удалось запустить %d, всего %d</translation>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <translation>Успешно запущено %d ServiceNodes, не удалось запустить %d, всего %d</translation>
     </message>
 </context>
 <context>
@@ -3782,8 +3782,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Показывает среднее время между добытыми блоками</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Блокчейн/Dynodes не синхронизированы, пожалуйста, дождитесь полной синхронизации перед майнингом!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Блокчейн/ServiceNodes не синхронизированы, пожалуйста, дождитесь полной синхронизации перед майнингом!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -4012,8 +4012,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Предупреждение: wallet.dat поврежден, но данные спасены! Исходный файл wallet.dat сохранен как кошелек. {Timestamp} .bak в %s; если ваш баланс или транзакции неверны, вы должны восстановиться из резервной копии.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Вы должны указать ключ dynodepairingkey в конфигурации. Пожалуйста, смотрите документацию.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Вы должны указать ключ servicenodepairingkey в конфигурации. Пожалуйста, смотрите документацию.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4212,8 +4212,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Удалите все транзакции кошелька и восстановите те части блокчейна через -rescan при запуске</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Отключить все специфические функции Dynamic (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, по умолчанию: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Отключить все специфические функции Dynamic (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4418,12 +4418,12 @@ rpcpassword =%s
         <translation>Отключить безопасный режим, переопределить событие безопасного режима (по умолчанию: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a Dynode (0-1, default: %u)</source>
-        <translation>Разрешить клиенту действовать как Dynode (0-1, по умолчанию: %u)</translation>
+        <source>Enable the client to act as a ServiceNode (0-1, default: %u)</source>
+        <translation>Разрешить клиенту действовать как ServiceNode (0-1, по умолчанию: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Ошибка подключения к Dynode.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Ошибка подключения к ServiceNode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -4562,12 +4562,12 @@ rpcpassword =%s
         <translation>Загрузка бюджета кеша ...</translation>
     </message>
     <message>
-        <source>Loading Dynode cache...</source>
-        <translation>Загрузка кеша Dynode...</translation>
+        <source>Loading ServiceNode cache...</source>
+        <translation>Загрузка кеша ServiceNode...</translation>
     </message>
     <message>
-        <source>Loading Dynode payment cache...</source>
-        <translation>Загрузка кеша оплаты Dynode...</translation>
+        <source>Loading ServiceNode payment cache...</source>
+        <translation>Загрузка кеша оплаты ServiceNode...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -4582,8 +4582,8 @@ rpcpassword =%s
         <translation>Блокировка уже действует.</translation>
     </message>
     <message>
-        <source>Lock Dynodes from Dynode configuration file (default: %u)</source>
-        <translation>Блокировка Dynodes из файла конфигурации Dynode (по умолчанию: %u)</translation>
+        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
+        <translation>Блокировка ServiceNodes из файла конфигурации ServiceNode (по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4606,16 +4606,16 @@ rpcpassword =%s
         <translation>Нужно указать порт с -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Dynodes не обнаружены.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>ServiceNodes не обнаружены.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Ни одного подходящего Dynode не найдено.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Ни одного подходящего ServiceNode не найдено.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Нет в списке Dynode.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Нет в списке ServiceNode.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4654,8 +4654,8 @@ rpcpassword =%s
         <translation>Приватный ключ сервера (по умолчанию: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this Dynode (example: %s)</source>
-        <translation>Установить внешний адрес:порт, чтобы добраться до этого Dynode (пример: %s)</translation>
+        <source>Set external address:port to get to this ServiceNode (example: %s)</source>
+        <translation>Установить внешний адрес:порт, чтобы добраться до этого ServiceNode (пример: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4686,8 +4686,8 @@ rpcpassword =%s
         <translation>Укажите время ожидания соединения в миллисекундах (минимум: 1, по умолчанию: %d)</translation>
     </message>
     <message>
-        <source>Specify Dynode configuration file (default: %s)</source>
-        <translation>Укажите файл конфигурации Dynode (по умолчанию: %s)</translation>
+        <source>Specify ServiceNode configuration file (default: %s)</source>
+        <translation>Укажите файл конфигурации ServiceNode (по умолчанию: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4702,16 +4702,16 @@ rpcpassword =%s
         <translation>Прекратить работу после импорта блоков с диска (по умолчанию: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to Dynode: %u / %d</source>
-        <translation>Представлены следующие записи в Dynode: %u / %d</translation>
+        <source>Submitted following entries to ServiceNode: %u / %d</source>
+        <translation>Представлены следующие записи в ServiceNode: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Отправлено в Dynode, ожидается больше записей ( %u / %d ) %s</translation>
+        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Отправлено в ServiceNode, ожидается больше записей ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting in queue %s</source>
-        <translation>Отправлено в Dynode, ожидается в очереди %s</translation>
+        <source>Submitted to ServiceNode, waiting in queue %s</source>
+        <translation>Отправлено в ServiceNode, ожидается в очереди %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4726,16 +4726,16 @@ rpcpassword =%s
         <translation>Синхронизация финансовой сметы …</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode winners...</source>
-        <translation>Синхронизация лидеров Dynode ...</translation>
+        <source>Synchronizing ServiceNode winners...</source>
+        <translation>Синхронизация лидеров ServiceNode ...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode payments...</source>
-        <translation>Синхронизация платежей Dynode...</translation>
+        <source>Synchronizing ServiceNode payments...</source>
+        <translation>Синхронизация платежей ServiceNode...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynodes...</source>
-        <translation>Синхронизация Dynodes...</translation>
+        <source>Synchronizing ServiceNodes...</source>
+        <translation>Синхронизация ServiceNodes...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4746,8 +4746,8 @@ rpcpassword =%s
         <translation>Синхронизация sporks ...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>Это не Dynode.</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>Это не ServiceNode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4758,8 +4758,8 @@ rpcpassword =%s
         <translation>Использовать интеграцию с KeePass 2 с помощью плагина KeePassHttp (по умолчанию: %u)</translation>
     </message>
     <message>
-        <source>Use N separate Dynodes to anonymize funds (2-8, default: %u)</source>
-        <translation>Используйте N отдельных Dynodes для анонимизации средств (2-8, по умолчанию: %u)</translation>
+        <source>Use N separate ServiceNodes to anonymize funds (2-8, default: %u)</source>
+        <translation>Используйте N отдельных ServiceNodes для анонимизации средств (2-8, по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4784,32 +4784,32 @@ rpcpassword =%s
         <translation>Повторная попытка...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>Неверный ключ dynodepairingkey. Пожалуйста, обратитесь к документации.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>Неверный ключ servicenodepairingkey. Пожалуйста, обратитесь к документации.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(должно быть 33300 для основной сети)</translation>
     </message>
     <message>
-        <source>Can&apos;t find random Dynode.</source>
-        <translation>Не могу найти случайный Dynode.</translation>
+        <source>Can&apos;t find random ServiceNode.</source>
+        <translation>Не могу найти случайный ServiceNode.</translation>
     </message>
     <message>
         <source>Can&apos;t mix while sync in progress.</source>
         <translation>Не удается выполнить микширование во время синхронизации.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation>Не удалось спарсить dynode.conf</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>Не удалось спарсить servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Указана неверная маска -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>В dynode.conf обнаружен неверный порт</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>В servicenode.conf обнаружен неверный порт</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4868,16 +4868,16 @@ rpcpassword =%s
         <translation>Обязательно зашифруйте свой кошелек и удалите все незашифрованные резервные копии после того, как вы убедились, что кошелек работает!</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Опции Dynode:</translation>
+        <source>ServiceNode options:</source>
+        <translation>Опции ServiceNode:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
+        <source>ServiceNode queue is full.</source>
         <translation>Очередь динодов заполнена.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -5120,8 +5120,8 @@ rpcpassword =%s
         <translation>Используйте тестовую цепочку</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>Отключить все специфические динамические функции (Dynodes, PrivateSend, InstantSend, Governance) (0-1, по умолчанию: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>Отключить все специфические динамические функции (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Enable use of automated PrivateSend for funds stored in this wallet (0-1, default: %u)</source>
@@ -5132,8 +5132,8 @@ rpcpassword =%s
         <translation>Включить несколько сеансов микширования PrivateSend на блок, (функция экспериментальная) (0-1, по умолчанию: %u)</translation>
     </message>
     <message>
-        <source>Use N separate Dynodes for each denominated input to mix funds (2-16, default: %u)</source>
-        <translation>Используйте N отдельных Dynodes для каждого деноминированного входа, чтобы смешать средства (2-16, по умолчанию: %u)</translation>
+        <source>Use N separate ServiceNodes for each denominated input to mix funds (2-16, default: %u)</source>
+        <translation>Используйте N отдельных ServiceNodes для каждого деноминированного входа, чтобы смешать средства (2-16, по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Enable InstantSend, show confirmations for locked transactions (0-1, default: %u)</source>
@@ -5202,8 +5202,8 @@ rpcpassword =%s
 </translation>
     </message>
     <message>
-        <source>Set the Dynode private key</source>
-        <translation>Установите закрытый ключ Dynode</translation>
+        <source>Set the ServiceNode private key</source>
+        <translation>Установите закрытый ключ ServiceNode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

@@ -6,9 +6,9 @@
 #include "psnotificationinterface.h"
 
 #include "chainparams.h"
-#include "dynode-payments.h"
-#include "dynode-sync.h"
-#include "dynodeman.h"
+#include "servicenode-payments.h"
+#include "servicenode-sync.h"
+#include "servicenodeman.h"
 #include "governance.h"
 #include "instantsend.h"
 #include "privatesend.h"
@@ -24,12 +24,12 @@ void CPSNotificationInterface::InitializeCurrentBlockTip()
 
 void CPSNotificationInterface::AcceptedBlockHeader(const CBlockIndex* pindexNew)
 {
-    dynodeSync.AcceptedBlockHeader(pindexNew);
+    servicenodeSync.AcceptedBlockHeader(pindexNew);
 }
 
 void CPSNotificationInterface::NotifyHeaderTip(const CBlockIndex* pindexNew, bool fInitialDownload)
 {
-    dynodeSync.NotifyHeaderTip(pindexNew, fInitialDownload, connman);
+    servicenodeSync.NotifyHeaderTip(pindexNew, fInitialDownload, connman);
 }
 
 void CPSNotificationInterface::UpdatedBlockTip(const CBlockIndex* pindexNew, const CBlockIndex* pindexFork, bool fInitialDownload)
@@ -37,7 +37,7 @@ void CPSNotificationInterface::UpdatedBlockTip(const CBlockIndex* pindexNew, con
     if (pindexNew == pindexFork) // blocks were disconnected without any new ones
         return;
 
-    dynodeSync.UpdatedBlockTip(pindexNew, fInitialDownload, connman);
+    servicenodeSync.UpdatedBlockTip(pindexNew, fInitialDownload, connman);
 
     // update instantsend autolock activation flag
     instantsend.isAutoLockBip9Active =

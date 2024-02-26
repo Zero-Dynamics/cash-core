@@ -15,7 +15,7 @@
 #include "utilmoneystr.h"
 #include "utilstrencodings.h"
 #include "utiltime.h"
-#include "dynode-sync.h"
+#include "servicenode-sync.h"
 #include "spork.h"
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"
@@ -61,7 +61,7 @@ UniValue createrawbdapaccount(const JSONRPCRequest& request)
 
     EnsureWalletIsUnlocked();
 
-    if (!dynodeSync.IsBlockchainSynced()) {
+    if (!servicenodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
     }
 
@@ -238,7 +238,7 @@ UniValue sendandpayrawbdapaccount(const JSONRPCRequest& request)
            "\nAs a JSON-RPC call\n" + 
            HelpExampleRpc("sendandpayrawbdapaccount", "<hexstring>"));
 
-    if (!dynodeSync.IsBlockchainSynced()) {
+    if (!servicenodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
     }
 

@@ -268,8 +268,8 @@ Var vänlig och försök igen.</translation>
         <translation>&amp;Transaktioner</translation>
     </message>
     <message>
-        <source>&amp;Dynodes</source>
-        <translation>&amp;Dynodes</translation>
+        <source>&amp;ServiceNodes</source>
+        <translation>&amp;ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Mining</source>
@@ -280,8 +280,8 @@ Var vänlig och försök igen.</translation>
         <translation>Bläddra i transaktionshistorik</translation>
     </message>
     <message>
-        <source>Browse Dynodes</source>
-        <translation>Bläddra i Dynodes</translation>
+        <source>Browse ServiceNodes</source>
+        <translation>Bläddra i ServiceNodes</translation>
     </message>
     <message>
         <source>Mine Dynamic(DYN)</source>
@@ -428,12 +428,12 @@ Var vänlig och försök igen.</translation>
         <translation>Öppna konfigurationsfil</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>Öppna &amp;Dynode konfigurationsfil</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>Öppna &amp;ServiceNode konfigurationsfil</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Öppna Dynode konfigurationsfil</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>Öppna ServiceNode konfigurationsfil</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -956,16 +956,16 @@ Adres: %4
         <translation>Välj din sekretessnivå.</translation>
     </message>
     <message>
-        <source>Use 2 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Använd 2 separata Dynodes för att mixa medel upp till 1000 DYN</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Använd 2 separata ServiceNodes för att mixa medel upp till 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 8 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Använd 8 separata Dynodes för att mixa medel upp till 1000 DYN</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Använd 8 separata ServiceNodes för att mixa medel upp till 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 16 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Använd 16 separata Dynodes för att mixa medel upp till 1000 DYN</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Använd 16 separata ServiceNodes för att mixa medel upp till 1000 DYN</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1145,10 +1145,10 @@ Alla Dynamic i din plånbok består av olika &#39;ingångar&#39;
 som du kan tänka på som separata, diskreta mynt.&lt;br&gt; PrivateSend använder en innovativ process för att blanda dina ingångar med ingångarna till två andra personer, utan att dina mynt någonsin lämnar din plånbok.
 Du behåller kontrollen över dina pengar hela tiden.&lt;hr&gt;&lt;b&gt;PrivateSend Processen fungerar så här:&lt;/b&gt;&lt;ol type=&#39;1&#39;&gt;&lt;li&gt;PrivateSend börjar genom att bryta dina transaktionsinsatser ner till standardbeteckningar.
 Dessa valörer är 0.001, 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN -- likt vanliga pengar du använder varje dag.&lt;/li&gt;
-&lt;li&gt;Din plånbok skickar sedan förfrågningar till specialkonfigurerade mjukvarutoder i nätverket, som heter &#39;Dynodes&#39;.
-Dessa dynoder informeras då att du är intresserad av att blanda en viss benämning. Ingen privat information skickas till dynoderna, så de vet aldrig &#39;vem&#39; du är.&lt;/li&gt;
+&lt;li&gt;Din plånbok skickar sedan förfrågningar till specialkonfigurerade mjukvarutoder i nätverket, som heter &#39;ServiceNodes&#39;.
+Dessa servicenoder informeras då att du är intresserad av att blanda en viss benämning. Ingen privat information skickas till servicenoderna, så de vet aldrig &#39;vem&#39; du är.&lt;/li&gt;
 &lt;li&gt;När två andra människor skickar liknande meddelanden, vilket indikerar att de vill blanda samma valör, börjar en blandningssession.
-Dynoden blandar in ingångarna och instruerar alla tre användarna&#39;plånböcker att betala den nuomvandlade inmatningen tillbaka till sig själva.
+ServiceNoden blandar in ingångarna och instruerar alla tre användarna&#39;plånböcker att betala den nuomvandlade inmatningen tillbaka till sig själva.
 Din plånbok betalar den beteckningen direkt till sig själv, men i en annan adress (kallad ändringsadress).&lt;/li&gt;
 &lt;li&gt;För att fullständigt dölja dina pengar måste din plånbok repetera denna process ett antal gånger med varje valör.
 Varje gång processen är klar, it&#39;s kallad &#39;runda &#39;. varje runda PrivateSend gör det exponentiellt svårare att avgöra var dina pengar har sitt ursprung.&lt;/li&gt;
@@ -1343,8 +1343,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Expert</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual Dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Denna inställning bestämmer mängden inviduella Dynodes att en ingång kommer att anonymiseras genom &lt;br/&gt;Fler omgångar av anonymisering ger en högre grad av integritet, men kostar också mer i avgifter.</translation>
+        <source>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Denna inställning bestämmer mängden inviduella ServiceNodes att en ingång kommer att anonymiseras genom &lt;br/&gt;Fler omgångar av anonymisering ger en högre grad av integritet, men kostar också mer i avgifter.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1355,12 +1355,12 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Aktivera mynt&amp;kontrollfunktioner</translation>
     </message>
     <message>
-        <source>Show Dynodes Tab</source>
-        <translation>Visa Dynodes Flik</translation>
+        <source>Show ServiceNodes Tab</source>
+        <translation>Visa ServiceNodes Flik</translation>
     </message>
     <message>
-        <source>Show additional tab listing all your Dynodes in first sub-tab&lt;br/&gt;and all Dynodes on the network in second sub-tab.</source>
-        <translation>Visa ytterligare flik med alla dina Dynodes i första underfliken&lt;br/&gt; och alla Dynodes på nätverket i andra underfliken.</translation>
+        <source>Show additional tab listing all your ServiceNodes in first sub-tab&lt;br/&gt;and all ServiceNodes on the network in second sub-tab.</source>
+        <translation>Visa ytterligare flik med alla dina ServiceNodes i första underfliken&lt;br/&gt; och alla ServiceNodes på nätverket i andra underfliken.</translation>
     </message>
     <message>
         <source>Enable advanced PrivateSend interface</source>
@@ -1660,8 +1660,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Stoppa Mixen</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>De valörer du skickade till Dynode.&lt;br&gt; För att mixa måste andra användare lämna in exakt samma valörer.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>De valörer du skickade till ServiceNode.&lt;br&gt; För att mixa måste andra användare lämna in exakt samma valörer.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -2068,8 +2068,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Blockkedja</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Antal Dynodes</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>Antal ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3602,7 +3602,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>Form</translation>
@@ -3616,15 +3616,15 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Antalet Noder:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
+        <source>My ServiceNodes</source>
         <translation>Mina Dyn-noder</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
+        <source>All ServiceNodes</source>
         <translation>Alla Dyn-noder</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
         <translation>Obs! Statusen för dina Dynodier i den lokala plånboken kan eventuellt vara lite felaktig.&lt;br /&gt; Vänta alltid på plånboken för att synkronisera ytterligare data och dubbelkolla från en annan nod&lt;br /&gt; om din Dynod ska vara igång men du ser fortfarande inte &quot;aktiverad&quot; i &quot;Status&quot; fält.</translation>
     </message>
     <message>
@@ -3680,16 +3680,16 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>SAKNAD</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>Är du säkert att du vill starta alla Dynodes?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>Är du säkert att du vill starta alla ServiceNodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>Är du säker att du vill starta alla saknade Dynodes?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>Är du säker att du vill starta alla saknade ServiceNodes?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>Bekräfta saknade Dynodes start</translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>Bekräfta saknade ServiceNodes start</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3700,16 +3700,16 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Kommandot är inte tillgängligt just nu</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
         <translation>Du kan inte använda det här kommandot tills Dynod-listan synkroniseras</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Bekräfta Dynode start</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>Bekräfta ServiceNode start</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Är du säker på att du vill starta Dynode %1?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>Är du säker på att du vill starta ServiceNode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3720,12 +3720,12 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Uppdaterar...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Startade framgångsrikt Dynode.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>Startade framgångsrikt ServiceNode.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
-        <translation>Startade framgångsrikt %d Dynodes,misslyckades med att starta %d, av totalt %d </translation>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <translation>Startade framgångsrikt %d ServiceNodes,misslyckades med att starta %d, av totalt %d </translation>
     </message>
 </context>
 <context>
@@ -3799,8 +3799,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Detta visar den genomsnittliga tiden mellan de block du har minat</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain/Dynodes är inte synkroniserad, vänta tills den är helt synkroniserad före gruvdrift!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain/ServiceNodes är inte synkroniserad, vänta tills den är helt synkroniserad före gruvdrift!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -4029,8 +4029,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Varning: wallet.dat är korrumperad, data räddad! Den ursprungliga wallet.dat är sparad som wallet.{timestamp}.bak i %s; om ditt saldo eller transaktioner är felaktiga kanske du måste återställa från en säkerhetskopia.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Du måste specificera en dynodepairingkey i konfigurationen. Vänligen se dokumentationen för hjälp.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Du måste specificera en servicenodepairingkey i konfigurationen. Vänligen se dokumentationen för hjälp.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4229,8 +4229,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Ta bort alla plånbokstransaktioner och återställ endast de delar av blockchain genom -rescan vid uppstart</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Inaktivera all Dynamic specifik funktionalitet (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, standard: %u).</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Inaktivera all Dynamic specifik funktionalitet (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, standard: %u).</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4436,12 +4436,12 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Inaktivera safemode, åsidosätta en äkta säkerhetsläge händelse (standard: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a Dynode (0-1, default: %u)</source>
-        <translation>Aktivera klienten att fungera som en Dynode (0-1, standard: %u)</translation>
+        <source>Enable the client to act as a ServiceNode (0-1, default: %u)</source>
+        <translation>Aktivera klienten att fungera som en ServiceNode (0-1, standard: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Det gick inte att ansluta till Dynode.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Det gick inte att ansluta till ServiceNode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -4580,12 +4580,12 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Laddar budgetcache...</translation>
     </message>
     <message>
-        <source>Loading Dynode cache...</source>
-        <translation>Laddar Dynode-cache...</translation>
+        <source>Loading ServiceNode cache...</source>
+        <translation>Laddar ServiceNode-cache...</translation>
     </message>
     <message>
-        <source>Loading Dynode payment cache...</source>
-        <translation>Laddar Dynode betalnings-cache...</translation>
+        <source>Loading ServiceNode payment cache...</source>
+        <translation>Laddar ServiceNode betalnings-cache...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -4600,8 +4600,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Lås är redan på plats.</translation>
     </message>
     <message>
-        <source>Lock Dynodes from Dynode configuration file (default: %u)</source>
-        <translation>Låsa Dynoder från Dynode konfigurationsfil (standard: %u)</translation>
+        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
+        <translation>Låsa ServiceNoder från ServiceNode konfigurationsfil (standard: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4624,16 +4624,16 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Behöver ange en port med -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Inga Dynoder upptäcktes.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>Inga ServiceNoder upptäcktes.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Ingen kompatibel Dynode hittades.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Ingen kompatibel ServiceNode hittades.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Inte i Dynode-listan..</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Inte i ServiceNode-listan..</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4672,8 +4672,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Serverns privata nyckel (standard: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this Dynode (example: %s)</source>
-        <translation>Ange extern adress: port för att komma till denna Dynode (exempel.: %s)</translation>
+        <source>Set external address:port to get to this ServiceNode (example: %s)</source>
+        <translation>Ange extern adress: port för att komma till denna ServiceNode (exempel.: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4704,8 +4704,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Ange anslutningstidsavbrott i millisekunder (minst: 1, standard: %d)</translation>
     </message>
     <message>
-        <source>Specify Dynode configuration file (default: %s)</source>
-        <translation>Ange Dynode konfigurationsfil (standard: %s)</translation>
+        <source>Specify ServiceNode configuration file (default: %s)</source>
+        <translation>Ange ServiceNode konfigurationsfil (standard: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4720,16 +4720,16 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Stoppa körning efter importering av block från disk (standard: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to Dynode: %u / %d</source>
-        <translation>Inlämnad följande poster till Dynode: %u / %d</translation>
+        <source>Submitted following entries to ServiceNode: %u / %d</source>
+        <translation>Inlämnad följande poster till ServiceNode: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Inlämnad till Dynode, väntar på fler poster ( %u / %d ) %s</translation>
+        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Inlämnad till ServiceNode, väntar på fler poster ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting in queue %s</source>
-        <translation>Inlämnad till Dynode, väntar i kö %s</translation>
+        <source>Submitted to ServiceNode, waiting in queue %s</source>
+        <translation>Inlämnad till ServiceNode, väntar i kö %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4744,16 +4744,16 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Synkronisera budgetar...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode winners...</source>
-        <translation>Synkronisera Dynode vinnare...</translation>
+        <source>Synchronizing ServiceNode winners...</source>
+        <translation>Synkronisera ServiceNode vinnare...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode payments...</source>
-        <translation>Synkronisera Dynode betalning...</translation>
+        <source>Synchronizing ServiceNode payments...</source>
+        <translation>Synkronisera ServiceNode betalning...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynodes...</source>
-        <translation>Synkronisera Dynodes...</translation>
+        <source>Synchronizing ServiceNodes...</source>
+        <translation>Synkronisera ServiceNodes...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4764,8 +4764,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Synkronisera sporks...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>Detta är inte en Dynode.</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>Detta är inte en ServiceNode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4776,8 +4776,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Använd KeePass 2-integration med KeePassHttp-plugin (standard: %u)</translation>
     </message>
     <message>
-        <source>Use N separate Dynodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Använd N separata Dynodes för att anonymisera tillgångar (2-8, standard: %u)</translation>
+        <source>Use N separate ServiceNodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Använd N separata ServiceNodes för att anonymisera tillgångar (2-8, standard: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4800,32 +4800,32 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Kommer att försöka igen...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>Ogiltig dynodepairingkey. Se dokumentationen.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>Ogiltig servicenodepairingkey. Se dokumentationen.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(måste vara 33300 för mainnet)</translation>
     </message>
     <message>
-        <source>Can&apos;t find random Dynode.</source>
-        <translation>Det går inte att hitta slumpmässig Dynode.</translation>
+        <source>Can&apos;t find random ServiceNode.</source>
+        <translation>Det går inte att hitta slumpmässig ServiceNode.</translation>
     </message>
     <message>
         <source>Can&apos;t mix while sync in progress.</source>
         <translation>Kan inte blandas under pågående synkronisering.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation>Det gick inte att analysera dynode.conf</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>Det gick inte att analysera servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Ogiltig nätmask anges i -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>Ogiltig port upptäckt i dynode.conf</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>Ogiltig port upptäckt i servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4885,16 +4885,16 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
 </translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Dynode Alternativ:</translation>
+        <source>ServiceNode options:</source>
+        <translation>ServiceNode Alternativ:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>Dynode kön är uppfylld.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>ServiceNode kön är uppfylld.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -5139,8 +5139,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
         <translation>Använd testkedjan</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>Inaktivera all Dynamic specifik funktionalitet (Dynodes, PrivateSend, InstantSend, Governance) (0-1, standard: %u)
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>Inaktivera all Dynamic specifik funktionalitet (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, standard: %u)
 </translation>
     </message>
     <message>
@@ -5153,8 +5153,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
 </translation>
     </message>
     <message>
-        <source>Use N separate Dynodes for each denominated input to mix funds (2-16, default: %u)</source>
-        <translation>Använd N separata Dynodes för varje denominerade ingång för att mixa medel (2-16, standard: %u)
+        <source>Use N separate ServiceNodes for each denominated input to mix funds (2-16, default: %u)</source>
+        <translation>Använd N separata ServiceNodes för varje denominerade ingång för att mixa medel (2-16, standard: %u)
 </translation>
     </message>
     <message>
@@ -5226,8 +5226,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo
 </translation>
     </message>
     <message>
-        <source>Set the Dynode private key</source>
-        <translation>Ställ in Dynode privata nyckeln</translation>
+        <source>Set the ServiceNode private key</source>
+        <translation>Ställ in ServiceNode privata nyckeln</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

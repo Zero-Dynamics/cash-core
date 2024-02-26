@@ -28,7 +28,7 @@ extern CWallet* pwalletMain;
 
 bool IsTransactionFluid(const CScript& txOut)
 {
-    return (txOut.IsProtocolInstruction(MINT_TX) || txOut.IsProtocolInstruction(DYNODE_MODFIY_TX) || txOut.IsProtocolInstruction(MINING_MODIFY_TX) || 
+    return (txOut.IsProtocolInstruction(MINT_TX) || txOut.IsProtocolInstruction(SERVICENODE_MODFIY_TX) || txOut.IsProtocolInstruction(MINING_MODIFY_TX) || 
                 txOut.IsProtocolInstruction(BDAP_REVOKE_TX));
 }
 
@@ -48,8 +48,8 @@ int GetFluidOpCode(const CScript& fluidScript)
 {
     if (fluidScript.IsProtocolInstruction(MINT_TX)) {
         return OP_MINT;
-    } else if (fluidScript.IsProtocolInstruction(DYNODE_MODFIY_TX)) {
-        return OP_REWARD_DYNODE;
+    } else if (fluidScript.IsProtocolInstruction(SERVICENODE_MODFIY_TX)) {
+        return OP_REWARD_SERVICENODE;
     } else if (fluidScript.IsProtocolInstruction(MINING_MODIFY_TX)) {
         return OP_REWARD_MINING;
     } else if (fluidScript.IsProtocolInstruction(BDAP_REVOKE_TX)) {
@@ -133,12 +133,12 @@ bool CFluid::CheckFluidOperationScript(const CScript& fluidScriptPubKey, const i
         std::string strUnHexedFluidOpScript = HexToString(verificationWithoutOpCode);
         std::vector<std::string> vecSplitScript;
         SeparateString(strUnHexedFluidOpScript, vecSplitScript, "$");
-        if (strOperationCode == "OP_MINT" || strOperationCode == "OP_REWARD_MINING" || strOperationCode == "OP_REWARD_DYNODE") {
+        if (strOperationCode == "OP_MINT" || strOperationCode == "OP_REWARD_MINING" || strOperationCode == "OP_REWARD_SERVICENODE") {
             if (vecSplitScript.size() > 1) {
                 std::string strAmount = vecSplitScript[0];
                 CAmount fluidAmount;
                 if (ParseFixedPoint(strAmount, 8, &fluidAmount)) {
-                    if ((strOperationCode == "OP_REWARD_MINING" || strOperationCode == "OP_REWARD_DYNODE") && fluidAmount < 0) {
+                    if ((strOperationCode == "OP_REWARD_MINING" || strOperationCode == "OP_REWARD_SERVICENODE") && fluidAmount < 0) {
                         errorMessage = "CheckFluidOperationScript fluid reward amount is less than zero: " + strAmount;
                         return false;
                     } else if (strOperationCode == "OP_MINT" && (fluidAmount > FLUID_MAX_FOR_MINT)) {
@@ -147,8 +147,8 @@ bool CFluid::CheckFluidOperationScript(const CScript& fluidScriptPubKey, const i
                     } else if (strOperationCode == "OP_REWARD_MINING" && (fluidAmount > FLUID_MAX_REWARD_FOR_MINING)) {
                         errorMessage = "CheckFluidOperationScript fluid OP_REWARD_MINING amount exceeds maximum: " + strAmount;
                         return false;
-                    } else if (strOperationCode == "OP_REWARD_DYNODE" && (fluidAmount > FLUID_MAX_REWARD_FOR_DYNODE)) {
-                        errorMessage = "CheckFluidOperationScript fluid OP_REWARD_DYNODE amount exceeds maximum: " + strAmount;
+                    } else if (strOperationCode == "OP_REWARD_SERVICENODE" && (fluidAmount > FLUID_MAX_REWARD_FOR_SERVICENODE)) {
+                        errorMessage = "CheckFluidOperationScript fluid OP_REWARD_SERVICENODE amount exceeds maximum: " + strAmount;
                         return false;
                     }
                 }
@@ -341,7 +341,7 @@ bool CFluid::ExtractCheckTimestamp(const std::string& strOpCode, const std::stri
         return false;
 
     std::string ls;
-    if (strOpCode == "OP_MINT" || strOpCode == "OP_REWARD_MINING" || strOpCode == "OP_REWARD_DYNODE") {
+    if (strOpCode == "OP_MINT" || strOpCode == "OP_REWARD_MINING" || strOpCode == "OP_REWARD_SERVICENODE") {
         ls = ptrs.at(1);
     }
     else if (strOpCode == "OP_BDAP_REVOKE") {
@@ -558,11 +558,11 @@ CAmount GetStandardPoWBlockPayment(const int& nHeight)
         return BLOCKCHAIN_INIT_REWARD; // Burn transaction fees
 }
 
-CAmount GetStandardDynodePayment(const int& nHeight)
+CAmount GetStandardServiceNodePayment(const int& nHeight)
 {
-    if (nHeight > Params().GetConsensus().nDynodePaymentsStartBlock) {
-        LogPrint("fluid", "GetStandardDynodePayment() : create=%s DN Payment=%d\n", FormatMoney(PHASE_2_DYNODE_PAYMENT), PHASE_2_DYNODE_PAYMENT);
-        return PHASE_2_DYNODE_PAYMENT; // 1.618 DYN
+    if (nHeight > Params().GetConsensus().nServiceNodePaymentsStartBlock) {
+        LogPrint("fluid", "GetStandardServiceNodePayment() : create=%s DN Payment=%d\n", FormatMoney(PHASE_2_SERVICENODE_PAYMENT), PHASE_2_SERVICENODE_PAYMENT);
+        return PHASE_2_SERVICENODE_PAYMENT; // 1.618 DYN
     } else {
         return BLOCKCHAIN_INIT_REWARD; // 0 DYN
     }
@@ -584,7 +584,7 @@ bool CFluid::ValidationProcesses(CValidationState& state, const CScript& txOut, 
             return state.DoS(100, false, REJECT_INVALID, "bad-txns-fluid-mint-auth-failure");
         }
 
-        if ((txOut.IsProtocolInstruction(DYNODE_MODFIY_TX) ||
+        if ((txOut.IsProtocolInstruction(SERVICENODE_MODFIY_TX) ||
                 txOut.IsProtocolInstruction(MINING_MODIFY_TX))  &&
             !GenericParseNumber(ScriptToAsmStr(txOut), 0, mintAmount, true)) {
             return state.DoS(100, false, REJECT_INVALID, "bad-txns-fluid-modify-parse-failure");
@@ -670,7 +670,7 @@ bool CFluid::ExtractTimestampWithAddresses(const std::string& strOpCode, const C
         return false;
 
     std::string strTimeStamp;
-    if (strOpCode == "OP_MINT" || strOpCode == "OP_REWARD_MINING" || strOpCode == "OP_REWARD_DYNODE") {
+    if (strOpCode == "OP_MINT" || strOpCode == "OP_REWARD_MINING" || strOpCode == "OP_REWARD_SERVICENODE") {
         strTimeStamp = ptrs.at(1);
     } else if (strOpCode == "OP_BDAP_REVOKE") {
         strTimeStamp = ptrs.at(0);

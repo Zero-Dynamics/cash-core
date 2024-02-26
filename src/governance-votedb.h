@@ -73,7 +73,7 @@ public:
 
     std::vector<CGovernanceVote> GetVotes() const;
 
-    void RemoveVotesFromDynode(const COutPoint& outpointDynode);
+    void RemoveVotesFromServiceNode(const COutPoint& outpointServiceNode);
 
     ADD_SERIALIZE_METHODS;
 

@@ -25,7 +25,7 @@
 #include "transactionview.h"
 #include "walletmodel.h"
 
-#include "dynodeconfig.h"
+#include "servicenodeconfig.h"
 #include "ui_interface.h"
 
 #include <QAction>
@@ -87,16 +87,16 @@ WalletView::WalletView(const PlatformStyle* _platformStyle, QWidget* parent) : Q
     transactionsPage->setLayout(vbox);
 
     QSettings settings;
-    if (settings.value("fShowDynodesTab").toBool()) {
-        dynodeListPage = new DynodeList(platformStyle);
+    if (settings.value("fShowServiceNodesTab").toBool()) {
+        servicenodeListPage = new ServiceNodeList(platformStyle);
     }
 
     addWidget(overviewPage);
     addWidget(sendCoinsPage);
     addWidget(receiveCoinsPage);
     addWidget(transactionsPage);
-    if (settings.value("fShowDynodesTab").toBool()) {
-        addWidget(dynodeListPage);
+    if (settings.value("fShowServiceNodesTab").toBool()) {
+        addWidget(servicenodeListPage);
     }
     addWidget(miningPage);
     addWidget(bdapPage);
@@ -156,8 +156,8 @@ void WalletView::setClientModel(ClientModel* _clientModel)
     sendCoinsPage->setClientModel(_clientModel);
     bdapPage->setClientModel(_clientModel);
     QSettings settings;
-    if (settings.value("fShowDynodesTab").toBool()) {
-        dynodeListPage->setClientModel(_clientModel);
+    if (settings.value("fShowServiceNodesTab").toBool()) {
+        servicenodeListPage->setClientModel(_clientModel);
     }
 }
 
@@ -172,8 +172,8 @@ void WalletView::setWalletModel(WalletModel* _walletModel)
     usedSendingAddressesPage->setModel(_walletModel->getAddressTableModel());
     transactionView->setModel(_walletModel);
     QSettings settings;
-    if (settings.value("fShowDynodesTab").toBool()) {
-        dynodeListPage->setWalletModel(_walletModel);
+    if (settings.value("fShowServiceNodesTab").toBool()) {
+        servicenodeListPage->setWalletModel(_walletModel);
     }
     miningPage->setModel(_walletModel);
     bdapPage->setModel(_walletModel);
@@ -254,11 +254,11 @@ void WalletView::gotoHistoryPage()
     setCurrentWidget(transactionsPage);
 }
 
-void WalletView::gotoDynodePage()
+void WalletView::gotoServiceNodePage()
 {
     QSettings settings;
-    if (settings.value("fShowDynodesTab").toBool()) {
-        setCurrentWidget(dynodeListPage);
+    if (settings.value("fShowServiceNodesTab").toBool()) {
+        setCurrentWidget(servicenodeListPage);
     }
 }
 

@@ -10,8 +10,8 @@
 #include "bdap/utils.h"
 //#include "bdap/x509.h"
 #include "core_io.h" // needed for ScriptToAsmStr
-#include "dynode-sync.h"
-#include "dynodeman.h"
+#include "servicenode-sync.h"
+#include "servicenodeman.h"
 #include "rpc/protocol.h"
 #include "rpc/server.h"
 #include "primitives/transaction.h"

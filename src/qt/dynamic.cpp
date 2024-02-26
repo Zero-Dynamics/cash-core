@@ -11,7 +11,7 @@
 
 #include "clientmodel.h"
 #include "dynamicgui.h"
-#include "dynodeconfig.h"
+#include "servicenodeconfig.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "intro.h"
@@ -616,11 +616,11 @@ int main(int argc, char* argv[])
     initTranslations(qtTranslatorBase, qtTranslator, translatorBase, translator);
 
 #ifdef ENABLE_WALLET
-    /// 7a. parse dynode.conf
+    /// 7a. parse servicenode.conf
     std::string strErr;
-    if (!dynodeConfig.read(strErr)) {
+    if (!servicenodeConfig.read(strErr)) {
         QMessageBox::critical(0, QObject::tr("Dynamic"),
-            QObject::tr("Error reading Dynode configuration file: %1").arg(strErr.c_str()));
+            QObject::tr("Error reading ServiceNode configuration file: %1").arg(strErr.c_str()));
         return EXIT_FAILURE;
     }
 

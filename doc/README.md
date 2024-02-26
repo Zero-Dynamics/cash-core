@@ -25,32 +25,32 @@ What is [Dynamic](https://duality.solutions/dynamic)?
 * PoW Reward Start Height: Block 5,137
 * Maturity: 10 Blocks
 * PoW Blocks: ~675 per day
-* Dynode Collateral Amount: 1000 DYN
-* Dynode Min Confirmation: 17 Blocks
-* Dynode Reward: Controlled via Fluid Protocol
-* Dynode Reward Start Height: Block 10,273
+* ServiceNode Collateral Amount: 1000 DYN
+* ServiceNode Min Confirmation: 17 Blocks
+* ServiceNode Reward: Controlled via Fluid Protocol
+* ServiceNode Reward Start Height: Block 10,273
 * Total Coins: 2<sup>63</sup> - 1
 * Min TX Fee: 0.0001 DYN
 
 
-[Dynamic(DYN)](https://duality.solutions/dynamic) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Dynamic can be used to run incentivized Dynodes; the second tier of nodes on the network processing, verifying, validating and storing data.
+[Dynamic(DYN)](https://duality.solutions/dynamic) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Dynamic can be used to run incentivized ServiceNodes; the second tier of nodes on the network processing, verifying, validating and storing data.
 
 **MainNet Parameters**
 P2P Port = 33300
 RPC Port = 33350
-Dynodes = 33300
+ServiceNodes = 33300
 Magic Bytes: 0x5e 0x61 0x74 0x80
 
 **TestNet Parameters**
 P2P Port = 33400
 RPC Port = 33450
-Dynodes = 33400
+ServiceNodes = 33400
 Magic Bytes: 0x2f 0x32 0x15 0x40
 
 **RegTest Parameters**
 P2P Port = 33500
 RPC Port = 33550
-Dynodes = 33500
+ServiceNodes = 33500
 Magic Bytes = 0x2f 0x32 0x15 0x3f
 
 

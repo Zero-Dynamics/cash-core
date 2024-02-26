@@ -22,8 +22,8 @@
 #include "util.h"
 #include "validation.h"
 
-#include "dynode-sync.h"
-#include "dynodeman.h"
+#include "servicenode-sync.h"
+#include "servicenodeman.h"
 #include "privatesend-client.h"
 
 #include <stdint.h>
@@ -40,7 +40,7 @@ static int64_t nLastBlockTipUpdateNotification = 0;
 ClientModel::ClientModel(OptionsModel* _optionsModel, QObject* parent) : QObject(parent),
                                                                          optionsModel(_optionsModel),
                                                                          peerTableModel(0),
-                                                                         cachedDynodeCountString(""),
+                                                                         cachedServiceNodeCountString(""),
                                                                          banTableModel(0),
                                                                          pollTimer(0)
 {
@@ -81,7 +81,7 @@ int ClientModel::getNumConnections(unsigned int flags) const
     return 0;
 }
 
-QString ClientModel::getDynodeCountString() const
+QString ClientModel::getServiceNodeCountString() const
 {
     // return tr("Total: %1 (PS compatible: %2 / Enabled: %3) (IPv4: %4, IPv6: %5, TOR: %6)").arg(QString::number((int)dnodeman.size()))
     return tr("Total: %1 (PS compatible: %2 / Enabled: %3)")
@@ -179,12 +179,12 @@ void ClientModel::updateTimer()
 
 void ClientModel::updateDnTimer()
 {
-    QString newDynodeCountString = getDynodeCountString();
+    QString newServiceNodeCountString = getServiceNodeCountString();
 
-    if (cachedDynodeCountString != newDynodeCountString) {
-        cachedDynodeCountString = newDynodeCountString;
+    if (cachedServiceNodeCountString != newServiceNodeCountString) {
+        cachedServiceNodeCountString = newServiceNodeCountString;
 
-        Q_EMIT strDynodesChanged(cachedDynodeCountString);
+        Q_EMIT strServiceNodesChanged(cachedServiceNodeCountString);
     }
 }
 

@@ -69,8 +69,8 @@ static const unsigned int MAX_SUBVERSION_LENGTH = 256;
 static const int MAX_OUTBOUND_CONNECTIONS = 16;
 /** Maximum number of addnode outgoing nodes */
 static const int MAX_ADDNODE_CONNECTIONS = 16;
-/** Maximum number if outgoing dynodes */
-static const int MAX_OUTBOUND_DYNODE_CONNECTIONS = 32;
+/** Maximum number if outgoing servicenodes */
+static const int MAX_OUTBOUND_SERVICENODE_CONNECTIONS = 32;
 /** -listen default */
 static const bool DEFAULT_LISTEN = true;
 /** -upnp default */
@@ -164,8 +164,8 @@ public:
     bool BindListenPort(const CService& bindAddr, std::string& strError, bool fWhitelisted = false);
     bool GetNetworkActive() const { return fNetworkActive; };
     void SetNetworkActive(bool active);
-    bool OpenNetworkConnection(const CAddress& addrConnect, bool fCountFailure, CSemaphoreGrant* grantOutbound = NULL, const char* strDest = NULL, bool fOneShot = false, bool fFeeler = false, bool fAddnode = false, bool fConnectToDynode = false);
-    bool OpenDynodeConnection(const CAddress& addrConnect);
+    bool OpenNetworkConnection(const CAddress& addrConnect, bool fCountFailure, CSemaphoreGrant* grantOutbound = NULL, const char* strDest = NULL, bool fOneShot = false, bool fFeeler = false, bool fAddnode = false, bool fConnectToServiceNode = false);
+    bool OpenServiceNodeConnection(const CAddress& addrConnect);
     bool CheckIncomingNonce(uint64_t nonce);
 
     struct CFullyConnectedOnly {
@@ -205,7 +205,7 @@ public:
         });
     }
 
-    bool IsDynodeOrDisconnectRequested(const CService& addr);
+    bool IsServiceNodeOrDisconnectRequested(const CService& addr);
 
     void PushMessage(CNode* pnode, CSerializedNetMsg&& msg);
 
@@ -358,7 +358,7 @@ public:
 
     bool AddNode(const std::string& node);
     bool RemoveAddedNode(const std::string& node);
-    bool AddPendingDynode(const CService& addr);
+    bool AddPendingServiceNode(const CService& addr);
     std::vector<AddedNodeInfo> GetAddedNodeInfo();
 
     size_t GetNodeCount(NumConnections num);
@@ -421,7 +421,7 @@ private:
     void AcceptConnection(const ListenSocket& hListenSocket);
     void ThreadSocketHandler();
     void ThreadDNSAddressSeed();
-    void ThreadOpenDynodeConnections();
+    void ThreadOpenServiceNodeConnections();
 
     uint64_t CalculateKeyedNetGroup(const CAddress& ad) const;
 
@@ -487,8 +487,8 @@ private:
     CCriticalSection cs_vOneShots;
     std::vector<std::string> vAddedNodes;
     CCriticalSection cs_vAddedNodes;
-    std::vector<CService> vPendingDynodes;
-    CCriticalSection cs_vPendingDynodes;
+    std::vector<CService> vPendingServiceNodes;
+    CCriticalSection cs_vPendingServiceNodes;
     std::vector<CNode*> vNodes;
     std::list<CNode*> vNodesDisconnected;
     mutable CCriticalSection cs_vNodes;
@@ -505,7 +505,7 @@ private:
 
     CSemaphore* semOutbound;
     CSemaphore* semAddnode;
-    CSemaphore* semDynodeOutbound;
+    CSemaphore* semServiceNodeOutbound;
     int nMaxConnections;
     int nMaxOutbound;
     int nMaxAddnode;
@@ -529,7 +529,7 @@ private:
     std::thread threadSocketHandler;
     std::thread threadOpenAddedConnections;
     std::thread threadOpenConnections;
-    std::thread threadOpenDynodeConnections;
+    std::thread threadOpenServiceNodeConnections;
     std::thread threadMessageHandler;
 };
 extern std::unique_ptr<CConnman> g_connman;
@@ -742,10 +742,10 @@ public:
     //    unless it loads a bloom filter.
     bool fRelayTxes; //protected by cs_filter
     bool fSentAddr;
-    // If 'true' this node will be disconnected on CDynodeMan::ProcessDynodeConnections()
-    bool fDynode;
+    // If 'true' this node will be disconnected on CServiceNodeMan::ProcessServiceNodeConnections()
+    bool fServiceNode;
     CSemaphoreGrant grantOutbound;
-    CSemaphoreGrant grantDynodeOutbound;
+    CSemaphoreGrant grantServiceNodeOutbound;
     CCriticalSection cs_filter;
     CBloomFilter* pfilter;
     std::atomic<int> nRefCount;

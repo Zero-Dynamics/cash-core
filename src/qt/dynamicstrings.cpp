@@ -52,7 +52,7 @@ static const char UNUSED* dynamic_strings[] = {
                                  "Delete all wallet transactions and only recover those parts of the "
                                  "blockchain through -rescan on startup"),
     QT_TRANSLATE_NOOP("dynamic", ""
-                                 "Disable all Dynamic specific functionality (Dynodes, PrivateSend, "
+                                 "Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, "
                                  "InstantSend, Governance) (0-1, default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", ""
                                  "Discover own IP addresses (default: 1 when listening and no -externalip or -"
@@ -252,7 +252,7 @@ static const char UNUSED* dynamic_strings[] = {
                                  "Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/"
                                  "or -whitelistforcerelay."),
     QT_TRANSLATE_NOOP("dynamic", ""
-                                 "Use N separate dynodes for each denominated input to mix funds (%u-%u, "
+                                 "Use N separate servicenodes for each denominated input to mix funds (%u-%u, "
                                  "default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", ""
                                  "Use UPnP to map the listening port (default: 1 when listening and no -proxy)"),
@@ -286,10 +286,10 @@ static const char UNUSED* dynamic_strings[] = {
                                  "Wallet will not create transactions that violate mempool chain limits "
                                  "(default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", ""
-                                 "Warning: At least %d of %d dynodes are running on a newer software "
+                                 "Warning: At least %d of %d servicenodes are running on a newer software "
                                  "version. Please check latest releases, you might need to update too."),
     QT_TRANSLATE_NOOP("dynamic", ""
-                                 "Warning: Every dynode (out of %d known ones) is running on a newer "
+                                 "Warning: Every servicenode (out of %d known ones) is running on a newer "
                                  "software version. Please check latest releases, it's very likely that you "
                                  "missed a major/critical update."),
     QT_TRANSLATE_NOOP("dynamic", ""
@@ -312,7 +312,7 @@ static const char UNUSED* dynamic_strings[] = {
                                  "Whitelisted peers cannot be DoS banned and their transactions are always "
                                  "relayed, even if they are already in the mempool, useful e.g. for a gateway"),
     QT_TRANSLATE_NOOP("dynamic", ""
-                                 "You must specify a dynodepairingkey in the configuration. Please see "
+                                 "You must specify a servicenodepairingkey in the configuration. Please see "
                                  "documentation for help."),
     QT_TRANSLATE_NOOP("dynamic", ""
                                  "You need to rebuild the database using -reindex to go back to unpruned "
@@ -344,7 +344,7 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Automatic backups disabled"),
     QT_TRANSLATE_NOOP("dynamic", "Automatically create Tor hidden service (default: %d)"),
     QT_TRANSLATE_NOOP("dynamic", "Block creation options:"),
-    QT_TRANSLATE_NOOP("dynamic", "Can't find random Dynode."),
+    QT_TRANSLATE_NOOP("dynamic", "Can't find random ServiceNode."),
     QT_TRANSLATE_NOOP("dynamic", "Can't mix while sync in progress."),
     QT_TRANSLATE_NOOP("dynamic", "Can't mix: no compatible inputs found!"),
     QT_TRANSLATE_NOOP("dynamic", "Cannot downgrade wallet"),
@@ -359,7 +359,7 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Connection options:"),
     QT_TRANSLATE_NOOP("dynamic", "Copyright (C)"),
     QT_TRANSLATE_NOOP("dynamic", "Corrupted block database detected"),
-    QT_TRANSLATE_NOOP("dynamic", "Could not parse dynode.conf"),
+    QT_TRANSLATE_NOOP("dynamic", "Could not parse servicenode.conf"),
     QT_TRANSLATE_NOOP("dynamic", "Debugging/Testing options:"),
     QT_TRANSLATE_NOOP("dynamic", "Do not load the wallet and disable wallet RPC calls"),
     QT_TRANSLATE_NOOP("dynamic", "Do you want to rebuild the block database now?"),
@@ -371,7 +371,7 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Enable publish raw block in <address>"),
     QT_TRANSLATE_NOOP("dynamic", "Enable publish raw transaction (locked via InstantSend) in <address>"),
     QT_TRANSLATE_NOOP("dynamic", "Enable publish raw transaction in <address>"),
-    QT_TRANSLATE_NOOP("dynamic", "Enable the client to act as a dynode (0-1, default: %u)"),
+    QT_TRANSLATE_NOOP("dynamic", "Enable the client to act as a servicenode (0-1, default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", "Enable transaction replacement in the memory pool (default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", "Entries are full."),
     QT_TRANSLATE_NOOP("dynamic", "Entry exceeds maximum size."),
@@ -395,8 +395,8 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Failed to listen on any port. Use -listen=0 if you want this."),
     QT_TRANSLATE_NOOP("dynamic", "Failed to load fulfilled requests cache from"),
     QT_TRANSLATE_NOOP("dynamic", "Failed to load governance cache from"),
-    QT_TRANSLATE_NOOP("dynamic", "Failed to load dynode cache from"),
-    QT_TRANSLATE_NOOP("dynamic", "Failed to load dynode payments cache from"),
+    QT_TRANSLATE_NOOP("dynamic", "Failed to load servicenode cache from"),
+    QT_TRANSLATE_NOOP("dynamic", "Failed to load servicenode payments cache from"),
     QT_TRANSLATE_NOOP("dynamic", "Failed to parse host:port string"),
     QT_TRANSLATE_NOOP("dynamic", "Failed to start a new mixing queue"),
     QT_TRANSLATE_NOOP("dynamic", "Fee (in %s/kB) to add to transactions you send (default: %s)"),
@@ -419,9 +419,9 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Invalid amount for -%s=<amount>: '%s'"),
     QT_TRANSLATE_NOOP("dynamic", "Invalid amount for -fallbackfee=<amount>: '%s'"),
     QT_TRANSLATE_NOOP("dynamic", "Invalid amount for -paytxfee=<amount>: '%s' (must be at least %s)"),
-    QT_TRANSLATE_NOOP("dynamic", "Invalid dynodepairingkey. Please see documenation."),
+    QT_TRANSLATE_NOOP("dynamic", "Invalid servicenodepairingkey. Please see documenation."),
     QT_TRANSLATE_NOOP("dynamic", "Invalid netmask specified in -whitelist: '%s'"),
-    QT_TRANSLATE_NOOP("dynamic", "Invalid port detected in dynode.conf"),
+    QT_TRANSLATE_NOOP("dynamic", "Invalid port detected in servicenode.conf"),
     QT_TRANSLATE_NOOP("dynamic", "Invalid script detected."),
     QT_TRANSLATE_NOOP("dynamic", "Invalid spork address specified with -sporkaddr"),
     QT_TRANSLATE_NOOP("dynamic", "KeePassHttp id for the established association"),
@@ -440,18 +440,18 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Loading block index..."),
     QT_TRANSLATE_NOOP("dynamic", "Loading fulfilled requests cache..."),
     QT_TRANSLATE_NOOP("dynamic", "Loading governance cache..."),
-    QT_TRANSLATE_NOOP("dynamic", "Loading dynode cache..."),
-    QT_TRANSLATE_NOOP("dynamic", "Loading dynode payment cache..."),
+    QT_TRANSLATE_NOOP("dynamic", "Loading servicenode cache..."),
+    QT_TRANSLATE_NOOP("dynamic", "Loading servicenode payment cache..."),
     QT_TRANSLATE_NOOP("dynamic", "Loading wallet... (%3.2f %%)"),
     QT_TRANSLATE_NOOP("dynamic", "Loading wallet..."),
     QT_TRANSLATE_NOOP("dynamic", "Location of the auth cookie (default: data dir)"),
     QT_TRANSLATE_NOOP("dynamic", "Lock is already in place."),
-    QT_TRANSLATE_NOOP("dynamic", "Lock dynodes from dynode configuration file (default: %u)"),
+    QT_TRANSLATE_NOOP("dynamic", "Lock servicenodes from servicenode configuration file (default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", "Make the wallet broadcast transactions"),
-    QT_TRANSLATE_NOOP("dynamic", "Dynode cache is empty, skipping payments and governance cache..."),
-    QT_TRANSLATE_NOOP("dynamic", "Dynode options:"),
-    QT_TRANSLATE_NOOP("dynamic", "Dynode queue is full."),
-    QT_TRANSLATE_NOOP("dynamic", "Dynode:"),
+    QT_TRANSLATE_NOOP("dynamic", "ServiceNode cache is empty, skipping payments and governance cache..."),
+    QT_TRANSLATE_NOOP("dynamic", "ServiceNode options:"),
+    QT_TRANSLATE_NOOP("dynamic", "ServiceNode queue is full."),
+    QT_TRANSLATE_NOOP("dynamic", "ServiceNode:"),
     QT_TRANSLATE_NOOP("dynamic", "Maximum per-connection receive buffer, <n>*1000 bytes (default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", "Maximum per-connection send buffer, <n>*1000 bytes (default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", "Minimum bytes per sigop in transactions we relay and mine (default: %u)"),
@@ -459,8 +459,8 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Mixing in progress..."),
     QT_TRANSLATE_NOOP("dynamic", "Mnemonic passphrase is too long, must be at most 256 characters"),
     QT_TRANSLATE_NOOP("dynamic", "Need to specify a port with -whitebind: '%s'"),
-    QT_TRANSLATE_NOOP("dynamic", "No Dynodes detected."),
-    QT_TRANSLATE_NOOP("dynamic", "No compatible Dynode found."),
+    QT_TRANSLATE_NOOP("dynamic", "No ServiceNodes detected."),
+    QT_TRANSLATE_NOOP("dynamic", "No compatible ServiceNode found."),
     QT_TRANSLATE_NOOP("dynamic", "No errors detected."),
     QT_TRANSLATE_NOOP("dynamic", "No matching denominations found for mixing."),
     QT_TRANSLATE_NOOP("dynamic", "Node relay options:"),
@@ -468,7 +468,7 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Not compatible with existing transactions."),
     QT_TRANSLATE_NOOP("dynamic", "Not enough file descriptors available."),
     QT_TRANSLATE_NOOP("dynamic", "Not enough funds to anonymize."),
-    QT_TRANSLATE_NOOP("dynamic", "Not in the Dynode list."),
+    QT_TRANSLATE_NOOP("dynamic", "Not in the ServiceNode list."),
     QT_TRANSLATE_NOOP("dynamic", "Number of automatic wallet backups (default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", "Only connect to nodes in network <net> (ipv4, ipv6 or onion)"),
     QT_TRANSLATE_NOOP("dynamic", "Options:"),
@@ -502,7 +502,7 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Set database cache size in megabytes (%d to %d, default: %d)"),
     QT_TRANSLATE_NOOP("dynamic", "Set key pool size to <n> (default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", "Set maximum block size in bytes (default: %d)"),
-    QT_TRANSLATE_NOOP("dynamic", "Set the dynode private key"),
+    QT_TRANSLATE_NOOP("dynamic", "Set the servicenode private key"),
     QT_TRANSLATE_NOOP("dynamic", "Set the number of threads to service RPC calls (default: %d)"),
     QT_TRANSLATE_NOOP("dynamic", "Show all debugging options (usage: --help -help-debug)"),
     QT_TRANSLATE_NOOP("dynamic", "Shrink debug.log file on client startup (default: 1 when no -debug)"),
@@ -510,27 +510,27 @@ static const char UNUSED* dynamic_strings[] = {
     QT_TRANSLATE_NOOP("dynamic", "Specify configuration file (default: %s)"),
     QT_TRANSLATE_NOOP("dynamic", "Specify connection timeout in milliseconds (minimum: 1, default: %d)"),
     QT_TRANSLATE_NOOP("dynamic", "Specify data directory"),
-    QT_TRANSLATE_NOOP("dynamic", "Specify dynode configuration file (default: %s)"),
+    QT_TRANSLATE_NOOP("dynamic", "Specify servicenode configuration file (default: %s)"),
     QT_TRANSLATE_NOOP("dynamic", "Specify pid file (default: %s)"),
     QT_TRANSLATE_NOOP("dynamic", "Specify wallet file (within data directory)"),
     QT_TRANSLATE_NOOP("dynamic", "Specify your own public address"),
     QT_TRANSLATE_NOOP("dynamic", "Spend unconfirmed change when sending transactions (default: %u)"),
     QT_TRANSLATE_NOOP("dynamic", "Starting network threads..."),
-    QT_TRANSLATE_NOOP("dynamic", "Submitted following entries to dynode: %u / %d"),
-    QT_TRANSLATE_NOOP("dynamic", "Submitted to dynode, waiting for more entries ( %u / %d ) %s"),
-    QT_TRANSLATE_NOOP("dynamic", "Submitted to dynode, waiting in queue %s"),
+    QT_TRANSLATE_NOOP("dynamic", "Submitted following entries to servicenode: %u / %d"),
+    QT_TRANSLATE_NOOP("dynamic", "Submitted to servicenode, waiting for more entries ( %u / %d ) %s"),
+    QT_TRANSLATE_NOOP("dynamic", "Submitted to servicenode, waiting in queue %s"),
     QT_TRANSLATE_NOOP("dynamic", "Synchroning blockchain..."),
     QT_TRANSLATE_NOOP("dynamic", "Synchronization failed"),
     QT_TRANSLATE_NOOP("dynamic", "Synchronization finished"),
     QT_TRANSLATE_NOOP("dynamic", "Synchronization pending..."),
     QT_TRANSLATE_NOOP("dynamic", "Synchronizing governance objects..."),
-    QT_TRANSLATE_NOOP("dynamic", "Synchronizing dynode payments..."),
-    QT_TRANSLATE_NOOP("dynamic", "Synchronizing dynodes..."),
+    QT_TRANSLATE_NOOP("dynamic", "Synchronizing servicenode payments..."),
+    QT_TRANSLATE_NOOP("dynamic", "Synchronizing servicenodes..."),
     QT_TRANSLATE_NOOP("dynamic", "The source code is available from %s."),
     QT_TRANSLATE_NOOP("dynamic", "The transaction amount is too small to pay the fee"),
     QT_TRANSLATE_NOOP("dynamic", "The wallet will avoid paying less than the minimum relay fee."),
     QT_TRANSLATE_NOOP("dynamic", "This is experimental software."),
-    QT_TRANSLATE_NOOP("dynamic", "This is not a Dynode."),
+    QT_TRANSLATE_NOOP("dynamic", "This is not a ServiceNode."),
     QT_TRANSLATE_NOOP("dynamic", "This is the minimum transaction fee you pay on every transaction."),
     QT_TRANSLATE_NOOP("dynamic", "This is the transaction fee you will pay if you send a transaction."),
     QT_TRANSLATE_NOOP("dynamic", "Threshold for disconnecting misbehaving peers (default: %u)"),

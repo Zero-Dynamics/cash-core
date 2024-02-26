@@ -47,7 +47,7 @@ public:
         DatabaseCache,           // int
         SpendZeroConfChange,     // bool
         HideOrphans,             // bool
-        ShowDynodesTab,          // bool
+        ShowServiceNodesTab,          // bool
         ShowAdvancedPSUI,        // bool
         ShowPrivateSendPopups,   // bool
         LowKeysWarning,          // bool

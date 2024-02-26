@@ -7,8 +7,8 @@
 #include "dht/storage.h"
 #include "chainparams.h"
 #include "clientversion.h"
-#include "dynode.h"
-#include "dynodeman.h"
+#include "servicenode.h"
+#include "servicenodeman.h"
 #include "primitives/transaction.h"
 #include "util.h"
 
@@ -43,24 +43,24 @@ CDHTSettings::CDHTSettings(const uint16_t ordinal, const uint16_t threads, const
 void CDHTSettings::LoadPeerList()
 {
     std::string strPeerList = "";
-    // get all Dynodes above the minimum protocol version
-    std::map<COutPoint, CDynode> mapDynodes = dnodeman.GetFullDynodeMap();
-    for (auto& dnpair : mapDynodes) {
-        CDynode dn = dnpair.second;
+    // get all ServiceNodes above the minimum protocol version
+    std::map<COutPoint, CServiceNode> mapServiceNodes = dnodeman.GetFullServiceNodeMap();
+    for (auto& dnpair : mapServiceNodes) {
+        CServiceNode dn = dnpair.second;
         if (dn.nProtocolVersion >= MIN_DHT_PROTO_VERSION) {
-            std::string strDynodeIP = dn.addr.ToString();
-            size_t pos = strDynodeIP.find(":");
-            if (pos != std::string::npos && strDynodeIP.size() > 5) {
+            std::string strServiceNodeIP = dn.addr.ToString();
+            size_t pos = strServiceNodeIP.find(":");
+            if (pos != std::string::npos && strServiceNodeIP.size() > 5) {
                 // remove port from IP address string
-                strDynodeIP = strDynodeIP.substr(0, pos);
+                strServiceNodeIP = strServiceNodeIP.substr(0, pos);
             }
-            pos = strPeerList.find(strDynodeIP);
+            pos = strPeerList.find(strServiceNodeIP);
             if (pos == std::string::npos) {
                 if (fMultiThreads) {
-                    strPeerList += strDynodeIP + ":" + std::to_string(nPort) + ",";
+                    strPeerList += strServiceNodeIP + ":" + std::to_string(nPort) + ",";
                 } else {
                     for (unsigned int i = 0; i < nTotalThreads; i++) {
-                        strPeerList += strDynodeIP + ":" + std::to_string(nPort + i) + ",";
+                        strPeerList += strServiceNodeIP + ":" + std::to_string(nPort + i) + ",";
                     }
                 }
             }

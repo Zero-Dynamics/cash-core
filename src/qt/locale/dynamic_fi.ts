@@ -415,12 +415,12 @@
         <translation>Avaa määritystiedosto</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>Avaa Dynoden määritystiedosto</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>Avaa ServiceNoden määritystiedosto</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Avaa Dynoden määritystiedosto</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>Avaa ServiceNoden määritystiedosto</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -904,16 +904,16 @@ Osoite: %4
         <translation>Valitse yksityisyyden taso.</translation>
     </message>
     <message>
-        <source>Use 2 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Käytä 2 erillistä dynodea sekoittaaksesi varoja</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Käytä 2 erillistä servicenodea sekoittaaksesi varoja</translation>
     </message>
     <message>
-        <source>Use 8 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Käytä 8 erillistä dynodea sekoittaaksesi varoja</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Käytä 8 erillistä servicenodea sekoittaaksesi varoja</translation>
     </message>
     <message>
-        <source>Use 16 separate dynodes</source>
-        <translation>Käytä 16 erillistä dynodea</translation>
+        <source>Use 16 separate servicenodes</source>
+        <translation>Käytä 16 erillistä servicenodea</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1227,8 +1227,8 @@ Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd
         <translation>Expertti</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Tämä asetus määrittää kuinka monen erillisen dynoden kautta syötteen anonymisointi tehdään.&lt;br/&gt;Mitä enemmän anonymisoinnin kierroksia, sen parempi yksityisyys, mutta se myös maksaa enemmän siirtomaksuina.</translation>
+        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Tämä asetus määrittää kuinka monen erillisen servicenoden kautta syötteen anonymisointi tehdään.&lt;br/&gt;Mitä enemmän anonymisoinnin kierroksia, sen parempi yksityisyys, mutta se myös maksaa enemmän siirtomaksuina.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1504,8 +1504,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Lopeta sekoittaminen</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>Dynodelle lähetetyt denominoinnit.&lt;br&gt;Jotta sekoitus onnistuisi, täytyy muiden käyttäjien käyttää saman arvoisia denominointeja.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>ServiceNodelle lähetetyt denominoinnit.&lt;br&gt;Jotta sekoitus onnistuisi, täytyy muiden käyttäjien käyttää saman arvoisia denominointeja.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1893,8 +1893,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Lohkoketju</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Dynodet määrä</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>ServiceNodet määrä</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3385,7 +3385,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>Muodostua</translation>
@@ -3399,16 +3399,16 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Solmun lukumäärä:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
-        <translation>Minun Dynodes</translation>
+        <source>My ServiceNodes</source>
+        <translation>Minun ServiceNodes</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
-        <translation>Kaikki Dynodes</translation>
+        <source>All ServiceNodes</source>
+        <translation>Kaikki ServiceNodes</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Huomaa: Dynodesi tila paikallisessa lompakossa voi olla hieman väärä.&lt;br / &gt;Odota aina lompakkoa synkronoivan lisätietoja ja tarkista sitten toisesta solmusta&lt;br /&gt;jos Dynodesi pitäisi olla käynnissä, mutta et silti näe &quot;ENABLED&quot; kohdassa &quot;Status&quot; ala.</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Huomaa: ServiceNodesi tila paikallisessa lompakossa voi olla hieman väärä.&lt;br / &gt;Odota aina lompakkoa synkronoivan lisätietoja ja tarkista sitten toisesta solmusta&lt;br /&gt;jos ServiceNodesi pitäisi olla käynnissä, mutta et silti näe &quot;ENABLED&quot; kohdassa &quot;Status&quot; ala.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3463,16 +3463,16 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>Haluatko varmasti käynnistää kaikki Dynodes?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>Haluatko varmasti käynnistää kaikki ServiceNodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>Haluatko varmasti aloittaa MISSING Dynodes?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>Haluatko varmasti aloittaa MISSING ServiceNodes?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>Vahvista puuttuvien Dynodes-käynnistys</translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>Vahvista puuttuvien ServiceNodes-käynnistys</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3483,16 +3483,16 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Komento ei ole tällä hetkellä käytettävissä</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>et voi käyttää tätä komentoa, kunnes Dynode-luettelo on synkronoitu</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>et voi käyttää tätä komentoa, kunnes ServiceNode-luettelo on synkronoitu</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Vahvista Dynoden käynnistys</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>Vahvista ServiceNoden käynnistys</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>SHaluatko varmasti käynnistää Dynode %1?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>SHaluatko varmasti käynnistää ServiceNode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3503,11 +3503,11 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Päivitetään...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Käynnistin Dynoden onnistuneesti.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>Käynnistin ServiceNoden onnistuneesti.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
         <translation>Käynnistettiin onnistuneesti %d dynodi, ei käynnistynyt %d, yhteensä %d</translation>
     </message>
 </context>
@@ -3582,8 +3582,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Tämä osoittaa louhittujen lohkojen keskimääräisen ajan</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain / Dynodeja ei ole synkronoitu. Odota, kunnes synkronoidaan kokonaan ennen kaivosta!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain / ServiceNodeja ei ole synkronoitu. Odota, kunnes synkronoidaan kokonaan ennen kaivosta!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -3808,8 +3808,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Varoitus: Wallet.dat lompakkotiedosto on vioittunut, tiedot pelastettu. Alkuperäinen wallet.dat lompakkotiedosto on tallennettu wallet.{timestamp}.bak kansioon %s, jos saldosi tai siirtohistoria on virheellinen, sinun tulisi palauttaa lompakkotiedosto varmuuskopiosta.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Sinun täytyy määritellä dynodepairingkey asetustiedostoon. Katso lisätietoja dokumentaatiosta.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Sinun täytyy määritellä servicenodepairingkey asetustiedostoon. Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4008,8 +4008,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Poista kaikki lompakon siirtotapahtumat ja palauta vain nuo osat lohkoketjusta -rescan valinnan avulla käynnistyksessä</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Kytke pois käytöstä kaikki Dynamic:in erityistoiminnot (Dynodet, PrivateSend, InstantSend, Budjetointi) (0-1, oletus: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Kytke pois käytöstä kaikki Dynamic:in erityistoiminnot (ServiceNodet, PrivateSend, InstantSend, Budjetointi) (0-1, oletus: %u)</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4220,12 +4220,12 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Poista turvatila käytöstä, ohita todellinen turvatila tapahtuma (oletus: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a dynode (0-1, default: %u)</source>
-        <translation>Aktivoi asiakasohjelman käyttö dynode:na (0-1, oletus: %u)</translation>
+        <source>Enable the client to act as a servicenode (0-1, default: %u)</source>
+        <translation>Aktivoi asiakasohjelman käyttö servicenode:na (0-1, oletus: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Virhe dynode:en kytkeytymisessä.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Virhe servicenode:en kytkeytymisessä.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -4364,12 +4364,12 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Ladataan budjetti välimuistia...</translation>
     </message>
     <message>
-        <source>Loading Dynode cache...</source>
-        <translation>Ladataan Dynode välimuistia...</translation>
+        <source>Loading ServiceNode cache...</source>
+        <translation>Ladataan ServiceNode välimuistia...</translation>
     </message>
     <message>
-        <source>Loading Dynode payment cache...</source>
-        <translation>Ladataan Dynode maksuvälimuistia...</translation>
+        <source>Loading ServiceNode payment cache...</source>
+        <translation>Ladataan ServiceNode maksuvälimuistia...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -4384,8 +4384,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>On jo lukittu.</translation>
     </message>
     <message>
-        <source>Lock dynodes from dynode configuration file (default: %u)</source>
-        <translation>Lukitse dynodet niiden asetustiedoston kautta (oletus: %u)</translation>
+        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
+        <translation>Lukitse servicenodet niiden asetustiedoston kautta (oletus: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4408,16 +4408,16 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Tarvitaan määritellä portti -whitebind: '%s'</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Dynodeja ei havaittu.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>ServiceNodeja ei havaittu.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Yhteensopivaa Dynodea ei löytynyt.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Yhteensopivaa ServiceNodea ei löytynyt.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Ei ole Dynode listassa.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Ei ole ServiceNode listassa.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4456,8 +4456,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Serverin yksityisavain (oletus: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this dynode (example: %s)</source>
-        <translation>Aseta ulkoinen osoite:portti tälle dynodelle (esim: %s)</translation>
+        <source>Set external address:port to get to this servicenode (example: %s)</source>
+        <translation>Aseta ulkoinen osoite:portti tälle servicenodelle (esim: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4488,8 +4488,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Määritä yhteyden aikakatkaisu millisekunneissa (minimi: 1, oletus: %d)</translation>
     </message>
     <message>
-        <source>Specify dynode configuration file (default: %s)</source>
-        <translation>Määritä dynoden asetustiedosto (oletus: %s)</translation>
+        <source>Specify servicenode configuration file (default: %s)</source>
+        <translation>Määritä servicenoden asetustiedosto (oletus: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4504,16 +4504,16 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Keskeytä kun kaikki lohkot tuotu levyltä (oletus: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to dynode: %u / %d</source>
-        <translation>Esitetty seuraavat merkinnät dynodelle: %u / %d</translation>
+        <source>Submitted following entries to servicenode: %u / %d</source>
+        <translation>Esitetty seuraavat merkinnät servicenodelle: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Esitetty dynodelle, odotetaan lisää merkintöjä ( %u / %d ) %s</translation>
+        <source>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Esitetty servicenodelle, odotetaan lisää merkintöjä ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to dynode, waiting in queue %s</source>
-        <translation>Esitetty dynodelle, odotetaan jonossa %s</translation>
+        <source>Submitted to servicenode, waiting in queue %s</source>
+        <translation>Esitetty servicenodelle, odotetaan jonossa %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4528,20 +4528,20 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Synkronoidaan budjetit...</translation>
     </message>
     <message>
-        <source>Synchronizing dynode winners...</source>
-        <translation>Synkronoidaan dynode voittajat...</translation>
+        <source>Synchronizing servicenode winners...</source>
+        <translation>Synkronoidaan servicenode voittajat...</translation>
     </message>
     <message>
-        <source>Synchronizing dynodes...</source>
-        <translation>Synkronoidaan dynodes...</translation>
+        <source>Synchronizing servicenodes...</source>
+        <translation>Synkronoidaan servicenodes...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode payments...</source>
-        <translation>Synkronoidaan Dynoden maksuja ...</translation>
+        <source>Synchronizing ServiceNode payments...</source>
+        <translation>Synkronoidaan ServiceNoden maksuja ...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynodes...</source>
-        <translation>Synkronoidaan Dynodes...</translation>
+        <source>Synchronizing ServiceNodes...</source>
+        <translation>Synkronoidaan ServiceNodes...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4552,8 +4552,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Synkronoidaan sporkit...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>Tämä ei ole Dynode.</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>Tämä ei ole ServiceNode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4564,8 +4564,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Käytä KeePass 2 integraatiota käyttäen KeePassHttp liitännäistä (oletus: %u)</translation>
     </message>
     <message>
-        <source>Use N separate dynodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Käytä N erillistä dynodea varojen anonymisointiin (2-8, oletus: %u)</translation>
+        <source>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Käytä N erillistä servicenodea varojen anonymisointiin (2-8, oletus: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4588,32 +4588,32 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Yritetään uudelleen...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>Virheellinen dynoden yksityisavain (dynodepairingkey). Katso lisätietoja dokumentaatiosta.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>Virheellinen servicenoden yksityisavain (servicenodepairingkey). Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(oltava 33300 pääverkossa)</translation>
     </message>
     <message>
-        <source>Can't find random Dynode.</source>
-        <translation>Satunnaista Dynodea ei löydy.</translation>
+        <source>Can't find random ServiceNode.</source>
+        <translation>Satunnaista ServiceNodea ei löydy.</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
         <translation>Ei voida sekoittaa synkronoinnin aikana.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation> Ei voitu jäsentää dynode.conf</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation> Ei voitu jäsentää servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: '%s'</source>
         <translation>Virheellinen verkkomaski määritelty -whitelist: '%s'</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>Virheellinen portti löytyi dynode.conf :sta</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>Virheellinen portti löytyi servicenode.conf :sta</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4664,16 +4664,16 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Ladataan lompakkoa...</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Dynode valinnat:</translation>
+        <source>ServiceNode options:</source>
+        <translation>ServiceNode valinnat:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>Dynode jono on täysi.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>ServiceNode jono on täysi.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4776,8 +4776,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Dynamic Hälytys" admin@foo.com
         <translation>Aseta lohkon maksimikoko tavuissa (oletus: %d)</translation>
     </message>
     <message>
-        <source>Set the dynode private key</source>
-        <translation>Aseta dynoden yksityisavain.</translation>
+        <source>Set the servicenode private key</source>
+        <translation>Aseta servicenoden yksityisavain.</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

@@ -383,8 +383,8 @@
         <translation>Отворете файла за конфигуриране на портфейла</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Отворете конфигурационния файл на Dynode</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>Отворете конфигурационния файл на ServiceNode</translation>
     </message>
     <message>
         <source>Show diagnostic information</source>
@@ -900,16 +900,16 @@ Address: %4
         <translation>Моля изберете ниво на сигурност.</translation>
     </message>
     <message>
-        <source>Use 2 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Използване на 2 различни Dynodes за смесване на средства до 1000 DYN</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Използване на 2 различни ServiceNodes за смесване на средства до 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 8 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Използване на 8 различни Dynodes за смесване на средства до 1000 DYN</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Използване на 8 различни ServiceNodes за смесване на средства до 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 16 separate Dynodes</source>
-        <translation>Използване на 16 различни Dynodes за смесване на средства до 1000 DYN</translation>
+        <source>Use 16 separate ServiceNodes</source>
+        <translation>Използване на 16 различни ServiceNodes за смесване на средства до 1000 DYN</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1222,8 +1222,8 @@ Address: %4
         <translation>Експерт</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual Dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Тази настройка определя броя на отделните Dynodes, чрез които ще се извършва анонимизирането.&lt;br/&gt;Повече цикли на анонимизиране дава по-висока степен на сигурност, но и  по-високи такси.</translation>
+        <source>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Тази настройка определя броя на отделните ServiceNodes, чрез които ще се извършва анонимизирането.&lt;br/&gt;Повече цикли на анонимизиране дава по-висока степен на сигурност, но и  по-високи такси.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1503,8 +1503,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Информация</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>Деноминираните суми, които сте изпратили към Dynode. За смесване, другите потребители трябва да изпратят абсолютно същите деноминирани суми.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>Деноминираните суми, които сте изпратили към ServiceNode. За смесване, другите потребители трябва да изпратят абсолютно същите деноминирани суми.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1896,8 +1896,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Регистър на блокове</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Брой на Dynodes</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>Брой на ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3387,7 +3387,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>бланка</translation>
@@ -3401,16 +3401,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Брой на възлите:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
-        <translation>Моите Dynodes</translation>
+        <source>My ServiceNodes</source>
+        <translation>Моите ServiceNodes</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
-        <translation>Всички Dynodes</translation>
+        <source>All ServiceNodes</source>
+        <translation>Всички ServiceNodes</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Забележка: Състоянието на вашите Dynodes в локалния портфейл потенциално може да е леко неправилно. Винаги изчакайте портфейла да синхронизира допълнителни данни и след това проверете два пъти от друг възел, ако вашият Dynode трябва да работи, но все още продължавате не виждам &quot;ENABLED&quot; в &quot;Състояние&quot; област.</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Забележка: Състоянието на вашите ServiceNodes в локалния портфейл потенциално може да е леко неправилно. Винаги изчакайте портфейла да синхронизира допълнителни данни и след това проверете два пъти от друг възел, ако вашият ServiceNode трябва да работи, но все още продължавате не виждам &quot;ENABLED&quot; в &quot;Състояние&quot; област.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3465,16 +3465,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>Сигурни ли сте, че искате да стартирате ВСИЧКИ Dynodes?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>Сигурни ли сте, че искате да стартирате ВСИЧКИ ServiceNodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>Сигурни ли сте, че искате да стартирате MISSING Dynodes?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>Сигурни ли сте, че искате да стартирате MISSING ServiceNodes?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>Потвърдете липсващите Dynodes start</translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>Потвърдете липсващите ServiceNodes start</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3485,16 +3485,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>В момента командата не е достъпна</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>не можете да използвате тази команда, докато списъкът Dynode не се синхронизира</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>не можете да използвате тази команда, докато списъкът ServiceNode не се синхронизира</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Потвърдете старта на Dynode</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>Потвърдете старта на ServiceNode</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Сигурни ли сте, че искате да стартирате Dynode% 1?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>Сигурни ли сте, че искате да стартирате ServiceNode% 1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3505,12 +3505,12 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Актуализира ...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Успешно стартира Dynode.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>Успешно стартира ServiceNode.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
-        <translation>Успешно стартира %d Dynodes, не успя да стартира %d, общо %d</translation>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <translation>Успешно стартира %d ServiceNodes, не успя да стартира %d, общо %d</translation>
     </message>
 </context>
 <context>
@@ -3584,8 +3584,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Това показва средното време между добитите блокове</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain / Dynodes не се синхронизират, моля изчакайте, докато се синхронизират напълно преди извличането!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain / ServiceNodes не се синхронизират, моля изчакайте, докато се синхронизират напълно преди извличането!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -3799,8 +3799,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Внимание: wallet.dat  е развален, данните са спасени! Оригиналния wallet.dat е запазен като wallet.{timestamp}.bak в %s; ако твоят баланс или транзакции са неверни трябва да възстановите от резервното копие.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Трябва да посочите dynodepairingkey в конфигурацията. Моля прочетете документацията за помощ.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Трябва да посочите servicenodepairingkey в конфигурацията. Моля прочетете документацията за помощ.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -3999,8 +3999,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Изтриване на всички транзакции на портфейла и  възстановява само тези части на блок веригата чрез -rescan при стартиране</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Изключване на всички специфични Dynamic функции (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, по подразбиране: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Изключване на всички специфични Dynamic функции (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, по подразбиране: %u)</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4200,12 +4200,12 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Деактивирай безопасен режим, замени събитието за истинския безопасен режим (по подразбиране: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a Dynode (0-1, default: %u)</source>
-        <translation>Активиране на клиента да работи като Dynode (0-1, по подразбиране: %u)</translation>
+        <source>Enable the client to act as a ServiceNode (0-1, default: %u)</source>
+        <translation>Активиране на клиента да работи като ServiceNode (0-1, по подразбиране: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Грешка при свързване с Dynode.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Грешка при свързване с ServiceNode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -4344,20 +4344,20 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Зареждане на бюджетния кеш...</translation>
     </message>
     <message>
-        <source>Loading Dynode cache...</source>
-        <translation>Зареждане на Dynode кеш...</translation>
+        <source>Loading ServiceNode cache...</source>
+        <translation>Зареждане на ServiceNode кеш...</translation>
     </message>
     <message>
-        <source>Loading Dynode payment cache...</source>
-        <translation>Зараждане на Dynode кеш за плащане</translation>
+        <source>Loading ServiceNode payment cache...</source>
+        <translation>Зараждане на ServiceNode кеш за плащане</translation>
     </message>
     <message>
         <source>Lock is already in place.</source>
         <translation>Заключването е вече налично.</translation>
     </message>
     <message>
-        <source>Lock Dynodes from Dynode configuration file (default: %u)</source>
-        <translation>Заключване на Dynodes от конфигурационния файл(по подразбиране: %u)</translation>
+        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
+        <translation>Заключване на ServiceNodes от конфигурационния файл(по подразбиране: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4380,16 +4380,16 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Нужно е определяне на порта с -whitebind: '%s'</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Не са открити Dynodes.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>Не са открити ServiceNodes.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Не e намерен съвместим Dynode.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Не e намерен съвместим ServiceNode.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Не е в Dynode списъка.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Не е в ServiceNode списъка.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4428,8 +4428,8 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Частен ключ за сървъра (по подразбиране %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this Dynode (example: %s)</source>
-        <translation>Задаване на външен address:port на този Dynode (пример: %s)</translation>
+        <source>Set external address:port to get to this ServiceNode (example: %s)</source>
+        <translation>Задаване на външен address:port на този ServiceNode (пример: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4460,7 +4460,7 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Определете таймаут за свързване в милисекунди (минимум: 1, подразбиране: %d)</translation>
     </message>
     <message>
-        <source>Specify Dynode configuration file (default: %s)</source>
+        <source>Specify ServiceNode configuration file (default: %s)</source>
         <translation>Посочете конфигурационен файл (по подразбиране: %s)</translation>
     </message>
     <message>
@@ -4476,15 +4476,15 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Спри работата след импортиране на блоковете от диска (по подразбиране: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to Dynode: %u / %d</source>
-        <translation>Изпратени са следните записи към Dynode: %u / %d</translation>
+        <source>Submitted following entries to ServiceNode: %u / %d</source>
+        <translation>Изпратени са следните записи към ServiceNode: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Изпратено към Dynode, чака за още записи ( %u / %d ) %s</translation>
+        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Изпратено към ServiceNode, чака за още записи ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting in queue %s</source>
+        <source>Submitted to ServiceNode, waiting in queue %s</source>
         <translation>Изпратено към Мастернода, чака в опашката %s</translation>
     </message>
     <message>
@@ -4500,16 +4500,16 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Синхронизиране на бюджетите ...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode winners...</source>
-        <translation>Синхронизиране на Dynode победителите ...</translation>
+        <source>Synchronizing ServiceNode winners...</source>
+        <translation>Синхронизиране на ServiceNode победителите ...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode payments...</source>
-        <translation>Синхронизиране на Dynode плащания ...</translation>
+        <source>Synchronizing ServiceNode payments...</source>
+        <translation>Синхронизиране на ServiceNode плащания ...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynodes...</source>
-        <translation>Синхронизиране на Dynodes ...</translation>
+        <source>Synchronizing ServiceNodes...</source>
+        <translation>Синхронизиране на ServiceNodes ...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4520,8 +4520,8 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Синхронизиране на sporks...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>Това не е Dynode.</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>Това не е ServiceNode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4532,8 +4532,8 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Използвай KeePass 2 интеграция чрез плъгина KeePassHttp (по подразбиране: %u)</translation>
     </message>
     <message>
-        <source>Use N separate Dynodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Използвай N отделни Dynode за анонимизиране на средствата (2-8, по подразбиране: %u)</translation>
+        <source>Use N separate ServiceNodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Използвай N отделни ServiceNode за анонимизиране на средствата (2-8, по подразбиране: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4556,32 +4556,32 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Ще опита отново...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>Невалиден частен ключ на Dynode. Моля вижте документацията.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>Невалиден частен ключ на ServiceNode. Моля вижте документацията.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(трябва да е 33300 за основната мрежа)</translation>
     </message>
     <message>
-        <source>Can't find random Dynode.</source>
-        <translation>Не можете да намери случаен Dynode.</translation>
+        <source>Can't find random ServiceNode.</source>
+        <translation>Не можете да намери случаен ServiceNode.</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
         <translation>Не може да се смесват, докато се синхронизира.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation>Несъвместимост в dynode.conf</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>Несъвместимост в servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: '%s'</source>
         <translation>Невалидна мрежова маска в -whitelist: '%s'</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>Открит е невалиден порт в dynode.conf</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>Открит е невалиден порт в servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4632,16 +4632,16 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Зареждане на портфейла...</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Dynode опции:</translation>
+        <source>ServiceNode options:</source>
+        <translation>ServiceNode опции:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>Опашката с задачи на Dynode е пълна.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>Опашката с задачи на ServiceNode е пълна.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4744,8 +4744,8 @@ for example: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Определи максималния размер на блока в байтове (по подразбиране: %d)</translation>
     </message>
     <message>
-        <source>Set the Dynode private key</source>
-        <translation>Задаване на личен ключ на Dynode</translation>
+        <source>Set the ServiceNode private key</source>
+        <translation>Задаване на личен ключ на ServiceNode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

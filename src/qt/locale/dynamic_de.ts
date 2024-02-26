@@ -267,8 +267,8 @@
         <translation>&amp;Transaktionen</translation>
     </message>
     <message>
-        <source>&amp;Dynodes</source>
-        <translation>&amp;Dynodes</translation>
+        <source>&amp;ServiceNodes</source>
+        <translation>&amp;ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Mining</source>
@@ -279,8 +279,8 @@
         <translation>Transaktionsverlauf durchsuchen</translation>
     </message>
     <message>
-        <source>Browse Dynodes</source>
-        <translation>Dynodes durchsuchen</translation>
+        <source>Browse ServiceNodes</source>
+        <translation>ServiceNodes durchsuchen</translation>
     </message>
     <message>
         <source>Mine Dynamic(DYN)</source>
@@ -427,12 +427,12 @@
         <translation>Konfigurationsdatei öffnen</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>Dynode &amp;Konfigurationsdatei öffnen</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>ServiceNode &amp;Konfigurationsdatei öffnen</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Dynode Konfigurationsdatei öffnen</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>ServiceNode Konfigurationsdatei öffnen</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -952,16 +952,16 @@ Adresse: %4
         <translation>Wählen Sie bitte einen Level für den Datenschutz aus.</translation>
     </message>
     <message>
-        <source>Use 2 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Verwenden Sie 2 separate Dynodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Verwenden Sie 2 separate ServiceNodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
     </message>
     <message>
-        <source>Use 8 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Verwenden Sie 8 separate Dynodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Verwenden Sie 8 separate ServiceNodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
     </message>
     <message>
-        <source>Use 16 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>Verwenden Sie 16 separate Dynodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>Verwenden Sie 16 separate ServiceNodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1142,10 +1142,10 @@ PrivateSend verwendet einen innovativen Prozess um Ihre Inputs mit denen von 2 a
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend beginnt mit der Stückelung Ihrer Transaktionseingängen in standardisierten Nennwerte.
 Diese Nennwerte sind 0.001, 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN -- in der Art ähnlich dem Papiergeld, welches Sie täglich verwenden.&lt;/li&gt;
-&lt;li&gt;Ihre Wallet sendet dann entsprechende Anfragen an speziell konfigurierte Softwareknoten im Netzwerk, sogenannte &#39;Dynodes&#39;.
-Dadurch werden diese Dynodes darüber informiert, dass Sie an einem Mixing Ihrer gestückelten DYN interessiert sind. Es werden dabei keine persönlichen Informationen an die Dynodes weitergegeben, sie können so niemals wissen &#39;wer&#39; hinter der Anforderung steckt.&lt;/li&gt;
+&lt;li&gt;Ihre Wallet sendet dann entsprechende Anfragen an speziell konfigurierte Softwareknoten im Netzwerk, sogenannte &#39;ServiceNodes&#39;.
+Dadurch werden diese ServiceNodes darüber informiert, dass Sie an einem Mixing Ihrer gestückelten DYN interessiert sind. Es werden dabei keine persönlichen Informationen an die ServiceNodes weitergegeben, sie können so niemals wissen &#39;wer&#39; hinter der Anforderung steckt.&lt;/li&gt;
 &lt;li&gt;Senden zwei andere Personen die gleiche Anforderungen mit der gleichen Menge gestückelter DYN, startet das Mixing.
-Die Dynodes mixt die gestückelten DYN und instruiert alle drei Wallets&#39; der Benutzer, die aktuell tranformierten Eingänge sich selbst wieder gutzuschreiben.
+Die ServiceNodes mixt die gestückelten DYN und instruiert alle drei Wallets&#39; der Benutzer, die aktuell tranformierten Eingänge sich selbst wieder gutzuschreiben.
 Ihre Wallet überweist sich diese Stückelungen wieder direkt selbst aber an einer anderen Adresse (wird Wechselgeld Adresse genannt).&lt;/li&gt;
 &lt;li&gt;Um Ihre Gelder vollständig zu verschleiern, muß Ihre Wallet diesen Prozess mehrmals mit den Stückelungen wiederholen.
 Jedes mal, wenn der Prozess fertiggestellt wird, wird&#39;es als eine &#39;Runde&#39; bezeichnet;. Mit jeder Runde von PrivateSend erschweren und verschleiern Sie exponentiell die Herkunft Ihres Guthabens.&lt;/li&gt;
@@ -1337,8 +1337,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Experte</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual Dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Diese Einstellung ermittelt die Anzahl der individuellen Dynodes, durch die eine Eingabe anonymisiert wird. &lt;br/&gt;Mehr Runden der Anonymisierung führen zwar zu einem höheren Grad an Datenschutz, aber auch zu höheren Gebühren.</translation>
+        <source>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Diese Einstellung ermittelt die Anzahl der individuellen ServiceNodes, durch die eine Eingabe anonymisiert wird. &lt;br/&gt;Mehr Runden der Anonymisierung führen zwar zu einem höheren Grad an Datenschutz, aber auch zu höheren Gebühren.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1349,12 +1349,12 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Aktiviert die Coin Control Funktionen</translation>
     </message>
     <message>
-        <source>Show Dynodes Tab</source>
-        <translation>Zeigt die Dynodes Registerkarte an</translation>
+        <source>Show ServiceNodes Tab</source>
+        <translation>Zeigt die ServiceNodes Registerkarte an</translation>
     </message>
     <message>
-        <source>Show additional tab listing all your Dynodes in first sub-tab&lt;br/&gt;and all Dynodes on the network in second sub-tab.</source>
-        <translation>Zeigt eine zusätzliche Registerkarte an, in welcher alle Ihre Dynodes im ersten Unterregister &lt;br/&gt;und alle Dynodes im zweiten Unterregister im Netzwerk aufgereiht sind.</translation>
+        <source>Show additional tab listing all your ServiceNodes in first sub-tab&lt;br/&gt;and all ServiceNodes on the network in second sub-tab.</source>
+        <translation>Zeigt eine zusätzliche Registerkarte an, in welcher alle Ihre ServiceNodes im ersten Unterregister &lt;br/&gt;und alle ServiceNodes im zweiten Unterregister im Netzwerk aufgereiht sind.</translation>
     </message>
     <message>
         <source>Enable advanced PrivateSend interface</source>
@@ -1654,8 +1654,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Mixen Stoppen</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>An die Dynode übermittelten Stückelungen . &lt;br&gt;Um mixen zu können, müssen andere Benutzer die exakt gleiche Stückelungen übermitteln.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>An die ServiceNode übermittelten Stückelungen . &lt;br&gt;Um mixen zu können, müssen andere Benutzer die exakt gleiche Stückelungen übermitteln.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -2062,8 +2062,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Blockchain</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Anzahl der Dynodes</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>Anzahl der ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3599,7 +3599,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>Formular</translation>
@@ -3613,16 +3613,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Anzahl der Knoten:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
-        <translation>Meine Dynodes</translation>
+        <source>My ServiceNodes</source>
+        <translation>Meine ServiceNodes</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
-        <translation>Alle Dynodes</translation>
+        <source>All ServiceNodes</source>
+        <translation>Alle ServiceNodes</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Info: Der Status Ihres Dynodes der lokalen Wallet kann möglicherweise leicht abweichen.&lt;br /&gt; Warten Sie immer darauf, bis die Wallet zusätzliche Daten synchronisiert hat und überprüfen sie den Status dann ein weiteres mal bei anderen Knoten &lt;br /&gt;falls Ihr Dynode laufen sollte aber Sie Ihn immer noch nicht als &quot;AKTIV&quot; in &quot;Status&quot; Feld sehen.</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Info: Der Status Ihres ServiceNodes der lokalen Wallet kann möglicherweise leicht abweichen.&lt;br /&gt; Warten Sie immer darauf, bis die Wallet zusätzliche Daten synchronisiert hat und überprüfen sie den Status dann ein weiteres mal bei anderen Knoten &lt;br /&gt;falls Ihr ServiceNode laufen sollte aber Sie Ihn immer noch nicht als &quot;AKTIV&quot; in &quot;Status&quot; Feld sehen.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3677,16 +3677,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>FEHLENDE</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>Sind Sie sich sicher, daß Sie ALLE Dynodes starten möchten?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>Sind Sie sich sicher, daß Sie ALLE ServiceNodes starten möchten?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>Sind Sie sich sicher, daß Sie die FEHLENDEN Dynodes starten möchten?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>Sind Sie sich sicher, daß Sie die FEHLENDEN ServiceNodes starten möchten?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>Bestätigung des Starts fehlender Dynodes </translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>Bestätigung des Starts fehlender ServiceNodes </translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3697,16 +3697,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Die Befehlseingabe ist zur Zeit nicht verfügbar</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>Sie können diese Befehlseingabe nicht verwenden bis die Dynodeliste synchronisiert worden ist</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>Sie können diese Befehlseingabe nicht verwenden bis die ServiceNodeliste synchronisiert worden ist</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Start des Dynode bestätigen</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>Start des ServiceNode bestätigen</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Sind Sie sich sicher, dass Sie Dynode starten möchten %1?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>Sind Sie sich sicher, dass Sie ServiceNode starten möchten %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3717,12 +3717,12 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Aktualisiere...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Dynode erfolgreich gestartet.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>ServiceNode erfolgreich gestartet.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
-        <translation>%d Dynodes erfolgreich gestartet, Start von %d fehlgeschlagen, Gesamt: %d</translation>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <translation>%d ServiceNodes erfolgreich gestartet, Start von %d fehlgeschlagen, Gesamt: %d</translation>
     </message>
 </context>
 <context>
@@ -3796,8 +3796,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Zeigt die durchschittliche Zeit zwischen den Blöcken an, die Sie gemined haben</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain/Dynodes sind nicht synchronisiert, bitte auf die vollständige Sychronisierung warten, bevor das Mining gestartet wird!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain/ServiceNodes sind nicht synchronisiert, bitte auf die vollständige Sychronisierung warten, bevor das Mining gestartet wird!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -4026,8 +4026,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Warnung: wallet.dat ist defekt, Daten gerettet! Die original wallet.dat wurde als wallet.{Timestamp}.bak in %s; sollte Ihr Guthaben oder Transaktionen nicht korrekt sein, sollten Sie von einem Backup wiederherstellen.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Sie müssen einen dynodepairingkey in der Konfiguration angeben. Für Hilfe schauen Sie in der Dokumentation nach.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Sie müssen einen servicenodepairingkey in der Konfiguration angeben. Für Hilfe schauen Sie in der Dokumentation nach.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4226,8 +4226,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>Alle Transaktionen der Wallet löschen und beim Starten nur die Teile der Blockchain über -rescan wiederherstellen</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Alle Dynamic spezifischen Funktionen deaktivieren (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, Standard: %u).</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Alle Dynamic spezifischen Funktionen deaktivieren (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, Standard: %u).</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4432,12 +4432,12 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Safemode deaktivieren, echtes Ereignis im sicheren Modus wird überschreiben (Standard: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a Dynode (0-1, default: %u)</source>
-        <translation>Aktivieren des Clients um als Dynode zu agieren (0-1, Standard: %u)</translation>
+        <source>Enable the client to act as a ServiceNode (0-1, default: %u)</source>
+        <translation>Aktivieren des Clients um als ServiceNode zu agieren (0-1, Standard: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Fehler bei der Verbindung zu Dynode.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Fehler bei der Verbindung zu ServiceNode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -4576,12 +4576,12 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Budgetcache wird geladen...</translation>
     </message>
     <message>
-        <source>Loading Dynode cache...</source>
-        <translation>Dynodecache wird geladen..</translation>
+        <source>Loading ServiceNode cache...</source>
+        <translation>ServiceNodecache wird geladen..</translation>
     </message>
     <message>
-        <source>Loading Dynode payment cache...</source>
-        <translation>Dynode Zahlungscache wird geladen...</translation>
+        <source>Loading ServiceNode payment cache...</source>
+        <translation>ServiceNode Zahlungscache wird geladen...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -4596,8 +4596,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Sperre ist bereits gesetzt.</translation>
     </message>
     <message>
-        <source>Lock Dynodes from Dynode configuration file (default: %u)</source>
-        <translation>Dynodes der Dynode Konfigurationsdatei sperren (Standard: %u)</translation>
+        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
+        <translation>ServiceNodes der ServiceNode Konfigurationsdatei sperren (Standard: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4620,16 +4620,16 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Angabe eines Port mit -whitebind wird benötigt: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Keine Dynodes erkannt.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>Keine ServiceNodes erkannt.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Nicht kompatible Dynodes gefunden.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Nicht kompatible ServiceNodes gefunden.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Nicht in der Dynode Liste.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Nicht in der ServiceNode Liste.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4668,8 +4668,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Privater Schlüssel des Servers (Standard: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this Dynode (example: %s)</source>
-        <translation>Legt externen Adress:Port fest, um an diesen Dynode zu gelangen (ej: %s)</translation>
+        <source>Set external address:port to get to this ServiceNode (example: %s)</source>
+        <translation>Legt externen Adress:Port fest, um an diesen ServiceNode zu gelangen (ej: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4700,8 +4700,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Angabe der Verbindungsauszeit in Millisekunden (minimum: 1, Standard: %d)</translation>
     </message>
     <message>
-        <source>Specify Dynode configuration file (default: %s)</source>
-        <translation>Angabe der Dynode Konfigurationsdatei (Standard: %s)</translation>
+        <source>Specify ServiceNode configuration file (default: %s)</source>
+        <translation>Angabe der ServiceNode Konfigurationsdatei (Standard: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4716,16 +4716,16 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Nach dem Import von Blöcken von der Festplatte stoppen (Standard: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to Dynode: %u / %d</source>
-        <translation>Folgende Einträge an Dynode übermittelt: %u / %d</translation>
+        <source>Submitted following entries to ServiceNode: %u / %d</source>
+        <translation>Folgende Einträge an ServiceNode übermittelt: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Weitergeleitet an Dynode, warten auf mehr Eingänge ( %u / %d ) %s</translation>
+        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Weitergeleitet an ServiceNode, warten auf mehr Eingänge ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting in queue %s</source>
-        <translation>Weitergeleitet an Dynode, in Warteschlange wartend %s</translation>
+        <source>Submitted to ServiceNode, waiting in queue %s</source>
+        <translation>Weitergeleitet an ServiceNode, in Warteschlange wartend %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4740,16 +4740,16 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Synchronisieren von Budgets...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode winners...</source>
-        <translation>Synchronisieren von Dynode Gewinnern...</translation>
+        <source>Synchronizing ServiceNode winners...</source>
+        <translation>Synchronisieren von ServiceNode Gewinnern...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode payments...</source>
-        <translation>Sychronisierung von Dynode Zahlungen...</translation>
+        <source>Synchronizing ServiceNode payments...</source>
+        <translation>Sychronisierung von ServiceNode Zahlungen...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynodes...</source>
-        <translation>Sychronisierung von Dynodes...</translation>
+        <source>Synchronizing ServiceNodes...</source>
+        <translation>Sychronisierung von ServiceNodes...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4760,8 +4760,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Synchronisierung der Sporks...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>Das ist kein Dynode.</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>Das ist kein ServiceNode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4772,8 +4772,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Verwenden von KeePass 2 Integration mit dem KeePassHttp Plugin (Standard: %u)</translation>
     </message>
     <message>
-        <source>Use N separate Dynodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Verwenden von N separaten Dynodes um Mittel zu anonymizieren (2-8, Standard: %u)</translation>
+        <source>Use N separate ServiceNodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Verwenden von N separaten ServiceNodes um Mittel zu anonymizieren (2-8, Standard: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4798,32 +4798,32 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Wird erneut versucht...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>Dynodepairingkey ist nicht gültig. Bitte sehen Sie in der Dokumentation nach.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>ServiceNodepairingkey ist nicht gültig. Bitte sehen Sie in der Dokumentation nach.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(muß 33300 für das Mainnet sein)</translation>
     </message>
     <message>
-        <source>Can&apos;t find random Dynode.</source>
-        <translation>Zufälliger Dynode kann nicht gefunden werden.</translation>
+        <source>Can&apos;t find random ServiceNode.</source>
+        <translation>Zufälliger ServiceNode kann nicht gefunden werden.</translation>
     </message>
     <message>
         <source>Can&apos;t mix while sync in progress.</source>
         <translation>Während der Synchronisierung kann nicht gemixt werden.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation>dynode.conf kann nicht zugeordnet werden </translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>servicenode.conf kann nicht zugeordnet werden </translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Ungültige Netzmaske in der -whiteliste angegeben: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>Üngültiger Port in dynode.conf erkannt</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>Üngültiger Port in servicenode.conf erkannt</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4882,16 +4882,16 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Verschlüsselung der Wallet und Löschung aller nicht verschlüsselten Sicherungen durchführen, nachdem Sie sichergestellt haben, dass Ihre Wallet funktioniert!</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Dynode Optionen:</translation>
+        <source>ServiceNode options:</source>
+        <translation>ServiceNode Optionen:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>Die Dynode Warteschlange ist voll.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>Die ServiceNode Warteschlange ist voll.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -5134,8 +5134,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Verwenden des Test Chain</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>Alle Dynamic spezifische Funktionalitäten deaktivieren (Dynodes, PrivateSend, InstantSend, Governance) (0-1, Standard: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>Alle Dynamic spezifische Funktionalitäten deaktivieren (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, Standard: %u)</translation>
     </message>
     <message>
         <source>Enable use of automated PrivateSend for funds stored in this wallet (0-1, default: %u)</source>
@@ -5146,8 +5146,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
         <translation>Aktivieren von mehrfachen PrivatSend Mixsitzungen pro Block, Experiment  (0-1, Standard: %u)</translation>
     </message>
     <message>
-        <source>Use N separate Dynodes for each denominated input to mix funds (2-16, default: %u)</source>
-        <translation>Verwenden von N separaten Dynodes für jeden gestückelten Eingang um die Mittel zu mixen (2-16, Standard: %u)</translation>
+        <source>Use N separate ServiceNodes for each denominated input to mix funds (2-16, default: %u)</source>
+        <translation>Verwenden von N separaten ServiceNodes für jeden gestückelten Eingang um die Mittel zu mixen (2-16, Standard: %u)</translation>
     </message>
     <message>
         <source>Enable InstantSend, show confirmations for locked transactions (0-1, default: %u)</source>
@@ -5216,8 +5216,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Dynamic Alarm&quot; admin@foo
 </translation>
     </message>
     <message>
-        <source>Set the Dynode private key</source>
-        <translation>Privaten Schlüssel des Dynode definieren</translation>
+        <source>Set the ServiceNode private key</source>
+        <translation>Privaten Schlüssel des ServiceNode definieren</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

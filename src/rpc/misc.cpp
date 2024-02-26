@@ -7,7 +7,7 @@
 
 #include "base58.h"
 #include "clientversion.h"
-#include "dynode-sync.h"
+#include "servicenode-sync.h"
 #include "init.h"
 #include "net.h"
 #include "netbase.h"
@@ -124,7 +124,7 @@ UniValue debug(const JSONRPCRequest& request)
         throw std::runtime_error(
             "debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool"
             "|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|"
-            "dynamic|privatesend|instantsend|dynode|spork|keepass|dnpayments|gobject|dht|bdap|validation|stealth|)\n"
+            "dynamic|privatesend|instantsend|servicenode|spork|keepass|dnpayments|gobject|dht|bdap|validation|stealth|)\n"
             "Change debug category on the fly. Specify single category or use a plus to specify many.\n"
             "\nExamples:\n" +
             HelpExampleCli("debug", "dynamic") + HelpExampleRpc("debug", "dynamic+net"));
@@ -152,26 +152,26 @@ UniValue dnsync(const JSONRPCRequest& request)
 
     if (strMode == "status") {
         UniValue objStatus(UniValue::VOBJ);
-        objStatus.push_back(Pair("AssetID", dynodeSync.GetAssetID()));
-        objStatus.push_back(Pair("AssetName", dynodeSync.GetAssetName()));
-        objStatus.push_back(Pair("AssetStartTime", dynodeSync.GetAssetStartTime()));
-        objStatus.push_back(Pair("Attempt", dynodeSync.GetAttempt()));
-        objStatus.push_back(Pair("IsBlockchainSynced", dynodeSync.IsBlockchainSynced()));
-        objStatus.push_back(Pair("IsDynodeListSynced", dynodeSync.IsDynodeListSynced()));
-        objStatus.push_back(Pair("IsWinnersListSynced", dynodeSync.IsWinnersListSynced()));
-        objStatus.push_back(Pair("IsSynced", dynodeSync.IsSynced()));
-        objStatus.push_back(Pair("IsFailed", dynodeSync.IsFailed()));
+        objStatus.push_back(Pair("AssetID", servicenodeSync.GetAssetID()));
+        objStatus.push_back(Pair("AssetName", servicenodeSync.GetAssetName()));
+        objStatus.push_back(Pair("AssetStartTime", servicenodeSync.GetAssetStartTime()));
+        objStatus.push_back(Pair("Attempt", servicenodeSync.GetAttempt()));
+        objStatus.push_back(Pair("IsBlockchainSynced", servicenodeSync.IsBlockchainSynced()));
+        objStatus.push_back(Pair("IsServiceNodeListSynced", servicenodeSync.IsServiceNodeListSynced()));
+        objStatus.push_back(Pair("IsWinnersListSynced", servicenodeSync.IsWinnersListSynced()));
+        objStatus.push_back(Pair("IsSynced", servicenodeSync.IsSynced()));
+        objStatus.push_back(Pair("IsFailed", servicenodeSync.IsFailed()));
         return objStatus;
     }
 
     if (strMode == "next") {
-        dynodeSync.SwitchToNextAsset(*g_connman);
-        return "sync updated to " + dynodeSync.GetAssetName();
+        servicenodeSync.SwitchToNextAsset(*g_connman);
+        return "sync updated to " + servicenodeSync.GetAssetName();
     }
 
     if (strMode == "reset") {
-        dynodeSync.Reset();
-        dynodeSync.SwitchToNextAsset(*g_connman);
+        servicenodeSync.Reset();
+        servicenodeSync.SwitchToNextAsset(*g_connman);
         return "success";
     }
     return "failure";

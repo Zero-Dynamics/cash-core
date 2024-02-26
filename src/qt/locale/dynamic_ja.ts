@@ -239,8 +239,8 @@
         <translation>取引(&amp;T)</translation>
     </message>
     <message>
-        <source>&amp;Dynodes</source>
-        <translation>&amp;Dynodes</translation>
+        <source>&amp;ServiceNodes</source>
+        <translation>&amp;ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Mining</source>
@@ -251,7 +251,7 @@
         <translation>取引履歴を閲覧</translation>
     </message>
     <message>
-        <source>Browse Dynodes</source>
+        <source>Browse ServiceNodes</source>
         <translation>ダイノードを閲覧する</translation>
     </message>
     <message>
@@ -383,12 +383,12 @@
         <translation>設定ファイルを開く</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>Dynode構成ファイルを開く</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>ServiceNode構成ファイルを開く</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Dynode構成ファイルを開く</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>ServiceNode構成ファイルを開く</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -945,11 +945,11 @@ PrivateSendは革新的なプロセスを使用して、コインを財布から
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSendは、トランザクション入力を標準額面に分解することから始まります。
 これらの額面は、0.001、0.01 DYN、0.1 DYN、1 DYN、10 DYNです。毎日使用する紙幣のようなものです。&lt;/li&gt;
-&lt;li&gt;その後、ウォレットは、&#39;DYNODES&#39;と呼ばれるネットワーク上の特別に構成されたソフトウェアノードにリクエストを送信します
-これらのDynodesは、特定の金種を混合することに関心があることを通知されます。
-識別可能な情報はDynodesに送信されないため、彼らは&#39;誰&#39;あなたは。&lt;/li&gt;
+&lt;li&gt;その後、ウォレットは、&#39;SERVICENODES&#39;と呼ばれるネットワーク上の特別に構成されたソフトウェアノードにリクエストを送信します
+これらのServiceNodesは、特定の金種を混合することに関心があることを通知されます。
+識別可能な情報はServiceNodesに送信されないため、彼らは&#39;誰&#39;あなたは。&lt;/li&gt;
 &lt; li&gt;他の2人が同様のメッセージを送信し、同じ金種をミックスすることを示すと、ミキシングセッションが開始されます。
-Dynodeは入力を混合し、3人のユーザー全員に指示します。変換された入力を自分自身に返すウォレット。
+ServiceNodeは入力を混合し、3人のユーザー全員に指示します。変換された入力を自分自身に返すウォレット。
 ウォレットはその額面を直接自分自身に支払いますが、別の住所（変更住所と呼ばれます）で支払われます。&lt;/li&gt;
 &lt;li&gt;資金を完全に隠すために、ウォレットは各金種でこのプロセスを何度も繰り返す必要があります。
 プロセスが完了するたびに、「ラウンド」と呼ばれます。 PrivateSendの各ラウンドでは、資金の発信元を特定するのが指数関数的に難しくなります。&lt;/li&gt;
@@ -1323,8 +1323,8 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>ミキシングを停止</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>Dynodeに送信した金種&lt;br&gt;混合するには、他のユーザーがまったく同じ金種を送信する必要があります。</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>ServiceNodeに送信した金種&lt;br&gt;混合するには、他のユーザーがまったく同じ金種を送信する必要があります。</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1690,8 +1690,8 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>ブロック チェーン</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Dynodesの数</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>ServiceNodesの数</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -2959,7 +2959,7 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>形式</translation>
@@ -2973,16 +2973,16 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>ノード数：</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
+        <source>My ServiceNodes</source>
         <translation>私のダイノード</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
+        <source>All ServiceNodes</source>
         <translation>すべてのダイノード</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>ウォレットが追加データを同期するのを常に待ってから、Dynodeを実行する必要があるが、&quot;STATUS&quot;フィールドに&quot;ENABLED&quot;が表示されない場合は、別のノードから再確認してください。</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>ウォレットが追加データを同期するのを常に待ってから、ServiceNodeを実行する必要があるが、&quot;STATUS&quot;フィールドに&quot;ENABLED&quot;が表示されない場合は、別のノードから再確認してください。</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3037,15 +3037,15 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>すべてのDynodeを起動してもよろしいですか？</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>すべてのServiceNodeを起動してもよろしいですか？</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>MISSING Dynodesを開始してもよろしいですか？</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>MISSING ServiceNodesを開始してもよろしいですか？</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
+        <source>Confirm missing ServiceNodes start</source>
         <translation>欠落しているダイノードの開始を確認する</translation>
     </message>
     <message>
@@ -3057,16 +3057,16 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>コマンドは現在利用できません</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>Dynodeリストが同期されるまで、このコマンドは使用できません</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>ServiceNodeリストが同期されるまで、このコマンドは使用できません</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
+        <source>Confirm ServiceNode start</source>
         <translation>ダイノードの開始を確認</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Dynode %1 を起動してもよろしいですか？</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>ServiceNode %1 を起動してもよろしいですか？</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3077,11 +3077,11 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>更新しています...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Dynodeを正常に開始しました。</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>ServiceNodeを正常に開始しました。</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
         <translation>%d 個のダイノードを正常に起動しました。 %d の起動に失敗しました。合計 %d</translation>
     </message>
 </context>
@@ -3156,7 +3156,7 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>これは、マイニングしたブロック間の平均時間を示しています</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
         <translation>ブロックチェーン/ダイノードは同期されていません。マイニングする前に完全に同期されるまでお待ちください！</translation>
     </message>
     <message>
@@ -3655,12 +3655,12 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>予算キャッシュを読み込んでいます...</translation>
     </message>
     <message>
-        <source>Loading Dynode cache...</source>
-        <translation>Dynodeキャッシュを読み込んでいます...</translation>
+        <source>Loading ServiceNode cache...</source>
+        <translation>ServiceNodeキャッシュを読み込んでいます...</translation>
     </message>
     <message>
-        <source>Loading Dynode payment cache...</source>
-        <translation>Dynode支払いキャッシュを読み込んでいます...</translation>
+        <source>Loading ServiceNode payment cache...</source>
+        <translation>ServiceNode支払いキャッシュを読み込んでいます...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -3675,8 +3675,8 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>ロックはすでに配置されています。</translation>
     </message>
     <message>
-        <source>Lock Dynodes from Dynode configuration file (default: %u)</source>
-        <translation>Dynode構成ファイルからのDynodeのロック（デフォルト： %u）</translation>
+        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
+        <translation>ServiceNode構成ファイルからのServiceNodeのロック（デフォルト： %u）</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -3743,8 +3743,8 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>接続のタイムアウトをミリセコンドで指定 (最小値： 1, デフォルト設定：: %d)</translation>
     </message>
     <message>
-        <source>Specify Dynode configuration file (default: %s)</source>
-        <translation>Dynode構成ファイルを指定します（デフォルト： %s）</translation>
+        <source>Specify ServiceNode configuration file (default: %s)</source>
+        <translation>ServiceNode構成ファイルを指定します（デフォルト： %s）</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -3759,16 +3759,16 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>ディスクからブロックをインポートした後に実行を停止します（デフォルト： %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to Dynode: %u / %d</source>
-        <translation>次のエントリをDynodeに送信しました: %u / %d</translation>
+        <source>Submitted following entries to ServiceNode: %u / %d</source>
+        <translation>次のエントリをServiceNodeに送信しました: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Dynodeに送信され、さらにエントリを待機しています ( %u / %d ) %s</translation>
+        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>ServiceNodeに送信され、さらにエントリを待機しています ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting in queue %s</source>
-        <translation>Dynodeに送信され、キューで待機しています %s</translation>
+        <source>Submitted to ServiceNode, waiting in queue %s</source>
+        <translation>ServiceNodeに送信され、キューで待機しています %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -3783,15 +3783,15 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>予算を同期しています...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode winners...</source>
-        <translation>Dynodeの勝者を同期しています...</translation>
+        <source>Synchronizing ServiceNode winners...</source>
+        <translation>ServiceNodeの勝者を同期しています...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode payments...</source>
-        <translation>Dynodeの支払いを同期しています...</translation>
+        <source>Synchronizing ServiceNode payments...</source>
+        <translation>ServiceNodeの支払いを同期しています...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynodes...</source>
+        <source>Synchronizing ServiceNodes...</source>
         <translation>ダイノードの同期...</translation>
     </message>
     <message>
@@ -3803,7 +3803,7 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>スポークを同期しています...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
+        <source>This is not a ServiceNode.</source>
         <translation>これはダイノードではありません。</translation>
     </message>
     <message>
@@ -3855,15 +3855,15 @@ Dynodeは入力を混合し、3人のユーザー全員に指示します。変�
         <translation>ウォレットが機能することを確認したら、必ずウォレットを暗号化し、暗号化されていないバックアップをすべて削除してください！</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
+        <source>ServiceNode options:</source>
         <translation>ダイノードオプション：</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
+        <source>ServiceNode queue is full.</source>
         <translation>ダイノードキューがいっぱいです。</translation>
     </message>
     <message>
-        <source>Dynode:</source>
+        <source>ServiceNode:</source>
         <translation>ダイノード：</translation>
     </message>
     <message>

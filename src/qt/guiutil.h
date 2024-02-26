@@ -119,7 +119,7 @@ void openDebugLogfile();
 // Open dynamic.conf
 void openConfigfile();
 
-// Open dynode.conf
+// Open servicenode.conf
 void openDNConfigfile();
 
 // Browse backup folder

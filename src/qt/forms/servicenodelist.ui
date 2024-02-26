@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DynodeList</class>
- <widget class="QWidget" name="DynodeList">
+ <class>ServiceNodeList</class>
+ <widget class="QWidget" name="ServiceNodeList">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -54,13 +54,13 @@ QTabBar { alignment: left; }
        <property name="currentIndex">
         <number>0</number>
        </property>
-       <widget class="QWidget" name="tabMyDynodes">
+       <widget class="QWidget" name="tabMyServiceNodes">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(0, 0, 0);
 color: rgb(255, 255, 255);</string>
         </property>
         <attribute name="title">
-         <string>My Dynodes</string>
+         <string>My ServiceNodes</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
@@ -80,14 +80,14 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
-                <string>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see "ENABLED" in "Status" field.</string>
+                <string>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see "ENABLED" in "Status" field.</string>
                </property>
               </widget>
              </item>
             </layout>
            </item>
            <item>
-            <widget class="QTableWidget" name="tableWidgetMyDynodes">
+            <widget class="QTableWidget" name="tableWidgetMyServiceNodes">
              <property name="minimumSize">
               <size>
                <width>695</width>
@@ -161,7 +161,7 @@ background-color:(255,255,255);</string>
              <item>
               <widget class="QPushButton" name="startAllButton">
                <property name="styleSheet">
-                <string notr="true">QWidget#DynodeList .QPushButton#startAllButton {
+                <string notr="true">QWidget#ServiceNodeList .QPushButton#startAllButton {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -174,7 +174,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startAllButton:hover {
+QWidget#ServiceNodeList .QPushButton#startAllButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 border:0;
 border-radius:3px;
@@ -187,7 +187,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startAllButton:pressed {
+QWidget#ServiceNodeList .QPushButton#startAllButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -208,7 +208,7 @@ padding-bottom:5px;
              <item>
               <widget class="QPushButton" name="startButton">
                <property name="styleSheet">
-                <string notr="true">QWidget#DynodeList .QPushButton#startButton {
+                <string notr="true">QWidget#ServiceNodeList .QPushButton#startButton {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -221,7 +221,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startButton:hover {
+QWidget#ServiceNodeList .QPushButton#startButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 border:0;
 border-radius:3px;
@@ -234,7 +234,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startButton:pressed {
+QWidget#ServiceNodeList .QPushButton#startButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -255,7 +255,7 @@ padding-bottom:5px;
              <item>
               <widget class="QPushButton" name="startMissingButton">
                <property name="styleSheet">
-                <string notr="true">QWidget#DynodeList .QPushButton#startMissingButton {
+                <string notr="true">QWidget#ServiceNodeList .QPushButton#startMissingButton {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -268,7 +268,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startMissingButton:hover {
+QWidget#ServiceNodeList .QPushButton#startMissingButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 border:0;
 border-radius:3px;
@@ -281,7 +281,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startMissingButton:pressed {
+QWidget#ServiceNodeList .QPushButton#startMissingButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -302,7 +302,7 @@ padding-bottom:5px;
              <item>
               <widget class="QPushButton" name="UpdateButton">
                <property name="styleSheet">
-                <string notr="true">QWidget#DynodeList .QPushButton#UpdateButton {
+                <string notr="true">QWidget#ServiceNodeList .QPushButton#UpdateButton {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -315,7 +315,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#UpdateButton:hover {
+QWidget#ServiceNodeList .QPushButton#UpdateButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 border:0;
 border-radius:3px;
@@ -328,7 +328,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#UpdateButton:pressed {
+QWidget#ServiceNodeList .QPushButton#UpdateButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -379,17 +379,17 @@ padding-bottom:5px;
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="tabAllDynodes">
+       <widget class="QWidget" name="tabAllServiceNodes">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(0, 0, 0);
 color: rgb(255, 255, 255);</string>
         </property>
         <attribute name="title">
-         <string>All Dynodes</string>
+         <string>All ServiceNodes</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout">
          <item row="1" column="0">
-          <widget class="QTableWidget" name="tableWidgetDynodes">
+          <widget class="QTableWidget" name="tableWidgetServiceNodes">
            <property name="styleSheet">
             <string notr="true">color: rgb(0, 0, 0);
 background-color:(255,255,255);</string>
@@ -461,7 +461,7 @@ background-color: rgb(0, 0, 0);
            <item>
             <widget class="QLineEdit" name="filterLineEdit">
              <property name="toolTip">
-              <string>Filter Dynode list</string>
+              <string>Filter ServiceNode list</string>
              </property>
              <property name="styleSheet">
               <string notr="true">color: rgb(0, 0, 0);

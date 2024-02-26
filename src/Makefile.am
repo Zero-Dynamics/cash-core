@@ -70,7 +70,7 @@ endif
 .PHONY: FORCE check-symbols check-security
 # dynamic #
 DYNAMIC_CORE_H = \
-  activedynode.h \
+  activeservicenode.h \
   addrdb.h \
   addressindex.h \
   addrman.h \
@@ -126,16 +126,16 @@ DYNAMIC_CORE_H = \
   dht/sessionevents.h \
   dht/settings.h \
   dht/storage.h \
-  dynode.h \
-  dynode-payments.h \
-  dynode-sync.h \
-  dynodeman.h \
-  dynodeconfig.h \
+  servicenode.h \
+  servicenode-payments.h \
+  servicenode-sync.h \
+  servicenodeman.h \
+  servicenodeconfig.h \
   flat-database.h \
   fluid/banaccount.h \
   fluid/fluid.h \
   fluid/fluiddb.h \
-  fluid/fluiddynode.h \
+  fluid/fluidservicenode.h \
   fluid/fluidmining.h \
   fluid/fluidmint.h \
   fluid/fluidsovereign.h \
@@ -257,7 +257,7 @@ libdynamic_util_a-clientversion.$(OBJEXT): obj/build.h
 libdynamic_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(DYNAMIC_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libdynamic_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdynamic_server_a_SOURCES = \
-  activedynode.cpp \
+  activeservicenode.cpp \
   addrdb.cpp \
   addrman.cpp \
   alert.cpp \
@@ -290,15 +290,15 @@ libdynamic_server_a_SOURCES = \
   dht/sessionevents.cpp \
   dht/settings.cpp \
   dht/storage.cpp \
-  dynode.cpp \
-  dynode-payments.cpp\
-  dynode-sync.cpp \
-  dynodeconfig.cpp \
-  dynodeman.cpp \
+  servicenode.cpp \
+  servicenode-payments.cpp\
+  servicenode-sync.cpp \
+  servicenodeconfig.cpp \
+  servicenodeman.cpp \
   fluid/banaccount.cpp \
   fluid/fluid.cpp \
   fluid/fluiddb.cpp \
-  fluid/fluiddynode.cpp \
+  fluid/fluidservicenode.cpp \
   fluid/fluidmining.cpp \
   fluid/fluidmint.cpp \
   fluid/fluidsovereign.cpp \
@@ -340,7 +340,7 @@ libdynamic_server_a_SOURCES = \
   rpc/certificates.cpp \
   rpc/dht.cpp \
   rpc/domainentry.cpp \
-  rpc/dynode.cpp \
+  rpc/servicenode.cpp \
   rpc/fluid.cpp \
   rpc/governance.cpp \
   rpc/linking.cpp \

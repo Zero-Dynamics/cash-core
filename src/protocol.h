@@ -250,8 +250,8 @@ extern const char* TXLOCKREQUEST;
 extern const char* TXLOCKVOTE;
 extern const char* SPORK;
 extern const char* GETSPORKS;
-extern const char* DYNODEPAYMENTVOTE;
-extern const char* DYNODEPAYMENTSYNC;
+extern const char* SERVICENODEPAYMENTVOTE;
+extern const char* SERVICENODEPAYMENTSYNC;
 extern const char* DNANNOUNCE;
 extern const char* DNPING;
 extern const char* PSACCEPT;
@@ -353,15 +353,15 @@ enum GetDataMsg {
     MSG_TXLOCK_REQUEST = 4,
     MSG_TXLOCK_VOTE = 5,
     MSG_SPORK = 6,
-    MSG_DYNODE_PAYMENT_VOTE = 7,
-    MSG_DYNODE_PAYMENT_BLOCK = 8,
-    MSG_DYNODE_QUORUM = 9, // not implemented
-    MSG_DYNODE_ANNOUNCE = 10,
-    MSG_DYNODE_PING = 11,
+    MSG_SERVICENODE_PAYMENT_VOTE = 7,
+    MSG_SERVICENODE_PAYMENT_BLOCK = 8,
+    MSG_SERVICENODE_QUORUM = 9, // not implemented
+    MSG_SERVICENODE_ANNOUNCE = 10,
+    MSG_SERVICENODE_PING = 11,
     MSG_PSTX = 12,
     MSG_GOVERNANCE_OBJECT = 13,
     MSG_GOVERNANCE_OBJECT_VOTE = 14,
-    MSG_DYNODE_VERIFY = 15,
+    MSG_SERVICENODE_VERIFY = 15,
     // Nodes may always request a MSG_CMPCT_BLOCK in a getdata, however,
     // MSG_CMPCT_BLOCK should not appear in any invs except as a part of getdata.
     MSG_CMPCT_BLOCK = 16, //!< Defined in BIP152

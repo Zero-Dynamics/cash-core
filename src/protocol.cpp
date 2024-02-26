@@ -47,9 +47,9 @@ const char* TXLOCKREQUEST = "is";
 const char* TXLOCKVOTE = "txlvote";
 const char* SPORK = "spork";
 const char* GETSPORKS = "getsporks";
-const char* DYNODEPAYMENTVOTE = "dnw";
-const char* DYNODEPAYMENTBLOCK = "dnwb";
-const char* DYNODEPAYMENTSYNC = "dnget";
+const char* SERVICENODEPAYMENTVOTE = "dnw";
+const char* SERVICENODEPAYMENTBLOCK = "dnwb";
+const char* SERVICENODEPAYMENTSYNC = "dnget";
 const char* DNQUORUM = "dn quorum"; // not implemented
 const char* DNANNOUNCE = "dnb";
 const char* DNPING = "dnp";
@@ -81,8 +81,8 @@ static const char* ppszTypeName[] =
         NetMsgType::TXLOCKREQUEST,
         NetMsgType::TXLOCKVOTE,
         NetMsgType::SPORK,
-        NetMsgType::DYNODEPAYMENTVOTE,
-        NetMsgType::DYNODEPAYMENTBLOCK,
+        NetMsgType::SERVICENODEPAYMENTVOTE,
+        NetMsgType::SERVICENODEPAYMENTBLOCK,
         NetMsgType::DNQUORUM, // not implemented
         NetMsgType::DNANNOUNCE,
         NetMsgType::DNPING,
@@ -129,9 +129,9 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::TXLOCKVOTE,
     NetMsgType::SPORK,
     NetMsgType::GETSPORKS,
-    NetMsgType::DYNODEPAYMENTVOTE,
-    // NetMsgType::DYNODEPAYMENTBLOCK, // there is no message for this, only inventory
-    NetMsgType::DYNODEPAYMENTSYNC,
+    NetMsgType::SERVICENODEPAYMENTVOTE,
+    // NetMsgType::SERVICENODEPAYMENTBLOCK, // there is no message for this, only inventory
+    NetMsgType::SERVICENODEPAYMENTSYNC,
     NetMsgType::DNANNOUNCE,
     NetMsgType::DNPING,
     NetMsgType::PSACCEPT,

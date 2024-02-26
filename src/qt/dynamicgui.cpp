@@ -35,8 +35,8 @@
 #endif
 
 #include "chainparams.h"
-#include "dynode-sync.h"
-#include "dynodelist.h"
+#include "servicenode-sync.h"
+#include "servicenodelist.h"
 #include "init.h"
 #include "ui_interface.h"
 #include "util.h"
@@ -103,7 +103,7 @@ DynamicGUI::DynamicGUI(const PlatformStyle* _platformStyle, const NetworkStyle* 
                                                                                                                  receiveCoinsAction(0),
                                                                                                                  receiveCoinsMenuAction(0),
                                                                                                                  historyAction(0),
-                                                                                                                 dynodeAction(0),
+                                                                                                                 servicenodeAction(0),
                                                                                                                  miningAction(0),
                                                                                                                  bdapAction(0),
                                                                                                                  quitAction(0),
@@ -348,16 +348,16 @@ void DynamicGUI::createActions()
     tabGroup->addAction(historyAction);
 
 #ifdef ENABLE_WALLET
-    dynodeAction = new QAction(QIcon(":/icons/" + theme + "/dynodes"), tr("&Dynodes"), this);
-    dynodeAction->setStatusTip(tr("Browse Dynodes"));
-    dynodeAction->setToolTip(dynodeAction->statusTip());
-    dynodeAction->setCheckable(true);
+    servicenodeAction = new QAction(QIcon(":/icons/" + theme + "/servicenodes"), tr("&ServiceNodes"), this);
+    servicenodeAction->setStatusTip(tr("Browse ServiceNodes"));
+    servicenodeAction->setToolTip(servicenodeAction->statusTip());
+    servicenodeAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    dynodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+    servicenodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
 #else
-    dynodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    servicenodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
 #endif
-    tabGroup->addAction(dynodeAction);
+    tabGroup->addAction(servicenodeAction);
 
     miningAction = new QAction(QIcon(":/icons/" + theme + "/tx_mined"), tr("&Mining"), this);
     miningAction->setStatusTip(tr("Mine Dynamic(DYN)"));
@@ -395,8 +395,8 @@ void DynamicGUI::createActions()
     connect(receiveCoinsMenuAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
-    connect(dynodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(dynodeAction, SIGNAL(triggered()), this, SLOT(gotoDynodePage()));
+    connect(servicenodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(servicenodeAction, SIGNAL(triggered()), this, SLOT(gotoServiceNodePage()));
     connect(miningAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
     connect(bdapAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -449,8 +449,8 @@ void DynamicGUI::createActions()
     openRepairAction->setStatusTip(tr("Show wallet repair options"));
     openConfEditorAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Open Wallet &Configuration File"), this);
     openConfEditorAction->setStatusTip(tr("Open configuration file"));
-    openDNConfEditorAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Open &Dynode Configuration File"), this);
-    openDNConfEditorAction->setStatusTip(tr("Open Dynode configuration file"));
+    openDNConfEditorAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Open &ServiceNode Configuration File"), this);
+    openDNConfEditorAction->setStatusTip(tr("Open ServiceNode configuration file"));
     showBackupsAction = new QAction(QIcon(":/icons/" + theme + "/browse"), tr("Show Automatic &Backups"), this);
     showBackupsAction->setStatusTip(tr("Show automatically created wallet backups"));
     // initially disable the debug window menu items
@@ -594,7 +594,7 @@ void DynamicGUI::createToolBars()
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
-        toolbar->addAction(dynodeAction);
+        toolbar->addAction(servicenodeAction);
         toolbar->addAction(miningAction);
         toolbar->addAction(bdapAction);
 
@@ -737,7 +737,7 @@ void DynamicGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsAction->setEnabled(enabled);
     receiveCoinsMenuAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
-    dynodeAction->setEnabled(enabled);
+    servicenodeAction->setEnabled(enabled);
     miningAction->setEnabled(enabled);
     bdapAction->setEnabled(enabled);
     encryptWalletAction->setEnabled(enabled);
@@ -776,7 +776,7 @@ void DynamicGUI::createIconMenu(QMenu* pmenu)
     pmenu->addAction(sendCoinsAction);
     pmenu->addAction(receiveCoinsAction);
     pmenu->addAction(historyAction);
-    pmenu->addAction(dynodeAction);
+    pmenu->addAction(servicenodeAction);
     pmenu->addAction(miningAction);
     pmenu->addAction(bdapAction);
     pmenu->addSeparator();
@@ -936,11 +936,11 @@ void DynamicGUI::gotoHistoryPage()
         walletFrame->gotoHistoryPage();
 }
 
-void DynamicGUI::gotoDynodePage()
+void DynamicGUI::gotoServiceNodePage()
 {
-    dynodeAction->setChecked(true);
+    servicenodeAction->setChecked(true);
     if (walletFrame)
-        walletFrame->gotoDynodePage();
+        walletFrame->gotoServiceNodePage();
 }
 
 void DynamicGUI::gotoMiningPage()
@@ -1078,7 +1078,7 @@ void DynamicGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVer
     }
 #endif // ENABLE_WALLET
 
-    if (!dynodeSync.IsBlockchainSynced()) {
+    if (!servicenodeSync.IsBlockchainSynced()) {
         QString timeBehindText = GUIUtil::formatNiceTimeOffset(secs);
 
         progressBarLabel->setVisible(true);
@@ -1129,7 +1129,7 @@ void DynamicGUI::setAdditionalDataSyncProgress(double nSyncProgress)
         return;
 
     // No additional data sync should be happening while blockchain is not synced, nothing to update
-    if (!dynodeSync.IsBlockchainSynced())
+    if (!servicenodeSync.IsBlockchainSynced())
         return;
 
     // Prevent orphan statusbar messages (e.g. hover Quit in main menu, wait until chain-sync starts -> garbelled text)
@@ -1148,7 +1148,7 @@ void DynamicGUI::setAdditionalDataSyncProgress(double nSyncProgress)
         walletFrame->showOutOfSyncWarning(false);
 #endif // ENABLE_WALLET
 
-    if (dynodeSync.IsSynced()) {
+    if (servicenodeSync.IsSynced()) {
         progressBarLabel->setVisible(false);
         progressBar->setVisible(false);
         labelBlocksIcon->setPixmap(QIcon(":/icons/" + theme + "/synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
@@ -1164,7 +1164,7 @@ void DynamicGUI::setAdditionalDataSyncProgress(double nSyncProgress)
         progressBar->setValue(nSyncProgress * 1000000000.0 + 0.5);
     }
 
-    strSyncStatus = QString(dynodeSync.GetSyncStatus().c_str());
+    strSyncStatus = QString(servicenodeSync.GetSyncStatus().c_str());
     progressBarLabel->setText(strSyncStatus);
     tooltip = strSyncStatus + QString("<br>") + tooltip;
 

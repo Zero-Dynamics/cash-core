@@ -3,13 +3,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "dynode-sync.h"
+#include "servicenode-sync.h"
 
-#include "activedynode.h"
+#include "activeservicenode.h"
 #include "checkpoints.h"
-#include "dynode-payments.h"
-#include "dynode.h"
-#include "dynodeman.h"
+#include "servicenode-payments.h"
+#include "servicenode.h"
+#include "servicenodeman.h"
 #include "governance.h"
 #include "init.h"
 #include "netfulfilledman.h"
@@ -19,85 +19,85 @@
 #include "util.h"
 #include "validation.h"
 
-class CDynodeSync;
-CDynodeSync dynodeSync;
+class CServiceNodeSync;
+CServiceNodeSync servicenodeSync;
 
-void CDynodeSync::Fail()
+void CServiceNodeSync::Fail()
 {
     nTimeLastFailure = GetTime();
-    nRequestedDynodeAssets = DYNODE_SYNC_FAILED;
+    nRequestedServiceNodeAssets = SERVICENODE_SYNC_FAILED;
 }
 
-void CDynodeSync::Reset()
+void CServiceNodeSync::Reset()
 {
-    nRequestedDynodeAssets = DYNODE_SYNC_INITIAL;
-    nRequestedDynodeAttempt = 0;
+    nRequestedServiceNodeAssets = SERVICENODE_SYNC_INITIAL;
+    nRequestedServiceNodeAttempt = 0;
     nTimeAssetSyncStarted = GetTime();
     nTimeLastBumped = GetTime();
     nTimeLastFailure = 0;
 }
 
-void CDynodeSync::BumpAssetLastTime(const std::string strFuncName)
+void CServiceNodeSync::BumpAssetLastTime(const std::string strFuncName)
 {
     if (IsSynced() || IsFailed())
         return;
     nTimeLastBumped = GetTime();
-    LogPrint("dnsync", "CDynodeSync::BumpAssetLastTime -- %s\n", strFuncName);
+    LogPrint("dnsync", "CServiceNodeSync::BumpAssetLastTime -- %s\n", strFuncName);
 }
 
-std::string CDynodeSync::GetAssetName()
+std::string CServiceNodeSync::GetAssetName()
 {
-    switch (nRequestedDynodeAssets) {
-    case (DYNODE_SYNC_INITIAL):
-        return "DYNODE_SYNC_INITIAL";
-    case (DYNODE_SYNC_WAITING):
-        return "DYNODE_SYNC_WAITING";
-    case (DYNODE_SYNC_LIST):
-        return "DYNODE_SYNC_LIST";
-    case (DYNODE_SYNC_DNW):
-        return "DYNODE_SYNC_DNW";
-    case (DYNODE_SYNC_GOVERNANCE):
-        return "DYNODE_SYNC_GOVERNANCE";
-    case (DYNODE_SYNC_FAILED):
-        return "DYNODE_SYNC_FAILED";
-    case DYNODE_SYNC_FINISHED:
-        return "DYNODE_SYNC_FINISHED";
+    switch (nRequestedServiceNodeAssets) {
+    case (SERVICENODE_SYNC_INITIAL):
+        return "SERVICENODE_SYNC_INITIAL";
+    case (SERVICENODE_SYNC_WAITING):
+        return "SERVICENODE_SYNC_WAITING";
+    case (SERVICENODE_SYNC_LIST):
+        return "SERVICENODE_SYNC_LIST";
+    case (SERVICENODE_SYNC_DNW):
+        return "SERVICENODE_SYNC_DNW";
+    case (SERVICENODE_SYNC_GOVERNANCE):
+        return "SERVICENODE_SYNC_GOVERNANCE";
+    case (SERVICENODE_SYNC_FAILED):
+        return "SERVICENODE_SYNC_FAILED";
+    case SERVICENODE_SYNC_FINISHED:
+        return "SERVICENODE_SYNC_FINISHED";
     default:
         return "UNKNOWN";
     }
 }
 
-void CDynodeSync::SwitchToNextAsset(CConnman& connman)
+void CServiceNodeSync::SwitchToNextAsset(CConnman& connman)
 {
-    switch (nRequestedDynodeAssets) {
-    case (DYNODE_SYNC_FAILED):
+    switch (nRequestedServiceNodeAssets) {
+    case (SERVICENODE_SYNC_FAILED):
         throw std::runtime_error("Can't switch to next asset from failed, should use Reset() first!");
         break;
-    case (DYNODE_SYNC_INITIAL):
-        nRequestedDynodeAssets = DYNODE_SYNC_WAITING;
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
+    case (SERVICENODE_SYNC_INITIAL):
+        nRequestedServiceNodeAssets = SERVICENODE_SYNC_WAITING;
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
         break;
-    case (DYNODE_SYNC_WAITING):
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
-        nRequestedDynodeAssets = DYNODE_SYNC_LIST;
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
+    case (SERVICENODE_SYNC_WAITING):
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
+        nRequestedServiceNodeAssets = SERVICENODE_SYNC_LIST;
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
         break;
-    case (DYNODE_SYNC_LIST):
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
-        nRequestedDynodeAssets = DYNODE_SYNC_DNW;
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
+    case (SERVICENODE_SYNC_LIST):
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
+        nRequestedServiceNodeAssets = SERVICENODE_SYNC_DNW;
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
         break;
-    case (DYNODE_SYNC_DNW):
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
-        nRequestedDynodeAssets = DYNODE_SYNC_GOVERNANCE;
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
+    case (SERVICENODE_SYNC_DNW):
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
+        nRequestedServiceNodeAssets = SERVICENODE_SYNC_GOVERNANCE;
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
         break;
-    case (DYNODE_SYNC_GOVERNANCE):
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
-        nRequestedDynodeAssets = DYNODE_SYNC_FINISHED;
+    case (SERVICENODE_SYNC_GOVERNANCE):
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
+        nRequestedServiceNodeAssets = SERVICENODE_SYNC_FINISHED;
         uiInterface.NotifyAdditionalDataSyncProgressChanged(1);
-        //try to activate our dynode if possible
-        activeDynode.ManageState(connman);
+        //try to activate our servicenode if possible
+        activeServiceNode.ManageState(connman);
 
         // TODO: Find out whether we can just use LOCK instead of:
         // TRY_LOCK(cs_vNodes, lockRecv);
@@ -106,38 +106,38 @@ void CDynodeSync::SwitchToNextAsset(CConnman& connman)
         connman.ForEachNode(CConnman::AllNodes, [](CNode* pnode) {
             netfulfilledman.AddFulfilledRequest(pnode->addr, "full-sync");
         });
-        LogPrint("dynode", "CDynodeSync::SwitchToNextAsset -- Sync has finished\n");
+        LogPrint("servicenode", "CServiceNodeSync::SwitchToNextAsset -- Sync has finished\n");
 
         break;
     }
-    nRequestedDynodeAttempt = 0;
+    nRequestedServiceNodeAttempt = 0;
     nTimeAssetSyncStarted = GetTime();
-    BumpAssetLastTime("CDynodeSync::SwitchToNextAsset");
+    BumpAssetLastTime("CServiceNodeSync::SwitchToNextAsset");
 }
 
-std::string CDynodeSync::GetSyncStatus()
+std::string CServiceNodeSync::GetSyncStatus()
 {
-    switch (dynodeSync.nRequestedDynodeAssets) {
-    case DYNODE_SYNC_INITIAL:
+    switch (servicenodeSync.nRequestedServiceNodeAssets) {
+    case SERVICENODE_SYNC_INITIAL:
         return _("Synchronizing blockchain...");
-    case DYNODE_SYNC_WAITING:
+    case SERVICENODE_SYNC_WAITING:
         return _("Synchronization pending...");
-    case DYNODE_SYNC_LIST:
-        return _("Synchronizing Dynodes...");
-    case DYNODE_SYNC_DNW:
-        return _("Synchronizing Dynode payments...");
-    case DYNODE_SYNC_GOVERNANCE:
+    case SERVICENODE_SYNC_LIST:
+        return _("Synchronizing ServiceNodes...");
+    case SERVICENODE_SYNC_DNW:
+        return _("Synchronizing ServiceNode payments...");
+    case SERVICENODE_SYNC_GOVERNANCE:
         return _("Synchronizing governance objects...");
-    case DYNODE_SYNC_FAILED:
+    case SERVICENODE_SYNC_FAILED:
         return _("Synchronization failed");
-    case DYNODE_SYNC_FINISHED:
+    case SERVICENODE_SYNC_FINISHED:
         return _("Synchronization finished");
     default:
         return "";
     }
 }
 
-void CDynodeSync::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv)
+void CServiceNodeSync::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv)
 {
     if (strCommand == NetMsgType::SYNCSTATUSCOUNT) { //Sync status count
 
@@ -149,14 +149,14 @@ void CDynodeSync::ProcessMessage(CNode* pfrom, const std::string& strCommand, CD
         int nCount;
         vRecv >> nItemID >> nCount;
 
-        LogPrint("dynode", "SYNCSTATUSCOUNT -- got inventory count: nItemID=%d  nCount=%d  peer=%d\n", nItemID, nCount, pfrom->id);
+        LogPrint("servicenode", "SYNCSTATUSCOUNT -- got inventory count: nItemID=%d  nCount=%d  peer=%d\n", nItemID, nCount, pfrom->id);
     }
 }
 
-double CDynodeSync::SyncProgress()
+double CServiceNodeSync::SyncProgress()
 {
     // Calculate additional data "progress" for syncstatus RPC call
-    double nSyncProgress = double(nRequestedDynodeAttempt + (nRequestedDynodeAssets - 1) * 8) / (8 * 4);
+    double nSyncProgress = double(nRequestedServiceNodeAttempt + (nRequestedServiceNodeAssets - 1) * 8) / (8 * 4);
     if (nSyncProgress < 0)
         nSyncProgress = 0;
 
@@ -166,7 +166,7 @@ double CDynodeSync::SyncProgress()
     return nSyncProgress;
 }
 
-void CDynodeSync::ProcessTick(CConnman& connman)
+void CServiceNodeSync::ProcessTick(CConnman& connman)
 {
     static int nTick = 0;
     nTick++;
@@ -174,7 +174,7 @@ void CDynodeSync::ProcessTick(CConnman& connman)
     // reset the sync process if the last call to this function was more than 60 minutes ago (client was in sleep mode)
     static int64_t nTimeLastProcess = GetTime();
     if (GetTime() - nTimeLastProcess > 60 * 60) {
-        LogPrintf("CDynodeSync::HasSyncFailures -- WARNING: no actions for too long, restarting sync...\n");
+        LogPrintf("CServiceNodeSync::HasSyncFailures -- WARNING: no actions for too long, restarting sync...\n");
         Reset();
         SwitchToNextAsset(connman);
         nTimeLastProcess = GetTime();
@@ -185,7 +185,7 @@ void CDynodeSync::ProcessTick(CConnman& connman)
     // reset sync status in case of any other sync failure
     if (IsFailed()) {
         if (nTimeLastFailure + (1 * 60) < GetTime()) { // 1 minute cooldown after failed sync
-            LogPrintf("CDynodeSync::HasSyncFailures -- WARNING: failed to sync, trying again...\n");
+            LogPrintf("CServiceNodeSync::HasSyncFailures -- WARNING: failed to sync, trying again...\n");
             Reset();
             SwitchToNextAsset(connman);
         }
@@ -201,38 +201,38 @@ void CDynodeSync::ProcessTick(CConnman& connman)
     }
 
     // Calculate "progress" for LOG reporting / GUI notification
-    double nSyncProgress = double(nRequestedDynodeAttempt + (nRequestedDynodeAssets - 1) * 8) / (8 * 4);
-    LogPrint("dynode", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d nRequestedDynodeAttempt %d nSyncProgress %f\n", nTick, nRequestedDynodeAssets, nRequestedDynodeAttempt, nSyncProgress);
+    double nSyncProgress = double(nRequestedServiceNodeAttempt + (nRequestedServiceNodeAssets - 1) * 8) / (8 * 4);
+    LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d nRequestedServiceNodeAttempt %d nSyncProgress %f\n", nTick, nRequestedServiceNodeAssets, nRequestedServiceNodeAttempt, nSyncProgress);
     uiInterface.NotifyAdditionalDataSyncProgressChanged(nSyncProgress);
 
     std::vector<CNode*> vNodesCopy = connman.CopyNodeVector(CConnman::FullyConnectedOnly);
 
     for (auto& pnode : vNodesCopy) {
         CNetMsgMaker msgMaker(pnode->GetSendVersion());
-        // Don't try to sync any data from outbound "dynode" connections -
+        // Don't try to sync any data from outbound "servicenode" connections -
         // they are temporary and should be considered unreliable for a sync process.
-        // Inbound connection this early is most likely a "dynode" connection
+        // Inbound connection this early is most likely a "servicenode" connection
         // initialted from another node, so skip it too.
-        if (pnode->fDynode || (fDynodeMode && pnode->fInbound))
+        if (pnode->fServiceNode || (fServiceNodeMode && pnode->fInbound))
             continue;
         // QUICK MODE (REGTEST ONLY!)
         if (Params().NetworkIDString() == CBaseChainParams::REGTEST) {
-            if (nRequestedDynodeAttempt <= 2) {
+            if (nRequestedServiceNodeAttempt <= 2) {
                 connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETSPORKS)); //get current network sporks
-            } else if (nRequestedDynodeAttempt < 4) {
+            } else if (nRequestedServiceNodeAttempt < 4) {
                 dnodeman.PsegUpdate(pnode, connman);
-            } else if (nRequestedDynodeAttempt < 6) {
+            } else if (nRequestedServiceNodeAttempt < 6) {
                 //sync payment votes
                 if (pnode->nVersion == 70900) {
-                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::DYNODEPAYMENTSYNC, dnpayments.GetStorageLimit())); //sync payment votes
+                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SERVICENODEPAYMENTSYNC, dnpayments.GetStorageLimit())); //sync payment votes
                 } else {
-                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::DYNODEPAYMENTSYNC)); //sync payment votes
+                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SERVICENODEPAYMENTSYNC)); //sync payment votes
                 }
                 SendGovernanceSyncRequest(pnode, connman);
             } else {
-                nRequestedDynodeAssets = DYNODE_SYNC_FINISHED;
+                nRequestedServiceNodeAssets = SERVICENODE_SYNC_FINISHED;
             }
-            nRequestedDynodeAttempt++;
+            nRequestedServiceNodeAttempt++;
             connman.ReleaseNodeVector(vNodesCopy);
             return;
         }
@@ -243,7 +243,7 @@ void CDynodeSync::ProcessTick(CConnman& connman)
                 // We already fully synced from this node recently,
                 // disconnect to free this connection slot for another peer.
                 pnode->fDisconnect = true;
-                LogPrint("dynode", "CDynodeSync::ProcessTick -- disconnecting from recently synced peer %d\n", pnode->id);
+                LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- disconnecting from recently synced peer %d\n", pnode->id);
                 continue;
             }
 
@@ -254,35 +254,35 @@ void CDynodeSync::ProcessTick(CConnman& connman)
                 netfulfilledman.AddFulfilledRequest(pnode->addr, "spork-sync");
                 // get current network sporks
                 connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETSPORKS));
-                LogPrint("dynode", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d -- requesting sporks from peer %d\n", nTick, nRequestedDynodeAssets, pnode->id);
+                LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d -- requesting sporks from peer %d\n", nTick, nRequestedServiceNodeAssets, pnode->id);
             }
 
             // INITIAL TIMEOUT
 
-            if (nRequestedDynodeAssets == DYNODE_SYNC_WAITING) {
-                if (GetTime() - nTimeLastBumped > DYNODE_SYNC_TIMEOUT_SECONDS) {
+            if (nRequestedServiceNodeAssets == SERVICENODE_SYNC_WAITING) {
+                if (GetTime() - nTimeLastBumped > SERVICENODE_SYNC_TIMEOUT_SECONDS) {
                     // At this point we know that:
                     // a) there are peers (because we are looping on at least one of them);
-                    // b) we waited for at least DYNODE_SYNC_TIMEOUT_SECONDS since we reached
+                    // b) we waited for at least SERVICENODE_SYNC_TIMEOUT_SECONDS since we reached
                     //    the headers tip the last time (i.e. since we switched from
-                    //     DYNODE_SYNC_INITIAL to DYNODE_SYNC_WAITING and bumped time);
+                    //     SERVICENODE_SYNC_INITIAL to SERVICENODE_SYNC_WAITING and bumped time);
                     // c) there were no blocks (UpdatedBlockTip, NotifyHeaderTip) or headers (AcceptedBlockHeader)
-                    //    for at least DYNODE_SYNC_TIMEOUT_SECONDS.
+                    //    for at least SERVICENODE_SYNC_TIMEOUT_SECONDS.
                     // We must be at the tip already, let's move to the next asset.
                     SwitchToNextAsset(connman);
                 }
             }
 
-            // DNLIST : SYNC DYNODE LIST FROM OTHER CONNECTED CLIENTS
+            // DNLIST : SYNC SERVICENODE LIST FROM OTHER CONNECTED CLIENTS
 
-            if (nRequestedDynodeAssets == DYNODE_SYNC_LIST) {
-                LogPrint("dynode", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d nTimeLastBumped %lld GetTime() %lld diff %lld\n", nTick, nRequestedDynodeAssets, nTimeLastBumped, GetTime(), GetTime() - nTimeLastBumped);
+            if (nRequestedServiceNodeAssets == SERVICENODE_SYNC_LIST) {
+                LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d nTimeLastBumped %lld GetTime() %lld diff %lld\n", nTick, nRequestedServiceNodeAssets, nTimeLastBumped, GetTime(), GetTime() - nTimeLastBumped);
                 // check for timeout first
-                if (GetTime() - nTimeLastBumped > DYNODE_SYNC_TIMEOUT_SECONDS) {
-                    LogPrint("dynode", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d -- timeout\n", nTick, nRequestedDynodeAssets);
-                    if (nRequestedDynodeAttempt == 0) {
-                        LogPrintf("CDynodeSync::ProcessTick -- ERROR: failed to sync %s\n", GetAssetName());
-                        // there is no way we can continue without Dynode list, fail here and try later
+                if (GetTime() - nTimeLastBumped > SERVICENODE_SYNC_TIMEOUT_SECONDS) {
+                    LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d -- timeout\n", nTick, nRequestedServiceNodeAssets);
+                    if (nRequestedServiceNodeAttempt == 0) {
+                        LogPrintf("CServiceNodeSync::ProcessTick -- ERROR: failed to sync %s\n", GetAssetName());
+                        // there is no way we can continue without ServiceNode list, fail here and try later
                         Fail();
                         connman.ReleaseNodeVector(vNodesCopy);
                         return;
@@ -293,19 +293,19 @@ void CDynodeSync::ProcessTick(CConnman& connman)
                 }
 
                 // request from three peers max
-                if (nRequestedDynodeAttempt > 2) {
+                if (nRequestedServiceNodeAttempt > 2) {
                     connman.ReleaseNodeVector(vNodesCopy);
                     return;
                 }
 
                 // only request once from each peer
-                if (netfulfilledman.HasFulfilledRequest(pnode->addr, "dynode-list-sync"))
+                if (netfulfilledman.HasFulfilledRequest(pnode->addr, "servicenode-list-sync"))
                     continue;
-                netfulfilledman.AddFulfilledRequest(pnode->addr, "dynode-list-sync");
+                netfulfilledman.AddFulfilledRequest(pnode->addr, "servicenode-list-sync");
 
-                if (pnode->nVersion < dnpayments.GetMinDynodePaymentsProto())
+                if (pnode->nVersion < dnpayments.GetMinServiceNodePaymentsProto())
                     continue;
-                nRequestedDynodeAttempt++;
+                nRequestedServiceNodeAttempt++;
 
                 dnodeman.PsegUpdate(pnode, connman);
 
@@ -313,17 +313,17 @@ void CDynodeSync::ProcessTick(CConnman& connman)
                 return; //this will cause each peer to get one request each six seconds for the various assets we need
             }
 
-            // DNW : SYNC DYNODE PAYMENT VOTES FROM OTHER CONNECTED CLIENTS
+            // DNW : SYNC SERVICENODE PAYMENT VOTES FROM OTHER CONNECTED CLIENTS
 
-            if (nRequestedDynodeAssets == DYNODE_SYNC_DNW) {
-                LogPrint("dnpayments", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d nTimeLastBumped %lld GetTime() %lld diff %lld\n", nTick, nRequestedDynodeAssets, nTimeLastBumped, GetTime(), GetTime() - nTimeLastBumped);
+            if (nRequestedServiceNodeAssets == SERVICENODE_SYNC_DNW) {
+                LogPrint("dnpayments", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d nTimeLastBumped %lld GetTime() %lld diff %lld\n", nTick, nRequestedServiceNodeAssets, nTimeLastBumped, GetTime(), GetTime() - nTimeLastBumped);
                 // check for timeout first
-                // This might take a lot longer than DYNODE_SYNC_TIMEOUT_SECONDS due to new blocks,
+                // This might take a lot longer than SERVICENODE_SYNC_TIMEOUT_SECONDS due to new blocks,
                 // but that should be OK and it should timeout eventually.
-                if (GetTime() - nTimeLastBumped > DYNODE_SYNC_TIMEOUT_SECONDS) {
-                    LogPrint("dynode", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d -- timeout\n", nTick, nRequestedDynodeAssets);
-                    if (nRequestedDynodeAttempt == 0) {
-                        LogPrintf("CDynodeSync::ProcessTick -- ERROR: failed to sync %s\n", GetAssetName());
+                if (GetTime() - nTimeLastBumped > SERVICENODE_SYNC_TIMEOUT_SECONDS) {
+                    LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d -- timeout\n", nTick, nRequestedServiceNodeAssets);
+                    if (nRequestedServiceNodeAttempt == 0) {
+                        LogPrintf("CServiceNodeSync::ProcessTick -- ERROR: failed to sync %s\n", GetAssetName());
                         // probably not a good idea to proceed without winner list
                         Fail();
                         connman.ReleaseNodeVector(vNodesCopy);
@@ -336,33 +336,33 @@ void CDynodeSync::ProcessTick(CConnman& connman)
                 // check for data
                 // if dnpayments already has enough blocks and votes, switch to the next asset
                 // try to fetch data from at least two peers though
-                if (nRequestedDynodeAttempt > 1 && dnpayments.IsEnoughData()) {
-                    LogPrint("dynode", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d -- found enough data\n", nTick, nRequestedDynodeAssets);
+                if (nRequestedServiceNodeAttempt > 1 && dnpayments.IsEnoughData()) {
+                    LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d -- found enough data\n", nTick, nRequestedServiceNodeAssets);
                     SwitchToNextAsset(connman);
                     connman.ReleaseNodeVector(vNodesCopy);
                     return;
                 }
 
                 // request from three peers max
-                if (nRequestedDynodeAttempt > 2) {
+                if (nRequestedServiceNodeAttempt > 2) {
                     connman.ReleaseNodeVector(vNodesCopy);
                     return;
                 }
 
                 // only request once from each peer
-                if (netfulfilledman.HasFulfilledRequest(pnode->addr, "dynode-payment-sync"))
+                if (netfulfilledman.HasFulfilledRequest(pnode->addr, "servicenode-payment-sync"))
                     continue;
-                netfulfilledman.AddFulfilledRequest(pnode->addr, "dynode-payment-sync");
+                netfulfilledman.AddFulfilledRequest(pnode->addr, "servicenode-payment-sync");
 
-                if (pnode->nVersion < dnpayments.GetMinDynodePaymentsProto())
+                if (pnode->nVersion < dnpayments.GetMinServiceNodePaymentsProto())
                     continue;
-                nRequestedDynodeAttempt++;
+                nRequestedServiceNodeAttempt++;
 
                 // ask node for all payment votes it has (new nodes will only return votes for future payments)
                 if (pnode->nVersion == 70900) {
-                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::DYNODEPAYMENTSYNC, dnpayments.GetStorageLimit()));
+                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SERVICENODEPAYMENTSYNC, dnpayments.GetStorageLimit()));
                 } else {
-                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::DYNODEPAYMENTSYNC));
+                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SERVICENODEPAYMENTSYNC));
                 } // ask node for missing pieces only (old nodes will not be asked)
                 dnpayments.RequestLowDataPaymentBlocks(pnode, connman);
 
@@ -372,14 +372,14 @@ void CDynodeSync::ProcessTick(CConnman& connman)
 
             // GOVOBJ : SYNC GOVERNANCE ITEMS FROM OUR PEERS
 
-            if (nRequestedDynodeAssets == DYNODE_SYNC_GOVERNANCE) {
-                LogPrint("gobject", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d nTimeLastBumped %lld GetTime() %lld diff %lld\n", nTick, nRequestedDynodeAssets, nTimeLastBumped, GetTime(), GetTime() - nTimeLastBumped);
+            if (nRequestedServiceNodeAssets == SERVICENODE_SYNC_GOVERNANCE) {
+                LogPrint("gobject", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d nTimeLastBumped %lld GetTime() %lld diff %lld\n", nTick, nRequestedServiceNodeAssets, nTimeLastBumped, GetTime(), GetTime() - nTimeLastBumped);
 
                 // check for timeout first
-                if (GetTime() - nTimeLastBumped > DYNODE_SYNC_TIMEOUT_SECONDS) {
-                    LogPrint("dynode", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d -- timeout\n", nTick, nRequestedDynodeAssets);
-                    if (nRequestedDynodeAttempt == 0) {
-                        LogPrintf("CDynodeSync::ProcessTick -- WARNING: failed to sync %s\n", GetAssetName());
+                if (GetTime() - nTimeLastBumped > SERVICENODE_SYNC_TIMEOUT_SECONDS) {
+                    LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d -- timeout\n", nTick, nRequestedServiceNodeAssets);
+                    if (nRequestedServiceNodeAttempt == 0) {
+                        LogPrintf("CServiceNodeSync::ProcessTick -- WARNING: failed to sync %s\n", GetAssetName());
                         // it's kind of ok to skip this for now, hopefully we'll catch up later?
                     }
                     SwitchToNextAsset(connman);
@@ -402,13 +402,13 @@ void CDynodeSync::ProcessTick(CConnman& connman)
                         // make sure the condition below is checked only once per tick
                         if (nLastTick == nTick)
                             continue;
-                        if (GetTime() - nTimeNoObjectsLeft > DYNODE_SYNC_TIMEOUT_SECONDS &&
-                            governance.GetVoteCount() - nLastVotes < std::max(int(0.0001 * nLastVotes), DYNODE_SYNC_TICK_SECONDS)) {
-                            // We already asked for all objects, waited for DYNODE_SYNC_TIMEOUT_SECONDS
-                            // after that and less then 0.01% or DYNODE_SYNC_TICK_SECONDS
+                        if (GetTime() - nTimeNoObjectsLeft > SERVICENODE_SYNC_TIMEOUT_SECONDS &&
+                            governance.GetVoteCount() - nLastVotes < std::max(int(0.0001 * nLastVotes), SERVICENODE_SYNC_TICK_SECONDS)) {
+                            // We already asked for all objects, waited for SERVICENODE_SYNC_TIMEOUT_SECONDS
+                            // after that and less then 0.01% or SERVICENODE_SYNC_TICK_SECONDS
                             // (i.e. 1 per second) votes were recieved during the last tick.
                             // We can be pretty sure that we are done syncing.
-                            LogPrint("dynode", "CDynodeSync::ProcessTick -- nTick %d nRequestedDynodeAssets %d -- asked for all objects, nothing to do\n", nTick, nRequestedDynodeAssets);
+                            LogPrint("servicenode", "CServiceNodeSync::ProcessTick -- nTick %d nRequestedServiceNodeAssets %d -- asked for all objects, nothing to do\n", nTick, nRequestedServiceNodeAssets);
                             // reset nTimeNoObjectsLeft to be able to use the same condition on resync
                             nTimeNoObjectsLeft = 0;
                             SwitchToNextAsset(connman);
@@ -425,7 +425,7 @@ void CDynodeSync::ProcessTick(CConnman& connman)
 
                 if (pnode->nVersion < MIN_GOVERNANCE_PEER_PROTO_VERSION)
                     continue;
-                nRequestedDynodeAttempt++;
+                nRequestedServiceNodeAttempt++;
 
                 SendGovernanceSyncRequest(pnode, connman);
 
@@ -438,7 +438,7 @@ void CDynodeSync::ProcessTick(CConnman& connman)
     connman.ReleaseNodeVector(vNodesCopy);
 }
 
-void CDynodeSync::SendGovernanceSyncRequest(CNode* pnode, CConnman& connman)
+void CServiceNodeSync::SendGovernanceSyncRequest(CNode* pnode, CConnman& connman)
 {
     CNetMsgMaker msgMaker(pnode->GetSendVersion());
 
@@ -452,39 +452,39 @@ void CDynodeSync::SendGovernanceSyncRequest(CNode* pnode, CConnman& connman)
     }
 }
 
-void CDynodeSync::AcceptedBlockHeader(const CBlockIndex* pindexNew)
+void CServiceNodeSync::AcceptedBlockHeader(const CBlockIndex* pindexNew)
 {
-    LogPrint("dnsync", "CDynodeSync::AcceptedBlockHeader -- pindexNew->nHeight: %d\n", pindexNew->nHeight);
+    LogPrint("dnsync", "CServiceNodeSync::AcceptedBlockHeader -- pindexNew->nHeight: %d\n", pindexNew->nHeight);
 
     if (!IsBlockchainSynced()) {
         // Postpone timeout each time new block header arrives while we are still syncing blockchain
-        BumpAssetLastTime("CDynodeSync::AcceptedBlockHeader");
+        BumpAssetLastTime("CServiceNodeSync::AcceptedBlockHeader");
     }
 }
 
-void CDynodeSync::NotifyHeaderTip(const CBlockIndex* pindexNew, bool fInitialDownload, CConnman& connman)
+void CServiceNodeSync::NotifyHeaderTip(const CBlockIndex* pindexNew, bool fInitialDownload, CConnman& connman)
 {
-    LogPrint("dnsync", "CDynodeSync::NotifyHeaderTip -- pindexNew->nHeight: %d fInitialDownload=%d\n", pindexNew->nHeight, fInitialDownload);
+    LogPrint("dnsync", "CServiceNodeSync::NotifyHeaderTip -- pindexNew->nHeight: %d fInitialDownload=%d\n", pindexNew->nHeight, fInitialDownload);
 
     if (IsFailed() || IsSynced() || !pindexBestHeader)
         return;
 
     if (!IsBlockchainSynced()) {
         // Postpone timeout each time new block arrives while we are still syncing blockchain
-        BumpAssetLastTime("CDynodeSync::NotifyHeaderTip");
+        BumpAssetLastTime("CServiceNodeSync::NotifyHeaderTip");
     }
 }
 
-void CDynodeSync::UpdatedBlockTip(const CBlockIndex* pindexNew, bool fInitialDownload, CConnman& connman)
+void CServiceNodeSync::UpdatedBlockTip(const CBlockIndex* pindexNew, bool fInitialDownload, CConnman& connman)
 {
-    LogPrint("dnsync", "CDynodeSync::UpdatedBlockTip -- pindexNew->nHeight: %d fInitialDownload=%d\n", pindexNew->nHeight, fInitialDownload);
+    LogPrint("dnsync", "CServiceNodeSync::UpdatedBlockTip -- pindexNew->nHeight: %d fInitialDownload=%d\n", pindexNew->nHeight, fInitialDownload);
 
     if (IsFailed() || IsSynced() || !pindexBestHeader)
         return;
 
     if (!IsBlockchainSynced()) {
         // Postpone timeout each time new block arrives while we are still syncing blockchain
-        BumpAssetLastTime("CDynodeSync::UpdatedBlockTip");
+        BumpAssetLastTime("CServiceNodeSync::UpdatedBlockTip");
     }
 
     if (fInitialDownload) {
@@ -512,13 +512,13 @@ void CDynodeSync::UpdatedBlockTip(const CBlockIndex* pindexNew, bool fInitialDow
 
     fReachedBestHeader = fReachedBestHeaderNew;
 
-    LogPrint("dnsync", "CDynodeSync::NotifyHeaderTip -- pindexNew->nHeight: %d pindexBestHeader->nHeight: %d fInitialDownload=%d fReachedBestHeader=%d\n",
+    LogPrint("dnsync", "CServiceNodeSync::NotifyHeaderTip -- pindexNew->nHeight: %d pindexBestHeader->nHeight: %d fInitialDownload=%d fReachedBestHeader=%d\n",
         pindexNew->nHeight, pindexBestHeader->nHeight, fInitialDownload, fReachedBestHeader);
 
     if (!IsBlockchainSynced() && fReachedBestHeader) {
         if (fLiteMode) {
             // nothing to do in lite mode, just finish the process immediately
-            nRequestedDynodeAssets = DYNODE_SYNC_FINISHED;
+            nRequestedServiceNodeAssets = SERVICENODE_SYNC_FINISHED;
             return;
         }
         // Reached best header while being in initial mode.
@@ -527,7 +527,7 @@ void CDynodeSync::UpdatedBlockTip(const CBlockIndex* pindexNew, bool fInitialDow
     }
 }
 
-void CDynodeSync::DoMaintenance(CConnman &connman)
+void CServiceNodeSync::DoMaintenance(CConnman &connman)
 {
     if (ShutdownRequested()) return;
      ProcessTick(connman);

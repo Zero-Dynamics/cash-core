@@ -271,7 +271,7 @@ HEADERS += \
     src/qt/transactiondescdialog.h \
     src/qt/transactiondesc.h \
     src/qt/trafficgraphwidget.h \
-    src/qt/dynodelist.h \
+    src/qt/servicenodelist.h \
     src/qt/splashscreen.h \
     src/qt/signverifymessagedialog.h \
     src/qt/sendcoinsentry.h \
@@ -349,7 +349,7 @@ HEADERS += \
     src/wallet/wallet_ismine.h \
     src/wallet/wallet.h \
     src/wallet/walletdb.h \
-    src/activedynode.h \
+    src/activeservicenode.h \
     src/addressindex.h \
     src/addrman.h \
     src/alert.h \
@@ -411,11 +411,11 @@ HEADERS += \
     src/spentindex.h \
     src/spork.h \
     src/psnotificationinterface.h \
-    src/dynode-payments.h \
-    src/dynode-sync.h \
-    src/dynode.h \
-    src/dynodeconfig.h \
-    src/dynodeman.h \
+    src/servicenode-payments.h \
+    src/servicenode-sync.h \
+    src/servicenode.h \
+    src/servicenodeconfig.h \
+    src/servicenodeman.h \
     src/streams.h \
     src/sync.h \
     src/threadsafety.h \
@@ -485,7 +485,7 @@ SOURCES += \
     src/qt/sendcoinsentry.cpp \
     src/qt/signverifymessagedialog.cpp \
     src/qt/splashscreen.cpp \
-    src/qt/dynodelist.cpp \
+    src/qt/servicenodelist.cpp \
     src/qt/trafficgraphwidget.cpp \
     src/qt/transactiondesc.cpp \
     src/qt/transactiondescdialog.cpp \
@@ -532,7 +532,7 @@ SOURCES += \
     src/wallet/wallet_ismine.cpp \
     src/wallet/wallet.cpp \
     src/wallet/walletdb.cpp \
-    src/activedynode.cpp \
+    src/activeservicenode.cpp \
     src/addrman.cpp \
     src/alert.cpp \
     src/amount.cpp \
@@ -583,16 +583,16 @@ SOURCES += \
     src/rpcprotocol.cpp \
     src/rpcrawtransaction.cpp \
     src/rpcserver.cpp \
-    src/rpcdynode.cpp \
+    src/rpcservicenode.cpp \
     src/privatesend.cpp \
     src/scheduler.cpp \
     src/spork.cpp \
     src/psnotificationinterface.cpp \
-    src/dynode-payments.cpp \
-    src/dynode-sync.cpp \
-    src/dynode.cpp \
-    src/dynodeconfig.cpp \
-    src/dynodeman.cpp \
+    src/servicenode-payments.cpp \
+    src/servicenode-sync.cpp \
+    src/servicenode.cpp \
+    src/servicenodeconfig.cpp \
+    src/servicenodeman.cpp \
     src/sync.cpp \
     src/timedata.cpp \
     src/torcontrol.cpp \
@@ -635,7 +635,7 @@ FORMS += \
     src/qt/forms/bdapupdateaccountdialog.ui \
     src/qt/forms/bdapuserdetaildialog.ui \
     src/qt/forms/coincontroldialog.ui \
-    src/qt/forms/dynodelist.ui \
+    src/qt/forms/servicenodelist.ui \
     src/qt/forms/editaddressdialog.ui \
     src/qt/forms/helpmessagedialog.ui \
     src/qt/forms/intro.ui \

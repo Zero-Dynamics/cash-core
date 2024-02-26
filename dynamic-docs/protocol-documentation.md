@@ -53,59 +53,59 @@ Bitcoin Public Key https://bitcoin.org/en/glossary/public-key
 
 ### DNANNOUNCE - "dnb"
 
-CDynodeBroadcast
+CServiceNodeBroadcast
 
-Whenever a Dynode comes online or a client is syncing, they will send this message which describes the Dynode entry and how to validate messages from it.
+Whenever a ServiceNode comes online or a client is syncing, they will send this message which describes the ServiceNode entry and how to validate messages from it.
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
 | 41 | vin | CTxIn | The unspent output which is holding 1000 Dynamic
-| # | addr | CService | IPv4 address of the Dynode
+| # | addr | CService | IPv4 address of the ServiceNode
 | 33-65 | pubKeyCollateralAddress | CPubKey | CPubKey of the main 1000 Dynamic unspent output
-| 33-65 | pubKeyDynode | CPubKey | CPubKey of the secondary signing key (For all other messaging other than announce message)
+| 33-65 | pubKeyServiceNode | CPubKey | CPubKey of the secondary signing key (For all other messaging other than announce message)
 | 71-73 | sig | char[] | Signature of this message (verifiable via pubKeyCollateralAddress)
 | 8 | sigTime | int64_t | Time which the signature was created
-| 4 | nProtocolVersion | int | The protocol version of the Dynode
-| # | lastPing | CDynodePing | The last known ping of the Dynode
-| 8 | nLastPsq | int64_t | The last time the Dynode sent a PSQ message (for mixing)
+| 4 | nProtocolVersion | int | The protocol version of the ServiceNode
+| # | lastPing | CServiceNodePing | The last known ping of the ServiceNode
+| 8 | nLastPsq | int64_t | The last time the ServiceNode sent a PSQ message (for mixing)
 
 ### DNPING - "dnp"
 
-CDynodePing
+CServiceNodePing
 
-Every few minutes, Dynodes ping the network with a message that propagates the whole network.
+Every few minutes, ServiceNodes ping the network with a message that propagates the whole network.
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
-| 41 | vin | CTxIn | The unspent output of the Dynode which is signing the message
+| 41 | vin | CTxIn | The unspent output of the ServiceNode which is signing the message
 | 32 | blockHash | uint256 | Current chaintip blockhash minus 12
 | 8 | sigTime | int64_t | Signature time for this ping
-| 71-73 | vchSig | char[] | Signature of this message by Dynode (verifiable via pubKeyDynode)
+| 71-73 | vchSig | char[] | Signature of this message by ServiceNode (verifiable via pubKeyServiceNode)
 
-### DynodePAYMENTVOTE - "dnw"
+### ServiceNodePAYMENTVOTE - "dnw"
 
-CDynodePaymentVote
+CServiceNodePaymentVote
 
-When a new block is found on the network, a Dynode quorum will be determined and those 10 selected Dynodes will issue a Dynode payment vote message to pick the next winning node.
+When a new block is found on the network, a ServiceNode quorum will be determined and those 10 selected ServiceNodes will issue a ServiceNode payment vote message to pick the next winning node.
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
-| 41 | vinDynode | CTxIn | The unspent output of the Dynode which is signing the message
+| 41 | vinServiceNode | CTxIn | The unspent output of the ServiceNode which is signing the message
 | 4 | nBlockHeight | int | The blockheight which the payee should be paid
 | ? | payeeAddress | CScript | The address to pay to
-| 71-73 | sig | char[] | Signature of the Dynode which is signing the message
+| 71-73 | sig | char[] | Signature of the ServiceNode which is signing the message
 
 ### PSTX - "pstx"
 
 CPrivateSendBroadcastTx
 
-Dynodes can broadcast subsidised transactions without fees for the sake of security in mixing. This is done via the PSTX message.
+ServiceNodes can broadcast subsidised transactions without fees for the sake of security in mixing. This is done via the PSTX message.
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
 | # | tx | CTransaction | The transaction
-| 41 | vin | CTxIn | Dynode unspent output
-| 71-73 | vchSig | char[] | Signature of this message by Dynode (verifiable via pubKeyDynode)
+| 41 | vin | CTxIn | ServiceNode unspent output
+| 71-73 | vchSig | char[] | Signature of this message by ServiceNode (verifiable via pubKeyServiceNode)
 | 8 | sigTime | int64_t | Time this message was signed
 
 ### PSTATUSUPDATE - "pssu"
@@ -118,7 +118,7 @@ Mixing pool status update
 | 4 | nMsgState | int | Current state of mixing process
 | 4 | nMsgEntriesCount | int | Number of entries in the mixing pool
 | 4 | nMsgStatusUpdate | int | Update state and/or signal if entry was accepted or not
-| 4 | nMsgMessageID | int | ID of the typical Dynode reply message
+| 4 | nMsgMessageID | int | ID of the typical ServiceNode reply message
 
 ### PSQUEUE - "psq"
 
@@ -129,10 +129,10 @@ Asks users to sign final mixing tx message.
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
 | 4 | nDenom | int | Which denomination is allowed in this mixing session
-| 41 | vin | CTxIn | unspend output from Dynode which is hosting this session
+| 41 | vin | CTxIn | unspend output from ServiceNode which is hosting this session
 | 4 | nTime | int | the time this PSQ was created
 | 4 | fReady | int | if the mixing pool is ready to be executed
-| 71-73 | vchSig | char[] | Signature of this message by Dynode (verifiable via pubKeyDynode)
+| 71-73 | vchSig | char[] | Signature of this message by ServiceNode (verifiable via pubKeyServiceNode)
 
 ### PSACCEPT - "psa"
 
@@ -181,8 +181,8 @@ Transaction Lock Vote
 | ---------- | ----------- | --------- | -------- |
 | 32 | txHash | uint256 | txid of the transaction to lock
 | 36 | outpoint | COutPoint | The utxo to lock in this transaction
-| 36 | outpointDynode | COutPoint | The utxo of the dynode which is signing the vote
-| 71-73 | vchDynodeSignature | char[] | Signature of this message by dynode (verifiable via pubKeyDynode)
+| 36 | outpointServiceNode | COutPoint | The utxo of the servicenode which is signing the vote
+| 71-73 | vchServiceNodeSignature | char[] | Signature of this message by servicenode (verifiable via pubKeyServiceNode)
 
 ### DNGOVERNANCEOBJECT - "govobj"
 
@@ -198,23 +198,23 @@ A proposal, contract or setting.
 | 32 | nCollateralHash | uint256 | Hash of the collateral fee transaction
 | 0-16384 | strData | string | Data field - can be used for anything
 | 4 | nObjectType | int | ????
-| 41 | vinDynode | CTxIn | Unspent output for the Dynode which is signing this object
-| 71-73 | vchSig | char[] | Signature of the Dynode
+| 41 | vinServiceNode | CTxIn | Unspent output for the ServiceNode which is signing this object
+| 71-73 | vchSig | char[] | Signature of the ServiceNode
 
 ### DNGOVERNANCEOBJECTVOTE - "govobjvote"
 
 Governance Vote
 
-Dynodes use governance voting in response to new proposals, contracts, settings or finalized budgets.
+ServiceNodes use governance voting in response to new proposals, contracts, settings or finalized budgets.
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
-| 41+ | vinDynode | CTxIn | Unspent output for the Dynode which is voting
+| 41+ | vinServiceNode | CTxIn | Unspent output for the ServiceNode which is voting
 | 32 | nParentHash | uint256 | Object which we're voting on (proposal, contract, setting or final budget)
 | 4 | nVoteOutcome | int | ???
 | 4 | nVoteSignal | int | ???
 | 8 | nTime | int64_t | Time which the vote was created
-| 71-73 | vchSig | char[] | Signature of the Dynode
+| 71-73 | vchSig | char[] | Signature of the ServiceNode
 
 ### SPORK - "spork"
 
@@ -236,24 +236,24 @@ Spork
 | 10001 | 2 | INSTANTSEND_ENABLED | Turns on and off InstantSend network wide
 | 10002 | 3 | INSTANTSEND_BLOCK_FILTERING | Turns on and off InstantSend block filtering
 | 10004 | 5 | INSTANTSEND_MAX_VALUE | Controls the max value for an InstantSend transaction (currently 2000 Dynamic)
-| 10007 | 8 | DYNODE_PAYMENT_ENFORCEMENT | Requires dynodes to be paid by miners when blocks are processed
+| 10007 | 8 | SERVICENODE_PAYMENT_ENFORCEMENT | Requires servicenodes to be paid by miners when blocks are processed
 | 10008 | 9 | SUPERBLOCKS_ENABLED | Superblocks are enabled (the 10% comes to fund the dynamic treasury)
-| 10009 | 10 | DYNODE_PAY_UPDATED_NODES | Only current protocol version dynode's will be paid (not older nodes)
+| 10009 | 10 | SERVICENODE_PAY_UPDATED_NODES | Only current protocol version servicenode's will be paid (not older nodes)
 | 10011 | 12 | RECONSIDER_BLOCKS |
 | 10012 | 13 | OLD_SUPERBLOCK_FLAG |
-| 10013 | 14 | REQUIRE_SENTINEL_FLAG | Only dynode's running sentinel will be paid 
+| 10013 | 14 | REQUIRE_SENTINEL_FLAG | Only servicenode's running sentinel will be paid 
 
 ## Undocumented messages
 
-### DYNODEPAYMENTBLOCK - "dnwb"
+### SERVICENODEPAYMENTBLOCK - "dnwb"
 
-Dynode Payment Block
+ServiceNode Payment Block
 
 *NOTE: Per src/protocol.cpp, there is no message for this (only inventory)*
 
 ### DNVERIFY - "dnv"
 
-Dynode Verify
+ServiceNode Verify
 
 ### PSFINALTX - "psf"
 
@@ -273,14 +273,14 @@ Governance Sync
 
 ### PSEG - "Pseg"
 
-Dynode List/Entry Sync
+ServiceNode List/Entry Sync
 
-Get Dynode list or specific entry
+Get ServiceNode list or specific entry
 
 ### SYNCSTATUSCOUNT - "ssc"
 
 Sync Status Count
 
-### DYNODEPAYMENTSYNC - "dnget"
+### SERVICENODEPAYMENTSYNC - "dnget"
 
-Dynode Payment Sync
+ServiceNode Payment Sync

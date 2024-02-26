@@ -20,7 +20,7 @@
 #include "utilitydialog.h"
 #include "walletmodel.h"
 
-#include "dynode-sync.h"
+#include "servicenode-sync.h"
 #include "init.h"
 #include "instantsend.h"
 #include "privatesend-client.h"
@@ -152,8 +152,8 @@ OverviewPage::OverviewPage(const PlatformStyle* platformStyle, QWidget* parent) 
     if (fLiteMode)
         return;
 
-    // Disable any PS UI for Dynode or when autobackup is disabled or failed for whatever reason
-    if (fDynodeMode || nWalletBackups <= 0) {
+    // Disable any PS UI for ServiceNode or when autobackup is disabled or failed for whatever reason
+    if (fServiceNodeMode || nWalletBackups <= 0) {
         DisablePrivateSendCompletely();
         if (nWalletBackups <= 0) {
             ui->labelPrivateSendEnabled->setToolTip(tr("Automatic backups are disabled, no mixing available!"));
@@ -332,7 +332,7 @@ void OverviewPage::hideOrphans(bool fHide)
 
 void OverviewPage::updatePrivateSendProgress()
 {
-    if (!dynodeSync.IsBlockchainSynced() || ShutdownRequested())
+    if (!servicenodeSync.IsBlockchainSynced() || ShutdownRequested())
         return;
 
     if (!pwalletMain)
@@ -467,7 +467,7 @@ void OverviewPage::updateAdvancedPSUI(bool fShowAdvancedPSUI)
 
 void OverviewPage::privateSendStatus()
 {
-    if (!dynodeSync.IsBlockchainSynced() || ShutdownRequested())
+    if (!servicenodeSync.IsBlockchainSynced() || ShutdownRequested())
         return;
 
     static int64_t nLastPSProgressBlockTime = 0;

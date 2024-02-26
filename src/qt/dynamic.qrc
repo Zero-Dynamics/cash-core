@@ -19,7 +19,7 @@
         <file alias="drkpurple_editpaste">res/icons/drk/drkpurple_editpaste.png</file>
         <file alias="drkpurple_editcopy">res/icons/drk/drkpurple_editcopy.png</file>
         <file alias="drkpurple_remove">res/icons/drk/drkpurple_remove.png</file>
-        <file alias="dynodes">res/icons/drk/dynode_network.png</file>
+        <file alias="servicenodes">res/icons/drk/servicenode_network.png</file>
         <file alias="edit">res/icons/drk/edit.png</file>
         <file alias="editcopy">res/icons/drk/editcopy.png</file>
         <file alias="editpaste">res/icons/drk/editpaste.png</file>

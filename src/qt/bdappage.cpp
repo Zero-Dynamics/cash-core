@@ -14,7 +14,7 @@
 #include "bdapupdateaccountdialog.h"
 #include "bdapuserdetaildialog.h"
 #include "clientmodel.h"
-#include "dynode-sync.h"
+#include "servicenode-sync.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 #include "rpc/client.h"
@@ -169,7 +169,7 @@ void BdapPage::addGroup()
         return;
     }
 
-    if (!dynodeSync.IsBlockchainSynced())  {
+    if (!servicenodeSync.IsBlockchainSynced())  {
         QMessageBox::information(this, QObject::tr("Wallet not synced"), QObject::tr("Cannot create BDAP objects while wallet is not synced."));
         return;
     }
@@ -184,7 +184,7 @@ void BdapPage::addGroup()
 
 void BdapPage::deleteGroup()
 {
-    if (!dynodeSync.IsBlockchainSynced())  {
+    if (!servicenodeSync.IsBlockchainSynced())  {
         QMessageBox::information(this, QObject::tr("Wallet not synced"), QObject::tr("Cannot create/modify BDAP objects while wallet is not synced."));
         return;
     }
@@ -212,7 +212,7 @@ void BdapPage::deleteGroup()
 
 void BdapPage::updateGroup()
 {
-    if (!dynodeSync.IsBlockchainSynced())  {
+    if (!servicenodeSync.IsBlockchainSynced())  {
         QMessageBox::information(this, QObject::tr("Wallet not synced"), QObject::tr("Cannot create/modify BDAP objects while wallet is not synced."));
         return;
     }
@@ -250,7 +250,7 @@ void BdapPage::getGroupDetails(int row, int column)
 
 void BdapPage::updateBDAPLists()
 {
-    if (dynodeSync.IsBlockchainSynced())  {
+    if (servicenodeSync.IsBlockchainSynced())  {
         evaluateTransactionButtons();
 
         bdapAccountTableModel->refreshUsers();
@@ -279,7 +279,7 @@ void BdapPage::addUser()
         return;
     }
 
-    if (!dynodeSync.IsBlockchainSynced())  {
+    if (!servicenodeSync.IsBlockchainSynced())  {
         QMessageBox::information(this, QObject::tr("Wallet not synced"), QObject::tr("Cannot create BDAP objects while wallet is not synced."));
         return;
     }
@@ -307,7 +307,7 @@ void BdapPage::addLink()
         return;
     }
 
-    if (!dynodeSync.IsBlockchainSynced())  {
+    if (!servicenodeSync.IsBlockchainSynced())  {
         QMessageBox::information(this, QObject::tr("Wallet not synced"), QObject::tr("Cannot create BDAP objects while wallet is not synced."));
         return;
     }
@@ -323,7 +323,7 @@ void BdapPage::addLink()
 
 void BdapPage::acceptLink()
 {
-    if (!dynodeSync.IsBlockchainSynced())  {
+    if (!servicenodeSync.IsBlockchainSynced())  {
         QMessageBox::information(this, QObject::tr("Wallet not synced"), QObject::tr("Cannot create BDAP objects while wallet is not synced."));
         return;
     }
@@ -378,7 +378,7 @@ void BdapPage::getLinkDetails(int row, int column)
 
 void BdapPage::deleteUser()
 {
-    if (!dynodeSync.IsBlockchainSynced())  {
+    if (!servicenodeSync.IsBlockchainSynced())  {
         QMessageBox::information(this, QObject::tr("Wallet not synced"), QObject::tr("Cannot create/modify BDAP objects while wallet is not synced."));
         return;
     }
@@ -406,7 +406,7 @@ void BdapPage::deleteUser()
 
 void BdapPage::updateUser()
 {
-    if (!dynodeSync.IsBlockchainSynced())  {
+    if (!servicenodeSync.IsBlockchainSynced())  {
         QMessageBox::information(this, QObject::tr("Wallet not synced"), QObject::tr("Cannot create/modify BDAP objects while wallet is not synced."));
         return;
     }

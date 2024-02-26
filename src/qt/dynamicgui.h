@@ -19,7 +19,7 @@
 #include <QSystemTrayIcon>
 
 class ClientModel;
-class DynodeList;
+class ServiceNodeList;
 class HelpMessageDialog;
 class MiningPage;
 class BdapPage;
@@ -124,7 +124,7 @@ private:
     QAction* receiveCoinsAction;
     QAction* receiveCoinsMenuAction;
     QAction* historyAction;
-    QAction* dynodeAction;
+    QAction* servicenodeAction;
     QAction* miningAction;
     QAction* bdapAction;
     QAction* quitAction;
@@ -243,8 +243,8 @@ private Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-    /** Switch to Dynode page */
-    void gotoDynodePage();
+    /** Switch to ServiceNode page */
+    void gotoServiceNodePage();
     /** Switch to mining page */
     void gotoMiningPage();
     /** Switch to BDAP page */
@@ -275,7 +275,7 @@ private Q_SLOTS:
 
     /** Open external (default) editor with dynamic.conf */
     void showConfEditor();
-    /** Open external (default) editor with dynode.conf */
+    /** Open external (default) editor with servicenode.conf */
     void showDNConfEditor();
     /** Show folder with wallet backups in default file browser */
     void showBackups();

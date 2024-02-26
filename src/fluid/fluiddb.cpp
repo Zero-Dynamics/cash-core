@@ -4,30 +4,30 @@
 
 #include "base58.h"
 #include "fluid.h"
-#include "fluiddynode.h"
+#include "fluidservicenode.h"
 #include "fluidmining.h"
 #include "fluidmint.h"
 #include "fluidsovereign.h"
 
-CAmount GetFluidDynodeReward(const int nHeight)
+CAmount GetFluidServiceNodeReward(const int nHeight)
 {
     if (fluid.FLUID_ACTIVATE_HEIGHT > nHeight)
-        return GetStandardDynodePayment(nHeight);
+        return GetStandardServiceNodePayment(nHeight);
 
-    if (!CheckFluidDynodeDB())
-        return GetStandardDynodePayment(nHeight);
+    if (!CheckFluidServiceNodeDB())
+        return GetStandardServiceNodePayment(nHeight);
 
-    if (pFluidDynodeDB->IsEmpty())
-        return GetStandardDynodePayment(nHeight);
+    if (pFluidServiceNodeDB->IsEmpty())
+        return GetStandardServiceNodePayment(nHeight);
 
-    CFluidDynode lastDynodeRecord;
-    if (!pFluidDynodeDB->GetLastFluidDynodeRecord(lastDynodeRecord, nHeight)) {
-        return GetStandardDynodePayment(nHeight);
+    CFluidServiceNode lastServiceNodeRecord;
+    if (!pFluidServiceNodeDB->GetLastFluidServiceNodeRecord(lastServiceNodeRecord, nHeight)) {
+        return GetStandardServiceNodePayment(nHeight);
     }
-    if (lastDynodeRecord.DynodeReward > 0) {
-        return lastDynodeRecord.DynodeReward;
+    if (lastServiceNodeRecord.ServiceNodeReward > 0) {
+        return lastServiceNodeRecord.ServiceNodeReward;
     } else {
-        return GetStandardDynodePayment(nHeight);
+        return GetStandardServiceNodePayment(nHeight);
     }
 }
 
@@ -98,10 +98,10 @@ bool IsSovereignAddress(const CDynamicAddress& inputAddress)
     return false;
 }
 
-bool GetAllFluidDynodeRecords(std::vector<CFluidDynode>& dynodeEntries)
+bool GetAllFluidServiceNodeRecords(std::vector<CFluidServiceNode>& servicenodeEntries)
 {
-    if (CheckFluidDynodeDB()) {
-        if (!pFluidDynodeDB->GetAllFluidDynodeRecords(dynodeEntries)) {
+    if (CheckFluidServiceNodeDB()) {
+        if (!pFluidServiceNodeDB->GetAllFluidServiceNodeRecords(servicenodeEntries)) {
             return false;
         }
     } else {

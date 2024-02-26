@@ -867,16 +867,16 @@ Adresa: %4</translation>
         <translation>Prosím vyberte úroveň súkromia.</translation>
     </message>
     <message>
-        <source>Use 2 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Použiť 2 rozdielne dynode pre fixovanie prostriedkov až do 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Použiť 2 rozdielne servicenode pre fixovanie prostriedkov až do 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 8 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Použiť 8 rozdielnych dynode pre fixovanie prostriedkov až do 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Použiť 8 rozdielnych servicenode pre fixovanie prostriedkov až do 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 16 separate dynodes</source>
-        <translation>Použiť 16 rozdielnych dynode</translation>
+        <source>Use 16 separate servicenodes</source>
+        <translation>Použiť 16 rozdielnych servicenode</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1189,8 +1189,8 @@ Adresa: %4</translation>
         <translation>Expert</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Toto nastavenie určuje množstvo rozličných dynode cez ktoré sa bude anonymizovať vstup.&lt;br/&gt; Viac kôl anonymizácie dáva väčšiu úroveň súkromia, ale tiež stojí viac na poplatkoch.</translation>
+        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Toto nastavenie určuje množstvo rozličných servicenode cez ktoré sa bude anonymizovať vstup.&lt;br/&gt; Viac kôl anonymizácie dáva väčšiu úroveň súkromia, ale tiež stojí viac na poplatkoch.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1458,8 +1458,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Začať/Zastaviť miešanie</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>Denominácie ktoré ste odoslali na Dynode. &lt;br&gt;Pre miešanie, ostatný používatelia musia odoslať rovnakú sumu denominácií.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>Denominácie ktoré ste odoslali na ServiceNode. &lt;br&gt;Pre miešanie, ostatný používatelia musia odoslať rovnakú sumu denominácií.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1815,7 +1815,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Reťazec blokov</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
+        <source>Number of ServiceNodes</source>
         <translation>Počet Mastenode</translation>
     </message>
     <message>
@@ -3421,8 +3421,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Upozornenie: wallet.dat poškodený, údaje zachránené! Pôvodný wallet.dat bol uložený ako wallet.{timestamp}.bak v %s; ak váš zostatok alebo transakcie nie sú správne, mali by ste obnoviť zo zálohy.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>V konfigurácii musíte špecifikovať dynodepairingkey. Pre pomoc sa prosím pozrite do dokumentácie.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>V konfigurácii musíte špecifikovať servicenodepairingkey. Pre pomoc sa prosím pozrite do dokumentácie.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -3621,8 +3621,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Vymazať všetky transakcie z peňaženky a pri spustení znova získať z reťazca blokov iba tie získané pomocou -rescan</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Vypnúť všetky funkcie špecifické pre Dynamic (Dynode, PrivateSend, InstantSend, Rozpočty) (0-1, predvolené: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Vypnúť všetky funkcie špecifické pre Dynamic (ServiceNode, PrivateSend, InstantSend, Rozpočty) (0-1, predvolené: %u)</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -3831,12 +3831,12 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Vypnúť núdzový režim, prepísať skutočnú udalosť núdzového režimu (predvolené: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a dynode (0-1, default: %u)</source>
-        <translation>Povoliť klientovi aby vystupoval ako dynode (0-1, predvolené: %u)</translation>
+        <source>Enable the client to act as a servicenode (0-1, default: %u)</source>
+        <translation>Povoliť klientovi aby vystupoval ako servicenode (0-1, predvolené: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Chyba pripojenia k Dynode.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Chyba pripojenia k ServiceNode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -3975,20 +3975,20 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Načíta sa vyrovnávacia pamäť rozpočtu...</translation>
     </message>
     <message>
-        <source>Loading dynode cache...</source>
-        <translation>Načíta sa vyrovnávacia pamäť dynode...</translation>
+        <source>Loading servicenode cache...</source>
+        <translation>Načíta sa vyrovnávacia pamäť servicenode...</translation>
     </message>
     <message>
-        <source>Loading dynode payment cache...</source>
-        <translation>Načíta sa vyrovnávacia pamäť platieb dynode...</translation>
+        <source>Loading servicenode payment cache...</source>
+        <translation>Načíta sa vyrovnávacia pamäť platieb servicenode...</translation>
     </message>
     <message>
         <source>Lock is already in place.</source>
         <translation>Zámok je už na mieste.</translation>
     </message>
     <message>
-        <source>Lock dynodes from dynode configuration file (default: %u)</source>
-        <translation>Zamknúť masternody z konfiguračného súboru dynode (predvolené: %u)</translation>
+        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
+        <translation>Zamknúť masternody z konfiguračného súboru servicenode (predvolené: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4011,16 +4011,16 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Je potrebné zadať port s -whitebind: '%s'</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Nezistený žiadny Dynode.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>Nezistený žiadny ServiceNode.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Nekompatibilný Dynode zdroj.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Nekompatibilný ServiceNode zdroj.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Nie je v zozname Dynode.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Nie je v zozname ServiceNode.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4059,8 +4059,8 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Privátny kľúč servera (predvolené: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this dynode (example: %s)</source>
-        <translation>Nastaviť externú adresu:port ktorý sa dostane sa k tomuto dynode (príklad: %s)</translation>
+        <source>Set external address:port to get to this servicenode (example: %s)</source>
+        <translation>Nastaviť externú adresu:port ktorý sa dostane sa k tomuto servicenode (príklad: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4091,8 +4091,8 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Zadajte časový limit pripojenia v milisekundách (minimum: 1, predvolené: %d)</translation>
     </message>
     <message>
-        <source>Specify dynode configuration file (default: %s)</source>
-        <translation>Zadať konfiguračný súbor dynode (predvolené: %s)</translation>
+        <source>Specify servicenode configuration file (default: %s)</source>
+        <translation>Zadať konfiguračný súbor servicenode (predvolené: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4107,16 +4107,16 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Ukončiť činnosť po importovaní blokov z disku (predvolené: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to dynode: %u / %d</source>
-        <translation>Položky odoslané na dynode: %u / %d</translation>
+        <source>Submitted following entries to servicenode: %u / %d</source>
+        <translation>Položky odoslané na servicenode: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Odoslané na dynode, čaká na viac položiek ( %u / %d ) %s</translation>
+        <source>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Odoslané na servicenode, čaká na viac položiek ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to dynode, waiting in queue %s</source>
-        <translation>Odoslané na dynode, čaká vo fronte %s</translation>
+        <source>Submitted to servicenode, waiting in queue %s</source>
+        <translation>Odoslané na servicenode, čaká vo fronte %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4131,20 +4131,20 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Synchronizujú sa rozpočty...</translation>
     </message>
     <message>
-        <source>Synchronizing dynode winners...</source>
-        <translation>Synchronizujú sa dynode víťazi...</translation>
+        <source>Synchronizing servicenode winners...</source>
+        <translation>Synchronizujú sa servicenode víťazi...</translation>
     </message>
     <message>
-        <source>Synchronizing dynodes...</source>
-        <translation>Synchronizujú sa dynode...</translation>
+        <source>Synchronizing servicenodes...</source>
+        <translation>Synchronizujú sa servicenode...</translation>
     </message>
     <message>
         <source>Synchronizing sporks...</source>
         <translation>Synchronizujú sa sporky...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>Toto nie je Dynode.</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>Toto nie je ServiceNode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4155,8 +4155,8 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Použiť integráciu KeePass 2 s využitím doplnku KeePassHttp (predvolené: %u)</translation>
     </message>
     <message>
-        <source>Use N separate dynodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Použiť N rozdielnych dynode na anonymizovanie zdrojov (2-8, predvolené: %u)</translation>
+        <source>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Použiť N rozdielnych servicenode na anonymizovanie zdrojov (2-8, predvolené: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4179,32 +4179,32 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Skúsime znovu...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>Neplatný dynodepairingkey. Prosím pozrite do dokumentácie.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>Neplatný servicenodepairingkey. Prosím pozrite do dokumentácie.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(pre hlavnú sieť musí byť 33300)</translation>
     </message>
     <message>
-        <source>Can't find random Dynode.</source>
-        <translation>Nedá sa nájsť náhodný Dynode.</translation>
+        <source>Can't find random ServiceNode.</source>
+        <translation>Nedá sa nájsť náhodný ServiceNode.</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
         <translation>Miešanie nefunguje počas synchronizácie.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation>Nedá sa analyzovať dynode.conf</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>Nedá sa analyzovať servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: '%s'</source>
         <translation>Nadaná neplatná netmask vo -whitelist: '%s'</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>Zistený neplatný port v dynode.conf</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>Zistený neplatný port v servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4255,16 +4255,16 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Načítavanie peňaženky...</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Možnosti Dynode:</translation>
+        <source>ServiceNode options:</source>
+        <translation>Možnosti ServiceNode:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>Fronta Dynode je plná</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>Fronta ServiceNode je plná</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4367,8 +4367,8 @@ napríklad: alertnotify=echo %%s | mail -s "Dynamic Upozornenie" admin@foo.com
         <translation>Nastaviť maximálnu veľkosť v bajtoch (predvolené: %d)</translation>
     </message>
     <message>
-        <source>Set the dynode private key</source>
-        <translation>Nastaviť súkromný kľúč dynode</translation>
+        <source>Set the servicenode private key</source>
+        <translation>Nastaviť súkromný kľúč servicenode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

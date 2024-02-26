@@ -1090,18 +1090,18 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 2 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Use 2 separate dynodes to mix funds up to 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Use 2 separate servicenodes to mix funds up to 1000 DYN</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 8 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Use 8 separate dynodes to mix funds up to 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Use 8 separate servicenodes to mix funds up to 1000 DYN</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 16 separate dynodes</source>
-        <translation>Use 16 separate dynodes</translation>
+        <source>Use 16 separate servicenodes</source>
+        <translation>Use 16 separate servicenodes</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1323,11 +1323,11 @@ You retain control of your money at all times.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend begins by breaking your transaction inputs down into standard denominations.
 These denominations are 0.001, 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN -- sort of like the paper money you use every day.&lt;/li&gt;
-&lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called &#39;Dynodes&#39;.
-These Dynodes are informed then that you are interested in mixing a certain denomination.
-No identifiable information is sent to the Dynodes, so they never know &#39;who&#39; you are.&lt;/li&gt;
+&lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called &#39;ServiceNodes&#39;.
+These ServiceNodes are informed then that you are interested in mixing a certain denomination.
+No identifiable information is sent to the ServiceNodes, so they never know &#39;who&#39; you are.&lt;/li&gt;
 &lt;li&gt;When two other people send similar messages, indicating that they wish to mix the same denomination, a mixing session begins.
-The Dynode mixes up the inputs and instructs all three users&#39; wallets to pay the now-transformed input back to themselves.
+The ServiceNode mixes up the inputs and instructs all three users&#39; wallets to pay the now-transformed input back to themselves.
 Your wallet pays that denomination directly to itself, but in a different address (called a change address).&lt;/li&gt;
 &lt;li&gt;In order to fully obscure your funds, your wallet must repeat this process a number of times with each denomination.
 Each time the process is completed, it&#39;s called a &#39;round&#39;. Each round of PrivateSend makes it exponentially more difficult to determine where your funds originated.&lt;/li&gt;
@@ -1587,8 +1587,8 @@ Consequently, users who have backups disabled will also have PrivateSend disable
     </message>
     <message>
         <location line="-74"/>
-        <source>This setting determines the amount of individual dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>This setting determines the amount of individual dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</translation>
+        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</translation>
     </message>
     <message>
         <location line="+80"/>
@@ -1930,8 +1930,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
     </message>
     <message>
         <location line="-469"/>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</translation>
     </message>
     <message>
         <location line="+501"/>
@@ -2415,8 +2415,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
     </message>
     <message>
         <location line="+289"/>
-        <source>Number of Dynodes</source>
-        <translation>Number of Dynodes</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>Number of ServiceNodes</translation>
     </message>
     <message>
         <location line="+34"/>
@@ -4478,8 +4478,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4728,8 +4728,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4985,13 +4985,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+5"/>
-        <source>Enable the client to act as a dynode (0-1, default: %u)</source>
-        <translation>Enable the client to act as a dynode (0-1, default: %u)</translation>
+        <source>Enable the client to act as a servicenode (0-1, default: %u)</source>
+        <translation>Enable the client to act as a servicenode (0-1, default: %u)</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Error connecting to Dynode.</source>
-        <translation>Error connecting to Dynode.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Error connecting to ServiceNode.</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -5165,13 +5165,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+1"/>
-        <source>Loading dynode cache...</source>
-        <translation>Loading dynode cache...</translation>
+        <source>Loading servicenode cache...</source>
+        <translation>Loading servicenode cache...</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Loading dynode payment cache...</source>
-        <translation>Loading dynode payment cache...</translation>
+        <source>Loading servicenode payment cache...</source>
+        <translation>Loading servicenode payment cache...</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5180,8 +5180,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+1"/>
-        <source>Lock dynodes from dynode configuration file (default: %u)</source>
-        <translation>Lock dynodes from dynode configuration file (default: %u)</translation>
+        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
+        <translation>Lock servicenodes from servicenode configuration file (default: %u)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5210,18 +5210,18 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+1"/>
-        <source>No Dynodes detected.</source>
-        <translation>No Dynodes detected.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>No ServiceNodes detected.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>No compatible Dynode found.</source>
-        <translation>No compatible Dynode found.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>No compatible ServiceNode found.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Not in the Dynode list.</source>
-        <translation>Not in the Dynode list.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Not in the ServiceNode list.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5270,8 +5270,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+4"/>
-        <source>Set external address:port to get to this dynode (example: %s)</source>
-        <translation>Set external address:port to get to this dynode (example: %s)</translation>
+        <source>Set external address:port to get to this servicenode (example: %s)</source>
+        <translation>Set external address:port to get to this servicenode (example: %s)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5310,8 +5310,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify dynode configuration file (default: %s)</source>
-        <translation>Specify dynode configuration file (default: %s)</translation>
+        <source>Specify servicenode configuration file (default: %s)</source>
+        <translation>Specify servicenode configuration file (default: %s)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5330,18 +5330,18 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+1"/>
-        <source>Submitted following entries to dynode: %u / %d</source>
-        <translation>Submitted following entries to dynode: %u / %d</translation>
+        <source>Submitted following entries to servicenode: %u / %d</source>
+        <translation>Submitted following entries to servicenode: %u / %d</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Submitted to dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Submitted to dynode, waiting for more entries ( %u / %d ) %s</translation>
+        <source>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Submitted to dynode, waiting in queue %s</source>
-        <translation>Submitted to dynode, waiting in queue %s</translation>
+        <source>Submitted to servicenode, waiting in queue %s</source>
+        <translation>Submitted to servicenode, waiting in queue %s</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5360,13 +5360,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+1"/>
-        <source>Synchronizing dynode winners...</source>
-        <translation>Synchronizing dynode winners...</translation>
+        <source>Synchronizing servicenode winners...</source>
+        <translation>Synchronizing servicenode winners...</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Synchronizing dynodes...</source>
-        <translation>Synchronizing dynodes...</translation>
+        <source>Synchronizing servicenodes...</source>
+        <translation>Synchronizing servicenodes...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5375,8 +5375,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+4"/>
-        <source>This is not a Dynode.</source>
-        <translation>This is not a Dynode.</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>This is not a ServiceNode.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5390,8 +5390,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+1"/>
-        <source>Use N separate dynodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Use N separate dynodes to anonymize funds  (2-8, default: %u)</translation>
+        <source>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -5420,8 +5420,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="-136"/>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>Invalid dynodepairingkey. Please see documenation.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>Invalid servicenodepairingkey. Please see documenation.</translation>
     </message>
     <message>
         <location line="-88"/>
@@ -5430,8 +5430,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+13"/>
-        <source>Can&apos;t find random Dynode.</source>
-        <translation>Can&apos;t find random Dynode.</translation>
+        <source>Can&apos;t find random ServiceNode.</source>
+        <translation>Can&apos;t find random ServiceNode.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5440,8 +5440,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+16"/>
-        <source>Could not parse dynode.conf</source>
-        <translation>Could not parse dynode.conf</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>Could not parse servicenode.conf</translation>
     </message>
     <message>
         <location line="+59"/>
@@ -5450,8 +5450,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+1"/>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>Invalid port detected in dynode.conf</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>Invalid port detected in servicenode.conf</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5515,18 +5515,18 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+4"/>
-        <source>Dynode options:</source>
-        <translation>Dynode options:</translation>
+        <source>ServiceNode options:</source>
+        <translation>ServiceNode options:</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Dynode queue is full.</source>
-        <translation>Dynode queue is full.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>ServiceNode queue is full.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5655,8 +5655,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Dynamic Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+2"/>
-        <source>Set the dynode private key</source>
-        <translation>Set the dynode private key</translation>
+        <source>Set the servicenode private key</source>
+        <translation>Set the servicenode private key</translation>
     </message>
     <message>
         <location line="+3"/>

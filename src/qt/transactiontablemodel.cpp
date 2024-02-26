@@ -364,7 +364,7 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
     case TransactionRecord::SendToSelf:
         return tr("Payment to yourself");
     case TransactionRecord::DNReward:
-        return tr("Dynode Reward");
+        return tr("ServiceNode Reward");
     case TransactionRecord::Generated:
         return tr("Mined");
     case TransactionRecord::NewDomainUser:
@@ -412,7 +412,7 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     case TransactionRecord::Fluid:
         return QIcon(":/icons/" + theme + "/fluid");
     case TransactionRecord::DNReward:
-        return QIcon(":/icons/" + theme + "/dynode_network");
+        return QIcon(":/icons/" + theme + "/servicenode_network");
     case TransactionRecord::Generated:
         return QIcon(":/icons/" + theme + "/tx_mined");
     case TransactionRecord::RecvWithPrivateSend:
@@ -711,9 +711,9 @@ QVariant TransactionTableModel::data(const QModelIndex& index, int role) const
         if (rec->type == TransactionRecord::Fluid) {
             return COLOR_FLUID_TX;
         }
-        // Dynode Rewards
+        // ServiceNode Rewards
         if (rec->type == TransactionRecord::DNReward) {
-                return COLOR_DYNODE_REWARD;
+                return COLOR_SERVICENODE_REWARD;
         }
         // Generated Rewards
         if (rec->type == TransactionRecord::Generated) {

@@ -3,13 +3,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "dynode-payments.h"
+#include "servicenode-payments.h"
 
-#include "activedynode.h"
+#include "activeservicenode.h"
 #include "chain.h"
 #include "consensus/validation.h"
-#include "dynode-sync.h"
-#include "dynodeman.h"
+#include "servicenode-sync.h"
+#include "servicenodeman.h"
 #include "fluid/fluiddb.h"
 #include "governance-classes.h"
 #include "init.h"
@@ -24,11 +24,11 @@
 #include <boost/lexical_cast.hpp>
 
 /** Object for who's going to get paid on which blocks */
-CDynodePayments dnpayments;
+CServiceNodePayments dnpayments;
 
 CCriticalSection cs_vecPayees;
-CCriticalSection cs_mapDynodeBlocks;
-CCriticalSection cs_mapDynodePaymentVotes;
+CCriticalSection cs_mapServiceNodeBlocks;
+CCriticalSection cs_mapServiceNodePaymentVotes;
 
 /**
 * IsBlockValueValid
@@ -56,7 +56,7 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
         int nOffset = nBlockHeight % consensusParams.nBudgetPaymentsCycleBlocks;
         if (nBlockHeight >= consensusParams.nBudgetPaymentsStartBlock &&
             nOffset < consensusParams.nBudgetPaymentsWindowBlocks) {
-            if (dynodeSync.IsSynced() && !sporkManager.IsSporkActive(SPORK_13_OLD_SUPERBLOCK_FLAG)) {
+            if (servicenodeSync.IsSynced() && !sporkManager.IsSporkActive(SPORK_13_OLD_SUPERBLOCK_FLAG)) {
                 LogPrint("gobject", "IsBlockValueValid -- Client synced but budget spork is disabled, checking block value against block reward\n");
                 if (!isBlockRewardValueMet) {
                     strErrorRet = strprintf("coinbase pays too much at height %d (actual=%d vs limit=%d), exceeded block reward, budgets are disabled",
@@ -83,7 +83,7 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
 
     LogPrint("gobject", "block.vtx[0].GetValueOut() %lld <= nSuperblockMaxValue %lld\n", block.vtx[0]->GetValueOut(), nSuperblockMaxValue);
 
-    if (!dynodeSync.IsSynced()) {
+    if (!servicenodeSync.IsSynced()) {
         // not enough data but at least it must NOT exceed superblock max value
         if (CSuperblock::IsValidBlockHeight(nBlockHeight)) {
             LogPrint("gobject", "IsBlockPayeeValid -- WARNING: Client not synced, checking superblock max bounds only\n");
@@ -137,14 +137,14 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
 
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
 {
-    if (!dynodeSync.IsSynced()) {
+    if (!servicenodeSync.IsSynced()) {
         //there is no budget data to use to check anything, let's just accept the longest chain
         LogPrint("dnpayments", "IsBlockPayeeValid -- WARNING: Client not synced, skipping block payee checks\n");
         return true;
     }
 
     // we are still using budgets, but we have no data about them anymore,
-    // we can only check dynode payments
+    // we can only check servicenode payments
 
     const Consensus::Params& consensusParams = Params().GetConsensus();
 
@@ -174,22 +174,22 @@ bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount bloc
         LogPrint("gobject", "IsBlockPayeeValid -- Superblocks are disabled, no superblocks allowed\n");
     }
 
-    // IF THIS ISN'T A SUPERBLOCK OR SUPERBLOCK IS INVALID, IT SHOULD PAY A DYNODE DIRECTLY
+    // IF THIS ISN'T A SUPERBLOCK OR SUPERBLOCK IS INVALID, IT SHOULD PAY A SERVICENODE DIRECTLY
     if (dnpayments.IsTransactionValid(txNew, nBlockHeight)) {
-        LogPrint("dnpayments", "IsBlockPayeeValid -- Valid dynode payment at height %d: %s", nBlockHeight, txNew.ToString());
+        LogPrint("dnpayments", "IsBlockPayeeValid -- Valid servicenode payment at height %d: %s", nBlockHeight, txNew.ToString());
         return true;
     }
 
-    if (sporkManager.IsSporkActive(SPORK_8_DYNODE_PAYMENT_ENFORCEMENT)) {
-        LogPrintf("IsBlockPayeeValid -- ERROR: Invalid dynode payment detected at height %d: %s", nBlockHeight, txNew.ToString());
+    if (sporkManager.IsSporkActive(SPORK_8_SERVICENODE_PAYMENT_ENFORCEMENT)) {
+        LogPrintf("IsBlockPayeeValid -- ERROR: Invalid servicenode payment detected at height %d: %s", nBlockHeight, txNew.ToString());
         return false;
     }
 
-    LogPrintf("IsBlockPayeeValid -- WARNING: Dynode payment enforcement is disabled, accepting any payee\n");
+    LogPrintf("IsBlockPayeeValid -- WARNING: ServiceNode payment enforcement is disabled, accepting any payee\n");
     return true;
 }
 
-void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutDynodeRet, std::vector<CTxOut>& voutSuperblockRet)
+void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutServiceNodeRet, std::vector<CTxOut>& voutSuperblockRet)
 {
     // only create superblocks if spork is enabled AND if superblock is actually triggered
     // (height should be validated inside)
@@ -201,10 +201,10 @@ void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blo
     }
 
 
-    // FILL BLOCK PAYEE WITH DYNODE PAYMENT OTHERWISE
-    dnpayments.FillBlockPayee(txNew, nBlockHeight, blockReward, txoutDynodeRet);
-    LogPrint("dnpayments", "FillBlockPayments -- nBlockHeight %d blockReward %lld txoutDynodeRet %s txNew %s",
-        nBlockHeight, blockReward, txoutDynodeRet.ToString(), txNew.ToString());
+    // FILL BLOCK PAYEE WITH SERVICENODE PAYMENT OTHERWISE
+    dnpayments.FillBlockPayee(txNew, nBlockHeight, blockReward, txoutServiceNodeRet);
+    LogPrint("dnpayments", "FillBlockPayments -- nBlockHeight %d blockReward %lld txoutServiceNodeRet %s txNew %s",
+        nBlockHeight, blockReward, txoutServiceNodeRet.ToString(), txNew.ToString());
 }
 
 std::string GetRequiredPaymentsString(int nBlockHeight)
@@ -214,56 +214,56 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
         return CSuperblockManager::GetRequiredPaymentsString(nBlockHeight);
     }
 
-    // OTHERWISE, PAY DYNODE
+    // OTHERWISE, PAY SERVICENODE
     return dnpayments.GetRequiredPaymentsString(nBlockHeight);
 }
 
-void CDynodePayments::Clear()
+void CServiceNodePayments::Clear()
 {
-    LOCK2(cs_mapDynodeBlocks, cs_mapDynodePaymentVotes);
-    mapDynodeBlocks.clear();
-    mapDynodePaymentVotes.clear();
+    LOCK2(cs_mapServiceNodeBlocks, cs_mapServiceNodePaymentVotes);
+    mapServiceNodeBlocks.clear();
+    mapServiceNodePaymentVotes.clear();
 }
 
-bool CDynodePayments::UpdateLastVote(const CDynodePaymentVote& vote)
+bool CServiceNodePayments::UpdateLastVote(const CServiceNodePaymentVote& vote)
 {
-    LOCK(cs_mapDynodePaymentVotes);
+    LOCK(cs_mapServiceNodePaymentVotes);
 
-    const auto it = mapDynodesLastVote.find(vote.dynodeOutpoint);
-    if (it != mapDynodesLastVote.end()) {
+    const auto it = mapServiceNodesLastVote.find(vote.servicenodeOutpoint);
+    if (it != mapServiceNodesLastVote.end()) {
         if (it->second == vote.nBlockHeight)
             return false;
         it->second = vote.nBlockHeight;
         return true;
     }
 
-    //record this dynode voted
-    mapDynodesLastVote.emplace(vote.dynodeOutpoint, vote.nBlockHeight);
+    //record this servicenode voted
+    mapServiceNodesLastVote.emplace(vote.servicenodeOutpoint, vote.nBlockHeight);
     return true;
 }
 
 /**
 *   FillBlockPayee
 *
-*   Fill Dynode ONLY payment block
+*   Fill ServiceNode ONLY payment block
 */
 
-void CDynodePayments::FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutDynodeRet) const
+void CServiceNodePayments::FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutServiceNodeRet) const
 {
     // make sure it's not filled yet
-    txoutDynodeRet = CTxOut();
+    txoutServiceNodeRet = CTxOut();
 
     CScript payee;
 
     bool hasPayment = true;
 
     if (hasPayment && !dnpayments.GetBlockPayee(nBlockHeight, payee)) {
-        // no dynode detected...
+        // no servicenode detected...
         int nCount = 0;
-        dynode_info_t dnInfo;
-        if (!dnodeman.GetNextDynodeInQueueForPayment(nBlockHeight, true, nCount, dnInfo)) {
+        servicenode_info_t dnInfo;
+        if (!dnodeman.GetNextServiceNodeInQueueForPayment(nBlockHeight, true, nCount, dnInfo)) {
             hasPayment = false;
-            LogPrintf("CDynodePayments::FillBlockPayee: Failed to detect Dynode to pay\n");
+            LogPrintf("CServiceNodePayments::FillBlockPayee: Failed to detect ServiceNode to pay\n");
             return;
         }
         // fill payee with locally calculated winner and hope for the best
@@ -271,42 +271,42 @@ void CDynodePayments::FillBlockPayee(CMutableTransaction& txNew, int nBlockHeigh
     }
 
     // make sure it's not filled yet
-    txoutDynodeRet = CTxOut();
-    CAmount dynodePayment = GetFluidDynodeReward(nBlockHeight);
+    txoutServiceNodeRet = CTxOut();
+    CAmount servicenodePayment = GetFluidServiceNodeReward(nBlockHeight);
 
     // split reward between miner ...
-    txoutDynodeRet = CTxOut(dynodePayment, payee);
-    txNew.vout.push_back(txoutDynodeRet);
-    // ... and dynode
+    txoutServiceNodeRet = CTxOut(servicenodePayment, payee);
+    txNew.vout.push_back(txoutServiceNodeRet);
+    // ... and servicenode
     CTxDestination address1;
     ExtractDestination(payee, address1);
     CDynamicAddress address2(address1);
 
-    LogPrintf("CDynodePayments::FillBlockPayee -- Dynode payment %ld to %s\n", FormatMoney(dynodePayment), address2.ToString());
+    LogPrintf("CServiceNodePayments::FillBlockPayee -- ServiceNode payment %ld to %s\n", FormatMoney(servicenodePayment), address2.ToString());
 }
 
-int CDynodePayments::GetMinDynodePaymentsProto() const
+int CServiceNodePayments::GetMinServiceNodePaymentsProto() const
 {
-    return sporkManager.IsSporkActive(SPORK_10_DYNODE_PAY_UPDATED_NODES) ? MIN_DYNODE_PAYMENT_PROTO_VERSION_2 : MIN_DYNODE_PAYMENT_PROTO_VERSION_1;
+    return sporkManager.IsSporkActive(SPORK_10_SERVICENODE_PAY_UPDATED_NODES) ? MIN_SERVICENODE_PAYMENT_PROTO_VERSION_2 : MIN_SERVICENODE_PAYMENT_PROTO_VERSION_1;
 }
 
-void CDynodePayments::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+void CServiceNodePayments::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if (fLiteMode)
         return; // disable all Dynamic specific functionality
 
-    if (strCommand == NetMsgType::DYNODEPAYMENTSYNC) { //Dynode Payments Request Sync
+    if (strCommand == NetMsgType::SERVICENODEPAYMENTSYNC) { //ServiceNode Payments Request Sync
 
-        if (pfrom->nVersion < GetMinDynodePaymentsProto()) {
-            LogPrint("dnpayments", "DYNODEPAYMENTSYNC -- peer=%d using obsolete version %i\n", pfrom->id, pfrom->nVersion);
-            connman.PushMessage(pfrom, CNetMsgMaker(pfrom->GetSendVersion()).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", GetMinDynodePaymentsProto())));
+        if (pfrom->nVersion < GetMinServiceNodePaymentsProto()) {
+            LogPrint("dnpayments", "SERVICENODEPAYMENTSYNC -- peer=%d using obsolete version %i\n", pfrom->id, pfrom->nVersion);
+            connman.PushMessage(pfrom, CNetMsgMaker(pfrom->GetSendVersion()).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", GetMinServiceNodePaymentsProto())));
             return;
         }
 
         // Ignore such requests until we are fully synced.
-        // We could start processing this after Dynode list is synced
+        // We could start processing this after ServiceNode list is synced
         // but this is a heavy one so it's better to finish sync first.
-        if (!dynodeSync.IsSynced())
+        if (!servicenodeSync.IsSynced())
             return;
 
         // DEPRECATED, should be removed on next protocol bump
@@ -316,26 +316,26 @@ void CDynodePayments::ProcessMessage(CNode* pfrom, const std::string& strCommand
         }
 
 
-        if (netfulfilledman.HasFulfilledRequest(pfrom->addr, NetMsgType::DYNODEPAYMENTSYNC)) {
+        if (netfulfilledman.HasFulfilledRequest(pfrom->addr, NetMsgType::SERVICENODEPAYMENTSYNC)) {
             // Asking for the payments list multiple times in a short period of time is no good
-            LogPrintf("DYNODEPAYMENTSYNC -- peer already asked me for the list, peer=%d\n", pfrom->id);
+            LogPrintf("SERVICENODEPAYMENTSYNC -- peer already asked me for the list, peer=%d\n", pfrom->id);
             Misbehaving(pfrom->GetId(), 20);
             return;
         }
 
-        netfulfilledman.AddFulfilledRequest(pfrom->addr, NetMsgType::DYNODEPAYMENTSYNC);
+        netfulfilledman.AddFulfilledRequest(pfrom->addr, NetMsgType::SERVICENODEPAYMENTSYNC);
 
         Sync(pfrom, connman);
-        LogPrintf("DYNODEPAYMENTSYNC -- Sent Dynode payment votes to peer %d\n", pfrom->id);
+        LogPrintf("SERVICENODEPAYMENTSYNC -- Sent ServiceNode payment votes to peer %d\n", pfrom->id);
 
-    } else if (strCommand == NetMsgType::DYNODEPAYMENTVOTE) { // Dynode Payments Vote for the Winner
+    } else if (strCommand == NetMsgType::SERVICENODEPAYMENTVOTE) { // ServiceNode Payments Vote for the Winner
 
-        CDynodePaymentVote vote;
+        CServiceNodePaymentVote vote;
         vRecv >> vote;
 
-        if (pfrom->nVersion < GetMinDynodePaymentsProto()) {
-            LogPrint("dnpayments", "DYNODEPAYMENTVOTE -- peer=%d using obsolete version %i\n", pfrom->id, pfrom->nVersion);
-            connman.PushMessage(pfrom, CNetMsgMaker(pfrom->GetSendVersion()).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", GetMinDynodePaymentsProto())));
+        if (pfrom->nVersion < GetMinServiceNodePaymentsProto()) {
+            LogPrint("dnpayments", "SERVICENODEPAYMENTVOTE -- peer=%d using obsolete version %i\n", pfrom->id, pfrom->nVersion);
+            connman.PushMessage(pfrom, CNetMsgMaker(pfrom->GetSendVersion()).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", GetMinServiceNodePaymentsProto())));
             return;
         }
 
@@ -343,20 +343,20 @@ void CDynodePayments::ProcessMessage(CNode* pfrom, const std::string& strCommand
 
         pfrom->setAskFor.erase(nHash);
 
-        // TODO: clear setAskFor for MSG_DYNODE_PAYMENT_BLOCK too
+        // TODO: clear setAskFor for MSG_SERVICENODE_PAYMENT_BLOCK too
 
-        // Ignore any payments messages until dynode list is synced
-        if (!dynodeSync.IsDynodeListSynced())
+        // Ignore any payments messages until servicenode list is synced
+        if (!servicenodeSync.IsServiceNodeListSynced())
             return;
 
         {
-            LOCK(cs_mapDynodePaymentVotes);
+            LOCK(cs_mapServiceNodePaymentVotes);
 
-            auto res = mapDynodePaymentVotes.emplace(nHash, vote);
+            auto res = mapServiceNodePaymentVotes.emplace(nHash, vote);
 
             // Avoid processing same vote multiple times if it was already verified earlier
             if (!res.second && res.first->second.IsVerified()) {
-                LogPrint("dnpayments", "DYNODEPAYMENTVOTE -- hash=%s, nBlockHeight=%d/%d seen\n",
+                LogPrint("dnpayments", "SERVICENODEPAYMENTVOTE -- hash=%s, nBlockHeight=%d/%d seen\n",
                     nHash.ToString(), vote.nBlockHeight, nCachedBlockHeight);
                 return;
             }
@@ -368,37 +368,37 @@ void CDynodePayments::ProcessMessage(CNode* pfrom, const std::string& strCommand
 
         int nFirstBlock = nCachedBlockHeight - GetStorageLimit();
         if (vote.nBlockHeight < nFirstBlock || vote.nBlockHeight > nCachedBlockHeight + 20) {
-            LogPrint("dnpayments", "DYNODEPAYMENTVOTE -- vote out of range: nFirstBlock=%d, nBlockHeight=%d, nHeight=%d\n", nFirstBlock, vote.nBlockHeight, nCachedBlockHeight);
+            LogPrint("dnpayments", "SERVICENODEPAYMENTVOTE -- vote out of range: nFirstBlock=%d, nBlockHeight=%d, nHeight=%d\n", nFirstBlock, vote.nBlockHeight, nCachedBlockHeight);
             return;
         }
 
         std::string strError = "";
         if (!vote.IsValid(pfrom, nCachedBlockHeight, strError, connman)) {
-            LogPrint("dnpayments", "DYNODEPAYMENTVOTE -- invalid message, error: %s\n", strError);
+            LogPrint("dnpayments", "SERVICENODEPAYMENTVOTE -- invalid message, error: %s\n", strError);
             return;
         }
 
-        dynode_info_t dnInfo;
-        if (!dnodeman.GetDynodeInfo(vote.dynodeOutpoint, dnInfo)) {
+        servicenode_info_t dnInfo;
+        if (!dnodeman.GetServiceNodeInfo(vote.servicenodeOutpoint, dnInfo)) {
             // dn was not found, so we can't check vote, some info is probably missing
-            LogPrintf("DYNODEPAYMENTVOTE -- Dynode is missing %s\n", vote.dynodeOutpoint.ToStringShort());
-            dnodeman.AskForDN(pfrom, vote.dynodeOutpoint, connman);
+            LogPrintf("SERVICENODEPAYMENTVOTE -- ServiceNode is missing %s\n", vote.servicenodeOutpoint.ToStringShort());
+            dnodeman.AskForDN(pfrom, vote.servicenodeOutpoint, connman);
             return;
         }
 
         int nDos = 0;
-        if (!vote.CheckSignature(dnInfo.pubKeyDynode, nCachedBlockHeight, nDos)) {
+        if (!vote.CheckSignature(dnInfo.pubKeyServiceNode, nCachedBlockHeight, nDos)) {
             if (nDos) {
                 LOCK(cs_main);
-                LogPrintf("DYNODEPAYMENTVOTE -- ERROR: invalid signature\n");
+                LogPrintf("SERVICENODEPAYMENTVOTE -- ERROR: invalid signature\n");
                 Misbehaving(pfrom->GetId(), nDos);
             } else {
                 // only warn about anything non-critical (i.e. nDos == 0) in debug mode
-                LogPrint("dnpayments", "DYNODEPAYMENTVOTE -- WARNING: invalid signature\n");
+                LogPrint("dnpayments", "SERVICENODEPAYMENTVOTE -- WARNING: invalid signature\n");
             }
             // Either our info or vote info could be outdated.
             // In case our info is outdated, ask for an update,
-            dnodeman.AskForDN(pfrom, vote.dynodeOutpoint, connman);
+            dnodeman.AskForDN(pfrom, vote.servicenodeOutpoint, connman);
             // but there is nothing we can do if vote info itself is outdated
             // (i.e. it was signed by a DN which changed its key),
             // so just quit here.
@@ -406,7 +406,7 @@ void CDynodePayments::ProcessMessage(CNode* pfrom, const std::string& strCommand
         }
 
         if (!UpdateLastVote(vote)) {
-            LogPrintf("DYNODEPAYMENTVOTE -- dynode already voted, dynode=%s\n", vote.dynodeOutpoint.ToStringShort());
+            LogPrintf("SERVICENODEPAYMENTVOTE -- servicenode already voted, servicenode=%s\n", vote.servicenodeOutpoint.ToStringShort());
             return;
         }
 
@@ -414,60 +414,60 @@ void CDynodePayments::ProcessMessage(CNode* pfrom, const std::string& strCommand
         ExtractDestination(vote.payee, address1);
         CDynamicAddress address2(address1);
 
-        LogPrint("dnpayments", "DYNODEPAYMENTVOTE -- vote: address=%s, nBlockHeight=%d, nHeight=%d, prevout=%s, hash=%s new\n",
-            address2.ToString(), vote.nBlockHeight, nCachedBlockHeight, vote.dynodeOutpoint.ToStringShort(), nHash.ToString());
+        LogPrint("dnpayments", "SERVICENODEPAYMENTVOTE -- vote: address=%s, nBlockHeight=%d, nHeight=%d, prevout=%s, hash=%s new\n",
+            address2.ToString(), vote.nBlockHeight, nCachedBlockHeight, vote.servicenodeOutpoint.ToStringShort(), nHash.ToString());
 
         if (AddOrUpdatePaymentVote(vote)) {
             vote.Relay(connman);
-            dynodeSync.BumpAssetLastTime("DYNODEPAYMENTVOTE");
+            servicenodeSync.BumpAssetLastTime("SERVICENODEPAYMENTVOTE");
         }
     }
 }
 
-uint256 CDynodePaymentVote::GetHash() const
+uint256 CServiceNodePaymentVote::GetHash() const
 {
     // Note: doesn't match serialization
 
     CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
     ss << *(CScriptBase*)(&payee);
     ss << nBlockHeight;
-    ss << dynodeOutpoint;
+    ss << servicenodeOutpoint;
     return ss.GetHash();
 }
 
-uint256 CDynodePaymentVote::GetSignatureHash() const
+uint256 CServiceNodePaymentVote::GetSignatureHash() const
 {
     return SerializeHash(*this);
 }
 
-bool CDynodePaymentVote::Sign()
+bool CServiceNodePaymentVote::Sign()
 {
     std::string strError;
 
     if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
         uint256 hash = GetSignatureHash();
 
-        if (!CHashSigner::SignHash(hash, activeDynode.keyDynode, vchSig)) {
-            LogPrintf("CDynodePaymentVote::Sign -- SignHash() failed\n");
+        if (!CHashSigner::SignHash(hash, activeServiceNode.keyServiceNode, vchSig)) {
+            LogPrintf("CServiceNodePaymentVote::Sign -- SignHash() failed\n");
             return false;
         }
 
-        if (!CHashSigner::VerifyHash(hash, activeDynode.pubKeyDynode, vchSig, strError)) {
-            LogPrintf("CDynodePaymentVote::Sign -- VerifyHash() failed, error: %s\n", strError);
+        if (!CHashSigner::VerifyHash(hash, activeServiceNode.pubKeyServiceNode, vchSig, strError)) {
+            LogPrintf("CServiceNodePaymentVote::Sign -- VerifyHash() failed, error: %s\n", strError);
             return false;
         }
     } else {
-        std::string strMessage = dynodeOutpoint.ToStringShort() +
+        std::string strMessage = servicenodeOutpoint.ToStringShort() +
                                  std::to_string(nBlockHeight) +
                                  ScriptToAsmStr(payee);
 
-        if (!CMessageSigner::SignMessage(strMessage, vchSig, activeDynode.keyDynode)) {
-            LogPrintf("CDynodePaymentVote::Sign -- SignMessage() failed\n");
+        if (!CMessageSigner::SignMessage(strMessage, vchSig, activeServiceNode.keyServiceNode)) {
+            LogPrintf("CServiceNodePaymentVote::Sign -- SignMessage() failed\n");
             return false;
         }
 
-        if (!CMessageSigner::VerifyMessage(activeDynode.pubKeyDynode, vchSig, strMessage, strError)) {
-            LogPrintf("CDynodePaymentVote::Sign -- VerifyMessage() failed, error: %s\n", strError);
+        if (!CMessageSigner::VerifyMessage(activeServiceNode.pubKeyServiceNode, vchSig, strMessage, strError)) {
+            LogPrintf("CServiceNodePaymentVote::Sign -- VerifyMessage() failed, error: %s\n", strError);
             return false;
         }
     }
@@ -475,21 +475,21 @@ bool CDynodePaymentVote::Sign()
     return true;
 }
 
-bool CDynodePayments::GetBlockPayee(int nBlockHeight, CScript& payeeRet) const
+bool CServiceNodePayments::GetBlockPayee(int nBlockHeight, CScript& payeeRet) const
 {
-    LOCK(cs_mapDynodeBlocks);
+    LOCK(cs_mapServiceNodeBlocks);
 
-    auto it = mapDynodeBlocks.find(nBlockHeight);
-    return it != mapDynodeBlocks.end() && it->second.GetBestPayee(payeeRet);
+    auto it = mapServiceNodeBlocks.find(nBlockHeight);
+    return it != mapServiceNodeBlocks.end() && it->second.GetBestPayee(payeeRet);
 }
 
-// Is this Dynode scheduled to get paid soon?
+// Is this ServiceNode scheduled to get paid soon?
 // -- Only look ahead up to 8 blocks to allow for propagation of the latest 2 blocks of votes
-bool CDynodePayments::IsScheduled(const dynode_info_t& dnInfo, int nNotBlockHeight) const
+bool CServiceNodePayments::IsScheduled(const servicenode_info_t& dnInfo, int nNotBlockHeight) const
 {
-    LOCK(cs_mapDynodeBlocks);
+    LOCK(cs_mapServiceNodeBlocks);
 
-    if (!dynodeSync.IsDynodeListSynced())
+    if (!servicenodeSync.IsServiceNodeListSynced())
         return false;
 
     CScript dnpayee;
@@ -507,7 +507,7 @@ bool CDynodePayments::IsScheduled(const dynode_info_t& dnInfo, int nNotBlockHeig
     return false;
 }
 
-bool CDynodePayments::AddOrUpdatePaymentVote(const CDynodePaymentVote& vote)
+bool CServiceNodePayments::AddOrUpdatePaymentVote(const CServiceNodePaymentVote& vote)
 {
     uint256 blockHash = uint256();
     if (!GetBlockHash(blockHash, vote.nBlockHeight - 101))
@@ -518,26 +518,26 @@ bool CDynodePayments::AddOrUpdatePaymentVote(const CDynodePaymentVote& vote)
     if (HasVerifiedPaymentVote(nVoteHash))
         return false;
 
-    LOCK2(cs_mapDynodeBlocks, cs_mapDynodePaymentVotes);
+    LOCK2(cs_mapServiceNodeBlocks, cs_mapServiceNodePaymentVotes);
 
-    mapDynodePaymentVotes[nVoteHash] = vote;
+    mapServiceNodePaymentVotes[nVoteHash] = vote;
 
-    auto it = mapDynodeBlocks.emplace(vote.nBlockHeight, CDynodeBlockPayees(vote.nBlockHeight)).first;
+    auto it = mapServiceNodeBlocks.emplace(vote.nBlockHeight, CServiceNodeBlockPayees(vote.nBlockHeight)).first;
     it->second.AddPayee(vote);
 
-    LogPrint("dnpayments", "CDynodePayments::AddOrUpdatePaymentVote -- added, hash=%s\n", nVoteHash.ToString());
+    LogPrint("dnpayments", "CServiceNodePayments::AddOrUpdatePaymentVote -- added, hash=%s\n", nVoteHash.ToString());
 
     return true;
 }
 
-bool CDynodePayments::HasVerifiedPaymentVote(const uint256& hashIn) const
+bool CServiceNodePayments::HasVerifiedPaymentVote(const uint256& hashIn) const
 {
-    LOCK(cs_mapDynodePaymentVotes);
-    const auto it = mapDynodePaymentVotes.find(hashIn);
-    return it != mapDynodePaymentVotes.end() && it->second.IsVerified();
+    LOCK(cs_mapServiceNodePaymentVotes);
+    const auto it = mapServiceNodePaymentVotes.find(hashIn);
+    return it != mapServiceNodePaymentVotes.end() && it->second.IsVerified();
 }
 
-void CDynodeBlockPayees::AddPayee(const CDynodePaymentVote& vote)
+void CServiceNodeBlockPayees::AddPayee(const CServiceNodePaymentVote& vote)
 {
     LOCK(cs_vecPayees);
 
@@ -549,16 +549,16 @@ void CDynodeBlockPayees::AddPayee(const CDynodePaymentVote& vote)
             return;
         }
     }
-    CDynodePayee payeeNew(vote.payee, nVoteHash);
+    CServiceNodePayee payeeNew(vote.payee, nVoteHash);
     vecPayees.push_back(payeeNew);
 }
 
-bool CDynodeBlockPayees::GetBestPayee(CScript& payeeRet) const
+bool CServiceNodeBlockPayees::GetBestPayee(CScript& payeeRet) const
 {
     LOCK(cs_vecPayees);
 
     if (!vecPayees.size()) {
-        LogPrint("dnpayments", "CDynodeBlockPayees::GetBestPayee -- ERROR: couldn't find any payee\n");
+        LogPrint("dnpayments", "CServiceNodeBlockPayees::GetBestPayee -- ERROR: couldn't find any payee\n");
         return false;
     }
 
@@ -573,7 +573,7 @@ bool CDynodeBlockPayees::GetBestPayee(CScript& payeeRet) const
     return (nVotes > -1);
 }
 
-bool CDynodeBlockPayees::HasPayeeWithVotes(const CScript& payeeIn, int nVotesReq) const
+bool CServiceNodeBlockPayees::HasPayeeWithVotes(const CScript& payeeIn, int nVotesReq) const
 {
     LOCK(cs_vecPayees);
 
@@ -583,17 +583,17 @@ bool CDynodeBlockPayees::HasPayeeWithVotes(const CScript& payeeIn, int nVotesReq
         }
     }
 
-    //LogPrint("dnpayments", "CDynodeBlockPayees::HasPayeeWithVotes -- ERROR: couldn't find any payee with %d+ votes\n", nVotesReq);
+    //LogPrint("dnpayments", "CServiceNodeBlockPayees::HasPayeeWithVotes -- ERROR: couldn't find any payee with %d+ votes\n", nVotesReq);
     return false;
 }
 
-bool CDynodeBlockPayees::IsTransactionValid(const CTransaction& txNew, const int nHeight) const
+bool CServiceNodeBlockPayees::IsTransactionValid(const CTransaction& txNew, const int nHeight) const
 {
     LOCK(cs_vecPayees);
 
     int nMaxSignatures = 0;
     std::string strPayeesPossible = "";
-    CAmount nDynodePayment = GetFluidDynodeReward(nHeight);
+    CAmount nServiceNodePayment = GetFluidServiceNodeReward(nHeight);
 
     //require at least DNPAYMENTS_SIGNATURES_REQUIRED signatures
 
@@ -610,8 +610,8 @@ bool CDynodeBlockPayees::IsTransactionValid(const CTransaction& txNew, const int
     for (const auto& payee : vecPayees) {
         if (payee.GetVoteCount() >= DNPAYMENTS_SIGNATURES_REQUIRED) {
             for (const auto& txout : txNew.vout) {
-                if (payee.GetPayee() == txout.scriptPubKey && nDynodePayment == txout.nValue) {
-                    LogPrint("dnpayments", "CDynodeBlockPayees::IsTransactionValid -- Found required payment\n");
+                if (payee.GetPayee() == txout.scriptPubKey && nServiceNodePayment == txout.nValue) {
+                    LogPrint("dnpayments", "CServiceNodeBlockPayees::IsTransactionValid -- Found required payment\n");
                     return true;
                 }
             }
@@ -628,11 +628,11 @@ bool CDynodeBlockPayees::IsTransactionValid(const CTransaction& txNew, const int
         }
     }
 
-    LogPrintf("CDynodeBlockPayees::IsTransactionValid -- ERROR: Missing required payment, possible payees: '%s', amount: %f DYN\n", strPayeesPossible, (float)nDynodePayment / COIN);
+    LogPrintf("CServiceNodeBlockPayees::IsTransactionValid -- ERROR: Missing required payment, possible payees: '%s', amount: %f DYN\n", strPayeesPossible, (float)nServiceNodePayment / COIN);
     return false;
 }
 
-std::string CDynodeBlockPayees::GetRequiredPaymentsString() const
+std::string CServiceNodeBlockPayees::GetRequiredPaymentsString() const
 {
     LOCK(cs_vecPayees);
 
@@ -655,55 +655,55 @@ std::string CDynodeBlockPayees::GetRequiredPaymentsString() const
     return strRequiredPayments;
 }
 
-std::string CDynodePayments::GetRequiredPaymentsString(int nBlockHeight) const
+std::string CServiceNodePayments::GetRequiredPaymentsString(int nBlockHeight) const
 {
-    LOCK(cs_mapDynodeBlocks);
+    LOCK(cs_mapServiceNodeBlocks);
 
-    const auto it = mapDynodeBlocks.find(nBlockHeight);
-    return it == mapDynodeBlocks.end() ? "Unknown" : it->second.GetRequiredPaymentsString();
+    const auto it = mapServiceNodeBlocks.find(nBlockHeight);
+    return it == mapServiceNodeBlocks.end() ? "Unknown" : it->second.GetRequiredPaymentsString();
 }
 
-bool CDynodePayments::IsTransactionValid(const CTransaction& txNew, int nBlockHeight) const
+bool CServiceNodePayments::IsTransactionValid(const CTransaction& txNew, int nBlockHeight) const
 {
-    LOCK(cs_mapDynodeBlocks);
+    LOCK(cs_mapServiceNodeBlocks);
 
-    const auto it = mapDynodeBlocks.find(nBlockHeight);
-    return it == mapDynodeBlocks.end() ? true : it->second.IsTransactionValid(txNew, nBlockHeight);
+    const auto it = mapServiceNodeBlocks.find(nBlockHeight);
+    return it == mapServiceNodeBlocks.end() ? true : it->second.IsTransactionValid(txNew, nBlockHeight);
 }
 
-void CDynodePayments::CheckAndRemove()
+void CServiceNodePayments::CheckAndRemove()
 {
-    if (!dynodeSync.IsBlockchainSynced())
+    if (!servicenodeSync.IsBlockchainSynced())
         return;
 
-    LOCK2(cs_mapDynodeBlocks, cs_mapDynodePaymentVotes);
+    LOCK2(cs_mapServiceNodeBlocks, cs_mapServiceNodePaymentVotes);
 
     int nLimit = GetStorageLimit();
 
-    std::map<uint256, CDynodePaymentVote>::iterator it = mapDynodePaymentVotes.begin();
-    while (it != mapDynodePaymentVotes.end()) {
-        CDynodePaymentVote vote = (*it).second;
+    std::map<uint256, CServiceNodePaymentVote>::iterator it = mapServiceNodePaymentVotes.begin();
+    while (it != mapServiceNodePaymentVotes.end()) {
+        CServiceNodePaymentVote vote = (*it).second;
 
         if (nCachedBlockHeight - vote.nBlockHeight > nLimit) {
-            LogPrint("dnpayments", "CDynodePayments::CheckAndRemove -- Removing old Dynode payment: nBlockHeight=%d\n", vote.nBlockHeight);
-            mapDynodePaymentVotes.erase(it++);
-            mapDynodeBlocks.erase(vote.nBlockHeight);
+            LogPrint("dnpayments", "CServiceNodePayments::CheckAndRemove -- Removing old ServiceNode payment: nBlockHeight=%d\n", vote.nBlockHeight);
+            mapServiceNodePaymentVotes.erase(it++);
+            mapServiceNodeBlocks.erase(vote.nBlockHeight);
         } else {
             ++it;
         }
     }
-    LogPrint("dnpayments", "CDynodePayments::CheckAndRemove -- %s\n", ToString());
+    LogPrint("dnpayments", "CServiceNodePayments::CheckAndRemove -- %s\n", ToString());
 }
 
-bool CDynodePaymentVote::IsValid(CNode* pnode, int nValidationHeight, std::string& strError, CConnman& connman) const
+bool CServiceNodePaymentVote::IsValid(CNode* pnode, int nValidationHeight, std::string& strError, CConnman& connman) const
 {
-    dynode_info_t dnInfo;
+    servicenode_info_t dnInfo;
 
-    if (!dnodeman.GetDynodeInfo(dynodeOutpoint, dnInfo)) {
-        strError = strprintf("Unknown dynode=%s", dynodeOutpoint.ToStringShort());
-        // Only ask if we are already synced and still have no idea about that Dynode
-        if (dynodeSync.IsDynodeListSynced()) {
-            dnodeman.AskForDN(pnode, dynodeOutpoint, connman);
+    if (!dnodeman.GetServiceNodeInfo(servicenodeOutpoint, dnInfo)) {
+        strError = strprintf("Unknown servicenode=%s", servicenodeOutpoint.ToStringShort());
+        // Only ask if we are already synced and still have no idea about that ServiceNode
+        if (servicenodeSync.IsServiceNodeListSynced()) {
+            dnodeman.AskForDN(pnode, servicenodeOutpoint, connman);
         }
 
         return false;
@@ -711,40 +711,40 @@ bool CDynodePaymentVote::IsValid(CNode* pnode, int nValidationHeight, std::strin
 
     int nMinRequiredProtocol;
     if (nBlockHeight >= nValidationHeight) {
-        // new votes must comply SPORK_10_DYNODE_PAY_UPDATED_NODES rules
-        nMinRequiredProtocol = dnpayments.GetMinDynodePaymentsProto();
+        // new votes must comply SPORK_10_SERVICENODE_PAY_UPDATED_NODES rules
+        nMinRequiredProtocol = dnpayments.GetMinServiceNodePaymentsProto();
     } else {
-        // allow non-updated dynodes for old blocks
-        nMinRequiredProtocol = MIN_DYNODE_PAYMENT_PROTO_VERSION_1;
+        // allow non-updated servicenodes for old blocks
+        nMinRequiredProtocol = MIN_SERVICENODE_PAYMENT_PROTO_VERSION_1;
     }
 
     if (dnInfo.nProtocolVersion < nMinRequiredProtocol) {
-        strError = strprintf("Dynode protocol is too old: nProtocolVersion=%d, nMinRequiredProtocol=%d", dnInfo.nProtocolVersion, nMinRequiredProtocol);
+        strError = strprintf("ServiceNode protocol is too old: nProtocolVersion=%d, nMinRequiredProtocol=%d", dnInfo.nProtocolVersion, nMinRequiredProtocol);
         return false;
     }
 
-    // Only dynodes should try to check dynode rank for old votes - they need to pick the right winner for future blocks.
-    // Regular clients (miners included) need to verify dynode rank for future block votes only.
-    if (!fDynodeMode && nBlockHeight < nValidationHeight)
+    // Only servicenodes should try to check servicenode rank for old votes - they need to pick the right winner for future blocks.
+    // Regular clients (miners included) need to verify servicenode rank for future block votes only.
+    if (!fServiceNodeMode && nBlockHeight < nValidationHeight)
         return true;
 
     int nRank;
 
-    if (!dnodeman.GetDynodeRank(dynodeOutpoint, nRank, nBlockHeight - 101, nMinRequiredProtocol)) {
-        LogPrint("dnpayments", "CDynodePaymentVote::IsValid -- Can't calculate rank for dynode %s\n",
-            dynodeOutpoint.ToStringShort());
+    if (!dnodeman.GetServiceNodeRank(servicenodeOutpoint, nRank, nBlockHeight - 101, nMinRequiredProtocol)) {
+        LogPrint("dnpayments", "CServiceNodePaymentVote::IsValid -- Can't calculate rank for servicenode %s\n",
+            servicenodeOutpoint.ToStringShort());
         return false;
     }
 
     if (nRank > DNPAYMENTS_SIGNATURES_TOTAL) {
-        // It's common to have dynodes mistakenly think they are in the top 10
+        // It's common to have servicenodes mistakenly think they are in the top 10
         // We don't want to print all of these messages in normal mode, debug mode should print though
-        strError = strprintf("Dynode %s is not in the top %d (%d)", dynodeOutpoint.ToStringShort(), DNPAYMENTS_SIGNATURES_TOTAL, nRank);
+        strError = strprintf("ServiceNode %s is not in the top %d (%d)", servicenodeOutpoint.ToStringShort(), DNPAYMENTS_SIGNATURES_TOTAL, nRank);
         // Only ban for new dnw which is out of bounds, for old dnw DN list itself might be way too much off
         if (nRank > DNPAYMENTS_SIGNATURES_TOTAL * 2 && nBlockHeight > nValidationHeight) {
             LOCK(cs_main);
-            strError = strprintf("Dynode %s is not in the top %d (%d)", dynodeOutpoint.ToStringShort(), DNPAYMENTS_SIGNATURES_TOTAL * 2, nRank);
-            LogPrintf("CDynodePaymentVote::IsValid -- Error: %s\n", strError);
+            strError = strprintf("ServiceNode %s is not in the top %d (%d)", servicenodeOutpoint.ToStringShort(), DNPAYMENTS_SIGNATURES_TOTAL * 2, nRank);
+            LogPrintf("CServiceNodePaymentVote::IsValid -- Error: %s\n", strError);
             Misbehaving(pnode->GetId(), 20);
         }
         // Still invalid however
@@ -754,62 +754,62 @@ bool CDynodePaymentVote::IsValid(CNode* pnode, int nValidationHeight, std::strin
     return true;
 }
 
-bool CDynodePayments::ProcessBlock(int nBlockHeight, CConnman& connman)
+bool CServiceNodePayments::ProcessBlock(int nBlockHeight, CConnman& connman)
 {
     // DETERMINE IF WE SHOULD BE VOTING FOR THE NEXT PAYEE
 
-    if (fLiteMode || !fDynodeMode)
+    if (fLiteMode || !fServiceNodeMode)
         return false;
 
     // We have little chances to pick the right winner if winners list is out of sync
     // but we have no choice, so we'll try. However it doesn't make sense to even try to do so
-    // if we have not enough data about Dynodes.
-    if (!dynodeSync.IsDynodeListSynced())
+    // if we have not enough data about ServiceNodes.
+    if (!servicenodeSync.IsServiceNodeListSynced())
         return false;
 
     int nRank;
 
-    if (!dnodeman.GetDynodeRank(activeDynode.outpoint, nRank, nBlockHeight - 101, GetMinDynodePaymentsProto())) {
-        LogPrint("dnpayments", "CDynodePayments::ProcessBlock -- Unknown Dynode\n");
+    if (!dnodeman.GetServiceNodeRank(activeServiceNode.outpoint, nRank, nBlockHeight - 101, GetMinServiceNodePaymentsProto())) {
+        LogPrint("dnpayments", "CServiceNodePayments::ProcessBlock -- Unknown ServiceNode\n");
         return false;
     }
 
     if (nRank > DNPAYMENTS_SIGNATURES_TOTAL) {
-        LogPrint("dnpayments", "CDynodePayments::ProcessBlock -- Dynode not in the top %d (%d)\n", DNPAYMENTS_SIGNATURES_TOTAL, nRank);
+        LogPrint("dnpayments", "CServiceNodePayments::ProcessBlock -- ServiceNode not in the top %d (%d)\n", DNPAYMENTS_SIGNATURES_TOTAL, nRank);
         return false;
     }
 
 
-    // LOCATE THE NEXT DYNODE WHICH SHOULD BE PAID
+    // LOCATE THE NEXT SERVICENODE WHICH SHOULD BE PAID
 
-    LogPrint("dnpayments", "CDynodePayments::ProcessBlock -- Start: nBlockHeight=%d, dynode=%s\n", nBlockHeight, activeDynode.outpoint.ToStringShort());
+    LogPrint("dnpayments", "CServiceNodePayments::ProcessBlock -- Start: nBlockHeight=%d, servicenode=%s\n", nBlockHeight, activeServiceNode.outpoint.ToStringShort());
 
     // pay to the oldest DN that still had no payment but its input is old enough and it was active long enough
     int nCount = 0;
-    dynode_info_t dnInfo;
+    servicenode_info_t dnInfo;
 
-    if (!dnodeman.GetNextDynodeInQueueForPayment(nBlockHeight, true, nCount, dnInfo)) {
-        LogPrintf("CDynodePayments::ProcessBlock -- ERROR: Failed to find Dynode to pay\n");
+    if (!dnodeman.GetNextServiceNodeInQueueForPayment(nBlockHeight, true, nCount, dnInfo)) {
+        LogPrintf("CServiceNodePayments::ProcessBlock -- ERROR: Failed to find ServiceNode to pay\n");
         return false;
     }
 
-    LogPrint("dnpayments", "CDynodePayments::ProcessBlock -- Dynode found by GetNextDynodeInQueueForPayment(): %s\n", dnInfo.outpoint.ToStringShort());
+    LogPrint("dnpayments", "CServiceNodePayments::ProcessBlock -- ServiceNode found by GetNextServiceNodeInQueueForPayment(): %s\n", dnInfo.outpoint.ToStringShort());
 
     CScript payee = GetScriptForDestination(dnInfo.pubKeyCollateralAddress.GetID());
 
-    CDynodePaymentVote voteNew(activeDynode.outpoint, nBlockHeight, payee);
+    CServiceNodePaymentVote voteNew(activeServiceNode.outpoint, nBlockHeight, payee);
 
     CTxDestination address1;
     ExtractDestination(payee, address1);
     CDynamicAddress address2(address1);
 
-    LogPrint("dnpayments", "CDynodePayments::ProcessBlock -- vote: payee=%s, nBlockHeight=%d\n", address2.ToString(), nBlockHeight);
+    LogPrint("dnpayments", "CServiceNodePayments::ProcessBlock -- vote: payee=%s, nBlockHeight=%d\n", address2.ToString(), nBlockHeight);
 
-    // SIGN MESSAGE TO NETWORK WITH OUR DYNODE KEYS
+    // SIGN MESSAGE TO NETWORK WITH OUR SERVICENODE KEYS
 
-    LogPrint("dnpayments", "CDynodePayments::ProcessBlock -- Signing vote\n");
+    LogPrint("dnpayments", "CServiceNodePayments::ProcessBlock -- Signing vote\n");
     if (voteNew.Sign()) {
-        LogPrint("dnpayments", "CDynodePayments::ProcessBlock -- AddPaymentVote()\n");
+        LogPrint("dnpayments", "CServiceNodePayments::ProcessBlock -- AddPaymentVote()\n");
 
         if (AddOrUpdatePaymentVote(voteNew)) {
             voteNew.Relay(connman);
@@ -820,39 +820,39 @@ bool CDynodePayments::ProcessBlock(int nBlockHeight, CConnman& connman)
     return false;
 }
 
-void CDynodePayments::CheckBlockVotes(int nBlockHeight)
+void CServiceNodePayments::CheckBlockVotes(int nBlockHeight)
 {
-    if (!dynodeSync.IsWinnersListSynced())
+    if (!servicenodeSync.IsWinnersListSynced())
         return;
 
-    CDynodeMan::rank_pair_vec_t dns;
-    if (!dnodeman.GetDynodeRanks(dns, nBlockHeight - 101, GetMinDynodePaymentsProto())) {
-        LogPrintf("CDynodePayments::CheckBlockVotes -- nBlockHeight=%d, GetDynodeRanks failed\n", nBlockHeight);
+    CServiceNodeMan::rank_pair_vec_t dns;
+    if (!dnodeman.GetServiceNodeRanks(dns, nBlockHeight - 101, GetMinServiceNodePaymentsProto())) {
+        LogPrintf("CServiceNodePayments::CheckBlockVotes -- nBlockHeight=%d, GetServiceNodeRanks failed\n", nBlockHeight);
         return;
     }
 
     std::string debugStr;
 
-    debugStr += strprintf("CDynodePayments::CheckBlockVotes -- nBlockHeight=%d,\n  Expected voting DNs:\n", nBlockHeight);
+    debugStr += strprintf("CServiceNodePayments::CheckBlockVotes -- nBlockHeight=%d,\n  Expected voting DNs:\n", nBlockHeight);
 
-    LOCK2(cs_mapDynodeBlocks, cs_mapDynodePaymentVotes);
+    LOCK2(cs_mapServiceNodeBlocks, cs_mapServiceNodePaymentVotes);
 
     int i{0};
     for (const auto& dn : dns) {
         CScript payee;
         bool found = false;
 
-        const auto it = mapDynodeBlocks.find(nBlockHeight);
-        if (it != mapDynodeBlocks.end()) {
+        const auto it = mapServiceNodeBlocks.find(nBlockHeight);
+        if (it != mapServiceNodeBlocks.end()) {
             for (const auto& p : it->second.vecPayees) {
                 for (const auto& voteHash : p.GetVoteHashes()) {
-                    const auto itVote = mapDynodePaymentVotes.find(voteHash);
-                    if (itVote == mapDynodePaymentVotes.end()) {
+                    const auto itVote = mapServiceNodePaymentVotes.find(voteHash);
+                    if (itVote == mapServiceNodePaymentVotes.end()) {
                         debugStr += strprintf("    - could not find vote %s\n",
                             voteHash.ToString());
                         continue;
                     }
-                    if (itVote->second.dynodeOutpoint == dn.second.outpoint) {
+                    if (itVote->second.servicenodeOutpoint == dn.second.outpoint) {
                         payee = itVote->second.payee;
                         found = true;
                         break;
@@ -869,7 +869,7 @@ void CDynodePayments::CheckBlockVotes(int nBlockHeight)
             debugStr += strprintf("    - %s - voted for %s\n",
                 dn.second.outpoint.ToStringShort(), address2.ToString());
         } else {
-            mapDynodesDidNotVote.emplace(dn.second.outpoint, 0).first->second++;
+            mapServiceNodesDidNotVote.emplace(dn.second.outpoint, 0).first->second++;
 
             debugStr += strprintf("    - %s - no vote received\n",
                 dn.second.outpoint.ToStringShort());
@@ -879,32 +879,32 @@ void CDynodePayments::CheckBlockVotes(int nBlockHeight)
             break;
     }
 
-    if (mapDynodesDidNotVote.empty()) {
+    if (mapServiceNodesDidNotVote.empty()) {
         LogPrint("dnpayments", "%s", debugStr);
         return;
     }
 
-    debugStr += "  Dynodes which missed a vote in the past:\n";
-    for (const auto& item : mapDynodesDidNotVote) {
+    debugStr += "  ServiceNodes which missed a vote in the past:\n";
+    for (const auto& item : mapServiceNodesDidNotVote) {
         debugStr += strprintf("    - %s: %d\n", item.first.ToStringShort(), item.second);
     }
 
     LogPrint("dnpayments", "%s", debugStr);
 }
 
-void CDynodePaymentVote::Relay(CConnman& connman) const
+void CServiceNodePaymentVote::Relay(CConnman& connman) const
 {
     // Do not relay until fully synced
-    if (!dynodeSync.IsSynced()) {
-        LogPrint("dnpayments", "CDynodePayments::Relay -- won't relay until fully synced\n");
+    if (!servicenodeSync.IsSynced()) {
+        LogPrint("dnpayments", "CServiceNodePayments::Relay -- won't relay until fully synced\n");
         return;
     }
 
-    CInv inv(MSG_DYNODE_PAYMENT_VOTE, GetHash());
+    CInv inv(MSG_SERVICENODE_PAYMENT_VOTE, GetHash());
     connman.RelayInv(inv);
 }
 
-bool CDynodePaymentVote::CheckSignature(const CPubKey& pubKeyDynode, int nValidationHeight, int& nDos) const
+bool CServiceNodePaymentVote::CheckSignature(const CPubKey& pubKeyServiceNode, int nValidationHeight, int& nDos) const
 {
     // do not ban by default
     nDos = 0;
@@ -913,89 +913,89 @@ bool CDynodePaymentVote::CheckSignature(const CPubKey& pubKeyDynode, int nValida
     if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
         uint256 hash = GetSignatureHash();
 
-        if (!CHashSigner::VerifyHash(hash, pubKeyDynode, vchSig, strError)) {
+        if (!CHashSigner::VerifyHash(hash, pubKeyServiceNode, vchSig, strError)) {
             // could be a signature in old format
-            std::string strMessage = dynodeOutpoint.ToStringShort() +
+            std::string strMessage = servicenodeOutpoint.ToStringShort() +
                                      boost::lexical_cast<std::string>(nBlockHeight) +
                                      ScriptToAsmStr(payee);
-            if (!CMessageSigner::VerifyMessage(pubKeyDynode, vchSig, strMessage, strError)) {
+            if (!CMessageSigner::VerifyMessage(pubKeyServiceNode, vchSig, strMessage, strError)) {
                 // nope, not in old format either
                 // Only ban for future block vote when we are already synced.
                 // Otherwise it could be the case when DN which signed this vote is using another key now
                 // and we have no idea about the old one.
-                if (dynodeSync.IsDynodeListSynced() && nBlockHeight > nValidationHeight) {
+                if (servicenodeSync.IsServiceNodeListSynced() && nBlockHeight > nValidationHeight) {
                     nDos = 20;
                 }
-                return error("CDynodePaymentVote::CheckSignature -- Got bad Dynode payment signature, dynode=%s, error: %s",
-                    dynodeOutpoint.ToStringShort(), strError);
+                return error("CServiceNodePaymentVote::CheckSignature -- Got bad ServiceNode payment signature, servicenode=%s, error: %s",
+                    servicenodeOutpoint.ToStringShort(), strError);
             }
         }
     } else {
-        std::string strMessage = dynodeOutpoint.ToStringShort() +
+        std::string strMessage = servicenodeOutpoint.ToStringShort() +
                                  boost::lexical_cast<std::string>(nBlockHeight) +
                                  ScriptToAsmStr(payee);
 
-        if (!CMessageSigner::VerifyMessage(pubKeyDynode, vchSig, strMessage, strError)) {
+        if (!CMessageSigner::VerifyMessage(pubKeyServiceNode, vchSig, strMessage, strError)) {
             // Only ban for future block vote when we are already synced.
             // Otherwise it could be the case when DN which signed this vote is using another key now
             // and we have no idea about the old one.
-            if (dynodeSync.IsDynodeListSynced() && nBlockHeight > nValidationHeight) {
+            if (servicenodeSync.IsServiceNodeListSynced() && nBlockHeight > nValidationHeight) {
                 nDos = 20;
             }
-            return error("CDynodePaymentVote::CheckSignature -- Got bad Dynode payment signature, dynode=%s, error: %s",
-                dynodeOutpoint.ToStringShort(), strError);
+            return error("CServiceNodePaymentVote::CheckSignature -- Got bad ServiceNode payment signature, servicenode=%s, error: %s",
+                servicenodeOutpoint.ToStringShort(), strError);
         }
     }
 
     return true;
 }
 
-std::string CDynodePaymentVote::ToString() const
+std::string CServiceNodePaymentVote::ToString() const
 {
     std::ostringstream info;
 
-    info << dynodeOutpoint.ToStringShort() << ", " << nBlockHeight << ", " << ScriptToAsmStr(payee) << ", " << (int)vchSig.size();
+    info << servicenodeOutpoint.ToStringShort() << ", " << nBlockHeight << ", " << ScriptToAsmStr(payee) << ", " << (int)vchSig.size();
 
     return info.str();
 }
 
 // Send all votes up to nCountNeeded blocks (but not more than GetStorageLimit)
-void CDynodePayments::Sync(CNode* pnode, CConnman& connman) const
+void CServiceNodePayments::Sync(CNode* pnode, CConnman& connman) const
 {
-    LOCK(cs_mapDynodeBlocks);
+    LOCK(cs_mapServiceNodeBlocks);
 
-    if (!dynodeSync.IsWinnersListSynced())
+    if (!servicenodeSync.IsWinnersListSynced())
         return;
 
     int nInvCount = 0;
 
     for (int h = nCachedBlockHeight; h < nCachedBlockHeight + 20; h++) {
-        const auto it = mapDynodeBlocks.find(h);
-        if (it != mapDynodeBlocks.end()) {
+        const auto it = mapServiceNodeBlocks.find(h);
+        if (it != mapServiceNodeBlocks.end()) {
             for (const auto& payee : it->second.vecPayees) {
                 std::vector<uint256> vecVoteHashes = payee.GetVoteHashes();
                 for (const auto& hash : vecVoteHashes) {
                     if (!HasVerifiedPaymentVote(hash))
                         continue;
-                    pnode->PushInventory(CInv(MSG_DYNODE_PAYMENT_VOTE, hash));
+                    pnode->PushInventory(CInv(MSG_SERVICENODE_PAYMENT_VOTE, hash));
                     nInvCount++;
                 }
             }
         }
     }
 
-    LogPrintf("CDynodePayments::Sync -- Sent %d votes to peer=%d\n", nInvCount, pnode->id);
+    LogPrintf("CServiceNodePayments::Sync -- Sent %d votes to peer=%d\n", nInvCount, pnode->id);
     CNetMsgMaker msgMaker(pnode->GetSendVersion());
-    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SYNCSTATUSCOUNT, DYNODE_SYNC_DNW, nInvCount));
+    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SYNCSTATUSCOUNT, SERVICENODE_SYNC_DNW, nInvCount));
 }
 // Request low data/unknown payment blocks in batches directly from some node instead of/after preliminary Sync.
-void CDynodePayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connman) const
+void CServiceNodePayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connman) const
 {
-    if (!dynodeSync.IsDynodeListSynced())
+    if (!servicenodeSync.IsServiceNodeListSynced())
         return;
 
     CNetMsgMaker msgMaker(pnode->GetSendVersion());
-    LOCK2(cs_main, cs_mapDynodeBlocks);
+    LOCK2(cs_main, cs_mapServiceNodeBlocks);
 
     std::vector<CInv> vToFetch;
     int nLimit = GetStorageLimit();
@@ -1003,12 +1003,12 @@ void CDynodePayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connma
     const CBlockIndex* pindex = chainActive.Tip();
 
     while (nCachedBlockHeight - pindex->nHeight < nLimit) {
-        if (!mapDynodeBlocks.count(pindex->nHeight)) {
+        if (!mapServiceNodeBlocks.count(pindex->nHeight)) {
             // We have no idea about this block height, let's ask
-            vToFetch.push_back(CInv(MSG_DYNODE_PAYMENT_BLOCK, pindex->GetBlockHash()));
+            vToFetch.push_back(CInv(MSG_SERVICENODE_PAYMENT_BLOCK, pindex->GetBlockHash()));
             // We should not violate GETDATA rules
             if (vToFetch.size() == MAX_INV_SZ) {
-                LogPrint("dnpayments", "CDynodePayments::SyncLowDataPaymentBlocks -- asking peer %d for %d blocks\n", pnode->id, MAX_INV_SZ);
+                LogPrint("dnpayments", "CServiceNodePayments::SyncLowDataPaymentBlocks -- asking peer %d for %d blocks\n", pnode->id, MAX_INV_SZ);
                 connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETDATA, vToFetch));
                 // Start filling new batch
                 vToFetch.clear();
@@ -1019,7 +1019,7 @@ void CDynodePayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connma
         pindex = pindex->pprev;
     }
 
-    for (auto& dnBlockPayees : mapDynodeBlocks) {
+    for (auto& dnBlockPayees : mapServiceNodeBlocks) {
         int nBlockHeight = dnBlockPayees.first;
         int nTotalVotes = 0;
         bool fFound = false;
@@ -1050,11 +1050,11 @@ void CDynodePayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connma
         // Low data block found, let's try to sync it
         uint256 hash;
         if (GetBlockHash(hash, nBlockHeight)) {
-            vToFetch.push_back(CInv(MSG_DYNODE_PAYMENT_BLOCK, hash));
+            vToFetch.push_back(CInv(MSG_SERVICENODE_PAYMENT_BLOCK, hash));
         }
         // We should not violate GETDATA rules
         if (vToFetch.size() == MAX_INV_SZ) {
-            LogPrint("dnpayments", "CDynodePayments::SyncLowDataPaymentBlocks -- asking peer %d for %d payment blocks\n", pnode->id, MAX_INV_SZ);
+            LogPrint("dnpayments", "CServiceNodePayments::SyncLowDataPaymentBlocks -- asking peer %d for %d payment blocks\n", pnode->id, MAX_INV_SZ);
             connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETDATA, vToFetch));
             // Start filling new batch
             vToFetch.clear();
@@ -1062,39 +1062,39 @@ void CDynodePayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connma
     }
     // Ask for the rest of it
     if (!vToFetch.empty()) {
-        LogPrint("dnpayments", "CDynodePayments::SyncLowDataPaymentBlocks -- asking peer %d for %d payment blocks\n", pnode->id, vToFetch.size());
+        LogPrint("dnpayments", "CServiceNodePayments::SyncLowDataPaymentBlocks -- asking peer %d for %d payment blocks\n", pnode->id, vToFetch.size());
         connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETDATA, vToFetch));
     }
 }
 
-std::string CDynodePayments::ToString() const
+std::string CServiceNodePayments::ToString() const
 {
     std::ostringstream info;
 
-    info << "Votes: " << (int)mapDynodePaymentVotes.size() << ", Blocks: " << (int)mapDynodeBlocks.size();
+    info << "Votes: " << (int)mapServiceNodePaymentVotes.size() << ", Blocks: " << (int)mapServiceNodeBlocks.size();
 
     return info.str();
 }
 
-bool CDynodePayments::IsEnoughData() const
+bool CServiceNodePayments::IsEnoughData() const
 {
     float nAverageVotes = (DNPAYMENTS_SIGNATURES_TOTAL + DNPAYMENTS_SIGNATURES_REQUIRED) / 2;
     int nStorageLimit = GetStorageLimit();
     return GetBlockCount() > nStorageLimit && GetVoteCount() > nStorageLimit * nAverageVotes;
 }
 
-int CDynodePayments::GetStorageLimit() const
+int CServiceNodePayments::GetStorageLimit() const
 {
     return std::max(int(dnodeman.size() * nStorageCoeff), nMinBlocksToStore);
 }
 
-void CDynodePayments::UpdatedBlockTip(const CBlockIndex* pindex, CConnman& connman)
+void CServiceNodePayments::UpdatedBlockTip(const CBlockIndex* pindex, CConnman& connman)
 {
     if (!pindex)
         return;
 
     nCachedBlockHeight = pindex->nHeight;
-    LogPrint("dnpayments", "CDynodePayments::UpdatedBlockTip -- nCachedBlockHeight=%d\n", nCachedBlockHeight);
+    LogPrint("dnpayments", "CServiceNodePayments::UpdatedBlockTip -- nCachedBlockHeight=%d\n", nCachedBlockHeight);
 
     int nFutureBlock = nCachedBlockHeight + 10;
 
@@ -1102,7 +1102,7 @@ void CDynodePayments::UpdatedBlockTip(const CBlockIndex* pindex, CConnman& connm
     ProcessBlock(nFutureBlock, connman);
 }
 
-void CDynodePayments::DoMaintenance()
+void CServiceNodePayments::DoMaintenance()
 {
     if (ShutdownRequested()) return;
      CheckAndRemove();

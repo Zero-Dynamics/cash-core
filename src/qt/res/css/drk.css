@@ -1641,9 +1641,9 @@ QDialog#TransactionDescDialog QTextEdit { /* Contents of Receive Coin Dialog */
 border:1px solid #520072;
 }
 
-/* DYNODE NETWORK PAGE */
+/* SERVICENODE NETWORK PAGE */
 
-QWidget#DynodeManager .QPushButton#copyAddressButton { /* Copy Address Button */
+QWidget#ServiceNodeManager .QPushButton#copyAddressButton { /* Copy Address Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(250, 250, 250, 128), stop: .95 rgba(250, 250, 250, 255), stop: 1 #ebebeb);
 border:1px solid #d2d2d2;
 border-radius:3px;
@@ -1656,17 +1656,17 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeManager .QPushButton#copyAddressButton:hover {
+QWidget#ServiceNodeManager .QPushButton#copyAddressButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
 
-QWidget#DynodeManager .QPushButton#copyAddressButton:pressed {
+QWidget#ServiceNodeManager .QPushButton#copyAddressButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(250, 250, 250, 128), stop: .95 rgba(250, 250, 250, 255), stop: 1 #ebebeb);
 border:1px solid #d2d2d2;
 }
 
-QWidget#DynodeManager .QPushButton#getConfigButton { /* Get Config Button */
+QWidget#ServiceNodeManager .QPushButton#getConfigButton { /* Get Config Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -1679,17 +1679,17 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeManager .QPushButton#getConfigButton:hover {
+QWidget#ServiceNodeManager .QPushButton#getConfigButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 color:#ffffff;
 }
 
-QWidget#DynodeManager .QPushButton#getConfigButton:pressed {
+QWidget#ServiceNodeManager .QPushButton#getConfigButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:1px solid #520072;
 }
 
-QWidget#DynodeManager .QPushButton#editButton { /* Edit Button */
+QWidget#ServiceNodeManager .QPushButton#editButton { /* Edit Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(250, 250, 250, 128), stop: .95 rgba(250, 250, 250, 255), stop: 1 #ebebeb);
 border:1px solid #d2d2d2;
 border-radius:3px;
@@ -1702,17 +1702,17 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeManager .QPushButton#editButton:hover {
+QWidget#ServiceNodeManager .QPushButton#editButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
 
-Qwidget#DynodeManager .QPushButton#editButton:pressed {
+Qwidget#ServiceNodeManager .QPushButton#editButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(250, 250, 250, 128), stop: .95 rgba(250, 250, 250, 255), stop: 1 #ebebeb);
 border:1px solid #d2d2d2;
 }
 
-QWidget#DynodeManager .QPushButton#removeButton { /* Remove Button */
+QWidget#ServiceNodeManager .QPushButton#removeButton { /* Remove Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(250, 250, 250, 128), stop: .95 rgba(250, 250, 250, 255), stop: 1 #ebebeb);
 border:1px solid #d2d2d2;
 border-radius:3px;
@@ -1725,17 +1725,17 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeManager .QPushButton#removeButton:hover {
+QWidget#ServiceNodeManager .QPushButton#removeButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
 
-QWidget#DynodeManager .QPushButton#removeButton:pressed {
+QWidget#ServiceNodeManager .QPushButton#removeButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(250, 250, 250, 128), stop: .95 rgba(250, 250, 250, 255), stop: 1 #ebebeb);
 border:1px solid #d2d2d2;
 }
 
-QWidget#DynodeManager .QPushButton#startButton { /* Start Button */
+QWidget#ServiceNodeManager .QPushButton#startButton { /* Start Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #368019, stop: .1 #207200, stop: .95 #207200, stop: 1 #207200);
 border:0;
 border-radius:3px;
@@ -1748,17 +1748,17 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeManager .QPushButton#startButton:hover {
+QWidget#ServiceNodeManager .QPushButton#startButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #4c8e32, stop: .1 #4c8e32, stop: .95 #4c8e32, stop: 1 #4c8e32);
 color:#ffffff;
 }
 
-QWidget#DynodeManager .QPushButton#startButton:pressed {
+QWidget#ServiceNodeManager .QPushButton#startButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #368019, stop: .1 #207200, stop: .95 #195b00, stop: 1 #195b00);
 border:1px solid #207200;
 }
 
-QWidget#DynodeManager .QPushButton#stopButton { /* Stop Button */
+QWidget#ServiceNodeManager .QPushButton#stopButton { /* Stop Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #991f41, stop: .1 #720020, stop: .95 #720020, stop: 1 #720020);
 border:0;
 border-radius:3px;
@@ -1771,17 +1771,17 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeManager .QPushButton#stopButton:hover {
+QWidget#ServiceNodeManager .QPushButton#stopButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #a35b6f, stop: .1 #8E324C, stop: .95 #8E324C, stop: 1 #8E324C);
 color:#ffffff;
 }
 
-QWidget#DynodeManager .QPushButton#stopButton:pressed {
+QWidget#ServiceNodeManager .QPushButton#stopButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #991f41, stop: .1 #720020, stop: .95 #5b0019, stop: 1 #5b0019);
 border:1px solid #720020;
 }
 
-QWidget#DynodeManager .QPushButton#startAllButton { /* Start All Button */
+QWidget#ServiceNodeManager .QPushButton#startAllButton { /* Start All Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #368019, stop: .1 #207200, stop: .95 #207200, stop: 1 #207200);
 border:0;
 border-radius:3px;
@@ -1794,17 +1794,17 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeManager .QPushButton#startAllButton:hover {
+QWidget#ServiceNodeManager .QPushButton#startAllButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #4c8e32, stop: .1 #4c8e32, stop: .95 #4c8e32, stop: 1 #4c8e32);
 color:#ffffff;
 }
 
-QWidget#DynodeManager .QPushButton#startAllButton:pressed {
+QWidget#ServiceNodeManager .QPushButton#startAllButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #368019, stop: .1 #207200, stop: .95 #195b00, stop: 1 #195b00);
 border:1px solid #207200;
 }
 
-QWidget#DynodeManager .QPushButton#stopAllButton { /* Stop All Button */
+QWidget#ServiceNodeManager .QPushButton#stopAllButton { /* Stop All Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #991f41, stop: .1 #720020, stop: .95 #720020, stop: 1 #720020);
 border:0;
 border-radius:3px;
@@ -1817,25 +1817,25 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeManager .QPushButton#stopAllButton:hover {
+QWidget#ServiceNodeManager .QPushButton#stopAllButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #a35b6f, stop: .1 #8E324C, stop: .95 #8E324C, stop: 1 #8E324C);
 color:#ffffff;
 }
 
-QWidget#DynodeManager .QPushButton#stopAllButton:pressed {
+QWidget#ServiceNodeManager .QPushButton#stopAllButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #991f41, stop: .1 #720020, stop: .95 #5b0019, stop: 1 #5b0019);
 border:1px solid #720020;
 }
 
-QWidget#DynodeManager .QTabWidget {
+QWidget#ServiceNodeManager .QTabWidget {
 border-bottom:1px solid #7400A1;
 }
 
-QWidget#DynodeManager .QTabWidget::pane {
+QWidget#ServiceNodeManager .QTabWidget::pane {
 border: 1px solid #7400A1;
 }
 
-QWidget#DynodeManager .QTabWidget QTabBar::tab {
+QWidget#ServiceNodeManager .QTabWidget QTabBar::tab {
 background-color:#520072;
 color:#808080;
 padding-left:10px;
@@ -1845,47 +1845,47 @@ padding-bottom:5px;
 border-top: 1px solid #7400A1;
 }
 
-QWidget#DynodeManager .QTabWidget QTabBar::tab:first {
+QWidget#ServiceNodeManager .QTabWidget QTabBar::tab:first {
 border-left: 1px solid #7400A1;
 }
 
-QWidget#DynodeManager .QTabWidget QTabBar::tab:last {
+QWidget#ServiceNodeManager .QTabWidget QTabBar::tab:last {
 border-right: 1px solid #7400A1;
 }
 
-QWidget#DynodeManager .QTabWidget QTabBar::tab:selected, QWidget#DynodeManager .QTabWidget QTabBar::tab:hover {
+QWidget#ServiceNodeManager .QTabWidget QTabBar::tab:selected, QWidget#ServiceNodeManager .QTabWidget QTabBar::tab:hover {
 background-color:#7400A1;
 color:#ffffff;
 }
 
-QWidget#DynodeManager .QTabWidget .QWidget {
+QWidget#ServiceNodeManager .QTabWidget .QWidget {
 background-color:#000000;
 color:#ffffff;
 }
 
-QWidget#DynodeManager .QTabWidget .QWidget QAbstractSpinBox {
+QWidget#ServiceNodeManager .QTabWidget .QWidget QAbstractSpinBox {
 min-height:15px;
 }
 
-QWidget#DynodeManager .QTabWidget .QWidget QAbstractSpinBox::down-button {
+QWidget#ServiceNodeManager .QTabWidget .QWidget QAbstractSpinBox::down-button {
 width:15px;
 }
 
-QWidget#DynodeManager .QTabWidget .QWidget QAbstractSpinBox::up-button {
+QWidget#ServiceNodeManager .QTabWidget .QWidget QAbstractSpinBox::up-button {
 width:15px;
 }
 
-QWidget#DynodeManager .QTabWidget .QWidget QComboBox {
+QWidget#ServiceNodeManager .QTabWidget .QWidget QComboBox {
 min-height:15px;
 }
 
-QWidget#DynodeManager QWidget { /* Remove Annoying Focus Rectangle */
+QWidget#ServiceNodeManager QWidget { /* Remove Annoying Focus Rectangle */
 outline: 0;
 }
 
-/* DynodeListUI */
+/* ServiceNodeListUI */
 
-QWidget#DynodeList .QPushButton#startAllButton {
+QWidget#ServiceNodeList .QPushButton#startAllButton {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -1898,7 +1898,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startAllButton:hover {
+QWidget#ServiceNodeList .QPushButton#startAllButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 border:0;
 border-radius:3px;
@@ -1911,7 +1911,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startAllButton:pressed {
+QWidget#ServiceNodeList .QPushButton#startAllButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -1924,7 +1924,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startButton {
+QWidget#ServiceNodeList .QPushButton#startButton {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -1937,7 +1937,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startButton:hover {
+QWidget#ServiceNodeList .QPushButton#startButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 border:0;
 border-radius:3px;
@@ -1950,7 +1950,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startButton:pressed {
+QWidget#ServiceNodeList .QPushButton#startButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -1963,7 +1963,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startMissingButton {
+QWidget#ServiceNodeList .QPushButton#startMissingButton {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -1976,7 +1976,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startMissingButton:hover {
+QWidget#ServiceNodeList .QPushButton#startMissingButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 border:0;
 border-radius:3px;
@@ -1989,7 +1989,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#startMissingButton:pressed {
+QWidget#ServiceNodeList .QPushButton#startMissingButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -2002,7 +2002,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#UpdateButton {
+QWidget#ServiceNodeList .QPushButton#UpdateButton {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;
@@ -2015,7 +2015,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#UpdateButton:hover {
+QWidget#ServiceNodeList .QPushButton#UpdateButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
 border:0;
 border-radius:3px;
@@ -2028,7 +2028,7 @@ padding-top:5px;
 padding-bottom:5px;
 }
 
-QWidget#DynodeList .QPushButton#UpdateButton:pressed {
+QWidget#ServiceNodeList .QPushButton#UpdateButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
 border:0;
 border-radius:3px;

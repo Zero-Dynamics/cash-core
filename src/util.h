@@ -49,7 +49,7 @@
 
 //Dynamic only features
 
-extern bool fDynodeMode;
+extern bool fServiceNodeMode;
 extern bool fLiteMode;
 extern int nWalletBackups;
 
@@ -151,7 +151,7 @@ std::string GenerateRandomString(unsigned int len);
 unsigned int RandomIntegerRange(unsigned int nMin, unsigned int nMax);
 void ClearDatadirCache();
 boost::filesystem::path GetConfigFile(const std::string& confPath);
-boost::filesystem::path GetDynodeConfigFile();
+boost::filesystem::path GetServiceNodeConfigFile();
 #ifndef WIN32
 boost::filesystem::path GetPidFile();
 void CreatePidFile(const boost::filesystem::path& path, pid_t pid);

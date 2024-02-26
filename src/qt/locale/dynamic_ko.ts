@@ -267,8 +267,8 @@
         <translation>交易记录</translation>
     </message>
     <message>
-        <source>&amp;Dynodes</source>
-        <translation>Dynodes</translation>
+        <source>&amp;ServiceNodes</source>
+        <translation>ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Mining</source>
@@ -279,8 +279,8 @@
         <translation>浏览交易记录</translation>
     </message>
     <message>
-        <source>Browse Dynodes</source>
-        <translation>浏览 Dynodes</translation>
+        <source>Browse ServiceNodes</source>
+        <translation>浏览 ServiceNodes</translation>
     </message>
     <message>
         <source>Mine Dynamic(DYN)</source>
@@ -431,12 +431,12 @@
         <translation>打开配置文件</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>打开 Dynode 配置文件</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>打开 ServiceNode 配置文件</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>打开 Dynode 配置文件</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>打开 ServiceNode 配置文件</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -949,16 +949,16 @@ Address: %4
         <translation>请选择一种匿名级别</translation>
     </message>
     <message>
-        <source>Use 2 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>2 개의 별도 다이 노드 Dynodes 를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>2 개의 별도 다이 노드 ServiceNodes 를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
     </message>
     <message>
-        <source>Use 8 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>8 개의 별도 다이 노드 Dynodes를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>8 개의 별도 다이 노드 ServiceNodes를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
     </message>
     <message>
-        <source>Use 16 separate Dynodes to mix funds up to 1000 DYN</source>
-        <translation>16 개의 별도 다이 노드 Dynodes를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <translation>16 개의 별도 다이 노드 ServiceNodes를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1141,11 +1141,11 @@ Address: %4
     &lt;ol type=\&quot;1\&quot;&gt;
     &lt;li&gt;PrivateSend는 거래 입력을 표준 단위로 나누는 것으로 시작됩니다.
     이 금액은 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN입니다. 매일 사용하는 지폐와 비슷합니다.&lt;/li&gt;
-    &lt;li&gt;그런 다음 지갑은 네트워크의 특수하게 구성된 소프트웨어 노드에 요청을 전송합니다 \&quot;Dynodes.\&quot;
-    이러한 Dynodes는 특정 종파를 혼합하는 데 관심이 있다는 사실을 알립니다.
+    &lt;li&gt;그런 다음 지갑은 네트워크의 특수하게 구성된 소프트웨어 노드에 요청을 전송합니다 \&quot;ServiceNodes.\&quot;
+    이러한 ServiceNodes는 특정 종파를 혼합하는 데 관심이 있다는 사실을 알립니다.
     식별 가능한 정보는 다이 노드로 전송되지 \&quot;않으므로\&quot; 사용자가.&lt;/li&gt;
     &lt;li&gt;다른 두 사람이 비슷한 메시지를 보내면 동일한 명칭을 혼합하려고한다는 것을 나타내며 믹싱 세션이 시작됩니다.
-    Dynode는 입력을 혼합하여 3 명의 모든 사용자에게&apos; 이제는 변환 된 입력 값을 지불하기 위해 지갑을 사용하십시오.
+    ServiceNode는 입력을 혼합하여 3 명의 모든 사용자에게&apos; 이제는 변환 된 입력 값을 지불하기 위해 지갑을 사용하십시오.
     귀하의 지갑은 해당 액면가를 직접 지불하지만 다른 주소 (변경 주소라고 함)에 있습니다.&lt;/li&gt;
     &lt;li&gt;자금을 완전히 모호하게하기 위해 지갑은 각 종파마다이 과정을 여러 번 반복해야합니다.
     프로세스가 완료 될 때마다, \&quot;라운드라고합니다.\&quot; PrivateSend의 각 라운드는 자금 출처를 기하 급수적으로 판별하기가 더 어려워집니다.&lt;/li&gt;
@@ -1338,8 +1338,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>전문적</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual Dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>이 설정은 입력이 익명화 될 개별 Dynode의 양을 결정합니다.&lt;br/&gt;더 많은 익명 성화 라운드에서는 프라이버시가 높아지지만 요금도 많이 들게됩니다.</translation>
+        <source>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>이 설정은 입력이 익명화 될 개별 ServiceNode의 양을 결정합니다.&lt;br/&gt;더 많은 익명 성화 라운드에서는 프라이버시가 높아지지만 요금도 많이 들게됩니다.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1350,12 +1350,12 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>코인 &amp;제어 기능 사용</translation>
     </message>
     <message>
-        <source>Show Dynodes Tab</source>
-        <translation>Dynodes 탭 표시</translation>
+        <source>Show ServiceNodes Tab</source>
+        <translation>ServiceNodes 탭 표시</translation>
     </message>
     <message>
-        <source>Show additional tab listing all your Dynodes in first sub-tab&lt;br/&gt;and all Dynodes on the network in second sub-tab.</source>
-        <translation>두 번째 하위 탭에 첫 번째 하위 탭&lt;br/&gt;과 모든 네트워크의 모든 Dynodes에 모든 다이 노드를 나열하는 추가 탭을 표시하십시오.</translation>
+        <source>Show additional tab listing all your ServiceNodes in first sub-tab&lt;br/&gt;and all ServiceNodes on the network in second sub-tab.</source>
+        <translation>두 번째 하위 탭에 첫 번째 하위 탭&lt;br/&gt;과 모든 네트워크의 모든 ServiceNodes에 모든 다이 노드를 나열하는 추가 탭을 표시하십시오.</translation>
     </message>
     <message>
         <source>Enable advanced PrivateSend interface</source>
@@ -1655,8 +1655,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>믹싱 중지</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>Dynode 에 제출 한 명칭은. 혼합하려면 다른 사용자가 정확히 같은 금액을 제출해야합니다.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>ServiceNode 에 제출 한 명칭은. 혼합하려면 다른 사용자가 정확히 같은 금액을 제출해야합니다.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -2063,8 +2063,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>블록 체인</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Dynodes의 수</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>ServiceNodes의 수</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3599,7 +3599,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>Form</translation>
@@ -3613,16 +3613,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>노드 수:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
-        <translation>내 Dynodes</translation>
+        <source>My ServiceNodes</source>
+        <translation>내 ServiceNodes</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
-        <translation>모든 Dynodes</translation>
+        <source>All ServiceNodes</source>
+        <translation>모든 ServiceNodes</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>참고: 로컬 지갑의 Dynode 상태가 약간 잘못 될 수 있습니다.&lt;br /&gt; 추가 데이터를 동기화하려면 항상 Wallet을 기다린 다음 Dynode가&lt;br /&gt;실행되어야하지만 &quot;ENABLED&quot; 필드에 &quot;터&quot; 가 표시되지 않으면&lt;br /&gt;다른 노드에서 다시 확인하십시오.</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>참고: 로컬 지갑의 ServiceNode 상태가 약간 잘못 될 수 있습니다.&lt;br /&gt; 추가 데이터를 동기화하려면 항상 Wallet을 기다린 다음 ServiceNode가&lt;br /&gt;실행되어야하지만 &quot;ENABLED&quot; 필드에 &quot;터&quot; 가 표시되지 않으면&lt;br /&gt;다른 노드에서 다시 확인하십시오.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3677,16 +3677,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>모든 Dynodes를 시작 하시겠습니까?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>모든 ServiceNodes를 시작 하시겠습니까?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>MISSING Dynodes를 시작 하시겠습니까?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>MISSING ServiceNodes를 시작 하시겠습니까?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>누락 된 Dynode 시작 확인</translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>누락 된 ServiceNode 시작 확인</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3697,16 +3697,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>현재 명령을 사용할 수 없습니다</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>Dynode 목록이 동기화 될 때까지이 명령을 사용할 수 없습니다</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>ServiceNode 목록이 동기화 될 때까지이 명령을 사용할 수 없습니다</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Dynode 시작 확인</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>ServiceNode 시작 확인</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Dynode를 시작 하시겠습니까 %1?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>ServiceNode를 시작 하시겠습니까 %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3717,12 +3717,12 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>업데이트 중...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Dynode를 성공적으로 시작했습니다.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>ServiceNode를 성공적으로 시작했습니다.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
-        <translation>성공적으로 시작되었습니다 %d Dynodes, 시작하지 못했습니다 %d, 합계 %d</translation>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <translation>성공적으로 시작되었습니다 %d ServiceNodes, 시작하지 못했습니다 %d, 합계 %d</translation>
     </message>
 </context>
 <context>
@@ -3788,8 +3788,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>이것은 채굴 한 블록 사이의 평균 시간을 보여줍니다</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain/Dynodes가 동기화되지 않았습니다. 광산 전에 완전히 동기화 될 때까지 기다려주세요!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain/ServiceNodes가 동기화되지 않았습니다. 광산 전에 완전히 동기화 될 때까지 기다려주세요!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -4014,8 +4014,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>경고: wallet.dat가 손상되어 데이터가 복구되었습니다! wallet.으로 저장된 원래 wallet.dat.{timestamp}.bak %s; 잔액 또는 거래가 올바르지 않은 경우 백업에서 복원해야합니다.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>구성에서 dynodepairingkey를 지정해야합니다. 설명서를 참조하십시오.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>구성에서 servicenodepairingkey를 지정해야합니다. 설명서를 참조하십시오.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4214,8 +4214,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/dynamic-dyn/</transla
         <translation>모든 지갑 트랜잭션을 삭제하고 시작시 -rescan을 통해 블록 체인의 해당 부분 만 복구하십시오</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Dynodes, PrivateSend, InstantSend, 예산 편성) (0-1, 기본값: %u) Dynamic 특정 기능을 모두 비활성화합니다.</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>ServiceNodes, PrivateSend, InstantSend, 예산 편성) (0-1, 기본값: %u) Dynamic 특정 기능을 모두 비활성화합니다.</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4420,12 +4420,12 @@ rpcpassword=%s
         <translation>안전 모드를 해제하고 실제 안전 모드 이벤트를 무시하십시오 (기본값: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a Dynode (0-1, default: %u)</source>
-        <translation>클라이언트가 Dynode (0-1, 기본값: %u)로 작동하도록 함</translation>
+        <source>Enable the client to act as a ServiceNode (0-1, default: %u)</source>
+        <translation>클라이언트가 ServiceNode (0-1, 기본값: %u)로 작동하도록 함</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Dynode에 연결하는 중 오류가 발생했습니다.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>ServiceNode에 연결하는 중 오류가 발생했습니다.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -4564,12 +4564,12 @@ rpcpassword=%s
         <translation>예산 캐시로드 중...</translation>
     </message>
     <message>
-        <source>Loading Dynode cache...</source>
-        <translation>Dynode 캐시로드 중...</translation>
+        <source>Loading ServiceNode cache...</source>
+        <translation>ServiceNode 캐시로드 중...</translation>
     </message>
     <message>
-        <source>Loading Dynode payment cache...</source>
-        <translation>Dynode 결제 캐시로드 중 ...</translation>
+        <source>Loading ServiceNode payment cache...</source>
+        <translation>ServiceNode 결제 캐시로드 중 ...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -4584,8 +4584,8 @@ rpcpassword=%s
         <translation>자물쇠가 이미 제자리에 있습니다.</translation>
     </message>
     <message>
-        <source>Lock Dynodes from Dynode configuration file (default: %u)</source>
-        <translation>Dynode 설정 파일의 Dynodes 잠금 (기본값: %u)</translation>
+        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
+        <translation>ServiceNode 설정 파일의 ServiceNodes 잠금 (기본값: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4608,16 +4608,16 @@ rpcpassword=%s
         <translation>-whitebind: &apos;%s&apos;을 (를) 사용하여 포트를 지정해야합니다.</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Dynodes가 감지되지 않았습니다.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>ServiceNodes가 감지되지 않았습니다.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>호환 가능한 Dynode를 찾을 수 없습니다.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>호환 가능한 ServiceNode를 찾을 수 없습니다.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Dynode 목록에 없습니다.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>ServiceNode 목록에 없습니다.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4656,8 +4656,8 @@ rpcpassword=%s
         <translation>서버 개인 키 (기본값: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this Dynode (example: %s)</source>
-        <translation>외부 주소 설정:이 Dynode로 가져올 포트 (예: %s)</translation>
+        <source>Set external address:port to get to this ServiceNode (example: %s)</source>
+        <translation>외부 주소 설정:이 ServiceNode로 가져올 포트 (예: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4688,8 +4688,8 @@ rpcpassword=%s
         <translation>연결 시간 제한을 밀리 초 단위로 지정하십시오 (최저한의: 1, 태만: %d)</translation>
     </message>
     <message>
-        <source>Specify Dynode configuration file (default: %s)</source>
-        <translation>Dynode 구성 파일 지정 (태만: %s)</translation>
+        <source>Specify ServiceNode configuration file (default: %s)</source>
+        <translation>ServiceNode 구성 파일 지정 (태만: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4704,16 +4704,16 @@ rpcpassword=%s
         <translation>디스크에서 블록을 가져온 후에 실행 중지 (태만: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to Dynode: %u / %d</source>
-        <translation>Dynode에 다음 항목을 제출했습니다: %u / %d</translation>
+        <source>Submitted following entries to ServiceNode: %u / %d</source>
+        <translation>ServiceNode에 다음 항목을 제출했습니다: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Dynode에 제출하여 추가 항목을 기다리는 중입니다 ( %u / %d ) %s</translation>
+        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>ServiceNode에 제출하여 추가 항목을 기다리는 중입니다 ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to Dynode, waiting in queue %s</source>
-        <translation>Dynode에 제출되어 대기열에서 대기 중입니다 %s</translation>
+        <source>Submitted to ServiceNode, waiting in queue %s</source>
+        <translation>ServiceNode에 제출되어 대기열에서 대기 중입니다 %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4728,16 +4728,16 @@ rpcpassword=%s
         <translation>예산 동기화 ...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode winners...</source>
-        <translation>Dynode 수상자 동기화 ...</translation>
+        <source>Synchronizing ServiceNode winners...</source>
+        <translation>ServiceNode 수상자 동기화 ...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode payments...</source>
-        <translation>Dynode 지불 동기화 ...</translation>
+        <source>Synchronizing ServiceNode payments...</source>
+        <translation>ServiceNode 지불 동기화 ...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynodes...</source>
-        <translation>Dynodes 동기화 ...</translation>
+        <source>Synchronizing ServiceNodes...</source>
+        <translation>ServiceNodes 동기화 ...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4748,8 +4748,8 @@ rpcpassword=%s
         <translation>sporks 동기화...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>이것은 Dynode가 아닙니다..</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>이것은 ServiceNode가 아닙니다..</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4760,7 +4760,7 @@ rpcpassword=%s
         <translation>KeePassHttp 플러그인을 사용하여 KeePass 2 통합 사용 (태만: %u)</translation>
     </message>
     <message>
-        <source>Use N separate Dynodes to anonymize funds  (2-8, default: %u)</source>
+        <source>Use N separate ServiceNodes to anonymize funds  (2-8, default: %u)</source>
         <translation>N 개의 개별 다이 노드를 사용하여 자금 익명 처리 (2-8, 태만: %u)</translation>
     </message>
     <message>
@@ -4784,15 +4784,15 @@ rpcpassword=%s
         <translation>다시 시도 할 것입니다...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>잘못된 dynodepairingkey입니다. 문서를 참조하십시오.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>잘못된 servicenodepairingkey입니다. 문서를 참조하십시오.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(메인 네트의 경우 33300이어야 함)</translation>
     </message>
     <message>
-        <source>Can&apos;t find random Dynode.</source>
+        <source>Can&apos;t find random ServiceNode.</source>
         <translation>랜덤 다이 노스를 찾을 수 없습니다.</translation>
     </message>
     <message>
@@ -4800,16 +4800,16 @@ rpcpassword=%s
         <translation>진행중인 동기화 중에는 혼합 할 수 없습니다.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation>dynode.conf를 분석 할 수 없습니다</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>servicenode.conf를 분석 할 수 없습니다</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>잘못된 넷 마스크가에서 지정되었습니다 -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>dynode.conf에서 잘못된 포트가 감지되었습니다</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>servicenode.conf에서 잘못된 포트가 감지되었습니다</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4868,16 +4868,16 @@ rpcpassword=%s
         <translation>지갑이 작동하는지 확인한 후 지갑을 암호화하고 암호화되지 않은 백업을 모두 삭제하십시오!</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Dynode 옵션들:</translation>
+        <source>ServiceNode options:</source>
+        <translation>ServiceNode 옵션들:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>Dynode 대기열이 꽉 찼습니다.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>ServiceNode 대기열이 꽉 찼습니다.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -5120,8 +5120,8 @@ rpcpassword=%s
         <translation>테스트 체인 사용</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>모든 동적 특정 기능 (Dynodes, PrivateSend, InstantSend, Governance)을 사용하지 않음 (0-1, 기본값: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>모든 동적 특정 기능 (ServiceNodes, PrivateSend, InstantSend, Governance)을 사용하지 않음 (0-1, 기본값: %u)</translation>
     </message>
     <message>
         <source>Enable use of automated PrivateSend for funds stored in this wallet (0-1, default: %u)</source>
@@ -5132,8 +5132,8 @@ rpcpassword=%s
         <translation>블록 당 여러 개의 PrivateSend 믹싱 세션 사용, 실험적 (0-1, 기본값: %u)</translation>
     </message>
     <message>
-        <source>Use N separate Dynodes for each denominated input to mix funds (2-16, default: %u)</source>
-        <translation>자금을 혼합하기 위해 각 입력에 대해 N 개의 개별 Dynode를 사용하십시오 (기본값: %u)</translation>
+        <source>Use N separate ServiceNodes for each denominated input to mix funds (2-16, default: %u)</source>
+        <translation>자금을 혼합하기 위해 각 입력에 대해 N 개의 개별 ServiceNode를 사용하십시오 (기본값: %u)</translation>
     </message>
     <message>
         <source>Enable InstantSend, show confirmations for locked transactions (0-1, default: %u)</source>
@@ -5200,8 +5200,8 @@ rpcpassword=%s
         <translation>최대 블록 크기를 바이트 단위로 설정하십시오 (태만: %d)</translation>
     </message>
     <message>
-        <source>Set the Dynode private key</source>
-        <translation>Dynode 개인 키 설정</translation>
+        <source>Set the ServiceNode private key</source>
+        <translation>ServiceNode 개인 키 설정</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

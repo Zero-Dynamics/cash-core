@@ -415,12 +415,12 @@
         <translation>Mở tập tin cấu hình</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>Mở tệp cấu hình Dynode</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>Mở tệp cấu hình ServiceNode</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Mở tệp cấu hình Dynode</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>Mở tệp cấu hình ServiceNode</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -912,16 +912,16 @@ Kiểu: %3
         <translation>Hãy chọn mức độ riêng tư.</translation>
     </message>
     <message>
-        <source>Use 2 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Sử dụng 2 dynode khác nhau để trộn số tiền lên đến 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Sử dụng 2 servicenode khác nhau để trộn số tiền lên đến 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 8 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Sử dụng 8 dynode khác nhau để trộn số tiền lên đến 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Sử dụng 8 servicenode khác nhau để trộn số tiền lên đến 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 16 separate dynodes</source>
-        <translation>Sử dụng 16 dynode khác nhau</translation>
+        <source>Use 16 separate servicenodes</source>
+        <translation>Sử dụng 16 servicenode khác nhau</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1104,11 +1104,11 @@ Bạn giữ quyền kiểm soát tiền của bạn mọi lúc.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend bắt đầu bằng cách chia các đầu vào giao dịch của bạn thành các mệnh giá tiêu chuẩn.
 Các mệnh giá này là 0,001, 0,01 DYN, 0,1 DYN, 1 DYN, 10 DYN - giống như tiền giấy bạn sử dụng hàng ngày.&lt;/li&gt;
-&lt;li&gt;Ví của bạn sau đó gửi yêu cầu đến các nút phần mềm được cấu hình đặc biệt trên mạng, được gọi là &#39;Dynodes&#39;.
-Các Dynodes này được thông báo rằng bạn quan tâm đến việc trộn một mệnh giá nhất định.
-Không có thông tin nhận dạng nào được gửi đến Dynodes, vì vậy họ không bao giờ biết bạn là ai.&lt;/li&gt;
+&lt;li&gt;Ví của bạn sau đó gửi yêu cầu đến các nút phần mềm được cấu hình đặc biệt trên mạng, được gọi là &#39;ServiceNodes&#39;.
+Các ServiceNodes này được thông báo rằng bạn quan tâm đến việc trộn một mệnh giá nhất định.
+Không có thông tin nhận dạng nào được gửi đến ServiceNodes, vì vậy họ không bao giờ biết bạn là ai.&lt;/li&gt;
 &lt;li&gt;Khi hai người khác gửi tin nhắn tương tự, cho biết họ muốn trộn cùng một mệnh giá, một phiên trộn bắt đầu.
-Dynode trộn lẫn các đầu vào và hướng dẫn cả ba người dùng&#39; ví để trả đầu vào chuyển đổi trở lại cho chính họ.
+ServiceNode trộn lẫn các đầu vào và hướng dẫn cả ba người dùng&#39; ví để trả đầu vào chuyển đổi trở lại cho chính họ.
 Ví của bạn trả tiền mệnh giá đó trực tiếp cho chính nó, nhưng ở một địa chỉ khác (được gọi là địa chỉ thay đổi).&lt;/li&gt;
 &lt;li&gt;Để che khuất hoàn toàn tiền của bạn, ví của bạn phải lặp lại quy trình này một số lần với mỗi mệnh giá.
 Mỗi khi quá trình hoàn thành, nó được gọi là một vòng. Mỗi vòng PrivateSend làm cho việc xác định tiền của bạn bắt nguồn từ đâu theo cấp số nhân.&lt;/li&gt;
@@ -1267,8 +1267,8 @@ Do đó, người dùng đã sao lưu bị vô hiệu hóa cũng sẽ bị tắt
         <translation>Chuyên gia</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Thiết lập này xác định số tiền cho mỗi Dynodes mà đầu vào thông qua đó được ẩn danh.&lt;br/&gt;Càng có nhiều vòng ẩn danh thì sẽ cho mức độ riêng tư càng cao, nhưng nó cũng tốn nhiều phí hơn.</translation>
+        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Thiết lập này xác định số tiền cho mỗi ServiceNodes mà đầu vào thông qua đó được ẩn danh.&lt;br/&gt;Càng có nhiều vòng ẩn danh thì sẽ cho mức độ riêng tư càng cao, nhưng nó cũng tốn nhiều phí hơn.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1544,8 +1544,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Dừng trộn</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>Mệnh giá mà bạn gửi cho Dynode. &lt;br&gt;Để trộn, những người dùng khác cũng cần gửi chính xác dùng loại mệnh giá đó.</translation>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>Mệnh giá mà bạn gửi cho ServiceNode. &lt;br&gt;Để trộn, những người dùng khác cũng cần gửi chính xác dùng loại mệnh giá đó.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1933,8 +1933,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Block chain</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Số lượng Dynodes</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>Số lượng ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3425,7 +3425,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>Mẫu</translation>
@@ -3439,16 +3439,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Đếm nút:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
-        <translation>Dynodes của tôi</translation>
+        <source>My ServiceNodes</source>
+        <translation>ServiceNodes của tôi</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
+        <source>All ServiceNodes</source>
         <translation>Tất cả các triều đại</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Lưu ý: Trạng thái Dynodes của bạn trong ví cục bộ có thể có khả năng hơi không chính xác.&lt;br /&gt;Luôn chờ ví để đồng bộ hóa dữ liệu bổ sung và sau đó kiểm tra lại từ một nút khác&lt;br /&gt;nếu Dynode của bạn sẽ chạy nhưng bạn vẫn không thấy &quot;ENABLED&quot; trong trường &quot;Status&quot; thái.</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Lưu ý: Trạng thái ServiceNodes của bạn trong ví cục bộ có thể có khả năng hơi không chính xác.&lt;br /&gt;Luôn chờ ví để đồng bộ hóa dữ liệu bổ sung và sau đó kiểm tra lại từ một nút khác&lt;br /&gt;nếu ServiceNode của bạn sẽ chạy nhưng bạn vẫn không thấy &quot;ENABLED&quot; trong trường &quot;Status&quot; thái.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3503,16 +3503,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>Bạn có chắc chắn muốn bắt đầu TẤT CẢ các Dynodes?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>Bạn có chắc chắn muốn bắt đầu TẤT CẢ các ServiceNodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>Bạn có chắc chắn muốn bắt đầu MISSING Dynodes?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>Bạn có chắc chắn muốn bắt đầu MISSING ServiceNodes?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>Xác nhận thiếu Dynodes bắt đầu</translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>Xác nhận thiếu ServiceNodes bắt đầu</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3523,16 +3523,16 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Lệnh không có sẵn ngay bây giờ</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>Bạn không thể sử dụng lệnh này cho đến khi danh sách Dynode được đồng bộ hóa</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>Bạn không thể sử dụng lệnh này cho đến khi danh sách ServiceNode được đồng bộ hóa</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Xác nhận bắt đầu Dynode</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>Xác nhận bắt đầu ServiceNode</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Bạn có chắc chắn muốn bắt đầu Dynode %1 không?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>Bạn có chắc chắn muốn bắt đầu ServiceNode %1 không?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3543,12 +3543,12 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Đang cập nhật ...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Bắt đầu thành công Dynode.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>Bắt đầu thành công ServiceNode.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
-        <translation>Đã khởi động thành công %d Dynodes, không khởi động được %d, tổng %d</translation>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <translation>Đã khởi động thành công %d ServiceNodes, không khởi động được %d, tổng %d</translation>
     </message>
 </context>
 <context>
@@ -3622,8 +3622,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Điều này cho thấy thời gian trung bình giữa các khối bạn đã khai thác</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain / Dynodes không được đồng bộ hóa, vui lòng đợi cho đến khi được đồng bộ hóa hoàn toàn trước khi khai thác!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain / ServiceNodes không được đồng bộ hóa, vui lòng đợi cho đến khi được đồng bộ hóa hoàn toàn trước khi khai thác!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -3848,8 +3848,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Cảnh báo: wallet.dat đã bị hỏng, dữ liệu đã được cứu! Tệp gốc wallet.dat đã được lưu thành wallet.{timestamp}.bak trong %s; nếu số dư hoặc các giao dịch của bạn không chính xác, bạn có thể khôi phục từ bản sao lưu.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Bạn cần chỉ rõ dynodepairingkey trong tệp cấu hình. Hãy xem tài liệu để có hướng dẫn.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Bạn cần chỉ rõ servicenodepairingkey trong tệp cấu hình. Hãy xem tài liệu để có hướng dẫn.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4048,8 +4048,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>Xoá hết tất cả các giao dịch ví và chỉ phục hồi những phần đó của blockchain qua -rescan khi khởi động</translation>
     </message>
     <message>
-        <source>Disable all Dynamic specific functionality (Dynodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Tắt tất cả các chức năng đặc trưng của Dynamic (Dynode, PrivateSend, InstantSend, Lập ngân sách) (0-1, ngầm định: %u)</translation>
+        <source>Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Tắt tất cả các chức năng đặc trưng của Dynamic (ServiceNode, PrivateSend, InstantSend, Lập ngân sách) (0-1, ngầm định: %u)</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4257,12 +4257,12 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Tắt chế độ an toàn, ghi đè lên một sự kiện của chế đọ an toàn (ngầm định: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a dynode (0-1, default: %u)</source>
-        <translation>Cho phép phần mềm hoạt động như là dynode (0-1, ngầm định: %u)</translation>
+        <source>Enable the client to act as a servicenode (0-1, default: %u)</source>
+        <translation>Cho phép phần mềm hoạt động như là servicenode (0-1, ngầm định: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Lỗi kết nối tới Dynode.</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Lỗi kết nối tới ServiceNode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -4401,20 +4401,20 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Đang nạp bộ đệm ngân sách...</translation>
     </message>
     <message>
-        <source>Loading dynode cache...</source>
-        <translation>Đang tải cache cho dynode...</translation>
+        <source>Loading servicenode cache...</source>
+        <translation>Đang tải cache cho servicenode...</translation>
     </message>
     <message>
-        <source>Loading dynode payment cache...</source>
-        <translation>Đang tải bộ đệm thanh toán cho dynode...</translation>
+        <source>Loading servicenode payment cache...</source>
+        <translation>Đang tải bộ đệm thanh toán cho servicenode...</translation>
     </message>
     <message>
         <source>Lock is already in place.</source>
         <translation>Khoá đã sẵn sàng.</translation>
     </message>
     <message>
-        <source>Lock dynodes from dynode configuration file (default: %u)</source>
-        <translation>Khoá các dynode từ tệp cấu hình dynode (ngầm định: %u)</translation>
+        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
+        <translation>Khoá các servicenode từ tệp cấu hình servicenode (ngầm định: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4437,16 +4437,16 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Cần chỉ rõ một cổng với -whitebind: '%s'</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Không tìm thấy các Dynode.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>Không tìm thấy các ServiceNode.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Không tìm thấy Dynode tương thích.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Không tìm thấy ServiceNode tương thích.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Không có trong danh sách Dynode.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Không có trong danh sách ServiceNode.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4485,8 +4485,8 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Khoá riêng của máy chủ (ngầm định: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this dynode (example: %s)</source>
-        <translation>Đặt external address:port cho dynode này (ví dụ: %s)</translation>
+        <source>Set external address:port to get to this servicenode (example: %s)</source>
+        <translation>Đặt external address:port cho servicenode này (ví dụ: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4517,8 +4517,8 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Hãy xác định thời gian hết hạn tính theo milli giây (tối thiểu: 1, ngầm định: %d)</translation>
     </message>
     <message>
-        <source>Specify dynode configuration file (default: %s)</source>
-        <translation>Hãy chỉ ra tệp cấu hình dynode (ngầm định: %s)</translation>
+        <source>Specify servicenode configuration file (default: %s)</source>
+        <translation>Hãy chỉ ra tệp cấu hình servicenode (ngầm định: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4533,16 +4533,16 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Dừng chạy sau khi nạp các khối từ đĩa (ngầm định: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to dynode: %u / %d</source>
-        <translation>Đã gửi các những thành phần sau tới dynode: %u / %d</translation>
+        <source>Submitted following entries to servicenode: %u / %d</source>
+        <translation>Đã gửi các những thành phần sau tới servicenode: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to dynode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Đã gửi đến dynode, đang đợi các đầu vào khác nữa (%u / %d) %s</translation>
+        <source>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Đã gửi đến servicenode, đang đợi các đầu vào khác nữa (%u / %d) %s</translation>
     </message>
     <message>
-        <source>Submitted to dynode, waiting in queue %s</source>
-        <translation>Đã được gửi cho dynode, đang đợi trong hàng đợi %s</translation>
+        <source>Submitted to servicenode, waiting in queue %s</source>
+        <translation>Đã được gửi cho servicenode, đang đợi trong hàng đợi %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4557,16 +4557,16 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Đang đồng bộ ngân sách...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode winners...</source>
-        <translation>Đồng bộ các Dynode được chọn...</translation>
+        <source>Synchronizing ServiceNode winners...</source>
+        <translation>Đồng bộ các ServiceNode được chọn...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynode payments...</source>
-        <translation>Đồng bộ hóa thanh toán Dynode...</translation>
+        <source>Synchronizing ServiceNode payments...</source>
+        <translation>Đồng bộ hóa thanh toán ServiceNode...</translation>
     </message>
     <message>
-        <source>Synchronizing Dynodes...</source>
-        <translation>Đang đồng bộ các dynode...</translation>
+        <source>Synchronizing ServiceNodes...</source>
+        <translation>Đang đồng bộ các servicenode...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4577,8 +4577,8 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Đang đồng bộ các sporks...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
-        <translation>Đây không phải là một Dynode.</translation>
+        <source>This is not a ServiceNode.</source>
+        <translation>Đây không phải là một ServiceNode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4589,7 +4589,7 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Sử dụng tích hợp KeePass 2 dùng KeePassHttp plugin (ngầm định: %u)</translation>
     </message>
     <message>
-        <source>Use N separate dynodes to anonymize funds  (2-8, default: %u)</source>
+        <source>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</source>
         <translation>Sử dụng N masternods riêng biệt để ẩn danh khoản tiền (2-8, ngầm định: %u)</translation>
     </message>
     <message>
@@ -4613,32 +4613,32 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Sẽ thử lại...</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>dynodepairingkey không hợp lệ. Hãy xem lại tài liệu.</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>servicenodepairingkey không hợp lệ. Hãy xem lại tài liệu.</translation>
     </message>
     <message>
         <source>(must be 33300 for mainnet)</source>
         <translation>(phải là 33300 cho mạng chính thức)</translation>
     </message>
     <message>
-        <source>Can't find random Dynode.</source>
-        <translation>Không tìm thấy Dynode ngẫu nhiên.</translation>
+        <source>Can't find random ServiceNode.</source>
+        <translation>Không tìm thấy ServiceNode ngẫu nhiên.</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
         <translation>Không thể trộn trong quá trình đồng bộ.</translation>
     </message>
     <message>
-        <source>Could not parse dynode.conf</source>
-        <translation>Không hiểu được tệp dynode.conf</translation>
+        <source>Could not parse servicenode.conf</source>
+        <translation>Không hiểu được tệp servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: '%s'</source>
         <translation>Lỗi netmask được chỉ ra trong -whitelist: '%s'</translation>
     </message>
     <message>
-        <source>Invalid port detected in dynode.conf</source>
-        <translation>Phát hiện thấy cổng không hợp lệ trong tệp dynode.conf</translation>
+        <source>Invalid port detected in servicenode.conf</source>
+        <translation>Phát hiện thấy cổng không hợp lệ trong tệp servicenode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4697,16 +4697,16 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Đảm bảo mã hóa ví của bạn và xóa tất cả các bản sao lưu không được mã hóa sau khi bạn xác minh rằng ví đó hoạt động!</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Tuỳ chọn Dynode:</translation>
+        <source>ServiceNode options:</source>
+        <translation>Tuỳ chọn ServiceNode:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>Danh sách hàng đợi Dynode đã đầy.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>Danh sách hàng đợi ServiceNode đã đầy.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode:</translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4809,8 +4809,8 @@ ví dụ: alertnotify=echo %%s | mail -s "Dynamic Alert" admin@foo.com
         <translation>Thiết lập kích thước khối tối đa theo bytes (ngầm định: %d)</translation>
     </message>
     <message>
-        <source>Set the dynode private key</source>
-        <translation>Đặt khoá riêng cho dynode</translation>
+        <source>Set the servicenode private key</source>
+        <translation>Đặt khoá riêng cho servicenode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

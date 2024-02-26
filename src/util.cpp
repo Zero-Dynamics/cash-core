@@ -106,7 +106,7 @@ std::string to_internal(const std::string&);
 } // namespace boost
 
 //Dynamic only features
-bool fDynodeMode = false;
+bool fServiceNodeMode = false;
 bool fLiteMode = false;
 /**
     nWalletBackups:
@@ -274,11 +274,11 @@ bool LogAcceptCategory(const char* category)
                 // "dynamic" is a composite category enabling all Dynamic-related debug output
                 //addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool"
                 //"|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|"
-                //"dynamic|privatesend|instantsend|dynode|spork|keepass|dnpayments|gobject|dht|bdap|validation|stealth|
+                //"dynamic|privatesend|instantsend|servicenode|spork|keepass|dnpayments|gobject|dht|bdap|validation|stealth|
                 if (ptrCategory->count(std::string("dynamic"))) {
                     ptrCategory->insert(std::string("privatesend"));
                     ptrCategory->insert(std::string("instantsend"));
-                    ptrCategory->insert(std::string("dynode"));
+                    ptrCategory->insert(std::string("servicenode"));
                     ptrCategory->insert(std::string("spork"));
                     ptrCategory->insert(std::string("keepass"));
                     ptrCategory->insert(std::string("dnpayments"));
@@ -677,9 +677,9 @@ boost::filesystem::path GetConfigFile(const std::string& confPath)
     return pathConfigFile;
 }
 
-boost::filesystem::path GetDynodeConfigFile()
+boost::filesystem::path GetServiceNodeConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-dnconf", "dynode.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-dnconf", "servicenode.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir() / pathConfigFile;
     return pathConfigFile;

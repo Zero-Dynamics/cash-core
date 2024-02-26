@@ -36,7 +36,7 @@ Blockchain
 
 Control
 -------
-* debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|dynamic|privatesend|instantsend|dynode|spork|keepass|dnpayments|gobject )
+* debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|dynamic|privatesend|instantsend|servicenode|spork|keepass|dnpayments|gobject )
 * getinfo
 * getmemoryinfo
 * help ( "command" )
@@ -59,17 +59,17 @@ DDNS
 Dynamic
 -------
 * dnsync [status|next|reset]
-* dynode "command"...
-* dynodebroadcast "command"...
-* dynodelist ( "mode" "filter" )
-* getdynoderewardstart [nHeight]
+* servicenode "command"...
+* servicenodebroadcast "command"...
+* servicenodelist ( "mode" "filter" )
+* getservicenoderewardstart [nHeight]
 * getgovernanceinfo
 * getpoolinfo
 * getsuperblockbudget index
 * gobject "command"...
 * privatesend "command"
 * spork [name] ([value])
-* voteraw [dynode-tx-hash] [dynode-tx-index] [governance-hash] [vote-signal] (yes|no|abstain) [time] [vote-sig]
+* voteraw [servicenode-tx-hash] [servicenode-tx-index] [governance-hash] [vote-signal] (yes|no|abstain) [time] [vote-sig]
 
 
 Generating

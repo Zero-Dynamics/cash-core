@@ -3,20 +3,20 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_DYNODECONFIG_H
-#define DYNAMIC_DYNODECONFIG_H
+#ifndef DYNAMIC_SERVICENODECONFIG_H
+#define DYNAMIC_SERVICENODECONFIG_H
 
 #include "chainparams.h"
 #include "netbase.h"
 #include "util.h"
 
-class CDynodeConfig;
-extern CDynodeConfig dynodeConfig;
+class CServiceNodeConfig;
+extern CServiceNodeConfig servicenodeConfig;
 
-class CDynodeConfig
+class CServiceNodeConfig
 {
 public:
-    class CDynodeEntry
+    class CServiceNodeEntry
     {
     private:
         std::string alias;
@@ -26,7 +26,7 @@ public:
         std::string outputIndex;
 
     public:
-        CDynodeEntry(const std::string& alias, const std::string& ip, const std::string& privKey, const std::string& txHash, const std::string& outputIndex)
+        CServiceNodeEntry(const std::string& alias, const std::string& ip, const std::string& privKey, const std::string& txHash, const std::string& outputIndex)
         {
             this->alias = alias;
             this->ip = ip;
@@ -86,16 +86,16 @@ public:
         }
     };
 
-    CDynodeConfig()
+    CServiceNodeConfig()
     {
-        entries = std::vector<CDynodeEntry>();
+        entries = std::vector<CServiceNodeEntry>();
     }
 
     void clear();
     bool read(std::string& strErr);
     void add(const std::string& alias, const std::string& ip, const std::string& privKey, const std::string& txHash, const std::string& outputIndex);
 
-    std::vector<CDynodeEntry>& getEntries()
+    std::vector<CServiceNodeEntry>& getEntries()
     {
         return entries;
     }
@@ -106,8 +106,8 @@ public:
     }
 
 private:
-    std::vector<CDynodeEntry> entries;
+    std::vector<CServiceNodeEntry> entries;
 };
 
 
-#endif // DYNAMIC_DYNODECONFIG_H
+#endif // DYNAMIC_SERVICENODECONFIG_H

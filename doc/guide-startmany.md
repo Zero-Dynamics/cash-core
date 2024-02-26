@@ -10,7 +10,7 @@
     * Click *Request payment*
 5. Click the *Copy Address* button
 
-Create a new wallet address for each Dynode.
+Create a new wallet address for each ServiceNode.
 
 Close your QT Wallet.
 
@@ -18,27 +18,27 @@ Close your QT Wallet.
 
 Send exactly 1,000 DYN to each new address created above.
 
-### Create New Dynode Private Keys
+### Create New ServiceNode Private Keys
 
 Open your QT Wallet and go to console (from the menu select Tools => Debug Console)
 
 Issue the following:
 
-```dynode genkey```
+```servicenode genkey```
 
-*Note: A Dynode private key will need to be created for each Dynode you run. You should not use the same Dynode private key for multiple Dynodes.*
+*Note: A ServiceNode private key will need to be created for each ServiceNode you run. You should not use the same ServiceNode private key for multiple ServiceNodes.*
 
 Close your QT Wallet.
 
-## <a name="dynodeconf"></a>Create dynode.conf file
+## <a name="servicenodeconf"></a>Create servicenode.conf file
 
 Remember... this is local. Make sure your QT is not running.
 
-Create the dynode.conf file in the same directory as your wallet.dat.
+Create the servicenode.conf file in the same directory as your wallet.dat.
 
-Copy the Dynode private key and correspondig collateral output transaction that holds the 1K DYNAMIC.
+Copy the ServiceNode private key and correspondig collateral output transaction that holds the 1K DYNAMIC.
 
-*Please note, the Dynode priviate key is not the same as a wallet private key. Never put your wallet private key in the dynode.conf file. That is equivalent to putting your 1,000 DYN on the remote server and defeats the purpose of a hot/cold setup.*
+*Please note, the ServiceNode priviate key is not the same as a wallet private key. Never put your wallet private key in the servicenode.conf file. That is equivalent to putting your 1,000 DYN on the remote server and defeats the purpose of a hot/cold setup.*
 
 ### Get the collateral output
 
@@ -46,18 +46,18 @@ Open your QT Wallet and go to console (from the menu select Tools => Debug Conso
 
 Issue the following:
 
-```dynode outputs```
+```servicenode outputs```
 
 Make note of the hash (which is your collaterla_output) and index.
 
-### Enter your Dynode details into your dynode.conf file
-[From the dynamic github repo](https://github.com/duality-solutions/dynamic/blob/master/doc/dynode_conf.md)
+### Enter your ServiceNode details into your servicenode.conf file
+[From the dynamic github repo](https://github.com/duality-solutions/dynamic/blob/master/doc/servicenode_conf.md)
 
-The new dynode.conf format consists of a space separated text file. Each line consisting of an alias, IP address followed by port, Dynode private key, collateral output transaction id and collateral output index. 
+The new servicenode.conf format consists of a space separated text file. Each line consisting of an alias, IP address followed by port, ServiceNode private key, collateral output transaction id and collateral output index. 
 (!!! Currently not implemented: "donation address and donation percentage (the latter two are optional and should be in format "address:percentage")." !!!)
 
 ```
-alias ipaddress:port dynode_private_key collateral_output collateral_output_index (!!! see above "donationin_address:donation_percentage" !!!)
+alias ipaddress:port servicenode_private_key collateral_output collateral_output_index (!!! see above "donationin_address:donation_percentage" !!!)
 ```
 
 
@@ -71,16 +71,16 @@ sn02 127.0.0.2:33300 93WaAb3htPJEV8E9aQcN23Jt97bPex7YvWfgMDTUdWJvzmrMqey aa9f103
 
 ## Update dynamic.conf on server
 
-If you generated a new Dynode private key, you will need to update the remote dynamic.conf files.
+If you generated a new ServiceNode private key, you will need to update the remote dynamic.conf files.
 
 Shut down the daemon and then edit the file.
 
 ```sudo nano .dynamic/dynamic.conf```
 
-### Edit the dynodepairingkey
-If you generated a new Dynode private key, you will need to update the dynodepairingkey value in your remote dynamic.conf file.
+### Edit the servicenodepairingkey
+If you generated a new ServiceNode private key, you will need to update the servicenodepairingkey value in your remote dynamic.conf file.
 
-## Start your Dynodes
+## Start your ServiceNodes
 
 ### Remote
 
@@ -100,11 +100,11 @@ Finally... time to start from local.
 
 From the menu select Tools => Debug Console
 
-If you want to review your dynode.conf setting before starting the Dynodes, issue the following in the Debug Console:
+If you want to review your servicenode.conf setting before starting the ServiceNodes, issue the following in the Debug Console:
 
-```dynode list-conf```
+```servicenode list-conf```
 
 Give it the eye-ball test. If satisfied, you can start your nodes one of two ways.
 
-1. dynode start-alias [alias_from_dynode.conf]. Example ```dynode start-alias sn01```
-2. dynode start-many
+1. servicenode start-alias [alias_from_servicenode.conf]. Example ```servicenode start-alias sn01```
+2. servicenode start-many

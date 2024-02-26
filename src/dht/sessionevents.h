@@ -158,6 +158,6 @@ public:
 };
 
 std::string GetInfoHash(const std::string& pubkey, const std::string& salt);
-std::string GetDynodeHashID(const std::string& service_address);
+std::string GetServiceNodeHashID(const std::string& service_address);
 
 #endif // DYNAMIC_DHT_SESSION_EVENTS_H

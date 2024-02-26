@@ -1,12 +1,12 @@
-Dynode config
+ServiceNode config
 =======================
 
-Dynamic allows controlling multiple remote Dynodes from a single wallet. The wallet needs to have a valid collateral output of 1000 coins for each Dynode and uses a configuration file named `dynode.conf` which can be found in the following data directory (depending on your operating system):
+Dynamic allows controlling multiple remote ServiceNodes from a single wallet. The wallet needs to have a valid collateral output of 1000 coins for each ServiceNode and uses a configuration file named `servicenode.conf` which can be found in the following data directory (depending on your operating system):
  * Windows: %APPDATA%\Dynamic\
  * Mac OS: ~/Library/Application Support/Dynamic/
  * Unix/Linux: ~/.dynamic/
 
-`dynode.conf` is a space separated text file. Each line consists of an alias, IP address followed by port, dynode private key, collateral output transaction id and collateral output index.
+`servicenode.conf` is a space separated text file. Each line consists of an alias, IP address followed by port, servicenode private key, collateral output transaction id and collateral output index.
 
 Example:
 ```
@@ -18,9 +18,9 @@ In the example above:
 * the collateral of 1000 DYN for `sn1` is output `0` of transaction [7603c20a05258c208b58b0a0d77603b9fc93d47cfa403035f87f3ce0af814566](https://test.explorer.dynamic.org/tx/7603c20a05258c208b58b0a0d77603b9fc93d47cfa403035f87f3ce0af814566)
 * the collateral of 1000 DYN for `sn2` is output `1` of transaction [5d898e78244f3206e0105f421cdb071d95d111a51cd88eb5511fc0dbf4bfd95f](https://test.explorer.dynamic.org/tx/5d898e78244f3206e0105f421cdb071d95d111a51cd88eb5511fc0dbf4bfd95f)
 
-_Note: IPs like 127.0.0.* are not allowed actually, we are using them here for explanatory purposes only. Make sure you have real reachable remote IPs in you `dynode.conf`._
+_Note: IPs like 127.0.0.* are not allowed actually, we are using them here for explanatory purposes only. Make sure you have real reachable remote IPs in you `servicenode.conf`._
 
-The following RPC commands are available (type `help dynode` in Console for more info):
+The following RPC commands are available (type `help servicenode` in Console for more info):
 * list-conf
 * start-alias \<alias\>
 * start-all

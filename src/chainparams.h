@@ -126,7 +126,7 @@ protected:
     int nFulfilledRequestExpireTime;
     std::vector<std::string> vSporkAddresses;
     int nMinSporkKeys;
-    std::string strDynodePaymentsPubKey;
+    std::string strServiceNodePaymentsPubKey;
     int64_t nTargetPosSpacing;
     int nFutureTimeDriftPoS;
     uint64_t nSwitchDifficultyBlock;

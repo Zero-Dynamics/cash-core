@@ -411,12 +411,12 @@
         <translation>Apri il file di configurazione</translation>
     </message>
     <message>
-        <source>Open &amp;Dynode Configuration File</source>
-        <translation>Apri il file di configurazione di Dynode</translation>
+        <source>Open &amp;ServiceNode Configuration File</source>
+        <translation>Apri il file di configurazione di ServiceNode</translation>
     </message>
     <message>
-        <source>Open Dynode configuration file</source>
-        <translation>Apri il file di configurazione di Dynode</translation>
+        <source>Open ServiceNode configuration file</source>
+        <translation>Apri il file di configurazione di ServiceNode</translation>
     </message>
     <message>
         <source>Show Automatic &amp;Backups</source>
@@ -865,16 +865,16 @@ Indirizzo: %4
         <translation>Selezionare il livello di privacy</translation>
     </message>
     <message>
-        <source>Use 2 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Usa 2 separati dynode per mischiare fino al 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Usa 2 separati servicenode per mischiare fino al 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 8 separate dynodes to mix funds up to 1000 DYN</source>
-        <translation>Usa 8 separati dynode per mischiare fino al 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
+        <translation>Usa 8 separati servicenode per mischiare fino al 1000 DYN</translation>
     </message>
     <message>
-        <source>Use 16 separate dynodes</source>
-        <translation>Usa 16 separati dynode</translation>
+        <source>Use 16 separate servicenodes</source>
+        <translation>Usa 16 separati servicenode</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
@@ -1053,11 +1053,11 @@ Mantenete il controllo dei vostri soldi in ogni momento.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend inizia suddividendo gli input della tua transazione in tagli standard.
 Queste denominazioni sono 0,001, 0,01 DYN, 0,1 DYN, 1 DYN, 10 DYN - una specie di carta moneta che usi ogni giorno.&lt;/li&gt;
-&lt;li&gt;Il tuo portafoglio invia quindi richieste a nodi software appositamente configurati sulla rete, chiamati &#39;Dynodes&#39;.
-Questi Dynode vengono quindi informati che sei interessato a mescolare una determinata denominazione.
-Nessuna informazione identificabile viene inviata ai Dynode, quindi non sanno mai &#39;chi&#39; tu sei.&lt;/li&gt;
+&lt;li&gt;Il tuo portafoglio invia quindi richieste a nodi software appositamente configurati sulla rete, chiamati &#39;ServiceNodes&#39;.
+Questi ServiceNode vengono quindi informati che sei interessato a mescolare una determinata denominazione.
+Nessuna informazione identificabile viene inviata ai ServiceNode, quindi non sanno mai &#39;chi&#39; tu sei.&lt;/li&gt;
 &lt;li&gt;Quando altre due persone inviano messaggi simili, indicando che desiderano mescolare la stessa denominazione, inizia una sessione di missaggio.
-Il Dynode mescola gli input e istruisce tutti e tre gli utenti&#39; portafogli per restituire a se stessi l'input ora trasformato.
+Il ServiceNode mescola gli input e istruisce tutti e tre gli utenti&#39; portafogli per restituire a se stessi l'input ora trasformato.
 Il tuo portafoglio paga quella denominazione direttamente a se stesso, ma in un indirizzo diverso (chiamato indirizzo di modifica).&lt;/li&gt;
 &lt;li&gt;Per oscurare completamente i tuoi fondi, il tuo portafoglio deve ripetere questo processo un numero di volte con ciascuna denominazione.
 Ogni volta che il processo è completato, viene chiamato "round". Ogni round di PrivateSend rende esponenzialmente più difficile determinare da dove provengono i tuoi fondi.&lt;/li&gt;
@@ -1475,7 +1475,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Start/Stop Mixing</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
         <translation>Il valore che hai richiesto al Mastermode. &lt;br&gt; Per mixare, gli altri utenti devono richiedere esattamente gli stessi valori.</translation>
     </message>
     <message>
@@ -1820,8 +1820,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Block chain</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
-        <translation>Numero di Dynodes</translation>
+        <source>Number of ServiceNodes</source>
+        <translation>Numero di ServiceNodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3244,7 +3244,7 @@ Più URL vengono separati da una barra verticale |.</translation>
     </message>
 </context>
 <context>
-    <name>DynodeList</name>
+    <name>ServiceNodeList</name>
     <message>
         <source>Form</source>
         <translation>Modulo</translation>
@@ -3258,16 +3258,16 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Conteggio nodi:</translation>
     </message>
     <message>
-        <source>My Dynodes</source>
-        <translation>La mia Dynodes</translation>
+        <source>My ServiceNodes</source>
+        <translation>La mia ServiceNodes</translation>
     </message>
     <message>
-        <source>All Dynodes</source>
+        <source>All ServiceNodes</source>
         <translation>Tutti i dinodi</translation>
     </message>
     <message>
-        <source>Note: Status of your Dynodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Dynode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Nota: lo stato dei tuoi Dynode nel portafoglio locale può essere leggermente errato. &lt;br /&gt;attendi sempre che wallet sincronizzi dati aggiuntivi e quindi ricontrolla da un altro nodo &lt;br /&gt;se il tuo Dynode dovrebbe essere in esecuzione ma non vedi &quot;ENABLED&quot; in &quot;Status&quot; campo.</translation>
+        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Nota: lo stato dei tuoi ServiceNode nel portafoglio locale può essere leggermente errato. &lt;br /&gt;attendi sempre che wallet sincronizzi dati aggiuntivi e quindi ricontrolla da un altro nodo &lt;br /&gt;se il tuo ServiceNode dovrebbe essere in esecuzione ma non vedi &quot;ENABLED&quot; in &quot;Status&quot; campo.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3322,16 +3322,16 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL Dynodes?</source>
-        <translation>Sei sicuro di voler iniziare TUTTI i Dynodes?</translation>
+        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <translation>Sei sicuro di voler iniziare TUTTI i ServiceNodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING Dynodes?</source>
-        <translation>Sei sicuro di voler iniziare MISSING Dynodes?</translation>
+        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <translation>Sei sicuro di voler iniziare MISSING ServiceNodes?</translation>
     </message>
     <message>
-        <source>Confirm missing Dynodes start</source>
-        <translation>Conferma l'inizio di Dynodes mancanti</translation>
+        <source>Confirm missing ServiceNodes start</source>
+        <translation>Conferma l'inizio di ServiceNodes mancanti</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3342,16 +3342,16 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Il comando non è disponibile al momento</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until Dynode list is synced</source>
-        <translation>Non è possibile utilizzare questo comando finché non viene sincronizzato l'elenco Dynode</translation>
+        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <translation>Non è possibile utilizzare questo comando finché non viene sincronizzato l'elenco ServiceNode</translation>
     </message>
     <message>
-        <source>Confirm Dynode start</source>
-        <translation>Conferma l'avvio del Dynode</translation>
+        <source>Confirm ServiceNode start</source>
+        <translation>Conferma l'avvio del ServiceNode</translation>
     </message>
     <message>
-        <source>Are you sure you want to start Dynode %1?</source>
-        <translation>Sei sicuro di voler avviare Dynode %1?</translation>
+        <source>Are you sure you want to start ServiceNode %1?</source>
+        <translation>Sei sicuro di voler avviare ServiceNode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3362,12 +3362,12 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>In aggiornamento...</translation>
     </message>
     <message>
-        <source>Successfully started Dynode.</source>
-        <translation>Dynode avviato correttamente.</translation>
+        <source>Successfully started ServiceNode.</source>
+        <translation>ServiceNode avviato correttamente.</translation>
     </message>
     <message>
-        <source>Successfully started %d Dynodes, failed to start %d, total %d</source>
-        <translation>%d Dynode avviati correttamente, impossibile avviare %d, totale %d</translation>
+        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <translation>%d ServiceNode avviati correttamente, impossibile avviare %d, totale %d</translation>
     </message>
 </context>
 <context>
@@ -3441,8 +3441,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Questo mostra il tempo medio tra i blocchi che hai estratto</translation>
     </message>
     <message>
-        <source>Blockchain/Dynodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain / Dynodes non sono sincronizzati, attendere fino alla completa sincronizzazione prima del mining!</translation>
+        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain / ServiceNodes non sono sincronizzati, attendere fino alla completa sincronizzazione prima del mining!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -3663,8 +3663,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Attenzione: wallet.dat corrotto, dati recuperati! Il wallet.dat originale è stato salvato come wallet.{timestamp}.bak in %s; se il tuo saldo o le transazioni non sono corrette dovresti ripristinare da un backup.</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Devi specificare una dynodepairingkey nella configurazione. Per favore consulta la documentazione di aiuto.</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Devi specificare una servicenodepairingkey nella configurazione. Per favore consulta la documentazione di aiuto.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -3864,7 +3864,7 @@ Più URL vengono separati da una barra verticale |.</translation>
     </message>
     <message>
         <source>PrivateSend is idle.</source>
-        <translation>Nessun Dynode trovato.</translation>
+        <translation>Nessun ServiceNode trovato.</translation>
     </message>
     <message>
         <source>PrivateSend request complete:</source>
@@ -3875,8 +3875,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Richiesta di PrivateSend incompleta:</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
-        <translation>Errore di connessione al Dynode</translation>
+        <source>Error connecting to ServiceNode.</source>
+        <translation>Errore di connessione al ServiceNode</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Dynamic</source>
@@ -3955,28 +3955,28 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Importo non valido per -paytxfee=&lt;amount&gt;: '%s'</translation>
     </message>
     <message>
-        <source>Lock dynodes from dynode configuration file (default: %u)</source>
-        <translation>Blocca i dynodes  nel file di configurazione del dynode (default: %u)</translation>
+        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
+        <translation>Blocca i servicenodes  nel file di configurazione del servicenode (default: %u)</translation>
     </message>
     <message>
         <source>Mixing in progress...</source>
         <translation>Mixing in corso...</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
-        <translation>Nessun Dynode trovato.</translation>
+        <source>No ServiceNodes detected.</source>
+        <translation>Nessun ServiceNode trovato.</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
-        <translation>Nessun compatibile Dynode trovato.</translation>
+        <source>No compatible ServiceNode found.</source>
+        <translation>Nessun compatibile ServiceNode trovato.</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
-        <translation>Non si trova in lista di Dynode.</translation>
+        <source>Not in the ServiceNode list.</source>
+        <translation>Non si trova in lista di ServiceNode.</translation>
     </message>
     <message>
-        <source>Invalid dynodepairingkey. Please see documenation.</source>
-        <translation>dynodepairingkey non valida. Per favore consulta la documentazione</translation>
+        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <translation>servicenodepairingkey non valida. Per favore consulta la documentazione</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4023,16 +4023,16 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Assicurati di crittografare il tuo portafoglio ed eliminare tutti i backup non crittografati dopo aver verificato che il portafoglio funzioni!</translation>
     </message>
     <message>
-        <source>Dynode options:</source>
-        <translation>Opzioni dynode:</translation>
+        <source>ServiceNode options:</source>
+        <translation>Opzioni servicenode:</translation>
     </message>
     <message>
-        <source>Dynode queue is full.</source>
-        <translation>La lista di dynode e' piena.</translation>
+        <source>ServiceNode queue is full.</source>
+        <translation>La lista di servicenode e' piena.</translation>
     </message>
     <message>
-        <source>Dynode:</source>
-        <translation>Dynode: </translation>
+        <source>ServiceNode:</source>
+        <translation>ServiceNode: </translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4113,8 +4113,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Imposta la dimensione massima del blocco in byte (predefinita: %d)</translation>
     </message>
     <message>
-        <source>Set the dynode private key</source>
-        <translation>Configura la chiave privata del Dynode</translation>
+        <source>Set the servicenode private key</source>
+        <translation>Configura la chiave privata del ServiceNode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

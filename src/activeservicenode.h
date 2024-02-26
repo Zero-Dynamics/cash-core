@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_ACTIVEDYNODE_H
-#define DYNAMIC_ACTIVEDYNODE_H
+#ifndef DYNAMIC_ACTIVESERVICENODE_H
+#define DYNAMIC_ACTIVESERVICENODE_H
 
 #include "chainparams.h"
 #include "key.h"
@@ -17,64 +17,64 @@
 #include "wallet/wallet.h"
 #endif //ENABLE_WALLET
 
-class CActiveDynode;
+class CActiveServiceNode;
 
-static const int ACTIVE_DYNODE_INITIAL = 0; // initial state
-static const int ACTIVE_DYNODE_SYNC_IN_PROCESS = 1;
-static const int ACTIVE_DYNODE_INPUT_TOO_NEW = 2;
-static const int ACTIVE_DYNODE_NOT_CAPABLE = 3;
-static const int ACTIVE_DYNODE_STARTED = 4;
+static const int ACTIVE_SERVICENODE_INITIAL = 0; // initial state
+static const int ACTIVE_SERVICENODE_SYNC_IN_PROCESS = 1;
+static const int ACTIVE_SERVICENODE_INPUT_TOO_NEW = 2;
+static const int ACTIVE_SERVICENODE_NOT_CAPABLE = 3;
+static const int ACTIVE_SERVICENODE_STARTED = 4;
 
-extern CActiveDynode activeDynode;
+extern CActiveServiceNode activeServiceNode;
 
-// Responsible for activating the Dynode and pinging the network
-class CActiveDynode
+// Responsible for activating the ServiceNode and pinging the network
+class CActiveServiceNode
 {
 public:
-    enum dynode_type_enum_t {
-        DYNODE_UNKNOWN = 0,
-        DYNODE_REMOTE = 1
+    enum servicenode_type_enum_t {
+        SERVICENODE_UNKNOWN = 0,
+        SERVICENODE_REMOTE = 1
     };
 
 private:
     // critical section to protect the inner data structures
     mutable CCriticalSection cs;
 
-    dynode_type_enum_t eType;
+    servicenode_type_enum_t eType;
 
     bool fPingerEnabled;
 
-    /// Ping Dynode
-    bool SendDynodePing(CConnman& connman);
+    /// Ping ServiceNode
+    bool SendServiceNodePing(CConnman& connman);
 
     //  sentinel ping data
     int64_t nSentinelPingTime;
     uint32_t nSentinelVersion;
 
 public:
-    // Keys for the active Dynode
-    CPubKey pubKeyDynode;
-    CKey keyDynode;
+    // Keys for the active ServiceNode
+    CPubKey pubKeyServiceNode;
+    CKey keyServiceNode;
 
-    // Initialized while registering Dynode
+    // Initialized while registering ServiceNode
     COutPoint outpoint;
     CService service;
 
-    int nState; // should be one of ACTIVE_DYNODE_XXXX
+    int nState; // should be one of ACTIVE_SERVICENODE_XXXX
     std::string strNotCapableReason;
 
-    CActiveDynode()
-        : eType(DYNODE_UNKNOWN),
+    CActiveServiceNode()
+        : eType(SERVICENODE_UNKNOWN),
           fPingerEnabled(false),
-          pubKeyDynode(),
-          keyDynode(),
+          pubKeyServiceNode(),
+          keyServiceNode(),
           outpoint(),
           service(),
-          nState(ACTIVE_DYNODE_INITIAL)
+          nState(ACTIVE_SERVICENODE_INITIAL)
     {
     }
 
-    /// Manage state of active Dynode
+    /// Manage state of active ServiceNode
     void ManageState(CConnman& connman);
 
     std::string GetStateString() const;
@@ -90,4 +90,4 @@ private:
     void ManageStateRemote();
 };
 
-#endif // DYNAMIC_ACTIVEDYNODE_H
+#endif // DYNAMIC_ACTIVESERVICENODE_H

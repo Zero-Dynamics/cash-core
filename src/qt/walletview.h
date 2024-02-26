@@ -10,7 +10,7 @@
 
 #include "amount.h"
 
-#include "dynodelist.h"
+#include "servicenodelist.h"
 
 #include <QStackedWidget>
 
@@ -73,7 +73,7 @@ private:
     AddressBookPage* usedReceivingAddressesPage;
     QWidget* transactionsPage;
     TransactionView* transactionView;
-    DynodeList* dynodeListPage;
+    ServiceNodeList* servicenodeListPage;
     MiningPage* miningPage;
     BdapPage* bdapPage;
 
@@ -90,8 +90,8 @@ public Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-    /** Switch to Dynode page */
-    void gotoDynodePage();
+    /** Switch to ServiceNode page */
+    void gotoServiceNodePage();
     /** Switch to mining page */
     void gotoMiningPage();
     /** Switch to bdap page */

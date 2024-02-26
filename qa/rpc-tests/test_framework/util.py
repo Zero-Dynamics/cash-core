@@ -139,7 +139,7 @@ def sync_mempools(rpc_connections, wait=1):
             break
         time.sleep(wait)
 
-def sync_dynodes(rpc_connections):
+def sync_servicenodes(rpc_connections):
     for node in rpc_connections:
         wait_to_sync(node)
 

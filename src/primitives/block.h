@@ -79,7 +79,7 @@ public:
     std::vector<CTransactionRef> vtx;
 
     // memory only
-    mutable CTxOut txoutDynode;                 // dynode payment
+    mutable CTxOut txoutServiceNode;                 // servicenode payment
     mutable std::vector<CTxOut> voutSuperblock; // superblock payment
     mutable bool fChecked;
 
@@ -107,7 +107,7 @@ public:
     {
         CBlockHeader::SetNull();
         vtx.clear();
-        txoutDynode = CTxOut();
+        txoutServiceNode = CTxOut();
         voutSuperblock.clear();
         fChecked = false;
     }

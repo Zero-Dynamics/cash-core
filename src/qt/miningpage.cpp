@@ -1,7 +1,7 @@
 #include "miningpage.h"
 #include "ui_miningpage.h"
 
-#include "dynode-sync.h"
+#include "servicenode-sync.h"
 #include "guiutil.h"
 #include "miner/miner.h"
 #include "net.h"
@@ -35,7 +35,7 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
         }
     }
 
-    if (!dynodeSync.IsSynced() || !dynodeSync.IsBlockchainSynced()) {
+    if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
         ui->sliderCPUCores->setVisible(false);
         ui->labelNCPUCores->setText(tr("Slider will show once Dynamic has finished syncing"));
     } else {
@@ -48,7 +48,7 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
     ui->sliderCPUCores->setValue(nCPUMaxUseThreads);
 
 #ifdef ENABLE_GPU
-    if (!dynodeSync.IsSynced() || !dynodeSync.IsBlockchainSynced()) {
+    if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
         ui->sliderGPUCores->setVisible(false);
         ui->labelNGPUCores->setText(tr("Slider will show once Dynamic has finished syncing"));
     } else {
@@ -152,7 +152,7 @@ void MiningPage::setModel(WalletModel* model)
 
 void MiningPage::updateUI()
 {
-    if (dynodeSync.IsSynced() && dynodeSync.IsBlockchainSynced()) {
+    if (servicenodeSync.IsSynced() && servicenodeSync.IsBlockchainSynced()) {
 #ifdef ENABLE_GPU
         if (ui->sliderGPUCores->isHidden()) {
             int nThreads = ui->sliderGPUCores->value();
@@ -196,8 +196,8 @@ void MiningPage::updateUI()
 
 void MiningPage::updatePushSwitch(QPushButton* pushSwitch, bool minerOn)
 {
-    if (!dynodeSync.IsSynced() || !dynodeSync.IsBlockchainSynced()) {
-        pushSwitch->setToolTip(tr("Blockchain/Dynodes are not synced, please wait until fully synced before mining!"));
+    if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
+        pushSwitch->setToolTip(tr("Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!"));
         pushSwitch->setText(tr("Disabled"));
         pushSwitch->setEnabled(false);
         return;

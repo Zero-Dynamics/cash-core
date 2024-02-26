@@ -62,8 +62,8 @@ public Q_SLOTS:
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-    /** Switch to Dynode page */
-    void gotoDynodePage();
+    /** Switch to ServiceNode page */
+    void gotoServiceNodePage();
     /** Switch to mining page */
     void gotoMiningPage();
     /** Switch to bdap page */

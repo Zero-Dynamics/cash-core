@@ -3,38 +3,38 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_DYNODE_H
-#define DYNAMIC_DYNODE_H
+#ifndef DYNAMIC_SERVICENODE_H
+#define DYNAMIC_SERVICENODE_H
 
 #include "key.h"
 #include "spork.h"
 #include "validation.h"
 
-class CDynode;
-class CDynodeBroadcast;
+class CServiceNode;
+class CServiceNodeBroadcast;
 
-static const int DYNODE_CHECK_SECONDS = 5;
-static const int DYNODE_MIN_DNB_SECONDS = 5 * 60;
-static const int DYNODE_MIN_DNP_SECONDS = 10 * 60;
-static const int DYNODE_EXPIRATION_SECONDS = 65 * 60;
-static const int DYNODE_SENTINEL_PING_MAX_SECONDS = 120 * 60;
-static const int DYNODE_NEW_START_REQUIRED_SECONDS = 180 * 60;
+static const int SERVICENODE_CHECK_SECONDS = 5;
+static const int SERVICENODE_MIN_DNB_SECONDS = 5 * 60;
+static const int SERVICENODE_MIN_DNP_SECONDS = 10 * 60;
+static const int SERVICENODE_EXPIRATION_SECONDS = 65 * 60;
+static const int SERVICENODE_SENTINEL_PING_MAX_SECONDS = 120 * 60;
+static const int SERVICENODE_NEW_START_REQUIRED_SECONDS = 180 * 60;
 
-static const int DYNODE_POSE_BAN_MAX_SCORE = 5;
+static const int SERVICENODE_POSE_BAN_MAX_SCORE = 5;
 
 //
-// The Dynode Ping Class : Contains a different serialize method for sending pings from Dynodes throughout the network
+// The ServiceNode Ping Class : Contains a different serialize method for sending pings from ServiceNodes throughout the network
 //
 
 // sentinel version before sentinel ping implementation
 #define DEFAULT_SENTINEL_VERSION 0x010001
-// daemon version before implementation of nDaemonVersion in CDynodePing
+// daemon version before implementation of nDaemonVersion in CServiceNodePing
 #define DEFAULT_DAEMON_VERSION 203050
 
-class CDynodePing
+class CServiceNodePing
 {
 public:
-    COutPoint dynodeOutpoint{};
+    COutPoint servicenodeOutpoint{};
     uint256 blockHash{};
     int64_t sigTime{}; //dnb message times
     std::vector<unsigned char> vchSig{};
@@ -43,9 +43,9 @@ public:
     uint32_t nSentinelVersion{DEFAULT_SENTINEL_VERSION};
     uint32_t nDaemonVersion{DEFAULT_DAEMON_VERSION};
 
-    CDynodePing() = default;
+    CServiceNodePing() = default;
 
-    CDynodePing(const COutPoint& outpoint);
+    CServiceNodePing(const COutPoint& outpoint);
 
     ADD_SERIALIZE_METHODS;
 
@@ -58,14 +58,14 @@ public:
             CTxIn txin{};
             if (ser_action.ForRead()) {
                 READWRITE(txin);
-                dynodeOutpoint = txin.prevout;
+                servicenodeOutpoint = txin.prevout;
             } else {
-                txin = CTxIn(dynodeOutpoint);
+                txin = CTxIn(servicenodeOutpoint);
                 READWRITE(txin);
             }
         } else {
             // using new format directly
-            READWRITE(dynodeOutpoint);
+            READWRITE(servicenodeOutpoint);
         }
         READWRITE(blockHash);
         READWRITE(sigTime);
@@ -94,12 +94,12 @@ public:
     uint256 GetHash() const;
     uint256 GetSignatureHash() const;
 
-    bool IsExpired() const { return GetAdjustedTime() - sigTime > DYNODE_NEW_START_REQUIRED_SECONDS; }
+    bool IsExpired() const { return GetAdjustedTime() - sigTime > SERVICENODE_NEW_START_REQUIRED_SECONDS; }
 
-    bool Sign(const CKey& keyDynode, const CPubKey& pubKeyDynode);
-    bool CheckSignature(const CPubKey& pubKeyDynode, int& nDos) const;
+    bool Sign(const CKey& keyServiceNode, const CPubKey& pubKeyServiceNode);
+    bool CheckSignature(const CPubKey& pubKeyServiceNode, int& nDos) const;
     bool SimpleCheck(int& nDos);
-    bool CheckAndUpdate(CDynode* pdn, bool fFromNewBroadcast, int& nDos, CConnman& connman);
+    bool CheckAndUpdate(CServiceNode* pdn, bool fFromNewBroadcast, int& nDos, CConnman& connman);
     void Relay(CConnman& connman);
 
     std::string GetSentinelString() const;
@@ -108,30 +108,30 @@ public:
     explicit operator bool() const;
 };
 
-inline bool operator==(const CDynodePing& a, const CDynodePing& b)
+inline bool operator==(const CServiceNodePing& a, const CServiceNodePing& b)
 {
-    return a.dynodeOutpoint == b.dynodeOutpoint && a.blockHash == b.blockHash;
+    return a.servicenodeOutpoint == b.servicenodeOutpoint && a.blockHash == b.blockHash;
 }
-inline bool operator!=(const CDynodePing& a, const CDynodePing& b)
+inline bool operator!=(const CServiceNodePing& a, const CServiceNodePing& b)
 {
     return !(a == b);
 }
-inline CDynodePing::operator bool() const
+inline CServiceNodePing::operator bool() const
 {
-    return *this != CDynodePing();
+    return *this != CServiceNodePing();
 }
 
-struct dynode_info_t {
+struct servicenode_info_t {
     // Note: all these constructors can be removed once C++14 is enabled.
     // (in C++11 the member initializers wrongly disqualify this as an aggregate)
-    dynode_info_t() = default;
-    dynode_info_t(dynode_info_t const&) = default;
+    servicenode_info_t() = default;
+    servicenode_info_t(servicenode_info_t const&) = default;
 
-    dynode_info_t(int activeState, int protoVer, int64_t sTime) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime} {}
+    servicenode_info_t(int activeState, int protoVer, int64_t sTime) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime} {}
 
-    dynode_info_t(int activeState, int protoVer, int64_t sTime, COutPoint const& outpnt, CService const& addr, CPubKey const& pkCollAddr, CPubKey const& pkDN) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime},
+    servicenode_info_t(int activeState, int protoVer, int64_t sTime, COutPoint const& outpnt, CService const& addr, CPubKey const& pkCollAddr, CPubKey const& pkDN) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime},
                                                                                                                                                                  outpoint{outpnt}, addr{addr},
-                                                                                                                                                                 pubKeyCollateralAddress{pkCollAddr}, pubKeyDynode{pkDN} {}
+                                                                                                                                                                 pubKeyCollateralAddress{pkCollAddr}, pubKeyServiceNode{pkDN} {}
 
     int nActiveState = 0;
     int nProtocolVersion = 0;
@@ -140,7 +140,7 @@ struct dynode_info_t {
     COutPoint outpoint{};
     CService addr{};
     CPubKey pubKeyCollateralAddress{};
-    CPubKey pubKeyDynode{};
+    CPubKey pubKeyServiceNode{};
 
     int64_t nLastPsq = 0; //the psq count from the last psq broadcast of this node
     int64_t nTimeLastChecked = 0;
@@ -150,10 +150,10 @@ struct dynode_info_t {
 };
 
 //
-// The Dynode Class. For managing the PrivateSend process. It contains the input of the 1000DYN, signature to prove
+// The ServiceNode Class. For managing the PrivateSend process. It contains the input of the 1000DYN, signature to prove
 // it's the one who own that ip address and code for calculating the payment election.
 //
-class CDynode : public dynode_info_t
+class CServiceNode : public servicenode_info_t
 {
 private:
     // critical section to protect the inner data structures
@@ -161,14 +161,14 @@ private:
 
 public:
     enum state {
-        DYNODE_PRE_ENABLED,
-        DYNODE_ENABLED,
-        DYNODE_EXPIRED,
-        DYNODE_OUTPOINT_SPENT,
-        DYNODE_UPDATE_REQUIRED,
-        DYNODE_SENTINEL_PING_EXPIRED,
-        DYNODE_NEW_START_REQUIRED,
-        DYNODE_POSE_BAN
+        SERVICENODE_PRE_ENABLED,
+        SERVICENODE_ENABLED,
+        SERVICENODE_EXPIRED,
+        SERVICENODE_OUTPOINT_SPENT,
+        SERVICENODE_UPDATE_REQUIRED,
+        SERVICENODE_SENTINEL_PING_EXPIRED,
+        SERVICENODE_NEW_START_REQUIRED,
+        SERVICENODE_POSE_BAN
     };
 
     enum CollateralStatus {
@@ -179,7 +179,7 @@ public:
     };
 
 
-    CDynodePing lastPing{};
+    CServiceNodePing lastPing{};
     std::vector<unsigned char> vchSig{};
 
     uint256 nCollateralMinConfBlockHash{};
@@ -189,13 +189,13 @@ public:
     bool fAllowMixingTx{};
     bool fUnitTest = false;
 
-    // KEEP TRACK OF GOVERNANCE ITEMS EACH DYNODE HAS VOTE UPON FOR RECALCULATION
+    // KEEP TRACK OF GOVERNANCE ITEMS EACH SERVICENODE HAS VOTE UPON FOR RECALCULATION
     std::map<uint256, int> mapGovernanceObjectsVotedOn;
 
-    CDynode();
-    CDynode(const CDynode& other);
-    CDynode(const CDynodeBroadcast& dnb);
-    CDynode(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyDynodeNew, int nProtocolVersionIn);
+    CServiceNode();
+    CServiceNode(const CServiceNode& other);
+    CServiceNode(const CServiceNodeBroadcast& dnb);
+    CServiceNode(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyServiceNodeNew, int nProtocolVersionIn);
 
     ADD_SERIALIZE_METHODS;
 
@@ -220,7 +220,7 @@ public:
         }
         READWRITE(addr);
         READWRITE(pubKeyCollateralAddress);
-        READWRITE(pubKeyDynode);
+        READWRITE(pubKeyServiceNode);
         READWRITE(lastPing);
         READWRITE(vchSig);
         READWRITE(sigTime);
@@ -241,7 +241,7 @@ public:
     // CALCULATE A RANK AGAINST OF GIVEN BLOCK
     arith_uint256 CalculateScore(const uint256& blockHash) const;
 
-    bool UpdateFromNewBroadcast(CDynodeBroadcast& dnb, CConnman& connman);
+    bool UpdateFromNewBroadcast(CServiceNodeBroadcast& dnb, CConnman& connman);
 
     static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey);
     static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey, int& nHeightRet);
@@ -260,32 +260,32 @@ public:
         return nTimeToCheckAt - lastPing.sigTime < nSeconds;
     }
 
-    bool IsEnabled() const { return nActiveState == DYNODE_ENABLED; }
-    bool IsPreEnabled() const { return nActiveState == DYNODE_PRE_ENABLED; }
-    bool IsPoSeBanned() const { return nActiveState == DYNODE_POSE_BAN; }
+    bool IsEnabled() const { return nActiveState == SERVICENODE_ENABLED; }
+    bool IsPreEnabled() const { return nActiveState == SERVICENODE_PRE_ENABLED; }
+    bool IsPoSeBanned() const { return nActiveState == SERVICENODE_POSE_BAN; }
     // NOTE: this one relies on nPoSeBanScore, not on nActiveState as everything else here
-    bool IsPoSeVerified() const { return nPoSeBanScore <= -DYNODE_POSE_BAN_MAX_SCORE; }
-    bool IsExpired() const { return nActiveState == DYNODE_EXPIRED; }
-    bool IsOutpointSpent() const { return nActiveState == DYNODE_OUTPOINT_SPENT; }
-    bool IsUpdateRequired() const { return nActiveState == DYNODE_UPDATE_REQUIRED; }
-    bool IsSentinelPingExpired() const { return nActiveState == DYNODE_SENTINEL_PING_EXPIRED; }
-    bool IsNewStartRequired() const { return nActiveState == DYNODE_NEW_START_REQUIRED; }
+    bool IsPoSeVerified() const { return nPoSeBanScore <= -SERVICENODE_POSE_BAN_MAX_SCORE; }
+    bool IsExpired() const { return nActiveState == SERVICENODE_EXPIRED; }
+    bool IsOutpointSpent() const { return nActiveState == SERVICENODE_OUTPOINT_SPENT; }
+    bool IsUpdateRequired() const { return nActiveState == SERVICENODE_UPDATE_REQUIRED; }
+    bool IsSentinelPingExpired() const { return nActiveState == SERVICENODE_SENTINEL_PING_EXPIRED; }
+    bool IsNewStartRequired() const { return nActiveState == SERVICENODE_NEW_START_REQUIRED; }
 
     static bool IsValidStateForAutoStart(int nActiveStateIn)
     {
-        return nActiveStateIn == DYNODE_ENABLED ||
-               nActiveStateIn == DYNODE_PRE_ENABLED ||
-               nActiveStateIn == DYNODE_EXPIRED ||
-               nActiveStateIn == DYNODE_SENTINEL_PING_EXPIRED;
+        return nActiveStateIn == SERVICENODE_ENABLED ||
+               nActiveStateIn == SERVICENODE_PRE_ENABLED ||
+               nActiveStateIn == SERVICENODE_EXPIRED ||
+               nActiveStateIn == SERVICENODE_SENTINEL_PING_EXPIRED;
     }
 
     bool IsValidForPayment() const
     {
-        if (nActiveState == DYNODE_ENABLED) {
+        if (nActiveState == SERVICENODE_ENABLED) {
             return true;
         }
         if (!sporkManager.IsSporkActive(SPORK_14_REQUIRE_SENTINEL_FLAG) &&
-            (nActiveState == DYNODE_SENTINEL_PING_EXPIRED)) {
+            (nActiveState == SERVICENODE_SENTINEL_PING_EXPIRED)) {
             return true;
         }
 
@@ -297,17 +297,17 @@ public:
 
     void IncreasePoSeBanScore()
     {
-        if (nPoSeBanScore < DYNODE_POSE_BAN_MAX_SCORE)
+        if (nPoSeBanScore < SERVICENODE_POSE_BAN_MAX_SCORE)
             nPoSeBanScore++;
     }
     void DecreasePoSeBanScore()
     {
-        if (nPoSeBanScore > -DYNODE_POSE_BAN_MAX_SCORE)
+        if (nPoSeBanScore > -SERVICENODE_POSE_BAN_MAX_SCORE)
             nPoSeBanScore--;
     }
-    void PoSeBan() { nPoSeBanScore = DYNODE_POSE_BAN_MAX_SCORE; }
+    void PoSeBan() { nPoSeBanScore = SERVICENODE_POSE_BAN_MAX_SCORE; }
 
-    dynode_info_t GetInfo() const;
+    servicenode_info_t GetInfo() const;
 
     static std::string StateToString(int nStateIn);
     std::string GetStateString() const;
@@ -326,9 +326,9 @@ public:
 
     void RemoveGovernanceObject(uint256 nGovernanceObjectHash);
 
-    CDynode& operator=(CDynode const& from)
+    CServiceNode& operator=(CServiceNode const& from)
     {
-        static_cast<dynode_info_t&>(*this) = from;
+        static_cast<servicenode_info_t&>(*this) = from;
         lastPing = from.lastPing;
         vchSig = from.vchSig;
         nCollateralMinConfBlockHash = from.nCollateralMinConfBlockHash;
@@ -342,26 +342,26 @@ public:
     }
 };
 
-inline bool operator==(const CDynode& a, const CDynode& b)
+inline bool operator==(const CServiceNode& a, const CServiceNode& b)
 {
     return a.outpoint == b.outpoint;
 }
-inline bool operator!=(const CDynode& a, const CDynode& b)
+inline bool operator!=(const CServiceNode& a, const CServiceNode& b)
 {
     return !(a.outpoint == b.outpoint);
 }
 
 //
-// The Dynode Broadcast Class : Contains a different serialize method for sending Dynodes through the network
+// The ServiceNode Broadcast Class : Contains a different serialize method for sending ServiceNodes through the network
 //
 
-class CDynodeBroadcast : public CDynode
+class CServiceNodeBroadcast : public CServiceNode
 {
 public:
     bool fRecovery;
-    CDynodeBroadcast() : CDynode(), fRecovery(false) {}
-    CDynodeBroadcast(const CDynode& dn) : CDynode(dn), fRecovery(false) {}
-    CDynodeBroadcast(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyDynodeNew, int nProtocolVersionIn) : CDynode(addrNew, outpointNew, pubKeyCollateralAddressNew, pubKeyDynodeNew, nProtocolVersionIn), fRecovery(false) {}
+    CServiceNodeBroadcast() : CServiceNode(), fRecovery(false) {}
+    CServiceNodeBroadcast(const CServiceNode& dn) : CServiceNode(dn), fRecovery(false) {}
+    CServiceNodeBroadcast(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyServiceNodeNew, int nProtocolVersionIn) : CServiceNode(addrNew, outpointNew, pubKeyCollateralAddressNew, pubKeyServiceNodeNew, nProtocolVersionIn), fRecovery(false) {}
 
     ADD_SERIALIZE_METHODS;
 
@@ -385,7 +385,7 @@ public:
         }
         READWRITE(addr);
         READWRITE(pubKeyCollateralAddress);
-        READWRITE(pubKeyDynode);
+        READWRITE(pubKeyServiceNode);
         if (!(s.GetType() & SER_GETHASH)) {
             READWRITE(vchSig);
         }
@@ -399,12 +399,12 @@ public:
     uint256 GetHash() const;
     uint256 GetSignatureHash() const;
 
-    /// Create Dynode broadcast, needs to be relayed manually after that
-    static bool Create(const COutPoint& outpoint, const CService& service, const CKey& keyCollateralAddressNew, const CPubKey& pubKeyCollateralAddressNew, const CKey& keyDynodeNew, const CPubKey& pubKeyDynodeNew, std::string& strErrorRet, CDynodeBroadcast& dnbRet);
-    static bool Create(const std::string strService, const std::string strKey, const std::string strTxHash, const std::string strOutputIndex, std::string& strErrorRet, CDynodeBroadcast& dnbRet, bool fOffline = false);
+    /// Create ServiceNode broadcast, needs to be relayed manually after that
+    static bool Create(const COutPoint& outpoint, const CService& service, const CKey& keyCollateralAddressNew, const CPubKey& pubKeyCollateralAddressNew, const CKey& keyServiceNodeNew, const CPubKey& pubKeyServiceNodeNew, std::string& strErrorRet, CServiceNodeBroadcast& dnbRet);
+    static bool Create(const std::string strService, const std::string strKey, const std::string strTxHash, const std::string strOutputIndex, std::string& strErrorRet, CServiceNodeBroadcast& dnbRet, bool fOffline = false);
 
     bool SimpleCheck(int& nDos);
-    bool Update(CDynode* pdn, int& nDos, CConnman& connman);
+    bool Update(CServiceNode* pdn, int& nDos, CConnman& connman);
     bool CheckOutpoint(int& nDos);
 
     bool Sign(const CKey& keyCollateralAddress);
@@ -412,20 +412,20 @@ public:
     void Relay(CConnman& connman) const;
 };
 
-class CDynodeVerification
+class CServiceNodeVerification
 {
 public:
-    COutPoint dynodeOutpoint1{};
-    COutPoint dynodeOutpoint2{};
+    COutPoint servicenodeOutpoint1{};
+    COutPoint servicenodeOutpoint2{};
     CService addr{};
     int nonce{};
     int nBlockHeight{};
     std::vector<unsigned char> vchSig1{};
     std::vector<unsigned char> vchSig2{};
 
-    CDynodeVerification() = default;
+    CServiceNodeVerification() = default;
 
-    CDynodeVerification(CService addr, int nonce, int nBlockHeight) : addr(addr),
+    CServiceNodeVerification(CService addr, int nonce, int nBlockHeight) : addr(addr),
                                                                       nonce(nonce),
                                                                       nBlockHeight(nBlockHeight)
     {
@@ -444,18 +444,18 @@ public:
             if (ser_action.ForRead()) {
                 READWRITE(txin1);
                 READWRITE(txin2);
-                dynodeOutpoint1 = txin1.prevout;
-                dynodeOutpoint2 = txin2.prevout;
+                servicenodeOutpoint1 = txin1.prevout;
+                servicenodeOutpoint2 = txin2.prevout;
             } else {
-                txin1 = CTxIn(dynodeOutpoint1);
-                txin2 = CTxIn(dynodeOutpoint2);
+                txin1 = CTxIn(servicenodeOutpoint1);
+                txin2 = CTxIn(servicenodeOutpoint2);
                 READWRITE(txin1);
                 READWRITE(txin2);
             }
         } else {
             // using new format directly
-            READWRITE(dynodeOutpoint1);
-            READWRITE(dynodeOutpoint2);
+            READWRITE(servicenodeOutpoint1);
+            READWRITE(servicenodeOutpoint2);
         }
         READWRITE(addr);
         READWRITE(nonce);
@@ -470,8 +470,8 @@ public:
 
         CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         // adding dummy values here to match old hashing format
-        ss << dynodeOutpoint1 << uint8_t{} << 0xffffffff;
-        ss << dynodeOutpoint2 << uint8_t{} << 0xffffffff;
+        ss << servicenodeOutpoint1 << uint8_t{} << 0xffffffff;
+        ss << servicenodeOutpoint2 << uint8_t{} << 0xffffffff;
         ss << addr;
         ss << nonce;
         ss << nBlockHeight;
@@ -494,8 +494,8 @@ public:
         // Note: doesn't match serialization
 
         CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
-        ss << dynodeOutpoint1;
-        ss << dynodeOutpoint2;
+        ss << servicenodeOutpoint1;
+        ss << servicenodeOutpoint2;
         ss << addr;
         ss << nonce;
         ss << blockHash;
@@ -504,9 +504,9 @@ public:
 
     void Relay() const
     {
-        CInv inv(MSG_DYNODE_VERIFY, GetHash());
+        CInv inv(MSG_SERVICENODE_VERIFY, GetHash());
         g_connman->RelayInv(inv);
     }
 };
 
-#endif // DYNAMIC_DYNODE_H
+#endif // DYNAMIC_SERVICENODE_H

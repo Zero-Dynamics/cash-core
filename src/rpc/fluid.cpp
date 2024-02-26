@@ -5,11 +5,11 @@
 #include "bdap/utils.h"
 #include "chain.h"
 #include "core_io.h"
-#include "dynode-sync.h"
+#include "servicenode-sync.h"
 #include "fluid/banaccount.h"
 #include "fluid/fluid.h"
 #include "fluid/fluiddb.h"
-#include "fluid/fluiddynode.h"
+#include "fluid/fluidservicenode.h"
 #include "fluid/fluidmining.h"
 #include "fluid/fluidmint.h"
 #include "fluid/fluidsovereign.h"
@@ -35,8 +35,8 @@ extern bool EnsureWalletIsAvailable(bool avoidException);
 extern void SendCustomTransaction(const CScript& generatedScript, CWalletTx& wtxNew, CAmount nValue, bool fUseInstantSend = false);
 extern void SendBurnTransaction(const CScript& burnScript, CWalletTx& wtxNew, const CAmount& nValue, const CScript& sendAddress);
 
-struct DynodeCompareTimeStamp {
-    bool operator()(const CFluidDynode& a, const CFluidDynode& b)
+struct ServiceNodeCompareTimeStamp {
+    bool operator()(const CFluidServiceNode& a, const CFluidServiceNode& b)
     {
     return (a.nTimeStamp < b.nTimeStamp);
     }
@@ -60,8 +60,8 @@ opcodetype getOpcodeFromString(std::string input)
 {
     if (input == "OP_MINT")
         return OP_MINT;
-    else if (input == "OP_REWARD_DYNODE")
-        return OP_REWARD_DYNODE;
+    else if (input == "OP_REWARD_SERVICENODE")
+        return OP_REWARD_SERVICENODE;
     else if (input == "OP_REWARD_MINING")
         return OP_REWARD_MINING;
     else if (input == "OP_SWAP_SOVEREIGN_ADDRESS")
@@ -121,7 +121,7 @@ UniValue banaccountstoken(const JSONRPCRequest& request)
     if (!sporkManager.IsSporkActive(SPORK_30_ACTIVATE_BDAP))
         throw JSONRPCError(RPC_SPORK_INACTIVE, strprintf("Can not create BDAP revoke account token until SPORK_30_ACTIVATE_BDAP is active."));
 
-    if (!dynodeSync.IsBlockchainSynced())
+    if (!servicenodeSync.IsBlockchainSynced())
         throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, strprintf("Can not create BDAP revoke account token until the blockchain is fully synced."));
 
     std::string strResult;
@@ -210,7 +210,7 @@ UniValue sendfluidtransaction(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 2)
         throw std::runtime_error(
-            "sendfluidtransaction \"OP_MINT || OP_REWARD_DYNODE || OP_REWARD_MINING || OP_BDAP_REVOKE\" \"hexstring\"\n"
+            "sendfluidtransaction \"OP_MINT || OP_REWARD_SERVICENODE || OP_REWARD_MINING || OP_BDAP_REVOKE\" \"hexstring\"\n"
             "\nSend Fluid transactions to the network\n"
             "\nArguments:\n"
             "1. \"opcode\"  (string, required) The Fluid operation to be executed.\n"
@@ -239,7 +239,7 @@ UniValue sendfluidtransaction(const JSONRPCRequest& request)
     if (!fluid.CheckIfQuorumExists(ScriptToAsmStr(finalScript), message))
         throw std::runtime_error(strprintf("Instruction does not meet required quorum for validity. %s", message));
 
-    if (opcode == OP_MINT || opcode == OP_REWARD_MINING || opcode == OP_REWARD_DYNODE || opcode == OP_BDAP_REVOKE) {
+    if (opcode == OP_MINT || opcode == OP_REWARD_MINING || opcode == OP_REWARD_SERVICENODE || opcode == OP_BDAP_REVOKE) {
         CWalletTx wtx;
         SendCustomTransaction(finalScript, wtx, fluid.FLUID_TRANSACTION_COST, false);
         return wtx.GetHash().GetHex();
@@ -385,25 +385,25 @@ UniValue getfluidhistoryraw(const JSONRPCRequest& request)
         }
     }
     ret.push_back(Pair("minting_history", oMints));
-    // load fluid dynode update reward transaction history
-    UniValue oDynodes(UniValue::VOBJ);
+    // load fluid servicenode update reward transaction history
+    UniValue oServiceNodes(UniValue::VOBJ);
     {
-        std::vector<CFluidDynode> dynodeEntries;
-        if (!GetAllFluidDynodeRecords(dynodeEntries)) {
-            throw std::runtime_error("GET_FLUID_HISTORY_RPC_ERROR: ERRCODE: 4002 - " + _("Error getting fluid dynode entries"));
+        std::vector<CFluidServiceNode> servicenodeEntries;
+        if (!GetAllFluidServiceNodeRecords(servicenodeEntries)) {
+            throw std::runtime_error("GET_FLUID_HISTORY_RPC_ERROR: ERRCODE: 4002 - " + _("Error getting fluid servicenode entries"));
         }
         int x = 1;
-        for (const CFluidDynode& dynEntry : dynodeEntries) {
+        for (const CFluidServiceNode& dynEntry : servicenodeEntries) {
             UniValue obj(UniValue::VOBJ);
             obj.push_back(Pair("fluid_script", StringFromCharVector(dynEntry.FluidScript)));
             std::string addLabel = "reward_update_" + std::to_string(x);
-            oDynodes.push_back(Pair(addLabel, obj));
+            oServiceNodes.push_back(Pair(addLabel, obj));
             totalFluidTxCost = totalFluidTxCost + fluid.FLUID_TRANSACTION_COST;
             x++;
             nTotal++;
         }
     }
-    ret.push_back(Pair("dynode_reward_history", oDynodes));
+    ret.push_back(Pair("servicenode_reward_history", oServiceNodes));
     // load fluid mining update reward transaction history
     UniValue oMining(UniValue::VOBJ);
     {
@@ -448,8 +448,8 @@ UniValue getfluidhistoryraw(const JSONRPCRequest& request)
         obj.push_back(Pair("total_minted", FormatMoney(totalMintedCoins)));
         obj.push_back(Pair("total_fluid_fee_cost", FormatMoney(totalFluidTxCost)));
 
-        CAmount dynodeReward = GetFluidDynodeReward(chainActive.Tip()->nHeight);
-        obj.push_back(Pair("current_dynode_reward", FormatMoney(dynodeReward)));
+        CAmount servicenodeReward = GetFluidServiceNodeReward(chainActive.Tip()->nHeight);
+        obj.push_back(Pair("current_servicenode_reward", FormatMoney(servicenodeReward)));
 
         CAmount miningAmount = GetFluidMiningReward(chainActive.Tip()->nHeight);
         obj.push_back(Pair("current_mining_reward", FormatMoney(miningAmount)));
@@ -522,19 +522,19 @@ UniValue getfluidhistory(const JSONRPCRequest& request)
         }
     }
     ret.push_back(Pair("minting_history", oMints));
-    // load fluid dynode update reward transaction history
-    UniValue oDynodes(UniValue::VOBJ);
+    // load fluid servicenode update reward transaction history
+    UniValue oServiceNodes(UniValue::VOBJ);
     {
-        std::vector<CFluidDynode> dynodeEntries;
-        if (!GetAllFluidDynodeRecords(dynodeEntries)) {
-            throw std::runtime_error("GET_FLUID_HISTORY_RPC_ERROR: ERRCODE: 4002 - " + _("Error getting fluid dynode entries"));
+        std::vector<CFluidServiceNode> servicenodeEntries;
+        if (!GetAllFluidServiceNodeRecords(servicenodeEntries)) {
+            throw std::runtime_error("GET_FLUID_HISTORY_RPC_ERROR: ERRCODE: 4002 - " + _("Error getting fluid servicenode entries"));
         }
         int x = 1;
-        std::sort(dynodeEntries.begin(), dynodeEntries.end(),DynodeCompareTimeStamp()); //sort entries by TimeStamp
-        for (const CFluidDynode& dynEntry : dynodeEntries) {
+        std::sort(servicenodeEntries.begin(), servicenodeEntries.end(),ServiceNodeCompareTimeStamp()); //sort entries by TimeStamp
+        for (const CFluidServiceNode& dynEntry : servicenodeEntries) {
             UniValue obj(UniValue::VOBJ);
-            obj.push_back(Pair("operation", "Dynode Reward Update"));
-            obj.push_back(Pair("amount", FormatMoney(dynEntry.DynodeReward)));
+            obj.push_back(Pair("operation", "ServiceNode Reward Update"));
+            obj.push_back(Pair("amount", FormatMoney(dynEntry.ServiceNodeReward)));
             obj.push_back(Pair("timestamp", dynEntry.nTimeStamp));
             obj.push_back(Pair("display_date", DateTimeStrFormat("%Y-%m-%d %H:%M:%S", dynEntry.nTimeStamp)));
             obj.push_back(Pair("block_height", (int)dynEntry.nHeight));
@@ -546,13 +546,13 @@ UniValue getfluidhistory(const JSONRPCRequest& request)
                 index++;
             }
             std::string addLabel = "reward_update_" + std::to_string(x);
-            oDynodes.push_back(Pair(addLabel, obj));
+            oServiceNodes.push_back(Pair(addLabel, obj));
             totalFluidTxCost = totalFluidTxCost + fluid.FLUID_TRANSACTION_COST;
             x++;
             nTotal++;
         }
     }
-    ret.push_back(Pair("dynode_reward_history", oDynodes));
+    ret.push_back(Pair("servicenode_reward_history", oServiceNodes));
     // load fluid mining update reward transaction history
     UniValue oMining(UniValue::VOBJ);
     {
@@ -621,8 +621,8 @@ UniValue getfluidhistory(const JSONRPCRequest& request)
         obj.push_back(Pair("total_minted", FormatMoney(totalMintedCoins)));
         obj.push_back(Pair("total_fluid_fee_cost", FormatMoney(totalFluidTxCost)));
 
-        CAmount dynodeReward = GetFluidDynodeReward(chainActive.Tip()->nHeight);
-        obj.push_back(Pair("current_dynode_reward", FormatMoney(dynodeReward)));
+        CAmount servicenodeReward = GetFluidServiceNodeReward(chainActive.Tip()->nHeight);
+        obj.push_back(Pair("current_servicenode_reward", FormatMoney(servicenodeReward)));
 
         CAmount miningAmount = GetFluidMiningReward(chainActive.Tip()->nHeight);
         obj.push_back(Pair("current_mining_reward", FormatMoney(miningAmount)));

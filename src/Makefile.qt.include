@@ -32,7 +32,7 @@ QT_FORMS_UI = \
   qt/forms/bdapupdateaccountdialog.ui \
   qt/forms/bdapuserdetaildialog.ui \
   qt/forms/coincontroldialog.ui \
-  qt/forms/dynodelist.ui \
+  qt/forms/servicenodelist.ui \
   qt/forms/editaddressdialog.ui \
   qt/forms/helpmessagedialog.ui \
   qt/forms/intro.ui \
@@ -73,7 +73,7 @@ QT_MOC_CPP = \
   qt/moc_dynamicamountfield.cpp \
   qt/moc_dynamicgui.cpp \
   qt/moc_dynamicunits.cpp \
-  qt/moc_dynodelist.cpp \
+  qt/moc_servicenodelist.cpp \
   qt/moc_editaddressdialog.cpp \
   qt/moc_guiutil.cpp \
   qt/moc_intro.cpp \
@@ -149,7 +149,7 @@ DYNAMIC_QT_H = \
   qt/dynamicamountfield.h \
   qt/dynamicgui.h \
   qt/dynamicunits.h \
-  qt/dynodelist.h \
+  qt/servicenodelist.h \
   qt/editaddressdialog.h \
   qt/guiconstants.h \
   qt/guiutil.h \
@@ -224,7 +224,7 @@ RES_ICONS = \
   qt/res/icons/drk/dynamic_testnet.ico \
   qt/res/icons/drk/dynamic_testnet.png \
   qt/res/icons/drk/dynamic.png \
-  qt/res/icons/drk/dynode_network.png \
+  qt/res/icons/drk/servicenode_network.png \
   qt/res/icons/drk/edit.png \
   qt/res/icons/drk/editcopy.png \
   qt/res/icons/drk/editpaste.png \
@@ -312,7 +312,7 @@ DYNAMIC_QT_CPP += \
   qt/bdapuserdetaildialog.cpp \
   qt/coincontroldialog.cpp \
   qt/coincontroltreewidget.cpp \
-  qt/dynodelist.cpp \
+  qt/servicenodelist.cpp \
   qt/editaddressdialog.cpp \
   qt/hashrategraphwidget.cpp \
   qt/miningpage.cpp \

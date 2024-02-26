@@ -860,15 +860,15 @@ Address: %4
         <translation>請選擇穩私級別。</translation>
     </message>
     <message>
-        <source>Use 2 separate dynodes to mix funds up to 1000 DYN</source>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
         <translation>使用2個獨立的主節點來混合最高達1000達世幣的資金</translation>
     </message>
     <message>
-        <source>Use 8 separate dynodes to mix funds up to 1000 DYN</source>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
         <translation>使用8個獨立的主節點來混合最高達1000達世幣的資金</translation>
     </message>
     <message>
-        <source>Use 16 separate dynodes</source>
+        <source>Use 16 separate servicenodes</source>
         <translation>使用16個獨立的主節點</translation>
     </message>
     <message>
@@ -1182,7 +1182,7 @@ Address: %4
         <translation>專家</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual dynodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
         <translation>這項設置決定輸入的資金將會經過多少個主節點進,行匿名處理。&lt;br/&gt;多輪的匿名化處理提供了更高程度的隱私，但也花費更多的費用。</translation>
     </message>
     <message>
@@ -1451,7 +1451,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>啟動/停止混合</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the Dynode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
         <translation>你提交到主節點的面額。&lt;br&gt;為了混合，其他用戶必須提交完全一樣的面額。</translation>
     </message>
     <message>
@@ -1792,7 +1792,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>區塊鏈</translation>
     </message>
     <message>
-        <source>Number of Dynodes</source>
+        <source>Number of ServiceNodes</source>
         <translation>主節點數目</translation>
     </message>
     <message>
@@ -3294,8 +3294,8 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>警告: 錢包檔 wallet.dat 壞掉，但資料被拯救回來了！原來的 wallet.dat 會改儲存在 %s, 檔名是 wallet.{timestamp}.bak. 如果餘額或交易資料有誤，你應該要用備份資料復原回來。</translation>
     </message>
     <message>
-        <source>You must specify a dynodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>您必須在配置文件中指定一個dynodepairingkey。請參閱文檔以獲得幫助。</translation>
+        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>您必須在配置文件中指定一個servicenodepairingkey。請參閱文檔以獲得幫助。</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -3562,7 +3562,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>未完成匿名發送請求:</translation>
     </message>
     <message>
-        <source>Error connecting to Dynode.</source>
+        <source>Error connecting to ServiceNode.</source>
         <translation>連接到主節點時發生錯誤。</translation>
     </message>
     <message>
@@ -3634,7 +3634,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>在通訊埠 &lt;port&gt; 聽候 JSON-RPC 連線(預設值: %u, 或若為測試網路: %u)</translation>
     </message>
     <message>
-        <source>Loading dynode cache...</source>
+        <source>Loading servicenode cache...</source>
         <translation>正在載入主節點緩存...</translation>
     </message>
     <message>
@@ -3642,15 +3642,15 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>正在進行混合...</translation>
     </message>
     <message>
-        <source>No Dynodes detected.</source>
+        <source>No ServiceNodes detected.</source>
         <translation>沒有檢測到主節點。</translation>
     </message>
     <message>
-        <source>No compatible Dynode found.</source>
+        <source>No compatible ServiceNode found.</source>
         <translation>沒有找到相容的主節點。</translation>
     </message>
     <message>
-        <source>Not in the Dynode list.</source>
+        <source>Not in the ServiceNode list.</source>
         <translation>不在主節點列表中。</translation>
     </message>
     <message>
@@ -3710,7 +3710,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>指定連線在幾毫秒後逾時 (最少值: 1, 預設值: %d)</translation>
     </message>
     <message>
-        <source>Specify dynode configuration file (default: %s)</source>
+        <source>Specify servicenode configuration file (default: %s)</source>
         <translation>指定主節點配置文件(預設值: %s)</translation>
     </message>
     <message>
@@ -3738,11 +3738,11 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>正在跟預算案進行同步...</translation>
     </message>
     <message>
-        <source>Synchronizing dynodes...</source>
+        <source>Synchronizing servicenodes...</source>
         <translation>正在跟主節點網絡進行同步...</translation>
     </message>
     <message>
-        <source>This is not a Dynode.</source>
+        <source>This is not a ServiceNode.</source>
         <translation>這並不是一個主節點。</translation>
     </message>
     <message>
@@ -3782,7 +3782,7 @@ https://www.transifex.com/projects/p/dynamic/</translation>
         <translation>正在載入錢包資料...</translation>
     </message>
     <message>
-        <source>Dynode:</source>
+        <source>ServiceNode:</source>
         <translation>主節點:</translation>
     </message>
     <message>

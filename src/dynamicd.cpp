@@ -17,7 +17,7 @@
 #include "util.h"
 #include "utilstrencodings.h"
 
-#include "dynodeconfig.h"
+#include "servicenodeconfig.h"
 
 #include <stdio.h>
 
@@ -114,10 +114,10 @@ bool AppInit(int argc, char* argv[])
             return false;
         }
 
-        // parse dynode.conf
+        // parse servicenode.conf
         std::string strErr;
-        if (!dynodeConfig.read(strErr)) {
-            fprintf(stderr, "Error reading Dynode configuration file: %s\n", strErr.c_str());
+        if (!servicenodeConfig.read(strErr)) {
+            fprintf(stderr, "Error reading ServiceNode configuration file: %s\n", strErr.c_str());
             return false;
         }
 

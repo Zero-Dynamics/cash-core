@@ -5,17 +5,17 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "dynodelist.h"
-#include "ui_dynodelist.h"
+#include "servicenodelist.h"
+#include "ui_servicenodelist.h"
 
 #include "clientmodel.h"
 #include "guiutil.h"
 #include "walletmodel.h"
 
-#include "activedynode.h"
-#include "dynode-sync.h"
-#include "dynodeconfig.h"
-#include "dynodeman.h"
+#include "activeservicenode.h"
+#include "servicenode-sync.h"
+#include "servicenodeconfig.h"
+#include "servicenodeman.h"
 #include "init.h"
 #include "sync.h"
 #include "wallet/wallet.h"
@@ -34,8 +34,8 @@ int GetOffsetFromUtc()
 #endif
 }
 
-DynodeList::DynodeList(const PlatformStyle* platformStyle, QWidget* parent) : QWidget(parent),
-                                                                              ui(new Ui::DynodeList),
+ServiceNodeList::ServiceNodeList(const PlatformStyle* platformStyle, QWidget* parent) : QWidget(parent),
+                                                                              ui(new Ui::ServiceNodeList),
                                                                               clientModel(0),
                                                                               walletModel(0)
 {
@@ -50,25 +50,25 @@ DynodeList::DynodeList(const PlatformStyle* platformStyle, QWidget* parent) : QW
     int columnActiveWidth = 130;
     int columnLastSeenWidth = 130;
 
-    ui->tableWidgetMyDynodes->setColumnWidth(0, columnAliasWidth);
-    ui->tableWidgetMyDynodes->setColumnWidth(1, columnAddressWidth);
-    ui->tableWidgetMyDynodes->setColumnWidth(2, columnProtocolWidth);
-    ui->tableWidgetMyDynodes->setColumnWidth(3, columnStatusWidth);
-    ui->tableWidgetMyDynodes->setColumnWidth(4, columnActiveWidth);
-    ui->tableWidgetMyDynodes->setColumnWidth(5, columnLastSeenWidth);
+    ui->tableWidgetMyServiceNodes->setColumnWidth(0, columnAliasWidth);
+    ui->tableWidgetMyServiceNodes->setColumnWidth(1, columnAddressWidth);
+    ui->tableWidgetMyServiceNodes->setColumnWidth(2, columnProtocolWidth);
+    ui->tableWidgetMyServiceNodes->setColumnWidth(3, columnStatusWidth);
+    ui->tableWidgetMyServiceNodes->setColumnWidth(4, columnActiveWidth);
+    ui->tableWidgetMyServiceNodes->setColumnWidth(5, columnLastSeenWidth);
 
-    ui->tableWidgetDynodes->setColumnWidth(0, columnAddressWidth);
-    ui->tableWidgetDynodes->setColumnWidth(1, columnProtocolWidth);
-    ui->tableWidgetDynodes->setColumnWidth(2, columnStatusWidth);
-    ui->tableWidgetDynodes->setColumnWidth(3, columnActiveWidth);
-    ui->tableWidgetDynodes->setColumnWidth(4, columnLastSeenWidth);
+    ui->tableWidgetServiceNodes->setColumnWidth(0, columnAddressWidth);
+    ui->tableWidgetServiceNodes->setColumnWidth(1, columnProtocolWidth);
+    ui->tableWidgetServiceNodes->setColumnWidth(2, columnStatusWidth);
+    ui->tableWidgetServiceNodes->setColumnWidth(3, columnActiveWidth);
+    ui->tableWidgetServiceNodes->setColumnWidth(4, columnLastSeenWidth);
 
-    ui->tableWidgetMyDynodes->setContextMenuPolicy(Qt::CustomContextMenu);
+    ui->tableWidgetMyServiceNodes->setContextMenuPolicy(Qt::CustomContextMenu);
 
     QAction* startAliasAction = new QAction(tr("Start alias"), this);
     contextMenu = new QMenu();
     contextMenu->addAction(startAliasAction);
-    connect(ui->tableWidgetMyDynodes, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
+    connect(ui->tableWidgetMyServiceNodes, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
     connect(startAliasAction, SIGNAL(triggered()), this, SLOT(on_startButton_clicked()));
 
     timer = new QTimer(this);
@@ -81,55 +81,55 @@ DynodeList::DynodeList(const PlatformStyle* platformStyle, QWidget* parent) : QW
     updateNodeList();
 }
 
-DynodeList::~DynodeList()
+ServiceNodeList::~ServiceNodeList()
 {
     delete ui;
 }
 
-void DynodeList::setClientModel(ClientModel* model)
+void ServiceNodeList::setClientModel(ClientModel* model)
 {
     this->clientModel = model;
     if (model) {
-        // try to update list when Dynode count changes
-        connect(clientModel, SIGNAL(strDynodesChanged(QString)), this, SLOT(updateNodeList()));
+        // try to update list when ServiceNode count changes
+        connect(clientModel, SIGNAL(strServiceNodesChanged(QString)), this, SLOT(updateNodeList()));
     }
 }
 
-void DynodeList::setWalletModel(WalletModel* model)
+void ServiceNodeList::setWalletModel(WalletModel* model)
 {
     this->walletModel = model;
 }
 
-void DynodeList::showContextMenu(const QPoint& point)
+void ServiceNodeList::showContextMenu(const QPoint& point)
 {
-    QTableWidgetItem* item = ui->tableWidgetMyDynodes->itemAt(point);
+    QTableWidgetItem* item = ui->tableWidgetMyServiceNodes->itemAt(point);
     if (item)
         contextMenu->exec(QCursor::pos());
 }
 
-void DynodeList::StartAlias(std::string strAlias)
+void ServiceNodeList::StartAlias(std::string strAlias)
 {
     std::string strStatusHtml;
     strStatusHtml += "<center>Alias: " + strAlias;
 
-    for (const auto& dne : dynodeConfig.getEntries()) {
+    for (const auto& dne : servicenodeConfig.getEntries()) {
         if (dne.getAlias() == strAlias) {
             std::string strError;
-            CDynodeBroadcast dnb;
+            CServiceNodeBroadcast dnb;
 
-            bool fSuccess = CDynodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
+            bool fSuccess = CServiceNodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
 
             int nDoS;
-            if (fSuccess && !dnodeman.CheckDnbAndUpdateDynodeList(NULL, dnb, nDoS, *g_connman)) {
+            if (fSuccess && !dnodeman.CheckDnbAndUpdateServiceNodeList(NULL, dnb, nDoS, *g_connman)) {
                 strError = "Failed to verify DNB";
                 fSuccess = false;
             }
 
             if (fSuccess) {
-                strStatusHtml += "<br>Successfully started Dynode.";
-                dnodeman.NotifyDynodeUpdates(*g_connman);
+                strStatusHtml += "<br>Successfully started ServiceNode.";
+                dnodeman.NotifyServiceNodeUpdates(*g_connman);
             } else {
-                strStatusHtml += "<br>Failed to start Dynode.<br>Error: " + strError;
+                strStatusHtml += "<br>Failed to start ServiceNode.<br>Error: " + strError;
             }
             break;
         }
@@ -143,15 +143,15 @@ void DynodeList::StartAlias(std::string strAlias)
     updateMyNodeList(true);
 }
 
-void DynodeList::StartAll(std::string strCommand)
+void ServiceNodeList::StartAll(std::string strCommand)
 {
     int nCountSuccessful = 0;
     int nCountFailed = 0;
     std::string strFailedHtml;
 
-    for (const auto& dne : dynodeConfig.getEntries()) {
+    for (const auto& dne : servicenodeConfig.getEntries()) {
         std::string strError;
-        CDynodeBroadcast dnb;
+        CServiceNodeBroadcast dnb;
 
         int32_t nOutputIndex = 0;
         if (!ParseInt32(dne.getOutputIndex(), &nOutputIndex)) {
@@ -163,17 +163,17 @@ void DynodeList::StartAll(std::string strCommand)
         if (strCommand == "start-missing" && dnodeman.Has(outpoint))
             continue;
 
-        bool fSuccess = CDynodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
+        bool fSuccess = CServiceNodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
 
         int nDoS;
-        if (fSuccess && !dnodeman.CheckDnbAndUpdateDynodeList(NULL, dnb, nDoS, *g_connman)) {
+        if (fSuccess && !dnodeman.CheckDnbAndUpdateServiceNodeList(NULL, dnb, nDoS, *g_connman)) {
             strError = "Failed to verify DNB";
             fSuccess = false;
         }
 
         if (fSuccess) {
             nCountSuccessful++;
-            dnodeman.NotifyDynodeUpdates(*g_connman);
+            dnodeman.NotifyServiceNodeUpdates(*g_connman);
         } else {
             nCountFailed++;
             strFailedHtml += "\nFailed to start " + dne.getAlias() + ". Error: " + strError;
@@ -181,7 +181,7 @@ void DynodeList::StartAll(std::string strCommand)
     }
 
     std::string returnObj;
-    returnObj = strprintf("Successfully started %d Dynodes, failed to start %d, total %d", nCountSuccessful, nCountFailed, nCountFailed + nCountSuccessful);
+    returnObj = strprintf("Successfully started %d ServiceNodes, failed to start %d, total %d", nCountSuccessful, nCountFailed, nCountFailed + nCountSuccessful);
     if (nCountFailed > 0) {
         returnObj += strFailedHtml;
     }
@@ -193,13 +193,13 @@ void DynodeList::StartAll(std::string strCommand)
     updateMyNodeList(true);
 }
 
-void DynodeList::updateMyDynodeInfo(QString strAlias, QString strAddr, const COutPoint& outpoint)
+void ServiceNodeList::updateMyServiceNodeInfo(QString strAlias, QString strAddr, const COutPoint& outpoint)
 {
     bool fOldRowFound = false;
     int nNewRow = 0;
 
-    for (int i = 0; i < ui->tableWidgetMyDynodes->rowCount(); i++) {
-        if (ui->tableWidgetMyDynodes->item(i, 0)->text() == strAlias) {
+    for (int i = 0; i < ui->tableWidgetMyServiceNodes->rowCount(); i++) {
+        if (ui->tableWidgetMyServiceNodes->item(i, 0)->text() == strAlias) {
             fOldRowFound = true;
             nNewRow = i;
             break;
@@ -207,32 +207,32 @@ void DynodeList::updateMyDynodeInfo(QString strAlias, QString strAddr, const COu
     }
 
     if (nNewRow == 0 && !fOldRowFound) {
-        nNewRow = ui->tableWidgetMyDynodes->rowCount();
-        ui->tableWidgetMyDynodes->insertRow(nNewRow);
+        nNewRow = ui->tableWidgetMyServiceNodes->rowCount();
+        ui->tableWidgetMyServiceNodes->insertRow(nNewRow);
     }
 
-    dynode_info_t infoDn;
-    bool fFound = dnodeman.GetDynodeInfo(outpoint, infoDn);
+    servicenode_info_t infoDn;
+    bool fFound = dnodeman.GetServiceNodeInfo(outpoint, infoDn);
 
     QTableWidgetItem* aliasItem = new QTableWidgetItem(strAlias);
     QTableWidgetItem* addrItem = new QTableWidgetItem(fFound ? QString::fromStdString(infoDn.addr.ToString()) : strAddr);
     QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(fFound ? infoDn.nProtocolVersion : -1));
-    QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(fFound ? CDynode::StateToString(infoDn.nActiveState) : "MISSING"));
+    QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(fFound ? CServiceNode::StateToString(infoDn.nActiveState) : "MISSING"));
     QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::fromStdString(DurationToDHMS(fFound ? (infoDn.nTimeLastPing - infoDn.sigTime) : 0)));
     QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M",
         fFound ? infoDn.nTimeLastPing + GetOffsetFromUtc() : 0)));
     QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(fFound ? CDynamicAddress(infoDn.pubKeyCollateralAddress.GetID()).ToString() : ""));
 
-    ui->tableWidgetMyDynodes->setItem(nNewRow, 0, aliasItem);
-    ui->tableWidgetMyDynodes->setItem(nNewRow, 1, addrItem);
-    ui->tableWidgetMyDynodes->setItem(nNewRow, 2, protocolItem);
-    ui->tableWidgetMyDynodes->setItem(nNewRow, 3, statusItem);
-    ui->tableWidgetMyDynodes->setItem(nNewRow, 4, activeSecondsItem);
-    ui->tableWidgetMyDynodes->setItem(nNewRow, 5, lastSeenItem);
-    ui->tableWidgetMyDynodes->setItem(nNewRow, 6, pubkeyItem);
+    ui->tableWidgetMyServiceNodes->setItem(nNewRow, 0, aliasItem);
+    ui->tableWidgetMyServiceNodes->setItem(nNewRow, 1, addrItem);
+    ui->tableWidgetMyServiceNodes->setItem(nNewRow, 2, protocolItem);
+    ui->tableWidgetMyServiceNodes->setItem(nNewRow, 3, statusItem);
+    ui->tableWidgetMyServiceNodes->setItem(nNewRow, 4, activeSecondsItem);
+    ui->tableWidgetMyServiceNodes->setItem(nNewRow, 5, lastSeenItem);
+    ui->tableWidgetMyServiceNodes->setItem(nNewRow, 6, pubkeyItem);
 }
 
-void DynodeList::updateMyNodeList(bool fForce)
+void ServiceNodeList::updateMyNodeList(bool fForce)
 {
     TRY_LOCK(cs_mydnlist, fLockAcquired);
     if (!fLockAcquired) {
@@ -240,9 +240,9 @@ void DynodeList::updateMyNodeList(bool fForce)
     }
     static int64_t nTimeMyListUpdated = 0;
 
-    // automatically update my Dynode list only once in MY_DYNODELIST_UPDATE_SECONDS seconds,
+    // automatically update my ServiceNode list only once in MY_SERVICENODELIST_UPDATE_SECONDS seconds,
     // this update still can be triggered manually at any time via button click
-    int64_t nSecondsTillUpdate = nTimeMyListUpdated + MY_DYNODELIST_UPDATE_SECONDS - GetTime();
+    int64_t nSecondsTillUpdate = nTimeMyListUpdated + MY_SERVICENODELIST_UPDATE_SECONDS - GetTime();
     ui->secondsLabel->setText(QString::number(nSecondsTillUpdate));
 
     if (nSecondsTillUpdate > 0 && !fForce)
@@ -250,27 +250,27 @@ void DynodeList::updateMyNodeList(bool fForce)
     nTimeMyListUpdated = GetTime();
 
     // Find selected row
-    QItemSelectionModel* selectionModel = ui->tableWidgetMyDynodes->selectionModel();
+    QItemSelectionModel* selectionModel = ui->tableWidgetMyServiceNodes->selectionModel();
     QModelIndexList selected = selectionModel->selectedRows();
     int nSelectedRow = selected.count() ? selected.at(0).row() : 0;
 
-    ui->tableWidgetDynodes->setSortingEnabled(false);
-    for (const auto& dne : dynodeConfig.getEntries()) {
+    ui->tableWidgetServiceNodes->setSortingEnabled(false);
+    for (const auto& dne : servicenodeConfig.getEntries()) {
         int32_t nOutputIndex = 0;
         if (!ParseInt32(dne.getOutputIndex(), &nOutputIndex)) {
             continue;
         }
 
-        updateMyDynodeInfo(QString::fromStdString(dne.getAlias()), QString::fromStdString(dne.getIp()), COutPoint(uint256S(dne.getTxHash()), nOutputIndex));
+        updateMyServiceNodeInfo(QString::fromStdString(dne.getAlias()), QString::fromStdString(dne.getIp()), COutPoint(uint256S(dne.getTxHash()), nOutputIndex));
     }
-    ui->tableWidgetMyDynodes->selectRow(nSelectedRow);
-    ui->tableWidgetDynodes->setSortingEnabled(true);
+    ui->tableWidgetMyServiceNodes->selectRow(nSelectedRow);
+    ui->tableWidgetServiceNodes->setSortingEnabled(true);
 
     // reset "timer"
     ui->secondsLabel->setText("0");
 }
 
-void DynodeList::updateNodeList()
+void ServiceNodeList::updateNodeList()
 {
     TRY_LOCK(cs_dnlist, fLockAcquired);
     if (!fLockAcquired) {
@@ -279,9 +279,9 @@ void DynodeList::updateNodeList()
 
     static int64_t nTimeListUpdated = GetTime();
 
-    // to prevent high cpu usage update only once in DYNODELIST_UPDATE_SECONDS seconds
-    // or DYNODELIST_FILTER_COOLDOWN_SECONDS seconds after filter was last changed
-    int64_t nSecondsToWait = fFilterUpdated ? nTimeFilterUpdated - GetTime() + DYNODELIST_FILTER_COOLDOWN_SECONDS : nTimeListUpdated - GetTime() + DYNODELIST_UPDATE_SECONDS;
+    // to prevent high cpu usage update only once in SERVICENODELIST_UPDATE_SECONDS seconds
+    // or SERVICENODELIST_FILTER_COOLDOWN_SECONDS seconds after filter was last changed
+    int64_t nSecondsToWait = fFilterUpdated ? nTimeFilterUpdated - GetTime() + SERVICENODELIST_FILTER_COOLDOWN_SECONDS : nTimeListUpdated - GetTime() + SERVICENODELIST_UPDATE_SECONDS;
 
     if (fFilterUpdated)
         ui->countLabel->setText(QString::fromStdString(strprintf("Please wait... %d", nSecondsToWait)));
@@ -293,14 +293,14 @@ void DynodeList::updateNodeList()
 
     QString strToFilter;
     ui->countLabel->setText("Updating...");
-    ui->tableWidgetDynodes->setSortingEnabled(false);
-    ui->tableWidgetDynodes->clearContents();
-    ui->tableWidgetDynodes->setRowCount(0);
-    std::map<COutPoint, CDynode> mapDynodes = dnodeman.GetFullDynodeMap();
+    ui->tableWidgetServiceNodes->setSortingEnabled(false);
+    ui->tableWidgetServiceNodes->clearContents();
+    ui->tableWidgetServiceNodes->setRowCount(0);
+    std::map<COutPoint, CServiceNode> mapServiceNodes = dnodeman.GetFullServiceNodeMap();
     int offsetFromUtc = GetOffsetFromUtc();
 
-    for (const auto& dnpair : mapDynodes) {
-        CDynode dn = dnpair.second;
+    for (const auto& dnpair : mapServiceNodes) {
+        CServiceNode dn = dnpair.second;
         // populate list
         // Address, Protocol, Status, Active Seconds, Last Seen, Pub Key
         QTableWidgetItem* addressItem = new QTableWidgetItem(QString::fromStdString(dn.addr.ToString()));
@@ -321,34 +321,34 @@ void DynodeList::updateNodeList()
                 continue;
         }
 
-        ui->tableWidgetDynodes->insertRow(0);
-        ui->tableWidgetDynodes->setItem(0, 0, addressItem);
-        ui->tableWidgetDynodes->setItem(0, 1, protocolItem);
-        ui->tableWidgetDynodes->setItem(0, 2, statusItem);
-        ui->tableWidgetDynodes->setItem(0, 3, activeSecondsItem);
-        ui->tableWidgetDynodes->setItem(0, 4, lastSeenItem);
-        ui->tableWidgetDynodes->setItem(0, 5, pubkeyItem);
+        ui->tableWidgetServiceNodes->insertRow(0);
+        ui->tableWidgetServiceNodes->setItem(0, 0, addressItem);
+        ui->tableWidgetServiceNodes->setItem(0, 1, protocolItem);
+        ui->tableWidgetServiceNodes->setItem(0, 2, statusItem);
+        ui->tableWidgetServiceNodes->setItem(0, 3, activeSecondsItem);
+        ui->tableWidgetServiceNodes->setItem(0, 4, lastSeenItem);
+        ui->tableWidgetServiceNodes->setItem(0, 5, pubkeyItem);
     }
 
-    ui->countLabel->setText(QString::number(ui->tableWidgetDynodes->rowCount()));
-    ui->tableWidgetDynodes->setSortingEnabled(true);
+    ui->countLabel->setText(QString::number(ui->tableWidgetServiceNodes->rowCount()));
+    ui->tableWidgetServiceNodes->setSortingEnabled(true);
 }
 
-void DynodeList::on_filterLineEdit_textChanged(const QString& strFilterIn)
+void ServiceNodeList::on_filterLineEdit_textChanged(const QString& strFilterIn)
 {
     strCurrentFilter = strFilterIn;
     nTimeFilterUpdated = GetTime();
     fFilterUpdated = true;
-    ui->countLabel->setText(QString::fromStdString(strprintf("Please wait... %d", DYNODELIST_FILTER_COOLDOWN_SECONDS)));
+    ui->countLabel->setText(QString::fromStdString(strprintf("Please wait... %d", SERVICENODELIST_FILTER_COOLDOWN_SECONDS)));
 }
 
-void DynodeList::on_startButton_clicked()
+void ServiceNodeList::on_startButton_clicked()
 {
     std::string strAlias;
     {
         LOCK(cs_mydnlist);
         // Find selected node alias
-        QItemSelectionModel* selectionModel = ui->tableWidgetMyDynodes->selectionModel();
+        QItemSelectionModel* selectionModel = ui->tableWidgetMyServiceNodes->selectionModel();
         QModelIndexList selected = selectionModel->selectedRows();
 
         if (selected.count() == 0)
@@ -356,12 +356,12 @@ void DynodeList::on_startButton_clicked()
 
         QModelIndex index = selected.at(0);
         int nSelectedRow = index.row();
-        strAlias = ui->tableWidgetMyDynodes->item(nSelectedRow, 0)->text().toStdString();
+        strAlias = ui->tableWidgetMyServiceNodes->item(nSelectedRow, 0)->text().toStdString();
     }
 
     // Display message box
-    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm Dynode start"),
-        tr("Are you sure you want to start Dynode %1?").arg(QString::fromStdString(strAlias)),
+    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm ServiceNode start"),
+        tr("Are you sure you want to start ServiceNode %1?").arg(QString::fromStdString(strAlias)),
         QMessageBox::Yes | QMessageBox::Cancel,
         QMessageBox::Cancel);
 
@@ -383,11 +383,11 @@ void DynodeList::on_startButton_clicked()
     StartAlias(strAlias);
 }
 
-void DynodeList::on_startAllButton_clicked()
+void ServiceNodeList::on_startAllButton_clicked()
 {
     // Display message box
-    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm all Dynodes start"),
-        tr("Are you sure you want to start ALL Dynodes?"),
+    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm all ServiceNodes start"),
+        tr("Are you sure you want to start ALL ServiceNodes?"),
         QMessageBox::Yes | QMessageBox::Cancel,
         QMessageBox::Cancel);
 
@@ -409,18 +409,18 @@ void DynodeList::on_startAllButton_clicked()
     StartAll();
 }
 
-void DynodeList::on_startMissingButton_clicked()
+void ServiceNodeList::on_startMissingButton_clicked()
 {
-    if (!dynodeSync.IsDynodeListSynced()) {
+    if (!servicenodeSync.IsServiceNodeListSynced()) {
         QMessageBox::critical(this, tr("Command is not available right now"),
-            tr("You can't use this command until Dynode list is synced"));
+            tr("You can't use this command until ServiceNode list is synced"));
         return;
     }
 
     // Display message box
     QMessageBox::StandardButton retval = QMessageBox::question(this,
-        tr("Confirm missing Dynodes start"),
-        tr("Are you sure you want to start MISSING Dynodes?"),
+        tr("Confirm missing ServiceNodes start"),
+        tr("Are you sure you want to start MISSING ServiceNodes?"),
         QMessageBox::Yes | QMessageBox::Cancel,
         QMessageBox::Cancel);
 
@@ -442,14 +442,14 @@ void DynodeList::on_startMissingButton_clicked()
     StartAll("start-missing");
 }
 
-void DynodeList::on_tableWidgetMyDynodes_itemSelectionChanged()
+void ServiceNodeList::on_tableWidgetMyServiceNodes_itemSelectionChanged()
 {
-    if (ui->tableWidgetMyDynodes->selectedItems().count() > 0) {
+    if (ui->tableWidgetMyServiceNodes->selectedItems().count() > 0) {
         ui->startButton->setEnabled(true);
     }
 }
 
-void DynodeList::on_UpdateButton_clicked()
+void ServiceNodeList::on_UpdateButton_clicked()
 {
     updateMyNodeList(true);
 }
