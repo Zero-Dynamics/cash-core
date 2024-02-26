@@ -36,7 +36,7 @@ Blockchain
 
 Control
 -------
-* debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|dynamic|privatesend|instantsend|servicenode|spork|keepass|dnpayments|gobject )
+* debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|dynamic|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject )
 * getinfo
 * getmemoryinfo
 * help ( "command" )
@@ -58,7 +58,7 @@ DDNS
 
 Dynamic
 -------
-* dnsync [status|next|reset]
+* snsync [status|next|reset]
 * servicenode "command"...
 * servicenodebroadcast "command"...
 * servicenodelist ( "mode" "filter" )

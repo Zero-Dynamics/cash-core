@@ -124,7 +124,7 @@ UniValue debug(const JSONRPCRequest& request)
         throw std::runtime_error(
             "debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool"
             "|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|"
-            "dynamic|privatesend|instantsend|servicenode|spork|keepass|dnpayments|gobject|dht|bdap|validation|stealth|)\n"
+            "dynamic|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject|dht|bdap|validation|stealth|)\n"
             "Change debug category on the fly. Specify single category or use a plus to specify many.\n"
             "\nExamples:\n" +
             HelpExampleCli("debug", "dynamic") + HelpExampleRpc("debug", "dynamic+net"));
@@ -141,11 +141,11 @@ UniValue debug(const JSONRPCRequest& request)
     return "Debug mode: " + (fDebug ? strMode : "off");
 }
 
-UniValue dnsync(const JSONRPCRequest& request)
+UniValue snsync(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
-            "dnsync [status|next|reset]\n"
+            "snsync [status|next|reset]\n"
             "Returns the sync status, updates to the next step or resets it entirely.\n");
 
     std::string strMode = request.params[0].get_str();
@@ -1124,7 +1124,7 @@ static const CRPCCommand commands[] =
         {"addressindex", "getaddressbalance", &getaddressbalance, false, {"addresses"}},
 
         /* Dynamic features */
-        {"dynamic", "dnsync", &dnsync, true, {}},
+        {"dynamic", "snsync", &snsync, true, {}},
         {"dynamic", "spork", &spork, true, {"value"}},
 
         /* Not shown in help */

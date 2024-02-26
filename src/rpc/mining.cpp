@@ -665,7 +665,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     }
 
     CScript payee;
-    if (sporkManager.IsSporkActive(SPORK_8_SERVICENODE_PAYMENT_ENFORCEMENT) && !servicenodeSync.IsWinnersListSynced() && !dnpayments.GetBlockPayee(chainActive.Height() + 1, payee))
+    if (sporkManager.IsSporkActive(SPORK_8_SERVICENODE_PAYMENT_ENFORCEMENT) && !servicenodeSync.IsWinnersListSynced() && !snpayments.GetBlockPayee(chainActive.Height() + 1, payee))
         throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Dynamic is downloading ServiceNode winners...");
 
     // next block is a superblock and we need governance info to correctly construct it

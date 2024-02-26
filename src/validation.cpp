@@ -2602,7 +2602,7 @@ int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Para
         if (vbinfo.check_dn_protocol && state == THRESHOLD_STARTED && !fAssumeServiceNodeIsUpgraded) {
             CScript payee;
             servicenode_info_t dnInfo;
-            if (!dnpayments.GetBlockPayee(pindexPrev->nHeight + 1, payee)) {
+            if (!snpayments.GetBlockPayee(pindexPrev->nHeight + 1, payee)) {
                 // no votes for this block
                 continue;
             }

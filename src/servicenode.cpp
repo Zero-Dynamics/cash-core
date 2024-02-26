@@ -182,7 +182,7 @@ void CServiceNode::Check(bool fForce)
     int nActiveStatePrev = nActiveState;
     bool fOurServiceNode = fServiceNodeMode && activeServiceNode.pubKeyServiceNode == pubKeyServiceNode;
     // ServiceNode doesn't meet payment protocol requirements ...
-    bool fRequireUpdate = nProtocolVersion < dnpayments.GetMinServiceNodePaymentsProto() ||
+    bool fRequireUpdate = nProtocolVersion < snpayments.GetMinServiceNodePaymentsProto() ||
                           // or it's our own node and we just updated it to the new protocol but we are still waiting for activation ...
                           (fOurServiceNode && nProtocolVersion < PROTOCOL_VERSION);
 
@@ -350,8 +350,8 @@ void CServiceNode::UpdateLastPaid(const CBlockIndex* pindex, int nMaxBlocksToSca
     LOCK(cs_mapServiceNodeBlocks);
 
     for (int i = 0; BlockReading && BlockReading->nHeight > nBlockLastPaid && i < nMaxBlocksToScanBack; i++) {
-        if (dnpayments.mapServiceNodeBlocks.count(BlockReading->nHeight) &&
-            dnpayments.mapServiceNodeBlocks[BlockReading->nHeight].HasPayeeWithVotes(dnpayee, 2)) {
+        if (snpayments.mapServiceNodeBlocks.count(BlockReading->nHeight) &&
+            snpayments.mapServiceNodeBlocks[BlockReading->nHeight].HasPayeeWithVotes(dnpayee, 2)) {
             CBlock block;
             if (!ReadBlockFromDisk(block, BlockReading, Params().GetConsensus())) // shouldn't really happen
                 continue;
@@ -374,8 +374,8 @@ void CServiceNode::UpdateLastPaid(const CBlockIndex* pindex, int nMaxBlocksToSca
         BlockReading = BlockReading->pprev;
     }
 
-    // Last payment for this ServiceNode wasn't found in latest dnpayments blocks
-    // or it was found in dnpayments blocks but wasn't found in the blockchain.
+    // Last payment for this ServiceNode wasn't found in latest snpayments blocks
+    // or it was found in snpayments blocks but wasn't found in the blockchain.
     // LogPrint("servicenode", "CServiceNode::UpdateLastPaidBlock -- searching for block with payment to %s -- keeping old %d\n", vin.prevout.ToStringShort(), nBlockLastPaid);
 }
 
@@ -478,7 +478,7 @@ bool CServiceNodeBroadcast::SimpleCheck(int& nDos)
         nActiveState = SERVICENODE_EXPIRED;
     }
 
-    if (nProtocolVersion < dnpayments.GetMinServiceNodePaymentsProto()) {
+    if (nProtocolVersion < snpayments.GetMinServiceNodePaymentsProto()) {
         LogPrint("servicenode", "CServiceNodeBroadcast::SimpleCheck -- outdated ServiceNode: ServiceNode=%s  nProtocolVersion=%d\n", outpoint.ToStringShort(), nProtocolVersion);
         nActiveState = SERVICENODE_UPDATE_REQUIRED;
     }

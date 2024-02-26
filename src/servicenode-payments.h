@@ -31,7 +31,7 @@ extern CCriticalSection cs_vecPayees;
 extern CCriticalSection cs_mapServiceNodeBlocks;
 extern CCriticalSection cs_mapServiceNodePayeeVotes;
 
-extern CServiceNodePayments dnpayments;
+extern CServiceNodePayments snpayments;
 
 /// TODO: all 4 functions do not belong here really, they should be refactored/moved somewhere (main.cpp ?)
 bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockReward, std::string& strErrorRet);
