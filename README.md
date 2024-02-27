@@ -126,7 +126,7 @@ For Ubuntu 20.04LTS(Bionic) and later, or Debian 7 and later; libboost-all-dev h
 
 db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).  You can add the repository using the following command:
 
-    sudo add-apt-repository ppa:pivx/pivx
+    sudo add-apt-repository ppa:pivx/berkeley-db4
     sudo apt-get update
 
 Ubuntu 20.04 and later have packages for libdb 5.3.21 but using these will break binary wallet compatibility, and is not recommended.
