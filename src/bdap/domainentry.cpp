@@ -65,12 +65,12 @@ bool CDomainEntry::UnserializeFromData(const std::vector<unsigned char>& vchData
     return true;
 }
 
-CDynamicAddress CDomainEntry::GetWalletAddress() const {
-    return CDynamicAddress(stringFromVch(WalletAddress));
+COdynCashAddress CDomainEntry::GetWalletAddress() const {
+    return COdynCashAddress(stringFromVch(WalletAddress));
 }
 
-CDynamicAddress CDomainEntry::GetLinkAddress() const {
-    return CDynamicAddress(stringFromVch(LinkAddress));
+COdynCashAddress CDomainEntry::GetLinkAddress() const {
+    return COdynCashAddress(stringFromVch(LinkAddress));
 }
 
 std::string CDomainEntry::DHTPubKeyString() const {
@@ -181,7 +181,7 @@ bool CDomainEntry::ValidateValues(std::string& errorMessage)
     }
     else {
         std::string strWalletAddress = stringFromVch(WalletAddress);
-        CDynamicAddress entryAddress(strWalletAddress);
+        COdynCashAddress entryAddress(strWalletAddress);
         if (!entryAddress.IsValid()) {
             errorMessage = "Invalid BDAP wallet address. Wallet address failed IsValid check.";
             return false;
@@ -198,7 +198,7 @@ bool CDomainEntry::ValidateValues(std::string& errorMessage)
             std::string strLinkAddress = stringFromVch(LinkAddress);
             CTxDestination destLink = DecodeDestination(strLinkAddress);
             if (destLink.type() == typeid(CKeyID)) {
-                CDynamicAddress entryLinkAddress(strLinkAddress);
+                COdynCashAddress entryLinkAddress(strLinkAddress);
                 if (!entryLinkAddress.IsValid()) {
                     errorMessage = "Invalid BDAP public link address. Link wallet address failed IsValid check.";
                     return false;

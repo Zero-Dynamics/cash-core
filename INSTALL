@@ -1,16 +1,16 @@
-Building Dynamic
+Building OdynCash
 
 Use the autogen script to prepare the build environment.
 
     ./autogen.sh
     ./configure
     make
- 
+
 Precompiled binaries are available at github, see
-https://github.com/duality-solutions/dynamic
+https://github.com/zero-dynamics/odyncash
 
 Always verify the signatures and checksums.
 
-See doc/build-*.md for instructions on building dynamicd,
+See doc/build-*.md for instructions on building odyncashd,
 the intended-for-services, no-graphical-interface, reference
-implementation of Dynamic.
+implementation of OdynCash.

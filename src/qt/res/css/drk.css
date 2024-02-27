@@ -9,12 +9,12 @@ QStatusBar {
 background-color:#000000;
 }
 
-QProgressBar { 
+QProgressBar {
 color: #FFFFFF;
 background-color:#000000;
 }
 
-QProgressBar::chunk { 
+QProgressBar::chunk {
 background: rgb(86,0,120);
 }
 
@@ -787,16 +787,16 @@ QDialog#HelpMessageDialog QScrollBar:vertical, QDialog#HelpMessageDialog QScroll
 border:0;
 }
 
-/* About Dynamic Dialog */
+/* About OdynCash Dialog */
 QDialog#AboutDialog {
 background-color:#000000;
 }
 
-QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Dynamic Contents */
+QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About OdynCash Contents */
 margin-left:10px;
 }
 
-QDialog#AboutDialog QLabel#label_2 { /* Margin for About Dynamic text */
+QDialog#AboutDialog QLabel#label_2 { /* Margin for About OdynCash text */
 margin-right:10px;
 }
 
@@ -1625,7 +1625,7 @@ QLabel#transactionSumLabel { /* Example of setObjectName for widgets without nam
 color:#EBEBEB;
 font-weight:bold;
 }
- 
+
 QLabel#transactionSum { /* Example of setObjectName for widgets without name */
 color:#ffffff;
 }
@@ -2048,7 +2048,7 @@ QWidget#BdapPage .QLabel#label_Users, QWidget#BdapPage .QLabel#label_Groups {
     color:#7400A1;
     font-weight:bold;
     font-size:14px;
- 
+
 }
 
 QWidget#BdapPage .QTabWidget#tabWidget {
@@ -2063,7 +2063,7 @@ QWidget#BdapPage .QTabWidget#tabWidget::pane {
 QWidget#BdapPage .QLabel#labelPA, QWidget#BdapPage .QLabel#labelPR, QWidget#BdapPage .QLabel#labelComplete {
     font-weight: bold;
     color: rgb(169, 60, 212);
-    font-size: 12pt;    
+    font-size: 12pt;
 }
 
 

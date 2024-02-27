@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_ADDRESSBOOKPAGE_H
-#define DYNAMIC_QT_ADDRESSBOOKPAGE_H
+#ifndef ODYNCASH_QT_ADDRESSBOOKPAGE_H
+#define ODYNCASH_QT_ADDRESSBOOKPAGE_H
 
 #include <QDialog>
 
@@ -89,4 +89,4 @@ Q_SIGNALS:
     void sendCoins(QString addr);
 };
 
-#endif // DYNAMIC_QT_ADDRESSBOOKPAGE_H
+#endif // ODYNCASH_QT_ADDRESSBOOKPAGE_H

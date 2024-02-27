@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_DHT_DATACHUNK_H
-#define DYNAMIC_DHT_DATACHUNK_H
+#ifndef ODYNCASH_DHT_DATACHUNK_H
+#define ODYNCASH_DHT_DATACHUNK_H
 
 #include "serialize.h"
 
@@ -76,4 +76,4 @@ public:
 
 };
 
-#endif // DYNAMIC_DHT_DATACHUNK_H
+#endif // ODYNCASH_DHT_DATACHUNK_H

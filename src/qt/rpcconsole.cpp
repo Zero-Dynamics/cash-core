@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dynamic-config.h"
+#include "config/odyncash-config.h"
 #endif
 
 #include "rpcconsole.h"
@@ -86,8 +86,8 @@ Q_SIGNALS:
     void reply(int category, const QString& command);
 };
 
-/** Class for handling RPC timers      
- * (used for e.g. re-locking the wallet after a timeout)      
+/** Class for handling RPC timers
+ * (used for e.g. re-locking the wallet after a timeout)
  */
 class QtRPCTimerBase : public QObject, public RPCTimerBase
 {
@@ -560,7 +560,7 @@ void RPCConsole::setClientModel(ClientModel* model)
         peersTableContextMenu->addAction(banAction7d);
         peersTableContextMenu->addAction(banAction365d);
 
-        // Add a signal mapping to allow dynamic context menu arguments.
+        // Add a signal mapping to allow odyncash context menu arguments.
         // We need to use int (instead of int64_t), because signal mapper only supports
         // int or objects, which is okay because max bantime (1 year) is < int_max.
         QSignalMapper* signalMapper = new QSignalMapper(this);
@@ -751,7 +751,7 @@ void RPCConsole::buildParameterlist(QString arg)
     // Append repair parameter to command line.
     args.append(arg);
 
-    // Send command-line arguments to DynamicGUI::handleRestart()
+    // Send command-line arguments to OdynCashGUI::handleRestart()
     Q_EMIT handleRestart(args);
 }
 

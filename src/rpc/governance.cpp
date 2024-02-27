@@ -3,7 +3,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-//#define ENABLE_DYNAMIC_DEBUG
+//#define ENABLE_ODYNCASH_DEBUG
 
 #include "activeservicenode.h"
 #include "consensus/validation.h"
@@ -58,7 +58,7 @@ UniValue gobject(const JSONRPCRequest& request)
             "  list               - List governance objects (can be filtered by signal and/or object type)\n"
             "  diff               - List differences since last diff\n"
             "  vote-alias         - Vote on a governance object by servicenode alias (using servicenode.conf setup)\n"
-            "  vote-conf          - Vote on a governance object by servicenode configured in dynamic.conf\n"
+            "  vote-conf          - Vote on a governance object by servicenode configured in odyncash.conf\n"
             "  vote-many          - Vote on a governance object by all servicenodes (using servicenode.conf setup)\n");
 
 
@@ -355,7 +355,7 @@ UniValue gobject(const JSONRPCRequest& request)
             nFailed++;
             statusObj.push_back(Pair("result", "failed"));
             statusObj.push_back(Pair("errorMessage", "Can't find servicenode by collateral output"));
-            resultsObj.push_back(Pair("dynamic.conf", statusObj));
+            resultsObj.push_back(Pair("odyncash.conf", statusObj));
             returnObj.push_back(Pair("overall", strprintf("Voted successfully %d time(s) and failed %d time(s).", nSuccessful, nFailed)));
             returnObj.push_back(Pair("detail", resultsObj));
             return returnObj;
@@ -366,7 +366,7 @@ UniValue gobject(const JSONRPCRequest& request)
             nFailed++;
             statusObj.push_back(Pair("result", "failed"));
             statusObj.push_back(Pair("errorMessage", "Failure to sign."));
-            resultsObj.push_back(Pair("dynamic.conf", statusObj));
+            resultsObj.push_back(Pair("odyncash.conf", statusObj));
             returnObj.push_back(Pair("overall", strprintf("Voted successfully %d time(s) and failed %d time(s).", nSuccessful, nFailed)));
             returnObj.push_back(Pair("detail", resultsObj));
             return returnObj;
@@ -382,7 +382,7 @@ UniValue gobject(const JSONRPCRequest& request)
             statusObj.push_back(Pair("errorMessage", exception.GetMessage()));
         }
 
-        resultsObj.push_back(Pair("dynamic.conf", statusObj));
+        resultsObj.push_back(Pair("odyncash.conf", statusObj));
 
         returnObj.push_back(Pair("overall", strprintf("Voted successfully %d time(s) and failed %d time(s).", nSuccessful, nFailed)));
         returnObj.push_back(Pair("detail", resultsObj));
@@ -981,11 +981,11 @@ static const CRPCCommand commands[] =
     {
         //  category                 name                      actor (function)         okSafe argNames
         //  ---------------------    ------------------------  -----------------------  ------ ---
-        /* Dynamic features */
-        {"dynamic", "getgovernanceinfo", &getgovernanceinfo, true, {}},
-        {"dynamic", "getsuperblockbudget", &getsuperblockbudget, true, {"index"}},
-        {"dynamic", "gobject", &gobject, true, {}},
-        {"dynamic", "voteraw", &voteraw, true, {}},
+        /* OdynCash features */
+        {"odyncash", "getgovernanceinfo", &getgovernanceinfo, true, {}},
+        {"odyncash", "getsuperblockbudget", &getsuperblockbudget, true, {"index"}},
+        {"odyncash", "gobject", &gobject, true, {}},
+        {"odyncash", "voteraw", &voteraw, true, {}},
 
 };
 

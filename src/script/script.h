@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SCRIPT_SCRIPT_H
-#define DYNAMIC_SCRIPT_SCRIPT_H
+#ifndef ODYNCASH_SCRIPT_SCRIPT_H
+#define ODYNCASH_SCRIPT_SCRIPT_H
 
 #include "crypto/common.h"
 #include "prevector.h"
@@ -201,7 +201,7 @@ enum opcodetype {
     OP_BDAP_EXPIRE = 0x03,               // = BDAP expire entry
     OP_BDAP_MODIFY = 0x04,               // = BDAP update/approve entry
     OP_BDAP_MOVE = 0x05,                 // = BDAP move entry
-    OP_BDAP_ACCOUNT_ENTRY  = 0x06,       // = BDAP domain account entry (users and groups) 
+    OP_BDAP_ACCOUNT_ENTRY  = 0x06,       // = BDAP domain account entry (users and groups)
     OP_BDAP_LINK_REQUEST = 0x07,         // = BDAP link request
     OP_BDAP_LINK_ACCEPT = 0x08,          // = BDAP link accept
     OP_BDAP_AUDIT = 0x09,                // = BDAP entry audit entry
@@ -212,8 +212,8 @@ enum opcodetype {
     OP_BDAP_SIDECHAIN_CHECKPOINT = 0x0e, // = BDAP sub chain checkpoint
     OP_BDAP_ASSET = 0x0f,                // = BDAP asset
 
-    // dynamic extended reserved
-    OP_DYNAMIC_EXTENDED = 0x10,
+    // odyncash extended reserved
+    OP_ODYNCASH_EXTENDED = 0x10,
 
     // invalid operation code
     OP_INVALIDOPCODE = 0xff,
@@ -772,4 +772,4 @@ bool DecodeBDAPScript(const CScript& script, int& op, int& op2, std::vector<std:
 bool DecodeBDAPScript(const CScript& script, int& op1, int& op2, std::vector<std::vector<unsigned char> >& vvch);
 bool RemoveBDAPScript(const CScript& scriptIn, CScript& scriptOut);
 
-#endif // DYNAMIC_SCRIPT_SCRIPT_H
+#endif // ODYNCASH_SCRIPT_SCRIPT_H

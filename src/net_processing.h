@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_NET_PROCESSING_H
-#define DYNAMIC_NET_PROCESSING_H
+#ifndef ODYNCASH_NET_PROCESSING_H
+#define ODYNCASH_NET_PROCESSING_H
 
 #include "net.h"
 #include "validationinterface.h"
@@ -69,4 +69,4 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, const std::atomic<bool>& i
  */
 bool SendMessages(CNode* pto, CConnman& connman, const std::atomic<bool>& interrupt);
 
-#endif // DYNAMIC_NET_PROCESSING_H
+#endif // ODYNCASH_NET_PROCESSING_H

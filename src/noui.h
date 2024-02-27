@@ -5,9 +5,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_NOUI_H
-#define DYNAMIC_NOUI_H
+#ifndef ODYNCASH_NOUI_H
+#define ODYNCASH_NOUI_H
 
 extern void noui_connect();
 
-#endif // DYNAMIC_NOUI_H
+#endif // ODYNCASH_NOUI_H

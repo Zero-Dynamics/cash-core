@@ -58,7 +58,7 @@ const std::string CInstantSend::SERIALIZATION_VERSION_STRING = "CInstantSend-Ver
 void CInstantSend::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if (fLiteMode)
-        return; // disable all Dynamic specific functionality
+        return; // disable all OdynCash specific functionality
     if (!sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED))
         return;
 

@@ -7,7 +7,7 @@
 # Test node handling
 #
 
-from test_framework.test_framework import DynamicTestFramework
+from test_framework.test_framework import OdynCashTestFramework
 from test_framework.util import *
 
 try:
@@ -19,7 +19,7 @@ try:
 except ImportError:
     import urlparse
 
-class NodeHandlingTest (DynamicTestFramework):
+class NodeHandlingTest (OdynCashTestFramework):
     def run_test(self):
         ###########################
         # setban/listbanned tests #

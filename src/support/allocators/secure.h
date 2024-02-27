@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SUPPORT_ALLOCATORS_SECURE_H
-#define DYNAMIC_SUPPORT_ALLOCATORS_SECURE_H
+#ifndef ODYNCASH_SUPPORT_ALLOCATORS_SECURE_H
+#define ODYNCASH_SUPPORT_ALLOCATORS_SECURE_H
 
 #include "support/lockedpool.h"
 #include "support/cleanse.h"
@@ -58,4 +58,4 @@ typedef std::basic_string<char, std::char_traits<char>, secure_allocator<char> >
 
 typedef std::vector<unsigned char, secure_allocator<unsigned char> > SecureVector;
 
-#endif // DYNAMIC_SUPPORT_ALLOCATORS_SECURE_H
+#endif // ODYNCASH_SUPPORT_ALLOCATORS_SECURE_H

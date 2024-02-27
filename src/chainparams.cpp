@@ -113,7 +113,7 @@ public:
     CMainParams()
     {
         strNetworkID = "main";
-        
+
         consensus.nRewardsStart = 5137;               // PoW Rewards begin on block 5137
         consensus.nServiceNodePaymentsStartBlock = 10273;  // ServiceNode Payments begin on block 10273
         consensus.nMinCountServiceNodesPaymentStart = 500; // ServiceNode Payments begin once 500 ServiceNodes exist or more.
@@ -137,7 +137,7 @@ public:
         consensus.nPowMaxAdjustUp = 16;
         consensus.nPowMaxAdjustDown = 32;
         consensus.nPowTargetSpacing = 75;
-        consensus.nUpdateDiffAlgoHeight = 10; // Dynamic: Algorithm fork block
+        consensus.nUpdateDiffAlgoHeight = 10; // OdynCash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
@@ -205,19 +205,19 @@ public:
         vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet02.dnsseeder.network"));
         vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet03.dnsseeder.network"));
 
-        // Dynamic addresses start with 'D'
+        // OdynCash addresses start with 'D'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
-        // Dynamic script addresses start with '5'
+        // OdynCash script addresses start with '5'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 10);
-        // Dynamic private keys start with 'y'
+        // OdynCash private keys start with 'y'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 140);
-        // Dynamic BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
+        // OdynCash BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-        // Dynamic BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
+        // OdynCash BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
-        // Dynamic Stealth Address start with 'L'
+        // OdynCash Stealth Address start with 'L'
         base58Prefixes[STEALTH_ADDRESS] = {0x0F};
-        // Dynamic BIP44 coin type is '5'
+        // OdynCash BIP44 coin type is '5'
         nExtCoinType = 5;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
@@ -298,7 +298,7 @@ public:
         consensus.nPowMaxAdjustUp = 16;
         consensus.nPowMaxAdjustDown = 32;
         consensus.nPowTargetSpacing = 75;
-        consensus.nUpdateDiffAlgoHeight = 10; // Dynamic: Algorithm fork block
+        consensus.nUpdateDiffAlgoHeight = 10; // OdynCash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
@@ -362,19 +362,19 @@ public:
         //vSeeds.push_back(CDNSSeedData("",  ""));
         //vSeeds.push_back(CDNSSeedData("", ""));
 
-        // Testnet Dynamic addresses start with 'y'
+        // Testnet OdynCash addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
-        // Testnet Dynamic script addresses start with '8' or '9'
+        // Testnet OdynCash script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 10);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 158);
-        // Testnet Dynamic BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet OdynCash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Testnet Dynamic BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet OdynCash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Dynamic Stealth Address start with 'T'
+        // OdynCash Stealth Address start with 'T'
         base58Prefixes[STEALTH_ADDRESS] = {0x15};
-        // Testnet Dynamic BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet OdynCash BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -440,7 +440,7 @@ public:
         consensus.nPowMaxAdjustUp = 16;
         consensus.nPowMaxAdjustDown = 32;
         consensus.nPowTargetSpacing = 75;
-        consensus.nUpdateDiffAlgoHeight = 10; // Dynamic: Algorithm fork block
+        consensus.nUpdateDiffAlgoHeight = 10; // OdynCash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
@@ -518,19 +518,19 @@ public:
             0.1 // * estimated number of transactions per second after that timestamp
         };
 
-        // Regtest Dynamic addresses start with 'y'
+        // Regtest OdynCash addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 140);
-        // Regtest Dynamic script addresses start with '8' or '9'
+        // Regtest OdynCash script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
         // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);
-        // Regtest Dynamic BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Regtest OdynCash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Regtest Dynamic BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Regtest OdynCash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Dynamic Stealth Address start with 'R'
+        // OdynCash Stealth Address start with 'R'
         base58Prefixes[STEALTH_ADDRESS] = {0x13};
-        // Regtest Dynamic BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest OdynCash BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
     }
     void UpdateBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout)
@@ -575,7 +575,7 @@ public:
         consensus.nPowMaxAdjustUp = 16;
         consensus.nPowMaxAdjustDown = 32;
         consensus.nPowTargetSpacing = 75;
-        consensus.nUpdateDiffAlgoHeight = 10; // Dynamic: Algorithm fork block
+        consensus.nUpdateDiffAlgoHeight = 10; // OdynCash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
@@ -604,7 +604,7 @@ public:
         pchMessageStart[3] = 0x40;
         // To import alert key:  importprivkey 6Jjb9DG1cr71VWiwxg97zVEyZUBhFzzGhqE7GY9DrbYYM6gVgxS
         vAlertPubKey = ParseHex("043d9e8440ea8fe66b0c2639f0a0931c9d7c41132ec9ee04cdf5d9e88ada2c2df52d93a0c1983958d3aea56df9fb3d1a61ca4eb6f72c27456fc313be80cdc70032");
-        nDefaultPort = DEFAULT_P2P_PORT + 300; // 33600 
+        nDefaultPort = DEFAULT_P2P_PORT + 300; // 33600
         nPruneAfterHeight = 100;
         startNewChain = false;
         nSwitchDifficultyBlock = 500000;
@@ -625,19 +625,19 @@ public:
         //vSeeds.push_back(CDNSSeedData("",  ""));
         //vSeeds.push_back(CDNSSeedData("", ""));
 
-        // Privatenet Dynamic addresses start with 'y'
+        // Privatenet OdynCash addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
-        // Privatenet Dynamic script addresses start with '8' or '9'
+        // Privatenet OdynCash script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 10);
         // Privatenet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 158);
-        // Privatenet Dynamic BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Privatenet OdynCash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Privatenet Dynamic BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Privatenet OdynCash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
         // Privatenet Stealth Address start with 'P'
         base58Prefixes[STEALTH_ADDRESS] = {0x12};
-        // Privatenet Dynamic BIP44 coin type is '1' (All coin's testnet default)
+        // Privatenet OdynCash BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_privatenet, pnSeed6_privatenet + ARRAYLEN(pnSeed6_privatenet));

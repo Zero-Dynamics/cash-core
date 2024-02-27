@@ -6,8 +6,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_ADDRESSINDEX_H
-#define DYNAMIC_ADDRESSINDEX_H
+#ifndef ODYNCASH_ADDRESSINDEX_H
+#define ODYNCASH_ADDRESSINDEX_H
 
 #include "amount.h"
 #include "uint256.h"
@@ -84,4 +84,4 @@ struct CMempoolAddressDeltaKeyCompare {
     }
 };
 
-#endif // DYNAMIC_ADDRESSINDEX_H
+#endif // ODYNCASH_ADDRESSINDEX_H

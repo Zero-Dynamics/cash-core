@@ -1,20 +1,20 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-[![Build Status](https://travis-ci.org/duality-solutions/Dynamic.png?branch=master)](https://travis-ci.org/duality-solutions/Dynamic)
-[![Stories in Ready](https://badge.waffle.io/duality-solutions/Dynamic.png?label=ready&title=Ready)](https://waffle.io/duality-solutions/Dynamic)
+[![Build Status](https://travis-ci.org/duality-solutions/OdynCash.png?branch=master)](https://travis-ci.org/duality-solutions/OdynCash)
+[![Stories in Ready](https://badge.waffle.io/duality-solutions/OdynCash.png?label=ready&title=Ready)](https://waffle.io/duality-solutions/OdynCash)
 
 Graph on Pull Request History
 ====================================
 
-[![Throughput Graph](https://graphs.waffle.io/duality-solutions/Dynamic/throughput.svg)](https://waffle.io/duality-solutions/Dynamic/metrics/throughput)  
+[![Throughput Graph](https://graphs.waffle.io/duality-solutions/OdynCash/throughput.svg)](https://waffle.io/duality-solutions/OdynCash/metrics/throughput)  
 
-# **Dynamic (DYN) v2.4.0.0**
+# **OdynCash (DYN) v2.4.0.0**
 
-![DYN logo](https://github.com/duality-solutions/Dynamic/blob/master/src/qt/res/icons/drk/about.png)
+![DYN logo](https://github.com/duality-solutions/OdynCash/blob/master/src/qt/res/icons/drk/about.png)
 
 **Copyright (c) 2016-2021 [Duality Blockchain Solutions](https://duality.solutions/)**
 
-What is [Dynamic](https://duality.solutions/dynamic)?
+What is [OdynCash](https://duality.solutions/odyncash)?
 ----------------
 * Coin Suffix: DYN
 * PoW Mining Algorithm: Argon2d
@@ -33,7 +33,7 @@ What is [Dynamic](https://duality.solutions/dynamic)?
 * Min TX Fee: 0.0001 DYN
 
 
-[Dynamic(DYN)](https://duality.solutions/dynamic) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Dynamic can be used to run incentivized ServiceNodes; the second tier of nodes on the network processing, verifying, validating and storing data.
+[OdynCash(DYN)](https://duality.solutions/odyncash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash can be used to run incentivized ServiceNodes; the second tier of nodes on the network processing, verifying, validating and storing data.
 
 **MainNet Parameters**
 P2P Port = 33300
@@ -56,11 +56,11 @@ Magic Bytes = 0x2f 0x32 0x15 0x3f
 
 UNIX BUILD NOTES
 ====================
-Some notes on how to build [Dynamic](https://duality.solutions/dynamic) in Unix. 
+Some notes on how to build [OdynCash](https://duality.solutions/odyncash) in Unix. 
 
 Note
 ---------------------
-Always use absolute paths to configure and compile Dynamic and the dependencies,
+Always use absolute paths to configure and compile OdynCash and the dependencies,
 for example, when specifying the the path of the dependency:
 
     ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
@@ -78,7 +78,7 @@ make
 make install # optional
 ```
 
-This will build dynamic-qt as well if the dependencies are met.
+This will build odyncash-qt as well if the dependencies are met.
 
 Dependencies
 ---------------------
@@ -107,12 +107,12 @@ For the versions used in the release, see [release-process.md](release-process.m
 System requirements
 --------------------
 
-C++ compilers are memory-hungry. It is recommended to have at least 3 GB of memory available when compiling Dynamic.
+C++ compilers are memory-hungry. It is recommended to have at least 3 GB of memory available when compiling OdynCash.
 
 Dependency Build Instructions: Ubuntu & Debian
 ----------------------------------------------
 
-It is required to build Dynamic on Ubuntu 18.04LTS(Bionic) or later due to C++14/GCC7 requirements. Also OpenSSL 1.1.0g is included in Ubuntu 18.04LTS and later, however it is suggested to use OpenSSL 1.1.1LTS.
+It is required to build OdynCash on Ubuntu 18.04LTS(Bionic) or later due to C++14/GCC7 requirements. Also OpenSSL 1.1.0g is included in Ubuntu 18.04LTS and later, however it is suggested to use OpenSSL 1.1.1LTS.
 
 Build requirements:
 
@@ -155,7 +155,7 @@ ZMQ dependencies (provides ZMQ API 4.x):
 Dependencies for the GUI: Ubuntu & Debian
 -----------------------------------------
 
-If you want to build Dynamic-Qt, make sure that the required packages for Qt development are installed. Qt 5 is necessary to build the GUI. If both Qt 4 and Qt 5 are installed, Qt 5 will be used. Pass `--with-gui=qt5` to configure to choose Qt5. To build without GUI pass `--without-gui`.
+If you want to build OdynCash-Qt, make sure that the required packages for Qt development are installed. Qt 5 is necessary to build the GUI. If both Qt 4 and Qt 5 are installed, Qt 5 will be used. Pass `--with-gui=qt5` to configure to choose Qt5. To build without GUI pass `--without-gui`.
 
 For Qt 5 you need the following:
 
@@ -165,12 +165,12 @@ libqrencode (optional) can be installed with:
 
     sudo apt-get install libqrencode-dev
     
-Once these are installed, they will be found by configure and a dynamic-qt executable will be
+Once these are installed, they will be found by configure and a odyncash-qt executable will be
 built by default.
 
 Notes
 -----
-The release is built with GCC and then "strip dynamicd" to strip the debug
+The release is built with GCC and then "strip odyncashd" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 miniupnpc
@@ -202,10 +202,10 @@ If you have to, or wish to build Berkeley DB 4.8 yourself:
 
 ``` 
     bash
-    DYNAMIC_ROOT=$(pwd)
+    ODYNCASH_ROOT=$(pwd)
 
-    # Pick some path to install BDB to, here we create a directory within the dynamic directory
-    BDB_PREFIX="${DYNAMIC_ROOT}/db4"
+    # Pick some path to install BDB to, here we create a directory within the odyncash directory
+    BDB_PREFIX="${ODYNCASH_ROOT}/db4"
     mkdir -p $BDB_PREFIX
 
     # Fetch the source and verify that it is not tampered with
@@ -221,8 +221,8 @@ If you have to, or wish to build Berkeley DB 4.8 yourself:
     make 
     sudo make install
 
-    # Configure Dynamic to use our own-built instance of BDB
-    cd $DYNAMIC_ROOT
+    # Configure OdynCash to use our own-built instance of BDB
+    cd $ODYNCASH_ROOT
     ./configure (other args...) LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/"
 ```
 
@@ -239,7 +239,7 @@ If you need to build Boost yourself, in terminal enter:
 
 Security
 --------
-To help make your Dynamic installation more secure by making certain attacks impossible to exploit even if a vulnerability is found, binaries are hardened by default.
+To help make your OdynCash installation more secure by making certain attacks impossible to exploit even if a vulnerability is found, binaries are hardened by default.
 
 This can be disabled with:
 
@@ -263,7 +263,7 @@ Hardening enables the following features:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-    scanelf -e ./dynamicd
+    scanelf -e ./odyncashd
 
     
     The output should contain:
@@ -273,13 +273,13 @@ Hardening enables the following features:
 
 * Non-executable Stack
     If the stack is executable then trivial stack based buffer overflow exploits are possible if
-    vulnerable buffers are found. By default, dynamic should be built with a non-executable stack
+    vulnerable buffers are found. By default, odyncash should be built with a non-executable stack
     but if one of the libraries it uses asks for an executable stack or someone makes a mistake
     and uses a compiler extension which requires an executable stack, it will silently build an
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    `scanelf -e ./dynamicd`
+    `scanelf -e ./odyncashd`
 
     the output should contain:
     STK/REL/PTL
@@ -289,7 +289,7 @@ Hardening enables the following features:
 
 Disable-wallet mode
 --------------------
-When the intention is to run only a P2P node without a wallet, dynamic may be compiled in
+When the intention is to run only a P2P node without a wallet, odyncash may be compiled in
 disable-wallet mode with:
 
     ./configure --disable-wallet
@@ -377,7 +377,7 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 1. Make sure you installed everything through homebrew mentioned above 
 2. Do a proper ./configure --with-gui=qt5 --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "dynamic-qt" as project name, enter src/qt as location
+4. Enter "odyncash-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."

@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_INTERNAL_HASH_RATE_COUNTER_H
-#define DYNAMIC_INTERNAL_HASH_RATE_COUNTER_H
+#ifndef ODYNCASH_INTERNAL_HASH_RATE_COUNTER_H
+#define ODYNCASH_INTERNAL_HASH_RATE_COUNTER_H
 
 #include <atomic>
 #include <memory>
@@ -43,4 +43,4 @@ public:
     int64_t start() const { return _timer_start; };
 };
 
-#endif // DYNAMIC_INTERNAL_HASH_RATE_COUNTER_H
+#endif // ODYNCASH_INTERNAL_HASH_RATE_COUNTER_H

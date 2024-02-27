@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_THREADSAFETY_H
-#define DYNAMIC_THREADSAFETY_H
+#ifndef ODYNCASH_THREADSAFETY_H
+#define ODYNCASH_THREADSAFETY_H
 
 #ifdef __clang__
 // TL;DR Add GUARDED_BY(mutex) to member variables. The others are
@@ -67,4 +67,4 @@ struct SCOPED_LOCKABLE LockAnnotation
     ~LockAnnotation() UNLOCK_FUNCTION() {}
 };
 
-#endif // DYNAMIC_THREADSAFETY_H
+#endif // ODYNCASH_THREADSAFETY_H

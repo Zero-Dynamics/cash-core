@@ -5,14 +5,14 @@
 
 # Test descendant package tracking code
 
-from test_framework.test_framework import DynamicTestFramework
+from test_framework.test_framework import OdynCashTestFramework
 from test_framework.util import *
 from test_framework.mininode import COIN
 
 MAX_ANCESTORS = 25
 MAX_DESCENDANTS = 25
 
-class MempoolPackagesTest(DynamicTestFramework):
+class MempoolPackagesTest(OdynCashTestFramework):
 
     def setup_network(self):
         self.nodes = []

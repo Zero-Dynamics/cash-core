@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_TXDB_H
-#define DYNAMIC_TXDB_H
+#ifndef ODYNCASH_TXDB_H
+#define ODYNCASH_TXDB_H
 
 #include "chain.h"
 #include "coins.h"
@@ -144,4 +144,4 @@ public:
     bool LoadBlockIndexGuts(boost::function<CBlockIndex*(const uint256&)> insertBlockIndex);
 };
 
-#endif // DYNAMIC_TXDB_H
+#endif // ODYNCASH_TXDB_H

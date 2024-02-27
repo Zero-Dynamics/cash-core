@@ -4,14 +4,14 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-from test_framework.test_framework import DynamicTestFramework
+from test_framework.test_framework import OdynCashTestFramework
 from test_framework.util import *
 try:
     import urllib.parse as urlparse
 except ImportError:
     import urlparse
 
-class AbandonConflictTest(DynamicTestFramework):
+class AbandonConflictTest(OdynCashTestFramework):
 
     def setup_network(self):
         self.nodes = []

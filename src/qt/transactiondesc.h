@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_TRANSACTIONDESC_H
-#define DYNAMIC_QT_TRANSACTIONDESC_H
+#ifndef ODYNCASH_QT_TRANSACTIONDESC_H
+#define ODYNCASH_QT_TRANSACTIONDESC_H
 
 #include <QObject>
 #include <QString>
@@ -31,4 +31,4 @@ private:
     static QString FormatTxStatus(const CWalletTx& wtx);
 };
 
-#endif // DYNAMIC_QT_TRANSACTIONDESC_H
+#endif // ODYNCASH_QT_TRANSACTIONDESC_H

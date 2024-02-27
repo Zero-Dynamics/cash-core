@@ -10,7 +10,7 @@
 #include "data/proposals_valid.json.h"
 #include "data/proposals_invalid.json.h"
 
-#include "test/test_dynamic.h"
+#include "test/test_odyncash.h"
 
 #include <boost/test/unit_test.hpp>
 

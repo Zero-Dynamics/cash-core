@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_CACHEMAP_H
-#define DYNAMIC_CACHEMAP_H
+#ifndef ODYNCASH_CACHEMAP_H
+#define ODYNCASH_CACHEMAP_H
 
 #include "serialize.h"
 
@@ -194,4 +194,4 @@ private:
     }
 };
 
-#endif // DYNAMIC_CACHEMAP_H
+#endif // ODYNCASH_CACHEMAP_H

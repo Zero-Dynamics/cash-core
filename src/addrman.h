@@ -6,8 +6,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_ADDRMAN_H
-#define DYNAMIC_ADDRMAN_H
+#ifndef ODYNCASH_ADDRMAN_H
+#define ODYNCASH_ADDRMAN_H
 
 #include "netaddress.h"
 #include "protocol.h"
@@ -171,8 +171,8 @@ public:
 //! the maximum number of nodes to return in a getaddr call
 #define ADDRMAN_GETADDR_MAX 2500
 
-/** 
- * Stochastical (IP) address manager 
+/**
+ * Stochastical (IP) address manager
  */
 class CAddrMan
 {
@@ -594,4 +594,4 @@ public:
     }
 };
 
-#endif // DYNAMIC_ADDRMAN_H
+#endif // ODYNCASH_ADDRMAN_H

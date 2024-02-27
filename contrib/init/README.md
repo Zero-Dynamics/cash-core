@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: dynamicd.service
-Upstart: dynamicd.conf
-OpenRC:  dynamicd.openrc
-         dynamicd.openrcconf
-CentOS:  dynamicd.init
-OS X:    org.dynamic.dynamicd.plist
+SystemD: odyncashd.service
+Upstart: odyncashd.conf
+OpenRC:  odyncashd.openrc
+         odyncashd.openrcconf
+CentOS:  odyncashd.init
+OS X:    org.odyncash.odyncashd.plist
 
 have been made available to assist packagers in creating node packages here.
 

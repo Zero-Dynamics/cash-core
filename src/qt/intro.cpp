@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dynamic-config.h"
+#include "config/odyncash-config.h"
 #endif
 
 #include "intro.h"
@@ -184,7 +184,7 @@ bool Intro::pickDataDirectory()
         /* Let the user choose one */
         Intro intro;
         intro.setDataDirectory(dataDirDefaultCurrent);
-        intro.setWindowIcon(QIcon(":icons/dynamic"));
+        intro.setWindowIcon(QIcon(":icons/odyncash"));
 
         while (true) {
             if (!intro.exec()) {
@@ -196,7 +196,7 @@ bool Intro::pickDataDirectory()
                 TryCreateDirectory(GUIUtil::qstringToBoostPath(dataDir));
                 break;
             } catch (const fs::filesystem_error&) {
-                QMessageBox::critical(0, tr("Dynamic"),
+                QMessageBox::critical(0, tr("OdynCash"),
                     tr("Error: Specified data directory \"%1\" cannot be created.").arg(dataDir));
                 /* fall through, back to choosing screen */
             }
@@ -206,8 +206,8 @@ bool Intro::pickDataDirectory()
         settings.setValue("strDataDirDefault", dataDirDefaultCurrent);
     }
     /* Only override -datadir if different from the default, to make it possible to
-     * override -datadir in the dynamic.conf file in the default data directory
-     * (to be consistent with dynamicd behavior)
+     * override -datadir in the odyncash.conf file in the default data directory
+     * (to be consistent with odyncashd behavior)
      */
     if (dataDir != dataDirDefaultCurrent)
         SoftSetArg("-datadir", GUIUtil::qstringToBoostPath(dataDir).string()); // use OS locale for path setting

@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_THREADINTERRUPT_H
-#define DYNAMIC_THREADINTERRUPT_H
+#ifndef ODYNCASH_THREADINTERRUPT_H
+#define ODYNCASH_THREADINTERRUPT_H
 
 #include <atomic>
 #include <chrono>
@@ -33,4 +33,4 @@ private:
     std::atomic<bool> flag;
 };
 
-#endif //DYNAMIC_THREADINTERRUPT_H
+#endif //ODYNCASH_THREADINTERRUPT_H

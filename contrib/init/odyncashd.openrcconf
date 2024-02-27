@@ -1,0 +1,33 @@
+# /etc/conf.d/odyncashd: config file for /etc/init.d/odyncashd
+
+# Config file location
+#ODYNCASHD_CONFIGFILE="/etc/odyncash/odyncash.conf"
+
+# What directory to write pidfile to?  (created and owned by $ODYNCASHD_USER)
+#ODYNCASHD_PIDDIR="/var/run/odyncashd"
+
+# What filename to give the pidfile
+#ODYNCASHD_PIDFILE="${ODYNCASHD_PIDDIR}/odyncashd.pid"
+
+# Where to write odyncashd data (be mindful that the blockchain is large)
+#ODYNCASHD_DATADIR="/var/lib/odyncashd"
+
+# User and group to own odyncashd process
+#ODYNCASHD_USER="odyncash"
+#ODYNCASHD_GROUP="odyncash"
+
+# Path to odyncashd executable
+#ODYNCASHD_BIN="/usr/bin/odyncashd"
+
+# Nice value to run odyncashd under
+#ODYNCASHD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+ODYNCASHD_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for odyncashd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+ODYNCASHD_SIGTERM_TIMEOUT=60

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SUPPORT_LOCKEDPOOL_H
-#define DYNAMIC_SUPPORT_LOCKEDPOOL_H
+#ifndef ODYNCASH_SUPPORT_LOCKEDPOOL_H
+#define ODYNCASH_SUPPORT_LOCKEDPOOL_H
 
 #include <list>
 #include <map>
@@ -229,4 +229,4 @@ private:
     static std::once_flag init_flag;
 };
 
-#endif // DYNAMIC_SUPPORT_LOCKEDPOOL_H
+#endif // ODYNCASH_SUPPORT_LOCKEDPOOL_H

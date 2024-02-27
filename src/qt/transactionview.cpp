@@ -9,7 +9,7 @@
 
 #include "addresstablemodel.h"
 #include "csvmodelwriter.h"
-#include "dynamicunits.h"
+#include "odyncashunits.h"
 #include "editaddressdialog.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
@@ -410,11 +410,11 @@ void TransactionView::changedAmount(const QString& amount)
         return;
     CAmount amount_parsed = 0;
 
-    // Replace "," by "." so DynamicUnits::parse will not fail for users entering "," as decimal separator
+    // Replace "," by "." so OdynCashUnits::parse will not fail for users entering "," as decimal separator
     QString newAmount = amount;
     newAmount.replace(QString(","), QString("."));
 
-    if (DynamicUnits::parse(model->getOptionsModel()->getDisplayUnit(), newAmount, &amount_parsed)) {
+    if (OdynCashUnits::parse(model->getOptionsModel()->getDisplayUnit(), newAmount, &amount_parsed)) {
         transactionProxyModel->setMinAmount(amount_parsed);
     } else {
         transactionProxyModel->setMinAmount(0);
@@ -442,7 +442,7 @@ void TransactionView::exportClicked()
     writer.addColumn(tr("Type"), TransactionTableModel::Type, Qt::EditRole);
     writer.addColumn(tr("Label"), 0, TransactionTableModel::LabelRole);
     writer.addColumn(tr("Address"), 0, TransactionTableModel::AddressRole);
-    writer.addColumn(DynamicUnits::getAmountColumnTitle(model->getOptionsModel()->getDisplayUnit()), 0, TransactionTableModel::FormattedAmountRole);
+    writer.addColumn(OdynCashUnits::getAmountColumnTitle(model->getOptionsModel()->getDisplayUnit()), 0, TransactionTableModel::FormattedAmountRole);
     writer.addColumn(tr("ID"), 0, TransactionTableModel::TxIDRole);
 
     if (!writer.write()) {
@@ -582,7 +582,7 @@ void TransactionView::computeSum()
     Q_FOREACH (QModelIndex index, selection) {
         amount += index.data(TransactionTableModel::AmountRole).toLongLong();
     }
-    QString strAmount(DynamicUnits::formatWithUnit(nDisplayUnit, amount, true, DynamicUnits::separatorAlways));
+    QString strAmount(OdynCashUnits::formatWithUnit(nDisplayUnit, amount, true, OdynCashUnits::separatorAlways));
     if (amount < 0)
         strAmount = "<span style='color:red;'>" + strAmount + "</span>";
     Q_EMIT trxAmount(strAmount);

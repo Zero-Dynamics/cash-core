@@ -1,0 +1,22 @@
+[Unit]
+Description=OdynCash's distributed currency daemon
+After=network.target
+
+[Service]
+User=odyncash
+Group=odyncash
+
+Type=forking
+PIDFile=/var/lib/odyncashd/odyncashd.pid
+ExecStart=/usr/bin/odyncashd -daemon -pid=/var/lib/odyncashd/odyncashd.pid \
+-conf=/etc/odyncash/odyncash.conf -datadir=/var/lib/odyncashd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

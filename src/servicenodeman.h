@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SERVICENODEMAN_H
-#define DYNAMIC_SERVICENODEMAN_H
+#ifndef ODYNCASH_SERVICENODEMAN_H
+#define ODYNCASH_SERVICENODEMAN_H
 
 #include "servicenode.h"
 #include "sync.h"
@@ -251,4 +251,4 @@ public:
 
 };
 
-#endif // DYNAMIC_SERVICENODEMAN_H
+#endif // ODYNCASH_SERVICENODEMAN_H

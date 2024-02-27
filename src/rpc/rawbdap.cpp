@@ -120,7 +120,7 @@ UniValue createrawbdapaccount(const JSONRPCRequest& request)
     if (!pwalletMain->GetKeysFromPool(pubWalletKey, vchDHTPubKey, sxAddr, true))
         throw std::runtime_error("Error: Keypool ran out, please call keypoolrefill first");
     CKeyID keyWalletID = pubWalletKey.GetID();
-    CDynamicAddress walletAddress = CDynamicAddress(keyWalletID);
+    COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
 
     pwalletMain->SetAddressBook(keyWalletID, strObjectID, "bdap-wallet");
     
@@ -176,7 +176,7 @@ UniValue createrawbdapaccount(const JSONRPCRequest& request)
     if (!ExtractDestination(scriptStealth, newStealthDest))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Unable to get destination address using stealth address %s", sxAddr.ToString()));
 
-    CDynamicAddress addressStealth(newStealthDest);
+    COdynCashAddress addressStealth(newStealthDest);
     CScript stealtDestination = GetScriptForDestination(addressStealth.Get());
 
     // Add the Stealth OP return data

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SCRIPT_SIGCACHE_H
-#define DYNAMIC_SCRIPT_SIGCACHE_H
+#ifndef ODYNCASH_SCRIPT_SIGCACHE_H
+#define ODYNCASH_SCRIPT_SIGCACHE_H
 
 #include "script/interpreter.h"
 
@@ -32,4 +32,4 @@ public:
 
 void InitSignatureCache();
 
-#endif // DYNAMIC_SCRIPT_SIGCACHE_H
+#endif // ODYNCASH_SCRIPT_SIGCACHE_H

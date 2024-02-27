@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SERVICENODE_PAYMENTS_H
-#define DYNAMIC_SERVICENODE_PAYMENTS_H
+#ifndef ODYNCASH_SERVICENODE_PAYMENTS_H
+#define ODYNCASH_SERVICENODE_PAYMENTS_H
 
 #include "core_io.h"
 #include "servicenode.h"
@@ -240,4 +240,4 @@ public:
     void DoMaintenance();
 };
 
-#endif // DYNAMIC_SERVICENODE_PAYMENTS_H
+#endif // ODYNCASH_SERVICENODE_PAYMENTS_H

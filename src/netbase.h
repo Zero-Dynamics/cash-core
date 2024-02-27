@@ -5,11 +5,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_NETBASE_H
-#define DYNAMIC_NETBASE_H
+#ifndef ODYNCASH_NETBASE_H
+#define ODYNCASH_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dynamic-config.h"
+#include "config/odyncash-config.h"
 #endif
 
 #include "compat.h"
@@ -69,4 +69,4 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking);
 struct timeval MillisToTimeval(int64_t nTimeout);
 void InterruptSocks5(bool interrupt);
 
-#endif // DYNAMIC_NETBASE_H
+#endif // ODYNCASH_NETBASE_H

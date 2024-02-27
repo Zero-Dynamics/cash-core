@@ -50,7 +50,7 @@
 using namespace std;
 
 #if defined(NDEBUG)
-#error "Dynamic cannot be compiled without assertions."
+#error "OdynCash cannot be compiled without assertions."
 #endif
 
 std::atomic<int64_t> nTimeBestReceived(0); // Used only to inform the wallet of when we last received a block
@@ -741,7 +741,7 @@ void Misbehaving(NodeId pnode, int howmuch)
 // blockchain -> download logic notification
 //
 
-PeerLogicValidation::PeerLogicValidation(CConnman* connmanIn) : 
+PeerLogicValidation::PeerLogicValidation(CConnman* connmanIn) :
     connman(connmanIn)
 {
     // Initialize global variables that cannot be constructed at startup.
@@ -918,12 +918,12 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
     case MSG_BLOCK:
         return mapBlockIndex.count(inv.hash);
 
-    /* 
-        Dynamic Related Inventory Messages
+    /*
+        OdynCash Related Inventory Messages
 
         --
 
-        We shouldn't update the sync times for each of the messages when we already have it. 
+        We shouldn't update the sync times for each of the messages when we already have it.
         We're going to be asking many nodes upfront for the full inventory list, so we'll get duplicates of these.
         We want to only update the time on new hits, so that we can time out appropriately if needed.
     */
@@ -2695,14 +2695,14 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         vRecv >> message;
         CUnsignedVGPMessage unsignedMessage(message.vchMsg);
 
-        LogPrint("bdap", "%s -- VGP message received: size = %d, SubjectID = %s, MessageID = %s, HashID = %s \n", 
+        LogPrint("bdap", "%s -- VGP message received: size = %d, SubjectID = %s, MessageID = %s, HashID = %s \n",
                         __func__, message.vchMsg.size(), unsignedMessage.SubjectID.ToString(), unsignedMessage.MessageID.ToString(), message.GetHash().ToString());
 
         std::string strErrorMessage = "";
         int statusBan = message.ProcessMessage(strErrorMessage);
         if (strErrorMessage.size() > 0)
         {
-            LogPrint("bdap", "%s -- Error processing message. Hash %s,  MessageID %s, SubjectID %s, Error %s\n", __func__, 
+            LogPrint("bdap", "%s -- Error processing message. Hash %s,  MessageID %s, SubjectID %s, Error %s\n", __func__,
                                 message.GetHash().ToString(), unsignedMessage.MessageID.ToString(), unsignedMessage.SubjectID.ToString(), strErrorMessage);
         }
         if (statusBan == 0)
@@ -2721,29 +2721,29 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         }
         else if (statusBan == -1)
         {
-            LogPrint("bdap", "%s -- Duplicate message recieved. Hash %s,  MessageID %s, SubjectID %s\n", __func__, 
+            LogPrint("bdap", "%s -- Duplicate message recieved. Hash %s,  MessageID %s, SubjectID %s\n", __func__,
                                 message.GetHash().ToString(), unsignedMessage.MessageID.ToString(), unsignedMessage.SubjectID.ToString());
         }
         else if (statusBan == -2)
         {
-            LogPrint("bdap", "%s -- Message either too old or timestamp is in the future. Hash %s,  MessageID %s, SubjectID %s\n", __func__, 
+            LogPrint("bdap", "%s -- Message either too old or timestamp is in the future. Hash %s,  MessageID %s, SubjectID %s\n", __func__,
                                 message.GetHash().ToString(), unsignedMessage.MessageID.ToString(), unsignedMessage.SubjectID.ToString());
         }
         else if (statusBan == -3)
         {
-            LogPrint("bdap", "%s -- Timestamp is greater than relay until time. Hash %s,  MessageID %s, SubjectID %s\n", __func__, 
+            LogPrint("bdap", "%s -- Timestamp is greater than relay until time. Hash %s,  MessageID %s, SubjectID %s\n", __func__,
                                 message.GetHash().ToString(), unsignedMessage.MessageID.ToString(), unsignedMessage.SubjectID.ToString());
             Misbehaving(pfrom->GetId(), 10); // there is no reason to have a timestamp greater than the relay until time so ban node.
         }
         else if (statusBan == -4)
         {
-            LogPrint("bdap", "%s -- Relay time is too much.  max relay is 120 seconds. Hash %s,  MessageID %s, SubjectID %s\n", __func__, 
+            LogPrint("bdap", "%s -- Relay time is too much.  max relay is 120 seconds. Hash %s,  MessageID %s, SubjectID %s\n", __func__,
                                 message.GetHash().ToString(), unsignedMessage.MessageID.ToString(), unsignedMessage.SubjectID.ToString());
             Misbehaving(pfrom->GetId(), 10); // there is no reason to have longer relay until time span so ban node.
         }
         else
         {
-            LogPrintf("%s -- Unkown ProcessMessage status. Hash %s,  MessageID %s, SubjectID %s\n", __func__, 
+            LogPrintf("%s -- Unkown ProcessMessage status. Hash %s,  MessageID %s, SubjectID %s\n", __func__,
                                 message.GetHash().ToString(), unsignedMessage.MessageID.ToString(), unsignedMessage.SubjectID.ToString());
         }
     }

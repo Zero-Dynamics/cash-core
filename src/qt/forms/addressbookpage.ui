@@ -137,7 +137,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../dynamic.qrc"/>
+  <include location="../odyncash.qrc"/>
  </resources>
  <connections/>
 </ui>

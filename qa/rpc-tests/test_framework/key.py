@@ -2,7 +2,7 @@
 #
 # key.py - OpenSSL wrapper
 #
-# This file is modified from python-dynamiclib.
+# This file is modified from python-odyncashlib.
 #
 
 """ECC secp256k1 crypto routines
@@ -212,4 +212,3 @@ class CPubKey(bytes):
             return '%s(%s)' % (self.__class__.__name__, super(CPubKey, self).__repr__())
         else:
             return '%s(b%s)' % (self.__class__.__name__, super(CPubKey, self).__repr__())
-

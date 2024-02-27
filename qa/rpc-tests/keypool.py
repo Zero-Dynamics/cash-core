@@ -5,12 +5,12 @@
 
 # Exercise the wallet keypool, and interaction with wallet encryption/locking
 
-# Add python-dynamicrpc to module search path:
+# Add python-odyncashrpc to module search path:
 
-from test_framework.test_framework import DynamicTestFramework
+from test_framework.test_framework import OdynCashTestFramework
 from test_framework.util import *
 
-class KeyPoolTest(DynamicTestFramework):
+class KeyPoolTest(OdynCashTestFramework):
 
     def run_test(self):
         nodes = self.nodes
@@ -21,7 +21,7 @@ class KeyPoolTest(DynamicTestFramework):
 
         # Encrypt wallet and wait to terminate
         nodes[0].encryptwallet('test')
-        dynamicd_processes[0].wait()
+        odyncashd_processes[0].wait()
         # Restart node 0
         nodes[0] = start_node(0, self.options.tmpdir)
         # Keep creating keys

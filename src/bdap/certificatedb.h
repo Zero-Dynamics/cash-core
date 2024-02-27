@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_BDAP_CERTIFICATEDB_H
-#define DYNAMIC_BDAP_CERTIFICATEDB_H
+#ifndef ODYNCASH_BDAP_CERTIFICATEDB_H
+#define ODYNCASH_BDAP_CERTIFICATEDB_H
 
 #include "bdap/x509certificate.h"
 #include "dbwrapper.h"
@@ -41,4 +41,4 @@ bool CheckCertificateTx(const CTransactionRef& tx, const CScript& scriptOp, cons
 
 extern CCertificateDB *pCertificateDB;
 
-#endif // DYNAMIC_BDAP_CERTIFICATEDB_H
+#endif // ODYNCASH_BDAP_CERTIFICATEDB_H

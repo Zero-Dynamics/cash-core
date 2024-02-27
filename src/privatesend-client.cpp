@@ -27,7 +27,7 @@ void CPrivateSendClientManager::ProcessMessage(CNode* pfrom, const std::string& 
     if (fServiceNodeMode)
         return;
     if (fLiteMode)
-        return; // ignore all Dynamic related functionality
+        return; // ignore all OdynCash related functionality
     if (!servicenodeSync.IsBlockchainSynced())
         return;
 
@@ -139,7 +139,7 @@ void CPrivateSendClientSession::ProcessMessage(CNode* pfrom, const std::string& 
     if (fServiceNodeMode)
         return;
     if (fLiteMode)
-        return; // ignore all Dynamic related functionality
+        return; // ignore all OdynCash related functionality
     if (!servicenodeSync.IsBlockchainSynced())
         return;
     if (strCommand == NetMsgType::PSSTATUSUPDATE) {
@@ -1515,7 +1515,7 @@ bool CPrivateSendClientSession::CreateDenominated(const CompactTallyItem& tallyI
     CAmount nValueLeft = tallyItem.nAmount;
     nValueLeft -= CPrivateSend::GetCollateralAmount(); // leave some room for fees
 
-    LogPrintf("CPrivateSendClientSession::CreateDenominated -- 0 - %s nValueLeft: %f\n", CDynamicAddress(tallyItem.txdest).ToString(), (float)nValueLeft / COIN);
+    LogPrintf("CPrivateSendClientSession::CreateDenominated -- 0 - %s nValueLeft: %f\n", COdynCashAddress(tallyItem.txdest).ToString(), (float)nValueLeft / COIN);
 
     // ****** Add an output for mixing collaterals ************ /
 
@@ -1652,7 +1652,7 @@ void CPrivateSendClientManager::UpdatedBlockTip(const CBlockIndex* pindex)
 void CPrivateSendClientManager::DoMaintenance(CConnman& connman)
 {
     if (fLiteMode)
-        return; // disable all Dynamic specific functionality
+        return; // disable all OdynCash specific functionality
     if (fServiceNodeMode)
         return; // no client-side mixing on servicenodes
 

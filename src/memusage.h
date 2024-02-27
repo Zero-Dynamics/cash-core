@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_MEMUSAGE_H
-#define DYNAMIC_MEMUSAGE_H
+#ifndef ODYNCASH_MEMUSAGE_H
+#define ODYNCASH_MEMUSAGE_H
 
 #include "indirectmap.h"
 
@@ -190,4 +190,4 @@ static inline size_t DynamicUsage(const std::unordered_map<X, Y, Z>& m)
 
 } // namespace memusage
 
-#endif // DYNAMIC_MEMUSAGE_H
+#endif // ODYNCASH_MEMUSAGE_H

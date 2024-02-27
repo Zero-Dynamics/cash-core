@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_BDAP_SIDECHAIN_H
-#define DYNAMIC_BDAP_SIDECHAIN_H
+#ifndef ODYNCASH_BDAP_SIDECHAIN_H
+#define ODYNCASH_BDAP_SIDECHAIN_H
 
 #include "amount.h"
 #include "bdap.h"
@@ -115,4 +115,4 @@ public:
     bool ValidateValues(std::string& errorMessage);
 };
 
-#endif // DYNAMIC_BDAP_SIDECHAIN_H
+#endif // ODYNCASH_BDAP_SIDECHAIN_H

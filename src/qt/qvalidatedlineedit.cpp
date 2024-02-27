@@ -7,7 +7,7 @@
 
 #include "qvalidatedlineedit.h"
 
-#include "dynamicaddressvalidator.h"
+#include "odyncashaddressvalidator.h"
 #include "guiconstants.h"
 
 QValidatedLineEdit::QValidatedLineEdit(QWidget* parent) : QLineEdit(parent),

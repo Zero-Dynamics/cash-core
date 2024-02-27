@@ -151,7 +151,7 @@ bool CProposalValidator::ValidatePaymentAddress()
         return false;
     }
 
-    CDynamicAddress address(strPaymentAddress);
+    COdynCashAddress address(strPaymentAddress);
     if (!address.IsValid()) {
         strErrorMessages += "payment_address is invalid;";
         return false;

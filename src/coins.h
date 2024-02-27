@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_COINS_H
-#define DYNAMIC_COINS_H
+#ifndef ODYNCASH_COINS_H
+#define ODYNCASH_COINS_H
 
 #include "compressor.h"
 #include "core_memusage.h"
@@ -206,7 +206,7 @@ class CCoinsViewCache : public CCoinsViewBacked
 protected:
     /**
      * Make mutable so that we can "fill the cache" even from Get-methods
-     * declared as "const".  
+     * declared as "const".
      */
     mutable uint256 hashBlock;
     mutable CCoinsMap cacheCoins;
@@ -278,7 +278,7 @@ public:
     //! Calculate the size of the cache (in bytes)
     size_t DynamicMemoryUsage() const;
 
-    /** 
+    /**
      * Amount of Dynamic coming in to a transaction
      * Note that lightweight clients may not know anything besides the hash of previous transactions,
      * so may not be able to calculate this.
@@ -319,4 +319,4 @@ void AddCoins(CCoinsViewCache& cache, const CTransaction& tx, int nHeight);
 // lookups to database, so it should be used with care.
 const Coin& AccessByTxid(const CCoinsViewCache& cache, const uint256& txid);
 
-#endif // DYNAMIC_COINS_H
+#endif // ODYNCASH_COINS_H

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_UINT256_H
-#define DYNAMIC_UINT256_H
+#ifndef ODYNCASH_UINT256_H
+#define ODYNCASH_UINT256_H
 
 #include "crypto/common.h"
 
@@ -215,4 +215,4 @@ public:
     }
 };
 
-#endif // DYNAMIC_UINT256_H
+#endif // ODYNCASH_UINT256_H

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_WALLETMODEL_H
-#define DYNAMIC_QT_WALLETMODEL_H
+#ifndef ODYNCASH_QT_WALLETMODEL_H
+#define ODYNCASH_QT_WALLETMODEL_H
 
 #include "walletmodeltransaction.h"
 
@@ -90,7 +90,7 @@ public:
     }
 };
 
-/** Interface to Dynamic wallet from Qt view code. */
+/** Interface to OdynCash wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT
@@ -291,4 +291,4 @@ public Q_SLOTS:
     void updateAddressBookLabels(const CTxDestination& address, const std::string& strName, const std::string& strPurpose);
 };
 
-#endif // DYNAMIC_QT_WALLETMODEL_H
+#endif // ODYNCASH_QT_WALLETMODEL_H

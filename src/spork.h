@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SPORK_H
-#define DYNAMIC_SPORK_H
+#ifndef ODYNCASH_SPORK_H
+#define ODYNCASH_SPORK_H
 
 #include "hash.h"
 #include "key.h"
@@ -172,7 +172,7 @@ public:
         }
         // we don't serialize pubkey ids because pubkeys should be
         // hardcoded or be setted with cmdline or options, should
-        // not reuse pubkeys from previous dynamicd run
+        // not reuse pubkeys from previous odyncashd run
         READWRITE(mapSporksByHash);
         READWRITE(mapSporksActive);
         // we don't serialize private key to prevent its leakage
@@ -288,4 +288,4 @@ public:
     std::string ToString() const;
 };
 
-#endif // DYNAMIC_SPORK_H
+#endif // ODYNCASH_SPORK_H

@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
-      <string notr="true">QTabWidget:tab-bar { alignment: left }    
+      <string notr="true">QTabWidget:tab-bar { alignment: left }
 QTabBar { alignment: left; }</string>
      </property>
      <property name="currentIndex">
@@ -364,7 +364,7 @@ QTabBar { alignment: left; }</string>
          <item>
           <widget class="QPushButton" name="openDebugLogfileButton">
            <property name="toolTip">
-            <string>Open the Dynamic debug log file from the current data directory. This can take a few seconds for large log files.</string>
+            <string>Open the OdynCash debug log file from the current data directory. This can take a few seconds for large log files.</string>
            </property>
            <property name="text">
             <string>&amp;Open</string>
@@ -594,7 +594,7 @@ QTabBar { alignment: left; }</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../dynamic.qrc">
+            <iconset resource="../odyncash.qrc">
              <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
            </property>
            <property name="shortcut">
@@ -649,7 +649,7 @@ QTabBar { alignment: left; }</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../dynamic.qrc">
+            <iconset resource="../odyncash.qrc">
              <normaloff>:/icons/drk/prompticon</normaloff>
              <disabledoff>:/icons/drk/prompticon</disabledoff>:/icons/drk/prompticon</iconset>
            </property>
@@ -1846,7 +1846,7 @@ border-radius: 4px;
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../dynamic.qrc"/>
+  <include location="../odyncash.qrc"/>
  </resources>
  <connections/>
 </ui>

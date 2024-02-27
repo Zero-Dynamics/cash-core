@@ -5,11 +5,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_PAYMENTSERVER_H
-#define DYNAMIC_QT_PAYMENTSERVER_H
+#ifndef ODYNCASH_QT_PAYMENTSERVER_H
+#define ODYNCASH_QT_PAYMENTSERVER_H
 
 // This class handles payment requests from clicking on
-// dynamic: URIs
+// odyncash: URIs
 //
 // This is somewhat tricky, because we have to deal with
 // the situation where the user clicks on a link during
@@ -103,4 +103,4 @@ private:
     OptionsModel *optionsModel;
 };
 
-#endif // DYNAMIC_QT_PAYMENTSERVER_H
+#endif // ODYNCASH_QT_PAYMENTSERVER_H

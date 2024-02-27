@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_DHT_SESSION_EVENTS_H
-#define DYNAMIC_DHT_SESSION_EVENTS_H
+#ifndef ODYNCASH_DHT_SESSION_EVENTS_H
+#define ODYNCASH_DHT_SESSION_EVENTS_H
 
 #include "dht/ed25519.h"
 
@@ -160,4 +160,4 @@ public:
 std::string GetInfoHash(const std::string& pubkey, const std::string& salt);
 std::string GetServiceNodeHashID(const std::string& service_address);
 
-#endif // DYNAMIC_DHT_SESSION_EVENTS_H
+#endif // ODYNCASH_DHT_SESSION_EVENTS_H

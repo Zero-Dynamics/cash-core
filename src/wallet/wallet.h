@@ -7,8 +7,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_WALLET_WALLET_H
-#define DYNAMIC_WALLET_WALLET_H
+#ifndef ODYNCASH_WALLET_WALLET_H
+#define ODYNCASH_WALLET_WALLET_H
 
 #include "amount.h"
 #include "base58.h"
@@ -330,7 +330,7 @@ public:
     bool IsCoinBase() const { return tx->IsCoinBase(); }
 };
 
-/** 
+/**
  * A transaction with a bunch of additional info that only the owner cares about.
  * It includes any unrecorded transactions needed to link it back to the block chain.
  */
@@ -592,7 +592,7 @@ public:
     }
 };
 
-/** 
+/**
  * Internal transfers.
  * Database key is acentry<account><counter>.
  */
@@ -733,7 +733,7 @@ public:
     };
 };
 
-/** 
+/**
  * A CWallet is an extension of a keystore, which also maintains a set of transactions and balances,
  * and provides the ability to create new transactions.
  */
@@ -764,7 +764,7 @@ private:
     bool fNeedToUpdateKeyPools = false;
     bool fNeedToUpdateLinks = false;
     bool fNeedToUpgradeWallet = false;
-    
+
     mutable bool fAnonymizableTallyCached;
     mutable std::vector<CompactTallyItem> vecAnonymizableTallyCached;
     mutable bool fAnonymizableTallyCachedNonDenom;
@@ -795,9 +795,9 @@ private:
     /* HD derive new child stealth key from  */
     bool DeriveChildStealthKey(const CKey& key);
 
-    void ReserveEdKeyForTransactions(const std::vector<unsigned char>& pubKeyToReserve);   
+    void ReserveEdKeyForTransactions(const std::vector<unsigned char>& pubKeyToReserve);
 
-    bool ReserveKeyForTransactions(const CPubKey& pubKeyToReserve);   
+    bool ReserveKeyForTransactions(const CPubKey& pubKeyToReserve);
 
     std::array<char, 32> ConvertSecureVector32ToArray(const std::vector<unsigned char, secure_allocator<unsigned char> >& vIn);
 
@@ -852,7 +852,7 @@ public:
     void SetUpdateKeyPoolsAndLinks()
     {
         fNeedToUpdateKeyPools = true;
-        fNeedToUpdateLinks = true;        
+        fNeedToUpdateLinks = true;
     }
 
     void LoadKeyPool(int nIndex, const CKeyPool& keypool)
@@ -886,7 +886,7 @@ public:
         CKeyID keyid = keypool.vchPubKey.GetID();
         if (mapKeyMetadata.count(keyid) == 0)
             mapKeyMetadata[keyid] = CKeyMetadata(keypool.nTime);
-        */    
+        */
     }
 
     // Map from Key ID (for regular keys) or Script ID (for watch-only keys) to
@@ -975,7 +975,7 @@ public:
         return nWalletMaxVersion >= wf;
     }
 
-    std::map<CDynamicAddress, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
+    std::map<COdynCashAddress, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
 
     /**
      * populate vCoins with vector of available COutputs.
@@ -992,7 +992,7 @@ public:
     /**
      * return BDAP Credits in Dynamic
      */
-    CAmount GetBDAPDynamicAmount() const;
+    CAmount GetBDAPOdynCashAmount() const;
     /**
      * Shuffle and select coins until nTargetValue is reached while avoiding
      * small change; This method is stochastic for some inputs and upon
@@ -1103,7 +1103,7 @@ public:
 
     void GetKeyBirthTimes(std::map<CTxDestination, int64_t>& mapKeyBirth) const;
 
-    /** 
+    /**
      * Increment the next transaction order id
      * @return next transaction order id
      */
@@ -1122,7 +1122,7 @@ public:
     void ResendWalletTransactions(int64_t nBestBlockTime, CConnman* connman) override;
     std::vector<uint256> ResendWalletTransactionsBefore(int64_t nTime, CConnman* connman);
     CAmount GetBalance() const;
-    CAmount GetTotal() const; 
+    CAmount GetTotal() const;
     CAmount GetUnconfirmedBalance() const;
     CAmount GetImmatureBalance() const;
     CAmount GetWatchOnlyBalance() const;
@@ -1183,7 +1183,7 @@ public:
     size_t KeypoolCountInternalKeys();
     size_t EdKeypoolCountExternalKeys();
     size_t EdKeypoolCountInternalKeys();
-    bool SyncEdKeyPool(); 
+    bool SyncEdKeyPool();
     bool TopUpKeyPoolCombo(unsigned int kpSize = 0, bool fIncreaseSize = false);
     void ReserveKeysFromKeyPools(int64_t& nIndex, CKeyPool& keypool, CEdKeyPool& edkeypool, bool fInternal);
     void KeepKey(int64_t nIndex);
@@ -1281,13 +1281,13 @@ public:
     //! Verify the wallet database and perform salvage if required
     static bool Verify();
 
-    /** 
+    /**
      * Address book entry changed.
      * @note called with lock cs_wallet held.
      */
     boost::signals2::signal<void(CWallet* wallet, const CTxDestination& address, const std::string& label, bool isMine, const std::string& purpose, ChangeType status)> NotifyAddressBookChanged;
 
-    /** 
+    /**
      * Wallet transaction added, removed or updated.
      * @note called with lock cs_wallet held.
      */
@@ -1391,7 +1391,7 @@ public:
 };
 
 
-/** 
+/**
  * Account information.
  * Stored in wallet with key "acc"+string account name.
  */
@@ -1427,4 +1427,4 @@ bool RunProcessStealthQueue();
 bool IsDataScript(const CScript& data);
 bool GetDataFromScript(const CScript& data, std::vector<uint8_t>& vData);
 
-#endif // DYNAMIC_WALLET_WALLET_H
+#endif // ODYNCASH_WALLET_WALLET_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_VALIDATIONINTERFACE_H
-#define DYNAMIC_VALIDATIONINTERFACE_H
+#ifndef ODYNCASH_VALIDATIONINTERFACE_H
+#define ODYNCASH_VALIDATIONINTERFACE_H
 
 #include <boost/shared_ptr.hpp>
 #include <boost/signals2/signal.hpp>
@@ -108,4 +108,4 @@ struct CMainSignals {
 
 CMainSignals& GetMainSignals();
 
-#endif // DYNAMIC_VALIDATIONINTERFACE_H
+#endif // ODYNCASH_VALIDATIONINTERFACE_H

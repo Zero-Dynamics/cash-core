@@ -253,7 +253,7 @@ UniValue servicenode(const JSONRPCRequest& request)
         obj.push_back(Pair("IP:port", dnInfo.addr.ToString()));
         obj.push_back(Pair("protocol", dnInfo.nProtocolVersion));
         obj.push_back(Pair("outpoint", dnInfo.outpoint.ToStringShort()));
-        obj.push_back(Pair("payee", CDynamicAddress(dnInfo.pubKeyCollateralAddress.GetID()).ToString()));
+        obj.push_back(Pair("payee", COdynCashAddress(dnInfo.pubKeyCollateralAddress.GetID()).ToString()));
         obj.push_back(Pair("lastseen", dnInfo.nTimeLastPing));
         obj.push_back(Pair("activeseconds", dnInfo.nTimeLastPing - dnInfo.sigTime));
         return obj;
@@ -376,7 +376,7 @@ UniValue servicenode(const JSONRPCRequest& request)
         CKey secret;
         secret.MakeNewKey(false);
 
-        return CDynamicSecret(secret).ToString();
+        return COdynCashSecret(secret).ToString();
     }
 
     if (strCommand == "list-conf") {
@@ -430,7 +430,7 @@ UniValue servicenode(const JSONRPCRequest& request)
 
         CServiceNode dn;
         if (dnodeman.Get(activeServiceNode.outpoint, dn)) {
-            dnObj.push_back(Pair("payee", CDynamicAddress(dn.pubKeyCollateralAddress.GetID()).ToString()));
+            dnObj.push_back(Pair("payee", COdynCashAddress(dn.pubKeyCollateralAddress.GetID()).ToString()));
         }
 
         dnObj.push_back(Pair("status", activeServiceNode.GetStatus()));
@@ -511,7 +511,7 @@ UniValue servicenodelist(const JSONRPCRequest& request)
             "  lastpaidblock  - Print the last block height a node was paid on the network\n"
             "  lastpaidtime   - Print the last time a node was paid on the network\n"
             "  lastseen       - Print timestamp of when a servicenode was last seen on the network\n"
-            "  payee          - Print Dynamic address associated with a servicenode (can be additionally filtered,\n"
+            "  payee          - Print OdynCash address associated with a servicenode (can be additionally filtered,\n"
             "                   partial match)\n"
             "  protocol       - Print protocol of a servicenode (can be additionally filtered, exact match)\n"
             "  pubkey         - Print the servicenode (not collateral) public key\n"
@@ -569,7 +569,7 @@ UniValue servicenodelist(const JSONRPCRequest& request)
                 obj.push_back(Pair(strOutpoint, strSentinel));
             } else if (strMode == "full") {
                 std::ostringstream streamFull;
-                streamFull << std::setw(18) << dn.GetStatus() << " " << dn.nProtocolVersion << " " << CDynamicAddress(dn.pubKeyCollateralAddress.GetID()).ToString() << " " << (int64_t)dn.lastPing.sigTime << " " << std::setw(8) << (int64_t)(dn.lastPing.sigTime - dn.sigTime) << " " << std::setw(10) << dn.GetLastPaidTime() << " " << std::setw(6) << dn.GetLastPaidBlock() << " " << dn.addr.ToString();
+                streamFull << std::setw(18) << dn.GetStatus() << " " << dn.nProtocolVersion << " " << COdynCashAddress(dn.pubKeyCollateralAddress.GetID()).ToString() << " " << (int64_t)dn.lastPing.sigTime << " " << std::setw(8) << (int64_t)(dn.lastPing.sigTime - dn.sigTime) << " " << std::setw(10) << dn.GetLastPaidTime() << " " << std::setw(6) << dn.GetLastPaidBlock() << " " << dn.addr.ToString();
                 std::string strFull = streamFull.str();
                 if (strFilter != "" && strFull.find(strFilter) == std::string::npos &&
                     strOutpoint.find(strFilter) == std::string::npos)
@@ -577,7 +577,7 @@ UniValue servicenodelist(const JSONRPCRequest& request)
                 obj.push_back(Pair(strOutpoint, strFull));
             } else if (strMode == "info") {
                 std::ostringstream streamInfo;
-                streamInfo << std::setw(18) << dn.GetStatus() << " " << dn.nProtocolVersion << " " << CDynamicAddress(dn.pubKeyCollateralAddress.GetID()).ToString() << " " << (int64_t)dn.lastPing.sigTime << " " << std::setw(8) << (int64_t)(dn.lastPing.sigTime - dn.sigTime) << " " << dn.lastPing.GetSentinelString() << " " << (dn.lastPing.fSentinelIsCurrent ? "current" : "expired") << " " << dn.addr.ToString();
+                streamInfo << std::setw(18) << dn.GetStatus() << " " << dn.nProtocolVersion << " " << COdynCashAddress(dn.pubKeyCollateralAddress.GetID()).ToString() << " " << (int64_t)dn.lastPing.sigTime << " " << std::setw(8) << (int64_t)(dn.lastPing.sigTime - dn.sigTime) << " " << dn.lastPing.GetSentinelString() << " " << (dn.lastPing.fSentinelIsCurrent ? "current" : "expired") << " " << dn.addr.ToString();
                 std::string strInfo = streamInfo.str();
                 if (strFilter != "" && strInfo.find(strFilter) == std::string::npos &&
                     strOutpoint.find(strFilter) == std::string::npos)
@@ -585,14 +585,14 @@ UniValue servicenodelist(const JSONRPCRequest& request)
                 obj.push_back(Pair(strOutpoint, strInfo));
             } else if (strMode == "json") {
                 std::ostringstream streamInfo;
-                streamInfo << dn.addr.ToString() << " " << CDynamicAddress(dn.pubKeyCollateralAddress.GetID()).ToString() << " " << dn.GetStatus() << " " << dn.nProtocolVersion << " " << dn.lastPing.nDaemonVersion << " " << dn.lastPing.GetSentinelString() << " " << (dn.lastPing.fSentinelIsCurrent ? "current" : "expired") << " " << (int64_t)dn.lastPing.sigTime << " " << (int64_t)(dn.lastPing.sigTime - dn.sigTime) << " " << dn.GetLastPaidTime() << " " << dn.GetLastPaidBlock();
+                streamInfo << dn.addr.ToString() << " " << COdynCashAddress(dn.pubKeyCollateralAddress.GetID()).ToString() << " " << dn.GetStatus() << " " << dn.nProtocolVersion << " " << dn.lastPing.nDaemonVersion << " " << dn.lastPing.GetSentinelString() << " " << (dn.lastPing.fSentinelIsCurrent ? "current" : "expired") << " " << (int64_t)dn.lastPing.sigTime << " " << (int64_t)(dn.lastPing.sigTime - dn.sigTime) << " " << dn.GetLastPaidTime() << " " << dn.GetLastPaidBlock();
                 std::string strInfo = streamInfo.str();
                 if (strFilter != "" && strInfo.find(strFilter) == std::string::npos &&
                     strOutpoint.find(strFilter) == std::string::npos)
                     continue;
                 UniValue objDN(UniValue::VOBJ);
                 objDN.push_back(Pair("address", dn.addr.ToString()));
-                objDN.push_back(Pair("payee", CDynamicAddress(dn.pubKeyCollateralAddress.GetID()).ToString()));
+                objDN.push_back(Pair("payee", COdynCashAddress(dn.pubKeyCollateralAddress.GetID()).ToString()));
                 objDN.push_back(Pair("status", dn.GetStatus()));
                 objDN.push_back(Pair("protocol", dn.nProtocolVersion));
                 objDN.push_back(Pair("daemonversion", dn.lastPing.GetDaemonString()));
@@ -616,7 +616,7 @@ UniValue servicenodelist(const JSONRPCRequest& request)
                     continue;
                 obj.push_back(Pair(strOutpoint, (int64_t)dn.lastPing.sigTime));
             } else if (strMode == "payee") {
-                CDynamicAddress address(dn.pubKeyCollateralAddress.GetID());
+                COdynCashAddress address(dn.pubKeyCollateralAddress.GetID());
                 std::string strPayee = address.ToString();
                 if (strFilter != "" && strPayee.find(strFilter) == std::string::npos &&
                     strOutpoint.find(strFilter) == std::string::npos)
@@ -810,8 +810,8 @@ UniValue servicenodebroadcast(const JSONRPCRequest& request)
                 nSuccessful++;
                 resultObj.push_back(Pair("outpoint", dnb.outpoint.ToStringShort()));
                 resultObj.push_back(Pair("addr", dnb.addr.ToString()));
-                resultObj.push_back(Pair("pubKeyCollateralAddress", CDynamicAddress(dnb.pubKeyCollateralAddress.GetID()).ToString()));
-                resultObj.push_back(Pair("pubKeyServiceNode", CDynamicAddress(dnb.pubKeyServiceNode.GetID()).ToString()));
+                resultObj.push_back(Pair("pubKeyCollateralAddress", COdynCashAddress(dnb.pubKeyCollateralAddress.GetID()).ToString()));
+                resultObj.push_back(Pair("pubKeyServiceNode", COdynCashAddress(dnb.pubKeyServiceNode.GetID()).ToString()));
                 resultObj.push_back(Pair("vchSig", EncodeBase64(&dnb.vchSig[0], dnb.vchSig.size())));
                 resultObj.push_back(Pair("sigTime", dnb.sigTime));
                 resultObj.push_back(Pair("protocolVersion", dnb.nProtocolVersion));
@@ -908,14 +908,14 @@ static const CRPCCommand commands[] =
     {
         //  category                 name                     actor (function)     okSafe argNames
         //  ---------------------    ----------------------   -------------------  ------ ----
-        /* Dynamic features */
-        {"dynamic", "servicenode", &servicenode, true, {}},
-        {"dynamic", "servicenodelist", &servicenodelist, true, {}},
-        {"dynamic", "servicenodebroadcast", &servicenodebroadcast, true, {}},
-        {"dynamic", "getpoolinfo", &getpoolinfo, true, {}},
-        {"dynamic", "sentinelping", &sentinelping, true, {}},
+        /* OdynCash features */
+        {"odyncash", "servicenode", &servicenode, true, {}},
+        {"odyncash", "servicenodelist", &servicenodelist, true, {}},
+        {"odyncash", "servicenodebroadcast", &servicenodebroadcast, true, {}},
+        {"odyncash", "getpoolinfo", &getpoolinfo, true, {}},
+        {"odyncash", "sentinelping", &sentinelping, true, {}},
 #ifdef ENABLE_WALLET
-        {"dynamic", "privatesend", &privatesend, false, {}},
+        {"odyncash", "privatesend", &privatesend, false, {}},
 #endif // ENABLE_WALLET
 };
 

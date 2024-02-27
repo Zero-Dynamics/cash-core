@@ -7,7 +7,7 @@
 # Test mulitple rpc user config option rpcauth
 #
 
-from test_framework.test_framework import DynamicTestFramework
+from test_framework.test_framework import OdynCashTestFramework
 from test_framework.util import *
 import base64
 
@@ -20,17 +20,17 @@ try:
 except ImportError:
     import urlparse
 
-class HTTPBasicsTest (DynamicTestFramework):
+class HTTPBasicsTest (OdynCashTestFramework):
     def setup_nodes(self):
         return start_nodes(4, self.options.tmpdir)
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)
         initialize_chain(self.options.tmpdir)
-        #Append rpcauth to dynamic.conf before initialization
+        #Append rpcauth to odyncash.conf before initialization
         rpcauth = "rpcauth=rt:93648e835a54c573682c2eb19f882535$7681e9c5b74bdd85e78166031d2058e1069b3ed7ed967c93fc63abba06f31144"
         rpcauth2 = "rpcauth=rt2:f8607b1a88861fac29dfccf9b52ff9f$ff36a0c23c8c62b4846112e50fa888416e94c17bfd4c42f88fd8f55ec6a3137e"
-        with open(os.path.join(self.options.tmpdir+"/node0", "dynamic.conf"), 'a') as f:
+        with open(os.path.join(self.options.tmpdir+"/node0", "odyncash.conf"), 'a') as f:
             f.write(rpcauth+"\n")
             f.write(rpcauth2+"\n")
 
@@ -61,7 +61,7 @@ class HTTPBasicsTest (DynamicTestFramework):
         resp = conn.getresponse()
         assert_equal(resp.status==401, False)
         conn.close()
-        
+
         #Use new authpair to confirm both work
         headers = {"Authorization": "Basic " + str_to_b64str(authpairnew)}
 

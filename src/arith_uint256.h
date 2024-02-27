@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_ARITH_UINT256_H
-#define DYNAMIC_ARITH_UINT256_H
+#ifndef ODYNCASH_ARITH_UINT256_H
+#define ODYNCASH_ARITH_UINT256_H
 
 #include <assert.h>
 #include <cstring>
@@ -275,7 +275,7 @@ public:
      * Thus 0x1234560000 is compact (0x05123456)
      * and  0xc0de000000 is compact (0x0600c0de)
      *
-     * Dynamic only uses this "compact" format for encoding difficulty
+     * OdynCash only uses this "compact" format for encoding difficulty
      * targets, which are unsigned 256bit quantities.  Thus, all the
      * complexities of the sign bit and using base 256 are probably an
      * implementation accident.
@@ -290,4 +290,4 @@ public:
 uint256 ArithToUint256(const arith_uint256&);
 arith_uint256 UintToArith256(const uint256&);
 
-#endif // DYNAMIC_ARITH_UINT256_H
+#endif // ODYNCASH_ARITH_UINT256_H

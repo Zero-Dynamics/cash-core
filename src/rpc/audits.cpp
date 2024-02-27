@@ -99,7 +99,7 @@ static UniValue AddAudit(const JSONRPCRequest& request)
 
             txAudit.vchOwnerFullObjectPath = domainEntry.vchFullObjectPath();
 
-            CDynamicAddress address = domainEntry.GetWalletAddress();
+            COdynCashAddress address = domainEntry.GetWalletAddress();
             CKeyID keyID;
             if (!address.GetKeyID(keyID))
                 throw JSONRPCError(RPC_TYPE_ERROR, "BDAP account wallet address does not refer to a key");
@@ -142,7 +142,7 @@ static UniValue AddAudit(const JSONRPCRequest& request)
     }
 
     CKeyID keyWalletID = pubWalletKey.GetID();
-    CDynamicAddress walletAddress = CDynamicAddress(keyWalletID);
+    COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
 
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
@@ -160,7 +160,7 @@ static UniValue AddAudit(const JSONRPCRequest& request)
     if (!GetBDAPFees(OP_BDAP_NEW, OP_BDAP_AUDIT, bdapType, auditData.vAuditData.size(), monthlyFee, oneTimeFee, depositFee))
         throw JSONRPCError(RPC_BDAP_FEE_UNKNOWN, strprintf("Error calculating BDAP fees."));
 
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPDynamicAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s DYN required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 

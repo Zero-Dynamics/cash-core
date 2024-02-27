@@ -112,7 +112,7 @@ void CSporkManager::CheckAndRemove()
 void CSporkManager::ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if (fLiteMode)
-        return; // disable all Dynamic specific functionality
+        return; // disable all OdynCash specific functionality
 
     if (strCommand == NetMsgType::SPORK) {
         CSporkMessage spork;
@@ -346,7 +346,7 @@ bool CSporkManager::GetSporkByHash(const uint256& hash, CSporkMessage& sporkRet)
 bool CSporkManager::SetSporkAddress(const std::string& strAddress)
 {
     LOCK(cs);
-    CDynamicAddress address(strAddress);
+    COdynCashAddress address(strAddress);
     CKeyID keyid;
     if (!address.IsValid() || !address.GetKeyID(keyid)) {
         LogPrintf("CSporkManager::SetSporkAddress -- Failed to parse spork address\n");

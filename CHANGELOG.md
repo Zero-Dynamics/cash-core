@@ -593,7 +593,7 @@
 * Sync DN list and DNW list from 3 peers max
 * Use correct protocol when serializing messages in reply to
 * Bump Versioning
-* Update dynamic_qt.m4 (Remove ability to build with Qt4)
+* Update odyncash_qt.m4 (Remove ability to build with Qt4)
 
 
 **Dynamic v2.3.5.0**
@@ -656,7 +656,7 @@
 * [depends] Fix Qt compilation with Xcode 8
 * [rpc] throw JSONRPCError when utxo set can not be read
 * Remove unused statements in serialization
-* dynamicd: Daemonize using daemon(3)
+* odyncashd: Daemonize using daemon(3)
 * Decouple GetConfigFile and ReadConfigFile from global mapArgs
 * deprecate begin/end ptrs
 * net: fix a few cases where messages were sent rather than dropped upon disconnection
@@ -1147,7 +1147,7 @@
 * Make sure additional indexes are recalculated correctly in VerifyDB
 * Remove global use of g_connman
 * InstantSend txes should never qualify to be 0-fee txes
-* rpc: Input-from-stdin mode for dynamic-cli
+* rpc: Input-from-stdin mode for odyncash-cli
 * Move RPC dispatch table registration to wallet/rpcwallet
 * Switch to a more efficient rolling Bloom filter
 * remove cs_main lock from
@@ -1279,7 +1279,7 @@
 * add include stdlib.h to random.cpp
 * Generate auth cookie in hex instead of base64
 * Do not shadow variable (multiple files)
-* dynamic-cli: More detailed error reporting
+* odyncash-cli: More detailed error reporting
 * Add High TX Fee Warning
 * C++11: s/boost::scoped_ptr/std::unique_ptr/
 * Do not shadow variables in networking code

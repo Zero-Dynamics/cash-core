@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_NETMESSAGEMAKER_H
-#define DYNAMIC_NETMESSAGEMAKER_H
+#ifndef ODYNCASH_NETMESSAGEMAKER_H
+#define ODYNCASH_NETMESSAGEMAKER_H
 
 #include "net.h"
 #include "serialize.h"
@@ -34,4 +34,4 @@ private:
     const int nVersion;
 };
 
-#endif // DYNAMIC_NETMESSAGEMAKER_H
+#endif // ODYNCASH_NETMESSAGEMAKER_H

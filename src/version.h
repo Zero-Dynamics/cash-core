@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_VERSION_H
-#define DYNAMIC_VERSION_H
+#ifndef ODYNCASH_VERSION_H
+#define ODYNCASH_VERSION_H
 
 /**
  * network protocol versioning
@@ -41,4 +41,4 @@ static const int SENDHEADERS_VERSION = 60800;
 //! short-id-based block download starts with this version
 static const int SHORT_IDS_BLOCKS_VERSION = 71000;
 
-#endif // DYNAMIC_VERSION_H
+#endif // ODYNCASH_VERSION_H

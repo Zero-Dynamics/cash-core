@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_SPLASHSCREEN_H
-#define DYNAMIC_QT_SPLASHSCREEN_H
+#ifndef ODYNCASH_QT_SPLASHSCREEN_H
+#define ODYNCASH_QT_SPLASHSCREEN_H
 
 #include <QSplashScreen>
 #include <functional>
@@ -16,7 +16,7 @@ class NetworkStyle;
 
 /** Class for the splashscreen with information of the running client.
  *
- * @note this is intentionally not a QSplashScreen. Dynamic initialization
+ * @note this is intentionally not a QSplashScreen. OdynCash initialization
  * can take a long time, and in that case a progress window that cannot be
  * moved around and minimized has turned out to be frustrating to the user.
  */
@@ -63,4 +63,4 @@ private:
     std::function<void(void)> breakAction;
 };
 
-#endif // DYNAMIC_QT_SPLASHSCREEN_H
+#endif // ODYNCASH_QT_SPLASHSCREEN_H

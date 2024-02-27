@@ -4,11 +4,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-#ifndef DYNAMIC_WALLET_RPCWALLET_H
-#define DYNAMIC_WALLET_RPCWALLET_H
+#ifndef ODYNCASH_WALLET_RPCWALLET_H
+#define ODYNCASH_WALLET_RPCWALLET_H
 
 class CRPCTable;
 
 void RegisterWalletRPCCommands(CRPCTable& t);
 
-#endif //DYNAMIC_WALLET_RPCWALLET_H
+#endif //ODYNCASH_WALLET_RPCWALLET_H

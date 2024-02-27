@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_QVALIDATEDLINEEDIT_H
-#define DYNAMIC_QT_QVALIDATEDLINEEDIT_H
+#ifndef ODYNCASH_QT_QVALIDATEDLINEEDIT_H
+#define ODYNCASH_QT_QVALIDATEDLINEEDIT_H
 
 #include <QLineEdit>
 
@@ -43,4 +43,4 @@ private Q_SLOTS:
     void checkValidity();
 };
 
-#endif // DYNAMIC_QT_QVALIDATEDLINEEDIT_H
+#endif // ODYNCASH_QT_QVALIDATEDLINEEDIT_H

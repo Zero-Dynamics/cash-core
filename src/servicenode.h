@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SERVICENODE_H
-#define DYNAMIC_SERVICENODE_H
+#ifndef ODYNCASH_SERVICENODE_H
+#define ODYNCASH_SERVICENODE_H
 
 #include "key.h"
 #include "spork.h"
@@ -509,4 +509,4 @@ public:
     }
 };
 
-#endif // DYNAMIC_SERVICENODE_H
+#endif // ODYNCASH_SERVICENODE_H

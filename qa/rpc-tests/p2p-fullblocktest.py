@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+odyncash#!/usr/bin/env python2
 
 #
 # Distributed under the MIT/X11 software license, see the accompanying
@@ -19,7 +19,7 @@ class PreviousSpendableOutput(object):
         self.n = n  # the output we're spending
 
 '''
-This reimplements tests from the dynamicj/FullBlockTestGenerator used
+This reimplements tests from the odyncashj/FullBlockTestGenerator used
 by the pull-tester.
 
 We use the testing framework in which we expect a particular answer from
@@ -28,7 +28,7 @@ each test.
 
 class FullBlockTest(ComparisonTestFramework):
 
-    ''' Can either run this test as 1 node with expected answers, or two and compare them. 
+    ''' Can either run this test as 1 node with expected answers, or two and compare them.
         Change the "outcome" variable from each TestInstance object to only do the comparison. '''
     def __init__(self):
         self.num_nodes = 1
@@ -53,7 +53,7 @@ class FullBlockTest(ComparisonTestFramework):
         block.hashMerkleRoot = block.calc_merkle_root()
         block.rehash()
         return block
-    
+
     # Create a block on top of self.tip, and advance self.tip to point to the new block
     # if spend is specified, then 1 satoshi will be spent from that to an anyone-can-spend output,
     # and rest will go to fees.
@@ -124,7 +124,7 @@ class FullBlockTest(ComparisonTestFramework):
                 return TestInstance([[self.tip, False]])
             else:
                 return TestInstance([[self.tip, reject]])
-       
+
         # move the tip back to a previous block
         def tip(number):
             self.tip = self.blocks[number]
@@ -175,10 +175,10 @@ class FullBlockTest(ComparisonTestFramework):
 
 
         # so fork like this:
-        # 
+        #
         #     genesis -> b1 (0) -> b2 (1)
         #                      \-> b3 (1)
-        # 
+        #
         # Nothing should happen at this point. We saw b2 first so it takes priority.
         tip(1)
         b3 = block(3, spend=out1)
@@ -187,7 +187,7 @@ class FullBlockTest(ComparisonTestFramework):
 
 
         # Now we add another block to make the alternative chain longer.
-        # 
+        #
         #     genesis -> b1 (0) -> b2 (1)
         #                      \-> b3 (1) -> b4 (2)
         out2 = get_spendable_output()
@@ -229,7 +229,7 @@ class FullBlockTest(ComparisonTestFramework):
         block(9, spend=out4, additional_coinbase_value=1)
         yield rejected(RejectResult(16, b'bad-cb-amount'))
 
-        
+
         # Create a fork that ends in a block with too much fee (the one that causes the reorg)
         #     genesis -> b1 (0) -> b2 (1) -> b5 (2) -> b6  (3)
         #                                          \-> b10 (3) -> b11 (4)
@@ -269,7 +269,7 @@ class FullBlockTest(ComparisonTestFramework):
         #     genesis -> b1 (0) -> b2 (1) -> b5 (2) -> b6  (3)
         #                                          \-> b12 (3) -> b13 (4) -> b15 (5) -> b16 (6)
         #                      \-> b3 (1) -> b4 (2)
-        
+
         # Test that a block with a lot of checksigs is okay
         lots_of_checksigs = CScript([OP_CHECKSIG] * (1000000 // 50 - 1))
         tip(13)
@@ -370,7 +370,7 @@ class FullBlockTest(ComparisonTestFramework):
         b26 = update_block(26, [])
         yield rejected(RejectResult(16, b'bad-cb-length'))
 
-        # Extend the b26 chain to make sure dynamicd isn't accepting b26
+        # Extend the b26 chain to make sure odyncashd isn't accepting b26
         b27 = block(27, spend=out7)
         yield rejected()
 
@@ -382,7 +382,7 @@ class FullBlockTest(ComparisonTestFramework):
         b28 = update_block(28, [])
         yield rejected(RejectResult(16, b'bad-cb-length'))
 
-        # Extend the b28 chain to make sure dynamicd isn't accepted b28
+        # Extend the b28 chain to make sure odyncashd isn't accepted b28
         b29 = block(29, spend=out7)
         # TODO: Should get a reject message back with "bad-prevblk", except
         # there's a bug that prevents this from being detected.  Just note

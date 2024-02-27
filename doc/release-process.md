@@ -2,7 +2,7 @@ Release Process
 ====================
 
 * update translations (ping wumpus, Diapolo or tcatm on IRC)
-* see https://github.com/duality-solutions/dynamic/blob/master/doc/translation_process.md#syncing-with-transifex
+* see https://github.com/duality-solutions/odyncash/blob/master/doc/translation_process.md#syncing-with-transifex
 
 * * *
 
@@ -29,11 +29,11 @@ Release Process
 
 ###perform gitian builds
 
- From a directory containing the dynamic source, gitian-builder and gitian.sigs
+ From a directory containing the odyncash source, gitian-builder and gitian.sigs
 
 	export SIGNER=(your gitian key, ie bluematt, sipa, etc)
 	export VERSION=(new version, e.g. 2.4.0.0)
-	pushd ./dynamic
+	pushd ./odyncash
 	git checkout v${VERSION}
 	popd
 	pushd ./gitian-builder
@@ -54,29 +54,29 @@ Release Process
 
   By default, gitian will fetch source files as needed. For offline builds, they can be fetched ahead of time:
 
-	make -C ../dynamic/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../odyncash/depends download SOURCES_PATH=`pwd`/cache/common
 
   Only missing files will be fetched, so this is safe to re-run for each build.
 
-###Build Dynamic for Linux, Windows, and OS X:
+###Build OdynCash for Linux, Windows, and OS X:
 
-	./bin/gbuild --commit dynamic=v${VERSION} ../dynamic/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../dynamic/contrib/gitian-descriptors/gitian-linux.yml
-	mv build/out/dynamic-*.tar.gz build/out/src/dynamic-*.tar.gz ../
-	./bin/gbuild --commit dynamic=v${VERSION} ../dynamic/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../dynamic/contrib/gitian-descriptors/gitian-win.yml
-	mv build/out/dynamic-*.zip build/out/dynamic-*.exe ../
-	./bin/gbuild --commit dynamic=v${VERSION} ../dynamic/contrib/gitian-descriptors/gitian-osx.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../dynamic/contrib/gitian-descriptors/gitian-osx.yml
-	mv build/out/dynamic-*-unsigned.tar.gz inputs/dynamic-osx-unsigned.tar.gz
-	mv build/out/dynamic-*.tar.gz build/out/dynamic-*.dmg ../
+	./bin/gbuild --commit odyncash=v${VERSION} ../odyncash/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../odyncash/contrib/gitian-descriptors/gitian-linux.yml
+	mv build/out/odyncash-*.tar.gz build/out/src/odyncash-*.tar.gz ../
+	./bin/gbuild --commit odyncash=v${VERSION} ../odyncash/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../odyncash/contrib/gitian-descriptors/gitian-win.yml
+	mv build/out/odyncash-*.zip build/out/odyncash-*.exe ../
+	./bin/gbuild --commit odyncash=v${VERSION} ../odyncash/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../odyncash/contrib/gitian-descriptors/gitian-osx.yml
+	mv build/out/odyncash-*-unsigned.tar.gz inputs/odyncash-osx-unsigned.tar.gz
+	mv build/out/odyncash-*.tar.gz build/out/odyncash-*.dmg ../
 	popd
   Build output expected:
 
-  1. source tarball (dynamic-${VERSION}.tar.gz)
-  2. linux 32-bit and 64-bit binaries dist tarballs (dynamic-${VERSION}-linux[32|64].tar.gz)
-  3. windows 32-bit and 64-bit installers and dist zips (dynamic-${VERSION}-win[32|64]-setup.exe, dynamic-${VERSION}-win[32|64].zip)
-  4. OSX unsigned installer (dynamic-${VERSION}-osx-unsigned.dmg)
+  1. source tarball (odyncash-${VERSION}.tar.gz)
+  2. linux 32-bit and 64-bit binaries dist tarballs (odyncash-${VERSION}-linux[32|64].tar.gz)
+  3. windows 32-bit and 64-bit installers and dist zips (odyncash-${VERSION}-win[32|64]-setup.exe, odyncash-${VERSION}-win[32|64].zip)
+  4. OSX unsigned installer (odyncash-${VERSION}-osx-unsigned.dmg)
   5. Gitian signatures (in gitian.sigs/${VERSION}-<linux|win|osx-unsigned>/(your gitian key)/
 
 ###Next steps:
@@ -100,9 +100,9 @@ Commit your signature to gitian.sigs:
 	pushd ./gitian-builder
 	# Fetch the signature as instructed by Evan
 	cp signature.tar.gz inputs/
-	./bin/gbuild -i ../dynamic/contrib/gitian-descriptors/gitian-osx-signer.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../dynamic/contrib/gitian-descriptors/gitian-osx-signer.yml
-	mv build/out/dynamic-osx-signed.dmg ../dynamic-${VERSION}-osx.dmg
+	./bin/gbuild -i ../odyncash/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../odyncash/contrib/gitian-descriptors/gitian-osx-signer.yml
+	mv build/out/odyncash-osx-signed.dmg ../odyncash-${VERSION}-osx.dmg
 	popd
 
 Commit your signature for the signed OSX binary:
@@ -131,20 +131,20 @@ rm SHA256SUMS
 ```
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the dynamic.org server
-  into `/var/www/bin/dynamic-${VERSION}`
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the odyncash.org server
+  into `/var/www/bin/odyncash-${VERSION}`
 
-- Update dynamicpay.io version ***TODO***
+- Update odyncashpay.io version ***TODO***
 
-  - First, check to see if the dynamicpay.io maintainers have prepared a
-    release: https://github.com/duality-solutions/dynamic/labels/Releases
+  - First, check to see if the odyncashpay.io maintainers have prepared a
+    release: https://github.com/duality-solutions/odyncash/labels/Releases
 
       - If they have, it will have previously failed their Travis CI
         checks because the final release files weren't uploaded.
         Trigger a Travis CI rebuild---if it passes, merge.
 
-  - If they have not prepared a release, follow the Dynamic.org release
-    instructions: https://github.com/duality-solutions/dynamic#release-notes
+  - If they have not prepared a release, follow the OdynCash.org release
+    instructions: https://github.com/duality-solutions/odyncash#release-notes
 
   - After the pull request is merged, the website will automatically show the newest version within 15 minutes, as well
     as update the OS download links. Ping @saivann/@harding (saivann/harding on Freenode) in case anything goes wrong

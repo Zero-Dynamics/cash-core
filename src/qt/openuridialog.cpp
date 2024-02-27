@@ -18,7 +18,7 @@ OpenURIDialog::OpenURIDialog(QWidget* parent) : QDialog(parent),
 {
     ui->setupUi(this);
 #if QT_VERSION >= 0x040700
-    ui->uriEdit->setPlaceholderText("dynamic:");
+    ui->uriEdit->setPlaceholderText("odyncash:");
 #endif
 }
 
@@ -35,7 +35,7 @@ QString OpenURIDialog::getURI()
 void OpenURIDialog::accept()
 {
     SendCoinsRecipient rcp;
-    if (GUIUtil::parseDynamicURI(getURI(), &rcp)) {
+    if (GUIUtil::parseOdynCashURI(getURI(), &rcp)) {
         /* Only accept value URIs */
         QDialog::accept();
     } else {

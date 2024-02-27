@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  odyncashd The OdynCash server.
+#
+#
+# chkconfig: 345 80 20
+# description: odyncashd
+# processname: odyncashd
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/odyncashd, see below
+if [ -f /etc/sysconfig/odyncashd ]; then
+        . /etc/sysconfig/odyncashd
+fi
+
+RETVAL=0
+
+prog=odyncashd
+# you can override the lockfile via ODYNCASHD_LOCKFILE in /etc/sysconfig/odyncashd
+lockfile=${ODYNCASHD_LOCKFILE-/var/lock/subsys/odyncashd}
+
+# odyncashd defaults to /usr/bin/odyncashd, override with ODYNCASHD_BIN
+odyncashd=${ODYNCASHD_BIN-/usr/bin/odyncashd}
+
+# odyncashd opts default to -disablewallet, override with ODYNCASHD_OPTS
+odyncashd_opts=${ODYNCASHD_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $odyncashd $odyncashd_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

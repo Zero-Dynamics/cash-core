@@ -150,7 +150,7 @@ bool CAlert::Sign()
     CDataStream sMsg(SER_NETWORK, CLIENT_VERSION);
     sMsg << *(CUnsignedAlert*)this;
     vchMsg = std::vector<unsigned char>(sMsg.begin(), sMsg.end());
-    CDynamicSecret vchSecret;
+    COdynCashSecret vchSecret;
     if (!vchSecret.SetString(GetArg("-alertkey", ""))) {
         printf("CAlert::SignAlert() : vchSecret.SetString failed\n");
         return false;

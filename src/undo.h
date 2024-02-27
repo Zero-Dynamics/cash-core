@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_UNDO_H
-#define DYNAMIC_UNDO_H
+#ifndef ODYNCASH_UNDO_H
+#define ODYNCASH_UNDO_H
 
 #include "compressor.h"
 #include "consensus/consensus.h"
@@ -115,4 +115,4 @@ public:
     }
 };
 
-#endif // DYNAMIC_UNDO_H
+#endif // ODYNCASH_UNDO_H

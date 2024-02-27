@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_SPENTINDEX_H
-#define DYNAMIC_SPENTINDEX_H
+#ifndef ODYNCASH_SPENTINDEX_H
+#define ODYNCASH_SPENTINDEX_H
 
 #include "amount.h"
 #include "script/script.h"
@@ -418,4 +418,4 @@ struct CAddressIndexIteratorHeightKey {
     }
 };
 
-#endif // DYNAMIC_SPENTINDEX_H
+#endif // ODYNCASH_SPENTINDEX_H

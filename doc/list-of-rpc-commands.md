@@ -1,6 +1,6 @@
-![DYN logo](https://github.com/duality-solutions/Logos/blob/master/Duality%20Logos/Dynamic/PNG/128x128.png)
+![DYN logo](https://github.com/duality-solutions/Logos/blob/master/Duality%20Logos/OdynCash/PNG/128x128.png)
 
-List of Dynamic RPC Commands
+List of OdynCash RPC Commands
 ============================
 ￼
 Address Index
@@ -36,7 +36,7 @@ Blockchain
 
 Control
 -------
-* debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|dynamic|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject )
+* debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|odyncash|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject )
 * getinfo
 * getmemoryinfo
 * help ( "command" )
@@ -56,7 +56,7 @@ DDNS
 * name_update [name] [value] [days] [toaddress] [valuetype]
 
 
-Dynamic
+OdynCash
 -------
 * snsync [status|next|reset]
 * servicenode "command"...
@@ -133,8 +133,8 @@ Utility Function
 * estimatepriority nblocks
 * estimatesmartfee nblocks
 * estimatesmartpriority nblocks
-* validateaddress "dynamicaddress"
-* verifymessage "dynamicaddress" "signature" "message"
+* validateaddress "odyncashaddress"
+* verifymessage "odyncashaddress" "signature" "message"
 
 
 Wallet
@@ -143,24 +143,24 @@ Wallet
 * addmultisigaddress nrequired ["key",...] ( "account" )
 * backupwallet "destination"
 * dumphdinfo
-* dumpprivkey "dynamicaddress"
+* dumpprivkey "odyncashaddress"
 * dumpwallet "filename"
-* getaccount "dynamicaddress"
+* getaccount "odyncashaddress"
 * getaccountaddress "account"
 * getaddressesbyaccount "account"
 * getbalance ( "account" minconf includeWatchonly )
 * getnewaddress ( "account" )
 * getrawchangeaddress
 * getreceivedbyaccount "account" ( minconf )
-* getreceivedbyaddress "dynamicaddress" ( minconf )
+* getreceivedbyaddress "odyncashaddress" ( minconf )
 * gettransaction "txid" ( includeWatchonly )
 * getunconfirmedbalance
 * getwalletinfo
 * importaddress "address" ( "label" rescan p2sh )
-* importprivkey "dynamicprivkey" ( "label" rescan )
+* importprivkey "odyncashprivkey" ( "label" rescan )
 * importpubkey "pubkey" ( "label" rescan )
 * importwallet "filename"
-* instantsendtoaddress "dynamicaddress" amount ( "comment" "comment-to" subtractfeefromamount )
+* instantsendtoaddress "odyncashaddress" amount ( "comment" "comment-to" subtractfeefromamount )
 * keepass <genkey|init|setpassphrase>
 * keypoolrefill ( newsize )
 * listaccounts ( minconf includeWatchonly)
@@ -174,12 +174,12 @@ Wallet
 * lockunspent unlock [{"txid":"txid","vout":n},...]
 * makekeypair [prefix]
 * move "fromaccount" "toaccount" amount ( minconf "comment" )
-* sendfrom "fromaccount" "todynamicaddress" amount ( minconf "comment" "comment-to" )
+* sendfrom "fromaccount" "toodyncashaddress" amount ( minconf "comment" "comment-to" )
 * sendmany "fromaccount" {"address":amount,...} ( minconf "comment" ["address",...] subtractfeefromamount use_is use_ps )
-* sendtoaddress "dynamicaddress" amount ( "comment" "comment-to" subtractfeefromamount use_is use_ps )
-* setaccount "dynamicaddress" "account"
+* sendtoaddress "odyncashaddress" amount ( "comment" "comment-to" subtractfeefromamount use_is use_ps )
+* setaccount "odyncashaddress" "account"
 * settxfee amount
-* signmessage "dynamicaddress" "message"
+* signmessage "odyncashaddress" "message"
 * walletlock
 * walletpassphrase "passphrase" timeout ( mixingonly )
 * walletpassphrasechange "oldpassphrase" "newpassphrase"

@@ -36,7 +36,7 @@ Remember... this is local. Make sure your QT is not running.
 
 Create the servicenode.conf file in the same directory as your wallet.dat.
 
-Copy the ServiceNode private key and correspondig collateral output transaction that holds the 1K DYNAMIC.
+Copy the ServiceNode private key and correspondig collateral output transaction that holds the 1K ODYNCASH.
 
 *Please note, the ServiceNode priviate key is not the same as a wallet private key. Never put your wallet private key in the servicenode.conf file. That is equivalent to putting your 1,000 DYN on the remote server and defeats the purpose of a hot/cold setup.*
 
@@ -51,7 +51,7 @@ Issue the following:
 Make note of the hash (which is your collaterla_output) and index.
 
 ### Enter your ServiceNode details into your servicenode.conf file
-[From the dynamic github repo](https://github.com/duality-solutions/dynamic/blob/master/doc/servicenode_conf.md)
+[From the odyncash github repo](https://github.com/duality-solutions/odyncash/blob/master/doc/servicenode_conf.md)
 
 The new servicenode.conf format consists of a space separated text file. Each line consisting of an alias, IP address followed by port, ServiceNode private key, collateral output transaction id and collateral output index. 
 (!!! Currently not implemented: "donation address and donation percentage (the latter two are optional and should be in format "address:percentage")." !!!)
@@ -69,16 +69,16 @@ sn01 127.0.0.1:33300 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c8
 sn02 127.0.0.2:33300 93WaAb3htPJEV8E9aQcN23Jt97bPex7YvWfgMDTUdWJvzmrMqey aa9f1034d973377a5e733272c3d0eced1de22555ad45d6b24abadff8087948d4 0 (!!! see above "7gnwGHt17heGpG9Crfeh4KGpYNFugPhJdh:25" !!!)
 ```
 
-## Update dynamic.conf on server
+## Update odyncash.conf on server
 
-If you generated a new ServiceNode private key, you will need to update the remote dynamic.conf files.
+If you generated a new ServiceNode private key, you will need to update the remote odyncash.conf files.
 
 Shut down the daemon and then edit the file.
 
-```sudo nano .dynamic/dynamic.conf```
+```sudo nano .odyncash/odyncash.conf```
 
 ### Edit the servicenodepairingkey
-If you generated a new ServiceNode private key, you will need to update the servicenodepairingkey value in your remote dynamic.conf file.
+If you generated a new ServiceNode private key, you will need to update the servicenodepairingkey value in your remote odyncash.conf file.
 
 ## Start your ServiceNodes
 
@@ -88,9 +88,9 @@ If your remote server is not running, start your remote daemon as you normally w
 
 I usually confirm that remote is on the correct block by issuing:
 
-```dynamicd getinfo```
+```odyncashd getinfo```
 
-And compare with the official explorer at http://explorer.dynamicpay.io/chain/Dynamic
+And compare with the official explorer at http://explorer.odyncashpay.io/chain/OdynCash
 
 ### Local
 

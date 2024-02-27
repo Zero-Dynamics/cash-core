@@ -256,7 +256,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
     Q_FOREACH (const SendCoinsRecipient& rcp, recipients) {
         if (rcp.fSubtractFeeFromAmount)
             fSubtractFeeFromAmount = true;
-        {   // User-entered dynamic address / amount:
+        {   // User-entered odyncash address / amount:
             if(!validateAddress(rcp.address))
             {
                 return InvalidAddress;
@@ -285,7 +285,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
                 fStealthAddress = true;
                 CTxDestination newDest;
                 if (ExtractDestination(scriptPubKey, newDest))
-                    LogPrint("stealth", "%s -- Stealth send to address: %s\n", __func__, CDynamicAddress(newDest).ToString());
+                    LogPrint("stealth", "%s -- Stealth send to address: %s\n", __func__, COdynCashAddress(newDest).ToString());
             }
             else {
                 scriptPubKey = GetScriptForDestination(dest);
@@ -375,7 +375,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction& tran
         QList<SendCoinsRecipient> recipients = transaction.getRecipients();
 
         Q_FOREACH (const SendCoinsRecipient& rcp, recipients) {
-            if (!rcp.message.isEmpty()) // Message from normal dynamic:URI (dynamic:XyZ...?message=example)
+            if (!rcp.message.isEmpty()) // Message from normal odyncash:URI (odyncash:XyZ...?message=example)
                 newTx->vOrderForm.push_back(make_pair("Message", rcp.message.toStdString()));
         }
 
@@ -395,7 +395,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction& tran
     {
         {
             std::string strAddress = rcp.address.toStdString();
-            CTxDestination dest = CDynamicAddress(strAddress).Get();
+            CTxDestination dest = COdynCashAddress(strAddress).Get();
             std::string strLabel = rcp.label.toStdString();
             {
                 LOCK(wallet->cs_wallet);
@@ -507,7 +507,7 @@ static void NotifyKeyStoreStatusChanged(WalletModel* walletmodel, CCryptoKeyStor
 
 static void NotifyAddressBookChanged(WalletModel* walletmodel, CWallet* wallet, const CTxDestination& address, const std::string& label, bool isMine, const std::string& purpose, ChangeType status)
 {
-    QString strAddress = QString::fromStdString(CDynamicAddress(address).ToString());
+    QString strAddress = QString::fromStdString(COdynCashAddress(address).ToString());
     QString strLabel = QString::fromStdString(label);
     QString strPurpose = QString::fromStdString(purpose);
 
@@ -685,7 +685,7 @@ void WalletModel::listCoins(std::map<QString, std::vector<COutput> >& mapCoins) 
         CTxDestination address;
         if (!out.fSpendable || !ExtractDestination(cout.tx->tx->vout[cout.i].scriptPubKey, address))
             continue;
-        mapCoins[QString::fromStdString(CDynamicAddress(address).ToString())].push_back(out);
+        mapCoins[QString::fromStdString(COdynCashAddress(address).ToString())].push_back(out);
     }
 }
 
@@ -724,7 +724,7 @@ void WalletModel::loadReceiveRequests(std::vector<std::string>& vReceiveRequests
 
 bool WalletModel::saveReceiveRequest(const std::string& sAddress, const int64_t nId, const std::string& sRequest)
 {
-    CTxDestination dest = CDynamicAddress(sAddress).Get();
+    CTxDestination dest = COdynCashAddress(sAddress).Get();
 
     std::stringstream ss;
     ss << nId;

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_DBWRAPPER_H
-#define DYNAMIC_DBWRAPPER_H
+#ifndef ODYNCASH_DBWRAPPER_H
+#define ODYNCASH_DBWRAPPER_H
 
 #include "clientversion.h"
 #include "serialize.h"
@@ -371,4 +371,4 @@ public:
     }
 };
 
-#endif // DYNAMIC_DBWRAPPER_H
+#endif // ODYNCASH_DBWRAPPER_H

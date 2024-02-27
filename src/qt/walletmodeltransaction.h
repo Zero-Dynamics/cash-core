@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_WALLETMODELTRANSACTION_H
-#define DYNAMIC_QT_WALLETMODELTRANSACTION_H
+#ifndef ODYNCASH_QT_WALLETMODELTRANSACTION_H
+#define ODYNCASH_QT_WALLETMODELTRANSACTION_H
 
 #include "amount.h"
 #include "walletmodel.h"
@@ -48,4 +48,4 @@ private:
     CAmount fee;
 };
 
-#endif // DYNAMIC_QT_WALLETMODELTRANSACTION_H
+#endif // ODYNCASH_QT_WALLETMODELTRANSACTION_H

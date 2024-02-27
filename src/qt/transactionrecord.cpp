@@ -62,9 +62,9 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 sub.credit = txout.nValue;
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                 if (ExtractDestination(txout.scriptPubKey, address) && IsMine(*wallet, address)) {
-                    // Received by Dynamic Address
+                    // Received by OdynCash Address
                     sub.type = TransactionRecord::RecvWithAddress;
-                    sub.address = CDynamicAddress(address).ToString();
+                    sub.address = COdynCashAddress(address).ToString();
                 } else {
                     // Received by IP connection (deprecated features), or a multisignature or other non-simple transaction
                     sub.type = TransactionRecord::RecvFromOther;
@@ -127,8 +127,8 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 sub.type = TransactionRecord::PrivateSend;
                 CTxDestination address;
                 if (ExtractDestination(wtx.tx->vout[0].scriptPubKey, address)) {
-                    // Sent to Dynamic Address
-                    sub.address = CDynamicAddress(address).ToString();
+                    // Sent to OdynCash Address
+                    sub.address = COdynCashAddress(address).ToString();
                 } else {
                     // Sent to IP, or other non-address transaction like OP_EVAL
                     sub.address = mapValue["to"];
@@ -196,9 +196,9 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
 
                 CTxDestination address;
                 if (ExtractDestination(txout.scriptPubKey, address)) {
-                    // Sent to Dynamic Address
+                    // Sent to OdynCash Address
                     sub.type = TransactionRecord::SendToAddress;
-                    sub.address = CDynamicAddress(address).ToString();
+                    sub.address = COdynCashAddress(address).ToString();
                 } else {
                     // Sent to IP, or other non-address transaction like OP_EVAL
                     sub.type = TransactionRecord::SendToOther;
@@ -329,7 +329,7 @@ void TransactionRecord::updateStatus(const CWalletTx& wtx)
             status.matures_in = wtx.GetBlocksToMaturity();
 
             if (pindex && chainActive.Contains(pindex)) {
-                // Check if the block was requested by anyone                
+                // Check if the block was requested by anyone
                 if (GetAdjustedTime() - wtx.nTimeReceived > 2 * 60 && wtx.GetRequestCount() == 0)
                     status.status = TransactionStatus::MaturesWarning;
             } else {

@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include "config/dynamic-config.h"
+#include "config/odyncash-config.h"
 #endif
 
 #include "hash.h"

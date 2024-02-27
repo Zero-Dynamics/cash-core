@@ -19,8 +19,8 @@ If you need to broadcast an alert, here's what to do:
 1. Modify alert parameters below, see alert.* and comments in the code
    for what does what.
 
-2. run dynamicd with -printalert or -sendalert like this:
-   /path/to/dynamicd -printalert
+2. run odyncashd with -printalert or -sendalert like this:
+   /path/to/odyncashd -printalert
 
 One minute after starting up the alert will be broadcast. It is then
 flooded through the network until the nRelayUntil time, and will be
@@ -67,7 +67,7 @@ void ThreadSendAlert(CConnman& connman)
     alert.strStatusBar = "URGENT: Upgrade required: see https://www.duality.solutions";
 
     // Set specific client version/versions here. If setSubVer is empty, no filtering on subver is done:
-    // alert.setSubVer.insert(std::string("/Dynamic:1.3.0.0/"));
+    // alert.setSubVer.insert(std::string("/OdynCash:1.3.0.0/"));
 
     // Sign
     if (!alert.Sign()) {

@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dynamic-config.h"
+#include "config/odyncash-config.h"
 #endif
 
 #include "utilitydialog.h"
@@ -14,7 +14,7 @@
 #include "ui_helpmessagedialog.h"
 
 #include "clientmodel.h"
-#include "dynamicgui.h"
+#include "odyncashgui.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "intro.h"
@@ -38,7 +38,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, HelpMode helpMode) : QDial
 {
     ui->setupUi(this);
 
-    QString version = tr("Dynamic") + " " + tr("version") + " " + QString::fromStdString(FormatFullVersion());
+    QString version = tr("OdynCash") + " " + tr("version") + " " + QString::fromStdString(FormatFullVersion());
     /* On x86 add a bit specifier to the version so that users can distinguish between
      * 32 and 64 bit builds. On other architectures, 32/64 bit may be more ambigious.
      */
@@ -49,7 +49,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, HelpMode helpMode) : QDial
 #endif
 
     if (helpMode == about) {
-        setWindowTitle(tr("About Dynamic"));
+        setWindowTitle(tr("About OdynCash"));
 
         /// HTML-format the license message from the core
         QString licenseInfo = QString::fromStdString(LicenseInfo());
@@ -71,14 +71,14 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, HelpMode helpMode) : QDial
     } else if (helpMode == cmdline) {
         setWindowTitle(tr("Command-line options"));
         QString header = tr("Usage:") + "\n" +
-                         "  dynamic-qt [" + tr("command-line options") + "]                     " + "\n";
+                         "  odyncash-qt [" + tr("command-line options") + "]                     " + "\n";
         QTextCursor cursor(ui->helpMessage->document());
         cursor.insertText(version);
         cursor.insertBlock();
         cursor.insertText(header);
         cursor.insertBlock();
 
-        std::string strUsage = HelpMessage(HMM_DYNAMIC_QT);
+        std::string strUsage = HelpMessage(HMM_ODYNCASH_QT);
         const bool showDebug = GetBoolArg("-help-debug", false);
         strUsage += HelpMessageGroup(tr("UI Options:").toStdString());
         strUsage += HelpMessageOpt("-choosedatadir", strprintf(tr("Choose data directory on startup (default: %n)", "", DEFAULT_CHOOSE_DATADIR).toStdString()));
@@ -87,7 +87,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, HelpMode helpMode) : QDial
         strUsage += HelpMessageOpt("-splash", strprintf(tr("Show splash screen on startup (default: %u)").toStdString(), DEFAULT_SPLASHSCREEN));
         strUsage += HelpMessageOpt("-resetguisettings", tr("Reset all settings changes made over the GUI").toStdString());
         if (showDebug) {
-            strUsage += HelpMessageOpt("-uiplatform", strprintf("Select platform to customize UI for (one of windows, macosx, other; default: %s)", DynamicGUI::DEFAULT_UIPLATFORM));
+            strUsage += HelpMessageOpt("-uiplatform", strprintf("Select platform to customize UI for (one of windows, macosx, other; default: %s)", OdynCashGUI::DEFAULT_UIPLATFORM));
         }
         QString coreOptions = QString::fromStdString(strUsage);
         text = version + "\n" + header + "\n" + coreOptions;
@@ -174,12 +174,12 @@ ShutdownWindow::ShutdownWindow(QWidget* parent, Qt::WindowFlags f) : QWidget(par
 {
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(new QLabel(
-        tr("Dynamic is shutting down...") + "<br /><br />" +
+        tr("OdynCash is shutting down...") + "<br /><br />" +
         tr("Do not shut down the computer until this window disappears.")));
     setLayout(layout);
 }
 
-QWidget* ShutdownWindow::showShutdownWindow(DynamicGUI* window)
+QWidget* ShutdownWindow::showShutdownWindow(OdynCashGUI* window)
 {
     if (!window)
         return nullptr;

@@ -1,4 +1,4 @@
-dynamic               ICON    "pixmaps/dynamic.ico"
+odyncash               ICON    "pixmaps/odyncash.ico"
 
 #include "wx/msw/wx.rc"
 

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_ACTIVESERVICENODE_H
-#define DYNAMIC_ACTIVESERVICENODE_H
+#ifndef ODYNCASH_ACTIVESERVICENODE_H
+#define ODYNCASH_ACTIVESERVICENODE_H
 
 #include "chainparams.h"
 #include "key.h"
@@ -90,4 +90,4 @@ private:
     void ManageStateRemote();
 };
 
-#endif // DYNAMIC_ACTIVESERVICENODE_H
+#endif // ODYNCASH_ACTIVESERVICENODE_H

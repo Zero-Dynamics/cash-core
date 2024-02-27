@@ -4,8 +4,8 @@
 // Copyright (c) 2009-2021 Satoshi Nakamoto
 // Distributed under the MIT/X11 software license, see the accompanying
 
-#ifndef DYNAMIC_RANDOM_H
-#define DYNAMIC_RANDOM_H
+#ifndef ODYNCASH_RANDOM_H
+#define ODYNCASH_RANDOM_H
 
 #include "crypto/chacha20.h"
 #include "crypto/common.h"
@@ -159,4 +159,4 @@ bool Random_SanityCheck();
 /** Initialize the RNG. */
 void RandomInit();
 
-#endif // DYNAMIC_RANDOM_H
+#endif // ODYNCASH_RANDOM_H

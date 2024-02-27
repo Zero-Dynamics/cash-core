@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_PRIMITIVES_BLOCK_H
-#define DYNAMIC_PRIMITIVES_BLOCK_H
+#ifndef ODYNCASH_PRIMITIVES_BLOCK_H
+#define ODYNCASH_PRIMITIVES_BLOCK_H
 
 #include "hash.h"
 #include "primitives/transaction.h"
@@ -164,4 +164,4 @@ struct CBlockLocator {
     }
 };
 
-#endif // DYNAMIC_PRIMITIVES_BLOCK_H
+#endif // ODYNCASH_PRIMITIVES_BLOCK_H

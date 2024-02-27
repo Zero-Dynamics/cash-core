@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_LIMITEDMAP_H
-#define DYNAMIC_LIMITEDMAP_H
+#ifndef ODYNCASH_LIMITEDMAP_H
+#define ODYNCASH_LIMITEDMAP_H
 
 #include <assert.h>
 #include <map>
@@ -100,4 +100,4 @@ public:
     }
 };
 
-#endif // DYNAMIC_LIMITEDMAP_H
+#endif // ODYNCASH_LIMITEDMAP_H

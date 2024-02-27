@@ -18,12 +18,12 @@
 #include <boost/algorithm/string.hpp>
 #include <stdio.h>
 
-BdapAddLinkDialog::BdapAddLinkDialog(QWidget *parent, int DynamicUnits) : QDialog(parent),
+BdapAddLinkDialog::BdapAddLinkDialog(QWidget *parent, int OdynCashUnits) : QDialog(parent),
                                                         ui(new Ui::BdapAddLinkDialog)
 {
     ui->setupUi(this);
 
-    nDynamicUnits = DynamicUnits;
+    nOdynCashUnits = OdynCashUnits;
 
     connect(ui->pushButtonCancel, SIGNAL(clicked()), this, SLOT(goCancel()));
     connect(ui->pushButtonAddLink, SIGNAL(clicked()), this, SLOT(addLink()));
@@ -135,7 +135,7 @@ void BdapAddLinkDialog::addLink()
         return;
     } //if requestor
 
-    if (!bdapFeesPopup(this,OP_BDAP_NEW,OP_BDAP_LINK_REQUEST,BDAP::ObjectType::BDAP_LINK_REQUEST,nDynamicUnits)) {
+    if (!bdapFeesPopup(this,OP_BDAP_NEW,OP_BDAP_LINK_REQUEST,BDAP::ObjectType::BDAP_LINK_REQUEST,nOdynCashUnits)) {
         goClose();
         return;
     }

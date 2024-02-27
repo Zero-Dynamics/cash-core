@@ -6,13 +6,13 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dynamic-config.h" /* for USE_QRCODE */
+#include "config/odyncash-config.h" /* for USE_QRCODE */
 #endif
 
 #include "receiverequestdialog.h"
 #include "ui_receiverequestdialog.h"
 
-#include "dynamicunits.h"
+#include "odyncashunits.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
@@ -134,7 +134,7 @@ void ReceiveRequestDialog::update()
         target = info.address;
     setWindowTitle(tr("Request payment to %1").arg(target));
 
-    QString uri = GUIUtil::formatDynamicURI(info);
+    QString uri = GUIUtil::formatOdynCashURI(info);
     ui->btnSaveAs->setEnabled(false);
     QString html;
     html += "<html><font face='verdana, arial, helvetica, sans-serif'>";
@@ -143,7 +143,7 @@ void ReceiveRequestDialog::update()
     html += "<a href=\"" + uri + "\">" + GUIUtil::HtmlEscape(uri) + "</a><br>";
     html += "<b>" + tr("Address") + "</b>: " + GUIUtil::HtmlEscape(info.address) + "<br>";
     if (info.amount)
-        html += "<b>" + tr("Amount") + "</b>: " + DynamicUnits::formatHtmlWithUnit(model->getDisplayUnit(), info.amount) + "<br>";
+        html += "<b>" + tr("Amount") + "</b>: " + OdynCashUnits::formatHtmlWithUnit(model->getDisplayUnit(), info.amount) + "<br>";
     if (!info.label.isEmpty())
         html += "<b>" + tr("Label") + "</b>: " + GUIUtil::HtmlEscape(info.label) + "<br>";
     if (!info.message.isEmpty())
@@ -195,7 +195,7 @@ void ReceiveRequestDialog::update()
 
 void ReceiveRequestDialog::on_btnCopyURI_clicked()
 {
-    GUIUtil::setClipboard(GUIUtil::formatDynamicURI(info));
+    GUIUtil::setClipboard(GUIUtil::formatOdynCashURI(info));
 }
 
 void ReceiveRequestDialog::on_btnCopyAddress_clicked()

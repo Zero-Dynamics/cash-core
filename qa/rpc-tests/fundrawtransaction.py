@@ -3,11 +3,11 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import DynamicTestFramework
+from test_framework.test_framework import OdynCashTestFramework
 from test_framework.util import *
 
 # Create one-input, one-output, no-fee transaction:
-class RawTransactionsTest(DynamicTestFramework):
+class RawTransactionsTest(OdynCashTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)
@@ -442,7 +442,7 @@ class RawTransactionsTest(DynamicTestFramework):
         self.nodes[1].encryptwallet("test")
         self.nodes.pop(1)
         stop_nodes(self.nodes)
-        wait_dynamicds()
+        wait_odyncashds()
 
         self.nodes = start_nodes(4, self.options.tmpdir)
         # This test is not meant to test fee estimation and we'd like

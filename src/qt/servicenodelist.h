@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_SERVICENODELIST_H
-#define DYNAMIC_QT_SERVICENODELIST_H
+#ifndef ODYNCASH_QT_SERVICENODELIST_H
+#define ODYNCASH_QT_SERVICENODELIST_H
 
 #include "platformstyle.h"
 
@@ -81,4 +81,4 @@ private Q_SLOTS:
     void on_tableWidgetMyServiceNodes_itemSelectionChanged();
     void on_UpdateButton_clicked();
 };
-#endif // DYNAMIC_QT_SERVICENODELIST_H
+#endif // ODYNCASH_QT_SERVICENODELIST_H

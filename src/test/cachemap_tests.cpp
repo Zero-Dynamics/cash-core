@@ -2,7 +2,7 @@
 
 #include "cachemap.h"
 
-#include "test/test_dynamic.h"
+#include "test/test_odyncash.h"
 
 #include <boost/test/unit_test.hpp>
 

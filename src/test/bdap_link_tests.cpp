@@ -11,7 +11,7 @@
 #include "uint256.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_dynamic.h"
+#include "test/test_odyncash.h"
 #include "bdap/linking.h"
 
 
@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(bdap_link_test1)
     CreateSignatureProof(key, strTestFQDN, vchSignature);
     CPubKey pubKey = key.GetPubKey();
     CKeyID keyID = pubKey.GetID();
-    CDynamicAddress address = CDynamicAddress(keyID);
+    COdynCashAddress address = COdynCashAddress(keyID);
     BOOST_CHECK(SignatureProofIsValid(address, strTestFQDN, vchSignature) == true);
 
     std::cout << "Exit: bdap_link_test1\n";

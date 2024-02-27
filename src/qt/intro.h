@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_INTRO_H
-#define DYNAMIC_QT_INTRO_H
+#ifndef ODYNCASH_QT_INTRO_H
+#define ODYNCASH_QT_INTRO_H
 
 #include <QDialog>
 #include <QMutex>
@@ -79,4 +79,4 @@ private:
     friend class FreespaceChecker;
 };
 
-#endif // DYNAMIC_QT_INTRO_H
+#endif // ODYNCASH_QT_INTRO_H

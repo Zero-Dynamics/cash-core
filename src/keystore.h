@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_KEYSTORE_H
-#define DYNAMIC_KEYSTORE_H
+#ifndef ODYNCASH_KEYSTORE_H
+#define ODYNCASH_KEYSTORE_H
 
 #include "dht/ed25519.h"
 #include "hdchain.h"
@@ -138,4 +138,4 @@ typedef std::vector<unsigned char, secure_allocator<unsigned char> > CKeyingMate
 typedef std::map<CKeyID, std::pair<CPubKey, std::vector<unsigned char> > > CryptedKeyMap;
 typedef std::map<CKeyID, std::pair<std::vector<unsigned char>, std::vector<unsigned char> > > CryptedDHTKeyMap;
 
-#endif // DYNAMIC_KEYSTORE_H
+#endif // ODYNCASH_KEYSTORE_H

@@ -8,7 +8,7 @@
 #include "privatesendconfig.h"
 #include "ui_privatesendconfig.h"
 
-#include "dynamicunits.h"
+#include "odyncashunits.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"
 #include "walletmodel.h"
@@ -45,11 +45,11 @@ void PrivateSendConfig::clickBasic()
 {
     configure(true, MAX_PRIVATESEND_AMOUNT, 2);
 
-    QString strAmount(DynamicUnits::formatWithUnit(
+    QString strAmount(OdynCashUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), MAX_PRIVATESEND_AMOUNT * COIN));
     QMessageBox::information(this, tr("PrivateSend Configuration"),
         tr(
-            "PrivateSend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Dynamic's configuration screen.")
+            "PrivateSend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening OdynCash's configuration screen.")
             .arg(strAmount));
 
     close();
@@ -59,11 +59,11 @@ void PrivateSendConfig::clickHigh()
 {
     configure(true, MAX_PRIVATESEND_AMOUNT, 8);
 
-    QString strAmount(DynamicUnits::formatWithUnit(
+    QString strAmount(OdynCashUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), MAX_PRIVATESEND_AMOUNT * COIN));
     QMessageBox::information(this, tr("PrivateSend Configuration"),
         tr(
-            "PrivateSend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Dynamic's configuration screen.")
+            "PrivateSend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening OdynCash's configuration screen.")
             .arg(strAmount));
 
     close();
@@ -73,11 +73,11 @@ void PrivateSendConfig::clickMax()
 {
     configure(true, MAX_PRIVATESEND_AMOUNT, 16);
 
-    QString strAmount(DynamicUnits::formatWithUnit(
+    QString strAmount(OdynCashUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), MAX_PRIVATESEND_AMOUNT * COIN));
     QMessageBox::information(this, tr("PrivateSend Configuration"),
         tr(
-            "PrivateSend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Dynamic's configuration screen.")
+            "PrivateSend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening OdynCash's configuration screen.")
             .arg(strAmount));
 
     close();

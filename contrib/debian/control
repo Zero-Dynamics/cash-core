@@ -1,4 +1,4 @@
-Source: dynamic
+Source: odyncash
 Section: utils
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk> ***TODO***
@@ -21,15 +21,15 @@ Build-Depends: debhelper,
  libqt4-dev,
  libqrencode-dev
 Standards-Version: 3.9.2
-Homepage: http://www.dynamicpay.io/
-Vcs-Git: git://github.com/duality-solutions/dynamic.git
-Vcs-Browser: http://github.com/duality-solutions/dynamic
+Homepage: http://www.odyncashpay.io/
+Vcs-Git: git://github.com/duality-solutions/odyncash.git
+Vcs-Browser: http://github.com/duality-solutions/odyncash
 
-Package: dynamicd
+Package: odyncashd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Dynamic is a free open source peer-to-peer electronic cash system that
+ OdynCash is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
@@ -38,14 +38,14 @@ Description: peer-to-peer network based digital currency - daemon
  Full transaction history is stored locally at each client.  This
  requires 1+ GB of space, slowly growing.
  .
- This package provides the daemon, dynamicd, and the CLI tool
- dynamic-cli to interact with the daemon.
+ This package provides the daemon, odyncashd, and the CLI tool
+ odyncash-cli to interact with the daemon.
 
-Package: dynamic-qt
+Package: odyncash-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Dynamic is a free open source peer-to-peer electronic cash system that
+ OdynCash is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
@@ -54,4 +54,4 @@ Description: peer-to-peer network based digital currency - Qt GUI
  Full transaction history is stored locally at each client.  This
  requires 1+ GB of space, slowly growing.
  .
- This package provides Dynamic-Qt, a GUI for Dynamic based on Qt.
+ This package provides OdynCash-Qt, a GUI for OdynCash based on Qt.

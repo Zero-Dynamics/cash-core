@@ -8,8 +8,8 @@
 #include "guiutil.h"
 
 #include "arith_uint256.h"
-#include "dynamicaddressvalidator.h"
-#include "dynamicunits.h"
+#include "odyncashaddressvalidator.h"
+#include "odyncashunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
 
@@ -103,7 +103,7 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
-QFont DynamicAddressFont()
+QFont OdynCashAddressFont()
 {
     QFont font("Monospace");
 #if QT_VERSION >= 0x040800
@@ -139,7 +139,7 @@ static std::string DummyAddress(const CChainParams& params)
     sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));
     for (int i = 0; i < 256; ++i) { // Try every trailing byte
         std::string s = EncodeBase58(sourcedata.data(), sourcedata.data() + sourcedata.size());
-        if (!CDynamicAddress(s).IsValid())
+        if (!COdynCashAddress(s).IsValid())
             return s;
         sourcedata[sourcedata.size() - 1] += 1;
     }
@@ -154,10 +154,10 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a Dynamic address (e.g. %1)").arg(QString::fromStdString(DummyAddress(Params()))));
+    widget->setPlaceholderText(QObject::tr("Enter a OdynCash address (e.g. %1)").arg(QString::fromStdString(DummyAddress(Params()))));
 #endif
-    widget->setValidator(new DynamicAddressEntryValidator(parent));
-    widget->setCheckValidator(new DynamicAddressCheckValidator(parent));
+    widget->setValidator(new OdynCashAddressEntryValidator(parent));
+    widget->setCheckValidator(new OdynCashAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit* widget, QWidget* parent)
@@ -169,10 +169,10 @@ void setupAmountWidget(QLineEdit* widget, QWidget* parent)
     widget->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 }
 
-bool parseDynamicURI(const QUrl& uri, SendCoinsRecipient* out)
+bool parseOdynCashURI(const QUrl& uri, SendCoinsRecipient* out)
 {
-    // return if URI is not valid or is no dynamic: URI
-    if (!uri.isValid() || uri.scheme() != QString("dynamic"))
+    // return if URI is not valid or is no odyncash: URI
+    if (!uri.isValid() || uri.scheme() != QString("odyncash"))
         return false;
 
     SendCoinsRecipient rv;
@@ -213,7 +213,7 @@ bool parseDynamicURI(const QUrl& uri, SendCoinsRecipient* out)
             fShouldReturnFalse = false;
         } else if (i->first == "amount") {
             if (!i->second.isEmpty()) {
-                if (!DynamicUnits::parse(DynamicUnits::DYN, i->second, &rv.amount)) {
+                if (!OdynCashUnits::parse(OdynCashUnits::DYN, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -229,26 +229,26 @@ bool parseDynamicURI(const QUrl& uri, SendCoinsRecipient* out)
     return true;
 }
 
-bool parseDynamicURI(QString uri, SendCoinsRecipient* out)
+bool parseOdynCashURI(QString uri, SendCoinsRecipient* out)
 {
-    // Convert dynamic:// to dynamic:
+    // Convert odyncash:// to odyncash:
     //
-    //    Cannot handle this later, because dynamic:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because odyncash:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if (uri.startsWith("dynamic://", Qt::CaseInsensitive)) {
-        uri.replace(0, 7, "dynamic:");
+    if (uri.startsWith("odyncash://", Qt::CaseInsensitive)) {
+        uri.replace(0, 7, "odyncash:");
     }
     QUrl uriInstance(uri);
-    return parseDynamicURI(uriInstance, out);
+    return parseOdynCashURI(uriInstance, out);
 }
 
-QString formatDynamicURI(const SendCoinsRecipient& info)
+QString formatOdynCashURI(const SendCoinsRecipient& info)
 {
-    QString ret = QString("dynamic:%1").arg(info.address);
+    QString ret = QString("odyncash:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount) {
-        ret += QString("?amount=%1").arg(DynamicUnits::format(DynamicUnits::DYN, info.amount, false, DynamicUnits::separatorNever));
+        ret += QString("?amount=%1").arg(OdynCashUnits::format(OdynCashUnits::DYN, info.amount, false, OdynCashUnits::separatorNever));
         paramCount++;
     }
 
@@ -274,7 +274,7 @@ QString formatDynamicURI(const SendCoinsRecipient& info)
 
 bool isDust(const QString& address, const CAmount& amount)
 {
-    CTxDestination dest = CDynamicAddress(address.toStdString()).Get();
+    CTxDestination dest = COdynCashAddress(address.toStdString()).Get();
     CScript script = GetScriptForDestination(dest);
     CTxOut txOut(amount, script);
     return txOut.IsDust(dustRelayFee);
@@ -422,9 +422,9 @@ void openDebugLogfile()
 
 void openConfigfile()
 {
-    boost::filesystem::path pathConfig = GetConfigFile(GetArg("-conf", DYNAMIC_CONF_FILENAME));
+    boost::filesystem::path pathConfig = GetConfigFile(GetArg("-conf", ODYNCASH_CONF_FILENAME));
 
-    /* Open dynamic.conf with the associated application */
+    /* Open odyncash.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
@@ -622,15 +622,15 @@ boost::filesystem::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Dynamic.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "OdynCash.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Dynamic (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Dynamic (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "OdynCash (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("OdynCash (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for Dynamic*.lnk
+    // check for OdynCash*.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -721,8 +721,8 @@ boost::filesystem::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "dynamic.desktop";
-    return GetAutostartDir() / strprintf("dynamic-%s.lnk", chain);
+        return GetAutostartDir() / "odyncash.desktop";
+    return GetAutostartDir() / strprintf("odyncash-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -759,13 +759,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a dynamic.desktop file to the autostart directory:
+        // Write a odyncash.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=Dynamic\n";
+            optionFile << "Name=OdynCash\n";
         else
-            optionFile << strprintf("Name=Dynamic (%s)\n", chain);
+            optionFile << strprintf("Name=OdynCash (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", GetBoolArg("-testnet", false), GetBoolArg("-regtest", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -791,7 +791,7 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
         return nullptr;
     }
 
-    // loop through the list of startup items and try to find the Dynamic app
+    // loop through the list of startup items and try to find the OdynCash app
     for (int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
         UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
@@ -823,21 +823,21 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef dynamicAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef odyncashAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, dynamicAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, odyncashAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef dynamicAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef odyncashAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, dynamicAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, odyncashAppUrl);
 
     if (fAutoStart && !foundItem) {
-        // add Dynamic Core app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, dynamicAppUrl, NULL, NULL);
+        // add OdynCash Core app to startup item list
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, odyncashAppUrl, NULL, NULL);
     } else if (!fAutoStart && foundItem) {
         // remove item
         LSSharedFileListItemRemove(loginItems, foundItem);

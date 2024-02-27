@@ -89,7 +89,7 @@ UniValue maketoken(const JSONRPCRequest& request)
             "\nArguments:\n"
             "1. \"string\"         (string, required) String that has to be converted to hex.\n"
             "\nExamples:\n" +
-            HelpExampleCli("maketoken", "300000 1558389600 DNsEXkNEdzvNbR3zjaDa3TEVPtwR6Efbmd") + 
+            HelpExampleCli("maketoken", "300000 1558389600 DNsEXkNEdzvNbR3zjaDa3TEVPtwR6Efbmd") +
             HelpExampleRpc("maketoken", "300000 1558389600 DNsEXkNEdzvNbR3zjaDa3TEVPtwR6Efbmd"));
     }
 
@@ -114,7 +114,7 @@ UniValue banaccountstoken(const JSONRPCRequest& request)
             "1. \"timestamp\"         (int, required) Fluid transaction timestamp.\n"
             "2. \"account_fqdn1\"     (string, required) The BDAP account fully qualified domain name.\n"
             "\nExamples:\n" +
-            HelpExampleCli("banaccountstoken", "1558389600 \"badaccount@public.bdap.io\" \"banme@public.bdap.io\"") + 
+            HelpExampleCli("banaccountstoken", "1558389600 \"badaccount@public.bdap.io\" \"banme@public.bdap.io\"") +
             HelpExampleRpc("banaccountstoken", "1558389600 \"badaccount@public.bdap.io\" \"banme@public.bdap.io\""));
     }
 
@@ -151,26 +151,26 @@ UniValue gettime(const JSONRPCRequest& request)
             "gettime\n"
             "\nReturns the current Epoch time (https://www.epochconverter.com).\n"
             "\nExamples:\n" +
-            HelpExampleCli("gettime", "\"1535543210\"") + 
+            HelpExampleCli("gettime", "\"1535543210\"") +
             HelpExampleRpc("gettime", "\"1535543210\""));
     }
     return GetTime();
 }
 
 #ifdef ENABLE_WALLET
-UniValue burndynamic(const JSONRPCRequest& request)
+UniValue burnodyncash(const JSONRPCRequest& request)
 {
 
     if (request.fHelp || request.params.size() > 2 || request.params.size() == 0)
         throw std::runtime_error(
-            "burndynamic \"amount\" \"address\"\n"
-            "\nSend coins to be burnt (destroyed) onto the Dynamic Network\n"
+            "burnodyncash \"amount\" \"address\"\n"
+            "\nSend coins to be burnt (destroyed) onto the OdynCash Network\n"
             "\nArguments:\n"
             "1. \"amount\"         (numeric, required) The amount of coins to be burned.\n"
             "2. \"address\"        (string, optional)  The address to burn funds. You must have the address private key in the wallet file.\n"
             "\nExamples:\n" +
-            HelpExampleCli("burndynamic", "\"123.456\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"") + 
-            HelpExampleRpc("burndynamic", "\"123.456\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\""));
+            HelpExampleCli("burnodyncash", "\"123.456\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"") +
+            HelpExampleRpc("burnodyncash", "\"123.456\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\""));
 
     if (!EnsureWalletIsAvailable(request.fHelp))
         return NullUniValue;
@@ -188,9 +188,9 @@ UniValue burndynamic(const JSONRPCRequest& request)
     std::string strAddress;
     if (!request.params[1].isNull()) {
         strAddress = request.params[1].get_str();
-        CDynamicAddress address(strAddress);
+        COdynCashAddress address(strAddress);
         if (!address.IsValid())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dynamic address");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
 
         scriptSendFrom = GetScriptForDestination(address.Get());
     }
@@ -216,7 +216,7 @@ UniValue sendfluidtransaction(const JSONRPCRequest& request)
             "1. \"opcode\"  (string, required) The Fluid operation to be executed.\n"
             "2. \"hexstring\" (string, required) The token for that opearation.\n"
             "\nExamples:\n" +
-            HelpExampleCli("sendfluidtransaction", "\"OP_MINT\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") + 
+            HelpExampleCli("sendfluidtransaction", "\"OP_MINT\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") +
             HelpExampleRpc("sendfluidtransaction", "\"OP_MINT\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\""));
 
     if (!EnsureWalletIsAvailable(request.fHelp))
@@ -255,17 +255,17 @@ UniValue signtoken(const JSONRPCRequest& request)
             "signtoken \"address\" \"tokenkey\"\n"
             "\nSign a Fluid Protocol Token\n"
             "\nArguments:\n"
-            "1. \"address\"         (string, required) The Dynamic Address which will be used to sign.\n"
+            "1. \"address\"         (string, required) The OdynCash Address which will be used to sign.\n"
             "2. \"tokenkey\"         (string, required) The token which has to be initially signed\n"
             "\nExamples:\n" +
-            HelpExampleCli("signtoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") + 
+            HelpExampleCli("signtoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") +
             HelpExampleRpc("signtoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\""));
 
     std::string result;
 
-    CDynamicAddress address(request.params[0].get_str());
+    COdynCashAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dynamic address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
 
     if (!fluid.VerifyAddressOwnership(address))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Address is not fluid protocol sovereign address");
@@ -293,17 +293,17 @@ UniValue consenttoken(const JSONRPCRequest& request)
             "consenttoken \"address\" \"tokenkey\"\n"
             "\nGive consent to a Fluid Protocol Token as a second party\n"
             "\nArguments:\n"
-            "1. \"address\"         (string, required) The Dynamic Address which will be used to give consent.\n"
+            "1. \"address\"         (string, required) The OdynCash Address which will be used to give consent.\n"
             "2. \"tokenkey\"         (string, required) The token which has to be been signed by one party\n"
             "\nExamples:\n" +
-            HelpExampleCli("consenttoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") + 
+            HelpExampleCli("consenttoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") +
             HelpExampleRpc("consenttoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\""));
 
     std::string result;
 
-    CDynamicAddress address(request.params[0].get_str());
+    COdynCashAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dynamic address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
 
     if (!IsHex(request.params[1].get_str()))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Hex string is invalid! Token incorrect");
@@ -351,13 +351,13 @@ UniValue getfluidhistoryraw(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
             "getfluidhistoryraw\n"
-            "\nReturns raw data about each fluid command confirmed on the Dynamic blockchain.\n"
+            "\nReturns raw data about each fluid command confirmed on the OdynCash blockchain.\n"
             "\nResult:\n"
             "{                   (json array of string)\n"
             "  \"fluid_command\"     (string) The operation code and raw fluid script command\n"
             "}, ...\n"
             "\nExamples\n" +
-            HelpExampleCli("getfluidhistoryraw", "") + 
+            HelpExampleCli("getfluidhistoryraw", "") +
             HelpExampleRpc("getfluidhistoryraw", ""));
 
     UniValue ret(UniValue::VOBJ);
@@ -466,7 +466,7 @@ UniValue getfluidhistory(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
             "getfluidhistory\n"
-            "\nReturns data about each fluid command confirmed on the Dynamic blockchain.\n"
+            "\nReturns data about each fluid command confirmed on the OdynCash blockchain.\n"
             "\nResult:\n"
             "[                   (json array of object)\n"
             "  {                 (json object)\n"
@@ -481,7 +481,7 @@ UniValue getfluidhistory(const JSONRPCRequest& request)
             "  }, ...\n"
             "]\n"
             "\nExamples\n" +
-            HelpExampleCli("getfluidhistory", "") + 
+            HelpExampleCli("getfluidhistory", "") +
             HelpExampleRpc("getfluidhistory", ""));
 
     UniValue ret(UniValue::VOBJ);
@@ -645,7 +645,7 @@ UniValue getfluidsovereigns(const JSONRPCRequest& request)
             "  \"sovereign address\"     (string) A sovereign address with permission to co-sign a fluid command\n"
             "}, ...\n"
             "\nExamples\n" +
-            HelpExampleCli("getfluidsovereigns", "") + 
+            HelpExampleCli("getfluidsovereigns", "") +
             HelpExampleRpc("getfluidsovereigns", ""));
 
     UniValue ret(UniValue::VOBJ);
@@ -685,7 +685,7 @@ UniValue readfluidtoken(const JSONRPCRequest& request)
             "  \"sovereign address\"     (string) A sovereign address with permission to co-sign a fluid command\n"
             "}, ...\n"
             "\nExamples\n" +
-            HelpExampleCli("readfluidtoken", "tokenkey") + 
+            HelpExampleCli("readfluidtoken", "tokenkey") +
             HelpExampleRpc("readfluidtoken", "tokenkey"));
 
     UniValue ret(UniValue::VOBJ);
@@ -756,7 +756,7 @@ UniValue readfluidtoken(const JSONRPCRequest& request)
                     ret.push_back(Pair("signature_1", vecSplitAddress[1]));
                     ret.push_back(Pair("signature_2", vecSplitAddress[2]));
                     ret.push_back(Pair("signature_3", vecSplitAddress[3]));
-                } 
+                }
             }
             else {
                 if (vecSplitAddress.size() == 2) {
@@ -772,7 +772,7 @@ UniValue readfluidtoken(const JSONRPCRequest& request)
                     ret.push_back(Pair("signature_3", vecSplitAddress[3]));
                 }
             }
-            
+
         }
     } else {
         throw std::runtime_error("READ_FLUID_TOKEN_RPC_ERROR: ERRCODE: 4105 - " + _("Fluid token is not hex"));
@@ -790,7 +790,7 @@ static const CRPCCommand commands[] =
         {"fluid", "sendfluidtransaction", &sendfluidtransaction, true, {"opcode", "hexstring"}},
         {"fluid", "signtoken", &signtoken, true, {"address", "tokenkey"}},
         {"fluid", "consenttoken", &consenttoken, true, {"address", "tokenkey"}},
-        {"fluid", "burndynamic", &burndynamic, true, {"amount", "address"}},
+        {"fluid", "burnodyncash", &burnodyncash, true, {"amount", "address"}},
 #endif //ENABLE_WALLET
         {"fluid", "verifyquorum", &verifyquorum, true, {"tokenkey"}},
         {"fluid", "maketoken", &maketoken, true, {"string"}},

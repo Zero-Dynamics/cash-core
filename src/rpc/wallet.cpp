@@ -115,13 +115,13 @@ UniValue getnewaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
             "getnewaddress ( \"account\" )\n"
-            "\nReturns a new Dynamic address for receiving payments.\n"
+            "\nReturns a new OdynCash address for receiving payments.\n"
             "If 'account' is specified (DEPRECATED), it is added to the address book \n"
             "so payments received with the address will be credited to 'account'.\n"
             "\nArguments:\n"
             "1. \"account\"        (string, optional) DEPRECATED. The account name for the address to be linked to. If not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"dynamicaddress\"    (string) The new dynamic address\n"
+            "\"odyncashaddress\"    (string) The new odyncash address\n"
             "\nExamples:\n" +
             HelpExampleCli("getnewaddress", "") + HelpExampleRpc("getnewaddress", ""));
 
@@ -148,7 +148,7 @@ UniValue getnewaddress(const JSONRPCRequest& request)
 
     pwalletMain->SetAddressBook(keyID, strAccount, "receive");
 
-    return CDynamicAddress(keyID).ToString();
+    return COdynCashAddress(keyID).ToString();
 }
 
 UniValue getnewed25519address(const JSONRPCRequest& request)
@@ -159,13 +159,13 @@ UniValue getnewed25519address(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
             "getnewed25519address ( \"account\" )\n"
-            "\nReturns a new Dynamic address for receiving payments.\n"
+            "\nReturns a new OdynCash address for receiving payments.\n"
             "If 'account' is specified (DEPRECATED), it is added to the address book \n"
             "so payments received with the address will be credited to 'account'.\n"
             "\nArguments:\n"
             "1. \"account\"        (string, optional) DEPRECATED. The account name for the address to be linked to. If not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"dynamicaddress\"    (string) The new dynamic address\n"
+            "\"odyncashaddress\"    (string) The new odyncash address\n"
             "\nExamples:\n" +
             HelpExampleCli("getnewed25519address", "") + HelpExampleRpc("getnewed25519address", ""));
 
@@ -196,7 +196,7 @@ UniValue getnewed25519address(const JSONRPCRequest& request)
 
     UniValue returnvalue(UniValue::VOBJ);
 
-    returnvalue.push_back(Pair("walletaddress:",CDynamicAddress(keyID).ToString()));
+    returnvalue.push_back(Pair("walletaddress:",COdynCashAddress(keyID).ToString()));
     returnvalue.push_back(Pair("ed25519 PubKey:",newEdKeyString));
 
     return returnvalue;
@@ -213,7 +213,7 @@ static UniValue getnewstealthaddress(const JSONRPCRequest &request)
             "\nReturns a new stealth address for receiving links.\n"
             "\nArguments:\n"
             "\nResult:\n"
-            "\"stealthaddress\"    (string) The new Dynamic stealth address\n"
+            "\"stealthaddress\"    (string) The new OdynCash stealth address\n"
             "\nExamples:\n" +
             HelpExampleCli("getnewstealthaddress", "") + HelpExampleRpc("getnewstealthaddress", ""));
 
@@ -234,14 +234,14 @@ static UniValue getnewstealthaddress(const JSONRPCRequest &request)
     return sxAddr.ToString();
 }
 
-CDynamicAddress GetAccountAddress(std::string strAccount, bool bForceNew = false)
+COdynCashAddress GetAccountAddress(std::string strAccount, bool bForceNew = false)
 {
     CPubKey pubKey;
     if (!pwalletMain->GetAccountPubkey(pubKey, strAccount, bForceNew)) {
         throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
     }
 
-    return CDynamicAddress(pubKey.GetID());
+    return COdynCashAddress(pubKey.GetID());
 }
 
 UniValue getaccountaddress(const JSONRPCRequest& request)
@@ -252,11 +252,11 @@ UniValue getaccountaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
             "getaccountaddress \"account\"\n"
-            "\nDEPRECATED. Returns the current Dynamic address for receiving payments to this account.\n"
+            "\nDEPRECATED. Returns the current OdynCash address for receiving payments to this account.\n"
             "\nArguments:\n"
             "1. \"account\"       (string, required) The account name for the address. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created and a new address created  if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"dynamicaddress\"   (string) The account dynamic address\n"
+            "\"odyncashaddress\"   (string) The account odyncash address\n"
             "\nExamples:\n" +
             HelpExampleCli("getaccountaddress", "") + HelpExampleCli("getaccountaddress", "\"\"") + HelpExampleCli("getaccountaddress", "\"myaccount\"") + HelpExampleRpc("getaccountaddress", "\"myaccount\""));
 
@@ -280,7 +280,7 @@ UniValue getrawchangeaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
             "getrawchangeaddress\n"
-            "\nReturns a new Dynamic address, for receiving change.\n"
+            "\nReturns a new OdynCash address, for receiving change.\n"
             "This is for use with raw transactions, NOT normal use.\n"
             "\nResult:\n"
             "\"address\"    (string) The address\n"
@@ -301,7 +301,7 @@ UniValue getrawchangeaddress(const JSONRPCRequest& request)
 
     CKeyID keyID = vchPubKey.GetID();
 
-    return CDynamicAddress(keyID).ToString();
+    return COdynCashAddress(keyID).ToString();
 }
 
 
@@ -312,19 +312,19 @@ UniValue setaccount(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 2)
         throw std::runtime_error(
-            "setaccount \"dynamicaddress\" \"account\"\n"
+            "setaccount \"odyncashaddress\" \"account\"\n"
             "\nDEPRECATED. Sets the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"dynamicaddress\"  (string, required) The dynamic address to be associated with an account.\n"
+            "1. \"odyncashaddress\"  (string, required) The odyncash address to be associated with an account.\n"
             "2. \"account\"         (string, required) The account to assign the address to.\n"
             "\nExamples:\n" +
             HelpExampleCli("setaccount", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"tabby\"") + HelpExampleRpc("setaccount", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", \"tabby\""));
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CDynamicAddress address(request.params[0].get_str());
+    COdynCashAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dynamic address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
 
     std::string strAccount;
     if (request.params.size() > 1)
@@ -353,10 +353,10 @@ UniValue getaccount(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
-            "getaccount \"dynamicaddress\"\n"
+            "getaccount \"odyncashaddress\"\n"
             "\nDEPRECATED. Returns the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"dynamicaddress\"  (string, required) The dynamic address for account lookup.\n"
+            "1. \"odyncashaddress\"  (string, required) The odyncash address for account lookup.\n"
             "\nResult:\n"
             "\"accountname\"        (string) the account address\n"
             "\nExamples:\n" +
@@ -364,9 +364,9 @@ UniValue getaccount(const JSONRPCRequest& request)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CDynamicAddress address(request.params[0].get_str());
+    COdynCashAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dynamic address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
 
     std::string strAccount;
     std::map<CTxDestination, CAddressBookData>::iterator mi = pwalletMain->mapAddressBook.find(address.Get());
@@ -389,7 +389,7 @@ UniValue getaddressesbyaccount(const JSONRPCRequest& request)
             "1. \"account\"  (string, required) The account name.\n"
             "\nResult:\n"
             "[                     (json array of string)\n"
-            "  \"dynamicaddress\"  (string) a dynamic address associated with the given account\n"
+            "  \"odyncashaddress\"  (string) a odyncash address associated with the given account\n"
             "  ,...\n"
             "]\n"
             "\nExamples:\n" +
@@ -401,8 +401,8 @@ UniValue getaddressesbyaccount(const JSONRPCRequest& request)
 
     // Find all addresses that have the given account
     UniValue ret(UniValue::VARR);
-    BOOST_FOREACH (const PAIRTYPE(CDynamicAddress, CAddressBookData) & item, pwalletMain->mapAddressBook) {
-        const CDynamicAddress& address = item.first;
+    BOOST_FOREACH (const PAIRTYPE(COdynCashAddress, CAddressBookData) & item, pwalletMain->mapAddressBook) {
+        const COdynCashAddress& address = item.first;
         const std::string& strName = item.second.name;
         if (strName == strAccount)
             ret.push_back(address.ToString());
@@ -438,9 +438,9 @@ static void SendMoney(const CTxDestination& address, CAmount nValue, bool fSubtr
         fStealthAddress = true;
         CTxDestination newDest;
         if (ExtractDestination(scriptPubKey, newDest))
-            LogPrint("bdap", "%s -- Stealth send to address: %s\n", __func__, CDynamicAddress(newDest).ToString());
+            LogPrint("bdap", "%s -- Stealth send to address: %s\n", __func__, COdynCashAddress(newDest).ToString());
     } else {
-        // Parse Dynamic address
+        // Parse OdynCash address
         scriptPubKey = GetScriptForDestination(address);
     }
 
@@ -472,13 +472,13 @@ static void SendMoney(const CTxDestination& address, CAmount nValue, bool fSubtr
 }
 
 /*
-For BDAP transactions, 
+For BDAP transactions,
     - nDataAmount is burned in the OP_RETURN transaction.
     - nOpAmount turns to BDAP credits and can only be used to fund BDAP fees
 */
 void SendBDAPTransaction(const CScript& bdapDataScript, const CScript& bdapOPScript, CWalletTx& wtxNew, const CAmount& nDataAmount, const CAmount& nOpAmount, const bool fUseInstantSend)
 {
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPDynamicAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
 
     // Check amounts
     if (nOpAmount <= 0)
@@ -522,10 +522,10 @@ void SendBDAPTransaction(const CScript& bdapDataScript, const CScript& bdapOPScr
     }
 }
 
-void SendLinkingTransaction(const CScript& bdapDataScript, const CScript& bdapOPScript, const CScript& stealthScript, 
+void SendLinkingTransaction(const CScript& bdapDataScript, const CScript& bdapOPScript, const CScript& stealthScript,
                                 CWalletTx& wtxNew, const CAmount& nOneTimeFee, const CAmount& nDepositFee, const bool fUseInstantSend)
 {
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPDynamicAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
 
     // Check amount
     if (nOneTimeFee <= 0)
@@ -533,7 +533,7 @@ void SendLinkingTransaction(const CScript& bdapDataScript, const CScript& bdapOP
 
     if (nOneTimeFee + nDepositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "SendLinkingTransaction insufficient funds");
-    
+
     // Create and send the transaction
     CReserveKey reservekey(pwalletMain);
     CAmount nFeeRequired;
@@ -580,7 +580,7 @@ void SendColorTransaction(const CScript& scriptColorCoins, const CScript& stealt
 
     if (nColorAmount > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("%s insufficient funds", __func__));
-    
+
     // Create and send the transaction
     CReserveKey reservekey(pwalletMain);
     CAmount nFeeRequired;
@@ -622,7 +622,7 @@ void SendCustomTransaction(const CScript& generatedScript, CWalletTx& wtxNew, CA
     if (nValue > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "Insufficient funds");
 
-    // Parse Dynamic address
+    // Parse OdynCash address
     CScript scriptPubKey = generatedScript;
 
     LogPrintf("Script Public Key to be sent over to custom transaction processing: %s\n", ScriptToAsmStr(scriptPubKey));
@@ -729,11 +729,11 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 7)
         throw std::runtime_error(
-            "sendtoaddress \"dynamicaddress\" amount ( \"comment\" \"comment-to\" subtractfeefromamount use_is use_ps )\n"
+            "sendtoaddress \"odyncashaddress\" amount ( \"comment\" \"comment-to\" subtractfeefromamount use_is use_ps )\n"
             "\nSend an amount to a given address.\n" +
             HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"dynamicaddress\" (string, required) The Dynamic address to send to.\n"
+            "1. \"odyncashaddress\" (string, required) The OdynCash address to send to.\n"
             "2. \"amount\"      (numeric or string, required) The amount in " +
             CURRENCY_UNIT + " to send. eg 0.1\n"
                             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
@@ -742,7 +742,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
                             "                             to which you're sending the transaction. This is not part of the \n"
                             "                             transaction, just kept in your wallet.\n"
                             "5. subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.\n"
-                            "                             The recipient will receive less Dynamic than you enter in the amount field.\n"
+                            "                             The recipient will receive less OdynCash than you enter in the amount field.\n"
                             "6. \"use_is\"      (bool, optional) Send this transaction as InstantSend (default: false)\n"
                             "7. \"use_ps\"      (bool, optional) Use anonymized funds only (default: false)\n"
                             "\nResult:\n"
@@ -793,11 +793,11 @@ UniValue instantsendtoaddress(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 5)
         throw std::runtime_error(
-            "instantsendtoaddress \"dynamicaddress\" amount ( \"comment\" \"comment-to\" subtractfeefromamount )\n"
+            "instantsendtoaddress \"odyncashaddress\" amount ( \"comment\" \"comment-to\" subtractfeefromamount )\n"
             "\nSend an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n" +
             HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"dynamicaddress\"  (string, required) The dynamic address to send to.\n"
+            "1. \"odyncashaddress\"  (string, required) The odyncash address to send to.\n"
             "2. \"amount\"      (numeric, required) The amount in btc to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -805,7 +805,7 @@ UniValue instantsendtoaddress(const JSONRPCRequest& request)
             "                             to which you're sending the transaction. This is not part of the \n"
             "                             transaction, just kept in your wallet.\n"
             "5. subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.\n"
-            "                             The recipient will receive less Dynamic than you enter in the amount field.\n"
+            "                             The recipient will receive less OdynCash than you enter in the amount field.\n"
             "\nResult:\n"
             "\"transactionid\"  (string) The transaction id.\n"
             "\nExamples:\n" +
@@ -815,7 +815,7 @@ UniValue instantsendtoaddress(const JSONRPCRequest& request)
 
     CTxDestination dest = DecodeDestination(request.params[0].get_str());
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dynamic address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
 
     // Amount
     CAmount nAmount = AmountFromValue(request.params[1]);
@@ -855,7 +855,7 @@ UniValue listaddressgroupings(const JSONRPCRequest& request)
             "[\n"
             "  [\n"
             "    [\n"
-            "      \"dynamicaddress\",     (string) The dynamic address\n"
+            "      \"odyncashaddress\",     (string) The odyncash address\n"
             "      amount,                 (numeric) The amount in " +
             CURRENCY_UNIT + "\n"
                             "      \"account\"             (string, optional) The account (DEPRECATED)\n"
@@ -875,11 +875,11 @@ UniValue listaddressgroupings(const JSONRPCRequest& request)
         UniValue jsonGrouping(UniValue::VARR);
         BOOST_FOREACH (CTxDestination address, grouping) {
             UniValue addressInfo(UniValue::VARR);
-            addressInfo.push_back(CDynamicAddress(address).ToString());
+            addressInfo.push_back(COdynCashAddress(address).ToString());
             addressInfo.push_back(ValueFromAmount(balances[address]));
             {
-                if (pwalletMain->mapAddressBook.find(CDynamicAddress(address).Get()) != pwalletMain->mapAddressBook.end())
-                    addressInfo.push_back(pwalletMain->mapAddressBook.find(CDynamicAddress(address).Get())->second.name);
+                if (pwalletMain->mapAddressBook.find(COdynCashAddress(address).Get()) != pwalletMain->mapAddressBook.end())
+                    addressInfo.push_back(pwalletMain->mapAddressBook.find(COdynCashAddress(address).Get())->second.name);
             }
             jsonGrouping.push_back(addressInfo);
         }
@@ -902,7 +902,7 @@ UniValue listaddressbalances(const JSONRPCRequest& request)
             CURRENCY_UNIT + " an address should have to be shown in the list\n"
                             "\nResult:\n"
                             "{\n"
-                            "  \"address\": amount,       (string) The Dynamic address and the amount in " +
+                            "  \"address\": amount,       (string) The OdynCash address and the amount in " +
             CURRENCY_UNIT + "\n"
                             "  ,...\n"
                             "}\n"
@@ -922,7 +922,7 @@ UniValue listaddressbalances(const JSONRPCRequest& request)
     std::map<CTxDestination, CAmount> balances = pwalletMain->GetAddressBalances();
     for (auto& balance : balances)
         if (balance.second >= nMinAmount)
-            jsonBalances.push_back(Pair(CDynamicAddress(balance.first).ToString(), ValueFromAmount(balance.second)));
+            jsonBalances.push_back(Pair(COdynCashAddress(balance.first).ToString(), ValueFromAmount(balance.second)));
 
     return jsonBalances;
 }
@@ -934,11 +934,11 @@ UniValue signmessage(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() != 2)
         throw std::runtime_error(
-            "signmessage \"dynamicaddress\" \"message\"\n"
+            "signmessage \"odyncashaddress\" \"message\"\n"
             "\nSign a message with the private key of an address" +
             HelpRequiringPassphrase() + "\n"
                                         "\nArguments:\n"
-                                        "1. \"dynamicaddress\"  (string, required) The dynamic address to use for the private key.\n"
+                                        "1. \"odyncashaddress\"  (string, required) The odyncash address to use for the private key.\n"
                                         "2. \"message\"         (string, required) The message to create a signature of.\n"
                                         "\nResult:\n"
                                         "\"signature\"          (string) The signature of the message encoded in base 64\n"
@@ -956,7 +956,7 @@ UniValue signmessage(const JSONRPCRequest& request)
     std::string strAddress = request.params[0].get_str();
     std::string strMessage = request.params[1].get_str();
 
-    CDynamicAddress addr(strAddress);
+    COdynCashAddress addr(strAddress);
     if (!addr.IsValid())
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid address");
 
@@ -986,10 +986,10 @@ UniValue getreceivedbyaddress(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 3)
         throw std::runtime_error(
-            "getreceivedbyaddress \"dynamicaddress\" ( minconf addlocked )\n"
-            "\nReturns the total amount received by the given dynamicaddress in transactions with specified minimum number of confirmations.\n"
+            "getreceivedbyaddress \"odyncashaddress\" ( minconf addlocked )\n"
+            "\nReturns the total amount received by the given odyncashaddress in transactions with specified minimum number of confirmations.\n"
             "\nArguments:\n"
-            "1. \"dynamicaddress\"  (string, required) The dynamic address for transactions.\n"
+            "1. \"odyncashaddress\"  (string, required) The odyncash address for transactions.\n"
             "2. minconf        (numeric, optional, default=1) Only include transactions confirmed at least this many times.\n"
             "3. addlocked           (bool, optional, default=false) Whether to include transactions locked via InstantSend.\n"
                             "\nResult:\n"
@@ -1004,10 +1004,10 @@ UniValue getreceivedbyaddress(const JSONRPCRequest& request)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    // Dynamic address
-    CDynamicAddress address = CDynamicAddress(request.params[0].get_str());
+    // OdynCash address
+    COdynCashAddress address = COdynCashAddress(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dynamic address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
     CScript scriptPubKey = GetScriptForDestination(address.Get());
     if (!IsMine(*pwalletMain, scriptPubKey))
         return ValueFromAmount(0);
@@ -1228,12 +1228,12 @@ UniValue sendfrom(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 3 || request.params.size() > 7)
         throw std::runtime_error(
-            "sendfrom \"fromaccount\" \"todynamicaddress\" amount ( minconf addlocked \"comment\" \"comment-to\" )\n"
-            "\nDEPRECATED (use sendtoaddress). Sent an amount from an account to a dynamic address." +
+            "sendfrom \"fromaccount\" \"toodyncashaddress\" amount ( minconf addlocked \"comment\" \"comment-to\" )\n"
+            "\nDEPRECATED (use sendtoaddress). Sent an amount from an account to a odyncash address." +
             HelpRequiringPassphrase() + "\n"
                                         "\nArguments:\n"
                                         "1. \"fromaccount\"    (string, required) The name of the account to send funds from. May be the default account using \"\".\n"
-                                        "2. \"todynamicaddress\"  (string, required) The dynamic address to send funds to.\n"
+                                        "2. \"toodyncashaddress\"  (string, required) The odyncash address to send funds to.\n"
                                         "3. amount           (numeric or string, required) The amount in " +
             CURRENCY_UNIT + " (transaction fee is added on top).\n"
                             "4. minconf          (numeric, optional, default=1) Only use funds with at least this many confirmations.\n"
@@ -1255,9 +1255,9 @@ UniValue sendfrom(const JSONRPCRequest& request)
 
     std::string strAccount = AccountFromValue(request.params[0]);
 
-    const CDynamicAddress address(request.params[1].get_str());
+    const COdynCashAddress address(request.params[1].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dynamic address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
 
     CAmount nAmount = AmountFromValue(request.params[2]);
     if (nAmount <= 0)
@@ -1301,7 +1301,7 @@ UniValue sendmany(const JSONRPCRequest& request)
                                         "1. \"fromaccount\"           (string, required) DEPRECATED. The account to send the funds from. Should be \"\" for the default account\n"
                                         "2. \"amounts\"               (string, required) A json object with addresses and amounts\n"
                                         "    {\n"
-                                        "      \"address\":amount     (numeric or string) The dynamic address is the key, the numeric amount (can be string) in " +
+                                        "      \"address\":amount     (numeric or string) The odyncash address is the key, the numeric amount (can be string) in " +
             CURRENCY_UNIT + " is the value\n"
                             "      ,...\n"
                             "    }\n"
@@ -1310,7 +1310,7 @@ UniValue sendmany(const JSONRPCRequest& request)
                             "5. \"comment\"               (string, optional) A comment\n"
                             "6. subtractfeefromamount   (string, optional) A json array with addresses.\n"
                             "                           The fee will be equally deducted from the amount of each selected address.\n"
-                            "                           Those recipients will receive less Dynamic than you enter in their corresponding amount field.\n"
+                            "                           Those recipients will receive less OdynCash than you enter in their corresponding amount field.\n"
                             "                           If no addresses are specified here, the sender pays the fee.\n"
                             "    [\n"
                             "      \"address\"            (string) Subtract fee from this address\n"
@@ -1357,7 +1357,7 @@ UniValue sendmany(const JSONRPCRequest& request)
         bool fStealthAddress = false;
         CTxDestination dest = DecodeDestination(name_);
         if (!IsValidDestination(dest))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Invalid Dynamic address %s", name_));
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Invalid OdynCash address %s", name_));
 
         if (setDestAddress.count(dest))
             throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf("Invalid parameter, duplicated address:  %s", name_));
@@ -1375,7 +1375,7 @@ UniValue sendmany(const JSONRPCRequest& request)
             fStealthAddress = true;
             CTxDestination newDest;
             if (ExtractDestination(scriptPubKey, newDest))
-                LogPrintf("%s -- Stealth send to address: %s\n", __func__, CDynamicAddress(newDest).ToString());
+                LogPrintf("%s -- Stealth send to address: %s\n", __func__, COdynCashAddress(newDest).ToString());
 
         } else
         {
@@ -1446,20 +1446,20 @@ UniValue addmultisigaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 3) {
         std::string msg = "addmultisigaddress nrequired [\"key\",...] ( \"account\" )\n"
                           "\nAdd a nrequired-to-sign multisignature address to the wallet.\n"
-                          "Each key is a Dynamic address or hex-encoded public key.\n"
+                          "Each key is a OdynCash address or hex-encoded public key.\n"
                           "If 'account' is specified (DEPRECATED), assign address to that account.\n"
 
                           "\nArguments:\n"
                           "1. nrequired        (numeric, required) The number of required signatures out of the n keys or addresses.\n"
-                          "2. \"keysobject\"   (string, required) A json array of dynamic addresses or hex-encoded public keys\n"
+                          "2. \"keysobject\"   (string, required) A json array of odyncash addresses or hex-encoded public keys\n"
                           "     [\n"
-                          "       \"address\"  (string) dynamic address or hex-encoded public key\n"
+                          "       \"address\"  (string) odyncash address or hex-encoded public key\n"
                           "       ...,\n"
                           "     ]\n"
                           "3. \"account\"      (string, optional) DEPRECATED. An account to assign the addresses to.\n"
 
                           "\nResult:\n"
-                          "\"dynamicaddress\"  (string) A dynamic address associated with the keys.\n"
+                          "\"odyncashaddress\"  (string) A odyncash address associated with the keys.\n"
 
                           "\nExamples:\n"
                           "\nAdd a multisig address from 2 addresses\n" +
@@ -1480,7 +1480,7 @@ UniValue addmultisigaddress(const JSONRPCRequest& request)
     pwalletMain->AddCScript(inner);
 
     pwalletMain->SetAddressBook(innerID, strAccount, "send");
-    return CDynamicAddress(innerID).ToString();
+    return COdynCashAddress(innerID).ToString();
 }
 
 
@@ -1516,7 +1516,7 @@ UniValue ListReceived(const UniValue& params, bool fByAccounts)
             filter = filter | ISMINE_WATCH_ONLY;
 
     // Tally
-    std::map<CDynamicAddress, tallyitem> mapTally;
+    std::map<COdynCashAddress, tallyitem> mapTally;
     for (std::map<uint256, CWalletTx>::iterator it = pwalletMain->mapWallet.begin(); it != pwalletMain->mapWallet.end(); ++it) {
         const CWalletTx& wtx = (*it).second;
 
@@ -1548,10 +1548,10 @@ UniValue ListReceived(const UniValue& params, bool fByAccounts)
     // Reply
     UniValue ret(UniValue::VARR);
     std::map<std::string, tallyitem> mapAccountTally;
-    BOOST_FOREACH (const PAIRTYPE(CDynamicAddress, CAddressBookData) & item, pwalletMain->mapAddressBook) {
-        const CDynamicAddress& address = item.first;
+    BOOST_FOREACH (const PAIRTYPE(COdynCashAddress, CAddressBookData) & item, pwalletMain->mapAddressBook) {
+        const COdynCashAddress& address = item.first;
         const std::string& strAccount = item.second.name;
-        std::map<CDynamicAddress, tallyitem>::iterator it = mapTally.find(address);
+        std::map<COdynCashAddress, tallyitem>::iterator it = mapTally.find(address);
         if (it == mapTally.end() && !fIncludeEmpty)
             continue;
 
@@ -1691,7 +1691,7 @@ UniValue listreceivedbyaccount(const JSONRPCRequest& request)
 
 static void MaybePushAddress(UniValue& entry, const CTxDestination& dest)
 {
-    CDynamicAddress addr;
+    COdynCashAddress addr;
     if (addr.Set(dest))
         entry.push_back(Pair("address", addr.ToString()));
 }
@@ -1804,7 +1804,7 @@ UniValue listtransactions(const JSONRPCRequest& request)
             "  {\n"
             "    \"account\":\"accountname\",  (string) DEPRECATED. The account name associated with the transaction. \n"
             "                                                It will be \"\" for the default account.\n"
-            "    \"address\":\"address\",    (string) The dynamic address of the transaction. Not present for \n"
+            "    \"address\":\"address\",    (string) The odyncash address of the transaction. Not present for \n"
             "                                                move transactions (category = move).\n"
             "    \"category\":\"send|receive|move\", (string) The transaction category. 'move' is a local (off blockchain)\n"
             "                                                transaction between accounts, and not associated with an address,\n"
@@ -2007,7 +2007,7 @@ UniValue listsinceblock(const JSONRPCRequest& request)
             "{\n"
             "  \"transactions\": [\n"
             "    \"account\":\"accountname\",  (string) DEPRECATED. The account name associated with the transaction. Will be \"\" for the default account.\n"
-            "    \"address\":\"address\",    (string) The dynamic address of the transaction. Not present for move transactions (category = move).\n"
+            "    \"address\":\"address\",    (string) The odyncash address of the transaction. Not present for move transactions (category = move).\n"
             "    \"category\":\"send|receive\",  (string) The transaction category. 'send' has negative amounts, 'receive' has positive amounts.\n"
             "    \"amount\": x.xxx,          (numeric) The amount in " +
             CURRENCY_UNIT + ". This is negative for the 'send' category, and for the 'move' category for moves \n"
@@ -2123,7 +2123,7 @@ UniValue gettransaction(const JSONRPCRequest& request)
                             "  \"details\" : [\n"
                             "    {\n"
                             "      \"account\" : \"accountname\",      (string) DEPRECATED. The account name involved in the transaction, can be \"\" for the default account.\n"
-                            "      \"address\" : \"address\",          (string) The dynamic address involved in the transaction\n"
+                            "      \"address\" : \"address\",          (string) The odyncash address involved in the transaction\n"
                             "      \"category\" : \"send|receive\",    (string) The category, either 'send' or 'receive'\n"
                             "      \"amount\" : x.xxx,               (numeric) The amount in " +
             CURRENCY_UNIT + "\n"
@@ -2266,7 +2266,7 @@ UniValue keypoolrefill(const JSONRPCRequest& request)
     //Check to see if wallet needs upgrading
     if(pwalletMain->WalletNeedsUpgrading())
         throw JSONRPCError(RPC_WALLET_NEEDS_UPGRADING, "Error: Your wallet has not been fully upgraded to version 2.4.  Please unlock your wallet to continue.");
-        
+
     EnsureWalletIsUnlocked();
     pwalletMain->TopUpKeyPoolCombo(kpSize);
 
@@ -2293,7 +2293,7 @@ UniValue walletpassphrase(const JSONRPCRequest& request)
         throw std::runtime_error(
             "walletpassphrase \"passphrase\" timeout ( mixingonly )\n"
             "\nStores the wallet decryption key in memory for 'timeout' seconds.\n"
-            "This is needed prior to performing transactions related to private keys such as sending Dynamic\n"
+            "This is needed prior to performing transactions related to private keys such as sending OdynCash\n"
             "\nArguments:\n"
             "1. \"passphrase\"        (string, required) The wallet passphrase\n"
             "2. timeout             (numeric, required) The time to keep the decryption key in seconds.\n"
@@ -2454,8 +2454,8 @@ UniValue encryptwallet(const JSONRPCRequest& request)
             "\nExamples:\n"
             "\nEncrypt you wallet\n" +
             HelpExampleCli("encryptwallet", "\"my pass phrase\"") +
-            "\nNow set the passphrase to use the wallet, such as for signing or sending dynamic\n" + HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
-            "\nNow we can so something like sign\n" + HelpExampleCli("signmessage", "\"dynamicaddress\" \"test message\"") +
+            "\nNow set the passphrase to use the wallet, such as for signing or sending odyncash\n" + HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
+            "\nNow we can so something like sign\n" + HelpExampleCli("signmessage", "\"odyncashaddress\" \"test message\"") +
             "\nNow lock the wallet again by removing the passphrase\n" + HelpExampleCli("walletlock", "") +
             "\nAs a json rpc call\n" + HelpExampleRpc("encryptwallet", "\"my pass phrase\""));
 
@@ -2484,7 +2484,7 @@ UniValue encryptwallet(const JSONRPCRequest& request)
     // slack space in .dat files; that is bad if the old data is
     // unencrypted private keys. So:
     StartShutdown();
-    return "Wallet encrypted; Dynamic server stopping, restart to run with encrypted wallet. The keypool has been flushed and a new HD seed was generated (if you are using HD). You need to make a new backup.";
+    return "Wallet encrypted; OdynCash server stopping, restart to run with encrypted wallet. The keypool has been flushed and a new HD seed was generated (if you are using HD). You need to make a new backup.";
 }
 
 UniValue lockunspent(const JSONRPCRequest& request)
@@ -2498,7 +2498,7 @@ UniValue lockunspent(const JSONRPCRequest& request)
             "\nUpdates list of temporarily unspendable outputs.\n"
             "Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs.\n"
             "If no transaction outputs are specified when unlocking then all current locked transaction outputs are unlocked.\n"
-            "A locked transaction output will not be chosen by automatic coin selection, when spending Dynamic.\n"
+            "A locked transaction output will not be chosen by automatic coin selection, when spending OdynCash.\n"
             "Locks are stored in memory only. Nodes start with zero locked outputs, and the locked output list\n"
             "is always cleared (by virtue of process exit) when a node stops or fails.\n"
             "Also see the listunspent call\n"
@@ -2694,7 +2694,7 @@ UniValue getwalletinfo(const JSONRPCRequest& request)
             "{\n"
             "  \"walletversion\": xxxxx,     (numeric) the wallet version\n"
             "  \"balance\": xxxxxxx,         (numeric) the total confirmed balance of the wallet in " +
-            CURRENCY_UNIT + "\n" + (!fLiteMode ? "  \"privatesend_balance\": xxxxxx, (numeric) the anonymized Dynamic balance of the wallet in " + CURRENCY_UNIT + "\n" : "") +
+            CURRENCY_UNIT + "\n" + (!fLiteMode ? "  \"privatesend_balance\": xxxxxx, (numeric) the anonymized OdynCash balance of the wallet in " + CURRENCY_UNIT + "\n" : "") +
             "  \"unconfirmed_balance\": xxx, (numeric) the total unconfirmed balance of the wallet in " + CURRENCY_UNIT + "\n"
                                                                                                                           "  \"immature_balance\": xxxxxx, (numeric) the total immature balance of the wallet in " +
             CURRENCY_UNIT + "\n"
@@ -2770,7 +2770,7 @@ UniValue printAddresses()
     for (const COutput& out : vCoins) {
         CTxDestination utxoAddress;
         ExtractDestination(out.tx->tx->vout[out.i].scriptPubKey, utxoAddress);
-        std::string strAdd = CDynamicAddress(utxoAddress).ToString();
+        std::string strAdd = COdynCashAddress(utxoAddress).ToString();
 
         if (mapAddresses.find(strAdd) == mapAddresses.end()) //if strAdd is not already part of the map
             mapAddresses[strAdd] = (double)out.tx->tx->vout[out.i].nValue / (double)COIN;
@@ -2879,9 +2879,9 @@ UniValue listunspent(const JSONRPCRequest& request)
             "\nArguments:\n"
             "1. minconf          (numeric, optional, default=1) The minimum confirmations to filter\n"
             "2. maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter\n"
-            "3. \"addresses\"      (string) A json array of dynamic addresses to filter\n"
+            "3. \"addresses\"      (string) A json array of odyncash addresses to filter\n"
             "    [\n"
-            "      \"address\"     (string) dynamic address\n"
+            "      \"address\"     (string) odyncash address\n"
             "      ,...\n"
             "    ]\n"
             "4. include_unsafe (bool, optional, default=true) Include outputs that are not safe to spend\n"
@@ -2893,7 +2893,7 @@ UniValue listunspent(const JSONRPCRequest& request)
             "  {\n"
             "    \"txid\" : \"txid\",          (string) the transaction id \n"
             "    \"vout\" : n,               (numeric) the vout value\n"
-            "    \"address\" : \"address\",    (string) the dynamic address\n"
+            "    \"address\" : \"address\",    (string) the odyncash address\n"
             "    \"account\" : \"account\",    (string) DEPRECATED. The associated account, or \"\" for the default account\n"
             "    \"scriptPubKey\" : \"key\",   (string) the script key\n"
             "    \"amount\" : x.xxx,         (numeric) the transaction output amount in " +
@@ -2922,15 +2922,15 @@ UniValue listunspent(const JSONRPCRequest& request)
         nMaxDepth = request.params[1].get_int();
     }
 
-    std::set<CDynamicAddress> setAddress;
+    std::set<COdynCashAddress> setAddress;
     if (request.params.size() > 2 && !request.params[2].isNull()) {
         RPCTypeCheckArgument(request.params[2], UniValue::VARR);
         UniValue inputs = request.params[2].get_array();
         for (unsigned int idx = 0; idx < inputs.size(); idx++) {
             const UniValue& input = inputs[idx];
-            CDynamicAddress address(input.get_str());
+            COdynCashAddress address(input.get_str());
             if (!address.IsValid())
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Dynamic address: ") + input.get_str());
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid OdynCash address: ") + input.get_str());
             if (setAddress.count(address))
                 throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ") + input.get_str());
             setAddress.insert(address);
@@ -2964,7 +2964,7 @@ UniValue listunspent(const JSONRPCRequest& request)
         entry.push_back(Pair("vout", out.i));
 
         if (fValidAddress) {
-            entry.push_back(Pair("address", CDynamicAddress(address).ToString()));
+            entry.push_back(Pair("address", COdynCashAddress(address).ToString()));
 
             if (pwalletMain->mapAddressBook.count(address))
                 entry.push_back(Pair("account", pwalletMain->mapAddressBook[address].name));
@@ -3011,7 +3011,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
             "1. \"hexstring\"           (string, required) The hex string of the raw transaction\n"
             "2. options                 (object, optional)\n"
             "   {\n"
-            "     \"changeAddress\"          (string, optional, default pool address) The dynamic address to receive the change\n"
+            "     \"changeAddress\"          (string, optional, default pool address) The odyncash address to receive the change\n"
             "     \"changePosition\"         (numeric, optional, default random) The index of the change output\n"
             "     \"includeWatching\"        (boolean, optional, default false) Also select inputs which are watch only\n"
             "     \"lockUnspents\"           (boolean, optional, default false) Lock selected unspent outputs\n"
@@ -3021,7 +3021,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
                             "     \"subtractFeeFromOutputs\" (array, optional) A json array of integers.\n"
                             "                              The fee will be equally deducted from the amount of each specified output.\n"
                             "                              The outputs are specified by their zero-based index, before any change output is added.\n"
-                            "                              Those recipients will receive less dynamic than you enter in their corresponding amount field.\n"
+                            "                              Those recipients will receive less odyncash than you enter in their corresponding amount field.\n"
                             "                              If no outputs are specified here, the sender pays the fee.\n"
                             "                                  [vout_index,...]\n"
                             "   }\n"
@@ -3074,10 +3074,10 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
                 true, true);
 
             if (options.exists("changeAddress")) {
-                CDynamicAddress address(options["changeAddress"].get_str());
+                COdynCashAddress address(options["changeAddress"].get_str());
 
                 if (!address.IsValid())
-                    throw JSONRPCError(RPC_INVALID_PARAMETER, "changeAddress must be a valid dynamic address");
+                    throw JSONRPCError(RPC_INVALID_PARAMETER, "changeAddress must be a valid odyncash address");
 
                 changeAddress = address.Get();
             }

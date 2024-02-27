@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_HTTPSERVER_H
-#define DYNAMIC_HTTPSERVER_H
+#ifndef ODYNCASH_HTTPSERVER_H
+#define ODYNCASH_HTTPSERVER_H
 
 #include <functional>
 #include <stdint.h>
@@ -147,4 +147,4 @@ private:
     struct event* ev;
 };
 
-#endif // DYNAMIC_HTTPSERVER_H
+#endif // ODYNCASH_HTTPSERVER_H

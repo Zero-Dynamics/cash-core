@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_COMPAT_BYTESWAP_H
-#define DYNAMIC_COMPAT_BYTESWAP_H
+#ifndef ODYNCASH_COMPAT_BYTESWAP_H
+#define ODYNCASH_COMPAT_BYTESWAP_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dynamic-config.h"
+#include "config/odyncash-config.h"
 #endif
 
 #include <stdint.h>
@@ -49,4 +49,4 @@ inline uint64_t bswap_64(uint64_t x)
 
 #endif // defined(__APPLE__)
 
-#endif // DYNAMIC_COMPAT_BYTESWAP_H
+#endif // ODYNCASH_COMPAT_BYTESWAP_H

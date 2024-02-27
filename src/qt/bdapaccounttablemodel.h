@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_BDAPACCOUNTTABLEMODEL_H
-#define DYNAMIC_QT_BDAPACCOUNTTABLEMODEL_H
+#ifndef ODYNCASH_QT_BDAPACCOUNTTABLEMODEL_H
+#define ODYNCASH_QT_BDAPACCOUNTTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QObject>
@@ -81,4 +81,4 @@ private:
     
 };
 
-#endif // DYNAMIC_QT_BDAPACCOUNTTABLEMODEL_H
+#endif // ODYNCASH_QT_BDAPACCOUNTTABLEMODEL_H

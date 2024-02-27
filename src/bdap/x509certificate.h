@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_BDAP_X509CERTIFICATE_H
-#define DYNAMIC_BDAP_X509CERTIFICATE_H
+#ifndef ODYNCASH_BDAP_X509CERTIFICATE_H
+#define ODYNCASH_BDAP_X509CERTIFICATE_H
 
 #include "bdap.h"
 #include "bdap/domainentry.h"
@@ -199,4 +199,4 @@ public:
 bool BuildX509CertificateJson(const CX509Certificate& x509certificate, UniValue& oX509Certificate);
 
 
-#endif // DYNAMIC_BDAP_X509CERTIFICATE_H
+#endif // ODYNCASH_BDAP_X509CERTIFICATE_H

@@ -8,8 +8,8 @@
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef DYNAMIC_TORCONTROL_H
-#define DYNAMIC_TORCONTROL_H
+#ifndef ODYNCASH_TORCONTROL_H
+#define ODYNCASH_TORCONTROL_H
 
 #include "scheduler.h"
 
@@ -20,4 +20,4 @@ void StartTorControl(boost::thread_group& threadGroup, CScheduler& scheduler);
 void InterruptTorControl();
 void StopTorControl();
 
-#endif // DYNAMIC_TORCONTROL_H
+#endif // ODYNCASH_TORCONTROL_H

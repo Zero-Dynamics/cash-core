@@ -7,10 +7,10 @@
 # Test proper accounting with a double-spend conflict
 #
 
-from test_framework.test_framework import DynamicTestFramework
+from test_framework.test_framework import OdynCashTestFramework
 from test_framework.util import *
 
-class TxnMallTest(DynamicTestFramework):
+class TxnMallTest(OdynCashTestFramework):
 
     def add_options(self, parser):
         parser.add_option("--mineblock", dest="mine_block", default=False, action="store_true",

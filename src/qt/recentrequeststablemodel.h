@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_RECENTREQUESTSTABLEMODEL_H
-#define DYNAMIC_QT_RECENTREQUESTSTABLEMODEL_H
+#ifndef ODYNCASH_QT_RECENTREQUESTSTABLEMODEL_H
+#define ODYNCASH_QT_RECENTREQUESTSTABLEMODEL_H
 
 #include "walletmodel.h"
 
@@ -55,7 +55,7 @@ private:
     Qt::SortOrder order;
 };
 
-/** Model for list of recently generated payment requests / dynamic: URIs.
+/** Model for list of recently generated payment requests / odyncash: URIs.
  * Part of wallet model.
  */
 class RecentRequestsTableModel : public QAbstractTableModel
@@ -108,4 +108,4 @@ private:
     QString getAmountTitle();
 };
 
-#endif // DYNAMIC_QT_RECENTREQUESTSTABLEMODEL_H
+#endif // ODYNCASH_QT_RECENTREQUESTSTABLEMODEL_H

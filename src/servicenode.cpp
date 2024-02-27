@@ -227,7 +227,7 @@ void CServiceNode::Check(bool fForce)
             return;
         }
         if (sporkManager.IsSporkActive(SPORK_14_REQUIRE_SENTINEL_FLAG)) {
-            // part 1: expire based on dynamicd ping
+            // part 1: expire based on odyncashd ping
             bool fSentinelPingActive = servicenodeSync.IsSynced() && dnodeman.IsSentinelPingActive();
             bool fSentinelPingExpired = fSentinelPingActive && !IsPingedWithin(SERVICENODE_SENTINEL_PING_MAX_SECONDS);
             LogPrint("servicenode", "CServiceNode::Check -- outpoint=%s, GetAdjustedTime()=%d, fSentinelPingExpired=%d\n",
@@ -424,7 +424,7 @@ bool CServiceNodeBroadcast::Create(const COutPoint& outpoint, const CService& se
         return false;
 
     LogPrint("servicenode", "CServiceNodeBroadcast::Create -- pubKeyCollateralAddressNew = %s, pubKeyServiceNodeNew.GetID() = %s\n",
-        CDynamicAddress(pubKeyCollateralAddressNew.GetID()).ToString(),
+        COdynCashAddress(pubKeyCollateralAddressNew.GetID()).ToString(),
         pubKeyServiceNodeNew.GetID().ToString());
 
     auto Log = [&strErrorRet, &dnbRet](std::string sErr) -> bool {

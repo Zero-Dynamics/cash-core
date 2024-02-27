@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_TRANSACTIONDESCDIALOG_H
-#define DYNAMIC_QT_TRANSACTIONDESCDIALOG_H
+#ifndef ODYNCASH_QT_TRANSACTIONDESCDIALOG_H
+#define ODYNCASH_QT_TRANSACTIONDESCDIALOG_H
 
 #include <QDialog>
 
@@ -32,4 +32,4 @@ private:
     Ui::TransactionDescDialog* ui;
 };
 
-#endif // DYNAMIC_QT_TRANSACTIONDESCDIALOG_H
+#endif // ODYNCASH_QT_TRANSACTIONDESCDIALOG_H

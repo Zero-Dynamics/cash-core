@@ -1,3 +1,3 @@
-Dynamic 2.4.0.0
+OdynCash 2.4.0.0
 ==================
-- [v2.4.0.0](release-notes/dynamic/release-notes.md)
+- [v2.4.0.0](release-notes/odyncash/release-notes.md)

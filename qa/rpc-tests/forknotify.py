@@ -7,10 +7,10 @@
 # Test -alertnotify 
 #
 
-from test_framework.test_framework import DynamicTestFramework
+from test_framework.test_framework import OdynCashTestFramework
 from test_framework.util import *
 
-class ForkNotifyTest(DynamicTestFramework):
+class ForkNotifyTest(OdynCashTestFramework):
 
     alert_filename = None  # Set by setup_network
 

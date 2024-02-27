@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_CHECKQUEUE_H
-#define DYNAMIC_CHECKQUEUE_H
+#ifndef ODYNCASH_CHECKQUEUE_H
+#define ODYNCASH_CHECKQUEUE_H
 
 #include <algorithm>
 #include <vector>
@@ -19,7 +19,7 @@
 template <typename T>
 class CCheckQueueControl;
 
-/** 
+/**
  * Queue for verifications that have to be performed.
   * The verifications are represented by a type T, which must provide an
   * operator(), returning a bool.
@@ -174,7 +174,7 @@ public:
     }
 };
 
-/** 
+/**
  * RAII-style controller object for a CCheckQueue that guarantees the passed
  * queue is finished before continuing.
  */
@@ -222,4 +222,4 @@ public:
     }
 };
 
-#endif // DYNAMIC_CHECKQUEUE_H
+#endif // ODYNCASH_CHECKQUEUE_H

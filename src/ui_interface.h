@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_UI_INTERFACE_H
-#define DYNAMIC_UI_INTERFACE_H
+#ifndef ODYNCASH_UI_INTERFACE_H
+#define ODYNCASH_UI_INTERFACE_H
 
 #include <stdint.h>
 #include <string>
@@ -126,4 +126,4 @@ std::string AmountHighWarn(const std::string& optname);
 
 extern CClientUIInterface uiInterface;
 
-#endif // DYNAMIC_UI_INTERFACE_H
+#endif // ODYNCASH_UI_INTERFACE_H

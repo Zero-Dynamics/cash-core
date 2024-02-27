@@ -67,7 +67,7 @@ NetworkStyle::NetworkStyle(const QString& _appName, const int iconColorHueShift,
     // Grab theme from settings
     QString theme = GUIUtil::getThemeName();
     // load pixmap
-    QPixmap appIconPixmap(":/icons/dynamic");
+    QPixmap appIconPixmap(":/icons/odyncash");
     QPixmap splashImagePixmap(":/images/" + theme + "/splash");
 
     if (iconColorHueShift != 0 && iconColorSaturationReduction != 0) {

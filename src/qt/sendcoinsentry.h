@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_SENDCOINSENTRY_H
-#define DYNAMIC_QT_SENDCOINSENTRY_H
+#ifndef ODYNCASH_QT_SENDCOINSENTRY_H
+#define ODYNCASH_QT_SENDCOINSENTRY_H
 
 #include "walletmodel.h"
 
@@ -21,7 +21,7 @@ class SendCoinsEntry;
 }
 
 /**
- * A single entry in the dialog for sending Dynamic.
+ * A single entry in the dialog for sending OdynCash.
  * Stacked widget, with different UIs for payment requests
  * with a strong payee identity.
  */
@@ -74,4 +74,4 @@ private:
     bool updateLabel(const QString& address);
 };
 
-#endif // DYNAMIC_QT_SENDCOINSENTRY_H
+#endif // ODYNCASH_QT_SENDCOINSENTRY_H

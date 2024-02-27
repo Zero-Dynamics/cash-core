@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_COINCONTROL_H
-#define DYNAMIC_COINCONTROL_H
+#ifndef ODYNCASH_COINCONTROL_H
+#define ODYNCASH_COINCONTROL_H
 
 #include "primitives/transaction.h"
 
@@ -83,4 +83,4 @@ private:
     std::set<COutPoint> setSelected;
 };
 
-#endif // DYNAMIC_COINCONTROL_H
+#endif // ODYNCASH_COINCONTROL_H

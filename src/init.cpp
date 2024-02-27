@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dynamic-config.h"
+#include "config/odyncash-config.h"
 #endif
 
 #include "init.h"
@@ -282,7 +282,7 @@ void PrepareShutdown()
     /// for example if the data directory was found to be locked.
     /// Be sure that anything that writes files or flushes caches only does this if the respective
     /// module was initialized.
-    RenameThread("dynamic-shutoff");
+    RenameThread("odyncash-shutoff");
     mempool.AddTransactionsUpdated(1);
     //StopTorrentDHTNetwork();
     StopHTTPRPC();
@@ -499,8 +499,8 @@ std::string HelpMessage(HelpMessageMode mode)
         strUsage += HelpMessageOpt("-blocksonly", strprintf(_("Whether to operate in a blocks only mode (default: %u)"), DEFAULT_BLOCKSONLY));
     strUsage += HelpMessageOpt("-checkblocks=<n>", strprintf(_("How many blocks to check at startup (default: %u, 0 = all)"), DEFAULT_CHECKBLOCKS));
     strUsage += HelpMessageOpt("-checklevel=<n>", strprintf(_("How thorough the block verification of -checkblocks is (0-4, default: %u)"), DEFAULT_CHECKLEVEL));
-    strUsage += HelpMessageOpt("-conf=<file>", strprintf(_("Specify configuration file (default: %s)"), DYNAMIC_CONF_FILENAME));
-    if (mode == HMM_DYNAMICD) {
+    strUsage += HelpMessageOpt("-conf=<file>", strprintf(_("Specify configuration file (default: %s)"), ODYNCASH_CONF_FILENAME));
+    if (mode == HMM_ODYNCASHD) {
 #if HAVE_DECL_DAEMON
         strUsage += HelpMessageOpt("-daemon", _("Run in the background as a daemon and accept commands"));
 #endif
@@ -515,7 +515,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-par=<n>", strprintf(_("Set the number of script verification threads (%u to %d, 0 = auto, <0 = leave that many cores free, default: %d)"),
                                                -GetNumCores(), MAX_SCRIPTCHECK_THREADS, DEFAULT_SCRIPTCHECK_THREADS));
 #ifndef WIN32
-    strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), DYNAMIC_PID_FILENAME));
+    strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), ODYNCASH_PID_FILENAME));
 #endif
     strUsage += HelpMessageOpt("-prune=<n>", strprintf(_("Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. "
                                                          "Warning: Reverting this setting requires re-downloading the entire blockchain. "
@@ -577,7 +577,7 @@ std::string HelpMessage(HelpMessageMode mode)
 
 #ifdef ENABLE_WALLET
     strUsage += CWallet::GetWalletHelpString(showDebug);
-    if (mode == HMM_DYNAMIC_QT)
+    if (mode == HMM_ODYNCASH_QT)
         strUsage += HelpMessageOpt("-windowtitle=<name>", _("Wallet window title"));
 #endif
 
@@ -614,8 +614,8 @@ std::string HelpMessage(HelpMessageMode mode)
         strUsage += HelpMessageOpt("-limitdescendantsize=<n>", strprintf("Do not accept transactions if any ancestor would have more than <n> kilobytes of in-mempool descendants (default: %u).", DEFAULT_DESCENDANT_SIZE_LIMIT));
     }
     std::string debugCategories = "addrman, alert, bench, cmpctblock, coindb, db, http, leveldb, libevent, lock, mempool, mempoolrej, net, proxy, prune, rand, reindex, rpc, selectcoins, tor, zmq, "
-                                  "dynamic (or specifically: gobject, instantsend, keepass, servicenode, snpayments, snsync, privatesend, spork)"; // Don't translate these and qt below
-    if (mode == HMM_DYNAMIC_QT)
+                                  "odyncash (or specifically: gobject, instantsend, keepass, servicenode, snpayments, snsync, privatesend, spork)"; // Don't translate these and qt below
+    if (mode == HMM_ODYNCASH_QT)
         debugCategories += ", qt";
     strUsage += HelpMessageOpt("-debug=<category>", strprintf(_("Output debugging information (default: %u, supplying <category> is optional)"), 0) + ". " +
                                                         _("If <category> is not supplied or if <category> = 1, output all debugging information.") + _("<category> can be:") + " " + debugCategories + ".");
@@ -644,7 +644,7 @@ std::string HelpMessage(HelpMessageMode mode)
     }
     strUsage += HelpMessageOpt("-shrinkdebugfile", _("Shrink debug.log file on client startup (default: 1 when no -debug)"));
     AppendParamsHelpMessages(strUsage, showDebug);
-    strUsage += HelpMessageOpt("-litemode=<n>", strprintf(_("Disable all Dynamic specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)"), 0));
+    strUsage += HelpMessageOpt("-litemode=<n>", strprintf(_("Disable all OdynCash specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)"), 0));
     strUsage += HelpMessageOpt("-sporkaddr=<hex>", strprintf(_("Override spork address. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.")));
     strUsage += HelpMessageOpt("-minsporkkeys=<n>", strprintf(_("Overrides minimum spork signers to change spork value. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.")));
 
@@ -811,7 +811,7 @@ void CleanupBlockRevFiles()
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
     const CChainParams& chainparams = Params();
-    RenameThread("dynamic-loadblk");
+    RenameThread("odyncash-loadblk");
 
     {
         CImportingNow imp;
@@ -885,7 +885,7 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 }
 
 /** Sanity checks
- *  Ensure that Dynamic is running in a usable environment with all
+ *  Ensure that OdynCash is running in a usable environment with all
  *  necessary library support.
  */
 bool InitSanityCheck(void)
@@ -1042,7 +1042,7 @@ void InitLogging()
     fLogIPs = GetBoolArg("-logips", DEFAULT_LOGIPS);
 
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("Dynamic version %s\n", FormatFullVersion());
+    LogPrintf("OdynCash version %s\n", FormatFullVersion());
 }
 
 namespace
@@ -1271,7 +1271,7 @@ bool AppInitParameterInteraction()
             return false;
         }
     }
-    
+
     nConnectTimeout = GetArg("-timeout", DEFAULT_CONNECT_TIMEOUT);
     if (nConnectTimeout <= 0)
         nConnectTimeout = DEFAULT_CONNECT_TIMEOUT;
@@ -1377,7 +1377,7 @@ static bool LockDataDirectory(bool probeOnly)
 {
     std::string strDataDir = GetDataDir().string();
 
-    // Make sure only a single Dynamic process is using the data directory.
+    // Make sure only a single OdynCash process is using the data directory.
     boost::filesystem::path pathLockFile = GetDataDir() / ".lock";
     FILE* file = fopen(pathLockFile.string().c_str(), "a"); // empty lock file; created if it doesn't exist.
     if (file)
@@ -1386,13 +1386,13 @@ static bool LockDataDirectory(bool probeOnly)
     try {
         static boost::interprocess::file_lock lock(pathLockFile.string().c_str());
         if (!lock.try_lock()) {
-            return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Dynamic is probably already running."), strDataDir));
+            return InitError(strprintf(_("Cannot obtain a lock on data directory %s. OdynCash is probably already running."), strDataDir));
         }
         if (probeOnly) {
             lock.unlock();
         }
     } catch (const boost::interprocess::interprocess_exception& e) {
-        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Dynamic is probably already running.") + " %s.", strDataDir, e.what()));
+        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. OdynCash is probably already running.") + " %s.", strDataDir, e.what()));
     }
     return true;
 }
@@ -1445,7 +1445,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         LogPrintf("Startup time: %s\n", DateTimeStrFormat("%Y-%m-%d %H:%M:%S", GetTime()));
     LogPrintf("Default data directory %s\n", GetDefaultDataDir().string());
     LogPrintf("Using data directory %s\n", GetDataDir().string());
-    LogPrintf("Using config file %s\n", GetConfigFile(GetArg("-conf", DYNAMIC_CONF_FILENAME)).string());
+    LogPrintf("Using config file %s\n", GetConfigFile(GetArg("-conf", ODYNCASH_CONF_FILENAME)).string());
     LogPrintf("Using at most %i connections (%i file descriptors available)\n", nMaxConnections, nFD);
     std::ostringstream strErrors;
 
@@ -1752,7 +1752,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
                 pFluidMintDB = new CFluidMintDB(nTotalCache * 35, false, fReindex, obfuscate);
                 pFluidSovereignDB = new CFluidSovereignDB(nTotalCache * 35, false, fReindex, obfuscate);
                 pBanAccountDB = new CBanAccountDB(nTotalCache * 35, false, fReindex, obfuscate);
-                // Init BDAP Services DBs 
+                // Init BDAP Services DBs
                 pDomainEntryDB = new CDomainEntryDB(nTotalCache * 35, false, fReindex, obfuscate);
                 pAuditDB = new CAuditDB(nTotalCache * 35, false, fReindex, obfuscate);
                 pCertificateDB = new CCertificateDB(nTotalCache * 35, false, fReindex, obfuscate);
@@ -1933,11 +1933,11 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
     fServiceNodeMode = GetBoolArg("-servicenode", false);
     // TODO: servicenode should have no wallet
 
-    //lite mode disables all Dynamic-specific functionality
+    //lite mode disables all OdynCash-specific functionality
     fLiteMode = GetBoolArg("-litemode", false);
 
     if (fLiteMode) {
-        InitWarning(_("You are starting in lite mode, all Dynamic-specific functionality is disabled."));
+        InitWarning(_("You are starting in lite mode, all OdynCash-specific functionality is disabled."));
     }
 
     if ((!fLiteMode && fTxIndex == false) && chainparams.NetworkIDString() != CBaseChainParams::REGTEST) {
@@ -1956,7 +1956,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             if (!CMessageSigner::GetKeysFromSecret(strservicenodepairingkey, activeServiceNode.keyServiceNode, activeServiceNode.pubKeyServiceNode))
                 return InitError(_("Invalid servicenodepairingkey. Please see documenation."));
 
-            LogPrintf("  pubKeyServiceNode: %s\n", CDynamicAddress(activeServiceNode.pubKeyServiceNode.GetID()).ToString());
+            LogPrintf("  pubKeyServiceNode: %s\n", COdynCashAddress(activeServiceNode.pubKeyServiceNode.GetID()).ToString());
         } else {
             return InitError(_("You must specify a servicenodepairingkey in the configuration. Please see documentation for help."));
         }
@@ -2063,7 +2063,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         }
     }
 
-    // ********************************************************* Step 11d: start dynamic-ps-<smth> threads
+    // ********************************************************* Step 11d: start odyncash-ps-<smth> threads
 
     if (!fLiteMode) {
         scheduler.scheduleEvery(std::bind(&CNetFulfilledRequestManager::DoMaintenance, std::ref(netfulfilledman)), 60);

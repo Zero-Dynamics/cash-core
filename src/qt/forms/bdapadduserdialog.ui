@@ -86,7 +86,7 @@
           <string>OK</string>
          </property>
          <property name="icon">
-          <iconset resource="../dynamic.qrc">
+          <iconset resource="../odyncash.qrc">
            <normaloff>:/icons/drk/synced</normaloff>:/icons/drk/synced</iconset>
          </property>
         </widget>
@@ -136,7 +136,7 @@
           <string>Add User</string>
          </property>
          <property name="icon">
-          <iconset resource="../dynamic.qrc">
+          <iconset resource="../odyncash.qrc">
            <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
          </property>
          <property name="autoDefault">
@@ -153,7 +153,7 @@
           <string>Cancel</string>
          </property>
          <property name="icon">
-          <iconset resource="../dynamic.qrc">
+          <iconset resource="../odyncash.qrc">
            <normaloff>:/icons/drk/transaction_conflicted</normaloff>:/icons/drk/transaction_conflicted</iconset>
          </property>
          <property name="autoDefault">
@@ -181,7 +181,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../dynamic.qrc"/>
+  <include location="../odyncash.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_NETWORKSTYLE_H
-#define DYNAMIC_QT_NETWORKSTYLE_H
+#ifndef ODYNCASH_QT_NETWORKSTYLE_H
+#define ODYNCASH_QT_NETWORKSTYLE_H
 
 #include <QIcon>
 #include <QPixmap>
@@ -37,4 +37,4 @@ private:
     void rotateColors(QImage& img, const int iconColorHueShift, const int iconColorSaturationReduction);
 };
 
-#endif // DYNAMIC_QT_NETWORKSTYLE_H
+#endif // ODYNCASH_QT_NETWORKSTYLE_H

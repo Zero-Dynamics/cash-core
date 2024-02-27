@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_BDAP_VGPMESSAGE_H
-#define DYNAMIC_BDAP_VGPMESSAGE_H
+#ifndef ODYNCASH_BDAP_VGPMESSAGE_H
+#define ODYNCASH_BDAP_VGPMESSAGE_H
 
 #include "serialize.h"
 #include "sync.h"
@@ -194,4 +194,4 @@ void GetMyLinkMessagesBySubjectAndSender(const uint256& subjectID, const std::ve
 #endif // ENABLE_WALLET
 void KeepLastTypeBySender(std::vector<CVGPMessage>& vMessages);
 
-#endif // DYNAMIC_BDAP_VGPMESSAGE_H
+#endif // ODYNCASH_BDAP_VGPMESSAGE_H

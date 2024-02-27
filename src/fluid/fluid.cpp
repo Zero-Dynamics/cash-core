@@ -59,34 +59,34 @@ int GetFluidOpCode(const CScript& fluidScript)
 }
 
 /** Initialise sovereign identities that are able to run fluid commands */
-std::vector<std::pair<std::string, CDynamicAddress> > CFluidParameters::InitialiseSovereignIdentities()
+std::vector<std::pair<std::string, COdynCashAddress> > CFluidParameters::InitialiseSovereignIdentities()
 {
-    std::vector<std::pair<std::string, CDynamicAddress> > x;
+    std::vector<std::pair<std::string, COdynCashAddress> > x;
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-        x.push_back(std::make_pair("CEO", CDynamicAddress("D9avNWVBmaUNevMNnkcLMrQpze8M2mKURu")));
-        x.push_back(std::make_pair("CTO", CDynamicAddress("DRoyjRoxP4qfeAiiZHX1dmSkbUJiBSXBt7")));
-        x.push_back(std::make_pair("CFO", CDynamicAddress("DHkD6oBQ5PtCiKo4wX8CRWrG61Vy5hEu4t")));
-        x.push_back(std::make_pair("COO", CDynamicAddress("DKyqamefa7YdbqrP5pdTfNVVuq1gerNhMH")));
-        x.push_back(std::make_pair("CDOO", CDynamicAddress("DUDE1zFKK4fezCgcxdGbFh4yHJMcg8qpoP")));
+        x.push_back(std::make_pair("CEO", COdynCashAddress("D9avNWVBmaUNevMNnkcLMrQpze8M2mKURu")));
+        x.push_back(std::make_pair("CTO", COdynCashAddress("DRoyjRoxP4qfeAiiZHX1dmSkbUJiBSXBt7")));
+        x.push_back(std::make_pair("CFO", COdynCashAddress("DHkD6oBQ5PtCiKo4wX8CRWrG61Vy5hEu4t")));
+        x.push_back(std::make_pair("COO", COdynCashAddress("DKyqamefa7YdbqrP5pdTfNVVuq1gerNhMH")));
+        x.push_back(std::make_pair("CDOO", COdynCashAddress("DUDE1zFKK4fezCgcxdGbFh4yHJMcg8qpoP")));
     } else if (Params().NetworkIDString() == CBaseChainParams::TESTNET) {
-        x.push_back(std::make_pair("Test01", CDynamicAddress("DSCex4e189aULrig3nLd42gVf7AbjTwnP5"))); //importprivkey QVKXuZ2hSo2cT9BhkN3CApLuZYVsuzNvidJRt1ucyniHheZ2Pfq5
-        x.push_back(std::make_pair("Test02", CDynamicAddress("DMAh37n3RUdDxox3uiWAnc1zEPp5yFbHiL"))); //importprivkey QU4VGDcVoej7nDZiyaSgoL7foG8xKiaVyk5odHnJdtyv4tYkmBw1
-        x.push_back(std::make_pair("Test03", CDynamicAddress("DN4KvqtXyygooPV3oha72TyBB5nqBbkxwj"))); //importprivkey QWjTe6sCFVtKBsXfrYDyrHzn7eBeJktsQnWzfiANkMd9PhVM4Qnp
-        x.push_back(std::make_pair("Test04", CDynamicAddress("DHVmS621KBBZJTJSxGDdLxoU7LCmpexWDa"))); //importprivkey QScWuazWgWDTj8cXXz1YFKJW7mNJHJgMFY2FB6hkNyh3SJDUhPZt
-        x.push_back(std::make_pair("Test05", CDynamicAddress("DCZXDSRB3cJdCCUSerE4pvSfGQoXUivUxo"))); //importprivkey QUt4pEDanRPzos3meoiNGUG9g7RctCtiwLoPjhDKfNPK99oLuzcU
+        x.push_back(std::make_pair("Test01", COdynCashAddress("DSCex4e189aULrig3nLd42gVf7AbjTwnP5"))); //importprivkey QVKXuZ2hSo2cT9BhkN3CApLuZYVsuzNvidJRt1ucyniHheZ2Pfq5
+        x.push_back(std::make_pair("Test02", COdynCashAddress("DMAh37n3RUdDxox3uiWAnc1zEPp5yFbHiL"))); //importprivkey QU4VGDcVoej7nDZiyaSgoL7foG8xKiaVyk5odHnJdtyv4tYkmBw1
+        x.push_back(std::make_pair("Test03", COdynCashAddress("DN4KvqtXyygooPV3oha72TyBB5nqBbkxwj"))); //importprivkey QWjTe6sCFVtKBsXfrYDyrHzn7eBeJktsQnWzfiANkMd9PhVM4Qnp
+        x.push_back(std::make_pair("Test04", COdynCashAddress("DHVmS621KBBZJTJSxGDdLxoU7LCmpexWDa"))); //importprivkey QScWuazWgWDTj8cXXz1YFKJW7mNJHJgMFY2FB6hkNyh3SJDUhPZt
+        x.push_back(std::make_pair("Test05", COdynCashAddress("DCZXDSRB3cJdCCUSerE4pvSfGQoXUivUxo"))); //importprivkey QUt4pEDanRPzos3meoiNGUG9g7RctCtiwLoPjhDKfNPK99oLuzcU
     } else if (Params().NetworkIDString() == CBaseChainParams::REGTEST) {
-        x.push_back(std::make_pair("RegTest01", CDynamicAddress("DSCex4e189aULrig3nLd42gVf7AbjTwnP5"))); //importprivkey QVKXuZ2hSo2cT9BhkN3CApLuZYVsuzNvidJRt1ucyniHheZ2Pfq5
-        x.push_back(std::make_pair("RegTest02", CDynamicAddress("DMAh37n3RUdDxox3uiWAnc1zEPp5yFbHiL"))); //importprivkey QU4VGDcVoej7nDZiyaSgoL7foG8xKiaVyk5odHnJdtyv4tYkmBw1
-        x.push_back(std::make_pair("RegTest03", CDynamicAddress("DN4KvqtXyygooPV3oha72TyBB5nqBbkxwj"))); //importprivkey QWjTe6sCFVtKBsXfrYDyrHzn7eBeJktsQnWzfiANkMd9PhVM4Qnp
-        x.push_back(std::make_pair("RegTest04", CDynamicAddress("DHVmS621KBBZJTJSxGDdLxoU7LCmpexWDa"))); //importprivkey QScWuazWgWDTj8cXXz1YFKJW7mNJHJgMFY2FB6hkNyh3SJDUhPZt
-        x.push_back(std::make_pair("RegTest05", CDynamicAddress("DCZXDSRB3cJdCCUSerE4pvSfGQoXUivUxo"))); //importprivkey QUt4pEDanRPzos3meoiNGUG9g7RctCtiwLoPjhDKfNPK99oLuzcU
+        x.push_back(std::make_pair("RegTest01", COdynCashAddress("DSCex4e189aULrig3nLd42gVf7AbjTwnP5"))); //importprivkey QVKXuZ2hSo2cT9BhkN3CApLuZYVsuzNvidJRt1ucyniHheZ2Pfq5
+        x.push_back(std::make_pair("RegTest02", COdynCashAddress("DMAh37n3RUdDxox3uiWAnc1zEPp5yFbHiL"))); //importprivkey QU4VGDcVoej7nDZiyaSgoL7foG8xKiaVyk5odHnJdtyv4tYkmBw1
+        x.push_back(std::make_pair("RegTest03", COdynCashAddress("DN4KvqtXyygooPV3oha72TyBB5nqBbkxwj"))); //importprivkey QWjTe6sCFVtKBsXfrYDyrHzn7eBeJktsQnWzfiANkMd9PhVM4Qnp
+        x.push_back(std::make_pair("RegTest04", COdynCashAddress("DHVmS621KBBZJTJSxGDdLxoU7LCmpexWDa"))); //importprivkey QScWuazWgWDTj8cXXz1YFKJW7mNJHJgMFY2FB6hkNyh3SJDUhPZt
+        x.push_back(std::make_pair("RegTest05", COdynCashAddress("DCZXDSRB3cJdCCUSerE4pvSfGQoXUivUxo"))); //importprivkey QUt4pEDanRPzos3meoiNGUG9g7RctCtiwLoPjhDKfNPK99oLuzcU
     }
     else if (Params().NetworkIDString() == CBaseChainParams::PRIVATENET) {
-        x.push_back(std::make_pair("Priv01", CDynamicAddress("D6wUMdGtoXtj4zjyk4kYu6cL8LM5j6bEd7"))); //importprivkey QUQsWaE1LRdW95gLgyQgjkUjR4eqhbigmDHENzyTVYy7JCgQcYMd
-        x.push_back(std::make_pair("Priv02", CDynamicAddress("DKLWazjY91KKWekxPxwjznx56tX1KYtTiy"))); //importprivkey QWR6WRSKZZrpDBM3q2jqyhB5xmE5YDdc72trHzznTLwBEJBbeWKm
-        x.push_back(std::make_pair("Priv03", CDynamicAddress("DNsEXkNEdzvNbR3zjaDa3TEVPtwR6Efbmd"))); //importprivkey QPWaY6RAm44zFQ9gktpHFwaCLQc1nCGwPaVAnXAZsFMyGXzLce35
-        x.push_back(std::make_pair("Priv04", CDynamicAddress("DG2NCt5Z35cLRYnNCDXdVJTbPh3NSScAmF"))); //importprivkey QRF11rngYqeVv4mSE4SCGU8P3MQgZwJaRQQJsknjVa5QqhkFCGW4
-        x.push_back(std::make_pair("Priv05", CDynamicAddress("DRqqngX1mPUjKFXPQDdHRmy2jBk9DKUjkx"))); //importprivkey QQja2KMbhyaat4HJLUiEr2PVmb33CtuVN7KgbmTq9ivVwnaZvFUE
+        x.push_back(std::make_pair("Priv01", COdynCashAddress("D6wUMdGtoXtj4zjyk4kYu6cL8LM5j6bEd7"))); //importprivkey QUQsWaE1LRdW95gLgyQgjkUjR4eqhbigmDHENzyTVYy7JCgQcYMd
+        x.push_back(std::make_pair("Priv02", COdynCashAddress("DKLWazjY91KKWekxPxwjznx56tX1KYtTiy"))); //importprivkey QWR6WRSKZZrpDBM3q2jqyhB5xmE5YDdc72trHzznTLwBEJBbeWKm
+        x.push_back(std::make_pair("Priv03", COdynCashAddress("DNsEXkNEdzvNbR3zjaDa3TEVPtwR6Efbmd"))); //importprivkey QPWaY6RAm44zFQ9gktpHFwaCLQc1nCGwPaVAnXAZsFMyGXzLce35
+        x.push_back(std::make_pair("Priv04", COdynCashAddress("DG2NCt5Z35cLRYnNCDXdVJTbPh3NSScAmF"))); //importprivkey QRF11rngYqeVv4mSE4SCGU8P3MQgZwJaRQQJsknjVa5QqhkFCGW4
+        x.push_back(std::make_pair("Priv05", COdynCashAddress("DRqqngX1mPUjKFXPQDdHRmy2jBk9DKUjkx"))); //importprivkey QQja2KMbhyaat4HJLUiEr2PVmb33CtuVN7KgbmTq9ivVwnaZvFUE
     } 
     return x;
 }
@@ -100,8 +100,8 @@ std::vector<std::string> InitialiseAddresses()
 std::vector<std::string> CFluidParameters::InitialiseAddresses()
 {
     std::vector<std::string> initialSovereignAddresses;
-    std::vector<std::pair<std::string, CDynamicAddress> > fluidIdentities = InitialiseSovereignIdentities();
-    for (const std::pair<std::string, CDynamicAddress>& sovereignId : fluidIdentities) {
+    std::vector<std::pair<std::string, COdynCashAddress> > fluidIdentities = InitialiseSovereignIdentities();
+    for (const std::pair<std::string, COdynCashAddress>& sovereignId : fluidIdentities) {
         initialSovereignAddresses.push_back(sovereignId.second.ToString());
     }
     return initialSovereignAddresses;
@@ -110,8 +110,8 @@ std::vector<std::string> CFluidParameters::InitialiseAddresses()
 std::vector<std::vector<unsigned char> > CFluidParameters::InitialiseAddressCharVector()
 {
     std::vector<std::vector<unsigned char> > initialSovereignAddresses;
-    std::vector<std::pair<std::string, CDynamicAddress> > fluidIdentities = InitialiseSovereignIdentities();
-    for (const std::pair<std::string, CDynamicAddress>& sovereignId : fluidIdentities) {
+    std::vector<std::pair<std::string, COdynCashAddress> > fluidIdentities = InitialiseSovereignIdentities();
+    for (const std::pair<std::string, COdynCashAddress>& sovereignId : fluidIdentities) {
         initialSovereignAddresses.push_back(CharVectorFromString(sovereignId.second.ToString()));
     }
     return initialSovereignAddresses;
@@ -246,9 +246,9 @@ bool CFluid::CheckAccountBanScript(const CScript& fluidScript, const uint256& tx
 bool CFluid::CheckIfQuorumExists(const std::string& consentToken, std::string& message, const bool individual)
 {
     std::vector<std::string> fluidSovereigns;
-    std::pair<CDynamicAddress, bool> keyOne;
-    std::pair<CDynamicAddress, bool> keyTwo;
-    std::pair<CDynamicAddress, bool> keyThree;
+    std::pair<COdynCashAddress, bool> keyOne;
+    std::pair<COdynCashAddress, bool> keyTwo;
+    std::pair<COdynCashAddress, bool> keyThree;
     keyOne.second = false, keyTwo.second = false;
     keyThree.second = false;
 
@@ -262,7 +262,7 @@ bool CFluid::CheckIfQuorumExists(const std::string& consentToken, std::string& m
         fluidSovereigns = InitialiseAddresses();
 
     for (const std::string& address : fluidSovereigns) {
-        CDynamicAddress attemptKey, xAddress(address);
+        COdynCashAddress attemptKey, xAddress(address);
 
         if (!xAddress.IsValid())
             return false;
@@ -301,7 +301,7 @@ bool CFluid::CheckNonScriptQuorum(const std::string& consentToken, std::string& 
 }
 
 /** It will append a signature of the new information */
-bool CFluid::GenericConsentMessage(const std::string& message, std::string& signedString, const CDynamicAddress& signer)
+bool CFluid::GenericConsentMessage(const std::string& message, std::string& signedString, const COdynCashAddress& signer)
 {
     std::string token, digest;
 
@@ -402,7 +402,7 @@ bool CFluid::GenericParseNumber(const std::string consentToken, const int64_t ti
     return true;
 }
 
-CDynamicAddress CFluid::GetAddressFromDigestSignature(const std::string& digestSignature, const std::string& messageTokenKey)
+COdynCashAddress CFluid::GetAddressFromDigestSignature(const std::string& digestSignature, const std::string& messageTokenKey)
 {
     bool fInvalid = false;
     std::vector<unsigned char> vchSig = DecodeBase64(digestSignature.c_str(), &fInvalid);
@@ -422,13 +422,13 @@ CDynamicAddress CFluid::GetAddressFromDigestSignature(const std::string& digestS
         LogPrintf("GetAddressFromDigestSignature(): Public Key Recovery Failed! Hash: %s\n", ss.GetHash().ToString());
         return nullptr;
     }
-    CDynamicAddress newAddress;
+    COdynCashAddress newAddress;
     newAddress.Set(pubkey.GetID());
     return newAddress;
 }
 
 /** Individually checks the validity of an instruction */
-bool CFluid::GenericVerifyInstruction(const std::string& consentToken, CDynamicAddress& signer, std::string& messageTokenKey, const int& whereToLook)
+bool CFluid::GenericVerifyInstruction(const std::string& consentToken, COdynCashAddress& signer, std::string& messageTokenKey, const int& whereToLook)
 {
     std::string consentTokenNoScript = GetRidOfScriptStatement(consentToken);
     messageTokenKey = "";
@@ -450,7 +450,7 @@ bool CFluid::GenericVerifyInstruction(const std::string& consentToken, CDynamicA
     return true;
 }
 
-bool CFluid::ParseMintKey(const int64_t& nTime, CDynamicAddress& destination, CAmount& coinAmount, const std::string& uniqueIdentifier, const bool txCheckPurpose)
+bool CFluid::ParseMintKey(const int64_t& nTime, COdynCashAddress& destination, CAmount& coinAmount, const std::string& uniqueIdentifier, const bool txCheckPurpose)
 {
     std::vector<std::string> ptrs;
 
@@ -502,7 +502,7 @@ bool GetFluidBlock(const CBlockIndex* pblockindex, CBlock& block)
     return true;
 }
 
-bool CFluid::GetMintingInstructions(const CBlockIndex* pblockindex, CDynamicAddress& toMintAddress, CAmount& mintAmount)
+bool CFluid::GetMintingInstructions(const CBlockIndex* pblockindex, COdynCashAddress& toMintAddress, CAmount& mintAmount)
 {
     CBlock block;
     if (GetFluidBlock(pblockindex, block)) {
@@ -572,7 +572,7 @@ bool CFluid::ValidationProcesses(CValidationState& state, const CScript& txOut, 
 {
     std::string message;
     CAmount mintAmount;
-    CDynamicAddress toMintAddress;
+    COdynCashAddress toMintAddress;
 
     if (IsTransactionFluid(txOut)) {
         if (!CheckIfQuorumExists(ScriptToAsmStr(txOut), message)) {
@@ -684,7 +684,7 @@ bool CFluid::ExtractTimestampWithAddresses(const std::string& strOpCode, const C
         std::string strToken = strs.at(0);
         for (uint32_t iter = 1; iter != strs.size(); iter++) {
             std::string strSignature = strs.at(iter);
-            CDynamicAddress address = GetAddressFromDigestSignature(strSignature, strToken);
+            COdynCashAddress address = GetAddressFromDigestSignature(strSignature, strToken);
             vSovereignAddresses.push_back(CharVectorFromString(address.ToString()));
         }
     }

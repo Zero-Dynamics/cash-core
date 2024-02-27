@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_CHAINPARAMSBASE_H
-#define DYNAMIC_CHAINPARAMSBASE_H
+#ifndef ODYNCASH_CHAINPARAMSBASE_H
+#define ODYNCASH_CHAINPARAMSBASE_H
 
 #include <string>
 #include <vector>
@@ -14,8 +14,8 @@
 static const int DEFAULT_P2P_PORT = 33300;
 
 /**
- * CBaseChainParams defines the base parameters (shared between dynamic-cli and dynamicd)
- * of a given instance of the Dynamic system.
+ * CBaseChainParams defines the base parameters (shared between odyncash-cli and odyncashd)
+ * of a given instance of the OdynCash system.
  */
 class CBaseChainParams
 {
@@ -65,4 +65,4 @@ std::string ChainNameFromCommandLine();
  */
 bool AreBaseParamsConfigured();
 
-#endif // DYNAMIC_CHAINPARAMSBASE_H
+#endif // ODYNCASH_CHAINPARAMSBASE_H

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_CHAIN_H
-#define DYNAMIC_CHAIN_H
+#ifndef ODYNCASH_CHAIN_H
+#define ODYNCASH_CHAIN_H
 
 #include "arith_uint256.h"
 #include "consensus/params.h"
@@ -509,4 +509,4 @@ public:
     CBlockIndex* FindEarliestAtLeast(int64_t nTime) const;
 };
 
-#endif // DYNAMIC_CHAIN_H
+#endif // ODYNCASH_CHAIN_H

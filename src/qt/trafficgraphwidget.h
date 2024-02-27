@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_TRAFFICGRAPHWIDGET_H
-#define DYNAMIC_QT_TRAFFICGRAPHWIDGET_H
+#ifndef ODYNCASH_QT_TRAFFICGRAPHWIDGET_H
+#define ODYNCASH_QT_TRAFFICGRAPHWIDGET_H
 
 #include "trafficgraphdata.h"
 
@@ -50,4 +50,4 @@ private:
     TrafficGraphData trafficGraphData;
 };
 
-#endif // DYNAMIC_QT_TRAFFICGRAPHWIDGET_H
+#endif // ODYNCASH_QT_TRAFFICGRAPHWIDGET_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DYNAMIC_QT_RPCCONSOLE_H
-#define DYNAMIC_QT_RPCCONSOLE_H
+#ifndef ODYNCASH_QT_RPCCONSOLE_H
+#define ODYNCASH_QT_RPCCONSOLE_H
 
 #include "guiutil.h"
 #include "peertablemodel.h"
@@ -30,7 +30,7 @@ QT_BEGIN_NAMESPACE
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local Dynamic RPC console. */
+/** Local OdynCash RPC console. */
 class RPCConsole : public QDialog
 {
     Q_OBJECT
@@ -172,4 +172,4 @@ private:
     QThread thread;
 };
 
-#endif // DYNAMIC_QT_RPCCONSOLE_H
+#endif // ODYNCASH_QT_RPCCONSOLE_H

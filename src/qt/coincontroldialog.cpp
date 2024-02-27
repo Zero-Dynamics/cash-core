@@ -9,7 +9,7 @@
 #include "ui_coincontroldialog.h"
 
 #include "addresstablemodel.h"
-#include "dynamicunits.h"
+#include "odyncashunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 #include "platformstyle.h"
@@ -274,7 +274,7 @@ void CoinControlDialog::showMenu(const QPoint& point)
 // context menu action: copy amount
 void CoinControlDialog::copyAmount()
 {
-    GUIUtil::setClipboard(DynamicUnits::removeSpaces(contextMenuItem->text(COLUMN_AMOUNT)));
+    GUIUtil::setClipboard(OdynCashUnits::removeSpaces(contextMenuItem->text(COLUMN_AMOUNT)));
 }
 
 // context menu action: copy label
@@ -594,7 +594,7 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
     }
 
     // actually update labels
-    int nDisplayUnit = DynamicUnits::DYN;
+    int nDisplayUnit = OdynCashUnits::DYN;
     if (model && model->getOptionsModel())
         nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 
@@ -614,12 +614,12 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
 
     // stats
     l1->setText(QString::number(nQuantity));                                 // Quantity
-    l2->setText(DynamicUnits::formatWithUnit(nDisplayUnit, nAmount));        // Amount
-    l3->setText(DynamicUnits::formatWithUnit(nDisplayUnit, nPayFee));        // Fee
-    l4->setText(DynamicUnits::formatWithUnit(nDisplayUnit, nAfterFee));      // After Fee
+    l2->setText(OdynCashUnits::formatWithUnit(nDisplayUnit, nAmount));        // Amount
+    l3->setText(OdynCashUnits::formatWithUnit(nDisplayUnit, nPayFee));        // Fee
+    l4->setText(OdynCashUnits::formatWithUnit(nDisplayUnit, nAfterFee));      // After Fee
     l5->setText(((nBytes > 0) ? ASYMP_UTF8 : "") + QString::number(nBytes)); // Bytes
     l7->setText(fDust ? tr("yes") : tr("no"));                               // Dust
-    l8->setText(DynamicUnits::formatWithUnit(nDisplayUnit, nChange));        // Change
+    l8->setText(OdynCashUnits::formatWithUnit(nDisplayUnit, nChange));        // Change
     if (nPayFee > 0 && (coinControl->nMinimumTotalFee < nPayFee)) {
         l3->setText(ASYMP_UTF8 + l3->text());
         l4->setText(ASYMP_UTF8 + l4->text());
@@ -718,9 +718,9 @@ void CoinControlDialog::updateView()
             CTxDestination outputAddress;
             QString sAddress = "";
             if (ExtractDestination(out.tx->tx->vout[out.i].scriptPubKey, outputAddress)) {
-                sAddress = QString::fromStdString(CDynamicAddress(outputAddress).ToString());
+                sAddress = QString::fromStdString(COdynCashAddress(outputAddress).ToString());
 
-                // if listMode or change => show dynamic address. In tree mode, address is not shown again for direct wallet address outputs
+                // if listMode or change => show odyncash address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))
                     itemOutput->setText(COLUMN_ADDRESS, sAddress);
 
@@ -741,8 +741,8 @@ void CoinControlDialog::updateView()
             }
 
             // amount
-            itemOutput->setText(COLUMN_AMOUNT, DynamicUnits::format(nDisplayUnit, out.tx->tx->vout[out.i].nValue));
-            itemOutput->setToolTip(COLUMN_AMOUNT, DynamicUnits::format(nDisplayUnit, out.tx->tx->vout[out.i].nValue));
+            itemOutput->setText(COLUMN_AMOUNT, OdynCashUnits::format(nDisplayUnit, out.tx->tx->vout[out.i].nValue));
+            itemOutput->setToolTip(COLUMN_AMOUNT, OdynCashUnits::format(nDisplayUnit, out.tx->tx->vout[out.i].nValue));
             itemOutput->setData(COLUMN_AMOUNT, Qt::UserRole, QVariant((qlonglong)out.tx->tx->vout[out.i].nValue)); // padding so that sorting works correctly
 
             // date
@@ -789,8 +789,8 @@ void CoinControlDialog::updateView()
         // amount
         if (treeMode) {
             itemWalletAddress->setText(COLUMN_CHECKBOX, "(" + QString::number(nChildren) + ")");
-            itemWalletAddress->setText(COLUMN_AMOUNT, DynamicUnits::format(nDisplayUnit, nSum));
-            itemWalletAddress->setToolTip(COLUMN_AMOUNT, DynamicUnits::format(nDisplayUnit, nSum));
+            itemWalletAddress->setText(COLUMN_AMOUNT, OdynCashUnits::format(nDisplayUnit, nSum));
+            itemWalletAddress->setToolTip(COLUMN_AMOUNT, OdynCashUnits::format(nDisplayUnit, nSum));
             itemWalletAddress->setData(COLUMN_AMOUNT, Qt::UserRole, QVariant((qlonglong)nSum));
         }
     }
