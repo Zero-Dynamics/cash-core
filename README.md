@@ -38,21 +38,21 @@ What is [OdynCash](https://duality.solutions/odyn)?
 [OdynCash(0DYNC)](https://duality.solutions/odyn) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
 
 **MainNet Parameters**
-P2P Port = 33300
-RPC Port = 33350
-ServiceNodes = 33300
+P2P Port = 44400
+RPC Port = 44450
+ServiceNodes = 44400
 Magic Bytes: 0x5e 0x61 0x74 0x80
 
 **TestNet Parameters**
-P2P Port = 33400
-RPC Port = 33450
-ServiceNodes = 33400
+P2P Port = 44500
+RPC Port = 44550
+ServiceNodes = 44500
 Magic Bytes: 0x2f 0x32 0x15 0x40
 
 **RegTest Parameters**
-P2P Port = 33500
-RPC Port = 33550
-ServiceNodes = 33500
+P2P Port = 44600
+RPC Port = 44650
+ServiceNodes = 44600
 Magic Bytes = 0x2f 0x32 0x15 0x3f
 
 

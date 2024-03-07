@@ -4370,8 +4370,8 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>. Whitelist-równoległe nie mogą być DoS zakazane i ich tranzakcje są zawsze przekazywane, nawet jeśli są one już użyte w mempool np. w gateway</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 może być tylko użyty na sieci głównej)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 może być tylko użyty na sieci głównej)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4804,8 +4804,8 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>Nieprawidłowy servicenodepairingkey. Proszę sprawdź dokumentację.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(musi być 33300 do sieci głownej)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(musi być 44400 do sieci głownej)</translation>
     </message>
     <message>
         <source>Can&apos;t find random ServiceNode.</source>

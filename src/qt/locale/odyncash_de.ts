@@ -4366,8 +4366,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;OdynCash Alarm&quot; admin@fo
         <translation>Whitegelistete Gegenstellen können nicht durch DoS gesperrt werden und ihre Transaktionen werden immer weitergeleitet, auch wenn sie bereits im Mempool sind, nützlich für z.B ein Gateway </translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 kann nur für das Mainnet verwendet werden)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 kann nur für das Mainnet verwendet werden)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4802,8 +4802,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;OdynCash Alarm&quot; admin@fo
         <translation>ServiceNodepairingkey ist nicht gültig. Bitte sehen Sie in der Dokumentation nach.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(muß 33300 für das Mainnet sein)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(muß 44400 für das Mainnet sein)</translation>
     </message>
     <message>
         <source>Can&apos;t find random ServiceNode.</source>

@@ -51,16 +51,16 @@ Vagrant.configure("2") do |config|
   # NOTE: This will enable public access to the opened port
 
   # Main net
-  config.vm.network "forwarded_port", guest: 33300, host: 33300 # P2P
-  config.vm.network "forwarded_port", guest: 33350, host: 33350, host_ip: "127.0.0.1" # RPC
+  config.vm.network "forwarded_port", guest: 44400, host: 44400 # P2P
+  config.vm.network "forwarded_port", guest: 44450, host: 44450, host_ip: "127.0.0.1" # RPC
 
   # Test net
-  config.vm.network "forwarded_port", guest: 33400, host: 33400 # P2P
-  config.vm.network "forwarded_port", guest: 33450, host: 33450, host_ip: "127.0.0.1" # RPC
+  config.vm.network "forwarded_port", guest: 44500, host: 44500 # P2P
+  config.vm.network "forwarded_port", guest: 44550, host: 44550, host_ip: "127.0.0.1" # RPC
 
   # ReqTest net
-  config.vm.network "forwarded_port", guest: 33500, host: 33500 # P2P
-  config.vm.network "forwarded_port", guest: 33550, host: 33550, host_ip: "127.0.0.1" # RPC
+  config.vm.network "forwarded_port", guest: 44600, host: 44600 # P2P
+  config.vm.network "forwarded_port", guest: 44650, host: 44650, host_ip: "127.0.0.1" # RPC
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.

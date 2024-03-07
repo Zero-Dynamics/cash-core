@@ -4182,8 +4182,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte OdynCash" admin@foo.com
         <translation>Pairs en liste blanche ne peuvent être bannis pour DoS et leurs transactions sont toujours relayées, même si elles sont déjà en mémoire, utile par ex. pour une passerelle</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 n'est utilisable que sur mainnet)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 n'est utilisable que sur mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4608,8 +4608,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte OdynCash" admin@foo.com
         <translation>servicenodepairingkey invalide. Veuillez vous référer à la documentation.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(doit être 33300 pour mainnet)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(doit être 44400 pour mainnet)</translation>
     </message>
     <message>
         <source>Can't find random ServiceNode.</source>

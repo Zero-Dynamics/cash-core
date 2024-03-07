@@ -4357,8 +4357,8 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>Peers op de whitelist kunnen geen DoS verbod krijgen en hun transacties worden altijd doorgegeven, ook al bevinden ze zich al in de mempool, nuttig bijvoorbeeld. voor een gateway</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 kan alleen op mainnet worden gebruikt)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 kan alleen op mainnet worden gebruikt)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4791,8 +4791,8 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>Ongeldige servicenodepairingkey. Zie documentatie.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(moet 33300 zijn voor mainnet)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(moet 44400 zijn voor mainnet)</translation>
     </message>
     <message>
         <source>Can&apos;t find random ServiceNode.</source>

@@ -4192,8 +4192,8 @@ ví dụ: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>Cái điểm ngang hàng trong danh sách trắng không thể bị cấm DoS và các giao dịch của nó luôn được chuyển tiếp, thậm chí cả khi nó đã có trong mempool, hữu ích ví dụ như cho một cửa ngõ</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 chỉ được sử dụng trên mạng chính thức)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 chỉ được sử dụng trên mạng chính thức)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4617,8 +4617,8 @@ ví dụ: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>servicenodepairingkey không hợp lệ. Hãy xem lại tài liệu.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(phải là 33300 cho mạng chính thức)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(phải là 44400 cho mạng chính thức)</translation>
     </message>
     <message>
         <source>Can't find random ServiceNode.</source>

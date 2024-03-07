@@ -52,11 +52,11 @@ reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equiv
 config file):
 
 	HiddenServiceDir /var/lib/tor/odyncash-service/
-	HiddenServicePort 33300 127.0.0.1:33300
-	HiddenServicePort 33400 127.0.0.1:33400
+	HiddenServicePort 44400 127.0.0.1:44400
+	HiddenServicePort 44500 127.0.0.1:44500
 
 The directory can be different of course, but (both) port numbers should be equal to
-your odyncashd's P2P listen port (33300 by default).
+your odyncashd's P2P listen port (44400 by default).
 
 	-externalip=X   You can tell odyncash about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
@@ -86,7 +86,7 @@ specify:
 
 	./odyncashd ... -discover
 
-and open port 33300 on your firewall (or use -upnp).
+and open port 44400 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:

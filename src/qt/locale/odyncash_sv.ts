@@ -4370,8 +4370,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>Vistlistad peers kan inte vara DoS bannad och deras transaktioner är alltid vidarebefordrade, även om de redan är i mempoolen, användbar t.ex. för en gateway</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 kan endast användas på mainnet)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 kan endast användas på mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4804,8 +4804,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>Ogiltig servicenodepairingkey. Se dokumentationen.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(måste vara 33300 för mainnet)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(måste vara 44400 för mainnet)</translation>
     </message>
     <message>
         <source>Can&apos;t find random ServiceNode.</source>

@@ -4356,8 +4356,8 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Alerta OdynCash&quot; admin@fo
         <translation>Los pares de la lista blanca no pueden ser prohibidos por DoS y sus transacciones siempre son retransmitidas, incluso si ya están en el mempool, por ejemplo, útil para una puerta de enlace</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 podría ser usado solo en la red principal)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 podría ser usado solo en la red principal)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4790,8 +4790,8 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Alerta OdynCash&quot; admin@fo
         <translation>servicenodepairingkey inválido.  Por favor revise la documentación.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(debe ser 33300 para la red principal)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(debe ser 44400 para la red principal)</translation>
     </message>
     <message>
         <source>Can&apos;t find random ServiceNode.</source>

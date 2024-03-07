@@ -3765,8 +3765,8 @@ napríklad: alertnotify=echo %%s | mail -s "OdynCash Upozornenie" admin@foo.com
         <translation>Uzle na zoznam povolených nemôžu byť DoS zakázané a ich transakcie vždy postúpené ďalej, aj v prípade, ak sú už pamäťovej fronte. Užitočné napr. pre brány</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 nemôže byť použité pre hlavnú sieť)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 nemôže byť použité pre hlavnú sieť)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4183,8 +4183,8 @@ napríklad: alertnotify=echo %%s | mail -s "OdynCash Upozornenie" admin@foo.com
         <translation>Neplatný servicenodepairingkey. Prosím pozrite do dokumentácie.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(pre hlavnú sieť musí byť 33300)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(pre hlavnú sieť musí byť 44400)</translation>
     </message>
     <message>
         <source>Can't find random ServiceNode.</source>

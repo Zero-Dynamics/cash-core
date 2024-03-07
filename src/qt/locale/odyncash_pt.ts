@@ -4080,8 +4080,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Aviso: Por favor verifique que a data e a hora do computador está correcta! Se o relógio estiver errado o OdynCash não vai funcionar correctamente.</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 apenas pode ser usado para mainnet)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 apenas pode ser usado para mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4490,8 +4490,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>servicenodepairingkey inválida. Por favor reveja a documentação.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(deve ser 33300 para mainnet)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(deve ser 44400 para mainnet)</translation>
     </message>
     <message>
         <source>Can't find random ServiceNode.</source>

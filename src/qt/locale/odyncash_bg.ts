@@ -4134,8 +4134,8 @@ for example: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>Whitelisted не могат да бъдат DoS забранени и техните транзакции ще бъдат винаги предадени, дори ако вече са в  mempool, полезно напр. за gateway</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 може да бъде използван в основната мрежа)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 може да бъде използван в основната мрежа)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4560,8 +4560,8 @@ for example: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>Невалиден частен ключ на ServiceNode. Моля вижте документацията.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(трябва да е 33300 за основната мрежа)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(трябва да е 44400 за основната мрежа)</translation>
     </message>
     <message>
         <source>Can't find random ServiceNode.</source>

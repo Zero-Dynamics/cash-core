@@ -4154,8 +4154,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "OdynCash Hälytys" admin@foo.com
         <translation>Luotettaviksi merkittyjä peers:ejä ei voida DoS estää, ja niiden siirtotapahtumat välitetään aina, vaikka ne olisvatkin jo muistivarannossa, käyttökelpoinen esim. yhdyskäytävään</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 voidaan käyttää vain pääverkossa)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 voidaan käyttää vain pääverkossa)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4592,8 +4592,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "OdynCash Hälytys" admin@foo.com
         <translation>Virheellinen servicenoden yksityisavain (servicenodepairingkey). Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(oltava 33300 pääverkossa)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(oltava 44400 pääverkossa)</translation>
     </message>
     <message>
         <source>Can't find random ServiceNode.</source>

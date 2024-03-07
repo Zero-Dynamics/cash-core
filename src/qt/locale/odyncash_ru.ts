@@ -4352,8 +4352,8 @@ rpcpassword =%s
         <translation>Одноранговые узлы не могут быть заблокированы DoS, и их транзакции всегда передаются, даже если они уже находятся в mempool, что полезно, например для шлюза</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 можно использовать только в основной сети)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 можно использовать только в основной сети)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4788,8 +4788,8 @@ rpcpassword =%s
         <translation>Неверный ключ servicenodepairingkey. Пожалуйста, обратитесь к документации.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(должно быть 33300 для основной сети)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(должно быть 44400 для основной сети)</translation>
     </message>
     <message>
         <source>Can&apos;t find random ServiceNode.</source>

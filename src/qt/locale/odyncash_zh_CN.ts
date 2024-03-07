@@ -3988,8 +3988,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>在白名单中的节点不会因为检测到DoS攻击而被停用. 来自这些节点的交易也一定会被转发, 即使交易已在记忆池. 适用于网关</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300 只能被用于主网)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400 只能被用于主网)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4339,8 +4339,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>无效主节点私钥。请查阅文档。</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(设置 33300 为主网)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(设置 44400 为主网)</translation>
     </message>
     <message>
         <source>Can&apos;t find random ServiceNode.</source>

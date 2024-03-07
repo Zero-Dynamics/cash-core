@@ -4354,8 +4354,8 @@ rpcpassword=%s
         <translation>허용 목록에있는 동료는 DoS가 금지 될 수 없으며 거래가 항상 mempool에 있어도 항상 릴레이됩니다. 게이트웨이 용</translation>
     </message>
     <message>
-        <source>(33300 could be used only on mainnet)</source>
-        <translation>(33300은 메인 네트에서만 사용 가능)</translation>
+        <source>(44400 could be used only on mainnet)</source>
+        <translation>(44400은 메인 네트에서만 사용 가능)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4788,8 +4788,8 @@ rpcpassword=%s
         <translation>잘못된 servicenodepairingkey입니다. 문서를 참조하십시오.</translation>
     </message>
     <message>
-        <source>(must be 33300 for mainnet)</source>
-        <translation>(메인 네트의 경우 33300이어야 함)</translation>
+        <source>(must be 44400 for mainnet)</source>
+        <translation>(메인 네트의 경우 44400이어야 함)</translation>
     </message>
     <message>
         <source>Can&apos;t find random ServiceNode.</source>
