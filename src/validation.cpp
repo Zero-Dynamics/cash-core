@@ -642,7 +642,7 @@ bool CheckBDAPTxCreditUsage(const CTransaction& tx, const std::vector<Coin>& vBd
         return true;
 
     if (nStandardIn > 0 && nStandardOut > 0 && nStandardOut >= nStandardIn) {
-        LogPrintf("%s -- Check failed. Invalid use of BDAP credits. Standard DYN output amounts exceeds or equals standard DYN input amount\n", __func__);
+        LogPrintf("%s -- Check failed. Invalid use of BDAP credits. Standard 0DYNC output amounts exceeds or equals standard 0DYNC input amount\n", __func__);
         if (ENFORCE_BDAP_CREDIT_USE)
             return false;
     }
@@ -698,8 +698,8 @@ bool CheckBDAPTxCreditUsage(const CTransaction& tx, const std::vector<Coin>& vBd
             if (credit.first.vParameters.size() == 2) {
                 std::vector<unsigned char> vchMoveSource = credit.first.vParameters[0];
                 std::vector<unsigned char> vchMoveDestination = credit.first.vParameters[1];
-                if (vchMoveSource != vchFromString(std::string("DYN")) || vchMoveDestination != vchFromString(std::string("BDAP"))) {
-                    LogPrintf("%s -- Check failed. Invalid use of BDAP credits. BDAP Credit has incorrect parameter. Move Source %s (should be DYN), Move Destination %s (should be BDAP)\n", __func__,
+                if (vchMoveSource != vchFromString(std::string("0DYNC")) || vchMoveDestination != vchFromString(std::string("BDAP"))) {
+                    LogPrintf("%s -- Check failed. Invalid use of BDAP credits. BDAP Credit has incorrect parameter. Move Source %s (should be 0DYNC), Move Destination %s (should be BDAP)\n", __func__,
                                             stringFromVch(vchMoveSource), stringFromVch(vchMoveDestination));
                     return false;
                 }
@@ -1092,7 +1092,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
         } else if (strOpType == "bdap_move_asset") {
             if (vvch.size() != 2)
                 return state.Invalid(false, REJECT_INVALID, "bdap-move-invalid-parameter-size");
-            std::vector<unsigned char> vchMoveSource = vchFromString(std::string("DYN"));
+            std::vector<unsigned char> vchMoveSource = vchFromString(std::string("0DYNC"));
             std::vector<unsigned char> vchMoveDestination = vchFromString(std::string("BDAP"));
             if (vvch[0] != vchMoveSource)
                 return state.Invalid(false, REJECT_ALREADY_KNOWN, "bdap-move-unknown-source");
@@ -2913,7 +2913,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     nTimeConnect += nTime3 - nTime2;
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime3 - nTime2), 0.001 * (nTime3 - nTime2) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime3 - nTime2) / (nInputs - 1), nTimeConnect * 0.000001);
 
-    // DYN : MODIFIED TO CHECK SERVICENODE PAYMENTS AND SUPERBLOCKS
+    // 0DYNC : MODIFIED TO CHECK SERVICENODE PAYMENTS AND SUPERBLOCKS
 
     // It's possible that we simply don't have enough data and this could fail
     // (i.e. block itself could be a correct one and we need to store it),
@@ -2952,11 +2952,11 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
         nExpectedBlockValue = newMintIssuance + newMiningReward + newServiceNodeReward;
 
         if (!IsBlockValueValid(block, pindex->nHeight, nExpectedBlockValue, strError)) {
-            return state.DoS(0, error("ConnectBlock(DYN): %s", strError), REJECT_INVALID, "bad-cb-amount");
+            return state.DoS(0, error("ConnectBlock(0DYNC): %s", strError), REJECT_INVALID, "bad-cb-amount");
         }
         if (!IsBlockPayeeValid(*block.vtx[0], pindex->nHeight, nExpectedBlockValue)) {
             mapRejectedBlocks.insert(std::make_pair(block.GetHash(), GetTime()));
-            return state.DoS(0, error("ConnectBlock(DYN): couldn't find ServiceNode or Superblock payments"),
+            return state.DoS(0, error("ConnectBlock(0DYNC): couldn't find ServiceNode or Superblock payments"),
                 REJECT_INVALID, "bad-cb-payee");
         }
     }
@@ -2971,7 +2971,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                 fluidServiceNode.txHash = tx.GetHash();
                 if (CheckFluidServiceNodeDB()) {
                     if (!CheckSignatureQuorum(fluidServiceNode.FluidScript, strError)) {
-                        return state.DoS(0, error("ConnectBlock(DYN): %s", strError), REJECT_INVALID, "invalid-fluid-servicenode-address-signature");
+                        return state.DoS(0, error("ConnectBlock(0DYNC): %s", strError), REJECT_INVALID, "invalid-fluid-servicenode-address-signature");
                     }
                     pFluidServiceNodeDB->AddFluidServiceNodeEntry(fluidServiceNode, OP_REWARD_SERVICENODE);
                 }
@@ -2981,7 +2981,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                 fluidMining.txHash = tx.GetHash();
                 if (CheckFluidMiningDB()) {
                     if (!CheckSignatureQuorum(fluidMining.FluidScript, strError)) {
-                        return state.DoS(0, error("ConnectBlock(DYN): %s", strError), REJECT_INVALID, "invalid-fluid-mining-address-signature");
+                        return state.DoS(0, error("ConnectBlock(0DYNC): %s", strError), REJECT_INVALID, "invalid-fluid-mining-address-signature");
                     }
                     pFluidMiningDB->AddFluidMiningEntry(fluidMining, OP_REWARD_MINING);
                 }
@@ -2991,7 +2991,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                 fluidMint.txHash = tx.GetHash();
                 if (CheckFluidMintDB()) {
                     if (!CheckSignatureQuorum(fluidMint.FluidScript, strError)) {
-                        return state.DoS(0, error("ConnectBlock(DYN): %s", strError), REJECT_INVALID, "invalid-fluid-mint-address-signature");
+                        return state.DoS(0, error("ConnectBlock(0DYNC): %s", strError), REJECT_INVALID, "invalid-fluid-mint-address-signature");
                     }
                     pFluidMintDB->AddFluidMintEntry(fluidMint, OP_MINT);
                 }
@@ -4101,13 +4101,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
                     // relaying instantsend data won't help it.
                     LOCK(cs_main);
                     mapRejectedBlocks.insert(std::make_pair(block.GetHash(), GetTime()));
-                    return state.DoS(0, error("CheckBlock(DYN): transaction %s conflicts with transaction lock %s", tx->GetHash().ToString(), hashLocked.ToString()),
+                    return state.DoS(0, error("CheckBlock(0DYNC): transaction %s conflicts with transaction lock %s", tx->GetHash().ToString(), hashLocked.ToString()),
                         REJECT_INVALID, "conflict-tx-lock");
                 }
             }
         }
     } else {
-        LogPrintf("CheckBlock(DYN): spork is off, skipping transaction locking checks\n");
+        LogPrintf("CheckBlock(0DYNC): spork is off, skipping transaction locking checks\n");
     }
 
     // END ODYNCASH

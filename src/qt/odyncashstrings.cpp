@@ -123,7 +123,7 @@ static const char UNUSED* odyncash_strings[] = {
                                  "specified?"),
     QT_TRANSLATE_NOOP("odyncash", ""
                                  "InstantSend doesn't support sending values that high yet. Transactions are "
-                                 "currently limited to %1 DYN."),
+                                 "currently limited to %1 0DYNC."),
     QT_TRANSLATE_NOOP("odyncash", ""
                                  "InstantSend requires inputs with at least %d confirmations, you might need "
                                  "to wait a few minutes and try again."),
@@ -426,7 +426,7 @@ static const char UNUSED* odyncash_strings[] = {
     QT_TRANSLATE_NOOP("odyncash", "Invalid spork address specified with -sporkaddr"),
     QT_TRANSLATE_NOOP("odyncash", "KeePassHttp id for the established association"),
     QT_TRANSLATE_NOOP("odyncash", "KeePassHttp key for AES encrypted communication with KeePass"),
-    QT_TRANSLATE_NOOP("odyncash", "Keep N DYN anonymized (%u-%u, default: %u)"),
+    QT_TRANSLATE_NOOP("odyncash", "Keep N 0DYNC anonymized (%u-%u, default: %u)"),
     QT_TRANSLATE_NOOP("odyncash", "Keep at most <n> unconnectable transactions in memory (default: %u)"),
     QT_TRANSLATE_NOOP("odyncash", "Keep the transaction memory pool below <n> megabytes (default: %u)"),
     QT_TRANSLATE_NOOP("odyncash", "Keypool ran out, please call keypoolrefill first"),

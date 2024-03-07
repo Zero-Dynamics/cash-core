@@ -219,8 +219,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -1090,13 +1090,13 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Use 2 separate servicenodes to mix funds up to 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Use 8 separate servicenodes to mix funds up to 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1105,18 +1105,18 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</translation>
     </message>
     <message>
         <location line="+26"/>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN per 1000 DYN you anonymize.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC per 1000 0DYNC you anonymize.</translation>
     </message>
     <message>
         <location line="-13"/>
@@ -1322,7 +1322,7 @@ You retain control of your money at all times.&lt;hr&gt;
 &lt;b&gt;The PrivateSend process works like this:&lt;/b&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend begins by breaking your transaction inputs down into standard denominations.
-These denominations are 0.001, 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN -- sort of like the paper money you use every day.&lt;/li&gt;
+These denominations are 0.001, 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC -- sort of like the paper money you use every day.&lt;/li&gt;
 &lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called &#39;ServiceNodes&#39;.
 These ServiceNodes are informed then that you are interested in mixing a certain denomination.
 No identifiable information is sent to the ServiceNodes, so they never know &#39;who&#39; you are.&lt;/li&gt;
@@ -1896,8 +1896,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Rounds</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Rounds</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -4307,8 +4307,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     <message>
         <location line="-20"/>
         <location line="+9"/>
-        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</translation>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -4448,8 +4448,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -4753,13 +4753,13 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     </message>
     <message>
         <location line="+12"/>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4873,8 +4873,8 @@ for example: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@foo
     </message>
     <message>
         <location line="+20"/>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5015,8 +5015,8 @@ for example: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@foo
     </message>
     <message>
         <location line="+5"/>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Fee (in DYN/kB) to add to transactions you send (default: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5475,8 +5475,8 @@ for example: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@foo
     </message>
     <message>
         <location line="+1"/>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Keep N DYN anonymized (default: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Keep N 0DYNC anonymized (default: %u)</translation>
     </message>
     <message>
         <location line="+1"/>

@@ -16,7 +16,7 @@ Budgets go through a series of stages before being paid:
 1. Prepare collateral transaction
 --
 
-In this transaction we prepare collateral for "_cool-project_". This proposal will pay _1200_ DYN, _12_ times over the course of a year totaling _24000_ DYN.
+In this transaction we prepare collateral for "_cool-project_". This proposal will pay _1200_ 0DYNC, _12_ times over the course of a year totaling _24000_ 0DYNC.
 
 **Warning: if you change any fields within this command, the collateral transaction will become invalid.**
 
@@ -125,7 +125,7 @@ After you get enough votes, execute ```sngovernance projection``` to see if you 
 6. Get paid
 --
 
-When block ```1000000``` is reached you'll receive a payment for ```1200``` DYN to ```y6R9oN12KnB9zydzTLc3LikD9cCjjQzYG7```.
+When block ```1000000``` is reached you'll receive a payment for ```1200``` 0DYNC to ```y6R9oN12KnB9zydzTLc3LikD9cCjjQzYG7```.
 
 7. Command list
 --
@@ -153,4 +153,3 @@ The following RPC commands are supported:
   - getvotes    - Get vote information for each finalized budget
   - prepare     - Manually prepare a finalized budget
   - submit      - Manually submit a finalized budget
-

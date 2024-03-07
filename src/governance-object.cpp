@@ -489,7 +489,7 @@ bool CGovernanceObject::IsValidLocally(std::string& strError, bool& fMissingServ
             if (err == CServiceNode::COLLATERAL_UTXO_NOT_FOUND) {
                 strError = "Failed to find ServiceNode UTXO, missing servicenode=" + strOutpoint + "\n";
             } else if (err == CServiceNode::COLLATERAL_INVALID_AMOUNT) {
-                strError = "ServiceNode UTXO should have 1000 DYN, missing servicenode=" + strOutpoint + "\n";
+                strError = "ServiceNode UTXO should have 1000 0DYNC, missing servicenode=" + strOutpoint + "\n";
             } else if (err == CServiceNode::COLLATERAL_INVALID_PUBKEY) {
                 fMissingServiceNode = true;
                 strError = "ServiceNode not found: " + strOutpoint;

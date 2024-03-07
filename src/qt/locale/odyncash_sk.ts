@@ -176,8 +176,8 @@
         <translation>Potvrďte šifrovanie peňaženky</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Upozornenie: Ak zašifrujete vašu peňaženku a stratíte prístupové heslo, potom &lt;b&gt;prídete o všetky svoje DYN-y&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Upozornenie: Ak zašifrujete vašu peňaženku a stratíte prístupové heslo, potom &lt;b&gt;prídete o všetky svoje 0DYNC-y&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -867,28 +867,28 @@ Adresa: %4</translation>
         <translation>Prosím vyberte úroveň súkromia.</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Použiť 2 rozdielne servicenode pre fixovanie prostriedkov až do 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Použiť 2 rozdielne servicenode pre fixovanie prostriedkov až do 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Použiť 8 rozdielnych servicenode pre fixovanie prostriedkov až do 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Použiť 8 rozdielnych servicenode pre fixovanie prostriedkov až do 1000 0DYNC</translation>
     </message>
     <message>
         <source>Use 16 separate servicenodes</source>
         <translation>Použiť 16 rozdielnych servicenode</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Táto možnosť je najrýchlejšia a bude stáť približne 0.025 DYN pre anonimizáciu 1000 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Táto možnosť je najrýchlejšia a bude stáť približne 0.025 0DYNC pre anonimizáciu 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Táto možnosť je stredne rýchla bude stáť približne 0.05 DYN pre anonimizáciu 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Táto možnosť je stredne rýchla bude stáť približne 0.05 0DYNC pre anonimizáciu 1000 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN za 1000 DYN ktoré spravíte anonymnými.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC za 1000 0DYNC ktoré spravíte anonymnými.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1434,8 +1434,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Čiastka a kolá:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Kôl</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Kôl</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3283,8 +3283,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Poslať OdynCashs</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend zatiaľ nepodporuje posielanie takto vysokých čiastok. Transakcie sú limitované na %1 DYN.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend zatiaľ nepodporuje posielanie takto vysokých čiastok. Transakcie sú limitované na %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3397,8 +3397,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Nedá sa nájsť dostatok denominácií PrivateSend pre túto transakciu. </translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Nedá sa nájsť dostatok ne-denominovaných PrivateSend zdrojov pre túto transakciu, ktoré nie sú rovné 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Nedá sa nájsť dostatok ne-denominovaných PrivateSend zdrojov pre túto transakciu, ktoré nie sú rovné 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -3641,12 +3641,12 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Chyba: Nájdený nepodporovaný argument -socks. Nastavenie SOCKS verzie nie je už možné, podporované sú už iba proxy SOCKS5.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Poplatky (v DYN za Kb) menšie ako toto, sú považované za nulový poplatok pre prenos (predvolené: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Poplatky (v 0DYNC za Kb) menšie ako toto, sú považované za nulový poplatok pre prenos (predvolené: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Poplatky (v DYN za Kb) menšie ako toto, sú považované za nulový transakčný poplatok (predvolené: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Poplatky (v 0DYNC za Kb) menšie ako toto, sú považované za nulový transakčný poplatok (predvolené: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -3741,8 +3741,8 @@ napríklad: alertnotify=echo %%s | mail -s "OdynCash Upozornenie" admin@foo.com
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Nenašiel sa dostatok prostriedkov pre túto transakciu, ktorú nie sú rovné 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Nenašiel sa dostatok prostriedkov pre túto transakciu, ktorú nie sú rovné 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -3855,8 +3855,8 @@ napríklad: alertnotify=echo %%s | mail -s "OdynCash Upozornenie" admin@foo.com
         <translation>Chyba: nájdený nepodporovaný argument -tor, použite -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Pridať poplatok (v DYN za kB) do transakcií ktoré posielate (predvolené: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Pridať poplatok (v 0DYNC za kB) do transakcií ktoré posielate (predvolené: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4223,8 +4223,8 @@ napríklad: alertnotify=echo %%s | mail -s "OdynCash Upozornenie" admin@foo.com
         <translation>Kľúč KeePassHttp pre šifrovanú AES komunikáciu s KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Udržiavať N DYN anonymizovaných (predvolené: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Udržiavať N 0DYNC anonymizovaných (predvolené: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>

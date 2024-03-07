@@ -75,7 +75,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</string>
+    <string>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -88,7 +88,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</string>
+    <string>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -114,7 +114,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</string>
+    <string>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -127,7 +127,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</string>
+    <string>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
@@ -153,7 +153,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>0.1 DYN per 1000 DYN you anonymize.</string>
+    <string>0.1 0DYNC per 1000 0DYNC you anonymize.</string>
    </property>
   </widget>
   <widget class="Line" name="line">

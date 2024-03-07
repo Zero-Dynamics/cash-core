@@ -14,9 +14,9 @@ Create a new wallet address for each ServiceNode.
 
 Close your QT Wallet.
 
-### Send 1,000 DYN to New Addresses
+### Send 1,000 0DYNC to New Addresses
 
-Send exactly 1,000 DYN to each new address created above.
+Send exactly 1,000 0DYNC to each new address created above.
 
 ### Create New ServiceNode Private Keys
 
@@ -38,7 +38,7 @@ Create the servicenode.conf file in the same directory as your wallet.dat.
 
 Copy the ServiceNode private key and correspondig collateral output transaction that holds the 1K ODYNCASH.
 
-*Please note, the ServiceNode priviate key is not the same as a wallet private key. Never put your wallet private key in the servicenode.conf file. That is equivalent to putting your 1,000 DYN on the remote server and defeats the purpose of a hot/cold setup.*
+*Please note, the ServiceNode priviate key is not the same as a wallet private key. Never put your wallet private key in the servicenode.conf file. That is equivalent to putting your 1,000 0DYNC on the remote server and defeats the purpose of a hot/cold setup.*
 
 ### Get the collateral output
 
@@ -53,7 +53,7 @@ Make note of the hash (which is your collaterla_output) and index.
 ### Enter your ServiceNode details into your servicenode.conf file
 [From the odyncash github repo](https://github.com/duality-solutions/odyncash/blob/master/doc/servicenode_conf.md)
 
-The new servicenode.conf format consists of a space separated text file. Each line consisting of an alias, IP address followed by port, ServiceNode private key, collateral output transaction id and collateral output index. 
+The new servicenode.conf format consists of a space separated text file. Each line consisting of an alias, IP address followed by port, ServiceNode private key, collateral output transaction id and collateral output index.
 (!!! Currently not implemented: "donation address and donation percentage (the latter two are optional and should be in format "address:percentage")." !!!)
 
 ```
@@ -84,7 +84,7 @@ If you generated a new ServiceNode private key, you will need to update the serv
 
 ### Remote
 
-If your remote server is not running, start your remote daemon as you normally would. 
+If your remote server is not running, start your remote daemon as you normally would.
 
 I usually confirm that remote is on the correct block by issuing:
 

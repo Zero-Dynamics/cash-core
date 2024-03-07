@@ -28,7 +28,7 @@ extern CWallet* pwalletMain;
 
 bool IsTransactionFluid(const CScript& txOut)
 {
-    return (txOut.IsProtocolInstruction(MINT_TX) || txOut.IsProtocolInstruction(SERVICENODE_MODFIY_TX) || txOut.IsProtocolInstruction(MINING_MODIFY_TX) || 
+    return (txOut.IsProtocolInstruction(MINT_TX) || txOut.IsProtocolInstruction(SERVICENODE_MODFIY_TX) || txOut.IsProtocolInstruction(MINING_MODIFY_TX) ||
                 txOut.IsProtocolInstruction(BDAP_REVOKE_TX));
 }
 
@@ -87,7 +87,7 @@ std::vector<std::pair<std::string, COdynCashAddress> > CFluidParameters::Initial
         x.push_back(std::make_pair("Priv03", COdynCashAddress("DNsEXkNEdzvNbR3zjaDa3TEVPtwR6Efbmd"))); //importprivkey QPWaY6RAm44zFQ9gktpHFwaCLQc1nCGwPaVAnXAZsFMyGXzLce35
         x.push_back(std::make_pair("Priv04", COdynCashAddress("DG2NCt5Z35cLRYnNCDXdVJTbPh3NSScAmF"))); //importprivkey QRF11rngYqeVv4mSE4SCGU8P3MQgZwJaRQQJsknjVa5QqhkFCGW4
         x.push_back(std::make_pair("Priv05", COdynCashAddress("DRqqngX1mPUjKFXPQDdHRmy2jBk9DKUjkx"))); //importprivkey QQja2KMbhyaat4HJLUiEr2PVmb33CtuVN7KgbmTq9ivVwnaZvFUE
-    } 
+    }
     return x;
 }
 
@@ -226,7 +226,7 @@ bool CFluid::CheckAccountBanScript(const CScript& fluidScript, const uint256& tx
         strErrorMessage = "Could not split fluid command script.";
         return false;
     }
-    
+
     for (uint32_t iter = 1; iter != vecSplitScript.size(); iter++) {
         CDomainEntry entry;
         std::string strBanAccountFQDN = DecodeBase64(vecSplitScript[iter]);
@@ -313,7 +313,7 @@ bool CFluid::GenericConsentMessage(const std::string& message, std::string& sign
 
     if (token == "")
         return false;
-    
+
     if (!SignTokenMessage(signer, token, digest, false))
         return false;
 
@@ -553,7 +553,7 @@ CAmount GetStandardPoWBlockPayment(const int& nHeight)
         return BLOCKCHAIN_INIT_REWARD; // Burn transaction fees
     } else if (nHeight > Params().GetConsensus().nRewardsStart) {
         LogPrint("creation", "GetStandardPoWBlockPayment() : create=%s PoW Reward=%d\n", FormatMoney(PHASE_1_POW_REWARD), PHASE_1_POW_REWARD);
-        return PHASE_1_POW_REWARD; // 1 DYN  and burn transaction fees
+        return PHASE_1_POW_REWARD; // 1 0DYNC  and burn transaction fees
     } else
         return BLOCKCHAIN_INIT_REWARD; // Burn transaction fees
 }
@@ -562,9 +562,9 @@ CAmount GetStandardServiceNodePayment(const int& nHeight)
 {
     if (nHeight > Params().GetConsensus().nServiceNodePaymentsStartBlock) {
         LogPrint("fluid", "GetStandardServiceNodePayment() : create=%s DN Payment=%d\n", FormatMoney(PHASE_2_SERVICENODE_PAYMENT), PHASE_2_SERVICENODE_PAYMENT);
-        return PHASE_2_SERVICENODE_PAYMENT; // 1.618 DYN
+        return PHASE_2_SERVICENODE_PAYMENT; // 1.618 0DYNC
     } else {
-        return BLOCKCHAIN_INIT_REWARD; // 0 DYN
+        return BLOCKCHAIN_INIT_REWARD; // 0 0DYNC
     }
 }
 

@@ -213,7 +213,7 @@ bool parseOdynCashURI(const QUrl& uri, SendCoinsRecipient* out)
             fShouldReturnFalse = false;
         } else if (i->first == "amount") {
             if (!i->second.isEmpty()) {
-                if (!OdynCashUnits::parse(OdynCashUnits::DYN, i->second, &rv.amount)) {
+                if (!OdynCashUnits::parse(OdynCashUnits::ODYNC, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -248,7 +248,7 @@ QString formatOdynCashURI(const SendCoinsRecipient& info)
     int paramCount = 0;
 
     if (info.amount) {
-        ret += QString("?amount=%1").arg(OdynCashUnits::format(OdynCashUnits::DYN, info.amount, false, OdynCashUnits::separatorNever));
+        ret += QString("?amount=%1").arg(OdynCashUnits::format(OdynCashUnits::ODYNC, info.amount, false, OdynCashUnits::separatorNever));
         paramCount++;
     }
 

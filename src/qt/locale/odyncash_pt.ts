@@ -176,8 +176,8 @@
         <translation>Confirme cifra da carteira</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Atenção: Se cifrar a carteira e perder a palavra-passe, irá &lt;b&gt;PERDER TODAS AS SUAS MOEDAS DYN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Atenção: Se cifrar a carteira e perder a palavra-passe, irá &lt;b&gt;PERDER TODAS AS SUAS MOEDAS 0DYNC&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -904,11 +904,11 @@ Endereço: %4
         <translation>Por favor seleccione um nível de privacidade.</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
         <translation>Usar 2 servicenodes distintos para misturar os fundos até 1000DRK</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
         <translation>Usar 8 servicenodes distintos para misturar os fundos até 1000DRK</translation>
     </message>
     <message>
@@ -916,16 +916,16 @@ Endereço: %4
         <translation>Usar 16 servicenodes</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Esta opção é a mais rápida e irá custar cerca de ~0.025 DYN para anonimizar 1000 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Esta opção é a mais rápida e irá custar cerca de ~0.025 0DYNC para anonimizar 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Esta opção é relativamente rápida e irá custar cerca de ~0.05 DYN para anonimizar 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Esta opção é relativamente rápida e irá custar cerca de ~0.05 0DYNC para anonimizar 1000 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN por cada 1000 DYN a anonimizar.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC por cada 1000 0DYNC a anonimizar.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1095,7 +1095,7 @@ Você mantém o controle do seu dinheiro o tempo todo.&lt;hr&gt;
 &lt;b&gt;O processo PrivateSend funciona assim:&lt;/b&gt;
 &lt;ol type=&#39;1&#39;&gt;
 O PrivateSend começa dividindo suas entradas de transação em denominações padrão.
-Essas denominações são 0,001, 0,01 DYN, 0,1 DYN, 1 DYN, 10 DYN - mais ou menos como o papel-moeda que você usa todos os dias.&lt;/li&gt;
+Essas denominações são 0,001, 0,01 0DYNC, 0,1 0DYNC, 1 0DYNC, 10 0DYNC - mais ou menos como o papel-moeda que você usa todos os dias.&lt;/li&gt;
 Sua carteira envia solicitações para nós de software especialmente configurados na rede, chamados "ServiceNodes".
 Esses ServiceNodes são informados que você está interessado em misturar uma determinada denominação.
 Nenhuma informação identificável é enviada aos ServiceNodes, para que eles nunca saibam quem é quem. você é.&lt;/li&gt;
@@ -1504,8 +1504,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Quantia e Voltas:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Voltas</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Voltas</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3686,8 +3686,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Enviar Moedas</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>O InstantSend não suporta valores tão elevados neste momento. As transacções estão limitadas a %1 DYN.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>O InstantSend não suporta valores tão elevados neste momento. As transacções estão limitadas a %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3800,7 +3800,7 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Não foi possível localizar fundos PrivateSend denominados suficientes para esta transacção.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
         <translation>Não foi possível localizar fundos PrivateSend não denominados suficientes para esta transacção que não sejam igual a 1000DRK.</translation>
     </message>
     <message>
@@ -4016,8 +4016,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Activar o uso de privatesend automatizado para os fundos guardados nesta carteira (0-1, default: %u)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Taxas (em DYN/Kb) inferiores a esta serão consideradas zero para retransmissão (default: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Taxas (em 0DYNC/Kb) inferiores a esta serão consideradas zero para retransmissão (default: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4064,7 +4064,7 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Este produto inclui software desenvolvido pelo Projecto OpenSSL para uso no OpenSSL Toolkit &lt;https://www.openssl.org/&gt;, software criptográfico escrito por Eric Young e software UPnP escrito por Thomas Bernard.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
         <translation>Não foi possível localizar fundos suficientes para esta transacção que não sejam igual a 1000DRK.</translation>
     </message>
     <message>
@@ -4170,8 +4170,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Erro: Argument não suportado -tor encontrado, utilize -onion</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Taxas (em DYN/Kb) a adicionar às transacções que envia (omissão: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Taxas (em 0DYNC/Kb) a adicionar às transacções que envia (omissão: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4530,8 +4530,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Chave KeePassHttp para usar na comunicação cifrada AES com o KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Manter N DYN anonimizados (default: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Manter N 0DYNC anonimizados (default: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -4863,8 +4863,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
 </translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Gastar DYN pode não ser possível durante essa fase!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Gastar 0DYNC pode não ser possível durante essa fase!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

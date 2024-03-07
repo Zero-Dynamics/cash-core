@@ -2,15 +2,15 @@
 
 [![Build Status](https://travis-ci.org/duality-solutions/OdynCash.png?branch=master)](https://travis-ci.org/duality-solutions/OdynCash)
 
-# **OdynCash (DYN) v2.5.0.0**
+# **OdynCash (0DYNC) v2.5.0.0**
 
-![DYN logo](https://github.com/duality-solutions/OdynCash/blob/master/src/qt/res/icons/drk/about.png)
+![0DYNC logo](https://github.com/duality-solutions/OdynCash/blob/master/src/qt/res/icons/drk/about.png)
 
 **Copyright (c) 2016-2021 [Duality Blockchain Solutions](https://duality.solutions/)**
 
 What is [OdynCash](https://duality.solutions/odyn)?
 ----------------
-* Coin Suffix: DYN
+* Coin Suffix: 0DYNC
 * PoW Mining Algorithm: Argon2d
 * PoW Difficulty Algorithm: Digishield V3
 * PoW Period: Unlimited
@@ -26,16 +26,16 @@ What is [OdynCash](https://duality.solutions/odyn)?
 * PoW Blocks: ~675 per day
 * PoS Blocks: ~675 per day
 * Total Blocks Per Day: ~1350
-* ServiceNode Collateral Amount: 1000 DYN
+* ServiceNode Collateral Amount: 1000 0DYNC
 * ServiceNode Min Confirmation: 17 Blocks
 * ServiceNode Reward: Controlled via Fluid Protocol
 * ServiceNode Reward Start Height: Block 10,273
 * Total Coins: 2<sup>63</sup> - 1
-* Min TX Fee: 0.0001 DYN
+* Min TX Fee: 0.0001 0DYNC
 * Max Block Size: 4MB
 
 
-[OdynCash(DYN)](https://duality.solutions/odyn) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
+[OdynCash(0DYNC)](https://duality.solutions/odyn) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
 
 **MainNet Parameters**
 P2P Port = 33300

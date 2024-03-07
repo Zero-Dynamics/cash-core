@@ -258,10 +258,10 @@ RES_ICONS = \
   qt/res/icons/drk/tx_input.png \
   qt/res/icons/drk/tx_mined.png \
   qt/res/icons/drk/tx_output.png \
-  qt/res/icons/drk/unit_dyn.png \
-  qt/res/icons/drk/unit_mdyn.png \
+  qt/res/icons/drk/unit_0dync.png \
+  qt/res/icons/drk/unit_m0dync.png \
   qt/res/icons/drk/unit_satoshis.png \
-  qt/res/icons/drk/unit_udyn.png \
+  qt/res/icons/drk/unit_u0dync.png \
   qt/res/icons/drk/fontbigger.png \
   qt/res/icons/drk/fontsmaller.png \
   qt/res/icons/drk/verify.png \

@@ -21,9 +21,9 @@ OdynCashUnits::OdynCashUnits(QObject* parent) : QAbstractListModel(parent),
 QList<OdynCashUnits::Unit> OdynCashUnits::availableUnits()
 {
     QList<OdynCashUnits::Unit> unitlist;
-    unitlist.append(DYN);
-    unitlist.append(mDYN);
-    unitlist.append(uDYN);
+    unitlist.append(ODYNC);
+    unitlist.append(mODYNC);
+    unitlist.append(uODYNC);
     unitlist.append(satoshis);
     return unitlist;
 }
@@ -31,9 +31,9 @@ QList<OdynCashUnits::Unit> OdynCashUnits::availableUnits()
 bool OdynCashUnits::valid(int unit)
 {
     switch (unit) {
-    case DYN:
-    case mDYN:
-    case uDYN:
+    case ODYNC:
+    case mODYNC:
+    case uODYNC:
     case satoshis:
         return true;
     default:
@@ -44,12 +44,12 @@ bool OdynCashUnits::valid(int unit)
 QString OdynCashUnits::id(int unit)
 {
     switch (unit) {
-    case DYN:
-        return QString("dyn");
-    case mDYN:
-        return QString("mdyn");
-    case uDYN:
-        return QString("udyn");
+    case ODYNC:
+        return QString("0dync");
+    case mODYNC:
+        return QString("m0dync");
+    case uODYNC:
+        return QString("u0dync");
     case satoshis:
         return QString("satoshis");
     default:
@@ -61,12 +61,12 @@ QString OdynCashUnits::name(int unit)
 {
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case DYN:
-            return QString("DYN");
-        case mDYN:
-            return QString("mDYN");
-        case uDYN:
-            return QString::fromUtf8("μDYN");
+        case ODYNC:
+            return QString("0DYNC");
+        case mODYNC:
+            return QString("m0DYNC");
+        case uODYNC:
+            return QString::fromUtf8("μ0DYNC");
         case satoshis:
             return QString("satoshis");
         default:
@@ -74,12 +74,12 @@ QString OdynCashUnits::name(int unit)
         }
     } else {
         switch (unit) {
-        case DYN:
-            return QString("tDYN");
-        case mDYN:
-            return QString("mtDYN");
-        case uDYN:
-            return QString::fromUtf8("μtDYN");
+        case ODYNC:
+            return QString("t0DYNC");
+        case mODYNC:
+            return QString("mt0DYNC");
+        case uODYNC:
+            return QString::fromUtf8("μt0DYNC");
         case satoshis:
             return QString("tsatoshis");
         default:
@@ -92,11 +92,11 @@ QString OdynCashUnits::description(int unit)
 {
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case DYN:
+        case ODYNC:
             return QString("OdynCash");
-        case mDYN:
+        case mODYNC:
             return QString("Milli-OdynCash (1 / 1" THIN_SP_UTF8 "000)");
-        case uDYN:
+        case uODYNC:
             return QString("Micro-OdynCash (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         case satoshis:
             return QString("Ten Nano-OdynCash (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
@@ -105,11 +105,11 @@ QString OdynCashUnits::description(int unit)
         }
     } else {
         switch (unit) {
-        case DYN:
+        case ODYNC:
             return QString("TestOdynCash");
-        case mDYN:
+        case mODYNC:
             return QString("Milli-TestOdynCash (1 / 1" THIN_SP_UTF8 "000)");
-        case uDYN:
+        case uODYNC:
             return QString("Micro-TestOdynCash (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         case satoshis:
             return QString("Ten Nano-TestOdynCash (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
@@ -122,11 +122,11 @@ QString OdynCashUnits::description(int unit)
 qint64 OdynCashUnits::factor(int unit)
 {
     switch (unit) {
-    case DYN:
+    case ODYNC:
         return 100000000;
-    case mDYN:
+    case mODYNC:
         return 100000;
-    case uDYN:
+    case uODYNC:
         return 100;
     case satoshis:
         return 1;
@@ -138,11 +138,11 @@ qint64 OdynCashUnits::factor(int unit)
 int OdynCashUnits::decimals(int unit)
 {
     switch (unit) {
-    case DYN:
+    case ODYNC:
         return 8;
-    case mDYN:
+    case mODYNC:
         return 5;
-    case uDYN:
+    case uODYNC:
         return 2;
     case satoshis:
         return 0;

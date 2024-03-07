@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Duality Blockchain Solutions Developers 
+// Copyright (c) 2020 Duality Blockchain Solutions Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -64,7 +64,7 @@ static UniValue NewRootCA(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("certificate newrootca", "\"issuer\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("certificate newrootca", "\"issuer\" "));
 
     EnsureWalletIsUnlocked();
@@ -95,7 +95,7 @@ static UniValue NewRootCA(const JSONRPCRequest& request)
     }
 
     txCertificateCA.Subject = subjectDomainEntry.vchFullObjectPath();
-    
+
     //Get Subject BDAP user Public Key
     CharString vchSubjectPubKey = subjectDomainEntry.DHTPublicKey;
     CKeyEd25519 privSubjectDHTKey;
@@ -182,8 +182,8 @@ static UniValue NewRootCA(const JSONRPCRequest& request)
     int nVersion = txCertificateCA.nVersion;
     std::vector<unsigned char> vchVersion = vchFromString(std::to_string(nVersion));
 
-    scriptPubKey << CScript::EncodeOP_N(OP_BDAP_MODIFY) << CScript::EncodeOP_N(OP_BDAP_CERTIFICATE) 
-                << vchVersion << vchMonths << vchSubjectFQDN << SubjectPublicKey << vchSubjectFQDN << SubjectPublicKey << OP_2DROP << OP_2DROP << OP_2DROP << OP_2DROP; 
+    scriptPubKey << CScript::EncodeOP_N(OP_BDAP_MODIFY) << CScript::EncodeOP_N(OP_BDAP_CERTIFICATE)
+                << vchVersion << vchMonths << vchSubjectFQDN << SubjectPublicKey << vchSubjectFQDN << SubjectPublicKey << OP_2DROP << OP_2DROP << OP_2DROP << OP_2DROP;
 
     CKeyID keyWalletID = privSubjectDHTKey.GetID();
     COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
@@ -207,7 +207,7 @@ static UniValue NewRootCA(const JSONRPCRequest& request)
 
     CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
-        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s DYN required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
+        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
     bool fUseInstantSend = false;
     // Send the transaction
@@ -261,7 +261,7 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("certificate request", "\"subject\" \"issuer\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("certificate request", "\"subject\" \"issuer\" "));
 
     EnsureWalletIsUnlocked();
@@ -274,7 +274,7 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
 
     //Note: Certificate Requests should not have a SerialNumber
 
-    //NOTE: not currently supporting self sign. locking parameters to subject and issuer 
+    //NOTE: not currently supporting self sign. locking parameters to subject and issuer
 
     std::string strIssuer = request.params[2].get_str();
 
@@ -310,7 +310,7 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_BDAP_ACCOUNT_NOT_FOUND, strprintf("%s account not found.", strSubjectFQDN));
 
     txCertificate.Subject = subjectDomainEntry.vchFullObjectPath();
-    
+
     //Get Subject BDAP user Public Key
     CharString vchSubjectPubKey = subjectDomainEntry.DHTPublicKey;
     CKeyEd25519 privSubjectDHTKey;
@@ -325,7 +325,7 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
     SubjectSecretKey = privSubjectDHTKey.GetPrivKeyBytes();
     SubjectPublicKey = privSubjectDHTKey.GetPubKeyBytes();
 
-    //Handle ISSUER 
+    //Handle ISSUER
     std::string strIssuerFQDN = request.params[2].get_str() + "@" + DEFAULT_PUBLIC_OU + "." + DEFAULT_PUBLIC_DOMAIN;
     ToLowerCase(strIssuerFQDN);
     vchIssuerFQDN = vchFromString(strIssuerFQDN);
@@ -398,8 +398,8 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
     std::vector<unsigned char> vchVersion = vchFromString(std::to_string(nVersion));
 
     //New Certificate Request
-    scriptPubKey << CScript::EncodeOP_N(OP_BDAP_NEW) << CScript::EncodeOP_N(OP_BDAP_CERTIFICATE) 
-                << vchVersion << vchMonths << vchSubjectFQDN << SubjectPublicKey << vchIssuerFQDN << OP_2DROP << OP_2DROP << OP_2DROP << OP_DROP; 
+    scriptPubKey << CScript::EncodeOP_N(OP_BDAP_NEW) << CScript::EncodeOP_N(OP_BDAP_CERTIFICATE)
+                << vchVersion << vchMonths << vchSubjectFQDN << SubjectPublicKey << vchIssuerFQDN << OP_2DROP << OP_2DROP << OP_2DROP << OP_DROP;
 
     CKeyID keyWalletID = privSubjectDHTKey.GetID();
     COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
@@ -423,7 +423,7 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
 
     CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
-        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s DYN required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
+        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
     bool fUseInstantSend = false;
     // Send the transaction
@@ -475,7 +475,7 @@ static UniValue ApproveCertificate(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("certificate approve", "\"txid\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("certificate approve", "\"txid\" "));
 
     EnsureWalletIsUnlocked();
@@ -550,7 +550,7 @@ static UniValue ApproveCertificate(const JSONRPCRequest& request)
     if (!pCertificateDB->ReadCertificateIssuerRootCA(txCertificate.Issuer,certificateRootCA)) {
         throw JSONRPCError(RPC_BDAP_DB_ERROR, strprintf("Could not retrieve %s root certificate", stringFromVch(vchIssuer)));
     }
-    
+
     //get issuer certificate privatekey from publickey
     CKeyEd25519 privIssuerCertificateKey;
 
@@ -606,8 +606,8 @@ static UniValue ApproveCertificate(const JSONRPCRequest& request)
     CScript scriptPubKey;
     int nVersion = txCertificate.nVersion;
     std::vector<unsigned char> vchVersion = vchFromString(std::to_string(nVersion));
-    scriptPubKey << CScript::EncodeOP_N(OP_BDAP_MODIFY) << CScript::EncodeOP_N(OP_BDAP_CERTIFICATE) 
-                << vchVersion << vchMonths << vchSubject << vchSubjectPubKey << vchIssuer << vchIssuerPubKey << OP_2DROP << OP_2DROP << OP_2DROP << OP_2DROP; 
+    scriptPubKey << CScript::EncodeOP_N(OP_BDAP_MODIFY) << CScript::EncodeOP_N(OP_BDAP_CERTIFICATE)
+                << vchVersion << vchMonths << vchSubject << vchSubjectPubKey << vchIssuer << vchIssuerPubKey << OP_2DROP << OP_2DROP << OP_2DROP << OP_2DROP;
 
     COdynCashAddress walletAddress = subjectDomainEntry.GetWalletAddress();
 
@@ -630,7 +630,7 @@ static UniValue ApproveCertificate(const JSONRPCRequest& request)
 
     CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
-        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s DYN required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
+        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
     bool fUseInstantSend = false;
     // Send the transaction
@@ -694,7 +694,7 @@ static UniValue ViewCertificate(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("certificate view", "\"txid\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("certificate view", "\"txid\" "));
 
     //txid only
@@ -866,7 +866,7 @@ static UniValue ViewPending(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("certificate pending", "  ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("certificate pending", "  "));
 
     EnsureWalletIsUnlocked();
@@ -938,7 +938,7 @@ static UniValue ExportCertificate(const JSONRPCRequest& request)
             "2. \"filename\"         (string, optional)  Name of file to export to (default = subject.pem) \n"
             "\nExamples\n" +
            HelpExampleCli("certificate export", "\"txid\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("certificate export", "\"txid\" "));
 
     EnsureWalletIsUnlocked();
@@ -1030,7 +1030,7 @@ static UniValue ExportRootCertificate(const JSONRPCRequest& request)
             "2. \"filename\"         (string, optional)  Name of file to export to (default = issuer_CA.pem) \n"
             "\nExamples\n" +
            HelpExampleCli("certificate exportrootca", "\"issuer\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("certificate exportrootca", "\"issuer\" "));
 
     CX509Certificate txCertificateCA;
@@ -1050,7 +1050,7 @@ static UniValue ExportRootCertificate(const JSONRPCRequest& request)
     // Check if name exists
     CDomainEntry issuerDomainEntry;
     if (!GetDomainEntry(vchIssuerFQDN, issuerDomainEntry))
-        throw JSONRPCError(RPC_BDAP_ACCOUNT_NOT_FOUND, strprintf("%s account not found.", strIssuerFQDN));          
+        throw JSONRPCError(RPC_BDAP_ACCOUNT_NOT_FOUND, strprintf("%s account not found.", strIssuerFQDN));
 
     CX509Certificate certificateCA;
     if (!pCertificateDB->ReadCertificateIssuerRootCA(vchIssuerFQDN,certificateCA)) {
@@ -1091,7 +1091,7 @@ static UniValue Verify(const JSONRPCRequest& request)
             "4. \"data\"             (string, required)  Data\n"
             "\nExamples\n" +
            HelpExampleCli("certificate verify", " \"serial_number\" \"subject\" \"signature\" \"data\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("certificate verify", " \"serial_number\" \"subject\" \"signature\" \"data\" "));
 
     EnsureWalletIsUnlocked();
@@ -1142,7 +1142,7 @@ static UniValue Verify(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_BDAP_CERTIFICATE_INVALID, strprintf("Certificate is expired."));
     }
 
-     //Handle SUBJECT 
+     //Handle SUBJECT
     CharString vchSubjectFQDN;
     std::string strSubjectFQDN = request.params[2].get_str() + "@" + DEFAULT_PUBLIC_OU + "." + DEFAULT_PUBLIC_DOMAIN;
     ToLowerCase(strSubjectFQDN);
@@ -1181,7 +1181,7 @@ static UniValue Verify(const JSONRPCRequest& request)
 
     CKeyID vchCertificatePubKeyIDIssuer = GetIdFromCharVector(privCertificateKeyPubKey); //root CA is self signed so subject or issuer works
     if (!pwalletMain->GetDHTKey(vchCertificatePubKeyIDIssuer, privSubjectCertificateKey))
-        throw JSONRPCError(RPC_DHT_GET_KEY_FAILED, strprintf("Unable to retrieve DHT Key for [%s].",stringFromVch(certificateCA.Subject)));    
+        throw JSONRPCError(RPC_DHT_GET_KEY_FAILED, strprintf("Unable to retrieve DHT Key for [%s].",stringFromVch(certificateCA.Subject)));
 
     //Check Root Certificate expiration date
     int64_t nApproveTimeCA = 0;
@@ -1222,7 +1222,7 @@ static UniValue Verify(const JSONRPCRequest& request)
 
 } //Verify
 
-UniValue certificate_rpc(const JSONRPCRequest& request) 
+UniValue certificate_rpc(const JSONRPCRequest& request)
 {
     std::string strCommand;
     if (request.params.size() >= 1) {

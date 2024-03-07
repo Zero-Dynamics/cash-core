@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Duality Blockchain Solutions Developers 
+// Copyright (c) 2020 Duality Blockchain Solutions Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,7 +27,7 @@ extern void SendBDAPTransaction(const CScript& bdapDataScript, const CScript& bd
 static UniValue AddAudit(const JSONRPCRequest& request)
 {
 #ifdef ENABLE_WALLET
-    // audit add "0ac6a1e929c006cc63b9220bcb40e0af1e4776c4223e6f41e0da5d16f6ea2026,cc01a8d4e3d7271c4c2d6af1f5247a87cb324a5e59c5018e9251d81681877ce7" "username@public.bfap.io" 
+    // audit add "0ac6a1e929c006cc63b9220bcb40e0af1e4776c4223e6f41e0da5d16f6ea2026,cc01a8d4e3d7271c4c2d6af1f5247a87cb324a5e59c5018e9251d81681877ce7" "username@public.bfap.io"
     if (request.fHelp || (request.params.size() < 2 || request.params.size() > 5))
         throw std::runtime_error(
             "audit add \"hash_array\" ( \"account\" ) ( \"description\" ) ( \"algorithm\" )\n"
@@ -47,7 +47,7 @@ static UniValue AddAudit(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("audit add", "\"0ac6a1e929c006cc63b9220bcb40e0af1e4776c4223e6f41e0da5d16f6ea2026\" \"testuser\" \"testdescription\" \"sha256\"") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("audit add", "\"0ac6a1e929c006cc63b9220bcb40e0af1e4776c4223e6f41e0da5d16f6ea2026\" \"testuser\"  \"testdescription\" \"sha256\""));
 
     EnsureWalletIsUnlocked();
@@ -134,11 +134,11 @@ static UniValue AddAudit(const JSONRPCRequest& request)
     CScript scriptPubKey;
     std::vector<unsigned char> vchAuditCount = vchFromString(std::to_string(auditData.vAuditData.size()));
     if (signedAudit) {
-        scriptPubKey << CScript::EncodeOP_N(OP_BDAP_NEW) << CScript::EncodeOP_N(OP_BDAP_AUDIT) 
-                 << vchAuditCount << vchOwnerFQDN << pubWalletKey.Raw() << OP_2DROP << OP_2DROP << OP_DROP; 
+        scriptPubKey << CScript::EncodeOP_N(OP_BDAP_NEW) << CScript::EncodeOP_N(OP_BDAP_AUDIT)
+                 << vchAuditCount << vchOwnerFQDN << pubWalletKey.Raw() << OP_2DROP << OP_2DROP << OP_DROP;
     } else {
-        scriptPubKey << CScript::EncodeOP_N(OP_BDAP_NEW) << CScript::EncodeOP_N(OP_BDAP_AUDIT) 
-                 << vchAuditCount << OP_2DROP << OP_DROP; 
+        scriptPubKey << CScript::EncodeOP_N(OP_BDAP_NEW) << CScript::EncodeOP_N(OP_BDAP_AUDIT)
+                 << vchAuditCount << OP_2DROP << OP_DROP;
     }
 
     CKeyID keyWalletID = pubWalletKey.GetID();
@@ -162,7 +162,7 @@ static UniValue AddAudit(const JSONRPCRequest& request)
 
     CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
-        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s DYN required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
+        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
     bool fUseInstantSend = false;
     // Send the transaction
@@ -201,7 +201,7 @@ static UniValue VerifyAudit(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("audit verify", "\"0ac6a1e929c006cc63b9220bcb40e0af1e4776c4223e6f41e0da5d16f6ea2026\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("audit verify", "\"0ac6a1e929c006cc63b9220bcb40e0af1e4776c4223e6f41e0da5d16f6ea2026\" "));
 
     std::vector<unsigned char> vchAudit;
@@ -229,7 +229,7 @@ static UniValue VerifyAudit(const JSONRPCRequest& request)
         CAudit emptyAudit;
         oAuditList.push_back((Pair("verified", "False")));
         BuildVerifyAuditJson(emptyAudit, oAuditList);
-        oAuditLists.push_back(oAuditList);       
+        oAuditLists.push_back(oAuditList);
     }
 
     return oAuditLists;
@@ -262,7 +262,7 @@ static UniValue GetAudits(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("audit get", "\"testuser\" ") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("audit get", "\"testuser\" "));
 
     std::vector<unsigned char> vchOwnerFQDN;
@@ -282,12 +282,12 @@ static UniValue GetAudits(const JSONRPCRequest& request)
     int64_t epochStart;
     int64_t epochStop;
     int64_t retrievedTimeStamp;
- 
+
     bool startDetected = false;
     bool stopDetected = false;
     bool startOK = true;
     bool stopOK = true;
- 
+
     //handle starttime [OPTIONAL]
     if (request.params.size() > 2) {
         if (request.params[2].get_str().size() > 0) { //only process if there's a value
@@ -373,7 +373,7 @@ static UniValue GetAudits(const JSONRPCRequest& request)
    return oAuditLists;
 }
 
-UniValue audit_rpc(const JSONRPCRequest& request) 
+UniValue audit_rpc(const JSONRPCRequest& request)
 {
     std::string strCommand;
     if (request.params.size() >= 1) {

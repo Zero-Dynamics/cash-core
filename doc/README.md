@@ -8,15 +8,15 @@ Graph on Pull Request History
 
 [![Throughput Graph](https://graphs.waffle.io/duality-solutions/OdynCash/throughput.svg)](https://waffle.io/duality-solutions/OdynCash/metrics/throughput)  
 
-# **OdynCash (DYN) v2.4.0.0**
+# **OdynCash (0DYNC) v2.4.0.0**
 
-![DYN logo](https://github.com/duality-solutions/OdynCash/blob/master/src/qt/res/icons/drk/about.png)
+![0DYNC logo](https://github.com/duality-solutions/OdynCash/blob/master/src/qt/res/icons/drk/about.png)
 
 **Copyright (c) 2016-2021 [Duality Blockchain Solutions](https://duality.solutions/)**
 
 What is [OdynCash](https://duality.solutions/odyncash)?
 ----------------
-* Coin Suffix: DYN
+* Coin Suffix: 0DYNC
 * PoW Mining Algorithm: Argon2d
 * PoW Difficulty Algorithm: Digishield V3
 * PoW Period: Unlimited
@@ -25,15 +25,15 @@ What is [OdynCash](https://duality.solutions/odyncash)?
 * PoW Reward Start Height: Block 5,137
 * Maturity: 10 Blocks
 * PoW Blocks: ~675 per day
-* ServiceNode Collateral Amount: 1000 DYN
+* ServiceNode Collateral Amount: 1000 0DYNC
 * ServiceNode Min Confirmation: 17 Blocks
 * ServiceNode Reward: Controlled via Fluid Protocol
 * ServiceNode Reward Start Height: Block 10,273
 * Total Coins: 2<sup>63</sup> - 1
-* Min TX Fee: 0.0001 DYN
+* Min TX Fee: 0.0001 0DYNC
 
 
-[OdynCash(DYN)](https://duality.solutions/odyncash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash can be used to run incentivized ServiceNodes; the second tier of nodes on the network processing, verifying, validating and storing data.
+[OdynCash(0DYNC)](https://duality.solutions/odyncash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash can be used to run incentivized ServiceNodes; the second tier of nodes on the network processing, verifying, validating and storing data.
 
 **MainNet Parameters**
 P2P Port = 33300
@@ -56,7 +56,7 @@ Magic Bytes = 0x2f 0x32 0x15 0x3f
 
 UNIX BUILD NOTES
 ====================
-Some notes on how to build [OdynCash](https://duality.solutions/odyncash) in Unix. 
+Some notes on how to build [OdynCash](https://duality.solutions/odyncash) in Unix.
 
 Note
 ---------------------
@@ -90,7 +90,7 @@ These dependencies are required:
  libssl      | SSL Support      | Secure communications
  libboost    | Boost            | C++ Library
  libevent    | Networking       | OS independent asynchronous networking
- 
+
 Optional dependencies:
 
  Library     | Purpose          | Description
@@ -101,7 +101,7 @@ Optional dependencies:
  protobuf    | Payments in GUI  | Data interchange format used for payment protocol (only needed when GUI enabled)
  libqrencode | QR codes in GUI  | Optional for generating QR codes (only needed when GUI enabled)
  libzmq3     | ZMQ notification | Optional, allows generating ZMQ notifications (requires ZMQ version >= 4.x)
- 
+
 For the versions used in the release, see [release-process.md](release-process.md) under *Fetch and build inputs*.
 
 System requirements
@@ -117,7 +117,7 @@ It is required to build OdynCash on Ubuntu 18.04LTS(Bionic) or later due to C++1
 Build requirements:
 
     sudo apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev libcrypto++-dev libevent-dev git
-    
+
 For Ubuntu 18.04LTS(Bionic) and later, or Debian 7 and later; libboost-all-dev has to be installed:
 
     sudo apt-get install libboost-all-dev
@@ -151,7 +151,7 @@ Optional (see --with-miniupnpc and --enable-upnp-default):
 ZMQ dependencies (provides ZMQ API 4.x):
 
         sudo apt-get install libzmq3-dev
-    
+
 Dependencies for the GUI: Ubuntu & Debian
 -----------------------------------------
 
@@ -164,7 +164,7 @@ For Qt 5 you need the following:
 libqrencode (optional) can be installed with:
 
     sudo apt-get install libqrencode-dev
-    
+
 Once these are installed, they will be found by configure and a odyncash-qt executable will be
 built by default.
 
@@ -200,7 +200,7 @@ It is recommended to use Berkeley DB 4.8 and is included in the dependencies abo
 
 If you have to, or wish to build Berkeley DB 4.8 yourself:
 
-``` 
+```
     bash
     ODYNCASH_ROOT=$(pwd)
 
@@ -218,7 +218,7 @@ If you have to, or wish to build Berkeley DB 4.8 yourself:
     cd db-4.8.30.NC/build_unix/
     #  Note: Do a static build so that it can be embedded into the exectuable, instead of having to find a .so at runtime
     ../dist/configure --prefix=/usr/local --enable-cxx
-    make 
+    make
     sudo make install
 
     # Configure OdynCash to use our own-built instance of BDB
@@ -265,9 +265,9 @@ Hardening enables the following features:
 
     scanelf -e ./odyncashd
 
-    
+
     The output should contain:
-    
+
     TYPE
     ET_DYN
 
@@ -301,12 +301,12 @@ call not `getwork`.
 
 AVX2 Mining Optimisations
 -------------------------
-For increased performance when mining, AVX2 optimisations can be enabled. 
+For increased performance when mining, AVX2 optimisations can be enabled.
 
 At configure time:
 
     --enable-avx2
-    
+
 CPU's with AVX2 support:
 
     Intel
@@ -324,12 +324,12 @@ CPU's with AVX2 support:
 
 AVX512 Mining Optimisations
 -------------------------
-For increased performance when mining, AVX512 optimisations can be enabled. 
+For increased performance when mining, AVX512 optimisations can be enabled.
 
 At configure time:
 
     --enable-avx512f
-    
+
 CPU's with AVX512 support:
 
     Intel
@@ -339,7 +339,7 @@ CPU's with AVX512 support:
         Skylake-X processor, 2017
         Cannonlake processor, expected in 2019
         Ice Lake processor, expected in 2019
-       
+
 
 GPU Mining
 ----------
@@ -348,12 +348,12 @@ To enable GPU mining within the wallet, OpenCL or CUDA can be utilised. Please u
 For OpenCL you need the following:
 
     sudo apt-get install ocl-icd-opencl-dev
-    
+
 For CUDA please visit: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
-    
+
 At configure time for OpenCL(Nvidia/AMD):
 
-    --enable-gpu 
+    --enable-gpu
 
 At configure time for CUDA(Nvidia):
 
@@ -374,7 +374,7 @@ Use Qt Creator as IDE
 You can use Qt Creator as IDE, for debugging and for manipulating forms, etc.
 Download Qt Creator from http://www.qt.io/download/. Download the "community edition" and only install Qt Creator (uncheck the rest during the installation process).
 
-1. Make sure you installed everything through homebrew mentioned above 
+1. Make sure you installed everything through homebrew mentioned above
 2. Do a proper ./configure --with-gui=qt5 --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
 4. Enter "odyncash-qt" as project name, enter src/qt as location
@@ -384,5 +384,3 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 8. Select the default "Desktop" kit and select "Clang (x86 64bit in /usr/bin)" as compiler
 9. Select LLDB as debugger (you might need to set the path to your installtion)
 10. Start debugging with Qt Creator
-
-

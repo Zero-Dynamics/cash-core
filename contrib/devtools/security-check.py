@@ -25,7 +25,7 @@ def check_ELF_PIE(executable):
     ok = False
     for line in stdout.split('\n'):
         line = line.split()
-        if len(line)>=2 and line[0] == 'Type:' and line[1] == 'DYN':
+        if len(line)>=2 and line[0] == 'Type:' and line[1] == '0DYNC':
             ok = True
     return ok
 
@@ -178,4 +178,3 @@ if __name__ == '__main__':
             print('%s: cannot open' % filename)
             retval = 1
     exit(retval)
-

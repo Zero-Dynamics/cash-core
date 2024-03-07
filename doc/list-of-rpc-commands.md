@@ -1,4 +1,4 @@
-![DYN logo](https://github.com/duality-solutions/Logos/blob/master/Duality%20Logos/OdynCash/PNG/128x128.png)
+![0DYNC logo](https://github.com/duality-solutions/Logos/blob/master/Duality%20Logos/OdynCash/PNG/128x128.png)
 
 List of OdynCash RPC Commands
 ============================
@@ -104,7 +104,7 @@ Network
 -------
 * addnode "node" "add|remove|onetry"
 * clearbanned
-* disconnectnode "node" 
+* disconnectnode "node"
 * getaddednodeinfo dns ( "node" )
 * getconnectioncount
 * getnettotals

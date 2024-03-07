@@ -160,7 +160,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
-                <string>Spending DYN may not be possible during that phase!</string>
+                <string>Spending 0DYNC may not be possible during that phase!</string>
                </property>
                <property name="textFormat">
                 <enum>Qt::RichText</enum>

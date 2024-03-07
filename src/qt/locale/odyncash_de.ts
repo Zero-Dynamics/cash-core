@@ -172,8 +172,8 @@
         <translation>Verschlüsselung der Wallet bestätigen</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Warnung: Wenn Sie Ihre Wallet verschlüsseln und Ihre Passphrase verlieren,&lt;b&gt;VERLIEREN SIE IHRE GESAMTEN DYN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Warnung: Wenn Sie Ihre Wallet verschlüsseln und Ihre Passphrase verlieren,&lt;b&gt;VERLIEREN SIE IHRE GESAMTEN 0DYNC&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -283,8 +283,8 @@
         <translation>ServiceNodes durchsuchen</translation>
     </message>
     <message>
-        <source>Mine OdynCash(DYN)</source>
-        <translation>OdynCash(DYN) minen</translation>
+        <source>Mine OdynCash(0DYNC)</source>
+        <translation>OdynCash(0DYNC) minen</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -952,28 +952,28 @@ Adresse: %4
         <translation>Wählen Sie bitte einen Level für den Datenschutz aus.</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Verwenden Sie 2 separate ServiceNodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Verwenden Sie 2 separate ServiceNodes, um die Mittel mit bis zu 1000 0DYNC zu vermischen</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Verwenden Sie 8 separate ServiceNodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Verwenden Sie 8 separate ServiceNodes, um die Mittel mit bis zu 1000 0DYNC zu vermischen</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Verwenden Sie 16 separate ServiceNodes, um die Mittel mit bis zu 1000 DYN zu vermischen</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Verwenden Sie 16 separate ServiceNodes, um die Mittel mit bis zu 1000 0DYNC zu vermischen</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Diese Option ist die schnellste und wird etwa ~0,025 DYN kosten um 1000 DYN zu anonymisieren</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Diese Option ist die schnellste und wird etwa ~0,025 0DYNC kosten um 1000 0DYNC zu anonymisieren</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Diese Option ist mässig schnell und wir etwa 0,05 DYN kosten um 1000 DYN zu anonymisieren</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Diese Option ist mässig schnell und wir etwa 0,05 0DYNC kosten um 1000 0DYNC zu anonymisieren</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN pro 1000 DYN, die Sie anonymisierst.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC pro 1000 0DYNC, die Sie anonymisierst.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1141,11 +1141,11 @@ PrivateSend verwendet einen innovativen Prozess um Ihre Inputs mit denen von 2 a
 &lt;b&gt;Der PrivateSend Prozess funktioniert folgendermaßen:&lt;/b&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend beginnt mit der Stückelung Ihrer Transaktionseingängen in standardisierten Nennwerte.
-Diese Nennwerte sind 0.001, 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN -- in der Art ähnlich dem Papiergeld, welches Sie täglich verwenden.&lt;/li&gt;
+Diese Nennwerte sind 0.001, 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC -- in der Art ähnlich dem Papiergeld, welches Sie täglich verwenden.&lt;/li&gt;
 &lt;li&gt;Ihre Wallet sendet dann entsprechende Anfragen an speziell konfigurierte Softwareknoten im Netzwerk, sogenannte &#39;ServiceNodes&#39;.
-Dadurch werden diese ServiceNodes darüber informiert, dass Sie an einem Mixing Ihrer gestückelten DYN interessiert sind. Es werden dabei keine persönlichen Informationen an die ServiceNodes weitergegeben, sie können so niemals wissen &#39;wer&#39; hinter der Anforderung steckt.&lt;/li&gt;
-&lt;li&gt;Senden zwei andere Personen die gleiche Anforderungen mit der gleichen Menge gestückelter DYN, startet das Mixing.
-Die ServiceNodes mixt die gestückelten DYN und instruiert alle drei Wallets&#39; der Benutzer, die aktuell tranformierten Eingänge sich selbst wieder gutzuschreiben.
+Dadurch werden diese ServiceNodes darüber informiert, dass Sie an einem Mixing Ihrer gestückelten 0DYNC interessiert sind. Es werden dabei keine persönlichen Informationen an die ServiceNodes weitergegeben, sie können so niemals wissen &#39;wer&#39; hinter der Anforderung steckt.&lt;/li&gt;
+&lt;li&gt;Senden zwei andere Personen die gleiche Anforderungen mit der gleichen Menge gestückelter 0DYNC, startet das Mixing.
+Die ServiceNodes mixt die gestückelten 0DYNC und instruiert alle drei Wallets&#39; der Benutzer, die aktuell tranformierten Eingänge sich selbst wieder gutzuschreiben.
 Ihre Wallet überweist sich diese Stückelungen wieder direkt selbst aber an einer anderen Adresse (wird Wechselgeld Adresse genannt).&lt;/li&gt;
 &lt;li&gt;Um Ihre Gelder vollständig zu verschleiern, muß Ihre Wallet diesen Prozess mehrmals mit den Stückelungen wiederholen.
 Jedes mal, wenn der Prozess fertiggestellt wird, wird&#39;es als eine &#39;Runde&#39; bezeichnet;. Mit jeder Runde von PrivateSend erschweren und verschleiern Sie exponentiell die Herkunft Ihres Guthabens.&lt;/li&gt;
@@ -1622,8 +1622,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Anzahl und Runden:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Runden</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Runden</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3884,8 +3884,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Gesendete Coins</translation>
     </message>
     <message>
-        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation> InstantSend unterstützt zurzeit nicht das Senden von Beträgen in dieser Höhe. Transaktionen sind derzeit auf %1 DYN limitiert.</translation>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation> InstantSend unterstützt zurzeit nicht das Senden von Beträgen in dieser Höhe. Transaktionen sind derzeit auf %1 0DYNC limitiert.</translation>
     </message>
 </context>
 <context>
@@ -4002,8 +4002,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Es können nicht genügend PrivateSend gestückelte Mittel für diese Transaktion gefunden werden.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Es können nicht genügend PrivateSend ungestückelte Mittel für diese Transaktion gefunden werden, die nicht gleich 1000 DYN sind.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Es können nicht genügend PrivateSend ungestückelte Mittel für diese Transaktion gefunden werden, die nicht gleich 1000 0DYNC sind.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4246,8 +4246,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Error: Nicht unterstütztes Argument -socks gefunden. Setzen der SOCKS Version ist nicht mehr möglich, nur SOCKS5 Proxies werden unterstützt.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Gebühren (in DYN/Kb) die kleiner sind als diese, werden als Nullgebühr für die Weiterleitung angesehen (Standard: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Gebühren (in 0DYNC/Kb) die kleiner sind als diese, werden als Nullgebühr für die Weiterleitung angesehen (Standard: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4342,8 +4342,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;OdynCash Alarm&quot; admin@fo
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Es können nicht genügend Mittel für diese Transaktion gefunden werden, die nicht gleich 1000 DYN sind.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Es können nicht genügend Mittel für diese Transaktion gefunden werden, die nicht gleich 1000 0DYNC sind.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4456,8 +4456,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;OdynCash Alarm&quot; admin@fo
         <translation>Fehler: Nicht unterstützes Argument -tor gefunden, Verwenden Sie -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Gebühr (in DYN/kB) zu den Transaktionen hinzufügen, die Sie senden (Standard: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Gebühr (in 0DYNC/kB) zu den Transaktionen hinzufügen, die Sie senden (Standard: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4842,8 +4842,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;OdynCash Alarm&quot; admin@fo
         <translation>KeePassHttp Schlüssel für AES verschlüsselte Kommunitkation mit KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Beibehaltung von N anonymisierten DYN  (Standard: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Beibehaltung von N anonymisierten 0DYNC  (Standard: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -5400,8 +5400,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;OdynCash Alarm&quot; admin@fo
         <translation>Die angezeigten Informationen sind möglicherweise nicht mehr aktuell. Ihre Wallet synchronisiert automatisch mit dem Dymamic Netzwerk, nachdem eine Verbindung hergestellt wurde, aber dieser Prozess ist noch nicht fertiggestellt. Dass heißt, dass die letzten Transaktionen nicht sichtbar sein werden und der Kontostand nicht auf den letzten Stand sein wird bis dieser Prozess fertiggestellt worden ist.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Während dieser Phase, ist das Ausgeben von DYN nicht möglich!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Während dieser Phase, ist das Ausgeben von 0DYNC nicht möglich!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

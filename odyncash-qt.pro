@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = odyn
+TARGET = odyncash
 VERSION = 2.5.0.0
 INCLUDEPATH += src \
                src/crypto \

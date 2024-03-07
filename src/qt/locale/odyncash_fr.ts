@@ -176,8 +176,8 @@
         <translation>Confirmer le chiffrement du portefeuille</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Attention : Si vous chiffrez votre portefeuille et perdez votre phrase de passe, vous &lt;b&gt;PERDREZ TOUS VOS DYN&lt;/b&gt; !</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Attention : Si vous chiffrez votre portefeuille et perdez votre phrase de passe, vous &lt;b&gt;PERDREZ TOUS VOS 0DYNC&lt;/b&gt; !</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -912,28 +912,28 @@ Adresse : %4
         <translation>Veuillez choisir un niveau de confidentialité.</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Utiliser 2 servicenodes pour mélanger jusqu'à 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Utiliser 2 servicenodes pour mélanger jusqu'à 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Utiliser 8 servicenodes pour mélanger jusqu'à 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Utiliser 8 servicenodes pour mélanger jusqu'à 1000 0DYNC</translation>
     </message>
     <message>
         <source>Use 16 separate servicenodes</source>
         <translation>Utiliser 16 servicenodes</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Cette option est la plus rapide et coûtera environ 0,025 DYN pour anonymiser 1000 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Cette option est la plus rapide et coûtera environ 0,025 0DYNC pour anonymiser 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Cette option est un peu moins rapide et coûtera environ 0,05 DYN pour anonymiser 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Cette option est un peu moins rapide et coûtera environ 0,05 0DYNC pour anonymiser 1000 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0,1 DYN par 1000 DYN anonymisés.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0,1 0DYNC par 1000 0DYNC anonymisés.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1098,7 +1098,7 @@ Vous conservez le contrôle de votre argent à tout moment.&lt;hr&gt;
 &lt;b&gt;Le processus PrivateSend fonctionne comme suit:&lt;/b&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend commence par diviser les entrées de vos transactions en dénominations standard.
-Ces dénominations sont 0,001, 0,01 DYN, 0,1 DYN, 1 DYN, 10 DYN - un peu comme le papier-monnaie que vous utilisez tous les jours.&lt;/li&gt;
+Ces dénominations sont 0,001, 0,01 0DYNC, 0,1 0DYNC, 1 0DYNC, 10 0DYNC - un peu comme le papier-monnaie que vous utilisez tous les jours.&lt;/li&gt;
 &lt;li&gt;Votre portefeuille envoie ensuite des requêtes à des noeuds logiciels spécialement configurés sur le réseau, appelés "ServiceNodes".
 Ces ServiceNodes sont ensuite informés que vous souhaitez mélanger une certaine dénomination.
 Aucune information identifiable n’est transmise aux ServiceNodes, ils ne savent donc jamais qui est ce dernier. vous êtes.&lt;/li&gt;
@@ -1518,8 +1518,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Montant et Cycles</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Cycles</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Cycles</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3700,8 +3700,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Envoyer des pièces</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend ne supporte pas des transferts aussi élevés. Les transactions sont pour le moment limitées à %11 DYN.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend ne supporte pas des transferts aussi élevés. Les transactions sont pour le moment limitées à %11 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3814,8 +3814,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Impossible de localiser suffisamment de fonds PrivateSend dénominés pour cette transaction.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Impossible de localiser suffisamment de fonds non-dénominés PrivateSend pour cette transaction qui ne sont pas égaux à 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Impossible de localiser suffisamment de fonds non-dénominés PrivateSend pour cette transaction qui ne sont pas égaux à 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4058,12 +4058,12 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Erreur: Paramètre obsolète -socks. Il n'est plus possible d'indiquer la version SOCKS, seul les proxy SOCKS5 sont supportés.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Les frais (en DYN/ko) inférieurs à ce seuil sont considérés comme nuls pour le relayage (par défaut : %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Les frais (en 0DYNC/ko) inférieurs à ce seuil sont considérés comme nuls pour le relayage (par défaut : %s)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Les frais (en DYN/ko) inférieurs à ce seuil sont considérés comme nuls pour la création de transactions (par défaut : %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Les frais (en 0DYNC/ko) inférieurs à ce seuil sont considérés comme nuls pour la création de transactions (par défaut : %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4158,8 +4158,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte OdynCash" admin@foo.com
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Impossible de localiser suffisamment de fonds pour cette transaction qui ne sont pas égaux à 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Impossible de localiser suffisamment de fonds pour cette transaction qui ne sont pas égaux à 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4272,8 +4272,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte OdynCash" admin@foo.com
         <translation>Erreur: Paramètre -tor non supporté, utilisez -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Frais (en DYN/ko) à ajouter aux transactions que vous envoyez (par défaut: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Frais (en 0DYNC/ko) à ajouter aux transactions que vous envoyez (par défaut: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4648,7 +4648,7 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte OdynCash" admin@foo.com
         <translation>Clé KeePassHttp pour la communication chiffrée AES avec KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
         <translation>Maintenir N odyncash anonymisé en permanence (défaut: %u)</translation>
     </message>
     <message>
@@ -4979,8 +4979,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte OdynCash" admin@foo.com
         <translation>Les informations affichées peuvent être obsolètes. Votre portefeuille se synchronise automatiquement avec le réseau dynamique une fois la connexion établie, mais ce processus n'est pas encore terminé. Cela signifie que les transactions récentes ne seront pas visibles et que le solde ne sera pas à jour avant la fin du processus.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Dépenser DYN peut ne pas être possible pendant cette phase!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Dépenser 0DYNC peut ne pas être possible pendant cette phase!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

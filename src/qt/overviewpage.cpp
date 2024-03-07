@@ -39,7 +39,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(const PlatformStyle* _platformStyle, QObject* parent = nullptr) : QAbstractItemDelegate(parent), unit(OdynCashUnits::DYN),
+    TxViewDelegate(const PlatformStyle* _platformStyle, QObject* parent = nullptr) : QAbstractItemDelegate(parent), unit(OdynCashUnits::ODYNC),
                                                                                      platformStyle(_platformStyle)
     {
     }
@@ -269,7 +269,7 @@ void OverviewPage::setWalletModel(WalletModel* model)
 {
     this->walletModel = model;
     if (model && model->getOptionsModel()) {
-        // update the display unit, to not use the default ("DYN")
+        // update the display unit, to not use the default ("0DYNC")
         updateDisplayUnit();
         // Keep up to date with wallet
         setBalance(model->getBalance(), model->getTotal(), model->getUnconfirmedBalance(), model->getImmatureBalance(), model->getAnonymizedBalance(),

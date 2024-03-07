@@ -393,7 +393,7 @@ void UpdateCoins(const CTransaction& tx, CCoinsViewCache& inputs, int nHeight);
 bool CheckTransaction(const CTransaction& tx, CValidationState& state);
 /**
  * Validate the usage of BDAP credits to makes sure they are not recirculated
- * with standard DYN (trapped as fuel credit) and used to fund the appropriate BDAP operation.
+ * with standard 0DYNC (trapped as fuel credit) and used to fund the appropriate BDAP operation.
 */
 bool CheckBDAPTxCreditUsage(const CTransaction& tx, const std::vector<Coin>& vBdapCoins,
 							const CAmount& nStandardIn, const CAmount& nCreditsIn, const CAmount& nStandardOut, const CAmount& nCreditsOut, const CAmount& nDataBurned);

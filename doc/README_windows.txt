@@ -3,7 +3,7 @@ OdynCash 2.4.0.0
 
 Intro
 -----
-The OdynCash(DYN) blockchain exists in the Duality binary architecture as a DAO, whilst [Sequence(SEQ)](https://github.com/duality-solutions/sequence) is its real world interface. OdynCash uses peer-to-peer technology to operate securly with no central authority (decentralisation): managing transactions and issuing currency (DYN) are carried out collectively by the OdynCash network. OdynCash is the name of open source software which enables the use of the currency DYN.
+The OdynCash(0DYNC) blockchain exists in the Duality binary architecture as a DAO, whilst [Sequence(SEQ)](https://github.com/duality-solutions/sequence) is its real world interface. OdynCash uses peer-to-peer technology to operate securly with no central authority (decentralisation): managing transactions and issuing currency (DYN) are carried out collectively by the OdynCash network. OdynCash is the name of open source software which enables the use of the currency DYN.
 
 
 Setup

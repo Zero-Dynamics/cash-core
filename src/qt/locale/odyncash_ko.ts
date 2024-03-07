@@ -172,8 +172,8 @@
         <translation>确认钱包加密</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>警告：如果您对钱包进行加密后忘记加密的密码，您将失去所有的DYN！</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>警告：如果您对钱包进行加密后忘记加密的密码，您将失去所有的0DYNC！</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -283,8 +283,8 @@
         <translation>浏览 ServiceNodes</translation>
     </message>
     <message>
-        <source>Mine OdynCash(DYN)</source>
-        <translation>挖矿 OdynCash(DYN)</translation>
+        <source>Mine OdynCash(0DYNC)</source>
+        <translation>挖矿 OdynCash(0DYNC)</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -949,28 +949,28 @@ Address: %4
         <translation>请选择一种匿名级别</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>2 개의 별도 다이 노드 ServiceNodes 를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>2 개의 별도 다이 노드 ServiceNodes 를 사용하여 최대 1000 0DYNC까지 자금을 섞으십시오</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>8 개의 별도 다이 노드 ServiceNodes를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>8 개의 별도 다이 노드 ServiceNodes를 사용하여 최대 1000 0DYNC까지 자금을 섞으십시오</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>16 개의 별도 다이 노드 ServiceNodes를 사용하여 최대 1000 DYN까지 자금을 섞으십시오</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>16 개의 별도 다이 노드 ServiceNodes를 사용하여 최대 1000 0DYNC까지 자금을 섞으십시오</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>이 옵션은 가장 빠르며 1000 DYN을 익명화하려면 ~ 0.025 DYN 정도 소요됩니다</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>이 옵션은 가장 빠르며 1000 0DYNC을 익명화하려면 ~ 0.025 0DYNC 정도 소요됩니다</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>이 옵션은 적당히 빠르며 1000 DYN을 익명화하기 위해 약 0.05 DYN의 비용이 소요됩니다</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>이 옵션은 적당히 빠르며 1000 0DYNC을 익명화하기 위해 약 0.05 0DYNC의 비용이 소요됩니다</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>1000 DYN 당 0.1 DYN. 익명으로 처리하십시오.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>1000 0DYNC 당 0.1 0DYNC. 익명으로 처리하십시오.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1140,7 +1140,7 @@ Address: %4
     &lt;b&gt;PrivateSend 프로세스는 다음과 같이 작동합니다:&lt;/b&gt;
     &lt;ol type=\&quot;1\&quot;&gt;
     &lt;li&gt;PrivateSend는 거래 입력을 표준 단위로 나누는 것으로 시작됩니다.
-    이 금액은 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN입니다. 매일 사용하는 지폐와 비슷합니다.&lt;/li&gt;
+    이 금액은 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC입니다. 매일 사용하는 지폐와 비슷합니다.&lt;/li&gt;
     &lt;li&gt;그런 다음 지갑은 네트워크의 특수하게 구성된 소프트웨어 노드에 요청을 전송합니다 \&quot;ServiceNodes.\&quot;
     이러한 ServiceNodes는 특정 종파를 혼합하는 데 관심이 있다는 사실을 알립니다.
     식별 가능한 정보는 다이 노드로 전송되지 \&quot;않으므로\&quot; 사용자가.&lt;/li&gt;
@@ -1623,8 +1623,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>금액 및 반올림:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 반올림</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 반올림</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3813,11 +3813,11 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
     </message>
     <message>
         <source>Slider will show once OdynCash has finished syncing</source>
-        <translation>ODYNCASH의 동기화가 완료되면 슬라이더가 표시됩니다</translation>
+        <translation>O0DYNCCASH의 동기화가 완료되면 슬라이더가 표시됩니다</translation>
     </message>
     <message>
         <source>GPU mining is not supported in this version of OdynCash</source>
-        <translation>이 버전의 ODYNCASH에서는 GPU 마이닝이 지원되지 않습니다.</translation>
+        <translation>이 버전의 O0DYNCCASH에서는 GPU 마이닝이 지원되지 않습니다.</translation>
     </message>
 </context>
 <context>
@@ -3872,8 +3872,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>동전 보내기</translation>
     </message>
     <message>
-        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend는 아직 높은 값을 보내는 것을 지원하지 않습니다. 트랜잭션은 현재 %1 DYN으로 제한됩니다.</translation>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend는 아직 높은 값을 보내는 것을 지원하지 않습니다. 트랜잭션은 현재 %1 0DYNC으로 제한됩니다.</translation>
     </message>
 </context>
 <context>
@@ -3990,8 +3990,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>이 거래에 필요한 Privendsend 기금을 찾을 수 없습니다.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>1000 DYN과 동등하지 않은이 거래에 대해 PrivateSend 비표준 기금을 충분히 찾을 수 없습니다.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>1000 0DYNC과 동등하지 않은이 거래에 대해 PrivateSend 비표준 기금을 충분히 찾을 수 없습니다.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4234,8 +4234,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>오류: 지원되지 않는 인수 -socks가 발견되었습니다. SOCKS 버전 설정은 더 이상 가능하지 않으며 SOCKS5 프록시 만 지원됩니다.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>이것보다 작은 요금 (DYN/Kb)은 중계에 대한 제로 요금으로 간주됩니다 (기본값: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>이것보다 작은 요금 (0DYNC/Kb)은 중계에 대한 제로 요금으로 간주됩니다 (기본값: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4330,8 +4330,8 @@ rpcpassword=%s
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>1000 DYN이 아닌이 거래에 사용할 충분한 자금을 찾을 수 없습니다.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>1000 0DYNC이 아닌이 거래에 사용할 충분한 자금을 찾을 수 없습니다.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4444,8 +4444,8 @@ rpcpassword=%s
         <translation>오류: 지원되지 않는 인수 -tor가 발견되었습니다. -onion을 사용하십시오.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>전송 한 거래에 추가 할 요금 (기본: %s) (DYN/kB 단위)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>전송 한 거래에 추가 할 요금 (기본: %s) (0DYNC/kB 단위)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4828,8 +4828,8 @@ rpcpassword=%s
         <translation>KeePass KeePass와 AES 암호화 통신을위한 KeePassHttp 키</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>N DYN을 익명으로 유지 (태만: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>N 0DYNC을 익명으로 유지 (태만: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -5383,8 +5383,8 @@ rpcpassword=%s
         <translation>표시된 정보가 오래되었을 수 있습니다. 연결이 설정되면 지갑이 자동으로 OdynCash 네트워크와 동기화되지만이 프로세스는 아직 완료되지 않았습니다. 즉, 최근 거래가 표시되지 않고이 프로세스가 완료 될 때까지 잔액이 최신 상태가 아님을 의미합니다.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>해당 단계에서 DYN을 지출하지 못할 수도 있습니다!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>해당 단계에서 0DYNC을 지출하지 못할 수도 있습니다!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

@@ -92,16 +92,16 @@ still compatible with the minimum supported Linux distribution versions.
 
 Example usage after a gitian build:
 
-    find ../gitian-builder/build -type f -executable | xargs python contrib/devtools/symbol-check.py 
+    find ../gitian-builder/build -type f -executable | xargs python contrib/devtools/symbol-check.py
 
 If only supported symbols are used the return value will be 0 and the output will be empty.
 
 If there are 'unsupported' symbols, the return value will be 1 a list like this will be printed:
 
-    .../64/test_dynamic: symbol memcpy from unsupported version GLIBC_2.14
-    .../64/test_dynamic: symbol __fdelt_chk from unsupported version GLIBC_2.15
-    .../64/test_dynamic: symbol std::out_of_range::~out_of_range() from unsupported version GLIBCXX_3.4.15
-    .../64/test_dynamic: symbol _ZNSt8__detail15_List_nod from unsupported version GLIBCXX_3.4.15
+    .../64/test_odyncash: symbol memcpy from unsupported version GLIBC_2.14
+    .../64/test_odyncash: symbol __fdelt_chk from unsupported version GLIBC_2.15
+    .../64/test_odyncash: symbol std::out_of_range::~out_of_range() from unsupported version GLIBCXX_3.4.15
+    .../64/test_odyncash: symbol _ZNSt8__detail15_List_nod from unsupported version GLIBCXX_3.4.15
 
 update-translations.py
 ======================

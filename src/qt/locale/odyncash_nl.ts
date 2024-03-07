@@ -172,8 +172,8 @@
         <translation>Bevestig het coderen van de wallet</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Waarschuwing: Als u uw wallet codeert en uw wachtwoordzin verliest, dan zal u &lt;b&gt;AL UW DYN&lt;/b&gt;VERLIEZEN!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Waarschuwing: Als u uw wallet codeert en uw wachtwoordzin verliest, dan zal u &lt;b&gt;AL UW 0DYNC&lt;/b&gt;VERLIEZEN!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -283,8 +283,8 @@
         <translation>Doorzoek ServiceNodes</translation>
     </message>
     <message>
-        <source>Mine OdynCash(DYN)</source>
-        <translation>OdynCash(DYN) minen</translation>
+        <source>Mine OdynCash(0DYNC)</source>
+        <translation>OdynCash(0DYNC) minen</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -952,28 +952,28 @@ Adres: %4
         <translation>Selecteer een privacyniveau.</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Gebruik 2 afzonderlijke ServiceNodes om tegoed te mixen tot 1000 DYN</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Gebruik 2 afzonderlijke ServiceNodes om tegoed te mixen tot 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Gebruik 8 afzonderlijke ServiceNodes om tegoed te mixen tot 1000 DYN</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Gebruik 8 afzonderlijke ServiceNodes om tegoed te mixen tot 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Gebruik 16 afzonderlijke ServiceNodes om tegoed te mixen tot 1000 DYN</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Gebruik 16 afzonderlijke ServiceNodes om tegoed te mixen tot 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Deze optie is de snelste en kost ongeveer ~0,025 DYN om 1000 DYN te anonimiseren</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Deze optie is de snelste en kost ongeveer ~0,025 0DYNC om 1000 0DYNC te anonimiseren</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Deze optie is de gemiddelde snelheid en kost ongeveer 0,05 DYN om 1000 DYN te anonimiseren</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Deze optie is de gemiddelde snelheid en kost ongeveer 0,05 0DYNC om 1000 0DYNC te anonimiseren</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN per 1000 DYN die u anonimiseert.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC per 1000 0DYNC die u anonimiseert.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1139,7 +1139,7 @@ Adres: %4
     PrivateSend geeft u financiële privacy door de herkomst van uw ontvangsten te observeren. Alle odyncash in uw wallet bestaat uit verschillende \&quot;inputs\&quot; die je kunt zien als aparte, discrete munten. &lt;br&gt; PrivateSend maakt gebruik van een innovatief proces om uw inputs te mixen met de input van twee andere mensen, zonder dat uw munten nooit uw wallet verlaten.&lt;br&gt;
     &lt;b&gt;Het PrivateSend-proces werkt als volgt&lt;/b&gt;
     &lt;ol type=\&quot;1\&quot;&gt;
-    &lt;li&gt;PrivateSend begint met het verbreken van uw transactie-inputs in gedenomineerde waardes (coupures). Deze coupures zijn 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN, vergelijkbaar met munten en waardepapieren (cashgeld) dat u iedere dag gebruikt.&lt;/li&gt;
+    &lt;li&gt;PrivateSend begint met het verbreken van uw transactie-inputs in gedenomineerde waardes (coupures). Deze coupures zijn 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC, vergelijkbaar met munten en waardepapieren (cashgeld) dat u iedere dag gebruikt.&lt;/li&gt;
     &lt;li&gt;Uw wallet verzendt vervolgens aanvragen naar speciaal geconfigureerde softwareknooppunten op het netwerk, genaamd \&quot;ServiceNodes.\&quot;
     Deze ServiceNodes worden dan geïnformeerd dat je geïnteresseerd bent in het mixen van een bepaalde coupure. Er wordt geen identificeerbare informatie verzonden naar de ServiceNodes, dus deze weten nooit \&quot;wie\&quot; je bent. &lt;/li&gt;
     &lt;li&gt; Wanneer twee andere mensen vergelijkbare berichten verzenden, waarmee wordt aangegeven dat ze dezelfde coupures willen mengen, begint een mengsessie, het\&quot;mixen.\&quot; De ServiceNode mengt de inputs en instrueert alle drie de actieve wallets om de getransformeerde input naar zichzelf terug te halen. Uw wallet betaalt die coupures aan zichzelf, maar van een ander adres (een wijzigingsadres)&lt;/li&gt;
@@ -1614,8 +1614,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Bedrag en Rondes:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Rondes</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Rondes</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3874,8 +3874,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Verzend Munten</translation>
     </message>
     <message>
-        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend biedt nog geen ondersteuning voor bedragen van dergelijke grootte. Transacties zijn momenteel beperkt tot %1 DYN.</translation>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend biedt nog geen ondersteuning voor bedragen van dergelijke grootte. Transacties zijn momenteel beperkt tot %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3992,8 +3992,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Niet in staat om voldoende gedenomineerde privateSend saldo's te vinden voor deze transactie.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Niet in staat om genoeg niet-gedenomineerde PrivateSend saldo's te vinden voor deze transactie die niet gelijk zijn aan 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Niet in staat om genoeg niet-gedenomineerde PrivateSend saldo's te vinden voor deze transactie die niet gelijk zijn aan 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4236,8 +4236,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Foutmelding: niet-ondersteund argument -socks gevonden. Het instellen van de SOCKS-versie is niet meer mogelijk, alleen SOCKS5-proxies worden ondersteund.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Vergoedingen (in DYN/Kb) die kleiner zijn dan dit worden beschouwd als nul-vergoedingen voor doorvoering(standaard: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Vergoedingen (in 0DYNC/Kb) die kleiner zijn dan dit worden beschouwd als nul-vergoedingen voor doorvoering(standaard: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4333,8 +4333,8 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Kan niet genoeg fondsen vinden voor deze transactie die niet gelijk zijn aan 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Kan niet genoeg fondsen vinden voor deze transactie die niet gelijk zijn aan 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4447,8 +4447,8 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>Foutmelding: Niet-ondersteund argument -tor gevonden, gebruik -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Vergoeding (in DYN/kB) om toe te voegen aan transacties die u verzendt</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Vergoeding (in 0DYNC/kB) om toe te voegen aan transacties die u verzendt</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4831,8 +4831,8 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>KeePassHttp-sleutel voor AES gecodeerde communicatie met KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Houd N DYN geanonimiseerd (standaard: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Houd N 0DYNC geanonimiseerd (standaard: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -5397,8 +5397,8 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>De weergegeven informatie kan verouderd zijn. Uw wallet wordt automatisch gesynchroniseerd met het odyncash netwerk nadat een verbinding tot stand is gebracht, maar dit proces is nog niet voltooid. Dit betekent dat recente transacties niet zichtbaar zijn en dat het saldo niet up-to-date is totdat dit proces is voltooid.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Uitgeven van DYN is misschien niet mogelijk gedurende deze fase!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Uitgeven van 0DYNC is misschien niet mogelijk gedurende deze fase!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

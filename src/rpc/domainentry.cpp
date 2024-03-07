@@ -115,7 +115,7 @@ static UniValue AddDomainEntry(const JSONRPCRequest& request, BDAP::ObjectType b
 
     CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
-        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s DYN required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
+        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
     bool fUseInstantSend = false;
     //if (dnodeman.EnoughActiveForInstandSend() && sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED))
@@ -495,7 +495,7 @@ static UniValue UpdateDomainEntry(const JSONRPCRequest& request, BDAP::ObjectTyp
 
     CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
-        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s DYN required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
+        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
     bool fUseInstantSend = false;
     //if (dnodeman.EnoughActiveForInstandSend() && sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED))
@@ -956,7 +956,7 @@ UniValue makecredits(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 3)
         throw std::runtime_error(
             "makecredits \"odyncashaddress\" \"amount\"\n"
-            "\nConvert your OdynCash (DYN) to BDAP colored credits\n"
+            "\nConvert your OdynCash (0DYNC) to BDAP colored credits\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
             "1. \"odyncashaddress\"       (string)            The destination wallet address\n"
@@ -1008,7 +1008,7 @@ UniValue makecredits(const JSONRPCRequest& request)
         stealthScript << OP_RETURN << vStealthData;
     }
     // Create BDAP move asset operation script
-    std::vector<unsigned char> vchMoveSource = vchFromString(std::string("DYN"));
+    std::vector<unsigned char> vchMoveSource = vchFromString(std::string("0DYNC"));
     std::vector<unsigned char> vchMoveDestination = vchFromString(std::string("BDAP"));
     CScript scriptColorCoins;
     scriptColorCoins << CScript::EncodeOP_N(OP_BDAP_MOVE) << CScript::EncodeOP_N(OP_BDAP_ASSET)
@@ -1034,7 +1034,7 @@ UniValue getcredits(const JSONRPCRequest& request)
             "  \"type\"                    (string)            The credit type.\n"
             "  \"operation\"               (string)            The operation code used in the tx output\n"
             "  \"address\"                 (string)            The address holding the unspent BDAP credits\n"
-            "  \"odyncash_amount\"          (int)               The unspent BDAP amount int DYN\n"
+            "  \"odyncash_amount\"          (int)               The unspent BDAP amount int 0DYNC\n"
             "  \"credits\"                 (int)               The unspent BDAP credits\n"
             "  },...n \n"
             "\"total_credits\"             (int)               The total credits available.\n"
@@ -1087,7 +1087,7 @@ UniValue getcredits(const JSONRPCRequest& request)
                 std::string strMoveSource = stringFromVch(vvch[0]);
                 std::string strMoveDestination = stringFromVch(vvch[1]);
                 strType = strprintf("credit (%s to %s)", strMoveSource, strMoveDestination);
-                if (strMoveSource == "DYN" && strMoveDestination == "BDAP")
+                if (strMoveSource == "0DYNC" && strMoveDestination == "BDAP")
                     nTotalCredits += credit.first.nValue;
             } else {
                 strType = strprintf("credit (unknown)");
@@ -1128,7 +1128,7 @@ UniValue bdapfees(const JSONRPCRequest& request)
             "{(json objects)\n"
             "  \"monthly\"                    (int)            The credit type.\n"
             "  \"deposit\"                    (int)            The operation code used in the tx output\n"
-            "  \"one-time\"                   (int)            The unspent BDAP amount int DYN\n"
+            "  \"one-time\"                   (int)            The unspent BDAP amount int 0DYNC\n"
             "  },...n \n"
             "\nExamples:\n"
             + HelpExampleCli("bdapfees", "") +

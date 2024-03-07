@@ -172,8 +172,8 @@
         <translation>Подтвердите шифрование кошелька</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Предупреждение. Если вы зашифруете свой кошелек и потеряете парольную фразу, вы &lt;b&gt; ПОТЕРЯЕТЕ ВСЕ DYN &lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Предупреждение. Если вы зашифруете свой кошелек и потеряете парольную фразу, вы &lt;b&gt; ПОТЕРЯЕТЕ ВСЕ 0DYNC &lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -283,8 +283,8 @@
         <translation>Обзор узлов (ServiceNodes)</translation>
     </message>
     <message>
-        <source>Mine OdynCash(DYN)</source>
-        <translation>Майнить OdynCash(DYN)</translation>
+        <source>Mine OdynCash(0DYNC)</source>
+        <translation>Майнить OdynCash(0DYNC)</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -952,28 +952,28 @@ DirecciГіn: %4
         <translation>Пожалуйста, выберите уровень конфиденциальности.</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Используйте 2 отдельных ServiceNodes для смешивания средств до 1000 DYN</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Используйте 2 отдельных ServiceNodes для смешивания средств до 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Используйте 8 отдельных ServiceNodes для смешивания средств до 1000 DYN</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Используйте 8 отдельных ServiceNodes для смешивания средств до 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Используйте 16 отдельных ServiceNodes для смешивания средств до 1000 DYN</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Используйте 16 отдельных ServiceNodes для смешивания средств до 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Этот вариант самый быстрый и обойдется примерно в ~ 0.025 DYN, чтобы анонимизировать 1000 DYN.</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Этот вариант самый быстрый и обойдется примерно в ~ 0.025 0DYNC, чтобы анонимизировать 1000 0DYNC.</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Эта опция умеренно быстрая и обойдется примерно в 0.05 DYN, чтобы анонимизировать 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Эта опция умеренно быстрая и обойдется примерно в 0.05 0DYNC, чтобы анонимизировать 1000 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN за анонимизацию 1000 DYN.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC за анонимизацию 1000 0DYNC.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1612,8 +1612,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Сумма и Раунды:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Раунды</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Раунды</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3870,8 +3870,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Отправить монеты</translation>
     </message>
     <message>
-        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend пока&apos;не поддерживает отправку таких высоких сумм. Транзакции в настоящее время ограничены %1 DYN.</translation>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend пока&apos;не поддерживает отправку таких высоких сумм. Транзакции в настоящее время ограничены %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3988,8 +3988,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Невозможно найти достаточное количество денежных средств PrivateSend для этой транзакции.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Невозможно найти достаточно неденоминированных PrivateSend средств для этой транзакции, которые не равны 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Невозможно найти достаточно неденоминированных PrivateSend средств для этой транзакции, которые не равны 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4232,8 +4232,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Ошибка: найден неподдерживаемый аргумент -socks. Установка версии SOCKS больше не&apos;возможна, поддерживаются только прокси SOCKS5.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Комиссия (в DYN / Kb), меньшие этой суммы, считается нулевой платой за ретрансляцию (по умолчанию: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Комиссия (в 0DYNC / Kb), меньшие этой суммы, считается нулевой платой за ретрансляцию (по умолчанию: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4328,8 +4328,8 @@ rpcpassword =%s
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Не достаточно средств для этой транзакции, они не равны 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Не достаточно средств для этой транзакции, они не равны 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4442,8 +4442,8 @@ rpcpassword =%s
         <translation>Ошибка: найден неподдерживаемый аргумент -tor, используйте -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Комиссия (в DYN/кБ) для добавления к отправляемым транзакциям (по умолчанию: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Комиссия (в 0DYNC/кБ) для добавления к отправляемым транзакциям (по умолчанию: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4828,8 +4828,8 @@ rpcpassword =%s
         <translation>Ключ KeePassHttp для шифрованной связи AES с KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Держить N DYN анонимизированных (по умолчанию: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Держить N 0DYNC анонимизированных (по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -5386,8 +5386,8 @@ rpcpassword =%s
         <translation>Отображаемая информация может быть устаревшей. Ваш кошелек автоматически синхронизируется с динамической сетью после установления соединения, но этот процесс еще не завершен. Это означает, что последние транзакции не будут видны, и баланс не будет обновляться, пока этот процесс не будет завершен.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Переводить DYN может быть невозможно на этом этапе!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Переводить 0DYNC может быть невозможно на этом этапе!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

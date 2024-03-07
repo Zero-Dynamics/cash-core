@@ -1,4 +1,4 @@
-![DYN logo](https://github.com/duality-solutions/Logos/blob/master/Duality%20Logos/OdynCash/PNG/128x128.png)
+![0DYNC logo](https://github.com/duality-solutions/Logos/blob/master/Duality%20Logos/OdynCash/PNG/128x128.png)
 
 ODYNCASH INITIALISATION ARGUMENTS
 ================================
@@ -131,9 +131,9 @@ DEBUGGING TESTING OPTIONS
 * "-limitancestorsize=[n]" ("Do not accept transactions whose size with all in-mempool ancestors exceeds [n] kilobytes")
 * "-limitdescendantcount=[n]" ("Do not accept transactions if any ancestor would have [n] or more in-mempool descendants")
 * "-limitdescendantsize=[n]" ("Do not accept transactions if any ancestor would have more than [n] kilobytes of in-mempool descendants.")
-    
+
 debug Categories are "addrman, alert, bench, coindb, db, http, libevent, lock, mempool, mempoolrej, net, proxy, prune, qt, rand, reindex, rpc, selectcoins, tor, zmq, OdynCash (or specifically: privatesend, instantsend, servicenode, spork, keepass, snpayments, gobject)"
-    
+
 * "-debug=[category]" ("Output debugging information (supplying [category] is optional)") +
         ("If [category] is not supplied or if [category] = 1, output all debugging information.") + ("[category] can be:")
 * "-nodebug" ("Turn off debugging messages, same as -debug=0")
@@ -168,7 +168,7 @@ PRIVATESEND OPTIONS
 * "-enableprivatesend=[n]" ("Enable use of automated PrivateSend for funds stored in this wallet (0-1)")
 * "-privatesendmultisession=[n]" ("Enable multiple PrivateSend mixing sessions per block, experimental (0-1)")
 * "-privatesendrounds=[n]" ("Use N separate ServiceNodes for each denominated input to mix funds (2-16)")
-* "-privatesendamount=[n]" ("Keep N DYN anonymized")
+* "-privatesendamount=[n]" ("Keep N 0DYNC anonymized")
 * "-liquidityprovider=[n]" ("Provide liquidity to PrivateSend by infrequently mixing coins on a continual basis (0-100, 1=very frequent, high fees, 100=very infrequent, low fees)")
 
 INSTANTSEND OPTIONS
@@ -207,4 +207,3 @@ RPC SERVER OPTIONS
 * "-rpcthreads=[n]" ("Set the number of threads to service RPC calls")
 * "-rpcworkqueue=[n]" ("Set the depth of the work queue to service RPC calls")
 * "-rpcservertimeout=[n]" ("Timeout during HTTP requests")
-    

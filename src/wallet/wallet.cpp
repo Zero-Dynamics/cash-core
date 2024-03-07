@@ -3002,7 +3002,7 @@ void CWallet::AvailableCoins(std::vector<COutput>& vCoins, bool fOnlyConfirmed, 
                     if (!(strOpType == "bdap_move_asset"))
                         continue;
 
-                    std::vector<unsigned char> vchMoveSource = vchFromString(std::string("DYN"));
+                    std::vector<unsigned char> vchMoveSource = vchFromString(std::string("0DYNC"));
                     std::vector<unsigned char> vchMoveDestination = vchFromString(std::string("BDAP"));
                     if (!(vParameters.size() == 2 && vParameters[0] == vchMoveSource && vParameters[1] == vchMoveDestination))
                         continue;
@@ -4117,7 +4117,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     return false;
                 }
                 if (fUseInstantSend && nValueIn > sporkManager.GetSporkValue(SPORK_5_INSTANTSEND_MAX_VALUE) * COIN) {
-                    strFailReason += " " + strprintf(_("InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DYN."), sporkManager.GetSporkValue(SPORK_5_INSTANTSEND_MAX_VALUE));
+                    strFailReason += " " + strprintf(_("InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 0DYNC."), sporkManager.GetSporkValue(SPORK_5_INSTANTSEND_MAX_VALUE));
                     return false;
                 }
 

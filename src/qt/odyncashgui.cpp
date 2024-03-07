@@ -360,7 +360,7 @@ void OdynCashGUI::createActions()
     tabGroup->addAction(servicenodeAction);
 
     miningAction = new QAction(QIcon(":/icons/" + theme + "/tx_mined"), tr("&Mining"), this);
-    miningAction->setStatusTip(tr("Mine OdynCash(DYN)"));
+    miningAction->setStatusTip(tr("Mine OdynCash(0DYNC)"));
     miningAction->setToolTip(miningAction->statusTip());
     miningAction->setCheckable(true);
 #ifdef Q_OS_MAC

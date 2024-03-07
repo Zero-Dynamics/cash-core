@@ -176,8 +176,8 @@
         <translation>Потвърдете на шифрирането на портфейла</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Внимание: Ако шифрирате вашия портфейл и загубите паролата си,  &lt;b&gt;ЩЕ ЗАГУБИТЕ ВСИЧКИ DYN МОНЕТИ!&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Внимание: Ако шифрирате вашия портфейл и загубите паролата си,  &lt;b&gt;ЩЕ ЗАГУБИТЕ ВСИЧКИ 0DYNC МОНЕТИ!&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -900,28 +900,28 @@ Address: %4
         <translation>Моля изберете ниво на сигурност.</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Използване на 2 различни ServiceNodes за смесване на средства до 1000 DYN</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Използване на 2 различни ServiceNodes за смесване на средства до 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Използване на 8 различни ServiceNodes за смесване на средства до 1000 DYN</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Използване на 8 различни ServiceNodes за смесване на средства до 1000 0DYNC</translation>
     </message>
     <message>
         <source>Use 16 separate ServiceNodes</source>
-        <translation>Използване на 16 различни ServiceNodes за смесване на средства до 1000 DYN</translation>
+        <translation>Използване на 16 различни ServiceNodes за смесване на средства до 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Това е най-бързият вариант, анонимизиране на 1000 DYN ще ви струва около 0.025 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Това е най-бързият вариант, анонимизиране на 1000 0DYNC ще ви струва около 0.025 0DYNC</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Това е средно бърз вариант, анонимизиране на 1000 DYN ще ви струва около 0.05 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Това е средно бърз вариант, анонимизиране на 1000 0DYNC ще ви струва около 0.05 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN за всеки 1000 DYN които анонимизирате.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC за всеки 1000 0DYNC които анонимизирате.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1467,8 +1467,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Количество и цикли:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Цикъла</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Цикъла</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3661,8 +3661,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Изпращане</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend не поддържа изпращане на толкова големи суми. Транзакциите са ограничени до %1 DYN.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend не поддържа изпращане на толкова големи суми. Транзакциите са ограничени до %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3775,8 +3775,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Не са намерени достатъчно PrivateSend деноминирани средства за тази транзакция.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Не са намерени достатъчно PrivateSend неденоминирани средства за тази транзакция, които не са равни на 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Не са намерени достатъчно PrivateSend неденоминирани средства за тази транзакция, които не са равни на 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4019,12 +4019,12 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Грешка: Открит е неподдържан аргумент -socks .настройка SOCKS версия вече не е възможна, само SOCKS5 прокси се поддържа.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Такси (в DYN/Kb) по-малки от това се считат за нулева такса за прилагане (по подразбиране: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Такси (в 0DYNC/Kb) по-малки от това се считат за нулева такса за прилагане (по подразбиране: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Такси (в DYN/Kb) по-малки от това се считат за нулева такса при създаване на транзакция (по подразбиране: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Такси (в 0DYNC/Kb) по-малки от това се считат за нулева такса при създаване на транзакция (по подразбиране: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4110,8 +4110,8 @@ for example: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Не са намерени достатъчно  средства за тази транзакция, които не са равни на 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Не са намерени достатъчно  средства за тази транзакция, които не са равни на 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4224,8 +4224,8 @@ for example: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>Грешка:Открит е неподдържан аргумент -tor, моля използвай -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Такси (в DYN/Kb) добавена към направената транзакция(по подразбиране: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Такси (в 0DYNC/Kb) добавена към направената транзакция(по подразбиране: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4600,7 +4600,7 @@ for example: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>KeePassHttp ключ за  AES криптирана връзка с KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
         <translation>Поддържай N OdynCash анонимизирани (по подразбиране: %u)</translation>
     </message>
     <message>
@@ -4927,8 +4927,8 @@ for example: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>Показаната информация може да е остаряла. Вашият портфейл автоматично се синхронизира с динамичната мрежа след установяване на връзка, но този процес все още не е приключил. Това означава, че скорошните транзакции няма да бъдат видими и балансът няма да бъде актуален, докато този процес не приключи.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Прекарването на DYN може да не е възможно по време на тази фаза!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Прекарването на 0DYNC може да не е възможно по време на тази фаза!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

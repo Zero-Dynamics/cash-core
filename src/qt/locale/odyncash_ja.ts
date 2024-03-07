@@ -224,7 +224,7 @@
     </message>
     <message>
         <source>Send coins to a OdynCash address</source>
-        <translation>コインをODYNCASHに送信します住所</translation>
+        <translation>コインをO0DYNCCASHに送信します住所</translation>
     </message>
     <message>
         <source>&amp;Receive</source>
@@ -255,8 +255,8 @@
         <translation>ダイノードを閲覧する</translation>
     </message>
     <message>
-        <source>Mine OdynCash(DYN)</source>
-        <translation>マインダイナミック（DYN）</translation>
+        <source>Mine OdynCash(0DYNC)</source>
+        <translation>マインダイナミック（0DYNC）</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -944,7 +944,7 @@ PrivateSendは革新的なプロセスを使用して、コインを財布から
 &lt;b&gt;PrivateSendプロセスは次のように機能します:&lt;/b&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSendは、トランザクション入力を標準額面に分解することから始まります。
-これらの額面は、0.001、0.01 DYN、0.1 DYN、1 DYN、10 DYNです。毎日使用する紙幣のようなものです。&lt;/li&gt;
+これらの額面は、0.001、0.01 0DYNC、0.1 0DYNC、1 0DYNC、10 0DYNCです。毎日使用する紙幣のようなものです。&lt;/li&gt;
 &lt;li&gt;その後、ウォレットは、&#39;SERVICENODES&#39;と呼ばれるネットワーク上の特別に構成されたソフトウェアノードにリクエストを送信します
 これらのServiceNodesは、特定の金種を混合することに関心があることを通知されます。
 識別可能な情報はServiceNodesに送信されないため、彼らは&#39;誰&#39;あなたは。&lt;/li&gt;
@@ -1283,8 +1283,8 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>金額とラウンド：</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 ラウンド</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 ラウンド</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -4055,11 +4055,11 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
     <name>ModalOverlay</name>
     <message>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the OdynCash network after a connection is established, but this process has not completed yet. This means that recent transactions will not be visible, and the balance will not be up-to-date until this process has completed.</source>
-        <translation>表示される情報は古くなっている可能性があります。接続が確立された後、ウォレットはODYNCASHネットワークと自動的に同期しますが、このプロセスはまだ完了していません。つまり、最近のトランザクションは表示されず、このプロセスが完了するまで残高は最新になりません。</translation>
+        <translation>表示される情報は古くなっている可能性があります。接続が確立された後、ウォレットはO0DYNCCASHネットワークと自動的に同期しますが、このプロセスはまだ完了していません。つまり、最近のトランザクションは表示されず、このプロセスが完了するまで残高は最新になりません。</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>その段階では、DYNを使用できない場合があります！</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>その段階では、0DYNCを使用できない場合があります！</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

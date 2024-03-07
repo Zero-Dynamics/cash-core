@@ -628,7 +628,7 @@ bool CServiceNodeBlockPayees::IsTransactionValid(const CTransaction& txNew, cons
         }
     }
 
-    LogPrintf("CServiceNodeBlockPayees::IsTransactionValid -- ERROR: Missing required payment, possible payees: '%s', amount: %f DYN\n", strPayeesPossible, (float)nServiceNodePayment / COIN);
+    LogPrintf("CServiceNodeBlockPayees::IsTransactionValid -- ERROR: Missing required payment, possible payees: '%s', amount: %f 0DYNC\n", strPayeesPossible, (float)nServiceNodePayment / COIN);
     return false;
 }
 

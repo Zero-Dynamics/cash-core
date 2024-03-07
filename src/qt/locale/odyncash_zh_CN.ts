@@ -176,7 +176,7 @@
         <translation>确认加密钱包</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
         <translation>警告:如果把钱包加​​密后又忘记密码，你就会从此&lt;b&gt;失去所有的动态币了&lt;/b&gt;!</translation>
     </message>
     <message>
@@ -900,11 +900,11 @@ Address: %4
         <translation>请选择隐私等级。</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
         <translation>使用2个独立的主节点混合资金最多1000动态币</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
         <translation>使用8个独立的主节点混合资金最多1000动态币</translation>
     </message>
     <message>
@@ -912,15 +912,15 @@ Address: %4
         <translation>使用16个独立主节点</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
         <translation>此选项为最快速度，需要支付0.025动态币/1000动态币的匿名处理费用</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
         <translation>此选项为一般速度，需要支付0.05动态币/1000动态币的匿名处理费用</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
         <translation>0.1动态币/1000动态币的匿名处理费用。</translation>
     </message>
     <message>
@@ -1467,7 +1467,7 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>数量与循环次数:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
+        <source>0 0DYNC / 0 Rounds</source>
         <translation>0 动态币 / 0 循环数</translation>
     </message>
     <message>
@@ -1500,7 +1500,7 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     </message>
     <message>
         <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>您向主节点所提交的用以面额化混合的DYN,&lt;br&gt;当其他用户提交相同的面额化DYN数量时,将开始混合.</translation>
+        <translation>您向主节点所提交的用以面额化混合的0DYNC,&lt;br&gt;当其他用户提交相同的面额化0DYNC数量时,将开始混合.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -2375,12 +2375,12 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     </message>
     <message>
         <source>If the custom fee is set to 1000 satoshis and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 satoshis in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 satoshis. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>如果自定手续费设定为0.00001000DYN/kB,而交易信息只有250字节的话,那么选择&quot;每千位字节&quot;就只会支付0.00000250DYN的手续费,&lt;br /&gt;而&quot;至少&quot;会支付0.00001000DYN.
+        <translation>如果自定手续费设定为0.000010000DYNC/kB,而交易信息只有250字节的话,那么选择&quot;每千位字节&quot;就只会支付0.000002500DYNC的手续费,&lt;br /&gt;而&quot;至少&quot;会支付0.000010000DYNC.
 但如果交易信息大于一千字节,那么两者都要支付千字节费用.</translation>
     </message>
     <message>
         <source>If the custom fee is set to 1000 satoshis and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 satoshis in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 satoshis. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>如果自定手续费设定为0.00001000DYN/kB,而交易信息只有250字节的话,那么选择&quot;每千位字节&quot;就只会支付0.00000250DYN的手续费,&lt;br /&gt;而&quot;总共至少&quot;会支付0.00001000DYN.
+        <translation>如果自定手续费设定为0.000010000DYNC/kB,而交易信息只有250字节的话,那么选择&quot;每千位字节&quot;就只会支付0.000002500DYNC的手续费,&lt;br /&gt;而&quot;总共至少&quot;会支付0.000010000DYNC.
 但如果交易信息大于一千字节,那么两者都要支付千字节费用.</translation>
     </message>
     <message>
@@ -3578,11 +3578,11 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     </message>
     <message>
         <source>Slider will show once OdynCash has finished syncing</source>
-        <translation>一旦ODYNCASH完成同步，滑块就会显示</translation>
+        <translation>一旦O0DYNCCASH完成同步，滑块就会显示</translation>
     </message>
     <message>
         <source>GPU mining is not supported in this version of OdynCash</source>
-        <translation>此版本的ODYNCASH不支持GPU挖矿</translation>
+        <translation>此版本的O0DYNCCASH不支持GPU挖矿</translation>
     </message>
 </context>
 <context>
@@ -3630,7 +3630,7 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>发送动态币</translation>
     </message>
     <message>
-        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
         <translation>即时支付功能目前还不支持发送如此高的金额.目前限制在%1 动态币.</translation>
     </message>
 </context>
@@ -3717,11 +3717,11 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     </message>
     <message>
         <source>Unable to locate enough PrivateSend denominated funds for this transaction.</source>
-        <translation>无法找到足够的已匿名化资金来完成交易,不足1000 DYN.</translation>
+        <translation>无法找到足够的已匿名化资金来完成交易,不足1000 0DYNC.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>无法找到足够的未匿名化资金来完成交易,不足1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>无法找到足够的未匿名化资金来完成交易,不足1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -3916,11 +3916,11 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>允许存储在这个钱包内的资金自动使用匿名发送(0-1, 默认: %u)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
         <translation>如果手续费比这个值低,就视为没有付手续费(当用于中继时)(默认: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
         <translation>如果手续费比这个值低,就视为没有付手续费(当产生交易时)(默认: %s)</translation>
     </message>
     <message>
@@ -3964,8 +3964,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>此产品包括了由OpenSSL Project所开发的OpenSSL Toolkit 软件&lt;https://www.openssl.org/&gt;, 和由Eric Young 编写的加密软件, 以及由Thomas Bernard 编写的UPnP软件.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>无法找到足够的资金完成交易,不足1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>无法找到足够的资金完成交易,不足1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4367,7 +4367,7 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>检测到无效脚本。</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
         <translation>保持定量动态币匿名化(默认: %u)</translation>
     </message>
     <message>
@@ -4659,11 +4659,11 @@ https://www.transifex.com/projects/p/odyncash/</translation>
     <name>ModalOverlay</name>
     <message>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the OdynCash network after a connection is established, but this process has not completed yet. This means that recent transactions will not be visible, and the balance will not be up-to-date until this process has completed.</source>
-        <translation>显示的信息可能已过时。建立连接后，您的钱包会自动与ODYNCASH网络同步，但是此过程尚未完成。这意味着将看不到最近的交易，并且在此过程完成之前，余额不会是最新的.</translation>
+        <translation>显示的信息可能已过时。建立连接后，您的钱包会自动与O0DYNCCASH网络同步，但是此过程尚未完成。这意味着将看不到最近的交易，并且在此过程完成之前，余额不会是最新的.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>在该阶段可能无法花费DYN！</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>在该阶段可能无法花费0DYNC！</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

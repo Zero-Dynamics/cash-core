@@ -176,8 +176,8 @@
         <translation>Xác nhận mã hoá ví</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Chú ý: Nếu bạn mã hoá ví và mất mật khẩu, bạn sẽ &lt;b&gt;MẤT TẤT CẢ DYN CỦA BẠN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Chú ý: Nếu bạn mã hoá ví và mất mật khẩu, bạn sẽ &lt;b&gt;MẤT TẤT CẢ 0DYNC CỦA BẠN&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -912,28 +912,28 @@ Kiểu: %3
         <translation>Hãy chọn mức độ riêng tư.</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Sử dụng 2 servicenode khác nhau để trộn số tiền lên đến 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Sử dụng 2 servicenode khác nhau để trộn số tiền lên đến 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Sử dụng 8 servicenode khác nhau để trộn số tiền lên đến 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Sử dụng 8 servicenode khác nhau để trộn số tiền lên đến 1000 0DYNC</translation>
     </message>
     <message>
         <source>Use 16 separate servicenodes</source>
         <translation>Sử dụng 16 servicenode khác nhau</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Tuỳ chọn này là nhanh nhất và sẽ mất chi phí khoảng ~0.025 DYN để ẩn danh 1000 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Tuỳ chọn này là nhanh nhất và sẽ mất chi phí khoảng ~0.025 0DYNC để ẩn danh 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Tuỳ chọn này là tương đối nhanh và sẽ mất chi phí khoảng ~0.05 DYN để ẩn danh 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Tuỳ chọn này là tương đối nhanh và sẽ mất chi phí khoảng ~0.05 0DYNC để ẩn danh 1000 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN cho mỗi 1000 DYN bạn muốn ẩn danh.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC cho mỗi 1000 0DYNC bạn muốn ẩn danh.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1103,7 +1103,7 @@ Bạn giữ quyền kiểm soát tiền của bạn mọi lúc.&lt;hr&gt;
 &lt;b&gt;Quá trình PrivateSend hoạt động như thế này:&lt;/b&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend bắt đầu bằng cách chia các đầu vào giao dịch của bạn thành các mệnh giá tiêu chuẩn.
-Các mệnh giá này là 0,001, 0,01 DYN, 0,1 DYN, 1 DYN, 10 DYN - giống như tiền giấy bạn sử dụng hàng ngày.&lt;/li&gt;
+Các mệnh giá này là 0,001, 0,01 0DYNC, 0,1 0DYNC, 1 0DYNC, 10 0DYNC - giống như tiền giấy bạn sử dụng hàng ngày.&lt;/li&gt;
 &lt;li&gt;Ví của bạn sau đó gửi yêu cầu đến các nút phần mềm được cấu hình đặc biệt trên mạng, được gọi là &#39;ServiceNodes&#39;.
 Các ServiceNodes này được thông báo rằng bạn quan tâm đến việc trộn một mệnh giá nhất định.
 Không có thông tin nhận dạng nào được gửi đến ServiceNodes, vì vậy họ không bao giờ biết bạn là ai.&lt;/li&gt;
@@ -1512,8 +1512,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Số tiền và số vòng:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Vòng</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Vòng</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3710,8 +3710,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Gửi tiền</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend không hỗ trợ để gửi giá trị lớn đến như vậy. Giới hạn giao dịch hiện tại đến %1 DYN.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend không hỗ trợ để gửi giá trị lớn đến như vậy. Giới hạn giao dịch hiện tại đến %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3824,8 +3824,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Không tìm đủ ngân sách PrivateSend denominated cho giao dịch này.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Không tìm đủ ngân sách PrivateSend denominated cho giao dịch mà nó không bằng 1000 DYN</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Không tìm đủ ngân sách PrivateSend denominated cho giao dịch mà nó không bằng 1000 0DYNC</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4068,12 +4068,12 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Lỗi: Thấy tham số không được hỗ trợ -socks. Thiết lập phiên bản SOCKS là không thể được nữa, chỉ hỗ trợ proxy SOCKS5.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Phí (tính theo DYN/Kb) nhỏ hơn số này được coi là không mất phí cho việc chuyển tiền (ngầm định: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Phí (tính theo 0DYNC/Kb) nhỏ hơn số này được coi là không mất phí cho việc chuyển tiền (ngầm định: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Phí (theo DYN/Kb) nhỏ hơn số này được coi không mất phí cho việc khởi tạo giao dịch (ngầm định: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Phí (theo 0DYNC/Kb) nhỏ hơn số này được coi không mất phí cho việc khởi tạo giao dịch (ngầm định: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4168,8 +4168,8 @@ ví dụ: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Không tìm được đủ ngân sách cho giao dịch mà nó không đủ 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Không tìm được đủ ngân sách cho giao dịch mà nó không đủ 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4281,8 +4281,8 @@ ví dụ: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>Lỗi: Tìm thấy tham số không được hỗ trợ -tor, thay vào đó hãy sử dụng -onion</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Phí (theo DYN/Kb) sẽ thêm vào các giao dịch mà bạn gửi (ngầm định: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Phí (theo 0DYNC/Kb) sẽ thêm vào các giao dịch mà bạn gửi (ngầm định: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4657,8 +4657,8 @@ ví dụ: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>Khoá KeePassHttp cho liên lạc mã hoá AES với KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Giữ N DYN đã được ẩn danh (ngầm định: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Giữ N 0DYNC đã được ẩn danh (ngầm định: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -4992,8 +4992,8 @@ ví dụ: alertnotify=echo %%s | mail -s "OdynCash Alert" admin@foo.com
         <translation>Các thông tin hiển thị có thể đã lỗi thời. Ví của bạn tự động đồng bộ hóa với mạng Động sau khi kết nối được thiết lập, nhưng quá trình này vẫn chưa hoàn tất. Điều này có nghĩa là các giao dịch gần đây sẽ không hiển thị và số dư sẽ không được cập nhật cho đến khi quá trình này hoàn tất.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Chi tiêu DYN có thể không thể trong giai đoạn đó!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Chi tiêu 0DYNC có thể không thể trong giai đoạn đó!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

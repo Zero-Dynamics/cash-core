@@ -176,8 +176,8 @@
         <translation>Conferma la cifratura del portafoglio</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Attenzione: se crittografi il tuo portafoglio e perdi la tua parola d'ordine, &lt;b&gt;PERDERAI TUTTI I TUOI DYN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Attenzione: se crittografi il tuo portafoglio e perdi la tua parola d'ordine, &lt;b&gt;PERDERAI TUTTI I TUOI 0DYNC&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -865,27 +865,27 @@ Indirizzo: %4
         <translation>Selezionare il livello di privacy</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Usa 2 separati servicenode per mischiare fino al 1000 DYN</translation>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Usa 2 separati servicenode per mischiare fino al 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
-        <translation>Usa 8 separati servicenode per mischiare fino al 1000 DYN</translation>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
+        <translation>Usa 8 separati servicenode per mischiare fino al 1000 0DYNC</translation>
     </message>
     <message>
         <source>Use 16 separate servicenodes</source>
         <translation>Usa 16 separati servicenode</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
         <translation>Questa opzione è la più veloce e ti costerà ~0.025DRK circa per anonimizzare 1000DRK</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
         <translation>Questa opzione è moderatamente veloce e costerà 0.05DRK circa per anonimizzare 1000DRK</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
         <translation>0.1DRK ogni 1000DRK anonimizzati.</translation>
     </message>
     <message>
@@ -1052,7 +1052,7 @@ Mantenete il controllo dei vostri soldi in ogni momento.&lt;hr&gt;
 &lt;b&gt;Il processo PrivateSend funziona in questo modo:&lt;/b&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend inizia suddividendo gli input della tua transazione in tagli standard.
-Queste denominazioni sono 0,001, 0,01 DYN, 0,1 DYN, 1 DYN, 10 DYN - una specie di carta moneta che usi ogni giorno.&lt;/li&gt;
+Queste denominazioni sono 0,001, 0,01 0DYNC, 0,1 0DYNC, 1 0DYNC, 10 0DYNC - una specie di carta moneta che usi ogni giorno.&lt;/li&gt;
 &lt;li&gt;Il tuo portafoglio invia quindi richieste a nodi software appositamente configurati sulla rete, chiamati &#39;ServiceNodes&#39;.
 Questi ServiceNode vengono quindi informati che sei interessato a mescolare una determinata denominazione.
 Nessuna informazione identificabile viene inviata ai ServiceNode, quindi non sanno mai &#39;chi&#39; tu sei.&lt;/li&gt;
@@ -1451,8 +1451,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Ammontare e Round:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Round</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Round</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3529,8 +3529,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Invia odyncash</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend non supporta ancora l'invio di somme così alte. Le transazioni sono attualmente limitate al %1 DYN.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend non supporta ancora l'invio di somme così alte. Le transazioni sono attualmente limitate al %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3639,8 +3639,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Impossibile trovare fondi sufficienti PrivateSend denominati per questa transazione.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Impossibile trovare un numero sufficiente di non denominati fondi PrivateSend per questa operazione che non sono uguali a 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Impossibile trovare un numero sufficiente di non denominati fondi PrivateSend per questa operazione che non sono uguali a 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -3851,12 +3851,12 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Abilita utilizzo di privatesend automatizzato per i fondi conservati in questo portafoglio (0-1, predefinito: %u)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Le commissioni (in DYN/Kb) inferiori a questo valore saranno considerate nulle per la trasmissione (prefedinito:%s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Le commissioni (in 0DYNC/Kb) inferiori a questo valore saranno considerate nulle per la trasmissione (prefedinito:%s)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Le commissioni (in DYN/Kb)  inferiori a questo valore saranno considerate nulle per la creazione della transazione (prefedinito:%s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Le commissioni (in 0DYNC/Kb)  inferiori a questo valore saranno considerate nulle per la creazione della transazione (prefedinito:%s)</translation>
     </message>
     <message>
         <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
@@ -4267,8 +4267,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Le informazioni visualizzate potrebbero non essere aggiornate. Il tuo portafoglio si sincronizza automaticamente con la rete dinamica dopo aver stabilito una connessione, ma questo processo non è stato ancora completato. Ciò significa che le transazioni recenti non saranno visibili e il saldo non sarà aggiornato fino al completamento di questo processo.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Trascorrere DYN potrebbe non essere possibile durante quella fase!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Trascorrere 0DYNC potrebbe non essere possibile durante quella fase!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

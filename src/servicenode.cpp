@@ -583,7 +583,7 @@ bool CServiceNodeBroadcast::CheckOutpoint(int& nDos)
     }
 
     if (err == COLLATERAL_INVALID_AMOUNT) {
-        LogPrint("servicenode", "CServiceNodeBroadcast::CheckOutpoint -- ServiceNode UTXO should have 1000 DYN, servicenode=%s\n", outpoint.ToStringShort());
+        LogPrint("servicenode", "CServiceNodeBroadcast::CheckOutpoint -- ServiceNode UTXO should have 1000 0DYNC, servicenode=%s\n", outpoint.ToStringShort());
         nDos = 33;
         return false;
     }

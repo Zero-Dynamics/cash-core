@@ -173,8 +173,8 @@ Var vänlig och försök igen.</translation>
         <translation>Bekräfta kryptering av plånbok</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>VARNING: Om du krypterar din plånbok och glömmer ditt lösenord, kommer du att &lt;b&gt;FÖRLORA ALLA DINA DYN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>VARNING: Om du krypterar din plånbok och glömmer ditt lösenord, kommer du att &lt;b&gt;FÖRLORA ALLA DINA 0DYNC&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -284,8 +284,8 @@ Var vänlig och försök igen.</translation>
         <translation>Bläddra i ServiceNodes</translation>
     </message>
     <message>
-        <source>Mine OdynCash(DYN)</source>
-        <translation>Mina OdynCash(DYN)</translation>
+        <source>Mine OdynCash(0DYNC)</source>
+        <translation>Mina OdynCash(0DYNC)</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -956,28 +956,28 @@ Adres: %4
         <translation>Välj din sekretessnivå.</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Använd 2 separata ServiceNodes för att mixa medel upp till 1000 DYN</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Använd 2 separata ServiceNodes för att mixa medel upp till 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Använd 8 separata ServiceNodes för att mixa medel upp till 1000 DYN</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Använd 8 separata ServiceNodes för att mixa medel upp till 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Använd 16 separata ServiceNodes för att mixa medel upp till 1000 DYN</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Använd 16 separata ServiceNodes för att mixa medel upp till 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>De här alternativet är det snabbaste och kostar ca ~0,025 DYN till att anonymisera 1000 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>De här alternativet är det snabbaste och kostar ca ~0,025 0DYNC till att anonymisera 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>De här alternativet är det som är måttligt snabbt och kostar ca 0,05 DYN till att anonymisera 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>De här alternativet är det som är måttligt snabbt och kostar ca 0,05 0DYNC till att anonymisera 1000 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN per 1000 DYN du anonymiserar.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC per 1000 0DYNC du anonymiserar.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1144,7 +1144,7 @@ PrivateSend ger dig sann ekonomisk integritet genom att dölja ursprunget för d
 Alla OdynCash i din plånbok består av olika &#39;ingångar&#39; 
 som du kan tänka på som separata, diskreta mynt.&lt;br&gt; PrivateSend använder en innovativ process för att blanda dina ingångar med ingångarna till två andra personer, utan att dina mynt någonsin lämnar din plånbok.
 Du behåller kontrollen över dina pengar hela tiden.&lt;hr&gt;&lt;b&gt;PrivateSend Processen fungerar så här:&lt;/b&gt;&lt;ol type=&#39;1&#39;&gt;&lt;li&gt;PrivateSend börjar genom att bryta dina transaktionsinsatser ner till standardbeteckningar.
-Dessa valörer är 0.001, 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN -- likt vanliga pengar du använder varje dag.&lt;/li&gt;
+Dessa valörer är 0.001, 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC -- likt vanliga pengar du använder varje dag.&lt;/li&gt;
 &lt;li&gt;Din plånbok skickar sedan förfrågningar till specialkonfigurerade mjukvarutoder i nätverket, som heter &#39;ServiceNodes&#39;.
 Dessa servicenoder informeras då att du är intresserad av att blanda en viss benämning. Ingen privat information skickas till servicenoderna, så de vet aldrig &#39;vem&#39; du är.&lt;/li&gt;
 &lt;li&gt;När två andra människor skickar liknande meddelanden, vilket indikerar att de vill blanda samma valör, börjar en blandningssession.
@@ -1628,8 +1628,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Mängd och Rundor:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Rundor</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Rundor</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -2489,7 +2489,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
     </message>
     <message>
         <source>Send Coins</source>
-        <translation>Skicka DYN</translation>
+        <translation>Skicka 0DYNC</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
@@ -3887,8 +3887,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Skicka pengar</translation>
     </message>
     <message>
-        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend stödjer inte att skicka värden som är höga än. Transaktioner är för närvarande begränsade till %1 DYN.</translation>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend stödjer inte att skicka värden som är höga än. Transaktioner är för närvarande begränsade till %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -4005,8 +4005,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Kunde inte hitta tillräckliga Privatesend-denominationsmedel för denna transaktion.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Kunde inte hitta tillräckliga Privatesend-icke-denominationsmedel för denna transaktion som inte är likvärdiga 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Kunde inte hitta tillräckliga Privatesend-icke-denominationsmedel för denna transaktion som inte är likvärdiga 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4249,8 +4249,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Fel : Otrillräckligt argument -socks hittades. Iställningar av SOCKS version är inte möjligt längre, bara protokollet SOCKS5-proxy stöds.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Avgift (i DYN/Kb) mindre än detta betraktas som nollavgift för relaying (standard: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Avgift (i 0DYNC/Kb) mindre än detta betraktas som nollavgift för relaying (standard: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4346,8 +4346,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Det gick inte att hitta tillräckligt med pengar för denna transaktion som inte är lika 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Det gick inte att hitta tillräckligt med pengar för denna transaktion som inte är lika 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4460,8 +4460,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>Fel: Argument som inte stöds -tor hittad, använd -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Avgift (in DYN/kB) att lägga till transaktioner du skickar (standard: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Avgift (in 0DYNC/kB) att lägga till transaktioner du skickar (standard: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4844,8 +4844,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>KeePassHttp-nyckel för AES-krypterad kommunikation med KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Håll N DYN anonymiserad (standard: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Håll N 0DYNC anonymiserad (standard: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -5410,8 +5410,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;OdynCash Alert&quot; admin@fo
         <translation>Den information som visas kan vara föråldrad. Din plånbok synkroniseras automatiskt med det dynamiska-nätverket efter att en anslutning har upprättats, men den här processen har inte slutförts än. Det innebär att de senaste transaktionerna inte kommer att synas, och resten kommer inte att uppdateras förrän processen har slutförts.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>Spendera DYN kanske inte är möjligt under den här fasen!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>Spendera 0DYNC kanske inte är möjligt under den här fasen!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

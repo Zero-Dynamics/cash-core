@@ -1,4 +1,4 @@
-TOR SUPPORT IN DYN
+TOR SUPPORT IN 0DYNC
 =======================
 
 It is possible to run OdynCash as a Tor hidden service, and connect to such services.

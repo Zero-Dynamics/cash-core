@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2021 Duality Blockchain Solutions Developers 
+// Copyright (c) 2019-2021 Duality Blockchain Solutions Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -56,7 +56,7 @@ UniValue createrawbdapaccount(const JSONRPCRequest& request)
             "\"raw transaction\"   (string) hex string of the raw BDAP transaction\n"
             "\nExamples\n" +
            HelpExampleCli("createrawbdapaccount", "jack \"Black, Jack\"") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("createrawbdapaccount", "jack \"Black, Jack\""));
 
     EnsureWalletIsUnlocked();
@@ -123,7 +123,7 @@ UniValue createrawbdapaccount(const JSONRPCRequest& request)
     COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
 
     pwalletMain->SetAddressBook(keyWalletID, strObjectID, "bdap-wallet");
-    
+
     CharString vchWalletAddress = vchFromString(walletAddress.ToString());
     txDomainEntry.WalletAddress = vchWalletAddress;
 
@@ -143,13 +143,13 @@ UniValue createrawbdapaccount(const JSONRPCRequest& request)
     CAmount monthlyFee, oneTimeFee, depositFee;
     if (!GetBDAPFees(OP_BDAP_NEW, OP_BDAP_ACCOUNT_ENTRY, bdapType, nMonths, monthlyFee, oneTimeFee, depositFee))
         throw JSONRPCError(RPC_BDAP_FEE_UNKNOWN, strprintf("Error calculating BDAP user account fees."));
-    LogPrintf("%s -- monthlyFee %d, oneTimeFee %d, depositFee %d\n", __func__, 
+    LogPrintf("%s -- monthlyFee %d, oneTimeFee %d, depositFee %d\n", __func__,
         FormatMoney(monthlyFee), FormatMoney(oneTimeFee), FormatMoney(depositFee));
 
     // Create BDAP operation script
     CScript scriptPubKey;
     std::vector<unsigned char> vchFullObjectPath = txDomainEntry.vchFullObjectPath();
-    scriptPubKey << CScript::EncodeOP_N(OP_BDAP_NEW) << CScript::EncodeOP_N(OP_BDAP_ACCOUNT_ENTRY) 
+    scriptPubKey << CScript::EncodeOP_N(OP_BDAP_NEW) << CScript::EncodeOP_N(OP_BDAP_ACCOUNT_ENTRY)
                  << vchFullObjectPath << txDomainEntry.DHTPublicKey << vchMonths << OP_2DROP << OP_2DROP << OP_DROP;
 
     CScript scriptDestination;
@@ -202,16 +202,16 @@ UniValue createrawbdapaccount(const JSONRPCRequest& request)
     CAmount nLinkAcceptAmount((oneTimeFee + depositFee + monthlyFee) * 10); // enough for 10 link accepts
     // Get total amount need for 10 link request and 10 link accept transactions
     CAmount nTotalLinkAmount = (nLinkRequestAmount + nLinkAcceptAmount);
-    LogPrintf("%s -- nLinkRequestAmount %d,  nLinkAcceptAmount %d, Total %d\n", __func__, 
+    LogPrintf("%s -- nLinkRequestAmount %d,  nLinkAcceptAmount %d, Total %d\n", __func__,
         FormatMoney(nLinkRequestAmount), FormatMoney(nLinkAcceptAmount), FormatMoney(nTotalLinkAmount));
 
     // Create BDAP credits operation script
-    std::vector<unsigned char> vchMoveSource = vchFromString(std::string("DYN"));
+    std::vector<unsigned char> vchMoveSource = vchFromString(std::string("0DYNC"));
     std::vector<unsigned char> vchMoveDestination = vchFromString(std::string("BDAP"));
     CScript scriptBdapCredits;
-    scriptBdapCredits << CScript::EncodeOP_N(OP_BDAP_MOVE) << CScript::EncodeOP_N(OP_BDAP_ASSET) 
+    scriptBdapCredits << CScript::EncodeOP_N(OP_BDAP_MOVE) << CScript::EncodeOP_N(OP_BDAP_ASSET)
                         << vchMoveSource << vchMoveDestination << OP_2DROP << OP_2DROP;
- 
+
     // Add stealth link destination address to credits
     scriptBdapCredits += stealtDestination;
 
@@ -235,7 +235,7 @@ UniValue sendandpayrawbdapaccount(const JSONRPCRequest& request)
             "\"transaction id\"   (string) \n"
             "\nExamples\n" +
            HelpExampleCli("sendandpayrawbdapaccount", "<hexstring>") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("sendandpayrawbdapaccount", "<hexstring>"));
 
     if (!servicenodeSync.IsBlockchainSynced()) {

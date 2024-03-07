@@ -133,7 +133,7 @@ public Q_SLOTS:
     /** User has requested more information about the out of sync state */
     void requestedSyncWarningInfo();
 
-    /** Update selected DYN amount from transactionview */
+    /** Update selected 0DYNC amount from transactionview */
     void trxAmount(QString amount);
 
 Q_SIGNALS:

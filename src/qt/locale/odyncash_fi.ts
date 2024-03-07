@@ -176,8 +176,8 @@
         <translation>Vahvista lompakon salaus</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Varoitus: Jos salaat lompakon ja unohdat salasanan, &lt;b&gt;MENETÄT KAIKKI DYNisi&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Varoitus: Jos salaat lompakon ja unohdat salasanan, &lt;b&gt;MENETÄT KAIKKI 0DYNCisi&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -904,11 +904,11 @@ Osoite: %4
         <translation>Valitse yksityisyyden taso.</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 DYN</source>
+        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
         <translation>Käytä 2 erillistä servicenodea sekoittaaksesi varoja</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 DYN</source>
+        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
         <translation>Käytä 8 erillistä servicenodea sekoittaaksesi varoja</translation>
     </message>
     <message>
@@ -916,16 +916,16 @@ Osoite: %4
         <translation>Käytä 16 erillistä servicenodea</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 DYN kun anonymisoidaan 1000 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 0DYNC kun anonymisoidaan 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Tämä vaihtoehto on keskinopea ja maksaa noin ~0.05 DYN kun anonymisoidaan 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Tämä vaihtoehto on keskinopea ja maksaa noin ~0.05 0DYNC kun anonymisoidaan 1000 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN maksu per 1000 DYN jonka anonymisoit.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC maksu per 1000 0DYNC jonka anonymisoit.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1472,8 +1472,8 @@ https://www.transifex.com/projects/p/odyncash/</translation>
         <translation>Määrä ja Kierrokset:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Kierrosta</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Kierrosta</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3575,7 +3575,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
     <message>
         <source>This shows the overall hashrate of the OdynCash network</source>
-        <translation>Tämä osoittaa ODYNCASH-verkon kokonaishašatin</translation>
+        <translation>Tämä osoittaa O0DYNCCASH-verkon kokonaishašatin</translation>
     </message>
     <message>
         <source>This shows the average time between the blocks you have mined</source>
@@ -3670,8 +3670,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Lähetä OdynCasheja</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend ei tue näin korkeaa lähetysmäärää vielä. Siirtotapahtumat on tällä hetkellä rajoitettu %1 DYN.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend ei tue näin korkeaa lähetysmäärää vielä. Siirtotapahtumat on tällä hetkellä rajoitettu %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3784,8 +3784,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Ei tarpeeksi PrivateSend anonymisoituja varoja tälle siirtotapahtumalle.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Ei tarpeeksi PrivateSend ei-anonymisoituja varoja tälle siirtotapahtumalle, joka ei ole 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Ei tarpeeksi PrivateSend ei-anonymisoituja varoja tälle siirtotapahtumalle, joka ei ole 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4028,12 +4028,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Virhe: Ei tuettu argumentti -socks. SOCKS version asettaminen ei ole enää mahdollista, vain SOCKS5 proxyt ovat tuettuja.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Siirtomaksut (DYN/Kb) jotka ovat pienempiä kuin tämä, tulkitaan nollamaksuksi välityksessä (oletus: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Siirtomaksut (0DYNC/Kb) jotka ovat pienempiä kuin tämä, tulkitaan nollamaksuksi välityksessä (oletus: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Siirtomaksut (DYN/Kb) jotka ovat pienempiä kuin tämä, tulkitaan nollamaksuksi siirtotapahtuman luonnissa (oletus: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Siirtomaksut (0DYNC/Kb) jotka ovat pienempiä kuin tämä, tulkitaan nollamaksuksi siirtotapahtuman luonnissa (oletus: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4130,8 +4130,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "OdynCash Hälytys" admin@foo.com
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Ei tarpeeksi varoja tälle siirtotapahtumalle, joka ei ole 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Ei tarpeeksi varoja tälle siirtotapahtumalle, joka ei ole 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4244,8 +4244,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "OdynCash Hälytys" admin@foo.com
         <translation>Virhe: Ei tuettu argumentti -tor löytyi, käytä -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Lisättävä siirtomaksu (DYN/Kb) siirtotapahtumaan jonka lähetät (oletus: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Lisättävä siirtomaksu (0DYNC/Kb) siirtotapahtumaan jonka lähetät (oletus: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4632,8 +4632,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "OdynCash Hälytys" admin@foo.com
         <translation>KeePassHttp avain AES salattuun viestintään</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Pidä N DYN anonymisoituna (oletus: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Pidä N 0DYNC anonymisoituna (oletus: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -4959,8 +4959,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "OdynCash Hälytys" admin@foo.com
         <translation>Näytetyt tiedot saattavat olla vanhentuneita. Lompakko synkronoituu automaattisesti dynaamisen verkon kanssa, kun yhteys on muodostettu, mutta tämä prosessi ei ole vielä valmis. Tämä tarkoittaa, että viimeaikaiset tapahtumat eivät ole näkyvissä, ja saldo ei ole ajan tasalla ennen kuin tämä prosessi on saatu päätökseen.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>DYN: n käyttäminen ei ehkä ole mahdollista kyseisessä vaiheessa!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>0DYNC: n käyttäminen ei ehkä ole mahdollista kyseisessä vaiheessa!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>

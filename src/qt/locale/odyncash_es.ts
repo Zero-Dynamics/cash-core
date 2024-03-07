@@ -172,8 +172,8 @@
         <translation>Confirmar encriptación del monedero</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DYN&lt;/b&gt;!</source>
-        <translation>Advertencia: Si encripta su monedero y pierde su contraseña, usted &lt;b&gt;PERDERÁ TODO SU DYN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR 0DYNC&lt;/b&gt;!</source>
+        <translation>Advertencia: Si encripta su monedero y pierde su contraseña, usted &lt;b&gt;PERDERÁ TODO SU 0DYNC&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -283,8 +283,8 @@
         <translation>Examinar ServiceNodes</translation>
     </message>
     <message>
-        <source>Mine OdynCash(DYN)</source>
-        <translation>Minar OdynCash(DYN)</translation>
+        <source>Mine OdynCash(0DYNC)</source>
+        <translation>Minar OdynCash(0DYNC)</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -952,28 +952,28 @@ Dirección: %4
         <translation>Por favor seleccione un nivel de privacidad.</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Utiliza 2 ServiceNodes separados para mezclar fondos de hasta 1000 DYN</translation>
+        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Utiliza 2 ServiceNodes separados para mezclar fondos de hasta 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Utiliza 8 ServiceNodes separados para mezclar fondos de hasta 1000 DYN</translation>
+        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Utiliza 8 ServiceNodes separados para mezclar fondos de hasta 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes to mix funds up to 1000 DYN</source>
-        <translation>Utiliza 16 ServiceNodes separados para mezclar fondos de hasta 1000 DYN</translation>
+        <source>Use 16 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <translation>Utiliza 16 ServiceNodes separados para mezclar fondos de hasta 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DYN to anonymize 1000 DYN</source>
-        <translation>Esta opción es la más rápida y costará aproximadamente ~0,025 DYN para anonimizar 1000 DYN</translation>
+        <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Esta opción es la más rápida y costará aproximadamente ~0,025 0DYNC para anonimizar 1000 0DYNC</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DYN to anonymize 1000 DYN</source>
-        <translation>Esta opción es moderadamente rápida y costará aproximadamente 0,05 DYN para anonimizar 1000 DYN</translation>
+        <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
+        <translation>Esta opción es moderadamente rápida y costará aproximadamente 0,05 0DYNC para anonimizar 1000 0DYNC</translation>
     </message>
     <message>
-        <source>0.1 DYN per 1000 DYN you anonymize.</source>
-        <translation>0.1 DYN por cada 1000 DYN anonimizados.</translation>
+        <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
+        <translation>0.1 0DYNC por cada 1000 0DYNC anonimizados.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1139,7 +1139,7 @@ Dirección: %4
     PrivateSend le brinda privacidad financiera al observar el origen de sus fondos. Todo OdynCash en su billetera consta de varias \&quot;entradas\&quot; que puede ver como monedas separadas, discretas. &lt;br&gt; PrivateSend utiliza un proceso innovador para mezclar sus entradas con las entrada de otras dos personas, sin que sus monedas salgan de su monedero.&lt;br&gt;
     &lt;b&gt;El proceso de PrivateSend funciona de la siguiente manera&lt;/b&gt;
     &lt;ol type=\&quot;1\&quot;&gt;
-    &lt;li&gt;PrivateSend comienza dividiendo sus entradas de transacciones en valores denominados (denominaciones). Estas denominaciones son 0.01 DYN, 0.1 DYN, 1 DYN, 10 DYN, similar a las monedas y valores (efectivo) que usa todos los días.&lt;/li&gt;
+    &lt;li&gt;PrivateSend comienza dividiendo sus entradas de transacciones en valores denominados (denominaciones). Estas denominaciones son 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC, similar a las monedas y valores (efectivo) que usa todos los días.&lt;/li&gt;
     &lt;li&gt;Su billetera envía solicitudes a nodos de software especialmente configurados en la red llamados \&quot;ServiceNodes.\&quot;
     A estos ServiceNodes se les informa que está interesado en mezclar una denominación particular. No se envía información identificable a los ServiceNodes, por lo que nunca se sabe. \&quot;quien\&quot; es usted. &lt;/li&gt;
     &lt;li&gt; Cuando otras dos personas envían mensajes similares, el protocolo indica que desean mezclar las mismas denominaciones, comenzando una sesión de mezcla. het\&quot;mezcla.\&quot; El ServiceNode mezcla las entradas e instruye a los tres monederos activos para que recuperen la entrada transformada. Su monedero se paga estas denominaciones a sí mismo, pero desde una dirección diferente (una dirección de cambio)&lt;/li&gt;
@@ -1614,8 +1614,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Cantidad y Rondas:</translation>
     </message>
     <message>
-        <source>0 DYN / 0 Rounds</source>
-        <translation>0 DYN / 0 Rondas</translation>
+        <source>0 0DYNC / 0 Rounds</source>
+        <translation>0 0DYNC / 0 Rondas</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -3874,8 +3874,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Enviar Monedas</translation>
     </message>
     <message>
-        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DYN.</source>
-        <translation>InstantSend todavía no soporta el envío de montos tan altos.  Las transacciones se encuentran actualmente limitadas a %1 DYN.</translation>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 0DYNC.</source>
+        <translation>InstantSend todavía no soporta el envío de montos tan altos.  Las transacciones se encuentran actualmente limitadas a %1 0DYNC.</translation>
     </message>
 </context>
 <context>
@@ -3992,8 +3992,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Imposible de encontrar suficientes denominaciones de PrivateSend para ésta transacción.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>Imposible de encontrar suficientes fondos no denominados de PrivateSend para ésta transacción que no sean iguales a 1000 DYN.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>Imposible de encontrar suficientes fondos no denominados de PrivateSend para ésta transacción que no sean iguales a 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4236,8 +4236,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/odyncash-dyn/</transl
         <translation>Error: Argumento no compatible -socks encontrado. La configuración de la versión de SOCKS ya no es posible, solo se admiten los proxies SOCKS5.</translation>
     </message>
     <message>
-        <source>Fees (in DYN/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Comisiones (en DYN/Kb) mas pequeñas que ésto son consideradas gratis para retransmisión (por defecto: %s)</translation>
+        <source>Fees (in 0DYNC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Comisiones (en 0DYNC/Kb) mas pequeñas que ésto son consideradas gratis para retransmisión (por defecto: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4332,8 +4332,8 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Alerta OdynCash&quot; admin@fo
 </translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DYN.</source>
-        <translation>No se pueden ubicar fondos suficientes para esta transacción que no sean iguales a 1000 DYN.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 0DYNC.</source>
+        <translation>No se pueden ubicar fondos suficientes para esta transacción que no sean iguales a 1000 0DYNC.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4446,8 +4446,8 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Alerta OdynCash&quot; admin@fo
         <translation>Error: se ha encontrado un argumento -tor no compatible, utilice -onion.</translation>
     </message>
     <message>
-        <source>Fee (in DYN/kB) to add to transactions you send (default: %s)</source>
-        <translation>Comisión (en DYN/kB) para agregar las transacciones que usted envíe (por defecto: %s)</translation>
+        <source>Fee (in 0DYNC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Comisión (en 0DYNC/kB) para agregar las transacciones que usted envíe (por defecto: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4830,8 +4830,8 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Alerta OdynCash&quot; admin@fo
         <translation>Clave KeePassHttp para la comunicación cifrada AES con KeePass</translation>
     </message>
     <message>
-        <source>Keep N DYN anonymized (default: %u)</source>
-        <translation>Mantener N DYN anonimizado (por defecto: %u)</translation>
+        <source>Keep N 0DYNC anonymized (default: %u)</source>
+        <translation>Mantener N 0DYNC anonimizado (por defecto: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -5388,8 +5388,8 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Alerta OdynCash&quot; admin@fo
         <translation>La información mostrada puede estar desactualizada. Su monedero se sincroniza automáticamente con la red OdynCash después de que se establece una conexión, pero este proceso aún no se ha completado. Esto significa que las transacciones recientes no serán visibles, y el saldo no estará actualizado hasta que este proceso se haya completado.</translation>
     </message>
     <message>
-        <source>Spending DYN may not be possible during that phase!</source>
-        <translation>El gasto de DYN puede no ser posible durante esa fase!</translation>
+        <source>Spending 0DYNC may not be possible during that phase!</source>
+        <translation>El gasto de 0DYNC puede no ser posible durante esa fase!</translation>
     </message>
     <message>
         <source>Amount of blocks left</source>
