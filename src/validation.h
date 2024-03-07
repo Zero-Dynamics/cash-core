@@ -160,10 +160,10 @@ static const int MAX_UNCONNECTING_HEADERS = 10;
 
 //Odyncash Constants
 static const CAmount BLOCKCHAIN_INIT_REWARD = COIN * 0;
-static const CAmount PHASE_1_POW_REWARD = COIN * 1;
-static const CAmount PHASE_1_SERVICENODE_PAYMENT = COIN * 0.382;
-static const CAmount PHASE_2_SERVICENODE_PAYMENT = COIN * 1.618;
-static const CAmount INITIAL_SUPERBLOCK_PAYMENT = 11500000 * COIN;
+static const CAmount PHASE_1_POW_REWARD = COIN * 0.160;
+static const CAmount PHASE_1_SERVICENODE_PAYMENT = COIN * 0.640;
+static const CAmount PHASE_2_SERVICENODE_PAYMENT = COIN * 0.640;
+static const CAmount INITIAL_SUPERBLOCK_PAYMENT = 15000000 * COIN;
 
 static const bool DEFAULT_PEERBLOOMFILTERS = true;
 

@@ -32,7 +32,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     txNew.nVersion = 1;
     txNew.vin.resize(1);
     txNew.vout.resize(1);
-    txNew.vin[0].scriptSig = CScript() << 1512926956 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+    txNew.vin[0].scriptSig = CScript() << 1709845000 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey = genesisOutputScript;
 
@@ -98,7 +98,7 @@ static void MineGenesis(CBlockHeader& genesisBlock, const uint256& powLimit, boo
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "NY Times Monday 18th Dec 2017: Google Thinks I’m Dead";
+    const char* pszTimestamp = "Render therefore unto Caesar the things which are Caesar's;";
     const CScript genesisOutputScript = CScript() << ParseHex("") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -114,18 +114,18 @@ public:
     {
         strNetworkID = "main";
 
-        consensus.nRewardsStart = 5137;               // PoW Rewards begin on block 5137
-        consensus.nServiceNodePaymentsStartBlock = 10273;  // ServiceNode Payments begin on block 10273
-        consensus.nMinCountServiceNodesPaymentStart = 500; // ServiceNode Payments begin once 500 ServiceNodes exist or more.
+        consensus.nRewardsStart = 20160;               // PoW Rewards begin on block 20160
+        consensus.nServiceNodePaymentsStartBlock = 40320;  // ServiceNode Payments begin on block 40320
+        consensus.nMinCountServiceNodesPaymentStart = 10; // ServiceNode Payments begin once 10 ServiceNodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 11;
         consensus.nInstantSendKeepLock = 24;
-        consensus.nBudgetPaymentsStartBlock = 2055;   // actual historical value
-        consensus.nBudgetPaymentsCycleBlocks = 20545; //Blocks per month
+        consensus.nBudgetPaymentsStartBlock = 8766;   // actual historical value
+        consensus.nBudgetPaymentsCycleBlocks = 87660; //Blocks per month
         consensus.nBudgetPaymentsWindowBlocks = 100;
         consensus.nBudgetProposalEstablishingTime = 24 * 60 * 60;
-        consensus.nSuperblockStartBlock = 2055;
-        consensus.nSuperblockStartHash = uint256S("0000008d283128ffecb10803a3317348908fd23bc9dceaba26f6d520a387de28");
-        consensus.nSuperblockCycle = 20545; // 675 (Blocks per day) x 365.25 (Days per Year) / 12 = 20545
+        consensus.nSuperblockStartBlock = 8766;
+        consensus.nSuperblockStartHash = uint256S("");
+        consensus.nSuperblockCycle = 87660; // 2880 (Blocks per day) x 365.25 (Days per Year) / 12 = 87660
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
         consensus.nServiceNodeMinimumConfirmations = 15;
@@ -135,14 +135,14 @@ public:
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowAveragingWindow = 17;
         consensus.nPowMaxAdjustUp = 16;
-        consensus.nPowMaxAdjustDown = 32;
-        consensus.nPowTargetSpacing = 75;
+        consensus.nPowMaxAdjustDown = 24;
+        consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // OdynCash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 321; // 95% of nMinerConfirmationWindow
-        consensus.nMinerConfirmationWindow = 30;        // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nMinerConfirmationWindow = 40;        // nPowTargetTimespan / nPowTargetSpacing
         consensus.nMaxReorganizationDepth = 100;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
@@ -169,27 +169,27 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ISAUTOLOCKS].nThreshold = 3226; // 80% of 4032
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = 215493;
+        consensus.nMinimumChainWork = 0;
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00000000261e02ae2148505c0265b5f57c34a26b0958a21c1b2bb5a3d8c746ea"); // 215493
+        consensus.defaultAssumeValid = uint256S(""); //
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x5e;
-        pchMessageStart[1] = 0x61;
-        pchMessageStart[2] = 0x74;
-        pchMessageStart[3] = 0x80;
-        vAlertPubKey = ParseHex("04bf1391ff0c61a5d9a02cd2e997b707ced89bb48514e26d89f2464c98295ffef3f587263c94e6024d4e455802ad73e1e9694f3e482ff6e074736cb2327f9cd3e7");
+        pchMessageStart[0] = 0x5d;
+        pchMessageStart[1] = 0x37;
+        pchMessageStart[2] = 0x73;
+        pchMessageStart[3] = 0x89;
+        vAlertPubKey = ParseHex("040af09946b2f22a351ae39ee94ad15afde1f0d9ea45126359646456e60ab3fdde813ad0268383736948f58bb9846d46569a81a3c659041af14da438391ec2d1b1");
         nDefaultPort = DEFAULT_P2P_PORT;
-        nPruneAfterHeight = 20545;
+        nPruneAfterHeight = 8766;
         startNewChain = false;
-        nSwitchDifficultyBlock = 795350; // approx: September 22, 2021
+        nSwitchDifficultyBlock = 87660;
 
-        genesis = CreateGenesisBlock(1513619300, 626614, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1709842909, 196251, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -197,20 +197,20 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("0x00000e140b0c3028f898431890e9dea79ae6ca537ac9362c65b45325db712de2"));
-            assert(genesis.hashMerkleRoot == uint256S("0xfa0e753db5a853ebbc52594eb62fa8219155547b426fba8789fa96dbf07e6ed5"));
+            assert(consensus.hashGenesisBlock == uint256S("00000974c1f3ee2e8b619ea7393767337c464ceba9ed36d9954ac0257db9470b"));
+            assert(genesis.hashMerkleRoot == uint256S("2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
 
-        vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet01.dnsseeder.network"));
-        vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet02.dnsseeder.network"));
-        vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet03.dnsseeder.network"));
+        // vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet01.dnsseeder.network"));
+        // vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet02.dnsseeder.network"));
+        // vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet03.dnsseeder.network"));
 
-        // OdynCash addresses start with 'D'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
+        // OdynCash addresses start with 'C'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 28);
         // OdynCash script addresses start with '5'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 10);
-        // OdynCash private keys start with 'y'
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 140);
+        // OdynCash private keys start with 'P'
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 55);
         // OdynCash BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         // OdynCash BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
@@ -233,26 +233,12 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60 * 60; // fulfilled requests expire in 1 hour
 
-        vSporkAddresses = {"DDDax6fjzoCqHj9nwTgNdAQsucFBJUJ3Jk"};
+        vSporkAddresses = {"CKqHtBvSEjjJ8tgT2nkGwTNqSRZxbR9uEE"};
         nMinSporkKeys = 1;
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-                (0,         uint256S("0x00000e140b0c3028f898431890e9dea79ae6ca537ac9362c65b45325db712de2"))
-                (200,       uint256S("0x000000f7f9132cefc7af54b131bb25bf33686af87987f60ed68ee00841d3f12b"))
-                (1000,      uint256S("0x0000009fc6bc247441a334333a5b24c81d0d606df8c0d8c2fd373c1241bc2036"))
-                (4000,      uint256S("0x00000013fceb3082d6c812b372baa18682cfb4ffbbc6a55073e602c8a2679de5"))
-                (10000,     uint256S("0x000000043989ffa9fc3fb37663e32b81f8da490d9d38808cd8455ca5996415f4"))
-                (40000,     uint256S("0x0000000385a212537b0048c47d5cbce3fc6a12f16d8b9afcd13c129c9abc768f"))
-                (80000,     uint256S("0x0000000094c0ca21a4a4b8ad76ab76a3751759627d3be47d885389672818d5a8"))
-                (100000,    uint256S("0x000000006403817b5efdb846e0dacf5959dbb65439531bf8ab0aa0c7c41837f1"))
-                (200000,    uint256S("0x00000000dcff4c85795693b76dd583eae0f62f688d6e52b9039671b64e33de19"))
-                (300000,    uint256S("0x0000000071c42c8c20219830e387d86589e7b90355b32c77e075b4380716cf19"))
-                (400000,    uint256S("0x000000030021c211e5f9c7b863895d6e538eabc0f5773f458aa40dd4f43213b7"))
-                (500000,    uint256S("0x0000000088733db622f4a335ae54d2a0db6f884d43bc3037890845ec7b9d596d"))
-                (600000,    uint256S("0x000000002f1dd2d1beb4457d6bb5983321e0cb70360fe3fde67902eaa1e7b035"))
-                (700000,    uint256S("0x000000000f2611dfbfb5ca8b948551d1d3063885c3c617381f342f6fafdb4a61"))
-                (740000,    uint256S("0x0000000003744fecb447c51c705225c9a1fa231baa810de2c44ee1c78694e4ad"))
+                (0,         uint256S(""))
         };
 
         chainTxData = ChainTxData{
@@ -296,8 +282,8 @@ public:
         consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowAveragingWindow = 17;
         consensus.nPowMaxAdjustUp = 16;
-        consensus.nPowMaxAdjustDown = 32;
-        consensus.nPowTargetSpacing = 75;
+        consensus.nPowMaxAdjustDown = 24;
+        consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // OdynCash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -333,20 +319,20 @@ public:
         consensus.nMinimumChainWork = 210; // 210
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00001a32bc1d6887d29d3847e21fcfb1026e14369df048a7f0666acdd9ccdf0d"); // 210
+        consensus.defaultAssumeValid = uint256S(""); // 210
 
-        pchMessageStart[0] = 0x2f;
-        pchMessageStart[1] = 0x32;
-        pchMessageStart[2] = 0x15;
-        pchMessageStart[3] = 0x40;
+        pchMessageStart[0] = 0x2d;
+        pchMessageStart[1] = 0x37;
+        pchMessageStart[2] = 0x16;
+        pchMessageStart[3] = 0x42;
         // To import alert key:  importprivkey QPgivWGaJY1dmeFiag7NZcwfhjJ6e4KnovMSxahbAXhF4o9YNH1T
-        vAlertPubKey = ParseHex("04225c72dec8bdebe119373b5ba75ea2e769d54766093438400342bf4d53ac50845b8044cb0d879ee92255d386883044181c2627ca03e57a0ad49d372a368fe273");
+        vAlertPubKey = ParseHex("0453f41764b792109ff87ae88c3bcaa8d5f7755f32d55f1db66ce9e003a3df5b44d106ac99e9ae00e3300715bc097e18779d1175da75c816b00c5a932ad88180df");
         nDefaultPort = DEFAULT_P2P_PORT + 100;
         nPruneAfterHeight = 100;
         startNewChain = false;
         nSwitchDifficultyBlock = 5000; // ~ 1 week
 
-        genesis = CreateGenesisBlock(1515641597, 747, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1709843085, 43, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -354,20 +340,20 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("0x00ff3a06390940bc3fffb7948cc6d0ede8fde544a5fa9eeeafbc4ac65d21f087"));
-            assert(genesis.hashMerkleRoot == uint256S("0xfa0e753db5a853ebbc52594eb62fa8219155547b426fba8789fa96dbf07e6ed5"));
+            assert(consensus.hashGenesisBlock == uint256S("009b89eab393aca775c778117c622aea225f929852e4b49c198c87bf384e112b"));
+            assert(genesis.hashMerkleRoot == uint256S("2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
         vFixedSeeds.clear();
         vSeeds.clear();
         //vSeeds.push_back(CDNSSeedData("",  ""));
         //vSeeds.push_back(CDNSSeedData("", ""));
 
-        // Testnet OdynCash addresses start with 'y'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
+        // Testnet OdynCash addresses start with 'c'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 87);
         // Testnet OdynCash script addresses start with '8' or '9'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 10);
-        // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 158);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
+        // Testnet private keys start with 'p' (Bitcoin defaults)
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 117);
         // Testnet OdynCash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Testnet OdynCash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
@@ -389,12 +375,12 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
-        vSporkAddresses = {"DLWYuC7SNhnqZeY87UMqJzVdMVyLzwebhE"}; // QVdXi1qyxxQwTuZ8h3Dh3YRdpMDBWv6oMs9dTmvJmGzQcnsKtdGm
+        vSporkAddresses = {"c1zbn1z8C2hFPvv92S6FcVdBZEjbGXuiep"}; // JPv9xBsuEkBKLNfGpUUfH6gAWi8Am7hjxbFQnfZh33UxtsWhtSQD
         nMinSporkKeys = 1;
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            (0, uint256S("0x00ff3a06390940bc3fffb7948cc6d0ede8fde544a5fa9eeeafbc4ac65d21f087"))
+            (0, uint256S(""))
         };
 
         chainTxData = ChainTxData{
@@ -438,8 +424,8 @@ public:
         consensus.powLimit = uint256S("000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowAveragingWindow = 17;
         consensus.nPowMaxAdjustUp = 16;
-        consensus.nPowMaxAdjustDown = 32;
-        consensus.nPowTargetSpacing = 75;
+        consensus.nPowMaxAdjustDown = 24;
+        consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // OdynCash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -470,17 +456,17 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x");
 
-        pchMessageStart[0] = 0x2f;
-        pchMessageStart[1] = 0x32;
-        pchMessageStart[2] = 0x15;
-        pchMessageStart[3] = 0x3f;
-        vAlertPubKey = ParseHex("04e8118b469667861157f3b2b28056ae92581ce61ce2db80d04a701f5ec5391b751e6136bafdcca7b8d0b564a5afce213e8069bdd1d17131f61d116b73dbf7e2d6");
+        pchMessageStart[0] = 0x2d;
+        pchMessageStart[1] = 0x37;
+        pchMessageStart[2] = 0x16;
+        pchMessageStart[3] = 0x42;
+        vAlertPubKey = ParseHex("04fdf359b342d267666089cb4630091db212223923701c322337f16db78e1ec216839dea1c6410726f428a7d65c217fb5f28701f23ec8720667835ef6929916593");
         nDefaultPort = DEFAULT_P2P_PORT + 200;
         nPruneAfterHeight = 100;
         startNewChain = false;
         nSwitchDifficultyBlock = 500;
 
-        genesis = CreateGenesisBlock(1513619951, 1754, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1709843085, 3225, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -488,8 +474,8 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("0x000ab751d858e116043e741d097311f2382e600c219483cfda8f25c7f369cc2c"));
-            assert(genesis.hashMerkleRoot == uint256S("0xfa0e753db5a853ebbc52594eb62fa8219155547b426fba8789fa96dbf07e6ed5"));
+            assert(consensus.hashGenesisBlock == uint256S("00043339f806bc25c3e72227917d8589f6ee1308826d9f243ec1c736e6447316"));
+            assert(genesis.hashMerkleRoot == uint256S("2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
@@ -505,11 +491,11 @@ public:
 
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
 
-        vSporkAddresses = {"ygUqnUfyRnRfBUks3EBc937tgmYBwQYE2S"}; //private key: cT21Wm3oozS7HpP9K9g1SDxdgr2vw9TBPSTxjxeArLjYxGastsf9
+        vSporkAddresses = {"ySfeoaBR2TesKCeMXLuuhtZncsg6kWYsb4"}; //private key: JN2o8FqwbguGjT7W8esteKHY6Pt5JjN2WBGLELNu98BiUAdZ8Wf7
         nMinSporkKeys = 1;
 
         checkpointData = (CCheckpointData){
-            boost::assign::map_list_of(0, uint256S("0x000ab751d858e116043e741d097311f2382e600c219483cfda8f25c7f369cc2c"))};
+            boost::assign::map_list_of(0, uint256S(""))};
 
         chainTxData = ChainTxData{
             0,  // * UNIX timestamp of last known number of transactions
@@ -522,8 +508,8 @@ public:
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 140);
         // Regtest OdynCash script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
-        // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);
+        // Regtest private keys start with 'p' (Bitcoin defaults)
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 117);
         // Regtest OdynCash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Regtest OdynCash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
@@ -573,8 +559,8 @@ public:
         consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowAveragingWindow = 17;
         consensus.nPowMaxAdjustUp = 16;
-        consensus.nPowMaxAdjustDown = 32;
-        consensus.nPowTargetSpacing = 75;
+        consensus.nPowMaxAdjustDown = 24;
+        consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // OdynCash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -596,20 +582,20 @@ public:
         consensus.nMinimumChainWork = 210; // 210
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00001a32bc1d6887d29d3847e21fcfb1026e14369df048a7f0666acdd9ccdf0d"); // 210
+        consensus.defaultAssumeValid = uint256S(""); // 210
 
-        pchMessageStart[0] = 0x2f;
-        pchMessageStart[1] = 0x32;
-        pchMessageStart[2] = 0x15;
-        pchMessageStart[3] = 0x40;
+        pchMessageStart[0] = 0x2e;
+        pchMessageStart[1] = 0x37;
+        pchMessageStart[2] = 0x16;
+        pchMessageStart[3] = 0x42;
         // To import alert key:  importprivkey 6Jjb9DG1cr71VWiwxg97zVEyZUBhFzzGhqE7GY9DrbYYM6gVgxS
-        vAlertPubKey = ParseHex("043d9e8440ea8fe66b0c2639f0a0931c9d7c41132ec9ee04cdf5d9e88ada2c2df52d93a0c1983958d3aea56df9fb3d1a61ca4eb6f72c27456fc313be80cdc70032");
+        vAlertPubKey = ParseHex("04c992dd969b02d2a2c4bc52cea5a89ee72bab9958e9e7adfcaeb94700e46c11e2c18db2900dcb4597c02fe65787834839336e232873119ad44c39e853d747c878");
         nDefaultPort = DEFAULT_P2P_PORT + 300; // 33600
         nPruneAfterHeight = 100;
         startNewChain = false;
         nSwitchDifficultyBlock = 500000;
 
-        genesis = CreateGenesisBlock(1559867972, 60883, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1709843087, 168667, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -617,20 +603,20 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("0x000055a9348d53bed51996102ad11d129207e85dc197d01a5a69d5fd10af0e8a"));
-            assert(genesis.hashMerkleRoot == uint256S("0xfa0e753db5a853ebbc52594eb62fa8219155547b426fba8789fa96dbf07e6ed5"));
+            assert(consensus.hashGenesisBlock == uint256S("00002a9b0fa4c870befd160955f9ab7b0582b2dffd3a84408e471df0341c76da"));
+            assert(genesis.hashMerkleRoot == uint256S("2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
         vFixedSeeds.clear();
         vSeeds.clear();
         //vSeeds.push_back(CDNSSeedData("",  ""));
         //vSeeds.push_back(CDNSSeedData("", ""));
 
-        // Privatenet OdynCash addresses start with 'y'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
+        // Privatenet OdynCash addresses start with 'z'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 142);
         // Privatenet OdynCash script addresses start with '8' or '9'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 10);
-        // Privatenet private keys start with '9' or 'c' (Bitcoin defaults)
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 158);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
+        // Privatenet private keys start with 'p' (Bitcoin defaults)
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 117);
         // Privatenet OdynCash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Privatenet OdynCash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
@@ -652,12 +638,12 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
-        // To import spork key (D777Y4eMXrf1NgDSY1Q7kjoZuVso1ed7HL): importprivkey QWUVh41RrhjhnF813U5XLU4S8qYjvDQ5L1n53jC7Qawr8bBCQfFh
-        vSporkAddresses = {"D777Y4eMXrf1NgDSY1Q7kjoZuVso1ed7HL"};
+        // To import spork key (zTpQH62k6oNbUmfvBpnNcDfpqzTYeKGFsQ): importprivkey JT8K4qAfBgmXqZSvn2VfiSTj6uwVBRGuzYzdWk8cejcW3x8rVQ1K
+        vSporkAddresses = {"zTpQH62k6oNbUmfvBpnNcDfpqzTYeKGFsQ"};
         nMinSporkKeys = 1;
 
         checkpointData = (CCheckpointData){
-            boost::assign::map_list_of(0, uint256S("0x00ff3a06390940bc3fffb7948cc6d0ede8fde544a5fa9eeeafbc4ac65d21f087"))};
+            boost::assign::map_list_of(0, uint256S(""))};
 
         chainTxData = ChainTxData{
             0,  // * UNIX timestamp of last known number of transactions

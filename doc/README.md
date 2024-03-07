@@ -20,15 +20,15 @@ What is [OdynCash](https://duality.solutions/odyncash)?
 * PoW Mining Algorithm: Argon2d
 * PoW Difficulty Algorithm: Digishield V3
 * PoW Period: Unlimited
-* PoW Target Spacing: 128 Seconds
+* PoW Target Spacing: 30 Seconds
 * PoW Reward per Block: Controlled via Fluid Protocol
-* PoW Reward Start Height: Block 5,137
+* PoW Reward Start Height: Block 20,160
 * Maturity: 10 Blocks
-* PoW Blocks: ~675 per day
-* ServiceNode Collateral Amount: 1000 0DYNC
+* PoW Blocks: ~2880 per day
+* ServiceNode Collateral Amount: 50000 0DYNC
 * ServiceNode Min Confirmation: 17 Blocks
 * ServiceNode Reward: Controlled via Fluid Protocol
-* ServiceNode Reward Start Height: Block 10,273
+* ServiceNode Reward Start Height: Block 40,320
 * Total Coins: 2<sup>63</sup> - 1
 * Min TX Fee: 0.0001 0DYNC
 
