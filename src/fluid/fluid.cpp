@@ -63,30 +63,30 @@ std::vector<std::pair<std::string, COdynCashAddress> > CFluidParameters::Initial
 {
     std::vector<std::pair<std::string, COdynCashAddress> > x;
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-        x.push_back(std::make_pair("CEO", COdynCashAddress("D9avNWVBmaUNevMNnkcLMrQpze8M2mKURu")));
-        x.push_back(std::make_pair("CTO", COdynCashAddress("DRoyjRoxP4qfeAiiZHX1dmSkbUJiBSXBt7")));
-        x.push_back(std::make_pair("CFO", COdynCashAddress("DHkD6oBQ5PtCiKo4wX8CRWrG61Vy5hEu4t")));
-        x.push_back(std::make_pair("COO", COdynCashAddress("DKyqamefa7YdbqrP5pdTfNVVuq1gerNhMH")));
-        x.push_back(std::make_pair("CDOO", COdynCashAddress("DUDE1zFKK4fezCgcxdGbFh4yHJMcg8qpoP")));
+        x.push_back(std::make_pair("Main01", COdynCashAddress("CRCwbdsgxPBDf198nghTvgYV3Ya1SB1ywL")));
+        x.push_back(std::make_pair("Main02", COdynCashAddress("CbrerNCZCBifEJ7tSuCoaoSGZrySyuQrAD")));
+        x.push_back(std::make_pair("Main03", COdynCashAddress("CX4cx31ApAKhYxBLeQomNjmMURnTHwKuG5")));
+        x.push_back(std::make_pair("Main04", COdynCashAddress("CTs3mZGS9YCn1VjrCiiDJrm5jipKPidBNp")));
+        x.push_back(std::make_pair("Main05", COdynCashAddress("CZ4rxXSctpb8ik8xeVgn2uzEzokDdKMgXY")));
     } else if (Params().NetworkIDString() == CBaseChainParams::TESTNET) {
-        x.push_back(std::make_pair("Test01", COdynCashAddress("DSCex4e189aULrig3nLd42gVf7AbjTwnP5"))); //importprivkey QVKXuZ2hSo2cT9BhkN3CApLuZYVsuzNvidJRt1ucyniHheZ2Pfq5
-        x.push_back(std::make_pair("Test02", COdynCashAddress("DMAh37n3RUdDxox3uiWAnc1zEPp5yFbHiL"))); //importprivkey QU4VGDcVoej7nDZiyaSgoL7foG8xKiaVyk5odHnJdtyv4tYkmBw1
-        x.push_back(std::make_pair("Test03", COdynCashAddress("DN4KvqtXyygooPV3oha72TyBB5nqBbkxwj"))); //importprivkey QWjTe6sCFVtKBsXfrYDyrHzn7eBeJktsQnWzfiANkMd9PhVM4Qnp
-        x.push_back(std::make_pair("Test04", COdynCashAddress("DHVmS621KBBZJTJSxGDdLxoU7LCmpexWDa"))); //importprivkey QScWuazWgWDTj8cXXz1YFKJW7mNJHJgMFY2FB6hkNyh3SJDUhPZt
-        x.push_back(std::make_pair("Test05", COdynCashAddress("DCZXDSRB3cJdCCUSerE4pvSfGQoXUivUxo"))); //importprivkey QUt4pEDanRPzos3meoiNGUG9g7RctCtiwLoPjhDKfNPK99oLuzcU
+        x.push_back(std::make_pair("Test01", COdynCashAddress("c2YHaLRkmRiwjqQCMdkqnCAYcv8W1frwVW"))); //importprivkey JKVM7EwqJUkC3c46pki2aFKhbdoNES1d5PXVXR2a7Yr5CCidJtev
+        x.push_back(std::make_pair("Test02", COdynCashAddress("c7JXVTevCMGaM3BaVrgwsuz1r6Y4Mj3BMu"))); //importprivkey JNU7DLpT2VrUkA2uoJux6ZUanES8ziPamPRuBnUdVgR4HG9AFWwh
+        x.push_back(std::make_pair("Test03", COdynCashAddress("cJ755YwZmHgTKKFqSeN2rBcS7rHokDEcA1"))); //importprivkey JQrJSj9g7qCA9dTb5mvLprFJBr9YBa7rdv9pn2H5hbTAMaARWfTX
+        x.push_back(std::make_pair("Test04", COdynCashAddress("c3mW5Z4TLR8T1uno3CCaewgLHdnCEXMYfi"))); //importprivkey JNRu9mWV3tgiF3oQ5z1BxrYNhwtN78z59HhucXhQNf6JUdwZ2uGS
+        x.push_back(std::make_pair("Test05", COdynCashAddress("cGXBu883sb8obGrYKmhQyyRUb3yAcE3WwL"))); //importprivkey JLQz4dECjW1VFmYdJSne36AGoYgwbhXtvzrBvFh6XM5QFWUqd1Ud
     } else if (Params().NetworkIDString() == CBaseChainParams::REGTEST) {
-        x.push_back(std::make_pair("RegTest01", COdynCashAddress("DSCex4e189aULrig3nLd42gVf7AbjTwnP5"))); //importprivkey QVKXuZ2hSo2cT9BhkN3CApLuZYVsuzNvidJRt1ucyniHheZ2Pfq5
-        x.push_back(std::make_pair("RegTest02", COdynCashAddress("DMAh37n3RUdDxox3uiWAnc1zEPp5yFbHiL"))); //importprivkey QU4VGDcVoej7nDZiyaSgoL7foG8xKiaVyk5odHnJdtyv4tYkmBw1
-        x.push_back(std::make_pair("RegTest03", COdynCashAddress("DN4KvqtXyygooPV3oha72TyBB5nqBbkxwj"))); //importprivkey QWjTe6sCFVtKBsXfrYDyrHzn7eBeJktsQnWzfiANkMd9PhVM4Qnp
-        x.push_back(std::make_pair("RegTest04", COdynCashAddress("DHVmS621KBBZJTJSxGDdLxoU7LCmpexWDa"))); //importprivkey QScWuazWgWDTj8cXXz1YFKJW7mNJHJgMFY2FB6hkNyh3SJDUhPZt
-        x.push_back(std::make_pair("RegTest05", COdynCashAddress("DCZXDSRB3cJdCCUSerE4pvSfGQoXUivUxo"))); //importprivkey QUt4pEDanRPzos3meoiNGUG9g7RctCtiwLoPjhDKfNPK99oLuzcU
+        x.push_back(std::make_pair("RegTest01", COdynCashAddress("yetdGdzrn23oa9eZY6JZdLRHmFAuhGHJDf"))); //importprivkey JRC9coYMqK5Po3TCW6FAq9VspUXXi93dL6mkGntjZJuVPs4ek8CU
+        x.push_back(std::make_pair("RegTest02", COdynCashAddress("yNDzTJSZAQbTDyg56jokB5NrXELPQcbdYo"))); //importprivkey JQqGPvNs8uRgUjyg8sxSgVCNWmovkDFftD7yYakF1XSZqHp5j6Jn
+        x.push_back(std::make_pair("RegTest03", COdynCashAddress("yP1RqGh3Qo2Lw71SKg6L5xeZuSoM3t5D92"))); //importprivkey JSDGgri6UUgKtchPuFpoNH5CyjCzrHsUXX5PC1yZzvg2GzBMKauV
+        x.push_back(std::make_pair("RegTest04", COdynCashAddress("yh7fJifTfz2ajUP9v1r1pRk6xFVjjsdtx6"))); //importprivkey JTKtanyGuUozhsdbr1WQYkmcEJvYoq1cWrCGAfGZMpZ5W3GB79hN
+        x.push_back(std::make_pair("RegTest05", COdynCashAddress("yhtmJD4NmzrVmgWM6NPiM8oBHihBvRboPR"))); //importprivkey JK7QWn8PHwibJwps2LZ8vGZvkRygTVXQJLsWsX45v5dybY2bVYs9
     }
     else if (Params().NetworkIDString() == CBaseChainParams::PRIVATENET) {
-        x.push_back(std::make_pair("Priv01", COdynCashAddress("D6wUMdGtoXtj4zjyk4kYu6cL8LM5j6bEd7"))); //importprivkey QUQsWaE1LRdW95gLgyQgjkUjR4eqhbigmDHENzyTVYy7JCgQcYMd
-        x.push_back(std::make_pair("Priv02", COdynCashAddress("DKLWazjY91KKWekxPxwjznx56tX1KYtTiy"))); //importprivkey QWR6WRSKZZrpDBM3q2jqyhB5xmE5YDdc72trHzznTLwBEJBbeWKm
-        x.push_back(std::make_pair("Priv03", COdynCashAddress("DNsEXkNEdzvNbR3zjaDa3TEVPtwR6Efbmd"))); //importprivkey QPWaY6RAm44zFQ9gktpHFwaCLQc1nCGwPaVAnXAZsFMyGXzLce35
-        x.push_back(std::make_pair("Priv04", COdynCashAddress("DG2NCt5Z35cLRYnNCDXdVJTbPh3NSScAmF"))); //importprivkey QRF11rngYqeVv4mSE4SCGU8P3MQgZwJaRQQJsknjVa5QqhkFCGW4
-        x.push_back(std::make_pair("Priv05", COdynCashAddress("DRqqngX1mPUjKFXPQDdHRmy2jBk9DKUjkx"))); //importprivkey QQja2KMbhyaat4HJLUiEr2PVmb33CtuVN7KgbmTq9ivVwnaZvFUE
+        x.push_back(std::make_pair("Priv01", COdynCashAddress("zKXEXKPeHfKVXSKmondoAM36JhRhAbQDSE"))); //importprivkey JQgSpok9HeLhLhsXC8N8SDjHoYMbU8NFyyDRGRCfGh4fnNGAPfCZ
+        x.push_back(std::make_pair("Priv02", COdynCashAddress("zWcDistayTNZTVf9i7UuhA4qwooDBSF1oH"))); //importprivkey JNqiT33xxr3Jgdefmt1W6Q15tWAPsie4uudSBWp3a8PqKNBe2g7z
+        x.push_back(std::make_pair("Priv03", COdynCashAddress("zJxmkXMRngJS5uvetehaGerkC7FrgBexK3"))); //importprivkey JQVv8nZ9DAYRDvgbuixmsUTdc1vuqXfBVMnDJGguZiGPH5Jz77p4
+        x.push_back(std::make_pair("Priv04", COdynCashAddress("zUUp4CjoVvCGrvE6ZC1P5uuMDXV5V7cWhx"))); //importprivkey JKmiYdkEJBKvUespKEj5pPgiJDzDCTr9jKqQjbUtSomZ7M55PFoL
+        x.push_back(std::make_pair("Priv05", COdynCashAddress("zS2FEzSeuMQQjLep1AM6YB2MLzDvRMqP6P"))); //importprivkey JLUMq6z5ze14xjq8L4QWj6akPCgm7nbxoErSGRU5G1dBRS9UChx2
     }
     return x;
 }
