@@ -69,9 +69,9 @@ extern std::string SignatureDelimiter;
 class COperations : public HexFunctions
 {
 public:
-    bool VerifyAddressOwnership(const CCashAddress& cashAddress);
-    bool SignTokenMessage(const CCashAddress& address, std::string unsignedMessage, std::string& stitchedMessage, bool stitch = true);
-    bool GenericSignMessage(const std::string& message, std::string& signedString, const CCashAddress& signer);
+    bool VerifyAddressOwnership(const CDebitAddress& debitAddress);
+    bool SignTokenMessage(const CDebitAddress& address, std::string unsignedMessage, std::string& stitchedMessage, bool stitch = true);
+    bool GenericSignMessage(const std::string& message, std::string& signedString, const CDebitAddress& signer);
 };
 
 #endif // OPERATIONS_H

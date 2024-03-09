@@ -275,11 +275,11 @@ bool CheckPreviousLinkInputs(const std::string& strOpType, const CScript& script
             return error(errorMessage.c_str());
         }
         // Get current wallet address used for BDAP tx
-        CCashAddress txAddress = GetScriptAddress(scriptOp);
+        CDebitAddress txAddress = GetScriptAddress(scriptOp);
         // Get previous wallet address used for BDAP tx
         CScript prevScriptPubKey;
         GetBDAPOpScript(prevTx, prevScriptPubKey);
-        CCashAddress prevAddress = GetScriptAddress(prevScriptPubKey);
+        CDebitAddress prevAddress = GetScriptAddress(prevScriptPubKey);
         if (txAddress.ToString() != prevAddress.ToString())
         {
             //check if previous wallet address is used for update and delete txs

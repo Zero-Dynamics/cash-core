@@ -718,7 +718,7 @@ void CoinControlDialog::updateView()
             CTxDestination outputAddress;
             QString sAddress = "";
             if (ExtractDestination(out.tx->tx->vout[out.i].scriptPubKey, outputAddress)) {
-                sAddress = QString::fromStdString(CCashAddress(outputAddress).ToString());
+                sAddress = QString::fromStdString(CDebitAddress(outputAddress).ToString());
 
                 // if listMode or change => show cash address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))

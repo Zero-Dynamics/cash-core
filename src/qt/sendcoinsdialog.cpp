@@ -821,7 +821,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
         CoinControlDialog::coinControl->destChange = CNoDestination();
         ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
 
-        CCashAddress addr = CCashAddress(text.toStdString());
+        CDebitAddress addr = CDebitAddress(text.toStdString());
 
         if (text.isEmpty()) // Nothing entered
         {

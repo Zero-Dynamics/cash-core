@@ -99,7 +99,7 @@ static UniValue AddAudit(const JSONRPCRequest& request)
 
             txAudit.vchOwnerFullObjectPath = domainEntry.vchFullObjectPath();
 
-            CCashAddress address = domainEntry.GetWalletAddress();
+            CDebitAddress address = domainEntry.GetWalletAddress();
             CKeyID keyID;
             if (!address.GetKeyID(keyID))
                 throw JSONRPCError(RPC_TYPE_ERROR, "BDAP account wallet address does not refer to a key");
@@ -142,7 +142,7 @@ static UniValue AddAudit(const JSONRPCRequest& request)
     }
 
     CKeyID keyWalletID = pubWalletKey.GetID();
-    CCashAddress walletAddress = CCashAddress(keyWalletID);
+    CDebitAddress walletAddress = CDebitAddress(keyWalletID);
 
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());

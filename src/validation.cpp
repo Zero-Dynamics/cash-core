@@ -653,13 +653,13 @@ bool CheckBDAPTxCreditUsage(const CTransaction& tx, const std::vector<Coin>& vBd
             return false;
     }
 
-    std::multimap<CCashAddress, CServiceCredit> mapInputs;
-    std::vector<std::pair<CServiceCredit, CCashAddress>> vInputInfo;
+    std::multimap<CDebitAddress, CServiceCredit> mapInputs;
+    std::vector<std::pair<CServiceCredit, CDebitAddress>> vInputInfo;
     for (const Coin& coin : vBdapCoins) {
         int opCode1 = -1; int opCode2 = -1;
         std::vector<std::vector<unsigned char>> vvchOpParameters;
         coin.out.GetBDAPOpCodes(opCode1, opCode2, vvchOpParameters);
-        CCashAddress address = GetScriptAddress(coin.out.scriptPubKey);
+        CDebitAddress address = GetScriptAddress(coin.out.scriptPubKey);
         std::string strOpType = GetBDAPOpTypeString(opCode1, opCode2);
         CServiceCredit credit(strOpType, coin.out.nValue, vvchOpParameters);
         vInputInfo.push_back(std::make_pair(credit, address));
@@ -668,31 +668,31 @@ bool CheckBDAPTxCreditUsage(const CTransaction& tx, const std::vector<Coin>& vBd
             strOpType, opCode1, opCode2, FormatMoney(coin.out.nValue), address.ToString());
     }
 
-    std::multimap<CCashAddress, CServiceCredit> mapOutputs;
+    std::multimap<CDebitAddress, CServiceCredit> mapOutputs;
     for (const CTxOut& txout : tx.vout) {
         if (txout.IsBDAP()) {
             int opCode1 = -1; int opCode2 = -1;
             std::vector<std::vector<unsigned char>> vvchOpParameters;
             txout.GetBDAPOpCodes(opCode1, opCode2, vvchOpParameters);
-            CCashAddress address = GetScriptAddress(txout.scriptPubKey);
+            CDebitAddress address = GetScriptAddress(txout.scriptPubKey);
             std::string strOpType = GetBDAPOpTypeString(opCode1, opCode2);
             CServiceCredit credit(strOpType, txout.nValue, vvchOpParameters);
             mapOutputs.insert({address, credit});
             LogPrint("bdap", "%s -- BDAP Output strOpType %s, opCode1 %d, opCode2 %d, nValue %d, address %s\n", __func__,
                 strOpType, opCode1, opCode2, FormatMoney(txout.nValue), address.ToString());
         } else if (txout.IsData()) {
-            CCashAddress address;
+            CDebitAddress address;
             CServiceCredit credit("data", txout.nValue);
             mapOutputs.insert({address, credit});
             LogPrint("bdap", "%s -- BDAP Output strOpType %s, nValue %d\n", __func__, "data", FormatMoney(txout.nValue));
         } else {
-            CCashAddress address = GetScriptAddress(txout.scriptPubKey);
+            CDebitAddress address = GetScriptAddress(txout.scriptPubKey);
             CServiceCredit credit("standard", txout.nValue);
             mapOutputs.insert({address, credit});
         }
     }
 
-    for (const std::pair<CServiceCredit, CCashAddress>& credit : vInputInfo) {
+    for (const std::pair<CServiceCredit, CDebitAddress>& credit : vInputInfo) {
         if (credit.first.OpType == "bdap_move_asset") {
             // When an input is a BDAP credit, make sure unconsumed coins go to a BDAP credit change ouput with the same credit input address and parameters
             if (credit.first.vParameters.size() == 2) {
@@ -708,8 +708,8 @@ bool CheckBDAPTxCreditUsage(const CTransaction& tx, const std::vector<Coin>& vBd
                 return false;
             }
             // make sure all of the credits are spent when we can't find an output address
-            CCashAddress inputAddress = credit.second;
-            std::multimap<CCashAddress, CServiceCredit>::iterator it = mapOutputs.find(inputAddress);
+            CDebitAddress inputAddress = credit.second;
+            std::multimap<CDebitAddress, CServiceCredit>::iterator it = mapOutputs.find(inputAddress);
             if (it == mapOutputs.end()) {
                 LogPrintf("%s -- Check failed. Invalid use of BDAP credits. Can't find credit address %s in outputs\n", __func__, inputAddress.ToString());
                 if (ENFORCE_BDAP_CREDIT_USE)
@@ -740,8 +740,8 @@ bool CheckBDAPTxCreditUsage(const CTransaction& tx, const std::vector<Coin>& vBd
                         credit.first.OpType == "bdap_new_certificate" || credit.first.OpType == "bdap_approve_certificate") {
             // When input is a BDAP account new or update operation, make sure deposit change goes back to input wallet address
             // When input is a BDAP link operation, make sure it is only spent by a link update or delete operations with the same input address and parameters
-            CCashAddress inputAddress = credit.second;
-            std::multimap<CCashAddress, CServiceCredit>::iterator it = mapOutputs.find(inputAddress);
+            CDebitAddress inputAddress = credit.second;
+            std::multimap<CDebitAddress, CServiceCredit>::iterator it = mapOutputs.find(inputAddress);
             if (it == mapOutputs.end()) {
                 LogPrintf("%s -- Check failed. Invalid use of BDAP credits. Can't find account address %s in outputs\n", __func__, inputAddress.ToString());
                 if (ENFORCE_BDAP_CREDIT_USE)
@@ -1031,11 +1031,11 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
                 }
                 // Get current wallet address used for BDAP tx
                 CScript scriptPubKey = scriptBDAPOp;
-                CCashAddress txAddress = GetScriptAddress(scriptPubKey);
+                CDebitAddress txAddress = GetScriptAddress(scriptPubKey);
                 // Get previous wallet address used for BDAP tx
                 CScript prevScriptPubKey;
                 GetBDAPOpScript(pPrevTx, prevScriptPubKey);
-                CCashAddress prevAddress = GetScriptAddress(prevScriptPubKey);
+                CDebitAddress prevAddress = GetScriptAddress(prevScriptPubKey);
                 if (txAddress.ToString() != prevAddress.ToString()) {
                     return state.Invalid(false, REJECT_INVALID, "bdap-account-txn-incorrect-wallet-address-used" + strErrorMessage);
                 }
@@ -1055,11 +1055,11 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
                 }
                 // Get current wallet address used for BDAP tx
                 CScript scriptPubKey = scriptBDAPOp;
-                CCashAddress txAddress = GetScriptAddress(scriptPubKey);
+                CDebitAddress txAddress = GetScriptAddress(scriptPubKey);
                 // Get previous wallet address used for BDAP tx
                 CScript prevScriptPubKey;
                 GetBDAPOpScript(pPrevTx, prevScriptPubKey);
-                CCashAddress prevAddress = GetScriptAddress(prevScriptPubKey);
+                CDebitAddress prevAddress = GetScriptAddress(prevScriptPubKey);
                 if (txAddress.ToString() != prevAddress.ToString()) {
                     return state.Invalid(false, REJECT_INVALID, "bdap-account-txn-incorrect-wallet-address-used" + strErrorMessage);
                 }
@@ -1134,7 +1134,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
                     return state.Invalid(false, REJECT_INVALID, "bdap-account-exists " + strErrorMessage);
                 }
                 CPubKey pubkey(vvch[2]);
-                CCashAddress address(pubkey.GetID());
+                CDebitAddress address(pubkey.GetID());
                 if (findDomainEntry.GetWalletAddress().ToString() != address.ToString()) {
                         strErrorMessage = "AcceptToMemoryPoolWorker -- Public key does not match BDAP account wallet address.  Rejected by the tx memory pool!";
                         return state.Invalid(false, REJECT_INVALID, "bdap-audit-wallet-address-mismatch " + strErrorMessage);
@@ -2940,7 +2940,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
             newServiceNodeReward = GetFluidServiceNodeReward(pindex->nHeight);
 
         CAmount newMintIssuance = 0;
-        CCashAddress mintAddress;
+        CDebitAddress mintAddress;
         if (prevIndex->nHeight + 1 >= fluid.FLUID_ACTIVATE_HEIGHT) {
             CFluidMint fluidMint;
             if (GetMintingInstructions(pindex->nHeight, fluidMint)) {
@@ -4221,7 +4221,7 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, const Co
     }
 
     // If Fluid transaction present, has it been adhered to?
-    CCashAddress mintAddress;
+    CDebitAddress mintAddress;
     CAmount fluidIssuance;
 
     if (fluid.GetMintingInstructions(pindexPrev, mintAddress, fluidIssuance)) {

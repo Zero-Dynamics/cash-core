@@ -516,7 +516,7 @@ static bool CheckNewCertificateTxInputs(const CX509Certificate& certificate, con
             errorMessage = "CheckNewCertificateTxInputs: - Could not find specified certificate issuer! " + stringFromVch(certificate.Issuer);
             return error(errorMessage.c_str());
         }
-        CCashAddress address = entryIssuer.GetWalletAddress();
+        CDebitAddress address = entryIssuer.GetWalletAddress();
 
         CharString vchIssuerPubKey = entryIssuer.DHTPublicKey;
 

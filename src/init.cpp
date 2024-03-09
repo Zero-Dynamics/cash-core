@@ -1956,7 +1956,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             if (!CMessageSigner::GetKeysFromSecret(strservicenodepairingkey, activeServiceNode.keyServiceNode, activeServiceNode.pubKeyServiceNode))
                 return InitError(_("Invalid servicenodepairingkey. Please see documenation."));
 
-            LogPrintf("  pubKeyServiceNode: %s\n", CCashAddress(activeServiceNode.pubKeyServiceNode.GetID()).ToString());
+            LogPrintf("  pubKeyServiceNode: %s\n", CDebitAddress(activeServiceNode.pubKeyServiceNode.GetID()).ToString());
         } else {
             return InitError(_("You must specify a servicenodepairingkey in the configuration. Please see documentation for help."));
         }

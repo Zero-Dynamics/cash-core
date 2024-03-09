@@ -16,7 +16,7 @@
 
 #include <univalue.h>
 
-class CCashAddress;
+class CDebitAddress;
 struct CRecipient;
 class CTxMemPool;
 
@@ -149,8 +149,8 @@ public:
     bool UnserializeFromData(const std::vector<unsigned char>& vchData, const std::vector<unsigned char>& vchHash);
     void Serialize(std::vector<unsigned char>& vchData);
 
-    CCashAddress GetWalletAddress() const;
-    CCashAddress GetLinkAddress() const;
+    CDebitAddress GetWalletAddress() const;
+    CDebitAddress GetLinkAddress() const;
     std::string DHTPubKeyString() const;
     std::string GetFullObjectPath() const;
     std::string GetObjectLocation() const;

@@ -43,7 +43,7 @@ namespace GUIUtil
 QString dateTimeStr(const QDateTime& datetime);
 QString dateTimeStr(qint64 nTime);
 // Render Cash addresses in monospace font
-QFont CashAddressFont();
+QFont DebitAddressFont();
 // Return a monospace font
 QFont fixedPitchFont();
 

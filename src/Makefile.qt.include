@@ -69,7 +69,7 @@ QT_MOC_CPP = \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
   qt/moc_csvmodelwriter.cpp \
-  qt/moc_cashaddressvalidator.cpp \
+  qt/moc_debitaddressvalidator.cpp \
   qt/moc_cashamountfield.cpp \
   qt/moc_cashgui.cpp \
   qt/moc_cashunits.cpp \
@@ -145,7 +145,7 @@ CASH_QT_H = \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
   qt/csvmodelwriter.h \
-  qt/cashaddressvalidator.h \
+  qt/debitaddressvalidator.h \
   qt/cashamountfield.h \
   qt/cashgui.h \
   qt/cashunits.h \
@@ -273,7 +273,7 @@ CASH_QT_CPP = \
   qt/bdaplinktablemodel.cpp \
   qt/clientmodel.cpp \
   qt/csvmodelwriter.cpp \
-  qt/cashaddressvalidator.cpp \
+  qt/debitaddressvalidator.cpp \
   qt/cashamountfield.cpp \
   qt/cashgui.cpp \
   qt/cashunits.cpp \

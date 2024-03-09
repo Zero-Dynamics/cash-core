@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(bdap_link_test1)
     CreateSignatureProof(key, strTestFQDN, vchSignature);
     CPubKey pubKey = key.GetPubKey();
     CKeyID keyID = pubKey.GetID();
-    CCashAddress address = CCashAddress(keyID);
+    CDebitAddress address = CDebitAddress(keyID);
     BOOST_CHECK(SignatureProofIsValid(address, strTestFQDN, vchSignature) == true);
 
     std::cout << "Exit: bdap_link_test1\n";

@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(bdap_vgp_message_test1)
     privWalletKey.MakeNewKey(true);
     CPubKey pubWalletKey = privWalletKey.GetPubKey();
     CKeyID keyWalletID = pubWalletKey.GetID();
-    CCashAddress walletAddress = CCashAddress(keyWalletID);
+    CDebitAddress walletAddress = CDebitAddress(keyWalletID);
     CharString vchWalletAddress = vchFromString(walletAddress.ToString());
     senderDomainEntry.WalletAddress = vchWalletAddress;
 
@@ -103,7 +103,7 @@ BOOST_AUTO_TEST_CASE(bdap_vgp_message_test1)
     recprivWalletKey.MakeNewKey(true);
     CPubKey recpubWalletKey = recprivWalletKey.GetPubKey();
     CKeyID reckeyWalletID = recpubWalletKey.GetID();
-    CCashAddress recwalletAddress = CCashAddress(reckeyWalletID);
+    CDebitAddress recwalletAddress = CDebitAddress(reckeyWalletID);
     CharString recvchWalletAddress = vchFromString(recwalletAddress.ToString());
     receiverDomainEntry.WalletAddress = recvchWalletAddress;
 
@@ -219,7 +219,7 @@ BOOST_AUTO_TEST_CASE(bdap_vgp_message_test1)
     bcastprivWalletKey.MakeNewKey(true);
     CPubKey bcastpubWalletKey = bcastprivWalletKey.GetPubKey();
     CKeyID bcastkeyWalletID = bcastpubWalletKey.GetID();
-    CCashAddress bcastwalletAddress = CCashAddress(bcastkeyWalletID);
+    CDebitAddress bcastwalletAddress = CDebitAddress(bcastkeyWalletID);
     CharString bcastvchWalletAddress = vchFromString(bcastwalletAddress.ToString());
 
     std::vector<unsigned char> bcastvchWalletPubKey(bcastpubWalletKey.begin(), bcastpubWalletKey.end());

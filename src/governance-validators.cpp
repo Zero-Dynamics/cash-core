@@ -151,7 +151,7 @@ bool CProposalValidator::ValidatePaymentAddress()
         return false;
     }
 
-    CCashAddress address(strPaymentAddress);
+    CDebitAddress address(strPaymentAddress);
     if (!address.IsValid()) {
         strErrorMessages += "payment_address is invalid;";
         return false;

@@ -221,7 +221,7 @@ void ServiceNodeList::updateMyServiceNodeInfo(QString strAlias, QString strAddr,
     QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::fromStdString(DurationToDHMS(fFound ? (infoDn.nTimeLastPing - infoDn.sigTime) : 0)));
     QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M",
         fFound ? infoDn.nTimeLastPing + GetOffsetFromUtc() : 0)));
-    QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(fFound ? CCashAddress(infoDn.pubKeyCollateralAddress.GetID()).ToString() : ""));
+    QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(fFound ? CDebitAddress(infoDn.pubKeyCollateralAddress.GetID()).ToString() : ""));
 
     ui->tableWidgetMyServiceNodes->setItem(nNewRow, 0, aliasItem);
     ui->tableWidgetMyServiceNodes->setItem(nNewRow, 1, addrItem);
@@ -308,7 +308,7 @@ void ServiceNodeList::updateNodeList()
         QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(dn.GetStatus()));
         QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::fromStdString(DurationToDHMS(dn.lastPing.sigTime - dn.sigTime)));
         QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", dn.lastPing.sigTime + offsetFromUtc)));
-        QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(CCashAddress(dn.pubKeyCollateralAddress.GetID()).ToString()));
+        QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(CDebitAddress(dn.pubKeyCollateralAddress.GetID()).ToString()));
 
         if (strCurrentFilter != "") {
             strToFilter = addressItem->text() + " " +

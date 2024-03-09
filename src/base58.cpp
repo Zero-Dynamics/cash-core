@@ -50,13 +50,13 @@ public:
     }
 
     std::string operator()(const CNoDestination& no) const { return {}; }
-    std::string operator()(const CStealthAddress& sxAddr) const { return CCashAddress(sxAddr).ToString(); }
+    std::string operator()(const CStealthAddress& sxAddr) const { return CDebitAddress(sxAddr).ToString(); }
 
 };
 
 static CTxDestination DecodeDestination(const std::string& str, const CChainParams& params)
 {
-    CCashAddress addr(str);
+    CDebitAddress addr(str);
     if (addr.IsValid()) {
         return addr.Get();
     }
@@ -280,13 +280,13 @@ int CBase58Data::CompareTo(const CBase58Data& b58) const
 
 namespace
 {
-class CCashAddressVisitor : public boost::static_visitor<bool>
+class CDebitAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    CCashAddress* addr;
+    CDebitAddress* addr;
 
 public:
-    CCashAddressVisitor(CCashAddress* addrIn) : addr(addrIn) {}
+    CDebitAddressVisitor(CDebitAddress* addrIn) : addr(addrIn) {}
 
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CScriptID& id) const { return addr->Set(id); }
@@ -296,24 +296,24 @@ public:
 
 } // namespace
 
-bool CCashAddress::Set(const CKeyID& id)
+bool CDebitAddress::Set(const CKeyID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool CCashAddress::Set(const CScriptID& id)
+bool CDebitAddress::Set(const CScriptID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
     return true;
 }
 
-bool CCashAddress::Set(const CTxDestination& dest)
+bool CDebitAddress::Set(const CTxDestination& dest)
 {
-    return boost::apply_visitor(CCashAddressVisitor(this), dest);
+    return boost::apply_visitor(CDebitAddressVisitor(this), dest);
 }
 
-bool CCashAddress::Set(const CStealthAddress& sxAddr)
+bool CDebitAddress::Set(const CStealthAddress& sxAddr)
 {
     std::vector<uint8_t> raw;
     if (0 != sxAddr.ToRaw(raw))
@@ -323,12 +323,12 @@ bool CCashAddress::Set(const CStealthAddress& sxAddr)
     return true;
 }
 
-bool CCashAddress::IsValid() const
+bool CDebitAddress::IsValid() const
 {
     return IsValid(Params());
 }
 
-bool CCashAddress::IsValid(const CChainParams& params) const
+bool CDebitAddress::IsValid(const CChainParams& params) const
 {
     bool fCorrectSize = vchData.size() == 20;
     bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -336,12 +336,12 @@ bool CCashAddress::IsValid(const CChainParams& params) const
     return fCorrectSize && fKnownVersion;
 }
 
-bool CCashAddress::IsValidStealthAddress() const
+bool CDebitAddress::IsValidStealthAddress() const
 {
     return IsValidStealthAddress(Params());
 }
 
-bool CCashAddress::IsValidStealthAddress(const CChainParams& params) const
+bool CDebitAddress::IsValidStealthAddress(const CChainParams& params) const
 {
     if (vchVersion != params.Base58Prefix(CChainParams::STEALTH_ADDRESS))
         return false;
@@ -366,7 +366,7 @@ bool CCashAddress::IsValidStealthAddress(const CChainParams& params) const
     return true;
 }
 
-CTxDestination CCashAddress::Get() const
+CTxDestination CDebitAddress::Get() const
 {
     if (!IsValid())
         return CNoDestination();
@@ -380,7 +380,7 @@ CTxDestination CCashAddress::Get() const
         return CNoDestination();
 }
 
-bool CCashAddress::GetIndexKey(uint160& hashBytes, int& type) const
+bool CDebitAddress::GetIndexKey(uint160& hashBytes, int& type) const
 {
     if (!IsValid()) {
         return false;
@@ -397,7 +397,7 @@ bool CCashAddress::GetIndexKey(uint160& hashBytes, int& type) const
     return false;
 }
 
-bool CCashAddress::GetKeyID(CKeyID& keyID) const
+bool CDebitAddress::GetKeyID(CKeyID& keyID) const
 {
     if (!IsValid() || vchVersion != Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS))
         return false;
@@ -407,7 +407,7 @@ bool CCashAddress::GetKeyID(CKeyID& keyID) const
     return true;
 }
 
-bool CCashAddress::IsScript() const
+bool CDebitAddress::IsScript() const
 {
     return IsValid() && vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS);
 }

@@ -112,7 +112,7 @@ public:
  * Script-hash-addresses have version 16 (or 19 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
-class CCashAddress : public CBase58Data
+class CDebitAddress : public CBase58Data
 {
 public:
     bool Set(const CKeyID& id);
@@ -124,10 +124,10 @@ public:
     bool IsValidStealthAddress() const;
     bool IsValidStealthAddress(const CChainParams& params) const;
 
-    CCashAddress() {}
-    CCashAddress(const CTxDestination& dest) { Set(dest); }
-    CCashAddress(const std::string& strAddress) { SetString(strAddress); }
-    CCashAddress(const char* pszAddress) { SetString(pszAddress); }
+    CDebitAddress() {}
+    CDebitAddress(const CTxDestination& dest) { Set(dest); }
+    CDebitAddress(const std::string& strAddress) { SetString(strAddress); }
+    CDebitAddress(const char* pszAddress) { SetString(pszAddress); }
 
     CTxDestination Get() const;
     bool GetKeyID(CKeyID& keyID) const;

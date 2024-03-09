@@ -975,7 +975,7 @@ public:
         return nWalletMaxVersion >= wf;
     }
 
-    std::map<CCashAddress, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
+    std::map<CDebitAddress, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
 
     /**
      * populate vCoins with vector of available COutputs.

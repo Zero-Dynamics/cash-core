@@ -20,10 +20,10 @@ static const std::string strSecret1 ("5i6n7o5TnTTW3hTZVY8vfejwkRGn1UwCY6ZvTcZXsC
 static const std::string strSecret2 ("5hzndwFToeWnwvFYqxRTr8ewTXLS6PaS3YW91aZe2TSpAoD5meV");
 static const std::string strSecret1C ("MnQW8zNhDdmyCuaEQxRysbaYee8df8JDvFaJxTxbEZvzHy1cdQbb");
 static const std::string strSecret2C ("Mmx4S2SqJtaVoQ3DZ5cyVrnTN4tmkneZYE3cMZ94RRiwBrTh8269");
-static const CCashAddress addr1 ("D6T9u5Am6wC35D1fHxAwtXZkqgsCCH1z5S");
-static const CCashAddress addr2 ("DADRng3sCSRZVQeP2Xv7z5nQtfpqNnMVr4");
-static const CCashAddress addr1C("D8G2LrvZNRJKafxEkPAJNqoitbFco5nmL5");
-static const CCashAddress addr2C("DBy6Fwx2f2gTtRpGfyoZa2GdrXYXae3aTn");
+static const CDebitAddress addr1 ("D6T9u5Am6wC35D1fHxAwtXZkqgsCCH1z5S");
+static const CDebitAddress addr2 ("DADRng3sCSRZVQeP2Xv7z5nQtfpqNnMVr4");
+static const CDebitAddress addr1C("D8G2LrvZNRJKafxEkPAJNqoitbFco5nmL5");
+static const CDebitAddress addr2C("DBy6Fwx2f2gTtRpGfyoZa2GdrXYXae3aTn");
 
 
 static const std::string strAddressBad("Xta1praZQjyELweyMByXyiREw1ZRsjXzVP");

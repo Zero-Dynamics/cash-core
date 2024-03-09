@@ -107,8 +107,8 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
         // Offline transaction
         if (nNet > 0) {
             // Credit
-            if (CCashAddress(rec->address).IsValid()) {
-                CTxDestination address = CCashAddress(rec->address).Get();
+            if (CDebitAddress(rec->address).IsValid()) {
+                CTxDestination address = CDebitAddress(rec->address).Get();
                 if (wallet->mapAddressBook.count(address)) {
                     strHTML += "<b>" + tr("From") + ":</b> " + tr("unknown") + "<br>";
                     strHTML += "<b>" + tr("To") + ":</b> ";
@@ -131,7 +131,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
         // Online transaction
         std::string strAddress = wtx.mapValue["to"];
         strHTML += "<b>" + tr("To") + ":</b> ";
-        CTxDestination dest = CCashAddress(strAddress).Get();
+        CTxDestination dest = CDebitAddress(strAddress).Get();
         if (wallet->mapAddressBook.count(dest) && !wallet->mapAddressBook[dest].name.empty())
             strHTML += GUIUtil::HtmlEscape(wallet->mapAddressBook[dest].name) + " ";
         strHTML += GUIUtil::HtmlEscape(strAddress) + "<br>";
@@ -193,7 +193,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
                         strHTML += "<b>" + tr("To") + ":</b> ";
                         if (wallet->mapAddressBook.count(address) && !wallet->mapAddressBook[address].name.empty())
                             strHTML += GUIUtil::HtmlEscape(wallet->mapAddressBook[address].name) + " ";
-                        strHTML += GUIUtil::HtmlEscape(CCashAddress(address).ToString());
+                        strHTML += GUIUtil::HtmlEscape(CDebitAddress(address).ToString());
                         if (toSelf == ISMINE_SPENDABLE)
                             strHTML += " (own address)";
                         else if (toSelf & ISMINE_WATCH_ONLY)
@@ -284,7 +284,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
                     if (ExtractDestination(vout.scriptPubKey, address)) {
                         if (wallet->mapAddressBook.count(address) && !wallet->mapAddressBook[address].name.empty())
                             strHTML += GUIUtil::HtmlEscape(wallet->mapAddressBook[address].name) + " ";
-                        strHTML += QString::fromStdString(CCashAddress(address).ToString());
+                        strHTML += QString::fromStdString(CDebitAddress(address).ToString());
                     }
                     strHTML = strHTML + " " + tr("Amount") + "=" + CashUnits::formatHtmlWithUnit(unit, vout.nValue);
                     strHTML = strHTML + " IsMine=" + (wallet->IsMine(vout) & ISMINE_SPENDABLE ? tr("true") : tr("false"));

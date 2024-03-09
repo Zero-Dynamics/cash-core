@@ -379,7 +379,7 @@ UniValue importbdapkeys(const JSONRPCRequest& request)
     return NullUniValue;
 }
 
-void ImportAddress(const CCashAddress& address, const std::string& strLabel);
+void ImportAddress(const CDebitAddress& address, const std::string& strLabel);
 void ImportScript(const CScript& script, const std::string& strLabel, bool isRedeemScript)
 {
     if (!isRedeemScript && ::IsMine(*pwalletMain, script) == ISMINE_SPENDABLE)
@@ -393,7 +393,7 @@ void ImportScript(const CScript& script, const std::string& strLabel, bool isRed
     if (isRedeemScript) {
         if (!pwalletMain->HaveCScript(script) && !pwalletMain->AddCScript(script))
             throw JSONRPCError(RPC_WALLET_ERROR, "Error adding p2sh redeemScript to wallet");
-        ImportAddress(CCashAddress(CScriptID(script)), strLabel);
+        ImportAddress(CDebitAddress(CScriptID(script)), strLabel);
     } else {
         CTxDestination destination;
         if (ExtractDestination(script, destination)) {
@@ -402,7 +402,7 @@ void ImportScript(const CScript& script, const std::string& strLabel, bool isRed
     }
 }
 
-void ImportAddress(const CCashAddress& address, const std::string& strLabel)
+void ImportAddress(const CDebitAddress& address, const std::string& strLabel)
 {
     CScript script = GetScriptForDestination(address.Get());
     ImportScript(script, strLabel, false);
@@ -455,7 +455,7 @@ UniValue importaddress(const JSONRPCRequest& request)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CCashAddress address(request.params[0].get_str());
+    CDebitAddress address(request.params[0].get_str());
     if (address.IsValid()) {
         if (fP2SH)
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Cannot use the p2sh flag with an address - use a script instead");
@@ -607,7 +607,7 @@ UniValue importpubkey(const JSONRPCRequest& request)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    ImportAddress(CCashAddress(pubKey.GetID()), strLabel);
+    ImportAddress(CDebitAddress(pubKey.GetID()), strLabel);
     ImportScript(GetScriptForRawPubKey(pubKey), strLabel, false);
 
     if (fRescan) {
@@ -681,7 +681,7 @@ UniValue importwallet(const JSONRPCRequest& request)
         assert(key.VerifyPubKey(pubkey));
         CKeyID keyid = pubkey.GetID();
         if (pwalletMain->HaveKey(keyid)) {
-            LogPrintf("Skipping import of %s (key already present)\n", CCashAddress(keyid).ToString());
+            LogPrintf("Skipping import of %s (key already present)\n", CDebitAddress(keyid).ToString());
             continue;
         }
         neednotRescan=false;
@@ -700,7 +700,7 @@ UniValue importwallet(const JSONRPCRequest& request)
                 fLabel = true;
             }
         }
-        LogPrintf("Importing %s...\n", CCashAddress(keyid).ToString());
+        LogPrintf("Importing %s...\n", CDebitAddress(keyid).ToString());
         if (!pwalletMain->AddKeyPubKey(key, pubkey)) {
             fGood = false;
             continue;
@@ -792,10 +792,10 @@ UniValue importelectrumwallet(const JSONRPCRequest& request)
             assert(key.VerifyPubKey(pubkey));
             CKeyID keyid = pubkey.GetID();
             if (pwalletMain->HaveKey(keyid)) {
-                LogPrintf("Skipping import of %s (key already present)\n", CCashAddress(keyid).ToString());
+                LogPrintf("Skipping import of %s (key already present)\n", CDebitAddress(keyid).ToString());
                 continue;
             }
-            LogPrintf("Importing %s...\n", CCashAddress(keyid).ToString());
+            LogPrintf("Importing %s...\n", CDebitAddress(keyid).ToString());
             if (!pwalletMain->AddKeyPubKey(key, pubkey)) {
                 fGood = false;
                 continue;
@@ -824,10 +824,10 @@ UniValue importelectrumwallet(const JSONRPCRequest& request)
             assert(key.VerifyPubKey(pubkey));
             CKeyID keyid = pubkey.GetID();
             if (pwalletMain->HaveKey(keyid)) {
-                LogPrintf("Skipping import of %s (key already present)\n", CCashAddress(keyid).ToString());
+                LogPrintf("Skipping import of %s (key already present)\n", CDebitAddress(keyid).ToString());
                 continue;
             }
-            LogPrintf("Importing %s...\n", CCashAddress(keyid).ToString());
+            LogPrintf("Importing %s...\n", CDebitAddress(keyid).ToString());
             if (!pwalletMain->AddKeyPubKey(key, pubkey)) {
                 fGood = false;
                 continue;
@@ -959,11 +959,11 @@ UniValue dumpprivkey(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
-            "dumpprivkey \"cashaddress\"\n"
-            "\nReveals the private key corresponding to 'cashaddress'.\n"
+            "dumpprivkey \"debitaddress\"\n"
+            "\nReveals the private key corresponding to 'debitaddress'.\n"
             "Then the importprivkey can be used with this output\n"
             "\nArguments:\n"
-            "1. \"cashaddress\"   (string, required) The cash address for the private key\n"
+            "1. \"debitaddress\"   (string, required) The cash address for the private key\n"
             "\nResult:\n"
             "\"key\"                (string) The private key\n"
             "\nExamples:\n" +
@@ -989,7 +989,7 @@ UniValue dumpprivkey(const JSONRPCRequest& request)
 
         CKey vchSpendSecret;
         if (!pwalletMain->GetKey(sxAddr.spend_secret_id, vchSpendSecret))
-            throw JSONRPCError(RPC_WALLET_ERROR, "Private key for spend address " + CCashAddress(sxAddr.spend_secret_id).ToString() + " is not known");
+            throw JSONRPCError(RPC_WALLET_ERROR, "Private key for spend address " + CDebitAddress(sxAddr.spend_secret_id).ToString() + " is not known");
 
         result.push_back(Pair("spend_private_key", CCashSecret(vchSpendSecret).ToString()));
         result.push_back(Pair("prefix_number_bits", (int)sxAddr.prefix_number_bits));
@@ -997,7 +997,7 @@ UniValue dumpprivkey(const JSONRPCRequest& request)
 
         return result;
     } else {
-        CCashAddress address;
+        CDebitAddress address;
         if (!address.SetString(strAddress))
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
         CKeyID keyID;
@@ -1054,7 +1054,7 @@ UniValue dumpbdapkeys(const JSONRPCRequest& request)
 
     // Get wallet address private key from wallet db.
     CKeyID walletKeyID;
-    CCashAddress address = entry.GetWalletAddress();
+    CDebitAddress address = entry.GetWalletAddress();
     if (!address.GetKeyID(walletKeyID))
         throw JSONRPCError(RPC_TYPE_ERROR, "Address does not refer to a key " + address.ToString());
     CKey vchWalletSecret;
@@ -1064,7 +1064,7 @@ UniValue dumpbdapkeys(const JSONRPCRequest& request)
 
     // Get link address private key from wallet db.
     CKeyID linkKeyID;
-    CCashAddress linkAddress = entry.GetLinkAddress();
+    CDebitAddress linkAddress = entry.GetLinkAddress();
     if (!linkAddress.GetKeyID(linkKeyID))
         throw JSONRPCError(RPC_TYPE_ERROR, "Link address does not refer to a key" + linkAddress.ToString());
     CKey vchLinkSecret;
@@ -1228,7 +1228,7 @@ UniValue dumpwallet(const JSONRPCRequest& request)
     for (std::vector<std::pair<int64_t, CKeyID> >::const_iterator it = vKeyBirth.begin(); it != vKeyBirth.end(); it++) {
         const CKeyID& keyid = it->second;
         std::string strTime = EncodeDumpTime(it->first);
-        std::string strAddr = CCashAddress(keyid).ToString();
+        std::string strAddr = CDebitAddress(keyid).ToString();
         CKey key;
         if (pwalletMain->GetKey(keyid, key)) {
             file << strprintf("%s %s ", CCashSecret(key).ToString(), strTime);
@@ -1280,10 +1280,10 @@ UniValue ProcessImport(const UniValue& data, const int64_t timestamp)
 
         // Parse the output.
         CScript script;
-        CCashAddress address;
+        CDebitAddress address;
 
         if (!isScript) {
-            address = CCashAddress(output);
+            address = CDebitAddress(output);
             script = GetScriptForDestination(address.Get());
         } else {
             if (!IsHex(output)) {
@@ -1342,7 +1342,7 @@ UniValue ProcessImport(const UniValue& data, const int64_t timestamp)
                 throw JSONRPCError(RPC_WALLET_ERROR, "Error adding p2sh redeemScript to wallet");
             }
 
-            CCashAddress redeemAddress = CCashAddress(CScriptID(redeemScript));
+            CDebitAddress redeemAddress = CDebitAddress(CScriptID(redeemScript));
             CScript redeemDestination = GetScriptForDestination(redeemAddress.Get());
 
             if (::IsMine(*pwalletMain, redeemDestination) == ISMINE_SPENDABLE) {
@@ -1416,7 +1416,7 @@ UniValue ProcessImport(const UniValue& data, const int64_t timestamp)
                     throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Pubkey is not a valid public key");
                 }
 
-                CCashAddress pubKeyAddress = CCashAddress(pubKey.GetID());
+                CDebitAddress pubKeyAddress = CDebitAddress(pubKey.GetID());
 
                 // Consistency check.
                 if (!isScript && !(pubKeyAddress.Get() == address.Get())) {
@@ -1425,11 +1425,11 @@ UniValue ProcessImport(const UniValue& data, const int64_t timestamp)
 
                 // Consistency check.
                 if (isScript) {
-                    CCashAddress scriptAddress;
+                    CDebitAddress scriptAddress;
                     CTxDestination destination;
 
                     if (ExtractDestination(script, destination)) {
-                        scriptAddress = CCashAddress(destination);
+                        scriptAddress = CDebitAddress(destination);
                         if (!(scriptAddress.Get() == pubKeyAddress.Get())) {
                             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Consistency check failed");
                         }
@@ -1489,7 +1489,7 @@ UniValue ProcessImport(const UniValue& data, const int64_t timestamp)
                 CPubKey pubKey = key.GetPubKey();
                 assert(key.VerifyPubKey(pubKey));
 
-                CCashAddress pubKeyAddress = CCashAddress(pubKey.GetID());
+                CDebitAddress pubKeyAddress = CDebitAddress(pubKey.GetID());
 
                 // Consistency check.
                 if (!isScript && !(pubKeyAddress.Get() == address.Get())) {
@@ -1498,11 +1498,11 @@ UniValue ProcessImport(const UniValue& data, const int64_t timestamp)
 
                 // Consistency check.
                 if (isScript) {
-                    CCashAddress scriptAddress;
+                    CDebitAddress scriptAddress;
                     CTxDestination destination;
 
                     if (ExtractDestination(script, destination)) {
-                        scriptAddress = CCashAddress(destination);
+                        scriptAddress = CDebitAddress(destination);
                         if (!(scriptAddress.Get() == pubKeyAddress.Get())) {
                             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Consistency check failed");
                         }

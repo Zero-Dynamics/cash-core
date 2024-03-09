@@ -424,7 +424,7 @@ bool CServiceNodeBroadcast::Create(const COutPoint& outpoint, const CService& se
         return false;
 
     LogPrint("servicenode", "CServiceNodeBroadcast::Create -- pubKeyCollateralAddressNew = %s, pubKeyServiceNodeNew.GetID() = %s\n",
-        CCashAddress(pubKeyCollateralAddressNew.GetID()).ToString(),
+        CDebitAddress(pubKeyCollateralAddressNew.GetID()).ToString(),
         pubKeyServiceNodeNew.GetID().ToString());
 
     auto Log = [&strErrorRet, &dnbRet](std::string sErr) -> bool {

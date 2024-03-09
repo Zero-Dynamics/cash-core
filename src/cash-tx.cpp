@@ -246,7 +246,7 @@ static void MutateTxAddOutAddr(CMutableTransaction& tx, const std::string& strIn
 
     // extract and validate ADDRESS
     std::string strAddr = vStrInputParts[1];
-    CCashAddress addr(strAddr);
+    CDebitAddress addr(strAddr);
     if (!addr.IsValid())
         throw std::runtime_error("invalid TX output address");
     // build standard output script via GetScriptForDestination()
@@ -274,7 +274,7 @@ static void MutateTxAddOutPubKey(CMutableTransaction& tx, const std::string& str
     if (!pubkey.IsFullyValid())
         throw std::runtime_error("invalid TX output pubkey");
     CScript scriptPubKey = GetScriptForRawPubKey(pubkey);
-    CCashAddress addr(scriptPubKey);
+    CDebitAddress addr(scriptPubKey);
 
     // Extract and validate FLAGS
     bool bScriptHash = false;
@@ -286,7 +286,7 @@ static void MutateTxAddOutPubKey(CMutableTransaction& tx, const std::string& str
     if (bScriptHash) {
         // Get the address for the redeem script, then call
         // GetScriptForDestination() to construct a P2SH scriptPubKey.
-        CCashAddress redeemScriptAddr(scriptPubKey);
+        CDebitAddress redeemScriptAddr(scriptPubKey);
         scriptPubKey = GetScriptForDestination(redeemScriptAddr.Get());
     }
 
@@ -345,7 +345,7 @@ static void MutateTxAddOutMultiSig(CMutableTransaction& tx, const std::string& s
     if (bScriptHash) {
         // Get the address for the redeem script, then call
         // GetScriptForDestination() to construct a P2SH scriptPubKey.
-        CCashAddress addr(scriptPubKey);
+        CDebitAddress addr(scriptPubKey);
         scriptPubKey = GetScriptForDestination(addr.Get());
     }
 
@@ -404,7 +404,7 @@ static void MutateTxAddOutScript(CMutableTransaction& tx, const std::string& str
     }
 
     if (bScriptHash) {
-        CCashAddress addr(scriptPubKey);
+        CDebitAddress addr(scriptPubKey);
         scriptPubKey = GetScriptForDestination(addr.Get());
     }
 

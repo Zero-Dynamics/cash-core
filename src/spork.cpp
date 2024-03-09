@@ -346,7 +346,7 @@ bool CSporkManager::GetSporkByHash(const uint256& hash, CSporkMessage& sporkRet)
 bool CSporkManager::SetSporkAddress(const std::string& strAddress)
 {
     LOCK(cs);
-    CCashAddress address(strAddress);
+    CDebitAddress address(strAddress);
     CKeyID keyid;
     if (!address.IsValid() || !address.GetKeyID(keyid)) {
         LogPrintf("CSporkManager::SetSporkAddress -- Failed to parse spork address\n");

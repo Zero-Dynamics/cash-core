@@ -61,7 +61,7 @@ static UniValue AddDomainEntry(const JSONRPCRequest& request, BDAP::ObjectType b
         throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
 
     CKeyID keyWalletID = pubWalletKey.GetID();
-    CCashAddress walletAddress = CCashAddress(keyWalletID);
+    CDebitAddress walletAddress = CDebitAddress(keyWalletID);
 
     pwalletMain->SetAddressBook(keyWalletID, strObjectID, "bdap-wallet");
     txDomainEntry.WalletAddress = vchFromString(walletAddress.ToString());
@@ -474,7 +474,7 @@ static UniValue UpdateDomainEntry(const JSONRPCRequest& request, BDAP::ObjectTyp
     scriptPubKey << CScript::EncodeOP_N(OP_BDAP_MODIFY) << CScript::EncodeOP_N(OP_BDAP_ACCOUNT_ENTRY)
                  << vchFullObjectPath << txUpdatedEntry.DHTPublicKey << vchMonths << OP_2DROP << OP_2DROP << OP_DROP;
 
-    CCashAddress walletAddress(stringFromVch(txUpdatedEntry.WalletAddress));
+    CDebitAddress walletAddress(stringFromVch(txUpdatedEntry.WalletAddress));
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
     scriptPubKey += scriptDestination;
@@ -653,7 +653,7 @@ static UniValue DeleteDomainEntry(const JSONRPCRequest& request, BDAP::ObjectTyp
     scriptPubKey << CScript::EncodeOP_N(OP_BDAP_DELETE) << CScript::EncodeOP_N(OP_BDAP_ACCOUNT_ENTRY)
                  << vchFullObjectPath << txDeletedEntry.DHTPublicKey << OP_2DROP << OP_2DROP;
 
-    CCashAddress walletAddress(stringFromVch(txDeletedEntry.WalletAddress));
+    CDebitAddress walletAddress(stringFromVch(txDeletedEntry.WalletAddress));
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
     scriptPubKey += scriptDestination;
@@ -829,7 +829,7 @@ UniValue makekeypair(const JSONRPCRequest& request)
     vchSecretC.SetPrivKey(vchPrivKeyC, true);
     result.push_back(Pair("private_key", HexStr<CPrivKey::iterator>(vchPrivKeyC.begin(), vchPrivKeyC.end())));
     result.push_back(Pair("public_key", HexStr(key.GetPubKey())));
-    result.push_back(Pair("address", CCashAddress(keyIDC).ToString()));
+    result.push_back(Pair("address", CDebitAddress(keyIDC).ToString()));
     result.push_back(Pair("address_private_key", CCashSecret(vchSecretC).ToString()));
 
    //get uncompressed versions
@@ -840,7 +840,7 @@ UniValue makekeypair(const JSONRPCRequest& request)
     vchSecret.SetPrivKey(vchPrivKey, false);
     //result.push_back(Pair("private_key_uncompressed", HexStr<CPrivKey::iterator>(vchPrivKey.begin(), vchPrivKey.end())));
     result.push_back(Pair("public_key_uncompressed", HexStr(key.GetPubKey())));
-    result.push_back(Pair("address_uncompressed", CCashAddress(keyID).ToString()));
+    result.push_back(Pair("address_uncompressed", CDebitAddress(keyID).ToString()));
     result.push_back(Pair("address_private_key_uncompressed", CCashSecret(vchSecret).ToString()));
 
     return result;
@@ -955,11 +955,11 @@ UniValue makecredits(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 3)
         throw std::runtime_error(
-            "makecredits \"cashaddress\" \"amount\"\n"
+            "makecredits \"debitaddress\" \"amount\"\n"
             "\nConvert your Cash (0DYNC) to BDAP colored credits\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"cashaddress\"       (string)            The destination wallet address\n"
+            "1. \"debitaddress\"       (string)            The destination wallet address\n"
             "2. \"amount\"               (int)               The amount in " + CURRENCY_UNIT + " to color. eg 0.1\n"
             "\nResult:\n"
             "  \"tx id\"                 (string)            The transaction id for the coin coloring\n"
@@ -998,7 +998,7 @@ UniValue makecredits(const JSONRPCRequest& request)
         fStealthAddress = true;
         CTxDestination newDest;
         if (ExtractDestination(scriptDestination, newDest))
-            LogPrint("bdap", "%s -- Stealth send to address: %s\n", __func__, CCashAddress(newDest).ToString());
+            LogPrint("bdap", "%s -- Stealth send to address: %s\n", __func__, CDebitAddress(newDest).ToString());
     }
     else {
         scriptDestination = GetScriptForDestination(dest);
@@ -1062,7 +1062,7 @@ UniValue getcredits(const JSONRPCRequest& request)
         std::vector<std::vector<unsigned char>> vvch;
         credit.first.GetBDAPOpCodes(opCode1, opCode2, vvch);
         std::string strOpType = GetBDAPOpTypeString(opCode1, opCode2);
-        const CCashAddress address = GetScriptAddress(credit.first.scriptPubKey);
+        const CDebitAddress address = GetScriptAddress(credit.first.scriptPubKey);
         std::string strType = "unknown";
         std::string strAccount =  "";
         std::string strPubKey =  "";
@@ -1231,7 +1231,7 @@ static const CRPCCommand commands[] =
     { "bdap",            "addgroup",                 &addgroup,                     true, {"account id", "common name", "registration days"} },
     { "bdap",            "getgroupinfo",             &getgroupinfo,                 true, {"account id"} },
     { "bdap",            "mybdapaccounts",           &mybdapaccounts,               true, {} },
-    { "bdap",            "makecredits",              &makecredits,                  true, {"cashaddress", "amount"} },
+    { "bdap",            "makecredits",              &makecredits,                  true, {"debitaddress", "amount"} },
     { "bdap",            "getcredits",               &getcredits,                   true, {} },
     { "bdap",            "bdapfees",                 &bdapfees,                     true, {} },
 #endif //ENABLE_WALLET

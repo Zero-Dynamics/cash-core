@@ -186,7 +186,7 @@ static UniValue NewRootCA(const JSONRPCRequest& request)
                 << vchVersion << vchMonths << vchSubjectFQDN << SubjectPublicKey << vchSubjectFQDN << SubjectPublicKey << OP_2DROP << OP_2DROP << OP_2DROP << OP_2DROP;
 
     CKeyID keyWalletID = privSubjectDHTKey.GetID();
-    CCashAddress walletAddress = CCashAddress(keyWalletID);
+    CDebitAddress walletAddress = CDebitAddress(keyWalletID);
 
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
@@ -402,7 +402,7 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
                 << vchVersion << vchMonths << vchSubjectFQDN << SubjectPublicKey << vchIssuerFQDN << OP_2DROP << OP_2DROP << OP_2DROP << OP_DROP;
 
     CKeyID keyWalletID = privSubjectDHTKey.GetID();
-    CCashAddress walletAddress = CCashAddress(keyWalletID);
+    CDebitAddress walletAddress = CDebitAddress(keyWalletID);
 
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
@@ -609,7 +609,7 @@ static UniValue ApproveCertificate(const JSONRPCRequest& request)
     scriptPubKey << CScript::EncodeOP_N(OP_BDAP_MODIFY) << CScript::EncodeOP_N(OP_BDAP_CERTIFICATE)
                 << vchVersion << vchMonths << vchSubject << vchSubjectPubKey << vchIssuer << vchIssuerPubKey << OP_2DROP << OP_2DROP << OP_2DROP << OP_2DROP;
 
-    CCashAddress walletAddress = subjectDomainEntry.GetWalletAddress();
+    CDebitAddress walletAddress = subjectDomainEntry.GetWalletAddress();
 
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());

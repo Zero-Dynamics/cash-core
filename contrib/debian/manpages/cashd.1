@@ -84,10 +84,10 @@ This help message
 \fBbackupwallet 'destination'\fR
 Safely copies *wallet.dat* to 'destination', which can be a directory or a path with filename.
 .TP
-\fBgetaccount 'cashaddress'\fR
+\fBgetaccount 'debitaddress'\fR
 Returns the account associated with the given address.
 .TP
-\fBsetaccount 'cashaddress' ['account']\fR
+\fBsetaccount 'debitaddress' ['account']\fR
 Sets the ['account'] associated with the given address. ['account'] may be omitted to remove an address from ['account'].
 .TP
 \fBgetaccountaddress 'account'\fR
@@ -129,8 +129,8 @@ Returns a new cash address for receiving payments. If 'account' is specified (re
 \fBgetreceivedbyaccount 'account' ['minconf=1']\fR
 Returns the total amount received by addresses associated with 'account' in transactions with at least ['minconf'] confirmations.
 .TP
-\fBgetreceivedbyaddress 'cashaddress' ['minconf=1']\fR
-Returns the total amount received by 'cashaddress' in transactions with at least ['minconf'] confirmations.
+\fBgetreceivedbyaddress 'debitaddress' ['minconf=1']\fR
+Returns the total amount received by 'debitaddress' in transactions with at least ['minconf'] confirmations.
 .TP
 \fBgettransaction 'txid'\fR
 Returns information about a specific transaction, given hexadecimal transaction ID.
@@ -182,21 +182,21 @@ Returns a list of the last ['count'] transactions for 'account' \- for all accou
 \fBmove <'fromaccount'> <'toaccount'> <'amount'> ['minconf=1'] ['comment']\fR
 Moves funds between accounts.
 .TP
-\fBsendfrom* <'account'> <'cashaddress'> <'amount'> ['minconf=1'] ['comment'] ['comment-to']\fR
-Sends amount from account's balance to 'cashaddress'. This method will fail if there is less than amount CASH with ['minconf'] confirmations in the account's balance (unless account is the empty-string-named default account; it behaves like the *sendtoaddress* method). Returns transaction ID on success.
+\fBsendfrom* <'account'> <'debitaddress'> <'amount'> ['minconf=1'] ['comment'] ['comment-to']\fR
+Sends amount from account's balance to 'debitaddress'. This method will fail if there is less than amount CASH with ['minconf'] confirmations in the account's balance (unless account is the empty-string-named default account; it behaves like the *sendtoaddress* method). Returns transaction ID on success.
 .TP
-\fBsendtoaddress 'cashaddress' 'amount' ['comment'] ['comment-to']\fR
-Sends amount from the server's available balance to 'cashaddress'. amount is a real and is rounded to the nearest 0.01. Returns transaction id on success.
+\fBsendtoaddress 'debitaddress' 'amount' ['comment'] ['comment-to']\fR
+Sends amount from the server's available balance to 'debitaddress'. amount is a real and is rounded to the nearest 0.01. Returns transaction id on success.
 .TP
 \fBstop\fR
 Stops the cash server.
 .TP
-\fBvalidateaddress 'cashaddress'\fR
-Checks that 'cashaddress' looks like a proper Cash address. Returns an object containing:
+\fBvalidateaddress 'debitaddress'\fR
+Checks that 'debitaddress' looks like a proper Cash address. Returns an object containing:
 
     "isvalid" : true or false.
     "ismine"  : true if the address is in the server's wallet.
-    "address" : cashaddress.
+    "address" : debitaddress.
 
     *note: ismine and address are only returned if the address is valid.
 

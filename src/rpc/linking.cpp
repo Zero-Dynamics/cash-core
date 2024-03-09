@@ -186,7 +186,7 @@ static UniValue SendLinkRequest(const JSONRPCRequest& request)
     if (!GetDomainEntry(vchRecipientFQDN, entryRecipient))
         throw std::runtime_error("BDAP_SEND_LINK_RPC_ERROR: ERRCODE: 4005 - Recipient " + strRecipientFQDN + _(" not found."));
 
-    CCashAddress addressRequestor = entryRequestor.GetWalletAddress();
+    CDebitAddress addressRequestor = entryRequestor.GetWalletAddress();
     CKeyID keyID;
     if (!addressRequestor.GetKeyID(keyID))
         throw std::runtime_error("BDAP_SEND_LINK_RPC_ERROR: ERRCODE: 4006 - Could not get " + strRequestorFQDN + _("'s wallet address key ") + addressRequestor.ToString());
@@ -369,7 +369,7 @@ static UniValue SendLinkAccept(const JSONRPCRequest& request)
     if (!GetDomainEntry(vchRequestorFQDN, entryRequestor))
         throw std::runtime_error("BDAP_ACCEPT_LINK_RPC_ERROR: ERRCODE: 4107 - Requestor " + strRequestorFQDN + _(" not found."));
 
-    CCashAddress addressAcceptor = entryAcceptor.GetWalletAddress();
+    CDebitAddress addressAcceptor = entryAcceptor.GetWalletAddress();
     CKeyID keyID;
     if (!addressAcceptor.GetKeyID(keyID))
         throw std::runtime_error("BDAP_ACCEPT_LINK_RPC_ERROR: ERRCODE: 4108 - Could not get " + strAcceptorFQDN + _("'s wallet address key ") + addressAcceptor.ToString());
@@ -1082,7 +1082,7 @@ static UniValue SendMessage(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
 
     CKeyID keyID = newPubKey.GetID();
-    CCashAddress walletAddress = CCashAddress(keyID);
+    CDebitAddress walletAddress = CDebitAddress(keyID);
     std::vector<unsigned char> vchWalletPubKey(newPubKey.begin(), newPubKey.end());
 
     CUnsignedVGPMessage unsignedMessage(subjectID, messageID, vchWalletPubKey, timestamp, stoptime);

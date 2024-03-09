@@ -188,7 +188,7 @@ UniValue burncash(const JSONRPCRequest& request)
     std::string strAddress;
     if (!request.params[1].isNull()) {
         strAddress = request.params[1].get_str();
-        CCashAddress address(strAddress);
+        CDebitAddress address(strAddress);
         if (!address.IsValid())
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
 
@@ -263,7 +263,7 @@ UniValue signtoken(const JSONRPCRequest& request)
 
     std::string result;
 
-    CCashAddress address(request.params[0].get_str());
+    CDebitAddress address(request.params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
 
@@ -301,7 +301,7 @@ UniValue consenttoken(const JSONRPCRequest& request)
 
     std::string result;
 
-    CCashAddress address(request.params[0].get_str());
+    CDebitAddress address(request.params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
 

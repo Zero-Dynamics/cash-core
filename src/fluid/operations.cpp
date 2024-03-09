@@ -90,11 +90,11 @@ std::string GetRidOfScriptStatement(const std::string& input, const int& positio
 //
 /////////////////////////////////////////////////////////////
 
-bool COperations::VerifyAddressOwnership(const CCashAddress& cashAddress)
+bool COperations::VerifyAddressOwnership(const CDebitAddress& debitAddress)
 {
 #ifdef ENABLE_WALLET
     LOCK2(cs_main, pwalletMain ? &pwalletMain->cs_wallet : NULL);
-    CCashAddress address(cashAddress);
+    CDebitAddress address(debitAddress);
 
     if (address.IsValid()) {
         CTxDestination dest = address.Get();
@@ -111,14 +111,14 @@ bool COperations::VerifyAddressOwnership(const CCashAddress& cashAddress)
 #endif //ENABLE_WALLET
 }
 
-bool COperations::SignTokenMessage(const CCashAddress& address, std::string unsignedMessage, std::string& stitchedMessage, bool stitch)
+bool COperations::SignTokenMessage(const CDebitAddress& address, std::string unsignedMessage, std::string& stitchedMessage, bool stitch)
 {
 #ifdef ENABLE_WALLET
     CHashWriter ss(SER_GETHASH, 0);
     ss << strMessageMagic;
     ss << unsignedMessage;
 
-    CCashAddress addr(address);
+    CDebitAddress addr(address);
 
     CKeyID keyID;
     if (!addr.GetKeyID(keyID))
@@ -142,7 +142,7 @@ bool COperations::SignTokenMessage(const CCashAddress& address, std::string unsi
 #endif //ENABLE_WALLET
 }
 
-bool COperations::GenericSignMessage(const std::string& message, std::string& signedString, const CCashAddress& signer)
+bool COperations::GenericSignMessage(const std::string& message, std::string& signedString, const CDebitAddress& signer)
 {
     if (!SignTokenMessage(signer, message, signedString, true))
         return false;

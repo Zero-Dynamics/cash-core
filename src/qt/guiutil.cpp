@@ -8,7 +8,7 @@
 #include "guiutil.h"
 
 #include "arith_uint256.h"
-#include "cashaddressvalidator.h"
+#include "debitaddressvalidator.h"
 #include "cashunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
@@ -103,7 +103,7 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
-QFont CashAddressFont()
+QFont DebitAddressFont()
 {
     QFont font("Monospace");
 #if QT_VERSION >= 0x040800
@@ -139,7 +139,7 @@ static std::string DummyAddress(const CChainParams& params)
     sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));
     for (int i = 0; i < 256; ++i) { // Try every trailing byte
         std::string s = EncodeBase58(sourcedata.data(), sourcedata.data() + sourcedata.size());
-        if (!CCashAddress(s).IsValid())
+        if (!CDebitAddress(s).IsValid())
             return s;
         sourcedata[sourcedata.size() - 1] += 1;
     }
@@ -156,8 +156,8 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
     // and this is the only place, where this address is supplied.
     widget->setPlaceholderText(QObject::tr("Enter a Cash address (e.g. %1)").arg(QString::fromStdString(DummyAddress(Params()))));
 #endif
-    widget->setValidator(new CashAddressEntryValidator(parent));
-    widget->setCheckValidator(new CashAddressCheckValidator(parent));
+    widget->setValidator(new DebitAddressEntryValidator(parent));
+    widget->setCheckValidator(new DebitAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit* widget, QWidget* parent)
@@ -274,7 +274,7 @@ QString formatCashURI(const SendCoinsRecipient& info)
 
 bool isDust(const QString& address, const CAmount& amount)
 {
-    CTxDestination dest = CCashAddress(address.toStdString()).Get();
+    CTxDestination dest = CDebitAddress(address.toStdString()).Get();
     CScript script = GetScriptForDestination(dest);
     CTxOut txOut(amount, script);
     return txOut.IsDust(dustRelayFee);

@@ -133,8 +133,8 @@ Utility Function
 * estimatepriority nblocks
 * estimatesmartfee nblocks
 * estimatesmartpriority nblocks
-* validateaddress "cashaddress"
-* verifymessage "cashaddress" "signature" "message"
+* validateaddress "debitaddress"
+* verifymessage "debitaddress" "signature" "message"
 
 
 Wallet
@@ -143,16 +143,16 @@ Wallet
 * addmultisigaddress nrequired ["key",...] ( "account" )
 * backupwallet "destination"
 * dumphdinfo
-* dumpprivkey "cashaddress"
+* dumpprivkey "debitaddress"
 * dumpwallet "filename"
-* getaccount "cashaddress"
+* getaccount "debitaddress"
 * getaccountaddress "account"
 * getaddressesbyaccount "account"
 * getbalance ( "account" minconf includeWatchonly )
 * getnewaddress ( "account" )
 * getrawchangeaddress
 * getreceivedbyaccount "account" ( minconf )
-* getreceivedbyaddress "cashaddress" ( minconf )
+* getreceivedbyaddress "debitaddress" ( minconf )
 * gettransaction "txid" ( includeWatchonly )
 * getunconfirmedbalance
 * getwalletinfo
@@ -160,7 +160,7 @@ Wallet
 * importprivkey "cashprivkey" ( "label" rescan )
 * importpubkey "pubkey" ( "label" rescan )
 * importwallet "filename"
-* instantsendtoaddress "cashaddress" amount ( "comment" "comment-to" subtractfeefromamount )
+* instantsendtoaddress "debitaddress" amount ( "comment" "comment-to" subtractfeefromamount )
 * keepass <genkey|init|setpassphrase>
 * keypoolrefill ( newsize )
 * listaccounts ( minconf includeWatchonly)
@@ -174,12 +174,12 @@ Wallet
 * lockunspent unlock [{"txid":"txid","vout":n},...]
 * makekeypair [prefix]
 * move "fromaccount" "toaccount" amount ( minconf "comment" )
-* sendfrom "fromaccount" "tocashaddress" amount ( minconf "comment" "comment-to" )
+* sendfrom "fromaccount" "todebitaddress" amount ( minconf "comment" "comment-to" )
 * sendmany "fromaccount" {"address":amount,...} ( minconf "comment" ["address",...] subtractfeefromamount use_is use_ps )
-* sendtoaddress "cashaddress" amount ( "comment" "comment-to" subtractfeefromamount use_is use_ps )
-* setaccount "cashaddress" "account"
+* sendtoaddress "debitaddress" amount ( "comment" "comment-to" subtractfeefromamount use_is use_ps )
+* setaccount "debitaddress" "account"
 * settxfee amount
-* signmessage "cashaddress" "message"
+* signmessage "debitaddress" "message"
 * walletlock
 * walletpassphrase "passphrase" timeout ( mixingonly )
 * walletpassphrasechange "oldpassphrase" "newpassphrase"

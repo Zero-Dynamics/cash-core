@@ -100,7 +100,7 @@ public:
     {
     }
 
-    CGovernancePayment(CCashAddress addrIn, CAmount nAmountIn)
+    CGovernancePayment(CDebitAddress addrIn, CAmount nAmountIn)
         : fValid(false),
           script(),
           nAmount(0)

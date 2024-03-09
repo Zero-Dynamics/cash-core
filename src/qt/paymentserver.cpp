@@ -90,7 +90,7 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
 
             SendCoinsRecipient r;
             if (GUIUtil::parseCashURI(arg, &r) && !r.address.isEmpty()) {
-                CCashAddress address(r.address.toStdString());
+                CDebitAddress address(r.address.toStdString());
 
                 if (address.IsValid(Params(CBaseChainParams::MAIN))) {
                     SelectParams(CBaseChainParams::MAIN);

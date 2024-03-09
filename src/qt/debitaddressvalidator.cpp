@@ -5,7 +5,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "cashaddressvalidator.h"
+#include "debitaddressvalidator.h"
 
 #include "base58.h"
 
@@ -18,11 +18,11 @@
   - All lower-case letters except for 'l'
 */
 
-CashAddressEntryValidator::CashAddressEntryValidator(QObject* parent) : QValidator(parent)
+DebitAddressEntryValidator::DebitAddressEntryValidator(QObject* parent) : QValidator(parent)
 {
 }
 
-QValidator::State CashAddressEntryValidator::validate(QString& input, int& pos) const
+QValidator::State DebitAddressEntryValidator::validate(QString& input, int& pos) const
 {
     Q_UNUSED(pos);
 
@@ -76,11 +76,11 @@ QValidator::State CashAddressEntryValidator::validate(QString& input, int& pos) 
     return state;
 }
 
-CashAddressCheckValidator::CashAddressCheckValidator(QObject* parent) : QValidator(parent)
+DebitAddressCheckValidator::DebitAddressCheckValidator(QObject* parent) : QValidator(parent)
 {
 }
 
-QValidator::State CashAddressCheckValidator::validate(QString& input, int& pos) const
+QValidator::State DebitAddressCheckValidator::validate(QString& input, int& pos) const
 {
     Q_UNUSED(pos);
     // Validate the passed Cash address

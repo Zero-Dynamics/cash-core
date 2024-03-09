@@ -56,7 +56,7 @@ void ScriptPubKeyToJSON(const CScript& scriptPubKey, UniValue& out, bool fInclud
 
     UniValue a(UniValue::VARR);
     BOOST_FOREACH (const CTxDestination& addr, addresses)
-        a.push_back(CCashAddress(addr).ToString());
+        a.push_back(CDebitAddress(addr).ToString());
     out.push_back(Pair("addresses", a));
 }
 
@@ -87,9 +87,9 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry)
                 in.push_back(Pair("value", ValueFromAmount(spentInfo.satoshis)));
                 in.push_back(Pair("valueSat", spentInfo.satoshis));
                 if (spentInfo.addressType == 1) {
-                    in.push_back(Pair("address", CCashAddress(CKeyID(spentInfo.addressHash)).ToString()));
+                    in.push_back(Pair("address", CDebitAddress(CKeyID(spentInfo.addressHash)).ToString()));
                 } else if (spentInfo.addressType == 2) {
-                    in.push_back(Pair("address", CCashAddress(CScriptID(spentInfo.addressHash)).ToString()));
+                    in.push_back(Pair("address", CDebitAddress(CScriptID(spentInfo.addressHash)).ToString()));
                 }
             }
         }
@@ -190,7 +190,7 @@ UniValue getrawtransaction(const JSONRPCRequest& request)
                             "         \"reqSigs\" : n,            (numeric) The required sigs\n"
                             "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
                             "         \"addresses\" : [           (json array of string)\n"
-                            "           \"cashaddress\"        (string) cash address\n"
+                            "           \"debitaddress\"        (string) cash address\n"
                             "           ,...\n"
                             "         ]\n"
                             "       }\n"
@@ -468,7 +468,7 @@ UniValue createrawtransaction(const JSONRPCRequest& request)
                 fStealthAddress = true;
                 CTxDestination newDest;
                 if (ExtractDestination(scriptPubKey, newDest))
-                    LogPrint("stealth", "%s -- Stealth send to address: %s\n", __func__, CCashAddress(newDest).ToString());
+                    LogPrint("stealth", "%s -- Stealth send to address: %s\n", __func__, CDebitAddress(newDest).ToString());
 
             } else
             {
@@ -597,7 +597,7 @@ UniValue decodescript(const JSONRPCRequest& request)
     if (type.isStr() && type.get_str() != "scripthash") {
         // P2SH cannot be wrapped in a P2SH. If this script is already a P2SH,
         // don't return the address for a P2SH of the P2SH.
-        r.push_back(Pair("p2sh", CCashAddress(CScriptID(script)).ToString()));
+        r.push_back(Pair("p2sh", CDebitAddress(CScriptID(script)).ToString()));
     }
 
     return r;

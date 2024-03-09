@@ -35,7 +35,7 @@ public:
     static const CAmount FLUID_MAX_REWARD_FOR_MINING = 1000 * COIN; // Max mining block reward using fluid OP_REWARD_MINING
     static const CAmount FLUID_MAX_FOR_MINT = 1000000000 * COIN;    // Max minting amount per fluid transaction
 
-    std::vector<std::pair<std::string, CCashAddress> > InitialiseSovereignIdentities();
+    std::vector<std::pair<std::string, CDebitAddress> > InitialiseSovereignIdentities();
 
     std::vector<std::string> InitialiseAddresses();
     std::vector<std::vector<unsigned char> > InitialiseAddressCharVector();
@@ -55,22 +55,22 @@ public:
     bool CheckNonScriptQuorum(const std::string& consentToken, std::string& message, const bool individual = false);
     bool CheckTransactionInRecord(const CScript& fluidInstruction, CBlockIndex* pindex = NULL);
 
-    bool GenericConsentMessage(const std::string& message, std::string& signedString, const CCashAddress& signer);
+    bool GenericConsentMessage(const std::string& message, std::string& signedString, const CDebitAddress& signer);
     bool GenericParseNumber(const std::string consentToken, const int64_t timeStamp, CAmount& howMuch, bool txCheckPurpose = false);
-    bool GenericVerifyInstruction(const std::string& consentToken, CCashAddress& signer, std::string& messageTokenKey, const int& whereToLook = 1);
+    bool GenericVerifyInstruction(const std::string& consentToken, CDebitAddress& signer, std::string& messageTokenKey, const int& whereToLook = 1);
 
     bool ExtractCheckTimestamp(const std::string& strOpCode, const std::string& consentToken, const int64_t& timeStamp);
-    bool ParseMintKey(const int64_t& nTime, CCashAddress& destination, CAmount& coinAmount, const std::string& uniqueIdentifier, const bool txCheckPurpose = false);
+    bool ParseMintKey(const int64_t& nTime, CDebitAddress& destination, CAmount& coinAmount, const std::string& uniqueIdentifier, const bool txCheckPurpose = false);
     bool ProcessFluidToken(const std::string& consentToken, std::vector<std::string>& ptrs, const int& strVecNo);
 
-    bool GetMintingInstructions(const CBlockIndex* pblockindex, CCashAddress& toMintAddress, CAmount& mintAmount);
+    bool GetMintingInstructions(const CBlockIndex* pblockindex, CDebitAddress& toMintAddress, CAmount& mintAmount);
     bool ValidationProcesses(CValidationState& state, const CScript& txOut, const CAmount& txValue);
 
     bool CheckTransactionToBlock(const CTransaction& transaction, const CBlockHeader& blockHeader);
     bool CheckTransactionToBlock(const CTransaction& transaction, const uint256 hash);
 
     bool ProvisionalCheckTransaction(const CTransaction& transaction);
-    CCashAddress GetAddressFromDigestSignature(const std::string& digestSignature, const std::string& messageTokenKey);
+    CDebitAddress GetAddressFromDigestSignature(const std::string& digestSignature, const std::string& messageTokenKey);
     bool CheckAccountBanScript(const CScript& fluidScript, const uint256& txHashId, const unsigned int& nHeight, std::vector<CDomainEntry>& vBanAccounts, std::string& strErrorMessage);
     bool ExtractTimestampWithAddresses(const std::string& strOpCode, const CScript& fluidScript, int64_t& nTimeStamp, std::vector<std::vector<unsigned char>>& vSovereignAddresses);
 

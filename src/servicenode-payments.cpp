@@ -280,7 +280,7 @@ void CServiceNodePayments::FillBlockPayee(CMutableTransaction& txNew, int nBlock
     // ... and servicenode
     CTxDestination address1;
     ExtractDestination(payee, address1);
-    CCashAddress address2(address1);
+    CDebitAddress address2(address1);
 
     LogPrintf("CServiceNodePayments::FillBlockPayee -- ServiceNode payment %ld to %s\n", FormatMoney(servicenodePayment), address2.ToString());
 }
@@ -412,7 +412,7 @@ void CServiceNodePayments::ProcessMessage(CNode* pfrom, const std::string& strCo
 
         CTxDestination address1;
         ExtractDestination(vote.payee, address1);
-        CCashAddress address2(address1);
+        CDebitAddress address2(address1);
 
         LogPrint("snpayments", "SERVICENODEPAYMENTVOTE -- vote: address=%s, nBlockHeight=%d, nHeight=%d, prevout=%s, hash=%s new\n",
             address2.ToString(), vote.nBlockHeight, nCachedBlockHeight, vote.servicenodeOutpoint.ToStringShort(), nHash.ToString());
@@ -618,7 +618,7 @@ bool CServiceNodeBlockPayees::IsTransactionValid(const CTransaction& txNew, cons
 
             CTxDestination address1;
             ExtractDestination(payee.GetPayee(), address1);
-            CCashAddress address2(address1);
+            CDebitAddress address2(address1);
 
             if (strPayeesPossible == "") {
                 strPayeesPossible = address2.ToString();
@@ -641,7 +641,7 @@ std::string CServiceNodeBlockPayees::GetRequiredPaymentsString() const
     for (const auto& payee : vecPayees) {
         CTxDestination address1;
         ExtractDestination(payee.GetPayee(), address1);
-        CCashAddress address2(address1);
+        CDebitAddress address2(address1);
 
         if (!strRequiredPayments.empty())
             strRequiredPayments += ", ";
@@ -801,7 +801,7 @@ bool CServiceNodePayments::ProcessBlock(int nBlockHeight, CConnman& connman)
 
     CTxDestination address1;
     ExtractDestination(payee, address1);
-    CCashAddress address2(address1);
+    CDebitAddress address2(address1);
 
     LogPrint("snpayments", "CServiceNodePayments::ProcessBlock -- vote: payee=%s, nBlockHeight=%d\n", address2.ToString(), nBlockHeight);
 
@@ -864,7 +864,7 @@ void CServiceNodePayments::CheckBlockVotes(int nBlockHeight)
         if (found) {
             CTxDestination address1;
             ExtractDestination(payee, address1);
-            CCashAddress address2(address1);
+            CDebitAddress address2(address1);
 
             debugStr += strprintf("    - %s - voted for %s\n",
                 dn.second.outpoint.ToStringShort(), address2.ToString());
@@ -1043,7 +1043,7 @@ void CServiceNodePayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& c
                  : dnBlockPayees.second.vecPayees) {
                 CTxDestination address1;
                 ExtractDestination(payee.GetPayee(), address1);
-                CCashAddress address2(address1);
+                CDebitAddress address2(address1);
                 printf("payee %s votes %d\n", address2.ToString().c_str(), payee.GetVoteCount());
             } printf("block %d votes total %d\n", it->first, nTotalVotes);)
         // END DEBUG

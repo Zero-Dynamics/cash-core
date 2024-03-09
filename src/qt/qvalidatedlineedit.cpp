@@ -7,7 +7,7 @@
 
 #include "qvalidatedlineedit.h"
 
-#include "cashaddressvalidator.h"
+#include "debitaddressvalidator.h"
 #include "guiconstants.h"
 
 QValidatedLineEdit::QValidatedLineEdit(QWidget* parent) : QLineEdit(parent),

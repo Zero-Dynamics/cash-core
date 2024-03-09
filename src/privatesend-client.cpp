@@ -1515,7 +1515,7 @@ bool CPrivateSendClientSession::CreateDenominated(const CompactTallyItem& tallyI
     CAmount nValueLeft = tallyItem.nAmount;
     nValueLeft -= CPrivateSend::GetCollateralAmount(); // leave some room for fees
 
-    LogPrintf("CPrivateSendClientSession::CreateDenominated -- 0 - %s nValueLeft: %f\n", CCashAddress(tallyItem.txdest).ToString(), (float)nValueLeft / COIN);
+    LogPrintf("CPrivateSendClientSession::CreateDenominated -- 0 - %s nValueLeft: %f\n", CDebitAddress(tallyItem.txdest).ToString(), (float)nValueLeft / COIN);
 
     // ****** Add an output for mixing collaterals ************ /
 

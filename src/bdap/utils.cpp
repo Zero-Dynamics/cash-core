@@ -524,11 +524,11 @@ int GetBDAPOperationOutIndex(int nHeight, const uint256& txHash)
     return GetBDAPOperationOutIndex(tx);
 }
 
-CCashAddress GetScriptAddress(const CScript& pubScript)
+CDebitAddress GetScriptAddress(const CScript& pubScript)
 {
     CTxDestination txDestination;
     ExtractDestination(pubScript, txDestination);
-    CCashAddress entryAddress(txDestination);
+    CDebitAddress entryAddress(txDestination);
     return entryAddress;
 }
 

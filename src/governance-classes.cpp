@@ -409,7 +409,7 @@ void CSuperblockManager::CreateSuperblock(CMutableTransaction& txNewRet, int nBl
 
             CTxDestination address1;
             ExtractDestination(payment.script, address1);
-            CCashAddress address2(address1);
+            CDebitAddress address2(address1);
 
             // TODO: PRINT NICE N.N CASH OUTPUT
 
@@ -583,7 +583,7 @@ void CSuperblock::ParsePaymentSchedule(const std::string& strPaymentAddresses, c
     DBG(std::cout << "CSuperblock::ParsePaymentSchedule vecParsed1.size() = " << vecParsed1.size() << std::endl;);
 
     for (int i = 0; i < (int)vecParsed1.size(); i++) {
-        CCashAddress address(vecParsed1[i]);
+        CDebitAddress address(vecParsed1[i]);
         if (!address.IsValid()) {
             std::ostringstream ostr;
             ostr << "CSuperblock::ParsePaymentSchedule -- Invalid Cash Address : " << vecParsed1[i];
@@ -732,7 +732,7 @@ bool CSuperblock::IsValid(const CTransaction& txNew, int nBlockHeight, CAmount b
 
             CTxDestination address1;
             ExtractDestination(payment.script, address1);
-            CCashAddress address2(address1);
+            CDebitAddress address2(address1);
             LogPrintf("CSuperblock::IsValid -- ERROR: Block invalid: %d payment %d to %s not found\n", i, payment.nAmount, address2.ToString());
 
             return false;
@@ -806,7 +806,7 @@ std::string CSuperblockManager::GetRequiredPaymentsString(int nBlockHeight)
 
             CTxDestination address1;
             ExtractDestination(payment.script, address1);
-            CCashAddress address2(address1);
+            CDebitAddress address2(address1);
 
             // RETURN NICE OUTPUT FOR CONSOLE
 

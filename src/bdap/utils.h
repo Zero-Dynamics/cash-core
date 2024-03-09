@@ -12,7 +12,7 @@
 #include <vector>
 
 class CCoinsViewCache;
-class CCashAddress;
+class CDebitAddress;
 struct CRecipient;
 class CScript;
 class CTxOut;
@@ -55,7 +55,7 @@ bool IsBDAPOperationOutput(const CTxOut& out);
 int GetBDAPOperationOutIndex(const CTransactionRef& tx);
 int GetBDAPOperationOutIndex(int nHeight, const uint256& txHash);
 bool GetBDAPTransaction(int nHeight, const uint256& hash, CTransactionRef &txOut, const Consensus::Params& consensusParams);
-CCashAddress GetScriptAddress(const CScript& pubScript);
+CDebitAddress GetScriptAddress(const CScript& pubScript);
 int GetBDAPOpCodeFromOutput(const CTxOut& out);
 bool ExtractOpTypeValue(const CScript& script, std::string& strOpType, std::vector<unsigned char>& vchValue);
 bool GetScriptOpTypeValue(const std::vector<CRecipient>& vecSend, CScript& bdapOpScript, std::string& strOpType, std::vector<unsigned char>& vchValue);

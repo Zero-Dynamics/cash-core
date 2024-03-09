@@ -281,7 +281,7 @@ UniValue generatetoaddress(const JSONRPCRequest& request)
         nMaxTries = request.params[2].get_int();
     }
 
-    CCashAddress address(request.params[1].get_str());
+    CDebitAddress address(request.params[1].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Error: Invalid address");
 
@@ -868,7 +868,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     if (pblocktemplate->txoutServiceNode != CTxOut()) {
         CTxDestination address1;
         ExtractDestination(pblocktemplate->txoutServiceNode.scriptPubKey, address1);
-        CCashAddress address2(address1);
+        CDebitAddress address2(address1);
         servicenodeObj.push_back(Pair("payee", address2.ToString().c_str()));
         servicenodeObj.push_back(Pair("script", HexStr(pblocktemplate->txoutServiceNode.scriptPubKey.begin(), pblocktemplate->txoutServiceNode.scriptPubKey.end())));
         servicenodeObj.push_back(Pair("amount", pblocktemplate->txoutServiceNode.nValue));
@@ -883,7 +883,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             UniValue entry(UniValue::VOBJ);
             CTxDestination address1;
             ExtractDestination(txout.scriptPubKey, address1);
-            CCashAddress address2(address1);
+            CDebitAddress address2(address1);
             entry.push_back(Pair("payee", address2.ToString().c_str()));
             entry.push_back(Pair("script", HexStr(txout.scriptPubKey.begin(), txout.scriptPubKey.end())));
             entry.push_back(Pair("amount", txout.nValue));
@@ -898,7 +898,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
         CAmount fluidIssuance = nCoinbaseValue - GetFluidServiceNodeReward(nHeight) - GetFluidMiningReward(nHeight);
         if (fluidIssuance > 0) {
             UniValue entry(UniValue::VOBJ);
-            CCashAddress mintAddress = fluidMint.GetDestinationAddress();
+            CDebitAddress mintAddress = fluidMint.GetDestinationAddress();
             if (!mintAddress.IsScript()) {
                 scriptMint = GetScriptForDestination(mintAddress.Get());
             } else {

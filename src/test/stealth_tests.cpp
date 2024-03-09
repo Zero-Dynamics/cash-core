@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(stealth_test1)
 
     CTxDestination newDest;
     BOOST_CHECK(ExtractDestination(scriptDest, newDest));
-    CCashAddress newAddress;
+    CDebitAddress newAddress;
     newAddress.Set(newDest);
     BOOST_CHECK(newAddress.IsValid());
     //std::cout << "Derived " << newAddress.ToString() <<  " address from stealth\n";
@@ -135,7 +135,7 @@ BOOST_AUTO_TEST_CASE(stealth_test1)
 
     BOOST_CHECK(sSpendR == sSpendRCompare);
 
-    CCashAddress addressCompare(sSpendR.GetPubKey().GetID());
+    CDebitAddress addressCompare(sSpendR.GetPubKey().GetID());
 
     BOOST_CHECK(newAddress == addressCompare);
 
@@ -173,7 +173,7 @@ BOOST_AUTO_TEST_CASE(stealth_test1_negative)
 
     CTxDestination newDest;
     BOOST_CHECK(ExtractDestination(scriptDest, newDest));
-    CCashAddress newAddress;
+    CDebitAddress newAddress;
     newAddress.Set(newDest);
     BOOST_CHECK(newAddress.IsValid());
     //std::cout << "Derived " << newAddress.ToString() <<  " address from stealth\n";
@@ -340,7 +340,7 @@ BOOST_AUTO_TEST_CASE(stealth_test2)
 
     BOOST_CHECK(sSpendR == sSpendRCompare);
 
-    CCashAddress addressCompare(sSpendR.GetPubKey().GetID());
+    CDebitAddress addressCompare(sSpendR.GetPubKey().GetID());
 
     BOOST_CHECK(address == addressCompare.Get());
 
