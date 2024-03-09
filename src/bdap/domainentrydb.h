@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_DOMAINENTRYDB_H
-#define ODYNCASH_BDAP_DOMAINENTRYDB_H
+#ifndef CASH_BDAP_DOMAINENTRYDB_H
+#define CASH_BDAP_DOMAINENTRYDB_H
 
 #include "bdap/domainentry.h"
 #include "dbwrapper.h"
@@ -55,4 +55,4 @@ bool CheckDomainEntryTx(const CTransactionRef& tx, const CScript& scriptOp, cons
 
 extern CDomainEntryDB *pDomainEntryDB;
 
-#endif // ODYNCASH_BDAP_DOMAINENTRYDB_H
+#endif // CASH_BDAP_DOMAINENTRYDB_H

@@ -45,7 +45,7 @@
  * =========================
  *
  *   // network
- *   COdynCashNetwork lvl, network-type, network-status, network-error, milestone-status*
+ *   CCashNetwork lvl, network-type, network-status, network-error, milestone-status*
  *   CCategory lvl, category-type, status, status-error
  *   CNetworkGlobalVariable lvl, global-type, status, status-error
  *   // base: actor
@@ -79,7 +79,7 @@
  *  TREE STRUCTURE
  *  ===========================================
  * 
- *  ODYNCASH NETWORK (ROOT)
+ *  CASH NETWORK (ROOT)
  *      -> NETWORK GLOBOLS
  *          -> SWITCHES, SETTINGS
  *      -> CATEGORIES
@@ -130,7 +130,7 @@ public:
 };
 
 // // root node
-class COdynCashNetwork : public CGovernanceObject
+class CCashNetwork : public CGovernanceObject
 {
 private:
     std::string strName;
@@ -138,7 +138,7 @@ private:
 
 
 public:
-    COdynCashNetwork(UniValue objIn)
+    CCashNetwork(UniValue objIn)
     {
         strName = objIn["name"].get_str();
         strURL = objIn["name"].get_str();
@@ -174,9 +174,9 @@ public:
 
 };
 
-// // can be under: OdynCashNetwork
+// // can be under: CashNetwork
 // //   -- signature requirements : Key1(User)
-// class COdynCashNetworkVariable : public CGovernanceObject
+// class CCashNetworkVariable : public CGovernanceObject
 // {
 // private:
 
@@ -279,7 +279,7 @@ public:
 //     // isRootCategory()
 //     // {
 //     //     // root categories won't have categories as parents
-//     //     return (IsType() == OdynCashNetwork);
+//     //     return (IsType() == CashNetwork);
 //     // }
 
 //     // isSubcategoryOf(std::string strParentName)

@@ -3,7 +3,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-//#define ENABLE_ODYNCASH_DEBUG
+//#define ENABLE_CASH_DEBUG
 
 #include "governance-classes.h"
 
@@ -409,9 +409,9 @@ void CSuperblockManager::CreateSuperblock(CMutableTransaction& txNewRet, int nBl
 
             CTxDestination address1;
             ExtractDestination(payment.script, address1);
-            COdynCashAddress address2(address1);
+            CCashAddress address2(address1);
 
-            // TODO: PRINT NICE N.N ODYNCASH OUTPUT
+            // TODO: PRINT NICE N.N CASH OUTPUT
 
             DBG(std::cout << "CSuperblockManager::CreateSuperblock Before LogPrintf call, nAmount = " << payment.nAmount << std::endl;);
             LogPrintf("NEW Superblock : output %d (addr %s, amount %d)\n", i, address2.ToString(), payment.nAmount);
@@ -583,10 +583,10 @@ void CSuperblock::ParsePaymentSchedule(const std::string& strPaymentAddresses, c
     DBG(std::cout << "CSuperblock::ParsePaymentSchedule vecParsed1.size() = " << vecParsed1.size() << std::endl;);
 
     for (int i = 0; i < (int)vecParsed1.size(); i++) {
-        COdynCashAddress address(vecParsed1[i]);
+        CCashAddress address(vecParsed1[i]);
         if (!address.IsValid()) {
             std::ostringstream ostr;
-            ostr << "CSuperblock::ParsePaymentSchedule -- Invalid OdynCash Address : " << vecParsed1[i];
+            ostr << "CSuperblock::ParsePaymentSchedule -- Invalid Cash Address : " << vecParsed1[i];
             LogPrintf("%s\n", ostr.str());
             throw std::runtime_error(ostr.str());
         }
@@ -732,7 +732,7 @@ bool CSuperblock::IsValid(const CTransaction& txNew, int nBlockHeight, CAmount b
 
             CTxDestination address1;
             ExtractDestination(payment.script, address1);
-            COdynCashAddress address2(address1);
+            CCashAddress address2(address1);
             LogPrintf("CSuperblock::IsValid -- ERROR: Block invalid: %d payment %d to %s not found\n", i, payment.nAmount, address2.ToString());
 
             return false;
@@ -806,7 +806,7 @@ std::string CSuperblockManager::GetRequiredPaymentsString(int nBlockHeight)
 
             CTxDestination address1;
             ExtractDestination(payment.script, address1);
-            COdynCashAddress address2(address1);
+            CCashAddress address2(address1);
 
             // RETURN NICE OUTPUT FOR CONSOLE
 

@@ -50,13 +50,13 @@ public:
     }
 
     std::string operator()(const CNoDestination& no) const { return {}; }
-    std::string operator()(const CStealthAddress& sxAddr) const { return COdynCashAddress(sxAddr).ToString(); }
+    std::string operator()(const CStealthAddress& sxAddr) const { return CCashAddress(sxAddr).ToString(); }
 
 };
 
 static CTxDestination DecodeDestination(const std::string& str, const CChainParams& params)
 {
-    COdynCashAddress addr(str);
+    CCashAddress addr(str);
     if (addr.IsValid()) {
         return addr.Get();
     }
@@ -280,13 +280,13 @@ int CBase58Data::CompareTo(const CBase58Data& b58) const
 
 namespace
 {
-class COdynCashAddressVisitor : public boost::static_visitor<bool>
+class CCashAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    COdynCashAddress* addr;
+    CCashAddress* addr;
 
 public:
-    COdynCashAddressVisitor(COdynCashAddress* addrIn) : addr(addrIn) {}
+    CCashAddressVisitor(CCashAddress* addrIn) : addr(addrIn) {}
 
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CScriptID& id) const { return addr->Set(id); }
@@ -296,24 +296,24 @@ public:
 
 } // namespace
 
-bool COdynCashAddress::Set(const CKeyID& id)
+bool CCashAddress::Set(const CKeyID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool COdynCashAddress::Set(const CScriptID& id)
+bool CCashAddress::Set(const CScriptID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
     return true;
 }
 
-bool COdynCashAddress::Set(const CTxDestination& dest)
+bool CCashAddress::Set(const CTxDestination& dest)
 {
-    return boost::apply_visitor(COdynCashAddressVisitor(this), dest);
+    return boost::apply_visitor(CCashAddressVisitor(this), dest);
 }
 
-bool COdynCashAddress::Set(const CStealthAddress& sxAddr)
+bool CCashAddress::Set(const CStealthAddress& sxAddr)
 {
     std::vector<uint8_t> raw;
     if (0 != sxAddr.ToRaw(raw))
@@ -323,12 +323,12 @@ bool COdynCashAddress::Set(const CStealthAddress& sxAddr)
     return true;
 }
 
-bool COdynCashAddress::IsValid() const
+bool CCashAddress::IsValid() const
 {
     return IsValid(Params());
 }
 
-bool COdynCashAddress::IsValid(const CChainParams& params) const
+bool CCashAddress::IsValid(const CChainParams& params) const
 {
     bool fCorrectSize = vchData.size() == 20;
     bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -336,12 +336,12 @@ bool COdynCashAddress::IsValid(const CChainParams& params) const
     return fCorrectSize && fKnownVersion;
 }
 
-bool COdynCashAddress::IsValidStealthAddress() const
+bool CCashAddress::IsValidStealthAddress() const
 {
     return IsValidStealthAddress(Params());
 }
 
-bool COdynCashAddress::IsValidStealthAddress(const CChainParams& params) const
+bool CCashAddress::IsValidStealthAddress(const CChainParams& params) const
 {
     if (vchVersion != params.Base58Prefix(CChainParams::STEALTH_ADDRESS))
         return false;
@@ -366,7 +366,7 @@ bool COdynCashAddress::IsValidStealthAddress(const CChainParams& params) const
     return true;
 }
 
-CTxDestination COdynCashAddress::Get() const
+CTxDestination CCashAddress::Get() const
 {
     if (!IsValid())
         return CNoDestination();
@@ -380,7 +380,7 @@ CTxDestination COdynCashAddress::Get() const
         return CNoDestination();
 }
 
-bool COdynCashAddress::GetIndexKey(uint160& hashBytes, int& type) const
+bool CCashAddress::GetIndexKey(uint160& hashBytes, int& type) const
 {
     if (!IsValid()) {
         return false;
@@ -397,7 +397,7 @@ bool COdynCashAddress::GetIndexKey(uint160& hashBytes, int& type) const
     return false;
 }
 
-bool COdynCashAddress::GetKeyID(CKeyID& keyID) const
+bool CCashAddress::GetKeyID(CKeyID& keyID) const
 {
     if (!IsValid() || vchVersion != Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS))
         return false;
@@ -407,12 +407,12 @@ bool COdynCashAddress::GetKeyID(CKeyID& keyID) const
     return true;
 }
 
-bool COdynCashAddress::IsScript() const
+bool CCashAddress::IsScript() const
 {
     return IsValid() && vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS);
 }
 
-void COdynCashSecret::SetKey(const CKey& vchSecret)
+void CCashSecret::SetKey(const CKey& vchSecret)
 {
     assert(vchSecret.IsValid());
     SetData(Params().Base58Prefix(CChainParams::SECRET_KEY), vchSecret.begin(), vchSecret.size());
@@ -420,7 +420,7 @@ void COdynCashSecret::SetKey(const CKey& vchSecret)
         vchData.push_back(1);
 }
 
-CKey COdynCashSecret::GetKey()
+CKey CCashSecret::GetKey()
 {
     CKey ret;
     assert(vchData.size() >= 32);
@@ -428,19 +428,19 @@ CKey COdynCashSecret::GetKey()
     return ret;
 }
 
-bool COdynCashSecret::IsValid() const
+bool CCashSecret::IsValid() const
 {
     bool fExpectedFormat = vchData.size() == 32 || (vchData.size() == 33 && vchData[32] == 1);
     bool fCorrectVersion = vchVersion == Params().Base58Prefix(CChainParams::SECRET_KEY);
     return fExpectedFormat && fCorrectVersion;
 }
 
-bool COdynCashSecret::SetString(const char* pszSecret)
+bool CCashSecret::SetString(const char* pszSecret)
 {
     return CBase58Data::SetString(pszSecret) && IsValid();
 }
 
-bool COdynCashSecret::SetString(const std::string& strSecret)
+bool CCashSecret::SetString(const std::string& strSecret)
 {
     return SetString(strSecret.c_str());
 }

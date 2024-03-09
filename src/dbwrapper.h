@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_DBWRAPPER_H
-#define ODYNCASH_DBWRAPPER_H
+#ifndef CASH_DBWRAPPER_H
+#define CASH_DBWRAPPER_H
 
 #include "clientversion.h"
 #include "serialize.h"
@@ -371,4 +371,4 @@ public:
     }
 };
 
-#endif // ODYNCASH_DBWRAPPER_H
+#endif // CASH_DBWRAPPER_H

@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include "rpcconsole.h"
@@ -560,7 +560,7 @@ void RPCConsole::setClientModel(ClientModel* model)
         peersTableContextMenu->addAction(banAction7d);
         peersTableContextMenu->addAction(banAction365d);
 
-        // Add a signal mapping to allow odyncash context menu arguments.
+        // Add a signal mapping to allow cash context menu arguments.
         // We need to use int (instead of int64_t), because signal mapper only supports
         // int or objects, which is okay because max bantime (1 year) is < int_max.
         QSignalMapper* signalMapper = new QSignalMapper(this);
@@ -751,7 +751,7 @@ void RPCConsole::buildParameterlist(QString arg)
     // Append repair parameter to command line.
     args.append(arg);
 
-    // Send command-line arguments to OdynCashGUI::handleRestart()
+    // Send command-line arguments to CashGUI::handleRestart()
     Q_EMIT handleRestart(args);
 }
 

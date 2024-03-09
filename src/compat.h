@@ -5,11 +5,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_COMPAT_H
-#define ODYNCASH_COMPAT_H
+#ifndef CASH_COMPAT_H
+#define CASH_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #ifdef WIN32
@@ -104,4 +104,4 @@ bool static inline IsSelectableSocket(SOCKET s)
 #endif
 }
 
-#endif // ODYNCASH_COMPAT_H
+#endif // CASH_COMPAT_H

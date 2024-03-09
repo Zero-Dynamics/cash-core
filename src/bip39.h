@@ -28,8 +28,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ODYNCASH_BIP39_H
-#define ODYNCASH_BIP39_H
+#ifndef CASH_BIP39_H
+#define CASH_BIP39_H
 
 #include "support/allocators/secure.h"
 

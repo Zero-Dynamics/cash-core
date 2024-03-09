@@ -10,7 +10,7 @@
 #include "arith_uint256.h"
 #include "version.h"
 #include "test_random.h"
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 
 #include <vector>
 

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CHAINPARAMSBASE_H
-#define ODYNCASH_CHAINPARAMSBASE_H
+#ifndef CASH_CHAINPARAMSBASE_H
+#define CASH_CHAINPARAMSBASE_H
 
 #include <string>
 #include <vector>
@@ -14,8 +14,8 @@
 static const int DEFAULT_P2P_PORT = 44400;
 
 /**
- * CBaseChainParams defines the base parameters (shared between odyncash-cli and odyncashd)
- * of a given instance of the OdynCash system.
+ * CBaseChainParams defines the base parameters (shared between cash-cli and cashd)
+ * of a given instance of the Cash system.
  */
 class CBaseChainParams
 {
@@ -65,4 +65,4 @@ std::string ChainNameFromCommandLine();
  */
 bool AreBaseParamsConfigured();
 
-#endif // ODYNCASH_CHAINPARAMSBASE_H
+#endif // CASH_CHAINPARAMSBASE_H

@@ -5,14 +5,14 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_WALLETFRAME_H
-#define ODYNCASH_QT_WALLETFRAME_H
+#ifndef CASH_QT_WALLETFRAME_H
+#define CASH_QT_WALLETFRAME_H
 
 #include <QFrame>
 #include <QMap>
 
 class ClientModel;
-class OdynCashGUI;
+class CashGUI;
 class PlatformStyle;
 class SendCoinsRecipient;
 class WalletModel;
@@ -27,7 +27,7 @@ class WalletFrame : public QFrame
     Q_OBJECT
 
 public:
-    explicit WalletFrame(const PlatformStyle* platformStyle, OdynCashGUI* _gui = 0);
+    explicit WalletFrame(const PlatformStyle* platformStyle, CashGUI* _gui = 0);
     ~WalletFrame();
 
     void setClientModel(ClientModel* clientModel);
@@ -47,7 +47,7 @@ Q_SIGNALS:
 
 private:
     QStackedWidget* walletStack;
-    OdynCashGUI* gui;
+    CashGUI* gui;
     ClientModel* clientModel;
     QMap<QString, WalletView*> mapWalletViews;
 
@@ -97,4 +97,4 @@ public Q_SLOTS:
     void outOfSyncWarningClicked();
 };
 
-#endif // ODYNCASH_QT_WALLETFRAME_H
+#endif // CASH_QT_WALLETFRAME_H

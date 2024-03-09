@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_DHT_LIMITS_H
-#define ODYNCASH_DHT_LIMITS_H
+#ifndef CASH_DHT_LIMITS_H
+#define CASH_DHT_LIMITS_H
 
 /**!
 These limit classes define allowed salts (records) that the DHT will accept for storage.
@@ -31,4 +31,4 @@ bool CheckSalt(const std::string& strSalt, const unsigned int nHeight, std::stri
 bool CheckPubKey(const std::vector<unsigned char>& vchPubKey);
 uint16_t GetMaximumSlots(const std::string& salt);
 
-#endif // ODYNCASH_DHT_LIMITS_H
+#endif // CASH_DHT_LIMITS_H

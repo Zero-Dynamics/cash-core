@@ -7,10 +7,10 @@
 # Test merkleblock fetch/validation
 #
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 
-class MerkleBlockTest(OdynCashTestFramework):
+class MerkleBlockTest(CashTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)
@@ -71,7 +71,7 @@ class MerkleBlockTest(OdynCashTestFramework):
         txid_unspent = txid1 if txin_spent["txid"] != txid1 else txid2
 
         # We cant find the block from a fully-spent tx
-        # Doesn't apply to OdynCash - we have txindex always on
+        # Doesn't apply to Cash - we have txindex always on
         # assert_raises(JSONRPCException, self.nodes[2].gettxoutproof, [txid_spent])
         # ...but we can if we specify the block
         assert_equal(self.nodes[2].verifytxoutproof(self.nodes[2].gettxoutproof([txid_spent], blockhash)), [txid_spent])

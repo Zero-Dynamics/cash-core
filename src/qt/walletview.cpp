@@ -11,7 +11,7 @@
 #include "askpassphrasedialog.h"
 #include "bdappage.h"
 #include "clientmodel.h"
-#include "odyncashgui.h"
+#include "cashgui.h"
 #include "guiutil.h"
 #include "miningpage.h"
 #include "optionsmodel.h"
@@ -125,7 +125,7 @@ WalletView::~WalletView()
 {
 }
 
-void WalletView::setOdynCashGUI(OdynCashGUI* gui)
+void WalletView::setCashGUI(CashGUI* gui)
 {
     if (gui) {
         // Clicking on a transaction on the overview page simply sends you to transaction history page

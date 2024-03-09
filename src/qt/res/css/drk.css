@@ -787,16 +787,16 @@ QDialog#HelpMessageDialog QScrollBar:vertical, QDialog#HelpMessageDialog QScroll
 border:0;
 }
 
-/* About OdynCash Dialog */
+/* About Cash Dialog */
 QDialog#AboutDialog {
 background-color:#000000;
 }
 
-QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About OdynCash Contents */
+QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Cash Contents */
 margin-left:10px;
 }
 
-QDialog#AboutDialog QLabel#label_2 { /* Margin for About OdynCash text */
+QDialog#AboutDialog QLabel#label_2 { /* Margin for About Cash text */
 margin-right:10px;
 }
 

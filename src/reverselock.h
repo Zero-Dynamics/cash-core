@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_REVERSELOCK_H
-#define ODYNCASH_REVERSELOCK_H
+#ifndef CASH_REVERSELOCK_H
+#define CASH_REVERSELOCK_H
 
 /**
  * An RAII-style reverse lock. Unlocks on construction and locks on destruction.
@@ -35,4 +35,4 @@ private:
     Lock templock;
 };
 
-#endif // ODYNCASH_REVERSELOCK_H
+#endif // CASH_REVERSELOCK_H

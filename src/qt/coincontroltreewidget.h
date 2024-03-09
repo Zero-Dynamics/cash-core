@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_COINCONTROLTREEDIALOG_H
-#define ODYNCASH_QT_COINCONTROLTREEDIALOG_H
+#ifndef CASH_QT_COINCONTROLTREEDIALOG_H
+#define CASH_QT_COINCONTROLTREEDIALOG_H
 
 #include <QKeyEvent>
 #include <QTreeWidget>
@@ -22,4 +22,4 @@ protected:
     virtual void keyPressEvent(QKeyEvent* event) override;
 };
 
-#endif // ODYNCASH_QT_COINCONTROLTREEDIALOG_H
+#endif // CASH_QT_COINCONTROLTREEDIALOG_H

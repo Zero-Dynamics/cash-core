@@ -158,7 +158,7 @@ QTabBar { alignment: left; }
               <string>Add User</string>
              </property>
              <property name="icon">
-              <iconset resource="../odyncash.qrc">
+              <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
              </property>
              <property name="autoDefault">
@@ -178,7 +178,7 @@ QTabBar { alignment: left; }
               <string>Update User</string>
              </property>
              <property name="icon">
-              <iconset resource="../odyncash.qrc">
+              <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/edit</normaloff>:/icons/drk/edit</iconset>
              </property>
             </widget>
@@ -198,7 +198,7 @@ QTabBar { alignment: left; }
               <string>Delete User</string>
              </property>
              <property name="icon">
-              <iconset resource="../odyncash.qrc">
+              <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
              </property>
              <property name="autoDefault">
@@ -365,7 +365,7 @@ QTabBar { alignment: left; }
                 <string>Add Group</string>
                </property>
                <property name="icon">
-                <iconset resource="../odyncash.qrc">
+                <iconset resource="../cash.qrc">
                  <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
                </property>
                <property name="autoDefault">
@@ -385,7 +385,7 @@ QTabBar { alignment: left; }
                 <string>Update Group</string>
                </property>
                <property name="icon">
-                <iconset resource="../odyncash.qrc">
+                <iconset resource="../cash.qrc">
                  <normaloff>:/icons/drk/edit</normaloff>:/icons/drk/edit</iconset>
                </property>
               </widget>
@@ -405,7 +405,7 @@ QTabBar { alignment: left; }
                 <string>&amp;Delete Group</string>
                </property>
                <property name="icon">
-                <iconset resource="../odyncash.qrc">
+                <iconset resource="../cash.qrc">
                  <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
                </property>
                <property name="autoDefault">
@@ -566,7 +566,7 @@ QTabBar { alignment: left; }
                 <string>Accept</string>
                </property>
                <property name="icon">
-                <iconset resource="../odyncash.qrc">
+                <iconset resource="../cash.qrc">
                  <normaloff>:/icons/drk/transaction_confirmed</normaloff>:/icons/drk/transaction_confirmed</iconset>
                </property>
               </widget>
@@ -586,7 +586,7 @@ QTabBar { alignment: left; }
                 <string>Deny</string>
                </property>
                <property name="icon">
-                <iconset resource="../odyncash.qrc">
+                <iconset resource="../cash.qrc">
                  <normaloff>:/icons/drk/drkpurple_remove</normaloff>:/icons/drk/drkpurple_remove</iconset>
                </property>
               </widget>
@@ -606,7 +606,7 @@ QTabBar { alignment: left; }
                 <string>Spam</string>
                </property>
                <property name="icon">
-                <iconset resource="../odyncash.qrc">
+                <iconset resource="../cash.qrc">
                  <normaloff>:/icons/drk/transaction_abandoned</normaloff>:/icons/drk/transaction_abandoned</iconset>
                </property>
               </widget>
@@ -746,7 +746,7 @@ QTabBar { alignment: left; }
                 <string>Delete</string>
                </property>
                <property name="icon">
-                <iconset resource="../odyncash.qrc">
+                <iconset resource="../cash.qrc">
                  <normaloff>:/icons/drk/drkpurple_remove</normaloff>:/icons/drk/drkpurple_remove</iconset>
                </property>
               </widget>
@@ -893,7 +893,7 @@ QTabBar { alignment: left; }
                 <string>Delete</string>
                </property>
                <property name="icon">
-                <iconset resource="../odyncash.qrc">
+                <iconset resource="../cash.qrc">
                  <normaloff>:/icons/drk/drkpurple_remove</normaloff>:/icons/drk/drkpurple_remove</iconset>
                </property>
               </widget>
@@ -944,7 +944,7 @@ QTabBar { alignment: left; }
             <string>Add New Link</string>
            </property>
            <property name="icon">
-            <iconset resource="../odyncash.qrc">
+            <iconset resource="../cash.qrc">
              <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
            </property>
           </widget>
@@ -971,7 +971,7 @@ QTabBar { alignment: left; }
   </layout>
  </widget>
  <resources>
-  <include location="../odyncash.qrc"/>
+  <include location="../cash.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -6,8 +6,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_PRIMITIVES_TRANSACTION_H
-#define ODYNCASH_PRIMITIVES_TRANSACTION_H
+#ifndef CASH_PRIMITIVES_TRANSACTION_H
+#define CASH_PRIMITIVES_TRANSACTION_H
 
 #include "amount.h"
 #include "script/script.h"
@@ -408,4 +408,4 @@ struct CompareOutputBIP69 {
     }
 };
 
-#endif // ODYNCASH_PRIMITIVES_TRANSACTION_H
+#endif // CASH_PRIMITIVES_TRANSACTION_H

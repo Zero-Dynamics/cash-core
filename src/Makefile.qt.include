@@ -1,26 +1,26 @@
-bin_PROGRAMS += qt/odyncash-qt
-EXTRA_LIBRARIES += qt/libodyncashqt.a
+bin_PROGRAMS += qt/cash-qt
+EXTRA_LIBRARIES += qt/libcashqt.a
 
-# odyncash qt core #
+# cash qt core #
 QT_TS = \
-  qt/locale/odyncash_bg.ts \
-  qt/locale/odyncash_de.ts \
-  qt/locale/odyncash_en.ts \
-  qt/locale/odyncash_es.ts \
-  qt/locale/odyncash_fi.ts \
-  qt/locale/odyncash_fr.ts \
-  qt/locale/odyncash_it.ts \
-  qt/locale/odyncash_ja.ts \
-  qt/locale/odyncash_ko.ts \
-  qt/locale/odyncash_nl.ts \
-  qt/locale/odyncash_pl.ts \
-  qt/locale/odyncash_pt.ts \
-  qt/locale/odyncash_ru.ts \
-  qt/locale/odyncash_sk.ts \
-  qt/locale/odyncash_sv.ts \
-  qt/locale/odyncash_vi.ts \
-  qt/locale/odyncash_zh_CN.ts \
-  qt/locale/odyncash_zh_TW.ts
+  qt/locale/cash_bg.ts \
+  qt/locale/cash_de.ts \
+  qt/locale/cash_en.ts \
+  qt/locale/cash_es.ts \
+  qt/locale/cash_fi.ts \
+  qt/locale/cash_fr.ts \
+  qt/locale/cash_it.ts \
+  qt/locale/cash_ja.ts \
+  qt/locale/cash_ko.ts \
+  qt/locale/cash_nl.ts \
+  qt/locale/cash_pl.ts \
+  qt/locale/cash_pt.ts \
+  qt/locale/cash_ru.ts \
+  qt/locale/cash_sk.ts \
+  qt/locale/cash_sv.ts \
+  qt/locale/cash_vi.ts \
+  qt/locale/cash_zh_CN.ts \
+  qt/locale/cash_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -69,10 +69,10 @@ QT_MOC_CPP = \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
   qt/moc_csvmodelwriter.cpp \
-  qt/moc_odyncashaddressvalidator.cpp \
-  qt/moc_odyncashamountfield.cpp \
-  qt/moc_odyncashgui.cpp \
-  qt/moc_odyncashunits.cpp \
+  qt/moc_cashaddressvalidator.cpp \
+  qt/moc_cashamountfield.cpp \
+  qt/moc_cashgui.cpp \
+  qt/moc_cashunits.cpp \
   qt/moc_servicenodelist.cpp \
   qt/moc_editaddressdialog.cpp \
   qt/moc_guiutil.cpp \
@@ -111,23 +111,23 @@ QT_MOC_CPP = \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp
 
-ODYNCASH_MM = \
+CASH_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/odyncash.moc \
-  qt/odyncashamountfield.moc \
+  qt/cash.moc \
+  qt/cashamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_odyncash.cpp
-QT_QRC = qt/odyncash.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_odyncash_locale.cpp
-QT_QRC_LOCALE = qt/odyncash_locale.qrc
+QT_QRC_CPP = qt/qrc_cash.cpp
+QT_QRC = qt/cash.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_cash_locale.cpp
+QT_QRC_LOCALE = qt/cash_locale.qrc
 
-ODYNCASH_QT_H = \
+CASH_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
@@ -145,10 +145,10 @@ ODYNCASH_QT_H = \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
   qt/csvmodelwriter.h \
-  qt/odyncashaddressvalidator.h \
-  qt/odyncashamountfield.h \
-  qt/odyncashgui.h \
-  qt/odyncashunits.h \
+  qt/cashaddressvalidator.h \
+  qt/cashamountfield.h \
+  qt/cashgui.h \
+  qt/cashunits.h \
   qt/servicenodelist.h \
   qt/editaddressdialog.h \
   qt/guiconstants.h \
@@ -195,9 +195,9 @@ ODYNCASH_QT_H = \
   qt/winshutdownmonitor.h
 
 RES_ICONS = \
-  qt/res/icons/odyncash.icns \
-  qt/res/icons/odyncash.ico \
-  qt/res/icons/odyncash.png \
+  qt/res/icons/cash.icns \
+  qt/res/icons/cash.ico \
+  qt/res/icons/cash.png \
   qt/res/icons/drk/about.png \
   qt/res/icons/drk/about_qt.png \
   qt/res/icons/drk/add.png \
@@ -221,9 +221,9 @@ RES_ICONS = \
   qt/res/icons/drk/drkpurple_address-book.png \
   qt/res/icons/drk/drkpurple_editcopy.png \
   qt/res/icons/drk/drkpurple_remove.png \
-  qt/res/icons/drk/odyncash_testnet.ico \
-  qt/res/icons/drk/odyncash_testnet.png \
-  qt/res/icons/drk/odyncash.png \
+  qt/res/icons/drk/cash_testnet.ico \
+  qt/res/icons/drk/cash_testnet.png \
+  qt/res/icons/drk/cash.png \
   qt/res/icons/drk/servicenode_network.png \
   qt/res/icons/drk/edit.png \
   qt/res/icons/drk/editcopy.png \
@@ -267,16 +267,16 @@ RES_ICONS = \
   qt/res/icons/drk/verify.png \
   qt/res/icons/drk/warning.png
 
-ODYNCASH_QT_CPP = \
+CASH_QT_CPP = \
   qt/bantablemodel.cpp \
   qt/bdapaccounttablemodel.cpp \
   qt/bdaplinktablemodel.cpp \
   qt/clientmodel.cpp \
   qt/csvmodelwriter.cpp \
-  qt/odyncashaddressvalidator.cpp \
-  qt/odyncashamountfield.cpp \
-  qt/odyncashgui.cpp \
-  qt/odyncashunits.cpp \
+  qt/cashaddressvalidator.cpp \
+  qt/cashamountfield.cpp \
+  qt/cashgui.cpp \
+  qt/cashunits.cpp \
   qt/guiutil.cpp \
   qt/intro.cpp \
   qt/modaloverlay.cpp \
@@ -295,11 +295,11 @@ ODYNCASH_QT_CPP = \
   qt/utilitydialog.cpp
 
 if TARGET_WINDOWS
-ODYNCASH_QT_CPP += qt/winshutdownmonitor.cpp
+CASH_QT_CPP += qt/winshutdownmonitor.cpp
 endif
 
 if ENABLE_WALLET
-ODYNCASH_QT_CPP += \
+CASH_QT_CPP += \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
   qt/askpassphrasedialog.cpp \
@@ -349,7 +349,7 @@ RES_IMAGES = \
   qt/res/images/drk/drkpurple_qtreeview_selected.png \
   qt/res/images/drk/drkpurple_rightArrow_small.png \
   qt/res/images/drk/drkpurple_upArrow_small.png \
-  qt/res/images/drk/odyncash_logo_horizontal.png \
+  qt/res/images/drk/cash_logo_horizontal.png \
   qt/res/images/drk/splash_testnet.png \
   qt/res/images/drk/splash.png \
   qt/res/images/drk/unchecked.png
@@ -359,19 +359,19 @@ RES_CSS = \
 
 RES_MOVIES = $(wildcard qt/res/movies/spinner-*.png)
 
-ODYNCASH_RC = qt/res/odyncash-qt-res.rc
+CASH_RC = qt/res/cash-qt-res.rc
 
-ODYNCASH_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+CASH_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
 
-qt_libodyncashqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES) $(ODYNCASH_QT_INCLUDES) \
+qt_libcashqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES) $(CASH_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(QR_CFLAGS)
-qt_libodyncashqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libcashqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_libodyncashqt_a_SOURCES = $(ODYNCASH_QT_CPP) $(ODYNCASH_QT_H) $(QT_FORMS_UI) \
+qt_libcashqt_a_SOURCES = $(CASH_QT_CPP) $(CASH_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES)
 
-nodist_qt_libodyncashqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) \
+nodist_qt_libcashqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) \
   $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
 
 # forms/foo.h -> forms/ui_foo.h
@@ -380,70 +380,70 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libodyncashqt_a_OBJECTS) $(qt_odyncash_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libcashqt_a_OBJECTS) $(qt_cash_qt_OBJECTS) : | $(QT_MOC)
 
-# odyncash-qt binary #
-qt_odyncash_qt_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES) $(ODYNCASH_QT_INCLUDES) \
+# cash-qt binary #
+qt_cash_qt_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES) $(CASH_QT_INCLUDES) \
   $(QT_INCLUDES) $(QR_CFLAGS)
-qt_odyncash_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_cash_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_odyncash_qt_SOURCES = qt/odyncash.cpp
+qt_cash_qt_SOURCES = qt/cash.cpp
 if TARGET_DARWIN
-  qt_odyncash_qt_SOURCES += $(ODYNCASH_MM)
+  qt_cash_qt_SOURCES += $(CASH_MM)
 endif
 if TARGET_WINDOWS
-  qt_odyncash_qt_SOURCES += $(ODYNCASH_RC)
+  qt_cash_qt_SOURCES += $(CASH_RC)
 endif
-qt_odyncash_qt_LDADD = qt/libodyncashqt.a $(LIBODYNCASH_SERVER)
+qt_cash_qt_LDADD = qt/libcashqt.a $(LIBCASH_SERVER)
 if ENABLE_WALLET
-qt_odyncash_qt_LDADD += $(LIBODYNCASH_WALLET)
+qt_cash_qt_LDADD += $(LIBCASH_WALLET)
 endif
-qt_odyncash_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_cash_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 if ENABLE_GPU
-qt_odyncash_qt_LDADD += $(LIBODYNCASH_GPU_LDADD_EXTRA)
-qt_odyncash_qt_LDFLAGS += $(LIBODYNCASH_GPU_LDFLAGS_EXTRA)
+qt_cash_qt_LDADD += $(LIBCASH_GPU_LDADD_EXTRA)
+qt_cash_qt_LDFLAGS += $(LIBCASH_GPU_LDFLAGS_EXTRA)
 endif
 if ENABLE_ZMQ
-qt_odyncash_qt_LDADD += $(LIBODYNCASH_ZMQ) $(ZMQ_LIBS)
+qt_cash_qt_LDADD += $(LIBCASH_ZMQ) $(ZMQ_LIBS)
 endif
 
-qt_odyncash_qt_LDADD += $(LIBODYNCASH_CLI) $(LIBODYNCASH_COMMON) $(LIBODYNCASH_UTIL) $(LIBODYNCASH_CONSENSUS) $(LIBODYNCASH_CRYPTO) $(LIBUNIVALUE) $(LIBVGP) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+qt_cash_qt_LDADD += $(LIBCASH_CLI) $(LIBCASH_COMMON) $(LIBCASH_UTIL) $(LIBCASH_CONSENSUS) $(LIBCASH_CRYPTO) $(LIBUNIVALUE) $(LIBVGP) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) $(LIBTORRENT) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_odyncash_qt_LIBTOOLFLAGS = --tag CXX
+qt_cash_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-qt/odyncashstrings.cpp: $(libodyncash_server_a_SOURCES) $(libodyncash_wallet_a_SOURCES) $(libodyncash_common_a_SOURCES)
+qt/cashstrings.cpp: $(libcash_server_a_SOURCES) $(libcash_wallet_a_SOURCES) $(libcash_common_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) ../share/qt/extract_strings_qt.py $^
 
-translate: qt/odyncashstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(ODYNCASH_QT_CPP) $(ODYNCASH_QT_H) $(ODYNCASH_MM)
+translate: qt/cashstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(CASH_QT_CPP) $(CASH_QT_H) $(CASH_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/odyncash_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/cash_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@test -f $(@D)/$(<F) || cp -f $< $(@D)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name odyncash_locale $(@D)/$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name cash_locale $(@D)/$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name odyncash $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name cash $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libodyncashqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
+CLEAN_QT = $(nodist_qt_libcashqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
 
 CLEANFILES += $(CLEAN_QT)
 
-odyncash_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libodyncashqt_a_OBJECTS) $(qt_odyncash_qt_OBJECTS) qt/odyncash-qt$(EXEEXT) $(LIBODYNCASHQT)
+cash_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libcashqt_a_OBJECTS) $(qt_cash_qt_OBJECTS) qt/cash-qt$(EXEEXT) $(LIBCASHQT)
 
-odyncash_qt : qt/odyncash-qt$(EXEEXT)
+cash_qt : qt/cash-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

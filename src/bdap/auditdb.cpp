@@ -261,7 +261,7 @@ static bool CheckNewAuditTxInputs(const CAudit& audit, const CScript& scriptOp, 
             errorMessage = "CheckNewAuditTxInputs: - Could not find specified audit account owner! " + stringFromVch(audit.vchOwnerFullObjectPath);
             return error(errorMessage.c_str());
         }
-        COdynCashAddress address = entry.GetWalletAddress();
+        CCashAddress address = entry.GetWalletAddress();
         CKeyID keyID;
         if (!address.GetKeyID(keyID)) {
             errorMessage = "CheckNewAuditTxInputs: - Could not get key id. " + address.ToString();
@@ -270,7 +270,7 @@ static bool CheckNewAuditTxInputs(const CAudit& audit, const CScript& scriptOp, 
         // check signature and pubkey belongs to bdap account.
         CPubKey pubkey(vvchOpParameters[2]);
 
-        COdynCashAddress addressCompare(pubkey.GetID());
+        CCashAddress addressCompare(pubkey.GetID());
 
         if (!(address == addressCompare)) {
             errorMessage = "CheckNewAuditTxInputs: - Wallet address does not match. ";

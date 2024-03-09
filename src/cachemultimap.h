@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CACHEMULTIMAP_H
-#define ODYNCASH_CACHEMULTIMAP_H
+#ifndef CASH_CACHEMULTIMAP_H
+#define CASH_CACHEMULTIMAP_H
 
 #include "cachemap.h"
 #include "serialize.h"
@@ -251,4 +251,4 @@ private:
     }
 };
 
-#endif // ODYNCASH_CACHEMULTIMAP_H
+#endif // CASH_CACHEMULTIMAP_H

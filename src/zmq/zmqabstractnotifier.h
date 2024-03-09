@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_ZMQ_ZMQABSTRACTNOTIFIER_H
-#define ODYNCASH_ZMQ_ZMQABSTRACTNOTIFIER_H
+#ifndef CASH_ZMQ_ZMQABSTRACTNOTIFIER_H
+#define CASH_ZMQ_ZMQABSTRACTNOTIFIER_H
 
 #include "zmqconfig.h"
 
@@ -48,4 +48,4 @@ protected:
     std::string address;
 };
 
-#endif // ODYNCASH_ZMQ_ZMQABSTRACTNOTIFIER_H
+#endif // CASH_ZMQ_ZMQABSTRACTNOTIFIER_H

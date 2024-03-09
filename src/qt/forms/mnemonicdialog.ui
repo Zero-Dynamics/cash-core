@@ -257,7 +257,7 @@ p, li { white-space: pre-wrap; }
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../odyncash.qrc">
+              <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/drkpurple_editpaste</normaloff>:/icons/drk/drkpurple_editpaste</iconset>
              </property>
              <property name="iconSize">
@@ -277,7 +277,7 @@ p, li { white-space: pre-wrap; }
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../odyncash.qrc">
+              <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
              </property>
              <property name="iconSize">
@@ -477,7 +477,7 @@ Wallet will restart after mnemonic has been imported.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../odyncash.qrc">
+              <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/editcopy</normaloff>:/icons/drk/editcopy</iconset>
              </property>
              <property name="iconSize">
@@ -497,7 +497,7 @@ Wallet will restart after mnemonic has been imported.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../odyncash.qrc">
+              <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
              </property>
              <property name="iconSize">
@@ -810,7 +810,7 @@ Wallet will restart after mnemonic has been imported.</string>
               <string>Browse</string>
              </property>
              <property name="icon">
-              <iconset resource="../odyncash.qrc">
+              <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/browse</normaloff>:/icons/drk/browse</iconset>
              </property>
             </widget>
@@ -826,7 +826,7 @@ Wallet will restart after mnemonic has been imported.</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Tips: The private key file is the file exported by OdynCash 'dumpwallet filename', not the .dat file.</string>
+            <string>Tips: The private key file is the file exported by Cash 'dumpwallet filename', not the .dat file.</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -925,7 +925,7 @@ Your old account wallet file will be renamed to wallat.dat.before-mnemonic-impor
   </layout>
  </widget>
  <resources>
-  <include location="../odyncash.qrc"/>
+  <include location="../cash.qrc"/>
  </resources>
  <connections/>
 </ui>

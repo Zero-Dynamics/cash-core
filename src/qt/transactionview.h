@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_TRANSACTIONVIEW_H
-#define ODYNCASH_QT_TRANSACTIONVIEW_H
+#ifndef CASH_QT_TRANSACTIONVIEW_H
+#define CASH_QT_TRANSACTIONVIEW_H
 
 #include "guiutil.h"
 
@@ -128,4 +128,4 @@ public Q_SLOTS:
     void computeSum();
 };
 
-#endif // ODYNCASH_QT_TRANSACTIONVIEW_H
+#endif // CASH_QT_TRANSACTIONVIEW_H

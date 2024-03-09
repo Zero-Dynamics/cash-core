@@ -15,7 +15,7 @@
 #include "util.h"
 #include "validation.h"
 
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 
 #include <stdint.h>
 

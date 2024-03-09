@@ -1,7 +1,7 @@
 // Taken from https://gist.github.com/arvidsson/7231973
 
-#ifndef ODYNCASH_REVERSE_ITERATOR_H
-#define ODYNCASH_REVERSE_ITERATOR_H
+#ifndef CASH_REVERSE_ITERATOR_H
+#define CASH_REVERSE_ITERATOR_H
 
 /**
  * Template used for reverse iteration in C++11 range-based for loops.
@@ -36,4 +36,4 @@ reverse_range<T> reverse_iterate(T &x)
     return reverse_range<T>(x);
 }
 
-#endif // ODYNCASH_REVERSE_ITERATOR_H
+#endif // CASH_REVERSE_ITERATOR_H

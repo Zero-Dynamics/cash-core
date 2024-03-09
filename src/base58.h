@@ -13,8 +13,8 @@
  * - E-mail usually won't line-break if there's no punctuation to break at.
  * - Double-clicking selects the whole string as one word if it's all alphanumeric.
  */
-#ifndef ODYNCASH_BASE58_H
-#define ODYNCASH_BASE58_H
+#ifndef CASH_BASE58_H
+#define CASH_BASE58_H
 
 #include "bdap/stealth.h"
 #include "chainparams.h"
@@ -106,13 +106,13 @@ public:
     bool operator>(const CBase58Data& b58) const { return CompareTo(b58) > 0; }
 };
 
-/** base58-encoded OdynCash addresses.
+/** base58-encoded Cash addresses.
  * Public-key-hash-addresses have version 76 (or 140 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 16 (or 19 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
-class COdynCashAddress : public CBase58Data
+class CCashAddress : public CBase58Data
 {
 public:
     bool Set(const CKeyID& id);
@@ -124,10 +124,10 @@ public:
     bool IsValidStealthAddress() const;
     bool IsValidStealthAddress(const CChainParams& params) const;
 
-    COdynCashAddress() {}
-    COdynCashAddress(const CTxDestination& dest) { Set(dest); }
-    COdynCashAddress(const std::string& strAddress) { SetString(strAddress); }
-    COdynCashAddress(const char* pszAddress) { SetString(pszAddress); }
+    CCashAddress() {}
+    CCashAddress(const CTxDestination& dest) { Set(dest); }
+    CCashAddress(const std::string& strAddress) { SetString(strAddress); }
+    CCashAddress(const char* pszAddress) { SetString(pszAddress); }
 
     CTxDestination Get() const;
     bool GetKeyID(CKeyID& keyID) const;
@@ -138,7 +138,7 @@ public:
 /**
  * A base58-encoded secret key
  */
-class COdynCashSecret : public CBase58Data
+class CCashSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -147,12 +147,12 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    COdynCashSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    COdynCashSecret() {}
+    CCashSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CCashSecret() {}
 };
 
 template <typename K, int Size, CChainParams::Base58Type Type>
-class COdynCashExtKeyBase : public CBase58Data
+class CCashExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K& key)
@@ -172,20 +172,20 @@ public:
         return ret;
     }
 
-    COdynCashExtKeyBase(const K& key)
+    CCashExtKeyBase(const K& key)
     {
         SetKey(key);
     }
 
-    COdynCashExtKeyBase(const std::string& strBase58c)
+    CCashExtKeyBase(const std::string& strBase58c)
     {
         SetString(strBase58c.c_str(), Params().Base58Prefix(Type).size());
     }
 
-    COdynCashExtKeyBase() {}
+    CCashExtKeyBase() {}
 };
 
-typedef COdynCashExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> COdynCashExtKey;
-typedef COdynCashExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> COdynCashExtPubKey;
+typedef CCashExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CCashExtKey;
+typedef CCashExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CCashExtPubKey;
 
-#endif // ODYNCASH_BASE58_H
+#endif // CASH_BASE58_H

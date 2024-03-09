@@ -7,7 +7,7 @@
 
 #include "transactiondesc.h"
 
-#include "odyncashunits.h"
+#include "cashunits.h"
 #include "guiutil.h"
 #include "transactionrecord.h"
 
@@ -107,8 +107,8 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
         // Offline transaction
         if (nNet > 0) {
             // Credit
-            if (COdynCashAddress(rec->address).IsValid()) {
-                CTxDestination address = COdynCashAddress(rec->address).Get();
+            if (CCashAddress(rec->address).IsValid()) {
+                CTxDestination address = CCashAddress(rec->address).Get();
                 if (wallet->mapAddressBook.count(address)) {
                     strHTML += "<b>" + tr("From") + ":</b> " + tr("unknown") + "<br>";
                     strHTML += "<b>" + tr("To") + ":</b> ";
@@ -131,7 +131,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
         // Online transaction
         std::string strAddress = wtx.mapValue["to"];
         strHTML += "<b>" + tr("To") + ":</b> ";
-        CTxDestination dest = COdynCashAddress(strAddress).Get();
+        CTxDestination dest = CCashAddress(strAddress).Get();
         if (wallet->mapAddressBook.count(dest) && !wallet->mapAddressBook[dest].name.empty())
             strHTML += GUIUtil::HtmlEscape(wallet->mapAddressBook[dest].name) + " ";
         strHTML += GUIUtil::HtmlEscape(strAddress) + "<br>";
@@ -149,7 +149,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
             nUnmatured += wallet->GetCredit(txout, ISMINE_ALL);
         strHTML += "<b>" + tr("Credit") + ":</b> ";
         if (wtx.IsInMainChain())
-            strHTML += OdynCashUnits::formatHtmlWithUnit(unit, nUnmatured) + " (" + tr("matures in %n more block(s)", "", wtx.GetBlocksToMaturity()) + ")";
+            strHTML += CashUnits::formatHtmlWithUnit(unit, nUnmatured) + " (" + tr("matures in %n more block(s)", "", wtx.GetBlocksToMaturity()) + ")";
         else
             strHTML += "(" + tr("not accepted") + ")";
         strHTML += "<br>";
@@ -157,7 +157,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
         //
         // Credit
         //
-        strHTML += "<b>" + tr("Credit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, nNet) + "<br>";
+        strHTML += "<b>" + tr("Credit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, nNet) + "<br>";
     } else {
         isminetype fAllFromMe = ISMINE_SPENDABLE;
         BOOST_FOREACH (const CTxIn& txin, wtx.tx->vin) {
@@ -193,7 +193,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
                         strHTML += "<b>" + tr("To") + ":</b> ";
                         if (wallet->mapAddressBook.count(address) && !wallet->mapAddressBook[address].name.empty())
                             strHTML += GUIUtil::HtmlEscape(wallet->mapAddressBook[address].name) + " ";
-                        strHTML += GUIUtil::HtmlEscape(COdynCashAddress(address).ToString());
+                        strHTML += GUIUtil::HtmlEscape(CCashAddress(address).ToString());
                         if (toSelf == ISMINE_SPENDABLE)
                             strHTML += " (own address)";
                         else if (toSelf & ISMINE_WATCH_ONLY)
@@ -202,36 +202,36 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
                     }
                 }
 
-                strHTML += "<b>" + tr("Debit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, -txout.nValue) + "<br>";
+                strHTML += "<b>" + tr("Debit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, -txout.nValue) + "<br>";
                 if (toSelf)
-                    strHTML += "<b>" + tr("Credit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, txout.nValue) + "<br>";
+                    strHTML += "<b>" + tr("Credit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, txout.nValue) + "<br>";
             }
 
             if (fAllToMe) {
                 // Payment to self
                 CAmount nChange = wtx.GetChange();
                 CAmount nValue = nCredit - nChange;
-                strHTML += "<b>" + tr("Total debit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, -nValue) + "<br>";
-                strHTML += "<b>" + tr("Total credit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, nValue) + "<br>";
+                strHTML += "<b>" + tr("Total debit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, -nValue) + "<br>";
+                strHTML += "<b>" + tr("Total credit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, nValue) + "<br>";
             }
 
             CAmount nTxFee = nDebit - wtx.tx->GetValueOut();
             if (nTxFee > 0)
-                strHTML += "<b>" + tr("Transaction fee") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, -nTxFee) + "<br>";
+                strHTML += "<b>" + tr("Transaction fee") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, -nTxFee) + "<br>";
         } else {
             //
             // Mixed debit transaction
             //
             BOOST_FOREACH (const CTxIn& txin, wtx.tx->vin)
                 if (wallet->IsMine(txin))
-                    strHTML += "<b>" + tr("Debit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, -wallet->GetDebit(txin, ISMINE_ALL)) + "<br>";
+                    strHTML += "<b>" + tr("Debit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, -wallet->GetDebit(txin, ISMINE_ALL)) + "<br>";
             BOOST_FOREACH (const CTxOut& txout, wtx.tx->vout)
                 if (wallet->IsMine(txout))
-                    strHTML += "<b>" + tr("Credit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, wallet->GetCredit(txout, ISMINE_ALL)) + "<br>";
+                    strHTML += "<b>" + tr("Credit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, wallet->GetCredit(txout, ISMINE_ALL)) + "<br>";
         }
     }
 
-    strHTML += "<b>" + tr("Net amount") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, nNet, true) + "<br>";
+    strHTML += "<b>" + tr("Net amount") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, nNet, true) + "<br>";
 
     //
     // Message
@@ -245,7 +245,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
     strHTML += "<b>" + tr("Output index") + ":</b> " + QString::number(rec->getOutputIndex()) + "<br>";
     strHTML += "<b>" + tr("Transaction total size") + ":</b> " + QString::number(wtx.tx->GetTotalSize()) + " bytes<br>";
 
-    // Message from normal odyncash:URI (odyncash:XyZ...?message=example)
+    // Message from normal cash:URI (cash:XyZ...?message=example)
     Q_FOREACH (const PAIRTYPE(std::string, std::string) & r, wtx.vOrderForm)
         if (r.first == "Message")
             strHTML += "<br><b>" + tr("Message") + ":</b><br>" + GUIUtil::HtmlEscape(r.second, true) + "<br>";
@@ -261,10 +261,10 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
         strHTML += "<hr><br>" + tr("Debug information") + "<br><br>";
         BOOST_FOREACH (const CTxIn& txin, wtx.tx->vin)
             if (wallet->IsMine(txin))
-                strHTML += "<b>" + tr("Debit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, -wallet->GetDebit(txin, ISMINE_ALL)) + "<br>";
+                strHTML += "<b>" + tr("Debit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, -wallet->GetDebit(txin, ISMINE_ALL)) + "<br>";
         BOOST_FOREACH (const CTxOut& txout, wtx.tx->vout)
             if (wallet->IsMine(txout))
-                strHTML += "<b>" + tr("Credit") + ":</b> " + OdynCashUnits::formatHtmlWithUnit(unit, wallet->GetCredit(txout, ISMINE_ALL)) + "<br>";
+                strHTML += "<b>" + tr("Credit") + ":</b> " + CashUnits::formatHtmlWithUnit(unit, wallet->GetCredit(txout, ISMINE_ALL)) + "<br>";
 
         strHTML += "<br><b>" + tr("Transaction") + ":</b><br>";
         strHTML += GUIUtil::HtmlEscape(wtx.tx->ToString(), true);
@@ -284,9 +284,9 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
                     if (ExtractDestination(vout.scriptPubKey, address)) {
                         if (wallet->mapAddressBook.count(address) && !wallet->mapAddressBook[address].name.empty())
                             strHTML += GUIUtil::HtmlEscape(wallet->mapAddressBook[address].name) + " ";
-                        strHTML += QString::fromStdString(COdynCashAddress(address).ToString());
+                        strHTML += QString::fromStdString(CCashAddress(address).ToString());
                     }
-                    strHTML = strHTML + " " + tr("Amount") + "=" + OdynCashUnits::formatHtmlWithUnit(unit, vout.nValue);
+                    strHTML = strHTML + " " + tr("Amount") + "=" + CashUnits::formatHtmlWithUnit(unit, vout.nValue);
                     strHTML = strHTML + " IsMine=" + (wallet->IsMine(vout) & ISMINE_SPENDABLE ? tr("true") : tr("false"));
                     strHTML = strHTML + " IsWatchOnly=" + (wallet->IsMine(vout) & ISMINE_WATCH_ONLY ? tr("true") : tr("false")) + "</li>";
                 }

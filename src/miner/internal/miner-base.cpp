@@ -32,9 +32,9 @@ MinerBase::MinerBase(MinerContextRef ctx, std::size_t device_index)
 
 void MinerBase::Loop()
 {
-    LogPrintf("OdynCashMiner -- started on %s#%d\n", DeviceName(), _device_index);
+    LogPrintf("CashMiner -- started on %s#%d\n", DeviceName(), _device_index);
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread(tfm::format("OdynCash-%s-miner-%d", DeviceName(), _device_index).data());
+    RenameThread(tfm::format("Cash-%s-miner-%d", DeviceName(), _device_index).data());
 
     CBlock block;
     CBlockIndex* chain_tip = nullptr;
@@ -61,7 +61,7 @@ void MinerBase::Loop()
             assert(block_template != nullptr);
             // Increment nonce
             IncrementExtraNonce(block, chain_tip, _extra_nonce);
-            LogPrintf("OdynCashMiner -- Running miner on device %s#%d with %u transactions in block (%u bytes)\n", DeviceName(), _device_index, block.vtx.size(),
+            LogPrintf("CashMiner -- Running miner on device %s#%d with %u transactions in block (%u bytes)\n", DeviceName(), _device_index, block.vtx.size(),
                 GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION));
             // set loop start for counter
             _hash_target = arith_uint256().SetCompact(block.nBits);
@@ -96,10 +96,10 @@ void MinerBase::Loop()
             }
         }
     } catch (const boost::thread_interrupted&) {
-        LogPrintf("OdynCashMiner%s -- terminated\n", DeviceName());
+        LogPrintf("CashMiner%s -- terminated\n", DeviceName());
         throw;
     } catch (const std::runtime_error& e) {
-        LogPrintf("OdynCashMiner%s -- runtime error: %s\n", DeviceName(), e.what());
+        LogPrintf("CashMiner%s -- runtime error: %s\n", DeviceName(), e.what());
         return;
     }
 }
@@ -108,7 +108,7 @@ void MinerBase::ProcessFoundSolution(const CBlock& block, const uint256& hash)
 {
     // Found a solution
     SetThreadPriority(THREAD_PRIORITY_NORMAL);
-    LogPrintf("OdynCashMiner%s:\n proof-of-work found  \n  hash: %s  \ntarget: %s\n", DeviceName(), hash.GetHex(), _hash_target.GetHex());
+    LogPrintf("CashMiner%s:\n proof-of-work found  \n  hash: %s  \ntarget: %s\n", DeviceName(), hash.GetHex(), _hash_target.GetHex());
     ProcessBlockFound(block, _ctx->chainparams());
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
     _coinbase_script->KeepScript();

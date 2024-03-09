@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_FEES_H
-#define ODYNCASH_BDAP_FEES_H
+#ifndef CASH_BDAP_FEES_H
+#define CASH_BDAP_FEES_H
 
 #include "amount.h"
 #include "bdap/bdap.h"
@@ -51,4 +51,4 @@ public:
 bool GetBDAPFees(const opcodetype& opCodeAction, const opcodetype& opCodeObject, const BDAP::ObjectType objType, const uint16_t nQuantity, CAmount& monthlyFee, CAmount& oneTimeFee, CAmount& depositFee);
 bool ExtractAmountsFromTx(const CTransactionRef& ptx, CAmount& dataAmount, CAmount& opAmount);
 
-#endif // ODYNCASH_BDAP_FEES_H
+#endif // CASH_BDAP_FEES_H

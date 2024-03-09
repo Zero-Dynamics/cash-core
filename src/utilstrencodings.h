@@ -9,8 +9,8 @@
  * Utilities for converting data from/to strings.
  */
 
-#ifndef ODYNCASH_UTILSTRENCODINGS_H
-#define ODYNCASH_UTILSTRENCODINGS_H
+#ifndef CASH_UTILSTRENCODINGS_H
+#define CASH_UTILSTRENCODINGS_H
 
 #include <cstdlib>
 #include <stdint.h>
@@ -43,7 +43,7 @@ enum SafeChars {
 std::string SanitizeString(const std::string& str, int rule = SAFE_CHARS_DEFAULT);
 /// Formats the network peer user agent text (or subversion)
 /// by removing the begining and ending charactors(/).
-/// example: /OdynCash:1.0.0/ --> OdynCash:1.0.0
+/// example: /Cash:1.0.0/ --> Cash:1.0.0
 std::string SanitizeSubVersionString(const std::string& str);
 std::vector<unsigned char> ParseHex(const char* psz);
 std::vector<unsigned char> ParseHex(const std::string& str);
@@ -153,4 +153,4 @@ bool TimingResistantEqual(const T& a, const T& b)
  */
 bool ParseFixedPoint(const std::string& val, int decimals, int64_t* amount_out);
 
-#endif // ODYNCASH_UTILSTRENCODINGS_H
+#endif // CASH_UTILSTRENCODINGS_H

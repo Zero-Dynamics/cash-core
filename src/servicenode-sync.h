@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_SERVICENODE_SYNC_H
-#define ODYNCASH_SERVICENODE_SYNC_H
+#ifndef CASH_SERVICENODE_SYNC_H
+#define CASH_SERVICENODE_SYNC_H
 
 #include "chain.h"
 #include "net.h"
@@ -86,4 +86,4 @@ public:
 
 };
 
-#endif // ODYNCASH_SERVICENODE_SYNC_H
+#endif // CASH_SERVICENODE_SYNC_H

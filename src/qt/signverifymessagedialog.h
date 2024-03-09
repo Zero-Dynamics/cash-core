@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_SIGNVERIFYMESSAGEDIALOG_H
-#define ODYNCASH_QT_SIGNVERIFYMESSAGEDIALOG_H
+#ifndef CASH_QT_SIGNVERIFYMESSAGEDIALOG_H
+#define CASH_QT_SIGNVERIFYMESSAGEDIALOG_H
 
 #include <QDialog>
 
@@ -54,4 +54,4 @@ private Q_SLOTS:
     void on_clearButton_VM_clicked();
 };
 
-#endif // ODYNCASH_QT_SIGNVERIFYMESSAGEDIALOG_H
+#endif // CASH_QT_SIGNVERIFYMESSAGEDIALOG_H

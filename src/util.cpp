@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include "util.h"
@@ -105,7 +105,7 @@ std::string to_internal(const std::string&);
 
 } // namespace boost
 
-//OdynCash only features
+//Cash only features
 bool fServiceNodeMode = false;
 bool fLiteMode = false;
 /**
@@ -117,8 +117,8 @@ bool fLiteMode = false;
 */
 int nWalletBackups = 10;
 
-const char* const ODYNCASH_CONF_FILENAME = "odyncash.conf";
-const char* const ODYNCASH_PID_FILENAME = "odyncashd.pid";
+const char* const CASH_CONF_FILENAME = "cash.conf";
+const char* const CASH_PID_FILENAME = "cashd.pid";
 
 CCriticalSection cs_args;
 std::map<std::string, std::string> mapArgs;
@@ -271,11 +271,11 @@ bool LogAcceptCategory(const char* category)
                 const std::vector<std::string>& categories = mapMultiArgs.at("-debug");
                 ptrCategory.reset(new std::set<std::string>(categories.begin(), categories.end()));
                 // thread_specific_ptr automatically deletes the set when the thread ends.
-                // "odyncash" is a composite category enabling all OdynCash-related debug output
+                // "cash" is a composite category enabling all Cash-related debug output
                 //addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool"
                 //"|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|"
-                //"odyncash|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject|dht|bdap|validation|stealth|
-                if (ptrCategory->count(std::string("odyncash"))) {
+                //"cash|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject|dht|bdap|validation|stealth|
+                if (ptrCategory->count(std::string("cash"))) {
                     ptrCategory->insert(std::string("privatesend"));
                     ptrCategory->insert(std::string("instantsend"));
                     ptrCategory->insert(std::string("servicenode"));
@@ -536,7 +536,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "odyncash";
+    const char* pszModule = "cash";
 #endif
     if (pex)
         return strprintf(
@@ -556,13 +556,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\OdynCash
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\OdynCash
-    // Mac: ~/Library/Application Support/OdynCash
-    // Unix: ~/.odyncash
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Cash
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Cash
+    // Mac: ~/Library/Application Support/Cash
+    // Unix: ~/.cash
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "OdynCash";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Cash";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -572,10 +572,10 @@ boost::filesystem::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/OdynCash";
+    return pathRet / "Library/Application Support/Cash";
 #else
     // Unix
-    return pathRet / ".odyncash";
+    return pathRet / ".cash";
 #endif
 #endif
 }
@@ -619,7 +619,7 @@ static void WriteConfigFile(FILE* configFile)
     fputs(sUserID.c_str(), configFile);
     fputs(sRPCpassword.c_str(), configFile);
     fclose(configFile);
-    ReadConfigFile(GetArg("-conf", ODYNCASH_CONF_FILENAME));
+    ReadConfigFile(GetArg("-conf", CASH_CONF_FILENAME));
 }
 
 const boost::filesystem::path& GetDataDir(bool fNetSpecific)
@@ -689,12 +689,12 @@ void ReadConfigFile(const std::string& confPath)
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile(confPath));
     if (!streamConfig.good()) {
-        // Create odyncash.conf if it does not exist
+        // Create cash.conf if it does not exist
         FILE* configFile = fopen(GetConfigFile(confPath).string().c_str(), "a");
         if (configFile != NULL) {
-            // Write odyncash.conf file with random username and password.
+            // Write cash.conf file with random username and password.
             WriteConfigFile(configFile);
-            // New odyncash.conf file written, now read it.
+            // New cash.conf file written, now read it.
         }
     }
 
@@ -704,7 +704,7 @@ void ReadConfigFile(const std::string& confPath)
         setOptions.insert("*");
 
         for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it) {
-            // Don't overwrite existing settings so command line settings override odyncash.conf
+            // Don't overwrite existing settings so command line settings override cash.conf
             std::string strKey = std::string("-") + it->string_key;
             std::string strValue = it->value[0];
             InterpretNegativeSetting(strKey, strValue);
@@ -720,7 +720,7 @@ void ReadConfigFile(const std::string& confPath)
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", ODYNCASH_PID_FILENAME));
+    boost::filesystem::path pathPidFile(GetArg("-pid", CASH_PID_FILENAME));
     if (!pathPidFile.is_complete())
         pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;

@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_INTERNAL_MINER_CONTEXT_H
-#define ODYNCASH_INTERNAL_MINER_CONTEXT_H
+#ifndef CASH_INTERNAL_MINER_CONTEXT_H
+#define CASH_INTERNAL_MINER_CONTEXT_H
 
 #include "miner/internal/hash-rate-counter.h"
 
@@ -99,4 +99,4 @@ public:
     const CChainParams& chainparams() const { return shared->chainparams; }
 };
 
-#endif // ODYNCASH_INTERNAL_MINER_CONTEXT_H
+#endif // CASH_INTERNAL_MINER_CONTEXT_H

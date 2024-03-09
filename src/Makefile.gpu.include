@@ -2,37 +2,37 @@
 # Argon2 GPU miner
 #
 
-LIBODYNCASH_GPU = crypto/argon2gpu/libodyncash_gpu.a
-LIBODYNCASH_GPU_LDADD_EXTRA = $(LIBODYNCASH_GPU)
-LIBODYNCASH_GPU_LDFLAGS_EXTRA =
-EXTRA_LIBRARIES += $(LIBODYNCASH_GPU)
+LIBCASH_GPU = crypto/argon2gpu/libcash_gpu.a
+LIBCASH_GPU_LDADD_EXTRA = $(LIBCASH_GPU)
+LIBCASH_GPU_LDFLAGS_EXTRA =
+EXTRA_LIBRARIES += $(LIBCASH_GPU)
 
-crypto_argon2gpu_libodyncash_gpu_a_CPPFLAGS = $(ODYNCASH_INCLUDES)
-crypto_argon2gpu_libodyncash_gpu_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_argon2gpu_libodyncash_gpu_a_SOURCES = \
+crypto_argon2gpu_libcash_gpu_a_CPPFLAGS = $(CASH_INCLUDES)
+crypto_argon2gpu_libcash_gpu_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_argon2gpu_libcash_gpu_a_SOURCES = \
 	crypto/argon2gpu/blake2b.h \
 	crypto/argon2gpu/common.h \
 	crypto/argon2gpu/common.cpp \
 	crypto/argon2gpu/blake2b.cpp
 
 if ENABLE_CUDA
-LIBODYNCASH_GPU_CUDA = crypto/argon2gpu/cuda/libodyncash_gpu_cuda.a
-EXTRA_LIBRARIES += $(LIBODYNCASH_GPU_CUDA)
+LIBCASH_GPU_CUDA = crypto/argon2gpu/cuda/libcash_gpu_cuda.a
+EXTRA_LIBRARIES += $(LIBCASH_GPU_CUDA)
 
-LIBODYNCASH_GPU_LDADD_EXTRA += $(LIBODYNCASH_GPU_CUDA)
-LIBODYNCASH_GPU_LDADD_EXTRA += $(CUDA_LDLIBS)
-ODYNCASH_INCLUDES += $(CUDA_CFLAGS)
+LIBCASH_GPU_LDADD_EXTRA += $(LIBCASH_GPU_CUDA)
+LIBCASH_GPU_LDADD_EXTRA += $(CUDA_LDLIBS)
+CASH_INCLUDES += $(CUDA_CFLAGS)
 
 NVCCFLAGS += -arch=sm_30 -w -lineinfo -Xcompiler='--std=c++11 $(CFLAGS)'
 
-crypto_argon2gpu_cuda_libodyncash_gpu_cuda_a_AR = $(NVCC) $(NVCCFLAGS) -lib -o
-crypto_argon2gpu_cuda_libodyncash_gpu_cuda_a_LIBADD = $(CUDA_LDLIBS)
-crypto_argon2gpu_cuda_libodyncash_gpu_cuda_a_CPPFLAGS = $(ODYNCASH_INCLUDES)
-crypto_argon2gpu_cuda_libodyncash_gpu_cuda_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_argon2gpu_cuda_libodyncash_gpu_cuda_a_LIBADD += \
+crypto_argon2gpu_cuda_libcash_gpu_cuda_a_AR = $(NVCC) $(NVCCFLAGS) -lib -o
+crypto_argon2gpu_cuda_libcash_gpu_cuda_a_LIBADD = $(CUDA_LDLIBS)
+crypto_argon2gpu_cuda_libcash_gpu_cuda_a_CPPFLAGS = $(CASH_INCLUDES)
+crypto_argon2gpu_cuda_libcash_gpu_cuda_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_argon2gpu_cuda_libcash_gpu_cuda_a_LIBADD += \
 	crypto/argon2gpu/cuda/blake2b-kernels.cu.o \
 	crypto/argon2gpu/cuda/kernels.cu.o
-crypto_argon2gpu_cuda_libodyncash_gpu_cuda_a_SOURCES = \
+crypto_argon2gpu_cuda_libcash_gpu_cuda_a_SOURCES = \
 	crypto/argon2gpu/cuda/cuda-exception.h \
 	crypto/argon2gpu/cuda/device.h \
 	crypto/argon2gpu/cuda/global-context.h \
@@ -67,24 +67,24 @@ crypto/argon2gpu/cuda/kernels.o: crypto/argon2gpu/cuda/kernels.cu.o
 
 
 else
-LIBODYNCASH_GPU_OPENCL = crypto/argon2gpu/opencl/libodyncash_gpu_opencl.a
-EXTRA_LIBRARIES += $(LIBODYNCASH_GPU_OPENCL)
+LIBCASH_GPU_OPENCL = crypto/argon2gpu/opencl/libcash_gpu_opencl.a
+EXTRA_LIBRARIES += $(LIBCASH_GPU_OPENCL)
 
-LIBODYNCASH_GPU_LDADD_EXTRA += $(LIBODYNCASH_GPU_OPENCL)
+LIBCASH_GPU_LDADD_EXTRA += $(LIBCASH_GPU_OPENCL)
 
 if TARGET_DARWIN
-LIBODYNCASH_GPU_LDFLAGS_EXTRA += -stdlib=libc++ -framework OpenCL -L/System/Library/Frameworks/OpenCL.framework/Libraries -Wl,-x -m64
+LIBCASH_GPU_LDFLAGS_EXTRA += -stdlib=libc++ -framework OpenCL -L/System/Library/Frameworks/OpenCL.framework/Libraries -Wl,-x -m64
 else
-LIBODYNCASH_GPU_LDADD_EXTRA += -lOpenCL
+LIBCASH_GPU_LDADD_EXTRA += -lOpenCL
 endif
 
 OPENCL_KERNEL_FILES = crypto/argon2gpu/opencl/kernel.cl
 
 GENERATED_KERNEL_FILES = $(OPENCL_KERNEL_FILES:.cl=.cl.h)
 
-crypto_argon2gpu_opencl_libodyncash_gpu_opencl_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES)
-crypto_argon2gpu_opencl_libodyncash_gpu_opencl_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_argon2gpu_opencl_libodyncash_gpu_opencl_a_SOURCES = \
+crypto_argon2gpu_opencl_libcash_gpu_opencl_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES)
+crypto_argon2gpu_opencl_libcash_gpu_opencl_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_argon2gpu_opencl_libcash_gpu_opencl_a_SOURCES = \
 	$(OPENCL_KERNEL_FILES) \
 	crypto/argon2gpu/opencl/cl.hpp \
 	crypto/argon2gpu/opencl/device.h \
@@ -101,7 +101,7 @@ crypto_argon2gpu_opencl_libodyncash_gpu_opencl_a_SOURCES = \
 	crypto/argon2gpu/opencl/processing-unit.cpp \
 	crypto/argon2gpu/opencl/program-context.cpp
 
-nodist_crypto_argon2gpu_opencl_libodyncash_gpu_opencl_a_SOURCES = $(GENERATED_KERNEL_FILES)
+nodist_crypto_argon2gpu_opencl_libcash_gpu_opencl_a_SOURCES = $(GENERATED_KERNEL_FILES)
 
 BUILT_SOURCES = $(GENERATED_KERNEL_FILES)
 CLEANFILES += $(GENERATED_KERNEL_FILES)
@@ -116,5 +116,5 @@ CLEANFILES += $(GENERATED_KERNEL_FILES)
 	@echo "Generated $@"
 endif
 
-odyncashd_LDADD += $(LIBODYNCASH_GPU_LDADD_EXTRA)
-odyncashd_LDFLAGS += $(LIBODYNCASH_GPU_LDFLAGS_EXTRA)
+cashd_LDADD += $(LIBCASH_GPU_LDADD_EXTRA)
+cashd_LDFLAGS += $(LIBCASH_GPU_LDFLAGS_EXTRA)

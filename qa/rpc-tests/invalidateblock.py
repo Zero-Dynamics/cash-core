@@ -7,10 +7,10 @@
 # Test InvalidateBlock code
 #
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 
-class InvalidateTest(OdynCashTestFramework):
+class InvalidateTest(CashTestFramework):
     
         
     def setup_chain(self):

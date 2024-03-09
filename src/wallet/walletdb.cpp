@@ -360,11 +360,11 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue, CW
         if (strType == "name") {
             std::string strAddress;
             ssKey >> strAddress;
-            ssValue >> pwallet->mapAddressBook[COdynCashAddress(strAddress).Get()].name;
+            ssValue >> pwallet->mapAddressBook[CCashAddress(strAddress).Get()].name;
         } else if (strType == "purpose") {
             std::string strAddress;
             ssKey >> strAddress;
-            ssValue >> pwallet->mapAddressBook[COdynCashAddress(strAddress).Get()].purpose;
+            ssValue >> pwallet->mapAddressBook[CCashAddress(strAddress).Get()].purpose;
         } else if (strType == "tx") {
             uint256 hash;
             ssKey >> hash;
@@ -601,7 +601,7 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue, CW
             ssKey >> strAddress;
             ssKey >> strKey;
             ssValue >> strValue;
-            if (!pwallet->LoadDestData(COdynCashAddress(strAddress).Get(), strKey, strValue)) {
+            if (!pwallet->LoadDestData(CCashAddress(strAddress).Get(), strKey, strValue)) {
                 strErr = "Error reading wallet database: LoadDestData failed";
                 return false;
             }
@@ -904,7 +904,7 @@ DBErrors CWalletDB::ZapWalletTx(CWallet* pwallet, std::vector<CWalletTx>& vWtx)
 void ThreadFlushWalletDB()
 {
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("odyncash-wallet");
+    RenameThread("cash-wallet");
 
     static bool fOneThread;
     if (fOneThread)

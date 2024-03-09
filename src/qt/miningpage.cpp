@@ -25,10 +25,10 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
 #endif
     std::string PrivAddress = GetArg("-miningprivkey", "");
     if (!PrivAddress.empty()) {
-        COdynCashSecret Secret;
+        CCashSecret Secret;
         Secret.SetString(PrivAddress);
         if (Secret.IsValid()) {
-            COdynCashAddress Address;
+            CCashAddress Address;
             Address.Set(Secret.GetKey().GetPubKey().GetID());
             ui->labelAddress->setText(QString("All mined coins will go to %1").arg(Address.ToString().c_str()));
             hasMiningprivkey = true;
@@ -37,7 +37,7 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
 
     if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
         ui->sliderCPUCores->setVisible(false);
-        ui->labelNCPUCores->setText(tr("Slider will show once OdynCash has finished syncing"));
+        ui->labelNCPUCores->setText(tr("Slider will show once Cash has finished syncing"));
     } else {
         ui->sliderCPUCores->setVisible(true);
         ui->labelNCPUCores->setText(QString("%1").arg(nCPUMaxUseThreads));
@@ -50,7 +50,7 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
 #ifdef ENABLE_GPU
     if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
         ui->sliderGPUCores->setVisible(false);
-        ui->labelNGPUCores->setText(tr("Slider will show once OdynCash has finished syncing"));
+        ui->labelNGPUCores->setText(tr("Slider will show once Cash has finished syncing"));
     } else {
         ui->sliderGPUCores->setVisible(true);
         ui->labelNGPUCores->setText(QString("%1").arg(nGPUMaxUseThreads));
@@ -63,7 +63,7 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
     ui->checkBoxShowGPUGraph->setVisible(true);
 #else
     ui->sliderGPUCores->setVisible(false);
-    ui->labelNGPUCores->setText(tr("GPU mining is not supported in this version of OdynCash"));
+    ui->labelNGPUCores->setText(tr("GPU mining is not supported in this version of Cash"));
     ui->pushSwitchGPUMining->setVisible(false);
     ui->checkBoxShowGPUGraph->setVisible(false);
 #endif
@@ -92,8 +92,8 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
 #ifdef ENABLE_GPU
     ui->labelGPUMinerHashRate->setToolTip(tr("This shows the hashrate of your GPU whilst mining"));
 #endif
-    ui->labelNetHashRateCPU->setToolTip(tr("This shows the overall hashrate of the OdynCash network"));
-    ui->labelNetHashRateGPU->setToolTip(tr("This shows the overall hashrate of the OdynCash network"));
+    ui->labelNetHashRateCPU->setToolTip(tr("This shows the overall hashrate of the Cash network"));
+    ui->labelNetHashRateGPU->setToolTip(tr("This shows the overall hashrate of the Cash network"));
     ui->labelNextCPUBlock->setToolTip(tr("This shows the average time between the blocks you have mined"));
 #ifdef ENABLE_GPU
     ui->labelNextGPUBlock->setToolTip(tr("This shows the average time between the blocks you have mined"));

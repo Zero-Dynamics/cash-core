@@ -6,13 +6,13 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "odyncashunits.h"
+#include "cashunits.h"
 #include "guiutil.h"
 #include "netbase.h"
 #include "optionsmodel.h"
@@ -92,7 +92,7 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet) : QDialog(paren
     }
 
     /* Theme selector */
-    ui->theme->addItem(QString("ODYNCASH-purple"), QVariant("drk"));
+    ui->theme->addItem(QString("CASH-purple"), QVariant("drk"));
 
     /* Language selector */
     QDir translations(":translations");
@@ -123,7 +123,7 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet) : QDialog(paren
     ui->thirdPartyTxUrls->setPlaceholderText("https://example.com/tx/%s");
 #endif
 
-    ui->unit->setModel(new OdynCashUnits(this));
+    ui->unit->setModel(new CashUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -187,7 +187,7 @@ void OptionsDialog::setModel(OptionsModel* _model)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->odyncashAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->cashAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 

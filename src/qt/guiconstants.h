@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_GUICONSTANTS_H
-#define ODYNCASH_QT_GUICONSTANTS_H
+#ifndef CASH_QT_GUICONSTANTS_H
+#define CASH_QT_GUICONSTANTS_H
 
 /* Milliseconds between model updates */
 static const int MODEL_UPDATE_DELAY = 250;
@@ -14,7 +14,7 @@ static const int MODEL_UPDATE_DELAY = 250;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* OdynCashGUI -- Size of icons in status bar */
+/* CashGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -63,7 +63,7 @@ static const int MAX_URI_LENGTH = 255;
 
 #define QAPP_ORG_NAME "Duality Solutions"
 #define QAPP_ORG_DOMAIN "duality.solutions"
-#define QAPP_APP_NAME_DEFAULT "OdynCash-Qt"
-#define QAPP_APP_NAME_TESTNET "OdynCash-Qt-testnet"
+#define QAPP_APP_NAME_DEFAULT "Cash-Qt"
+#define QAPP_APP_NAME_TESTNET "Cash-Qt-testnet"
 
-#endif // ODYNCASH_QT_GUICONSTANTS_H
+#endif // CASH_QT_GUICONSTANTS_H

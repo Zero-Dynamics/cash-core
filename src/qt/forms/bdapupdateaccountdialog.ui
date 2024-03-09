@@ -92,7 +92,7 @@
           <string>OK</string>
          </property>
          <property name="icon">
-          <iconset resource="../odyncash.qrc">
+          <iconset resource="../cash.qrc">
            <normaloff>:/icons/drk/transaction_confirmed</normaloff>:/icons/drk/transaction_confirmed</iconset>
          </property>
         </widget>
@@ -139,7 +139,7 @@
           <string>Update</string>
          </property>
          <property name="icon">
-          <iconset resource="../odyncash.qrc">
+          <iconset resource="../cash.qrc">
            <normaloff>:/icons/drk/edit</normaloff>:/icons/drk/edit</iconset>
          </property>
         </widget>
@@ -156,7 +156,7 @@
           <string>Cancel</string>
          </property>
          <property name="icon">
-          <iconset resource="../odyncash.qrc">
+          <iconset resource="../cash.qrc">
            <normaloff>:/icons/drk/quit</normaloff>:/icons/drk/quit</iconset>
          </property>
         </widget>
@@ -181,7 +181,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../odyncash.qrc"/>
+  <include location="../cash.qrc"/>
  </resources>
  <connections/>
 </ui>

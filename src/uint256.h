@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_UINT256_H
-#define ODYNCASH_UINT256_H
+#ifndef CASH_UINT256_H
+#define CASH_UINT256_H
 
 #include "crypto/common.h"
 
@@ -215,4 +215,4 @@ public:
     }
 };
 
-#endif // ODYNCASH_UINT256_H
+#endif // CASH_UINT256_H

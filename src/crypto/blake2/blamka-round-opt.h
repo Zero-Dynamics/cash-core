@@ -19,7 +19,7 @@
 #define BLAKE_ROUND_MKA_OPT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include "blake2-impl.h"

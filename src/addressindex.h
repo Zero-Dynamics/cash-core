@@ -6,8 +6,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_ADDRESSINDEX_H
-#define ODYNCASH_ADDRESSINDEX_H
+#ifndef CASH_ADDRESSINDEX_H
+#define CASH_ADDRESSINDEX_H
 
 #include "amount.h"
 #include "uint256.h"
@@ -84,4 +84,4 @@ struct CMempoolAddressDeltaKeyCompare {
     }
 };
 
-#endif // ODYNCASH_ADDRESSINDEX_H
+#endif // CASH_ADDRESSINDEX_H

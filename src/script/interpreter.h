@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_SCRIPT_INTERPRETER_H
-#define ODYNCASH_SCRIPT_INTERPRETER_H
+#ifndef CASH_SCRIPT_INTERPRETER_H
+#define CASH_SCRIPT_INTERPRETER_H
 
 #include "primitives/transaction.h"
 #include "script_error.h"
@@ -139,4 +139,4 @@ public:
 bool EvalScript(std::vector<std::vector<unsigned char> >& stack, const CScript& script, unsigned int flags, const BaseSignatureChecker& checker, ScriptError* error = NULL);
 bool VerifyScript(const CScript& scriptSig, const CScript& scriptPubKeyIn, unsigned int flags, const BaseSignatureChecker& checker, ScriptError* serror = NULL);
 
-#endif // ODYNCASH_SCRIPT_INTERPRETER_H
+#endif // CASH_SCRIPT_INTERPRETER_H

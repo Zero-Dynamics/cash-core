@@ -137,7 +137,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../odyncash.qrc"/>
+  <include location="../cash.qrc"/>
  </resources>
  <connections/>
 </ui>

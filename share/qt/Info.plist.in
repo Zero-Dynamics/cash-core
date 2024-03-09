@@ -11,7 +11,7 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>odyncash.icns</string>
+  <string>cash.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
@@ -29,10 +29,10 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>OdynCash-Qt</string>
+  <string>Cash-Qt</string>
 
   <key>CFBundleIdentifier</key>
-  <string>io.odyncashpay.OdynCash-Qt</string>
+  <string>io.cashpay.Cash-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,10 +40,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.odyncash.OdynCashPayment</string>
+      <string>io.cash.CashPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>odyncash</string>
+        <string>cash</string>
       </array>
     </dict>
   </array>

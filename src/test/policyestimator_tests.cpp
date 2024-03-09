@@ -7,7 +7,7 @@
 #include "uint256.h"
 #include "util.h"
 
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 
 #include <boost/test/unit_test.hpp>
 

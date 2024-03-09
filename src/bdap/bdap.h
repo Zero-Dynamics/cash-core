@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_H
-#define ODYNCASH_BDAP_H
+#ifndef CASH_BDAP_H
+#define CASH_BDAP_H
 
 #include <string>
 #include <vector>
@@ -91,4 +91,4 @@ static const CharString vchDefaultAdminOU = ConvertConstantToCharString(DEFAULT_
 static const CharString vchDefaultOrganizationName = ConvertConstantToCharString(DEFAULT_ORGANIZATION_NAME);
 static const CharString vchDefaultOIDPrefix = ConvertConstantToCharString(DEFAULT_OID_PREFIX);
 
-#endif // ODYNCASH_BDAP_H
+#endif // CASH_BDAP_H

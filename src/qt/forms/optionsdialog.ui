@@ -447,7 +447,7 @@ QTabBar { alignment: left; }</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_Main">
        <item>
-        <widget class="QCheckBox" name="odyncashAtStartup">
+        <widget class="QCheckBox" name="cashAtStartup">
          <property name="palette">
           <palette>
            <active>
@@ -864,10 +864,10 @@ QTabBar { alignment: left; }</string>
           </palette>
          </property>
          <property name="toolTip">
-          <string>Automatically start OdynCash after logging in to the system.</string>
+          <string>Automatically start Cash after logging in to the system.</string>
          </property>
          <property name="text">
-          <string>&amp;Start OdynCash on system login</string>
+          <string>&amp;Start Cash on system login</string>
          </property>
         </widget>
        </item>
@@ -3587,7 +3587,7 @@ QTabBar { alignment: left; }</string>
             <string notr="true"/>
            </property>
            <property name="text">
-            <string>Amount of OdynCash to keep anonymized</string>
+            <string>Amount of Cash to keep anonymized</string>
            </property>
           </widget>
          </item>
@@ -4047,7 +4047,7 @@ QTabBar { alignment: left; }</string>
           </palette>
          </property>
          <property name="toolTip">
-          <string>Automatically open the OdynCash client port on the router. This only works when your router supports UPnP and it is enabled.</string>
+          <string>Automatically open the Cash client port on the router. This only works when your router supports UPnP and it is enabled.</string>
          </property>
          <property name="text">
           <string>Map port using &amp;UPnP</string>
@@ -4897,7 +4897,7 @@ QTabBar { alignment: left; }</string>
           </palette>
          </property>
          <property name="toolTip">
-          <string>Connect to the OdynCash network through a SOCKS5 proxy.</string>
+          <string>Connect to the Cash network through a SOCKS5 proxy.</string>
          </property>
          <property name="text">
           <string>&amp;Connect through SOCKS5 proxy (default proxy):</string>
@@ -6744,7 +6744,7 @@ QTabBar { alignment: left; }</string>
           </palette>
          </property>
          <property name="toolTip">
-          <string>Connect to the OdynCash network through a separate SOCKS5 proxy for Tor hidden services.</string>
+          <string>Connect to the Cash network through a separate SOCKS5 proxy for Tor hidden services.</string>
          </property>
          <property name="text">
           <string>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</string>
@@ -7750,7 +7750,7 @@ QTabBar { alignment: left; }</string>
          <item>
           <widget class="QValueComboBox" name="lang">
            <property name="toolTip">
-            <string>The user interface language can be set here. This setting will take effect after restarting OdynCash.</string>
+            <string>The user interface language can be set here. This setting will take effect after restarting Cash.</string>
            </property>
           </widget>
          </item>
@@ -7772,7 +7772,7 @@ QTabBar { alignment: left; }</string>
          </property>
          <property name="text">
           <string>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/odyncash/</string>
+https://www.transifex.com/projects/p/cash/</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>

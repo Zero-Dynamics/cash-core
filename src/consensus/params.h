@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CONSENSUS_PARAMS_H
-#define ODYNCASH_CONSENSUS_PARAMS_H
+#ifndef CASH_CONSENSUS_PARAMS_H
+#define CASH_CONSENSUS_PARAMS_H
 
 #include "uint256.h"
 
@@ -93,4 +93,4 @@ struct Params {
 };
 } // namespace Consensus
 
-#endif // ODYNCASH_CONSENSUS_PARAMS_H
+#endif // CASH_CONSENSUS_PARAMS_H

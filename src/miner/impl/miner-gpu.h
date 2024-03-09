@@ -2,11 +2,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_MINER_IMPL_GPU_H
-#define ODYNCASH_MINER_IMPL_GPU_H
+#ifndef CASH_MINER_IMPL_GPU_H
+#define CASH_MINER_IMPL_GPU_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #ifdef ENABLE_GPU
@@ -68,4 +68,4 @@ private:
 };
 
 #endif // ENABLE_GPU
-#endif // ODYNCASH_MINER_IMPL_GPU_H
+#endif // CASH_MINER_IMPL_GPU_H

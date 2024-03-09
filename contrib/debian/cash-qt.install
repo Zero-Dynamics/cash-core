@@ -1,0 +1,6 @@
+usr/local/bin/cash-qt usr/bin
+share/pixmaps/cash-32.xpm usr/share/pixmaps
+share/pixmaps/cash-16.xpm usr/share/pixmaps
+share/pixmaps/cash-128.png usr/share/pixmaps
+debian/cash-qt.desktop usr/share/applications
+debian/cash-qt.protocol usr/share/kde4/services/

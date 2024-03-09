@@ -1,6 +1,0 @@
-usr/local/bin/odyncash-qt usr/bin
-share/pixmaps/odyncash-32.xpm usr/share/pixmaps
-share/pixmaps/odyncash-16.xpm usr/share/pixmaps
-share/pixmaps/odyncash-128.png usr/share/pixmaps
-debian/odyncash-qt.desktop usr/share/applications
-debian/odyncash-qt.protocol usr/share/kde4/services/

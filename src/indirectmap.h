@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_INDIRECTMAP_H
-#define ODYNCASH_INDIRECTMAP_H
+#ifndef CASH_INDIRECTMAP_H
+#define CASH_INDIRECTMAP_H
 
 template <class T>
 struct DereferencingComparator {
@@ -60,4 +60,4 @@ public:
     const_iterator cend() const { return m.cend(); }
 };
 
-#endif // ODYNCASH_INDIRECTMAP_H
+#endif // CASH_INDIRECTMAP_H

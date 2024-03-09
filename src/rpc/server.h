@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_RPCSERVER_H
-#define ODYNCASH_RPCSERVER_H
+#ifndef CASH_RPCSERVER_H
+#define CASH_RPCSERVER_H
 
 #include "amount.h"
 #include "rpc/protocol.h"
@@ -152,7 +152,7 @@ public:
 };
 
 /**
- * OdynCash RPC command dispatcher.
+ * Cash RPC command dispatcher.
  */
 class CRPCTable
 {
@@ -214,4 +214,4 @@ void StopRPC();
 std::string JSONRPCExecBatch(const UniValue& vReq);
 void RPCNotifyBlockChange(bool ibd, const CBlockIndex*);
 
-#endif // ODYNCASH_RPCSERVER_H
+#endif // CASH_RPCSERVER_H

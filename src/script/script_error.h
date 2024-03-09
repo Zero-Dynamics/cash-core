@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_SCRIPT_SCRIPT_ERROR_H
-#define ODYNCASH_SCRIPT_SCRIPT_ERROR_H
+#ifndef CASH_SCRIPT_SCRIPT_ERROR_H
+#define CASH_SCRIPT_SCRIPT_ERROR_H
 
 typedef enum ScriptError_t {
     SCRIPT_ERR_OK = 0,
@@ -58,4 +58,4 @@ typedef enum ScriptError_t {
 
 const char* ScriptErrorString(const ScriptError error);
 
-#endif // ODYNCASH_SCRIPT_SCRIPT_ERROR_H
+#endif // CASH_SCRIPT_SCRIPT_ERROR_H

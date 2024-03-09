@@ -186,7 +186,7 @@ static UniValue NewRootCA(const JSONRPCRequest& request)
                 << vchVersion << vchMonths << vchSubjectFQDN << SubjectPublicKey << vchSubjectFQDN << SubjectPublicKey << OP_2DROP << OP_2DROP << OP_2DROP << OP_2DROP;
 
     CKeyID keyWalletID = privSubjectDHTKey.GetID();
-    COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
+    CCashAddress walletAddress = CCashAddress(keyWalletID);
 
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
@@ -205,7 +205,7 @@ static UniValue NewRootCA(const JSONRPCRequest& request)
     if (!GetBDAPFees(OP_BDAP_MODIFY, OP_BDAP_CERTIFICATE, bdapType, nMonths, monthlyFee, oneTimeFee, depositFee))
         throw JSONRPCError(RPC_BDAP_FEE_UNKNOWN, strprintf("Error calculating BDAP fees."));
 
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
@@ -402,7 +402,7 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
                 << vchVersion << vchMonths << vchSubjectFQDN << SubjectPublicKey << vchIssuerFQDN << OP_2DROP << OP_2DROP << OP_2DROP << OP_DROP;
 
     CKeyID keyWalletID = privSubjectDHTKey.GetID();
-    COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
+    CCashAddress walletAddress = CCashAddress(keyWalletID);
 
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
@@ -421,7 +421,7 @@ static UniValue RequestCertificate(const JSONRPCRequest& request)
     if (!GetBDAPFees(OP_BDAP_NEW, OP_BDAP_CERTIFICATE, bdapType, nMonths, monthlyFee, oneTimeFee, depositFee))
         throw JSONRPCError(RPC_BDAP_FEE_UNKNOWN, strprintf("Error calculating BDAP fees."));
 
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
@@ -609,7 +609,7 @@ static UniValue ApproveCertificate(const JSONRPCRequest& request)
     scriptPubKey << CScript::EncodeOP_N(OP_BDAP_MODIFY) << CScript::EncodeOP_N(OP_BDAP_CERTIFICATE)
                 << vchVersion << vchMonths << vchSubject << vchSubjectPubKey << vchIssuer << vchIssuerPubKey << OP_2DROP << OP_2DROP << OP_2DROP << OP_2DROP;
 
-    COdynCashAddress walletAddress = subjectDomainEntry.GetWalletAddress();
+    CCashAddress walletAddress = subjectDomainEntry.GetWalletAddress();
 
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
@@ -628,7 +628,7 @@ static UniValue ApproveCertificate(const JSONRPCRequest& request)
     if (!GetBDAPFees(OP_BDAP_MODIFY, OP_BDAP_CERTIFICATE, bdapType, nMonths, monthlyFee, oneTimeFee, depositFee))
         throw JSONRPCError(RPC_BDAP_FEE_UNKNOWN, strprintf("Error calculating BDAP fees."));
 
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 

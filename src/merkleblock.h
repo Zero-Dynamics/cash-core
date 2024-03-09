@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_MERKLEBLOCK_H
-#define ODYNCASH_MERKLEBLOCK_H
+#ifndef CASH_MERKLEBLOCK_H
+#define CASH_MERKLEBLOCK_H
 
 #include "bloom.h"
 #include "primitives/block.h"
@@ -158,4 +158,4 @@ public:
     }
 };
 
-#endif // ODYNCASH_MERKLEBLOCK_H
+#endif // CASH_MERKLEBLOCK_H

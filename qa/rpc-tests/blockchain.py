@@ -10,7 +10,7 @@
 
 from decimal import Decimal
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.authproxy import JSONRPCException
 from test_framework.util import (
     initialize_chain,
@@ -23,7 +23,7 @@ from test_framework.util import (
 )
 
 
-class BlockchainTest(OdynCashTestFramework):
+class BlockchainTest(CashTestFramework):
     """
     Test blockchain-related RPC calls:
 

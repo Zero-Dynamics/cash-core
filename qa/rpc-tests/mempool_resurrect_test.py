@@ -8,11 +8,11 @@
 # the blockchain is re-organized.
 #
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 
 # Create one-input, one-output, no-fee transaction:
-class MempoolCoinbaseTest(OdynCashTestFramework):
+class MempoolCoinbaseTest(CashTestFramework):
 
     def setup_network(self):
         # Just need one node for this test

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_WALLET_WALLET_ISMINE_H
-#define ODYNCASH_WALLET_WALLET_ISMINE_H
+#ifndef CASH_WALLET_WALLET_ISMINE_H
+#define CASH_WALLET_WALLET_ISMINE_H
 
 #include "script/standard.h"
 
@@ -32,4 +32,4 @@ typedef uint8_t isminefilter;
 isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest);
 
-#endif // ODYNCASH_WALLET_WALLET_ISMINE_H
+#endif // CASH_WALLET_WALLET_ISMINE_H

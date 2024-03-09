@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_ALERT_H
-#define ODYNCASH_ALERT_H
+#ifndef CASH_ALERT_H
+#define CASH_ALERT_H
 
 #include "serialize.h"
 #include "sync.h"
@@ -115,4 +115,4 @@ public:
     static CAlert getAlertByHash(const uint256& hash);
 };
 
-#endif // ODYNCASH_ALERT_H
+#endif // CASH_ALERT_H

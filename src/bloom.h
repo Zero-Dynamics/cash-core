@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BLOOM_H
-#define ODYNCASH_BLOOM_H
+#ifndef CASH_BLOOM_H
+#define CASH_BLOOM_H
 
 #include "serialize.h"
 
@@ -143,4 +143,4 @@ private:
     int nHashFuncs;
 };
 
-#endif // ODYNCASH_BLOOM_H
+#endif // CASH_BLOOM_H

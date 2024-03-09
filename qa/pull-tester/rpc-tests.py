@@ -34,8 +34,8 @@ from tests_config import *
 #If imported values are not defined then set to zero (or disabled)
 if 'ENABLE_WALLET' not in vars():
     ENABLE_WALLET=0
-if 'ENABLE_ODYNCASHD' not in vars():
-    ENABLE_ODYNCASHD=0
+if 'ENABLE_CASHD' not in vars():
+    ENABLE_CASHD=0
 if 'ENABLE_UTILS' not in vars():
     ENABLE_UTILS=0
 if 'ENABLE_ZMQ' not in vars():
@@ -62,10 +62,10 @@ for arg in sys.argv[1:]:
 
 #Set env vars
 buildDir = BUILDDIR
-if "ODYNCASHD" not in os.environ:
-    os.environ["ODYNCASHD"] = buildDir + '/src/odyncashd' + EXEEXT
-if "ODYNCASHCLI" not in os.environ:
-    os.environ["ODYNCASHCLI"] = buildDir + '/src/odyncash-cli' + EXEEXT
+if "CASHD" not in os.environ:
+    os.environ["CASHD"] = buildDir + '/src/cashd' + EXEEXT
+if "CASHCLI" not in os.environ:
+    os.environ["CASHCLI"] = buildDir + '/src/cash-cli' + EXEEXT
 
 if EXEEXT == ".exe" and "-win" not in opts:
     # https://github.com/bitcoin/bitcoin/commit/d52802551752140cf41f0d9a225a43e84404d3e9
@@ -73,8 +73,8 @@ if EXEEXT == ".exe" and "-win" not in opts:
     print "Win tests currently disabled by default.  Use -win option to enable"
     sys.exit(0)
 
-if not (ENABLE_WALLET == 1 and ENABLE_UTILS == 1 and ENABLE_ODYNCASHD == 1):
-    print "No rpc tests to run. Wallet, utils, and odyncashd must all be enabled"
+if not (ENABLE_WALLET == 1 and ENABLE_UTILS == 1 and ENABLE_CASHD == 1):
+    print "No rpc tests to run. Wallet, utils, and cashd must all be enabled"
     sys.exit(0)
 
 # python-zmq may not be installed. Handle this gracefully and with some helpful info
@@ -116,14 +116,14 @@ testScripts = [
     'timestampindex.py',
     'spentindex.py',
     'decodescript.py',
-    'p2p-fullblocktest.py', # NOTE: needs odyncash_hash to pass
+    'p2p-fullblocktest.py', # NOTE: needs cash_hash to pass
     'blockchain.py',
     'disablewallet.py',
-    'sendheaders.py', # NOTE: needs odyncash_hash to pass
+    'sendheaders.py', # NOTE: needs cash_hash to pass
     'keypool.py',
     'prioritise_transaction.py',
-    'invalidblockrequest.py', # NOTE: needs odyncash_hash to pass
-    'invalidtxrequest.py', # NOTE: needs odyncash_hash to pass
+    'invalidblockrequest.py', # NOTE: needs cash_hash to pass
+    'invalidtxrequest.py', # NOTE: needs cash_hash to pass
     'abandonconflict.py',
     'p2p-versionbits-warning.py',
 ]
@@ -133,9 +133,9 @@ if ENABLE_ZMQ:
 testScriptsExt = [
     'bip9-softforks.py',
     'bip65-cltv.py',
-    'bip65-cltv-p2p.py', # NOTE: needs odyncash_hash to pass
+    'bip65-cltv-p2p.py', # NOTE: needs cash_hash to pass
     'bip68-sequence.py',
-    'bipdersig-p2p.py', # NOTE: needs odyncash_hash to pass
+    'bipdersig-p2p.py', # NOTE: needs cash_hash to pass
     'bipdersig.py',
     'getblocktemplate_longpoll.py', # FIXME: "socket.error: [Errno 54] Connection reset by peer" on my Mac, same as  https://github.com/bitcoin/bitcoin/issues/6651
     'getblocktemplate_proposals.py',
@@ -147,10 +147,10 @@ testScriptsExt = [
 #    'rpcbind_test.py', #temporary, bug in libevent, see #6655
     'smartfees.py',
     'maxblocksinflight.py',
-    'p2p-acceptblock.py', # NOTE: needs odyncash_hash to pass
+    'p2p-acceptblock.py', # NOTE: needs cash_hash to pass
     'mempool_packages.py',
     'maxuploadtarget.py',
-    # 'replace-by-fee.py', # RBF is disabled in OdynCash
+    # 'replace-by-fee.py', # RBF is disabled in Cash
 ]
 
 def runtests():
@@ -212,7 +212,7 @@ class RPCCoverage(object):
     Coverage calculation works by having each test script subprocess write
     coverage files into a particular directory. These files contain the RPC
     commands invoked during testing, as well as a complete listing of RPC
-    commands per `odyncash-cli help` (`rpc_interface.txt`).
+    commands per `cash-cli help` (`rpc_interface.txt`).
 
     After all tests complete, the commands run are combined and diff'd against
     the complete list to calculate uncovered RPC commands.

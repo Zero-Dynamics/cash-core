@@ -5,14 +5,14 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_OPTIONSMODEL_H
-#define ODYNCASH_QT_OPTIONSMODEL_H
+#ifndef CASH_QT_OPTIONSMODEL_H
+#define CASH_QT_OPTIONSMODEL_H
 
 #include "amount.h"
 
 #include <QAbstractListModel>
 
-/** Interface from Qt to configuration data structure for OdynCash client.
+/** Interface from Qt to configuration data structure for Cash client.
    To Qt, the options are presented as a list with the different options
    laid out vertically.
    This can be changed to a tree once the settings become sufficiently
@@ -37,7 +37,7 @@ public:
         ProxyUseTor,             // bool
         ProxyIPTor,              // QString
         ProxyPortTor,            // int
-        DisplayUnit,             // OdynCashUnits::Unit
+        DisplayUnit,             // CashUnits::Unit
         ThirdPartyTxUrls,        // QString
         Digits,                  // QString
         Theme,                   // QString
@@ -111,4 +111,4 @@ Q_SIGNALS:
     void hideTrayIconChanged(bool);
 };
 
-#endif // ODYNCASH_QT_OPTIONSMODEL_H
+#endif // CASH_QT_OPTIONSMODEL_H

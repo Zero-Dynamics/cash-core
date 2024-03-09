@@ -8,8 +8,8 @@
 #include "guiutil.h"
 
 #include "arith_uint256.h"
-#include "odyncashaddressvalidator.h"
-#include "odyncashunits.h"
+#include "cashaddressvalidator.h"
+#include "cashunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
 
@@ -103,7 +103,7 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
-QFont OdynCashAddressFont()
+QFont CashAddressFont()
 {
     QFont font("Monospace");
 #if QT_VERSION >= 0x040800
@@ -139,7 +139,7 @@ static std::string DummyAddress(const CChainParams& params)
     sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));
     for (int i = 0; i < 256; ++i) { // Try every trailing byte
         std::string s = EncodeBase58(sourcedata.data(), sourcedata.data() + sourcedata.size());
-        if (!COdynCashAddress(s).IsValid())
+        if (!CCashAddress(s).IsValid())
             return s;
         sourcedata[sourcedata.size() - 1] += 1;
     }
@@ -154,10 +154,10 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a OdynCash address (e.g. %1)").arg(QString::fromStdString(DummyAddress(Params()))));
+    widget->setPlaceholderText(QObject::tr("Enter a Cash address (e.g. %1)").arg(QString::fromStdString(DummyAddress(Params()))));
 #endif
-    widget->setValidator(new OdynCashAddressEntryValidator(parent));
-    widget->setCheckValidator(new OdynCashAddressCheckValidator(parent));
+    widget->setValidator(new CashAddressEntryValidator(parent));
+    widget->setCheckValidator(new CashAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit* widget, QWidget* parent)
@@ -169,10 +169,10 @@ void setupAmountWidget(QLineEdit* widget, QWidget* parent)
     widget->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 }
 
-bool parseOdynCashURI(const QUrl& uri, SendCoinsRecipient* out)
+bool parseCashURI(const QUrl& uri, SendCoinsRecipient* out)
 {
-    // return if URI is not valid or is no odyncash: URI
-    if (!uri.isValid() || uri.scheme() != QString("odyncash"))
+    // return if URI is not valid or is no cash: URI
+    if (!uri.isValid() || uri.scheme() != QString("cash"))
         return false;
 
     SendCoinsRecipient rv;
@@ -213,7 +213,7 @@ bool parseOdynCashURI(const QUrl& uri, SendCoinsRecipient* out)
             fShouldReturnFalse = false;
         } else if (i->first == "amount") {
             if (!i->second.isEmpty()) {
-                if (!OdynCashUnits::parse(OdynCashUnits::ODYNC, i->second, &rv.amount)) {
+                if (!CashUnits::parse(CashUnits::ODYNC, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -229,26 +229,26 @@ bool parseOdynCashURI(const QUrl& uri, SendCoinsRecipient* out)
     return true;
 }
 
-bool parseOdynCashURI(QString uri, SendCoinsRecipient* out)
+bool parseCashURI(QString uri, SendCoinsRecipient* out)
 {
-    // Convert odyncash:// to odyncash:
+    // Convert cash:// to cash:
     //
-    //    Cannot handle this later, because odyncash:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because cash:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if (uri.startsWith("odyncash://", Qt::CaseInsensitive)) {
-        uri.replace(0, 7, "odyncash:");
+    if (uri.startsWith("cash://", Qt::CaseInsensitive)) {
+        uri.replace(0, 7, "cash:");
     }
     QUrl uriInstance(uri);
-    return parseOdynCashURI(uriInstance, out);
+    return parseCashURI(uriInstance, out);
 }
 
-QString formatOdynCashURI(const SendCoinsRecipient& info)
+QString formatCashURI(const SendCoinsRecipient& info)
 {
-    QString ret = QString("odyncash:%1").arg(info.address);
+    QString ret = QString("cash:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount) {
-        ret += QString("?amount=%1").arg(OdynCashUnits::format(OdynCashUnits::ODYNC, info.amount, false, OdynCashUnits::separatorNever));
+        ret += QString("?amount=%1").arg(CashUnits::format(CashUnits::ODYNC, info.amount, false, CashUnits::separatorNever));
         paramCount++;
     }
 
@@ -274,7 +274,7 @@ QString formatOdynCashURI(const SendCoinsRecipient& info)
 
 bool isDust(const QString& address, const CAmount& amount)
 {
-    CTxDestination dest = COdynCashAddress(address.toStdString()).Get();
+    CTxDestination dest = CCashAddress(address.toStdString()).Get();
     CScript script = GetScriptForDestination(dest);
     CTxOut txOut(amount, script);
     return txOut.IsDust(dustRelayFee);
@@ -422,9 +422,9 @@ void openDebugLogfile()
 
 void openConfigfile()
 {
-    boost::filesystem::path pathConfig = GetConfigFile(GetArg("-conf", ODYNCASH_CONF_FILENAME));
+    boost::filesystem::path pathConfig = GetConfigFile(GetArg("-conf", CASH_CONF_FILENAME));
 
-    /* Open odyncash.conf with the associated application */
+    /* Open cash.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
@@ -622,15 +622,15 @@ boost::filesystem::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "OdynCash.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Cash.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "OdynCash (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("OdynCash (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Cash (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Cash (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for OdynCash*.lnk
+    // check for Cash*.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -721,8 +721,8 @@ boost::filesystem::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "odyncash.desktop";
-    return GetAutostartDir() / strprintf("odyncash-%s.lnk", chain);
+        return GetAutostartDir() / "cash.desktop";
+    return GetAutostartDir() / strprintf("cash-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -759,13 +759,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a odyncash.desktop file to the autostart directory:
+        // Write a cash.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=OdynCash\n";
+            optionFile << "Name=Cash\n";
         else
-            optionFile << strprintf("Name=OdynCash (%s)\n", chain);
+            optionFile << strprintf("Name=Cash (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", GetBoolArg("-testnet", false), GetBoolArg("-regtest", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -791,7 +791,7 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
         return nullptr;
     }
 
-    // loop through the list of startup items and try to find the OdynCash app
+    // loop through the list of startup items and try to find the Cash app
     for (int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
         UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
@@ -823,21 +823,21 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef odyncashAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef cashAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, odyncashAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, cashAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef odyncashAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef cashAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, odyncashAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, cashAppUrl);
 
     if (fAutoStart && !foundItem) {
-        // add OdynCash Core app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, odyncashAppUrl, NULL, NULL);
+        // add Cash Core app to startup item list
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, cashAppUrl, NULL, NULL);
     } else if (!fAutoStart && foundItem) {
         // remove item
         LSSharedFileListItemRemove(loginItems, foundItem);

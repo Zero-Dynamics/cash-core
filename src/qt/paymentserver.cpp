@@ -7,7 +7,7 @@
 
 #include "paymentserver.h"
 
-#include "odyncashunits.h"
+#include "cashunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -36,8 +36,8 @@
 #include <QUrlQuery>
 #endif
 
-const int ODYNCASH_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString ODYNCASH_IPC_PREFIX("odyncash:");
+const int CASH_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
+const QString CASH_IPC_PREFIX("cash:");
 
 //
 // Create a name that is unique for:
@@ -46,7 +46,7 @@ const QString ODYNCASH_IPC_PREFIX("odyncash:");
 //
 static QString ipcServerName()
 {
-    QString name("OdynCashQt");
+    QString name("CashQt");
 
     // Append a simple hash of the datadir
     // Note that GetDataDir(true) returns a different path
@@ -80,17 +80,17 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
         if (arg.startsWith("-"))
             continue;
 
-        // If the odyncash: URI contains a payment request, we are not able to detect the
+        // If the cash: URI contains a payment request, we are not able to detect the
         // network as that would require fetching and parsing the payment request.
         // That means clicking such an URI which contains a testnet payment request
         // will start a mainnet instance and throw a "wrong network" error.
-        if (arg.startsWith(ODYNCASH_IPC_PREFIX, Qt::CaseInsensitive)) // odyncash: URI
+        if (arg.startsWith(CASH_IPC_PREFIX, Qt::CaseInsensitive)) // cash: URI
         {
             savedPaymentRequests.append(arg);
 
             SendCoinsRecipient r;
-            if (GUIUtil::parseOdynCashURI(arg, &r) && !r.address.isEmpty()) {
-                COdynCashAddress address(r.address.toStdString());
+            if (GUIUtil::parseCashURI(arg, &r) && !r.address.isEmpty()) {
+                CCashAddress address(r.address.toStdString());
 
                 if (address.IsValid(Params(CBaseChainParams::MAIN))) {
                     SelectParams(CBaseChainParams::MAIN);
@@ -114,7 +114,7 @@ bool PaymentServer::ipcSendCommandLine()
     Q_FOREACH (const QString& r, savedPaymentRequests) {
         QLocalSocket* socket = new QLocalSocket();
         socket->connectToServer(ipcServerName(), QIODevice::WriteOnly);
-        if (!socket->waitForConnected(ODYNCASH_IPC_CONNECT_TIMEOUT)) {
+        if (!socket->waitForConnected(CASH_IPC_CONNECT_TIMEOUT)) {
             delete socket;
             socket = NULL;
             return false;
@@ -128,7 +128,7 @@ bool PaymentServer::ipcSendCommandLine()
 
         socket->write(block);
         socket->flush();
-        socket->waitForBytesWritten(ODYNCASH_IPC_CONNECT_TIMEOUT);
+        socket->waitForBytesWritten(CASH_IPC_CONNECT_TIMEOUT);
         socket->disconnectFromServer();
 
         delete socket;
@@ -146,7 +146,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
     optionsModel(0)
 {
     // Install global event filter to catch QFileOpenEvents
-    // on Mac: sent when you click odyncash: links
+    // on Mac: sent when you click cash: links
     // other OSes: helpful when dealing with payment request files
     if (parent)
         parent->installEventFilter(this);
@@ -162,7 +162,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "Q_EMIT message()" here
             QMessageBox::critical(0, tr("Payment request error"),
-                tr("Cannot start odyncash: click-to-pay handler"));
+                tr("Cannot start cash: click-to-pay handler"));
         } else {
             connect(uriServer, SIGNAL(newConnection()), this, SLOT(handleURIConnection()));
         }
@@ -173,7 +173,7 @@ PaymentServer::~PaymentServer()
 {
 }
 //
-// OSX-specific way of handling odyncash: URIs
+// OSX-specific way of handling cash: URIs
 //
 bool PaymentServer::eventFilter(QObject* object, QEvent* event)
 {
@@ -206,7 +206,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith(ODYNCASH_IPC_PREFIX, Qt::CaseInsensitive)) // odyncash: URI
+    if (s.startsWith(CASH_IPC_PREFIX, Qt::CaseInsensitive)) // cash: URI
     {
 #if QT_VERSION < 0x050000
         QUrl uri(s);
@@ -215,7 +215,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         // normal URI
         {
             SendCoinsRecipient recipient;
-            if (GUIUtil::parseOdynCashURI(s, &recipient))
+            if (GUIUtil::parseCashURI(s, &recipient))
             {
                 if (!IsValidDestinationString(recipient.address.toStdString())) {
                     if (uri.hasQueryItem("r")) {  // payment request
@@ -233,7 +233,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
                     Q_EMIT receivedPaymentRequest(recipient);
             } else
                 Q_EMIT message(tr("URI handling"),
-                    tr("URI cannot be parsed! This can be caused by an invalid OdynCash address or malformed URI parameters."),
+                    tr("URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters."),
                     CClientUIInterface::ICON_WARNING);
 
             return;

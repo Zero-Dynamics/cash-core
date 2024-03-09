@@ -5,7 +5,7 @@
 #
 
 from test_framework.mininode import *
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 import time
 from test_framework.blocktools import create_block, create_coinbase
@@ -59,7 +59,7 @@ class TestNode(NodeConnCB):
         return received_pong
 
 
-class VersionBitsWarningTest(OdynCashTestFramework):
+class VersionBitsWarningTest(CashTestFramework):
     def setup_chain(self):
         initialize_chain_clean(self.options.tmpdir, 1)
 
@@ -139,7 +139,7 @@ class VersionBitsWarningTest(OdynCashTestFramework):
         # to ACTIVE.
         self.nodes[0].generate(VB_PERIOD)
         stop_node(self.nodes[0], 0)
-        wait_odyncashds()
+        wait_cashds()
         # Empty out the alert file
         with open(self.alert_filename, 'w') as f:
             pass
@@ -149,7 +149,7 @@ class VersionBitsWarningTest(OdynCashTestFramework):
         self.nodes[0].generate(1)
         assert(len(self.nodes[0].getinfo()["errors"]) != 0)
         stop_node(self.nodes[0], 0)
-        wait_odyncashds()
+        wait_cashds()
         self.test_versionbits_in_alert_file()
 
         # Test framework expects the node to still be running...

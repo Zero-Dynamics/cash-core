@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_ADDRESSTABLEMODEL_H
-#define ODYNCASH_QT_ADDRESSTABLEMODEL_H
+#ifndef CASH_QT_ADDRESSTABLEMODEL_H
+#define CASH_QT_ADDRESSTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -29,7 +29,7 @@ public:
 
     enum ColumnIndex {
         Label = 0,  /**< User specified label */
-        Address = 1 /**< OdynCash address */
+        Address = 1 /**< Cash address */
     };
 
     enum RoleIndex {
@@ -95,4 +95,4 @@ public Q_SLOTS:
     friend class AddressTablePriv;
 };
 
-#endif // ODYNCASH_QT_ADDRESSTABLEMODEL_H
+#endif // CASH_QT_ADDRESSTABLEMODEL_H

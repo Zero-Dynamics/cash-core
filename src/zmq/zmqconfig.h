@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_ZMQ_ZMQCONFIG_H
-#define ODYNCASH_ZMQ_ZMQCONFIG_H
+#ifndef CASH_ZMQ_ZMQCONFIG_H
+#define CASH_ZMQ_ZMQCONFIG_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include <stdarg.h>
@@ -26,4 +26,4 @@
 
 void zmqError(const char *str);
 
-#endif // ODYNCASH_ZMQ_ZMQCONFIG_H
+#endif // CASH_ZMQ_ZMQCONFIG_H

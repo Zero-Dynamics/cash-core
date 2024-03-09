@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_UTILTIME_H
-#define ODYNCASH_UTILTIME_H
+#ifndef CASH_UTILTIME_H
+#define CASH_UTILTIME_H
 
 #include <stdint.h>
 #include <string>
@@ -45,4 +45,4 @@ std::string FormatISO8601Date(int64_t nTime);
 int64_t AddMonthsToCurrentEpoch(const short nMonths);
 int64_t AddMonthsToBlockTime(const uint32_t& nBlockTime, const short nMonths);
 uint16_t MonthsFromBlockToExpire(const uint32_t& nBlockTime, const uint64_t& nExpireTime);
-#endif // ODYNCASH_UTILTIME_H
+#endif // CASH_UTILTIME_H

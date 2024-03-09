@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_POLICY_POLICY_H
-#define ODYNCASH_POLICY_POLICY_H
+#ifndef CASH_POLICY_POLICY_H
+#define CASH_POLICY_POLICY_H
 
 #include "consensus/consensus.h"
 #include "script/interpreter.h"
@@ -77,4 +77,4 @@ bool AreInputsStandard(const CTransaction& tx, const CCoinsViewCache& mapInputs)
 
 extern CFeeRate incrementalRelayFee;
 extern CFeeRate dustRelayFee;
-#endif // ODYNCASH_POLICY_POLICY_H
+#endif // CASH_POLICY_POLICY_H

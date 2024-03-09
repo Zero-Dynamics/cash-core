@@ -5,14 +5,14 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_UTILITYDIALOG_H
-#define ODYNCASH_QT_UTILITYDIALOG_H
+#ifndef CASH_QT_UTILITYDIALOG_H
+#define CASH_QT_UTILITYDIALOG_H
 
 #include <QDialog>
 #include <QObject>
 
 class ClientModel;
-class OdynCashGUI;
+class CashGUI;
 
 namespace Ui
 {
@@ -53,10 +53,10 @@ class ShutdownWindow : public QWidget
 
 public:
     ShutdownWindow(QWidget* parent = 0, Qt::WindowFlags f = 0);
-    static QWidget* showShutdownWindow(OdynCashGUI* window);
+    static QWidget* showShutdownWindow(CashGUI* window);
 
 protected:
     void closeEvent(QCloseEvent* event);
 };
 
-#endif // ODYNCASH_QT_UTILITYDIALOG_H
+#endif // CASH_QT_UTILITYDIALOG_H

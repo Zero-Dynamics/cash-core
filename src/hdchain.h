@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_HDCHAIN_H
-#define ODYNCASH_HDCHAIN_H
+#ifndef CASH_HDCHAIN_H
+#define CASH_HDCHAIN_H
 
 #include "key.h"
 #include "sync.h"
@@ -151,4 +151,4 @@ public:
     std::string GetKeyPath() const;
 };
 
-#endif // ODYNCASH_HDCHAIN_H
+#endif // CASH_HDCHAIN_H

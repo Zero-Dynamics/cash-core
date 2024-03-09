@@ -4,8 +4,8 @@
 // Copyright (c) 2009-2021 Satoshi Nakamoto
 // Distributed under the MIT/X11 software license, see the accompanying
 
-#ifndef ODYNCASH_SYNC_H
-#define ODYNCASH_SYNC_H
+#ifndef CASH_SYNC_H
+#define CASH_SYNC_H
 
 #include <threadsafety.h>
 
@@ -294,4 +294,4 @@ public:
     }
 };
 
-#endif // ODYNCASH_SYNC_H
+#endif // CASH_SYNC_H

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_LINKINGDB_H
-#define ODYNCASH_BDAP_LINKINGDB_H
+#ifndef CASH_BDAP_LINKINGDB_H
+#define CASH_BDAP_LINKINGDB_H
 
 #include "bdap/linking.h"
 #include "dbwrapper.h"
@@ -38,4 +38,4 @@ bool LinkPubKeyExists(const std::vector<unsigned char>& vchPubKey);
 
 extern CLinkDB *pLinkDB;
 
-#endif // ODYNCASH_BDAP_LINKINGDB_H
+#endif // CASH_BDAP_LINKINGDB_H

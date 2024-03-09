@@ -19,7 +19,7 @@
 #define ARGON2_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include <limits.h>

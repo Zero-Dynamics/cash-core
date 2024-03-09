@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include "hash.h"

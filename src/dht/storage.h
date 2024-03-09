@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_DHT_STORAGE_H
-#define ODYNCASH_DHT_STORAGE_H
+#ifndef CASH_DHT_STORAGE_H
+#define CASH_DHT_STORAGE_H
 
 #include <libtorrent/kademlia/dht_storage.hpp>
 #include <libtorrent/kademlia/dht_settings.hpp>
@@ -57,4 +57,4 @@ void ExtractValueFromSpan(std::unique_ptr<char[]>& value, const span<char const>
 
 std::unique_ptr<dht_storage_interface> CDHTStorageConstructor(dht_settings const& settings);
 
-#endif // ODYNCASH_DHT_STORAGE_H
+#endif // CASH_DHT_STORAGE_H

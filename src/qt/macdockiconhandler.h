@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_MACDOCKICONHANDLER_H
-#define ODYNCASH_QT_MACDOCKICONHANDLER_H
+#ifndef CASH_QT_MACDOCKICONHANDLER_H
+#define CASH_QT_MACDOCKICONHANDLER_H
 
 #include <QMainWindow>
 #include <QObject>
@@ -44,4 +44,4 @@ private:
     QMainWindow* mainWindow;
 };
 
-#endif // ODYNCASH_QT_MACDOCKICONHANDLER_H
+#endif // CASH_QT_MACDOCKICONHANDLER_H

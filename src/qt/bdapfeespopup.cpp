@@ -17,9 +17,9 @@ bool bdapFeesPopup(QWidget *parentDialog, const opcodetype& opCodeAction, const 
     CAmount oneTimeFee;
     CAmount depositFee;
     CAmount totalAmount;
-    //OdynCashUnits::Unit u;
+    //CashUnits::Unit u;
     bool displayMonths = false;
-    CAmount currBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
+    CAmount currBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPCashAmount();
 
     //only display months for BDAP objects/transactions that include it. may need to expand in the future
     if ( (opCodeAction == OP_BDAP_NEW && opCodeObject == OP_BDAP_ACCOUNT_ENTRY) && ( inputAccountType == BDAP::ObjectType::BDAP_USER || inputAccountType == BDAP::ObjectType::BDAP_GROUP ) )
@@ -36,21 +36,21 @@ bool bdapFeesPopup(QWidget *parentDialog, const opcodetype& opCodeAction, const 
     if (totalAmount > currBalance)
     {
         QString strErrorMessage = "";
-        strErrorMessage.append(QObject::tr("Insufficient funds for BDAP transaction. %1 required.") .arg(OdynCashUnits::formatHtmlWithUnit(unit, totalAmount)));
+        strErrorMessage.append(QObject::tr("Insufficient funds for BDAP transaction. %1 required.") .arg(CashUnits::formatHtmlWithUnit(unit, totalAmount)));
         QMessageBox::critical(parentDialog, QObject::tr("BDAP Transaction"), strErrorMessage);
         return false;
     }
 
-    questionString.append(QObject::tr("<b>%1</b> will be withdrawn from any available funds (not anonymous).<br />") .arg(OdynCashUnits::formatHtmlWithUnit(unit, totalAmount)));
+    questionString.append(QObject::tr("<b>%1</b> will be withdrawn from any available funds (not anonymous).<br />") .arg(CashUnits::formatHtmlWithUnit(unit, totalAmount)));
     questionString.append(QObject::tr("<hr>"));
-    //questionString.append(QObject::tr("Current balance = <b>%1</b><br />") .arg(OdynCashUnits::formatHtmlWithUnit(u, currBalance)));
-    questionString.append(QObject::tr("Total amount = <b>%1</b><br />") .arg(OdynCashUnits::formatHtmlWithUnit(unit, totalAmount)));
-    questionString.append(QObject::tr("Monthly fee = %1" ) .arg(OdynCashUnits::formatHtmlWithUnit(unit, monthlyFee)));
+    //questionString.append(QObject::tr("Current balance = <b>%1</b><br />") .arg(CashUnits::formatHtmlWithUnit(u, currBalance)));
+    questionString.append(QObject::tr("Total amount = <b>%1</b><br />") .arg(CashUnits::formatHtmlWithUnit(unit, totalAmount)));
+    questionString.append(QObject::tr("Monthly fee = %1" ) .arg(CashUnits::formatHtmlWithUnit(unit, monthlyFee)));
     if (displayMonths)
         questionString.append(QObject::tr("&nbsp;(for %1 months)") .arg(regMonths));
     questionString.append(QObject::tr("<br />"));
-    questionString.append(QObject::tr("One Time Fee = %1<br />") .arg(OdynCashUnits::formatHtmlWithUnit(unit, oneTimeFee)));
-    questionString.append(QObject::tr("Deposit Fee = %1") .arg(OdynCashUnits::formatHtmlWithUnit(unit, depositFee)));
+    questionString.append(QObject::tr("One Time Fee = %1<br />") .arg(CashUnits::formatHtmlWithUnit(unit, oneTimeFee)));
+    questionString.append(QObject::tr("Deposit Fee = %1") .arg(CashUnits::formatHtmlWithUnit(unit, depositFee)));
     questionString.append(QObject::tr("<hr>"));
 
     reply = QMessageBox::question(parentDialog, QObject::tr("Confirm BDAP Transaction Amount"), questionString, QMessageBox::Yes|QMessageBox::No);

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_OPTIONSDIALOG_H
-#define ODYNCASH_QT_OPTIONSDIALOG_H
+#ifndef CASH_QT_OPTIONSDIALOG_H
+#define CASH_QT_OPTIONSDIALOG_H
 
 #include <QDialog>
 #include <QValidator>
@@ -70,4 +70,4 @@ private:
     QDataWidgetMapper* mapper;
 };
 
-#endif // ODYNCASH_QT_OPTIONSDIALOG_H
+#endif // CASH_QT_OPTIONSDIALOG_H

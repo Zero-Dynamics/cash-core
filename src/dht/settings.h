@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_DHT_SETTINGS_H
-#define ODYNCASH_DHT_SETTINGS_H
+#ifndef CASH_DHT_SETTINGS_H
+#define CASH_DHT_SETTINGS_H
 
 #include <libtorrent/session.hpp>
 
@@ -37,4 +37,4 @@ private:
 
 };
 
-#endif // ODYNCASH_DHT_SETTINGS_H
+#endif // CASH_DHT_SETTINGS_H

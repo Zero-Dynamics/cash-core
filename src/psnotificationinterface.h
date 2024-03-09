@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_PSNOTIFICATIONINTERFACE_H
-#define ODYNCASH_PSNOTIFICATIONINTERFACE_H
+#ifndef CASH_PSNOTIFICATIONINTERFACE_H
+#define CASH_PSNOTIFICATIONINTERFACE_H
 
 #include "validationinterface.h"
 
@@ -28,4 +28,4 @@ private:
     CConnman& connman;
 };
 
-#endif // ODYNCASH_PSNOTIFICATIONINTERFACE_H
+#endif // CASH_PSNOTIFICATIONINTERFACE_H

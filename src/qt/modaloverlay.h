@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_MODALOVERLAY_H
-#define ODYNCASH_QT_MODALOVERLAY_H
+#ifndef CASH_QT_MODALOVERLAY_H
+#define CASH_QT_MODALOVERLAY_H
 
 #include <QDateTime>
 #include <QWidget>
@@ -50,4 +50,4 @@ private:
     bool foreverHidden;
 };
 
-#endif // ODYNCASH_QT_MODALOVERLAY_H
+#endif // CASH_QT_MODALOVERLAY_H

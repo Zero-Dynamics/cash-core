@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_MINER_UTIL_H
-#define ODYNCASH_MINER_UTIL_H
+#ifndef CASH_MINER_UTIL_H
+#define CASH_MINER_UTIL_H
 
 #include <atomic>
 #include <memory>
@@ -52,4 +52,4 @@ bool ProcessBlockFound(const CBlock& block, const CChainParams& chainparams);
 void IncrementExtraNonce(CBlock& pblock, const CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
 int64_t UpdateTime(CBlockHeader& pblock, const Consensus::Params& consensusParams, const CBlockIndex* pindexPrev);
 
-#endif // ODYNCASH_MINER_UTIL_H
+#endif // CASH_MINER_UTIL_H

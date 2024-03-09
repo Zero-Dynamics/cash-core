@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[odyncash.qt-translation-012x]
-file_filter = src/qt/locale/odyncash_<lang>.ts
-source_file = src/qt/locale/odyncash_en.ts
+[cash.qt-translation-012x]
+file_filter = src/qt/locale/cash_<lang>.ts
+source_file = src/qt/locale/cash_en.ts
 source_lang = en

@@ -2,7 +2,7 @@
 #
 # key.py - OpenSSL wrapper
 #
-# This file is modified from python-odyncashlib.
+# This file is modified from python-cashlib.
 #
 
 """ECC secp256k1 crypto routines

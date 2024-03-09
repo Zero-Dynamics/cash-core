@@ -18,13 +18,13 @@
 #include <boost/algorithm/string.hpp>
 #include <stdio.h>
 
-BdapAddUserDialog::BdapAddUserDialog(QWidget *parent, int OdynCashUnits, BDAP::ObjectType accountType) : QDialog(parent),
+BdapAddUserDialog::BdapAddUserDialog(QWidget *parent, int CashUnits, BDAP::ObjectType accountType) : QDialog(parent),
                                                         ui(new Ui::BdapAddUserDialog)
 {
     //By default, accountType is USER. so only change stuff if different
     ui->setupUi(this);
     inputAccountType = accountType;
-    nOdynCashUnits = OdynCashUnits;
+    nCashUnits = CashUnits;
 
     if (inputAccountType == BDAP::ObjectType::BDAP_GROUP) {
 
@@ -95,7 +95,7 @@ void BdapAddUserDialog::goAddUser()
     ui->addUser->setVisible(false);
     ui->cancel->setVisible(false);
 
-    if (!bdapFeesPopup(this,OP_BDAP_NEW,OP_BDAP_ACCOUNT_ENTRY,inputAccountType,nOdynCashUnits,regMonths)) {
+    if (!bdapFeesPopup(this,OP_BDAP_NEW,OP_BDAP_ACCOUNT_ENTRY,inputAccountType,nCashUnits,regMonths)) {
         goClose();
         return;
     }

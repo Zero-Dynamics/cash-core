@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_DOMAINENTRY_H
-#define ODYNCASH_BDAP_DOMAINENTRY_H
+#ifndef CASH_BDAP_DOMAINENTRY_H
+#define CASH_BDAP_DOMAINENTRY_H
 
 #include "bdap.h"
 #include "bdap/utils.h"
@@ -16,7 +16,7 @@
 
 #include <univalue.h>
 
-class COdynCashAddress;
+class CCashAddress;
 struct CRecipient;
 class CTxMemPool;
 
@@ -149,8 +149,8 @@ public:
     bool UnserializeFromData(const std::vector<unsigned char>& vchData, const std::vector<unsigned char>& vchHash);
     void Serialize(std::vector<unsigned char>& vchData);
 
-    COdynCashAddress GetWalletAddress() const;
-    COdynCashAddress GetLinkAddress() const;
+    CCashAddress GetWalletAddress() const;
+    CCashAddress GetLinkAddress() const;
     std::string DHTPubKeyString() const;
     std::string GetFullObjectPath() const;
     std::string GetObjectLocation() const;
@@ -167,4 +167,4 @@ public:
 
 bool BuildBDAPJson(const CDomainEntry& entry, UniValue& oName, bool fAbridged = false);
 
-#endif // ODYNCASH_BDAP_DOMAINENTRY_H
+#endif // CASH_BDAP_DOMAINENTRY_H

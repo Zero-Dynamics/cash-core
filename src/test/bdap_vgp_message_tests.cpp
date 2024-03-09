@@ -12,7 +12,7 @@
 #include "uint256.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 #include "bdap/linking.h"
 #include "bdap/utils.h"
 #include "dht/ed25519.h"
@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(bdap_vgp_message_test1)
     privWalletKey.MakeNewKey(true);
     CPubKey pubWalletKey = privWalletKey.GetPubKey();
     CKeyID keyWalletID = pubWalletKey.GetID();
-    COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
+    CCashAddress walletAddress = CCashAddress(keyWalletID);
     CharString vchWalletAddress = vchFromString(walletAddress.ToString());
     senderDomainEntry.WalletAddress = vchWalletAddress;
 
@@ -103,7 +103,7 @@ BOOST_AUTO_TEST_CASE(bdap_vgp_message_test1)
     recprivWalletKey.MakeNewKey(true);
     CPubKey recpubWalletKey = recprivWalletKey.GetPubKey();
     CKeyID reckeyWalletID = recpubWalletKey.GetID();
-    COdynCashAddress recwalletAddress = COdynCashAddress(reckeyWalletID);
+    CCashAddress recwalletAddress = CCashAddress(reckeyWalletID);
     CharString recvchWalletAddress = vchFromString(recwalletAddress.ToString());
     receiverDomainEntry.WalletAddress = recvchWalletAddress;
 
@@ -219,7 +219,7 @@ BOOST_AUTO_TEST_CASE(bdap_vgp_message_test1)
     bcastprivWalletKey.MakeNewKey(true);
     CPubKey bcastpubWalletKey = bcastprivWalletKey.GetPubKey();
     CKeyID bcastkeyWalletID = bcastpubWalletKey.GetID();
-    COdynCashAddress bcastwalletAddress = COdynCashAddress(bcastkeyWalletID);
+    CCashAddress bcastwalletAddress = CCashAddress(bcastkeyWalletID);
     CharString bcastvchWalletAddress = vchFromString(bcastwalletAddress.ToString());
 
     std::vector<unsigned char> bcastvchWalletPubKey(bcastpubWalletKey.begin(), bcastpubWalletKey.end());

@@ -1,4 +1,4 @@
-Building OdynCash
+Building Cash
 
 Use the autogen script to prepare the build environment.
 
@@ -7,10 +7,10 @@ Use the autogen script to prepare the build environment.
     make
 
 Precompiled binaries are available at github, see
-https://github.com/zero-dynamics/odyncash
+https://github.com/zero-dynamics/cash
 
 Always verify the signatures and checksums.
 
-See doc/build-*.md for instructions on building odyncashd,
+See doc/build-*.md for instructions on building cashd,
 the intended-for-services, no-graphical-interface, reference
-implementation of OdynCash.
+implementation of Cash.

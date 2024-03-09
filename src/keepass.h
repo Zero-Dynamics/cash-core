@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_KEEPASS_H
-#define ODYNCASH_KEEPASS_H
+#ifndef CASH_KEEPASS_H
+#define CASH_KEEPASS_H
 
 #include "support/allocators/secure.h"
 
@@ -137,4 +137,4 @@ public:
     void updatePassphrase(const SecureString& sWalletPassphrase);
 };
 
-#endif // ODYNCASH_KEEPASS_H
+#endif // CASH_KEEPASS_H

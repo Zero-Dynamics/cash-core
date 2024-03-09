@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_TEST_RPC_NESTED_TESTS_H
-#define ODYNCASH_QT_TEST_RPC_NESTED_TESTS_H
+#ifndef CASH_QT_TEST_RPC_NESTED_TESTS_H
+#define CASH_QT_TEST_RPC_NESTED_TESTS_H
 
 #include <QObject>
 #include <QTest>
@@ -22,4 +22,4 @@ private:
     CCoinsViewDB *pcoinsdbview;
 };
 
-#endif // ODYNCASH_QT_TEST_RPC_NESTED_TESTS_H
+#endif // CASH_QT_TEST_RPC_NESTED_TESTS_H

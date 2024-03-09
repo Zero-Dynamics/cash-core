@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cash
+Comment=Cash P2P Cryptocurrency
+Comment[fr]=Cash, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Cash, eşten eşe kriptografik sanal para birimi
+Exec=cash-qt %u
+Terminal=false
+Type=Application
+Icon=cash-128
+MimeType=x-scheme-handler/cash;
+Categories=Office;Finance;

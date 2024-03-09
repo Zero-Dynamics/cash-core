@@ -4,22 +4,22 @@
 
 	* means the category has an associated class
 	
-	COdynCashNetwork: ODYNCASH NETWORK (ROOT)
+	CCashNetwork: CASH NETWORK (ROOT)
 	has:
 		vector<CNetworkVariable> vecNetworkVariables;
-		vector<COdynCashProject> vecProjects;
+		vector<CCashProject> vecProjects;
 		vector<CGovernanceObject> vecProposals;
 		vector<CBudgetContract> vecContracts;
 		vector<CBudgetUsers> vecUsers;
 
-	COdynCashProject:
+	CCashProject:
 	has:
 		name
 		employees
 
 */
 
-	// ODYNCASH NETWORK (ROOT)
+	// CASH NETWORK (ROOT)
 	// 	-> NETWORK VARIABLE
 	// 		-> switch, setting
 	// 	-> CATEGORIES
@@ -49,7 +49,7 @@
 	// 			-> USER1 (only users are allowed here in this scope)
 	// 			-> USER2
 	// 		-> GROUP2 (EVO)
-	// 			-> VALUEOVERRIDE (STORE=ODYNCASHDRIVE)
+	// 			-> VALUEOVERRIDE (STORE=CASHDRIVE)
 	// 			-> USER1
 
 	// 	-> COMPANIES

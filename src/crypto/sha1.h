@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CRYPTO_SHA1_H
-#define ODYNCASH_CRYPTO_SHA1_H
+#ifndef CASH_CRYPTO_SHA1_H
+#define CASH_CRYPTO_SHA1_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -25,4 +25,4 @@ public:
     CSHA1& Reset();
 };
 
-#endif // ODYNCASH_CRYPTO_SHA1_H
+#endif // CASH_CRYPTO_SHA1_H

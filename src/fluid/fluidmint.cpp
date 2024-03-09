@@ -96,9 +96,9 @@ void CFluidMint::Serialize(std::vector<unsigned char>& vchData)
     vchData = std::vector<unsigned char>(dsFluidOp.begin(), dsFluidOp.end());
 }
 
-COdynCashAddress CFluidMint::GetDestinationAddress() const
+CCashAddress CFluidMint::GetDestinationAddress() const
 {
-    return COdynCashAddress(StringFromCharVector(DestinationAddress));
+    return CCashAddress(StringFromCharVector(DestinationAddress));
 }
 
 CFluidMintDB::CFluidMintDB(size_t nCacheSize, bool fMemory, bool fWipe, bool obfuscate) : CDBWrapper(GetDataDir() / "blocks" / "fluid-mint", nCacheSize, fMemory, fWipe, obfuscate)

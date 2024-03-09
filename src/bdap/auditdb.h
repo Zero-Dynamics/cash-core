@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_AUDITDB_H
-#define ODYNCASH_BDAP_AUDITDB_H
+#ifndef CASH_BDAP_AUDITDB_H
+#define CASH_BDAP_AUDITDB_H
 
 #include "bdap/audit.h"
 #include "dbwrapper.h"
@@ -38,4 +38,4 @@ bool CheckAuditTx(const CTransactionRef& tx, const CScript& scriptOp, const int&
 
 extern CAuditDB *pAuditDB;
 
-#endif // ODYNCASH_BDAP_AUDITDB_H
+#endif // CASH_BDAP_AUDITDB_H

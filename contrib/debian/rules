@@ -1,19 +1,19 @@
 #!/usr/bin/make -f
 # -*- mode: makefile; coding: utf-8 -*-
 
-#DEB_MAKE_CHECK_TARGET = test_odyncash
-#build/odyncashd::
-#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_odyncash)
+#DEB_MAKE_CHECK_TARGET = test_cash
+#build/cashd::
+#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_cash)
 
-DEB_INSTALL_EXAMPLES_odyncashd += debian/examples/*
-DEB_INSTALL_MANPAGES_odyncashd += debian/manpages/*
+DEB_INSTALL_EXAMPLES_cashd += debian/examples/*
+DEB_INSTALL_MANPAGES_cashd += debian/manpages/*
 
 %:
 	dh --with bash-completion $@
 
 override_dh_auto_clean:
 	if [ -f Makefile ]; then $(MAKE) distclean; fi
-	rm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/odyncash-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in
+	rm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/cash-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in
 
 # Yea, autogen should be run on the source archive, but I like doing git archive
 override_dh_auto_configure:

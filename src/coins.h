@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_COINS_H
-#define ODYNCASH_COINS_H
+#ifndef CASH_COINS_H
+#define CASH_COINS_H
 
 #include "compressor.h"
 #include "core_memusage.h"
@@ -319,4 +319,4 @@ void AddCoins(CCoinsViewCache& cache, const CTransaction& tx, int nHeight);
 // lookups to database, so it should be used with care.
 const Coin& AccessByTxid(const CCoinsViewCache& cache, const uint256& txid);
 
-#endif // ODYNCASH_COINS_H
+#endif // CASH_COINS_H

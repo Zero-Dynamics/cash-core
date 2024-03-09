@@ -5,7 +5,7 @@
 #
 
 from test_framework.mininode import *
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 import time
 from test_framework.blocktools import create_block, create_coinbase
@@ -106,11 +106,11 @@ class TestNode(NodeConnCB):
         return received_pong
 
 
-class AcceptBlockTest(OdynCashTestFramework):
+class AcceptBlockTest(CashTestFramework):
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("ODYNCASHD", "odyncashd"),
-                          help="odyncashd binary to test")
+                          default=os.getenv("CASHD", "cashd"),
+                          help="cashd binary to test")
 
     def setup_chain(self):
         initialize_chain_clean(self.options.tmpdir, 2)

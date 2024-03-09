@@ -7,8 +7,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_WALLET_WALLET_H
-#define ODYNCASH_WALLET_WALLET_H
+#ifndef CASH_WALLET_WALLET_H
+#define CASH_WALLET_WALLET_H
 
 #include "amount.h"
 #include "base58.h"
@@ -975,7 +975,7 @@ public:
         return nWalletMaxVersion >= wf;
     }
 
-    std::map<COdynCashAddress, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
+    std::map<CCashAddress, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
 
     /**
      * populate vCoins with vector of available COutputs.
@@ -992,7 +992,7 @@ public:
     /**
      * return BDAP Credits in Dynamic
      */
-    CAmount GetBDAPOdynCashAmount() const;
+    CAmount GetBDAPCashAmount() const;
     /**
      * Shuffle and select coins until nTargetValue is reached while avoiding
      * small change; This method is stochastic for some inputs and upon
@@ -1427,4 +1427,4 @@ bool RunProcessStealthQueue();
 bool IsDataScript(const CScript& data);
 bool GetDataFromScript(const CScript& data, std::vector<uint8_t>& vData);
 
-#endif // ODYNCASH_WALLET_WALLET_H
+#endif // CASH_WALLET_WALLET_H

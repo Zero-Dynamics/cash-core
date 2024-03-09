@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_CLIENTMODEL_H
-#define ODYNCASH_QT_CLIENTMODEL_H
+#ifndef CASH_QT_CLIENTMODEL_H
+#define CASH_QT_CLIENTMODEL_H
 
 #include <QDateTime>
 #include <QObject>
@@ -39,7 +39,7 @@ enum NumConnections {
     CONNECTIONS_ALL = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-/** Model for OdynCash network client. */
+/** Model for Cash network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT
@@ -127,4 +127,4 @@ public Q_SLOTS:
     void updateBanlist();
 };
 
-#endif // ODYNCASH_QT_CLIENTMODEL_H
+#endif // CASH_QT_CLIENTMODEL_H

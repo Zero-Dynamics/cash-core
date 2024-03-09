@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CORE_MEMUSAGE_H
-#define ODYNCASH_CORE_MEMUSAGE_H
+#ifndef CASH_CORE_MEMUSAGE_H
+#define CASH_CORE_MEMUSAGE_H
 
 #include "memusage.h"
 
@@ -71,4 +71,4 @@ static inline size_t RecursiveDynamicUsage(const CBlockLocator& locator)
     return memusage::DynamicUsage(locator.vHave);
 }
 
-#endif // ODYNCASH_CORE_MEMUSAGE_H
+#endif // CASH_CORE_MEMUSAGE_H

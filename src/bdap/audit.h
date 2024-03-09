@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_AUDITDATA_H
-#define ODYNCASH_BDAP_AUDITDATA_H
+#ifndef CASH_BDAP_AUDITDATA_H
+#define CASH_BDAP_AUDITDATA_H
 
 #include "bdap.h"
 #include "primitives/transaction.h"
@@ -170,4 +170,4 @@ public:
 bool BuildAuditJson(const CAudit& audit, UniValue& oAudit);
 bool BuildVerifyAuditJson(const CAudit& audit, UniValue& oAudit);
 
-#endif // ODYNCASH_BDAP_AUDITDATA_H
+#endif // CASH_BDAP_AUDITDATA_H

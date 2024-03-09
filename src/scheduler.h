@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_SCHEDULER_H
-#define ODYNCASH_SCHEDULER_H
+#ifndef CASH_SCHEDULER_H
+#define CASH_SCHEDULER_H
 
 #include <map>
 
@@ -85,4 +85,4 @@ private:
     bool shouldStop() { return stopRequested || (stopWhenEmpty && taskQueue.empty()); }
 };
 
-#endif // ODYNCASH_SCHEDULER_H
+#endif // CASH_SCHEDULER_H

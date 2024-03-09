@@ -8,8 +8,8 @@
 /**
  * Money parsing/formatting utilities.
  */
-#ifndef ODYNCASH_UTILMONEYSTR_H
-#define ODYNCASH_UTILMONEYSTR_H
+#ifndef CASH_UTILMONEYSTR_H
+#define CASH_UTILMONEYSTR_H
 
 #include "amount.h"
 
@@ -20,4 +20,4 @@ std::string FormatMoney(const CAmount& n);
 bool ParseMoney(const std::string& str, CAmount& nRet);
 bool ParseMoney(const char* pszIn, CAmount& nRet);
 
-#endif // ODYNCASH_UTILMONEYSTR_H
+#endif // CASH_UTILMONEYSTR_H

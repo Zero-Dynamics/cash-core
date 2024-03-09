@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_LINKMANAGER_H
-#define ODYNCASH_BDAP_LINKMANAGER_H
+#ifndef CASH_BDAP_LINKMANAGER_H
+#define CASH_BDAP_LINKMANAGER_H
 
 #include "bdap/linkstorage.h"
 #include "uint256.h"
@@ -186,4 +186,4 @@ uint256 GetMessageID(const CKeyEd25519& key, const int64_t& timestamp);
 
 extern CLinkManager* pLinkManager;
 
-#endif // ODYNCASH_BDAP_LINKMANAGER_H
+#endif // CASH_BDAP_LINKMANAGER_H

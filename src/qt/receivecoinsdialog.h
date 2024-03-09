@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_RECEIVECOINSDIALOG_H
-#define ODYNCASH_QT_RECEIVECOINSDIALOG_H
+#ifndef CASH_QT_RECEIVECOINSDIALOG_H
+#define CASH_QT_RECEIVECOINSDIALOG_H
 
 #include "guiutil.h"
 
@@ -31,7 +31,7 @@ QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-/** Dialog for requesting payment of OdynCash */
+/** Dialog for requesting payment of Cash */
 class ReceiveCoinsDialog : public QDialog
 {
     Q_OBJECT
@@ -84,4 +84,4 @@ private Q_SLOTS:
     void copyURI();
 };
 
-#endif // ODYNCASH_QT_RECEIVECOINSDIALOG_H
+#endif // CASH_QT_RECEIVECOINSDIALOG_H

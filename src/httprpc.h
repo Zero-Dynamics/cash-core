@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_HTTPRPC_H
-#define ODYNCASH_HTTPRPC_H
+#ifndef CASH_HTTPRPC_H
+#define CASH_HTTPRPC_H
 
 #include <map>
 #include <string>
@@ -37,4 +37,4 @@ void InterruptREST();
  */
 void StopREST();
 
-#endif // ODYNCASH_HTTPRPC_H
+#endif // CASH_HTTPRPC_H

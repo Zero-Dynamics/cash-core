@@ -7,10 +7,10 @@
 # Test the BIP66 changeover logic
 #
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 
-class BIP66Test(OdynCashTestFramework):
+class BIP66Test(CashTestFramework):
 
     def setup_network(self):
         self.nodes = []

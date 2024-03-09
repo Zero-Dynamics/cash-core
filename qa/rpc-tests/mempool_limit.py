@@ -5,10 +5,10 @@
 
 # Test mempool limiting together/eviction with the wallet
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 
-class MempoolLimitTest(OdynCashTestFramework):
+class MempoolLimitTest(CashTestFramework):
 
     def __init__(self):
         self.txouts = gen_return_txouts()

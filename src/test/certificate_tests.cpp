@@ -11,7 +11,7 @@
 #include "uint256.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 #include "bdap/utils.h"
 #include "bdap/certificate.h"
 #include "dht/ed25519.h"

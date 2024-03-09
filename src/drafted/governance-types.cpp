@@ -7,8 +7,8 @@ GovernanceObjectType GovernanceStringToType(std::string strType) {
     if(strType == "AllTypes") type = AllTypes;
     if(strType == "Error") type = Error;
     if(strType == "ValueOverride") type = ValueOverride;
-    if(strType == "OdynCashNetwork") type = OdynCashNetwork;
-    if(strType == "OdynCashNetworkVariable") type = OdynCashNetworkVariable;
+    if(strType == "CashNetwork") type = CashNetwork;
+    if(strType == "CashNetworkVariable") type = CashNetworkVariable;
     if(strType == "Category") type = Category;
     if(strType == "Group") type = Group;
     if(strType == "User") type = User;
@@ -28,8 +28,8 @@ std::string GovernanceTypeToString(GovernanceObjectType type) {
     if(type == AllTypes) s = "AllTypes";
     if(type == Error) s = "Error";
     if(type == ValueOverride) s = "ValueOverride";
-    if(type == OdynCashNetwork) s = "OdynCashNetwork";
-    if(type == OdynCashNetworkVariable) s = "OdynCashNetworkVariable";
+    if(type == CashNetwork) s = "CashNetwork";
+    if(type == CashNetworkVariable) s = "CashNetworkVariable";
     if(type == Category) s = "Category";
     if(type == Group) s = "Group";
     if(type == User) s = "User";

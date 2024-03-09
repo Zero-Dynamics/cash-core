@@ -3,10 +3,10 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_GOVERNANCE_CLASSES_H
-#define ODYNCASH_GOVERNANCE_CLASSES_H
+#ifndef CASH_GOVERNANCE_CLASSES_H
+#define CASH_GOVERNANCE_CLASSES_H
 
-//#define ENABLE_ODYNCASH_DEBUG
+//#define ENABLE_CASH_DEBUG
 
 #include "base58.h"
 #include "chainparams.h"
@@ -100,7 +100,7 @@ public:
     {
     }
 
-    CGovernancePayment(COdynCashAddress addrIn, CAmount nAmountIn)
+    CGovernancePayment(CCashAddress addrIn, CAmount nAmountIn)
         : fValid(false),
           script(),
           nAmount(0)

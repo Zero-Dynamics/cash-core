@@ -10,7 +10,7 @@
 
 #include "addressbookpage.h"
 #include "addresstablemodel.h"
-#include "odyncashunits.h"
+#include "cashunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 #include "platformstyle.h"
@@ -281,7 +281,7 @@ void ReceiveCoinsDialog::copyURI()
     }
 
     const RecentRequestsTableModel* const submodel = model->getRecentRequestsTableModel();
-    const QString uri = GUIUtil::formatOdynCashURI(submodel->entry(sel.row()).recipient);
+    const QString uri = GUIUtil::formatCashURI(submodel->entry(sel.row()).recipient);
     GUIUtil::setClipboard(uri);
 }
 

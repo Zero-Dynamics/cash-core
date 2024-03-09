@@ -5,11 +5,11 @@
 /**
  * Utility functions shared by unit tests
  */
-#ifndef ODYNCASH_TEST_TESTUTIL_H
-#define ODYNCASH_TEST_TESTUTIL_H
+#ifndef CASH_TEST_TESTUTIL_H
+#define CASH_TEST_TESTUTIL_H
 
 #include <boost/filesystem/path.hpp>
 
 boost::filesystem::path GetTempPath();
 
-#endif // ODYNCASH_TEST_TESTUTIL_H
+#endif // CASH_TEST_TESTUTIL_H

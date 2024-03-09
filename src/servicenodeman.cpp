@@ -831,7 +831,7 @@ void CServiceNodeMan::ProcessPendingDnbRequests(CConnman& connman)
 void CServiceNodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if (fLiteMode)
-        return; // disable all OdynCash specific functionality
+        return; // disable all Cash specific functionality
 
     if (strCommand == NetMsgType::DNANNOUNCE) { //ServiceNode Broadcast
 
@@ -1814,7 +1814,7 @@ void CServiceNodeMan::NotifyServiceNodeUpdates(CConnman& connman)
 void CServiceNodeMan::DoMaintenance(CConnman& connman)
 {
     if (fLiteMode)
-        return; // disable all OdynCash specific functionality
+        return; // disable all Cash specific functionality
 
     if (!servicenodeSync.IsBlockchainSynced() || ShutdownRequested())
         return;

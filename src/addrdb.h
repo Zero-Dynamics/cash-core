@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_ADDRDB_H
-#define ODYNCASH_ADDRDB_H
+#ifndef CASH_ADDRDB_H
+#define CASH_ADDRDB_H
 
 #include "serialize.h"
 
@@ -103,4 +103,4 @@ public:
     bool Read(banmap_t& banSet);
 };
 
-#endif // ODYNCASH_ADDRDB_H
+#endif // CASH_ADDRDB_H

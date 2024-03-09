@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_VERSIONBITS_H
-#define ODYNCASH_VERSIONBITS_H
+#ifndef CASH_VERSIONBITS_H
+#define CASH_VERSIONBITS_H
 
 #include "chain.h"
 
@@ -73,4 +73,4 @@ ThresholdState VersionBitsState(const CBlockIndex* pindexPrev, const Consensus::
 int VersionBitsStateSinceHeight(const CBlockIndex* pindexPrev, const Consensus::Params& params, Consensus::DeploymentPos pos, VersionBitsCache& cache);
 uint32_t VersionBitsMask(const Consensus::Params& params, Consensus::DeploymentPos pos);
 
-#endif // ODYNCASH_VERSIONBITS_H
+#endif // CASH_VERSIONBITS_H

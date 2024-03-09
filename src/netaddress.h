@@ -5,11 +5,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_NETADDRESS_H
-#define ODYNCASH_NETADDRESS_H
+#ifndef CASH_NETADDRESS_H
+#define CASH_NETADDRESS_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include "compat.h"
@@ -175,4 +175,4 @@ public:
     }
 };
 
-#endif // ODYNCASH_NETADDRESS_H
+#endif // CASH_NETADDRESS_H

@@ -158,19 +158,19 @@ UniValue gettime(const JSONRPCRequest& request)
 }
 
 #ifdef ENABLE_WALLET
-UniValue burnodyncash(const JSONRPCRequest& request)
+UniValue burncash(const JSONRPCRequest& request)
 {
 
     if (request.fHelp || request.params.size() > 2 || request.params.size() == 0)
         throw std::runtime_error(
-            "burnodyncash \"amount\" \"address\"\n"
-            "\nSend coins to be burnt (destroyed) onto the OdynCash Network\n"
+            "burncash \"amount\" \"address\"\n"
+            "\nSend coins to be burnt (destroyed) onto the Cash Network\n"
             "\nArguments:\n"
             "1. \"amount\"         (numeric, required) The amount of coins to be burned.\n"
             "2. \"address\"        (string, optional)  The address to burn funds. You must have the address private key in the wallet file.\n"
             "\nExamples:\n" +
-            HelpExampleCli("burnodyncash", "\"123.456\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"") +
-            HelpExampleRpc("burnodyncash", "\"123.456\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\""));
+            HelpExampleCli("burncash", "\"123.456\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"") +
+            HelpExampleRpc("burncash", "\"123.456\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\""));
 
     if (!EnsureWalletIsAvailable(request.fHelp))
         return NullUniValue;
@@ -188,9 +188,9 @@ UniValue burnodyncash(const JSONRPCRequest& request)
     std::string strAddress;
     if (!request.params[1].isNull()) {
         strAddress = request.params[1].get_str();
-        COdynCashAddress address(strAddress);
+        CCashAddress address(strAddress);
         if (!address.IsValid())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
 
         scriptSendFrom = GetScriptForDestination(address.Get());
     }
@@ -255,7 +255,7 @@ UniValue signtoken(const JSONRPCRequest& request)
             "signtoken \"address\" \"tokenkey\"\n"
             "\nSign a Fluid Protocol Token\n"
             "\nArguments:\n"
-            "1. \"address\"         (string, required) The OdynCash Address which will be used to sign.\n"
+            "1. \"address\"         (string, required) The Cash Address which will be used to sign.\n"
             "2. \"tokenkey\"         (string, required) The token which has to be initially signed\n"
             "\nExamples:\n" +
             HelpExampleCli("signtoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") +
@@ -263,9 +263,9 @@ UniValue signtoken(const JSONRPCRequest& request)
 
     std::string result;
 
-    COdynCashAddress address(request.params[0].get_str());
+    CCashAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
 
     if (!fluid.VerifyAddressOwnership(address))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Address is not fluid protocol sovereign address");
@@ -293,7 +293,7 @@ UniValue consenttoken(const JSONRPCRequest& request)
             "consenttoken \"address\" \"tokenkey\"\n"
             "\nGive consent to a Fluid Protocol Token as a second party\n"
             "\nArguments:\n"
-            "1. \"address\"         (string, required) The OdynCash Address which will be used to give consent.\n"
+            "1. \"address\"         (string, required) The Cash Address which will be used to give consent.\n"
             "2. \"tokenkey\"         (string, required) The token which has to be been signed by one party\n"
             "\nExamples:\n" +
             HelpExampleCli("consenttoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") +
@@ -301,9 +301,9 @@ UniValue consenttoken(const JSONRPCRequest& request)
 
     std::string result;
 
-    COdynCashAddress address(request.params[0].get_str());
+    CCashAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid OdynCash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
 
     if (!IsHex(request.params[1].get_str()))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Hex string is invalid! Token incorrect");
@@ -351,7 +351,7 @@ UniValue getfluidhistoryraw(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
             "getfluidhistoryraw\n"
-            "\nReturns raw data about each fluid command confirmed on the OdynCash blockchain.\n"
+            "\nReturns raw data about each fluid command confirmed on the Cash blockchain.\n"
             "\nResult:\n"
             "{                   (json array of string)\n"
             "  \"fluid_command\"     (string) The operation code and raw fluid script command\n"
@@ -466,7 +466,7 @@ UniValue getfluidhistory(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
             "getfluidhistory\n"
-            "\nReturns data about each fluid command confirmed on the OdynCash blockchain.\n"
+            "\nReturns data about each fluid command confirmed on the Cash blockchain.\n"
             "\nResult:\n"
             "[                   (json array of object)\n"
             "  {                 (json object)\n"
@@ -790,7 +790,7 @@ static const CRPCCommand commands[] =
         {"fluid", "sendfluidtransaction", &sendfluidtransaction, true, {"opcode", "hexstring"}},
         {"fluid", "signtoken", &signtoken, true, {"address", "tokenkey"}},
         {"fluid", "consenttoken", &consenttoken, true, {"address", "tokenkey"}},
-        {"fluid", "burnodyncash", &burnodyncash, true, {"amount", "address"}},
+        {"fluid", "burncash", &burncash, true, {"amount", "address"}},
 #endif //ENABLE_WALLET
         {"fluid", "verifyquorum", &verifyquorum, true, {"tokenkey"}},
         {"fluid", "maketoken", &maketoken, true, {"string"}},

@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_INTERNAL_MINERS_GROUP_H
-#define ODYNCASH_INTERNAL_MINERS_GROUP_H
+#ifndef CASH_INTERNAL_MINERS_GROUP_H
+#define CASH_INTERNAL_MINERS_GROUP_H
 
 #include "miner/internal/miner-context.h"
 #include "miner/internal/thread-group.h"
@@ -46,4 +46,4 @@ public:
 };
 
 
-#endif // ODYNCASH_INTERNAL_MINERS_GROUP_H
+#endif // CASH_INTERNAL_MINERS_GROUP_H

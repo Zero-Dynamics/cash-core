@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout
+#
+if [ -d "/var/lib/cash/.cash" ]; then
+	CASHD_DEFAULT_DATADIR="/var/lib/cash/.cash"
+else
+	CASHD_DEFAULT_DATADIR="/var/lib/cashd"
+fi
+
+CASHD_CONFIGFILE=${CASHD_CONFIGFILE:-/etc/cash/cash.conf}
+CASHD_PIDDIR=${CASHD_PIDDIR:-/var/run/cashd}
+CASHD_PIDFILE=${CASHD_PIDFILE:-${CASHD_PIDDIR}/cashd.pid}
+CASHD_DATADIR=${CASHD_DATADIR:-${CASHD_DEFAULT_DATADIR}}
+CASHD_USER=${CASHD_USER:-${CASH_USER:-cash}}
+CASHD_GROUP=${CASHD_GROUP:-cash}
+CASHD_BIN=${CASHD_BIN:-/usr/bin/cashd}
+CASHD_NICE=${CASHD_NICE:-${NICELEVEL:-0}}
+CASHD_OPTS="${CASHD_OPTS:-${CASH_OPTS}}"
+
+name="Cash Daemon"
+description="Cash cryptocurrency P2P network daemon"
+
+command="/usr/bin/cashd"
+command_args="-pid=\"${CASHD_PIDFILE}\" \
+		-conf=\"${CASHD_CONFIGFILE}\" \
+		-datadir=\"${CASHD_DATADIR}\" \
+		-daemon \
+		${CASHD_OPTS}"
+
+required_files="${CASHD_CONFIGFILE}"
+start_stop_daemon_args="-u ${CASHD_USER} \
+			-N ${CASHD_NICE} -w 2000"
+pidfile="${CASHD_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${CASHD_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${CASHD_USER}:${CASHD_GROUP}" \
+	"${CASHD_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${CASHD_USER}:${CASHD_GROUP}" \
+	"${CASHD_PIDDIR}"
+
+	checkpath -f \
+	-o ${CASHD_USER}:${CASHD_GROUP} \
+	-m 0660 \
+	${CASHD_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${CASHD_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run cashd."
+		eerror "The setting must appear in ${CASHD_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following"
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Cash Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

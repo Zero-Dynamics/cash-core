@@ -9,7 +9,7 @@
 #include "uint256.h"
 #include "undo.h"
 #include "utilstrencodings.h"
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 #include "validation.h"
 #include "consensus/validation.h"
 
@@ -80,7 +80,7 @@ public:
 
     void SelfTest() const
     {
-        // Manually recompute the odyncash usage of the whole data, and compare it.
+        // Manually recompute the cash usage of the whole data, and compare it.
         size_t ret = memusage::DynamicUsage(cacheCoins);
         size_t count = 0;
         for (CCoinsMap::iterator it = cacheCoins.begin(); it != cacheCoins.end(); it++) {

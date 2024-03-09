@@ -13,10 +13,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both odyncashd and odyncash-qt, to make it harder for attackers to
+ * for both cashd and cash-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("OdynCash");
+const std::string CLIENT_NAME("Cash");
 
 /**
  * Client version number

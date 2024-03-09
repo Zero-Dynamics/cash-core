@@ -536,7 +536,7 @@ bool CWallet::LoadCScript(const CScript& redeemScript)
      * that never can be redeemed. However, old wallets may still contain
      * these. Do not add them to the wallet and warn. */
     if (redeemScript.size() > MAX_SCRIPT_ELEMENT_SIZE) {
-        std::string strAddr = COdynCashAddress(CScriptID(redeemScript)).ToString();
+        std::string strAddr = CCashAddress(CScriptID(redeemScript)).ToString();
         LogPrintf("%s: Warning: This wallet contains a redeemScript of size %i which exceeds maximum size %i thus can never be redeemed. Do not use address %s.\n",
             __func__, redeemScript.size(), MAX_SCRIPT_ELEMENT_SIZE, strAddr);
         return true;
@@ -1451,7 +1451,7 @@ bool CWallet::AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlockIndex
                     if (!ExtractDestination(scriptPubKey, dest))
                         continue;
 
-                    COdynCashAddress address(dest);
+                    CCashAddress address(dest);
                     CKeyID keyID;
                     if (!address.GetKeyID(keyID))
                         continue;
@@ -2878,7 +2878,7 @@ CAmount CWallet::GetImmatureWatchOnlyBalance() const
 
 void CWallet::GetBDAPCoins(std::vector<COutput>& vCoins, const CScript& prevScriptPubKey) const
 {
-    COdynCashAddress prevAddress = GetScriptAddress(prevScriptPubKey);
+    CCashAddress prevAddress = GetScriptAddress(prevScriptPubKey);
     //LogPrintf("GetBDAPCoins prevAddress =  %s\n", prevAddress.ToString());
     vCoins.clear();
     {
@@ -2906,7 +2906,7 @@ void CWallet::GetBDAPCoins(std::vector<COutput>& vCoins, const CScript& prevScri
             for (unsigned int i = 0; i < pcoin->tx->vout.size(); i++) {
                 isminetype mine = IsMine(pcoin->tx->vout[i]);
                 if (!(IsSpent(wtxid, i)) && mine != ISMINE_NO && (!IsLockedCoin((*it).first, i)) && (pcoin->tx->vout[i].nValue > 0)) {
-                    COdynCashAddress address = GetScriptAddress(pcoin->tx->vout[i].scriptPubKey);
+                    CCashAddress address = GetScriptAddress(pcoin->tx->vout[i].scriptPubKey);
                     //LogPrintf("GetBDAPCoins address =  %s\n", address.ToString());
                     if (prevAddress == address) {
                         vCoins.push_back(COutput(pcoin, i, nDepth, true, (mine & (ISMINE_SPENDABLE | ISMINE_WATCH_SOLVABLE)) != ISMINE_NO));
@@ -2917,7 +2917,7 @@ void CWallet::GetBDAPCoins(std::vector<COutput>& vCoins, const CScript& prevScri
     }
 }
 
-CAmount CWallet::GetBDAPOdynCashAmount() const
+CAmount CWallet::GetBDAPCashAmount() const
 {
     std::vector<std::pair<CTxOut, COutPoint>> vCredits;
     pwalletMain->AvailableBDAPCredits(vCredits);
@@ -2927,7 +2927,7 @@ CAmount CWallet::GetBDAPOdynCashAmount() const
         std::vector<std::vector<unsigned char>> vvch;
         credit.first.GetBDAPOpCodes(opCode1, opCode2, vvch);
         std::string strOpType = GetBDAPOpTypeString(opCode1, opCode2);
-        const COdynCashAddress address = GetScriptAddress(credit.first.scriptPubKey);
+        const CCashAddress address = GetScriptAddress(credit.first.scriptPubKey);
         if (strOpType == "bdap_move_asset") {
             if (vvch.size() > 1) {
                 std::string strMoveDestination = stringFromVch(vvch[1]);
@@ -3066,12 +3066,12 @@ void CWallet::AvailableBDAPCredits(std::vector<std::pair<CTxOut, COutPoint>>& vC
     }
 }
 
-std::map<COdynCashAddress, std::vector<COutput> > CWallet::AvailableCoinsByAddress(bool fConfirmed, CAmount maxCoinValue)
+std::map<CCashAddress, std::vector<COutput> > CWallet::AvailableCoinsByAddress(bool fConfirmed, CAmount maxCoinValue)
 {
     std::vector<COutput> vCoins;
     AvailableCoins(vCoins, fConfirmed);
 
-    std::map<COdynCashAddress, std::vector<COutput> > mapCoins;
+    std::map<CCashAddress, std::vector<COutput> > mapCoins;
     for (COutput out : vCoins) {
         if (maxCoinValue > 0 && out.tx->tx->vout[out.i].nValue > maxCoinValue)
             continue;
@@ -3080,7 +3080,7 @@ std::map<COdynCashAddress, std::vector<COutput> > CWallet::AvailableCoinsByAddre
         if (!ExtractDestination(out.tx->tx->vout[out.i].scriptPubKey, address))
             continue;
 
-        mapCoins[COdynCashAddress(address)].push_back(out);
+        mapCoins[CCashAddress(address)].push_back(out);
     }
 
     return mapCoins;
@@ -3610,7 +3610,7 @@ bool CWallet::SelectCoinsGroupedByAddresses(std::vector<CompactTallyItem>& vecTa
     if (LogAcceptCategory("selectcoins")) {
         std::string strMessage = "SelectCoinsGroupedByAddresses - vecTallyRet:\n";
         for (const auto& item : vecTallyRet)
-            strMessage += strprintf("  %s %f\n", COdynCashAddress(item.txdest).ToString().c_str(), float(item.nAmount) / COIN);
+            strMessage += strprintf("  %s %f\n", CCashAddress(item.txdest).ToString().c_str(), float(item.nAmount) / COIN);
         LogPrint("selectcoins", "%s", strMessage);
     }
     return vecTallyRet.size() > 0;
@@ -3718,7 +3718,7 @@ bool CWallet::GetOutpointAndKeysFromOutput(const COutput& out, COutPoint& outpoi
 
     CTxDestination address1;
     ExtractDestination(pubScript, address1);
-    COdynCashAddress address2(address1);
+    CCashAddress address2(address1);
 
     CKeyID keyID;
     if (!address2.GetKeyID(keyID)) {
@@ -4139,7 +4139,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     std::string strOpType = GetBDAPOpTypeString(opCode1, opCode2);
                     if (strOpType == "bdap_move_asset") {
                         GetBDAPCreditScript(pcoin.first->tx, scriptBdapChange);
-                        COdynCashAddress address = GetScriptAddress(scriptBdapChange);
+                        CCashAddress address = GetScriptAddress(scriptBdapChange);
                         LogPrintf("%s -- address %s, scriptBdapChange %s\n", __func__, address.ToString(), ScriptToAsmStr(scriptBdapChange));
                         fUsingBDAPCredits = true;
                     }
@@ -4158,7 +4158,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     } else {
                         // Fill a vout to ourself
                         // TODO: pass in scriptChange instead of reservekey so
-                        // change transaction isn't always pay-to-odyncash-address
+                        // change transaction isn't always pay-to-cash-address
                         CScript scriptChange;
 
                         // coin control: send change to custom address
@@ -4646,9 +4646,9 @@ bool CWallet::SetAddressBook(const CTxDestination& address, const std::string& s
         strPurpose, (fUpdated ? CT_UPDATED : CT_NEW));
     if (!fFileBacked)
         return false;
-    if (!strPurpose.empty() && !CWalletDB(strWalletFile).WritePurpose(COdynCashAddress(address).ToString(), strPurpose))
+    if (!strPurpose.empty() && !CWalletDB(strWalletFile).WritePurpose(CCashAddress(address).ToString(), strPurpose))
         return false;
-    return CWalletDB(strWalletFile).WriteName(COdynCashAddress(address).ToString(), strName);
+    return CWalletDB(strWalletFile).WriteName(CCashAddress(address).ToString(), strName);
 }
 
 bool CWallet::DelAddressBook(const CTxDestination& address)
@@ -4658,7 +4658,7 @@ bool CWallet::DelAddressBook(const CTxDestination& address)
 
         if (fFileBacked) {
             // Delete destdata tuples associated with address
-            std::string strAddress = COdynCashAddress(address).ToString();
+            std::string strAddress = CCashAddress(address).ToString();
             BOOST_FOREACH (const PAIRTYPE(std::string, std::string) & item, mapAddressBook[address].destdata) {
                 CWalletDB(strWalletFile).EraseDestData(strAddress, item.first);
             }
@@ -4670,8 +4670,8 @@ bool CWallet::DelAddressBook(const CTxDestination& address)
 
     if (!fFileBacked)
         return false;
-    CWalletDB(strWalletFile).ErasePurpose(COdynCashAddress(address).ToString());
-    return CWalletDB(strWalletFile).EraseName(COdynCashAddress(address).ToString());
+    CWalletDB(strWalletFile).ErasePurpose(CCashAddress(address).ToString());
+    return CWalletDB(strWalletFile).EraseName(CCashAddress(address).ToString());
 }
 
 bool CWallet::SetDefaultKey(const CPubKey& vchPubKey)
@@ -5602,7 +5602,7 @@ bool CWallet::AddDestData(const CTxDestination& dest, const std::string& key, co
     mapAddressBook[dest].destdata.insert(std::make_pair(key, value));
     if (!fFileBacked)
         return true;
-    return CWalletDB(strWalletFile).WriteDestData(COdynCashAddress(dest).ToString(), key, value);
+    return CWalletDB(strWalletFile).WriteDestData(CCashAddress(dest).ToString(), key, value);
 }
 
 bool CWallet::EraseDestData(const CTxDestination& dest, const std::string& key)
@@ -5611,7 +5611,7 @@ bool CWallet::EraseDestData(const CTxDestination& dest, const std::string& key)
         return false;
     if (!fFileBacked)
         return true;
-    return CWalletDB(strWalletFile).EraseDestData(COdynCashAddress(dest).ToString(), key);
+    return CWalletDB(strWalletFile).EraseDestData(CCashAddress(dest).ToString(), key);
 }
 
 bool CWallet::LoadDestData(const CTxDestination& dest, const std::string& key, const std::string& value)
@@ -6112,11 +6112,11 @@ bool CWallet::GetStealthAddress(const CKeyID& keyid, CStealthAddress& sxAddr) co
     LOCK(cs_mapStealthAddresses);
     std::map<CKeyID, CStealthAddress>::const_iterator it = mapStealthAddresses.find(keyid);
     if (it != mapStealthAddresses.end()) {
-        LogPrintf("CWallet::%s -- found %s\n", __func__, COdynCashAddress(keyid).ToString());
+        LogPrintf("CWallet::%s -- found %s\n", __func__, CCashAddress(keyid).ToString());
         sxAddr = (*it).second;
         return true;
     }
-    LogPrintf("CWallet::%s -- Not found %s\n", __func__, COdynCashAddress(keyid).ToString());
+    LogPrintf("CWallet::%s -- Not found %s\n", __func__, CCashAddress(keyid).ToString());
     return false;
 }
 
@@ -6148,7 +6148,7 @@ bool CWallet::ProcessStealthQueue()
         CStealthKeyQueueData stealthData = data.second;
         CKey sSpend;
         if (!GetKey(stealthData.pkSpend.GetID(), sSpend)) {
-            LogPrintf("%s: Error getting spend private key (%s) for stealth transaction.\n", __func__,  COdynCashAddress(stealthData.pkSpend.GetID()).ToString());
+            LogPrintf("%s: Error getting spend private key (%s) for stealth transaction.\n", __func__,  CCashAddress(stealthData.pkSpend.GetID()).ToString());
             continue;
         }
         CKey sSpendR;
@@ -6222,7 +6222,7 @@ bool CWallet::ProcessStealthOutput(const CTxDestination& address, std::vector<ui
         if (idMatchShared != idExtracted) {
             continue;
         }
-        LogPrint("bdap", "%s -- Found txn output from address %s belongs to stealth address %s\n", __func__, COdynCashAddress(idExtracted).ToString(), sxAddr.Encoded());
+        LogPrint("bdap", "%s -- Found txn output from address %s belongs to stealth address %s\n", __func__, CCashAddress(idExtracted).ToString(), sxAddr.Encoded());
 
         if (IsLocked()) {
             LogPrintf("%s: Wallet locked, adding stealth key to queue wallet.\n", __func__);
@@ -6234,7 +6234,7 @@ bool CWallet::ProcessStealthOutput(const CTxDestination& address, std::vector<ui
             CPubKey cpkSpend(sxAddr.spend_pubkey);
             CStealthKeyQueueData lockedSkQueueData(cpkEphem, cpkScan, cpkSpend, sShared);
             if (!pwdb->WriteStealthKeyQueue(idMatchShared, lockedSkQueueData)) {
-                LogPrintf("%s: Error WriteStealthKeyQueue failed for %s.\n", __func__, COdynCashAddress(idExtracted).ToString());
+                LogPrintf("%s: Error WriteStealthKeyQueue failed for %s.\n", __func__, CCashAddress(idExtracted).ToString());
                 delete pwdb;
                 return false;
             }
@@ -6246,7 +6246,7 @@ bool CWallet::ProcessStealthOutput(const CTxDestination& address, std::vector<ui
         }
 
         if (!GetKey(sxAddr.GetSpendKeyID(), sSpend)) {
-            LogPrintf("%s: Error getting spend private key (%s) for stealth transaction.\n", __func__,  COdynCashAddress(sxAddr.GetSpendKeyID()).ToString());
+            LogPrintf("%s: Error getting spend private key (%s) for stealth transaction.\n", __func__,  CCashAddress(sxAddr.GetSpendKeyID()).ToString());
             delete pwdb;
             return false;
         }

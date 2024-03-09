@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_PUBKEY_H
-#define ODYNCASH_PUBKEY_H
+#ifndef CASH_PUBKEY_H
+#define CASH_PUBKEY_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -254,4 +254,4 @@ public:
     ~ECCVerifyHandle();
 };
 
-#endif // ODYNCASH_PUBKEY_H
+#endif // CASH_PUBKEY_H

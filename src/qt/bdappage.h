@@ -6,7 +6,7 @@
 #define BDAPPAGE_H
 
 #include "bdap/bdap.h"
-#include "odyncashunits.h"
+#include "cashunits.h"
 #include "platformstyle.h"
 #include "walletmodel.h"
 

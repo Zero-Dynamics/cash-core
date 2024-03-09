@@ -50,7 +50,7 @@
 using namespace std;
 
 #if defined(NDEBUG)
-#error "OdynCash cannot be compiled without assertions."
+#error "Cash cannot be compiled without assertions."
 #endif
 
 std::atomic<int64_t> nTimeBestReceived(0); // Used only to inform the wallet of when we last received a block
@@ -919,7 +919,7 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
         return mapBlockIndex.count(inv.hash);
 
     /*
-        OdynCash Related Inventory Messages
+        Cash Related Inventory Messages
 
         --
 

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_PRIVATESENDCONFIG_H
-#define ODYNCASH_QT_PRIVATESENDCONFIG_H
+#ifndef CASH_QT_PRIVATESENDCONFIG_H
+#define CASH_QT_PRIVATESENDCONFIG_H
 
 #include <QDialog>
 
@@ -41,4 +41,4 @@ private Q_SLOTS:
     void clickMax();
 };
 
-#endif // ODYNCASH_QT_PRIVATESENDCONFIG_H
+#endif // CASH_QT_PRIVATESENDCONFIG_H

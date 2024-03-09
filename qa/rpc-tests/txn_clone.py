@@ -7,10 +7,10 @@
 # Test proper accounting with an equivalent malleability clone
 #
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 
-class TxnMallTest(OdynCashTestFramework):
+class TxnMallTest(CashTestFramework):
 
     def add_options(self, parser):
         parser.add_option("--mineblock", dest="mine_block", default=False, action="store_true",

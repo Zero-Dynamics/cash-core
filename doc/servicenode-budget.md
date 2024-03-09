@@ -1,7 +1,7 @@
 ServiceNode Budget API
 =======================
 
-OdynCash supports full decentralized budgets that are paid directly from the blockchain via superblocks once per month.
+Cash supports full decentralized budgets that are paid directly from the blockchain via superblocks once per month.
 
 Budgets go through a series of stages before being paid:
  * prepare - create a special transaction that destroys coins in order to make a proposal
@@ -20,7 +20,7 @@ In this transaction we prepare collateral for "_cool-project_". This proposal wi
 
 **Warning: if you change any fields within this command, the collateral transaction will become invalid.**
 
-Format: ```sngovernance prepare proposal-name url payment-count block-start odyncash-address monthly-payment-odyncash```
+Format: ```sngovernance prepare proposal-name url payment-count block-start cash-address monthly-payment-cash```
 
 Example: ```sngovernance prepare cool-project http://www.cool-project/one.json 12 100000 y6R9oN12KnB9zydzTLc3LikD9cCjjQzYG7 1200 true```
 
@@ -33,7 +33,7 @@ This is the collateral hash, copy this output for the next step.
 
 Now we can submit our proposal to the network.
 
-Format: ```sngovernance submit proposal-name url payment-count block-start odyncash-address monthly-payment-odyncash fee-tx```
+Format: ```sngovernance submit proposal-name url payment-count block-start cash-address monthly-payment-cash fee-tx```
 
 Example: ```sngovernance submit cool-project http://www.cool-project/one.json 12 100000 y6R9oN12KnB9zydzTLc3LikD9cCjjQzYG7 1200 464a0eb70ea91c94295214df48c47baa72b3876cfb658744aaf863c7b5bf1ff0```
 
@@ -143,7 +143,7 @@ The following RPC commands are supported:
   - nextblock          - Get info about next superblock for budget system
   - nextsuperblocksize - Get superblock size for a given blockheight
   - projection         - Show the projection of which proposals will be paid the next cycle
-  - vote               - Vote on a proposal by single ServiceNode (using odyncash.conf setup)
+  - vote               - Vote on a proposal by single ServiceNode (using cash.conf setup)
   - vote-many          - Vote on a proposal by all ServiceNodes (using servicenode.conf setup)
   - vote-alias         - Vote on a proposal by alias
  - snfinalbudget "command"... ( "passphrase" )

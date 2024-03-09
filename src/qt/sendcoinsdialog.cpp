@@ -11,7 +11,7 @@
 #include "addresstablemodel.h"
 #include "clientmodel.h"
 #include "coincontroldialog.h"
-#include "odyncashunits.h"
+#include "cashunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 #include "platformstyle.h"
@@ -65,7 +65,7 @@ SendCoinsDialog::SendCoinsDialog(const PlatformStyle* _platformStyle, QWidget* p
     connect(ui->checkBoxCoinControlChange, SIGNAL(stateChanged(int)), this, SLOT(coinControlChangeChecked(int)));
     connect(ui->lineEditCoinControlChange, SIGNAL(textEdited(const QString&)), this, SLOT(coinControlChangeEdited(const QString&)));
 
-    // OdynCash specific
+    // Cash specific
     QSettings settings;
     if (!settings.contains("bUsePrivateSend"))
         settings.setValue("bUsePrivateSend", false);
@@ -249,7 +249,7 @@ void SendCoinsDialog::on_sendButton_clicked()
         recipients[0].inputType = ONLY_DENOMINATED;
         strFunds = tr("using") + " <b>" + tr("anonymous funds") + "</b>";
         QString strNearestAmount(
-            OdynCashUnits::formatWithUnit(
+            CashUnits::formatWithUnit(
                 model->getOptionsModel()->getDisplayUnit(), CPrivateSend::GetSmallestDenomination()));
         strFee = QString(tr(
             "(privatesend requires this amount to be rounded up to the nearest %1).")
@@ -307,7 +307,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
 
     // process prepareStatus and on error generate message shown to user
     processSendCoinsReturn(prepareStatus,
-        OdynCashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), currentTransaction.getTransactionFee()));
+        CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), currentTransaction.getTransactionFee()));
 
     if (prepareStatus.status != WalletModel::OK) {
         fNewRecipientAllowed = true;
@@ -320,7 +320,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
     QStringList formatted;
     Q_FOREACH (const SendCoinsRecipient& rcp, currentTransaction.getRecipients()) {
         // generate bold amount string
-        QString amount = "<b>" + OdynCashUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);
+        QString amount = "<b>" + CashUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);
         amount.append("</b> ").append(strFunds);
 
         // generate monospace address string
@@ -348,7 +348,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
     if (txFee > 0) {
         // append fee string if a fee is required
         questionString.append("<hr /><span style='color:#aa0000;'>");
-        questionString.append(OdynCashUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee));
+        questionString.append(CashUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee));
         questionString.append("</span> ");
         questionString.append(tr("are added as transaction fee"));
         questionString.append(" ");
@@ -362,14 +362,14 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
     questionString.append("<hr />");
     CAmount totalAmount = currentTransaction.getTotalTransactionAmount() + txFee;
     QStringList alternativeUnits;
-    Q_FOREACH (OdynCashUnits::Unit u, OdynCashUnits::availableUnits()) {
+    Q_FOREACH (CashUnits::Unit u, CashUnits::availableUnits()) {
         if (u != model->getOptionsModel()->getDisplayUnit())
-            alternativeUnits.append(OdynCashUnits::formatHtmlWithUnit(u, totalAmount));
+            alternativeUnits.append(CashUnits::formatHtmlWithUnit(u, totalAmount));
     }
 
     // Show total amount + all alternative units
     questionString.append(tr("Total Amount = <b>%1</b><br />= %2")
-                              .arg(OdynCashUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), totalAmount))
+                              .arg(CashUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), totalAmount))
                               .arg(alternativeUnits.join("<br />= ")));
 
     // Limit number of displayed entries
@@ -551,7 +551,7 @@ void SendCoinsDialog::setBalance(const CAmount& balance, const CAmount& total, c
             bal = balance;
         }
 
-        ui->labelBalance->setText(OdynCashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), bal));
+        ui->labelBalance->setText(CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), bal));
     }
 }
 
@@ -608,7 +608,7 @@ void SendCoinsDialog::processSendCoinsReturn(const WalletModel::SendCoinsReturn&
         msgParams.second = CClientUIInterface::MSG_ERROR;
         break;
     case WalletModel::AbsurdFee:
-        msgParams.first = tr("A fee higher than %1 is considered an absurdly high fee.").arg(OdynCashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), maxTxFee));
+        msgParams.first = tr("A fee higher than %1 is considered an absurdly high fee.").arg(CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), maxTxFee));
         break;
     case WalletModel::PaymentRequestExpired:
         msgParams.first = tr("Payment request expired.");
@@ -694,7 +694,7 @@ void SendCoinsDialog::updateFeeMinimizedLabel()
     if (ui->radioSmartFee->isChecked())
         ui->labelFeeMinimized->setText(ui->labelSmartFee->text());
     else {
-        ui->labelFeeMinimized->setText(OdynCashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), ui->customFee->value()) +
+        ui->labelFeeMinimized->setText(CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), ui->customFee->value()) +
                                        ((ui->radioCustomPerKilobyte->isChecked()) ? "/kB" : ""));
     }
 }
@@ -702,7 +702,7 @@ void SendCoinsDialog::updateFeeMinimizedLabel()
 void SendCoinsDialog::updateMinFeeLabel()
 {
     if (model && model->getOptionsModel())
-        ui->checkBoxMinimumFee->setText(tr("Pay only the required fee of %1").arg(OdynCashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), CWallet::GetRequiredFee(1000)) + "/kB"));
+        ui->checkBoxMinimumFee->setText(tr("Pay only the required fee of %1").arg(CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), CWallet::GetRequiredFee(1000)) + "/kB"));
 }
 
 void SendCoinsDialog::updateSmartFeeLabel()
@@ -715,7 +715,7 @@ void SendCoinsDialog::updateSmartFeeLabel()
     CFeeRate feeRate = mempool.estimateSmartFee(nBlocksToConfirm, &estimateFoundAtBlocks);
     if (feeRate <= CFeeRate(0)) // not enough data => minfee
     {
-        ui->labelSmartFee->setText(OdynCashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
+        ui->labelSmartFee->setText(CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
                                        std::max(CWallet::fallbackFee.GetFeePerK(), CWallet::GetRequiredFee(1000))) +
                                    "/kB");
         ui->labelSmartFee2->show(); // (Smart fee not initialized yet. This usually takes a few blocks...)
@@ -726,7 +726,7 @@ void SendCoinsDialog::updateSmartFeeLabel()
         ui->fallbackFeeWarningLabel->setStyleSheet("QLabel { color: " + warning_colour.name() + "; }");
         ui->fallbackFeeWarningLabel->setIndent(QFontMetrics(ui->fallbackFeeWarningLabel->font()).width("x"));
     } else {
-        ui->labelSmartFee->setText(OdynCashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
+        ui->labelSmartFee->setText(CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
                                        std::max(feeRate.GetFeePerK(), CWallet::GetRequiredFee(1000))) +
                                    "/kB");
         ui->labelSmartFee2->hide();
@@ -821,14 +821,14 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
         CoinControlDialog::coinControl->destChange = CNoDestination();
         ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
 
-        COdynCashAddress addr = COdynCashAddress(text.toStdString());
+        CCashAddress addr = CCashAddress(text.toStdString());
 
         if (text.isEmpty()) // Nothing entered
         {
             ui->labelCoinControlChangeLabel->setText("");
         } else if (!addr.IsValid()) // Invalid address
         {
-            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid OdynCash address"));
+            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Cash address"));
         } else // Valid address
         {
             CKeyID keyid;

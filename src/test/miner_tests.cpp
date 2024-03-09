@@ -20,7 +20,7 @@
 
 #include "miner/impl/miner-gpu.h"
 
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 
 #include <memory>
 

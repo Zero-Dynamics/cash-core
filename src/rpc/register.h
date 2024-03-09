@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_RPCREGISTER_H
-#define ODYNCASH_RPCREGISTER_H
+#ifndef CASH_RPCREGISTER_H
+#define CASH_RPCREGISTER_H
 
 /** These are in one header file to avoid creating tons of single-function
  * headers for everything under src/rpc/ */
@@ -57,4 +57,4 @@ static inline void RegisterAllCoreRPCCommands(CRPCTable& t)
     RegisterCertificateRPCCommands(t);
 }
 
-#endif // ODYNCASH_RPCREGISTER_H
+#endif // CASH_RPCREGISTER_H

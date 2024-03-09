@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_QVALUECOMBOBOX_H
-#define ODYNCASH_QT_QVALUECOMBOBOX_H
+#ifndef CASH_QT_QVALUECOMBOBOX_H
+#define CASH_QT_QVALUECOMBOBOX_H
 
 #include <QComboBox>
 #include <QVariant>
@@ -37,4 +37,4 @@ private Q_SLOTS:
     void handleSelectionChanged(int idx);
 };
 
-#endif // ODYNCASH_QT_QVALUECOMBOBOX_H
+#endif // CASH_QT_QVALUECOMBOBOX_H

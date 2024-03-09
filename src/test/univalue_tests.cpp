@@ -7,7 +7,7 @@
 #include <string>
 #include <map>
 #include <univalue.h>
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 
 #include <boost/test/unit_test.hpp>
 

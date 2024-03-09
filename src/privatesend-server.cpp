@@ -24,7 +24,7 @@ void CPrivateSendServer::ProcessMessage(CNode* pfrom, const std::string& strComm
     if (!fServiceNodeMode)
         return;
     if (fLiteMode)
-        return; // ignore all OdynCash related functionality
+        return; // ignore all Cash related functionality
     if (!servicenodeSync.IsBlockchainSynced())
         return;
 
@@ -474,7 +474,7 @@ void CPrivateSendServer::ChargeFees(CConnman& connman)
 
     Being that mixing has "no fees" we need to have some kind of cost associated
     with using it to stop abuse. Otherwise it could serve as an attack vector and
-    allow endless transaction that would bloat OdynCash and make it unusable. To
+    allow endless transaction that would bloat Cash and make it unusable. To
     stop these kinds of attacks 1 in 10 successful transactions are charged. This
     adds up to a cost of 0.001DRK per transaction on average.
 */
@@ -896,7 +896,7 @@ void CPrivateSendServer::SetState(PoolState nStateNew)
 void CPrivateSendServer::DoMaintenance(CConnman& connman)
 {
     if (fLiteMode)
-        return; // disable all OdynCash specific functionality
+        return; // disable all Cash specific functionality
     if (!fServiceNodeMode)
         return; // only run on servicenodes
 

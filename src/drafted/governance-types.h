@@ -16,9 +16,9 @@ enum GovernanceObjectType {
     ValueOverride = 1, 
 
     // -------------------------------
-    // OdynCashNetwork - is the root node
-    OdynCashNetwork = 1000,
-    OdynCashNetworkVariable = 1001,
+    // CashNetwork - is the root node
+    CashNetwork = 1000,
+    CashNetworkVariable = 1001,
     Category = 1002,
 
     // Actors

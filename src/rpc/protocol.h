@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_RPCPROTOCOL_H
-#define ODYNCASH_RPCPROTOCOL_H
+#ifndef CASH_RPCPROTOCOL_H
+#define CASH_RPCPROTOCOL_H
 
 #include <univalue.h>
 
@@ -29,7 +29,7 @@ enum HTTPStatusCode {
     HTTP_SERVICE_UNAVAILABLE = 503,
 };
 
-//! OdynCash RPC error codes
+//! Cash RPC error codes
 enum RPCErrorCode {
     //! Standard JSON-RPC 2.0 errors
     RPC_INVALID_REQUEST = -32600,
@@ -59,7 +59,7 @@ enum RPCErrorCode {
     RPC_TRANSACTION_ALREADY_IN_CHAIN = RPC_VERIFY_ALREADY_IN_CHAIN,
 
     //! P2P client errors
-    RPC_CLIENT_NOT_CONNECTED = -9,         //! OdynCash is not connected
+    RPC_CLIENT_NOT_CONNECTED = -9,         //! Cash is not connected
     RPC_CLIENT_IN_INITIAL_DOWNLOAD = -10,  //! Still downloading initial blocks
     RPC_CLIENT_NODE_ALREADY_ADDED = -23,   //! Node is already added
     RPC_CLIENT_NODE_NOT_ADDED = -24,       //! Node has not been added before
@@ -121,4 +121,4 @@ bool GetAuthCookie(std::string* cookie_out);
 /** Delete RPC authentication cookie from disk */
 void DeleteAuthCookie();
 
-#endif // ODYNCASH_RPCPROTOCOL_H
+#endif // CASH_RPCPROTOCOL_H

@@ -16,7 +16,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.odyncash.OdynCash-Qt";
+        return @"org.cash.Cash-Qt";
     } else {
         return [self __bundleIdentifier];
     }

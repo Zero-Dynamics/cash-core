@@ -7,7 +7,7 @@
 
 #include "qvalidatedlineedit.h"
 
-#include "odyncashaddressvalidator.h"
+#include "cashaddressvalidator.h"
 #include "guiconstants.h"
 
 QValidatedLineEdit::QValidatedLineEdit(QWidget* parent) : QLineEdit(parent),

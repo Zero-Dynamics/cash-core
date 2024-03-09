@@ -8,7 +8,7 @@
 #include "base58.h"
 #include "netbase.h"
 
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/assign/list_of.hpp>

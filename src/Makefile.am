@@ -5,20 +5,20 @@ AM_CXXFLAGS = $(HARDENED_CXXFLAGS)
 AM_CPPFLAGS = $(HARDENED_CPPFLAGS)
 EXTRA_LIBRARIES =
 
-ODYNCASH_CONFIG_INCLUDES=-I$(builddir)/config
-ODYNCASH_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(LIBTORRENT_CPPFLAGS) $(LIBVGP_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+CASH_CONFIG_INCLUDES=-I$(builddir)/config
+CASH_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(LIBTORRENT_CPPFLAGS) $(LIBVGP_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-ODYNCASH_INCLUDES += -I$(srcdir)/secp256k1/include
-ODYNCASH_INCLUDES += -I$(srcdir)/univalue/include
+CASH_INCLUDES += -I$(srcdir)/secp256k1/include
+CASH_INCLUDES += -I$(srcdir)/univalue/include
 
-LIBODYNCASH_SERVER=libodyncash_server.a
-LIBODYNCASH_WALLET=libodyncash_wallet.a
-LIBODYNCASH_CONSENSUS=libodyncash_consensus.a
-LIBODYNCASH_COMMON=libodyncash_common.a
-LIBODYNCASH_CLI=libodyncash_cli.a
-LIBODYNCASH_UTIL=libodyncash_util.a
-LIBODYNCASH_CRYPTO=crypto/libodyncash_crypto.a
-LIBODYNCASHQT=qt/libodyncashqt.a
+LIBCASH_SERVER=libcash_server.a
+LIBCASH_WALLET=libcash_wallet.a
+LIBCASH_CONSENSUS=libcash_consensus.a
+LIBCASH_COMMON=libcash_common.a
+LIBCASH_CLI=libcash_cli.a
+LIBCASH_UTIL=libcash_util.a
+LIBCASH_CRYPTO=crypto/libcash_crypto.a
+LIBCASHQT=qt/libcashqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 LIBUNIVALUE=univalue/libunivalue.la
 
@@ -31,27 +31,27 @@ $(LIBUNIVALUE): $(wildcard univalue/lib/*) $(wildcard univalue/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBODYNCASH_CRYPTO) \
-  $(LIBODYNCASH_UTIL) \
-  $(LIBODYNCASH_COMMON) \
-  $(LIBODYNCASH_CONSENSUS) \
-  $(LIBODYNCASH_SERVER) \
-  $(LIBODYNCASH_CLI) \
-  $(LIBODYNCASH_WALLET)
+  $(LIBCASH_CRYPTO) \
+  $(LIBCASH_UTIL) \
+  $(LIBCASH_COMMON) \
+  $(LIBCASH_CONSENSUS) \
+  $(LIBCASH_SERVER) \
+  $(LIBCASH_CLI) \
+  $(LIBCASH_WALLET)
 
 if ENABLE_WALLET
-ODYNCASH_INCLUDES += $(BDB_CPPFLAGS)
-EXTRA_LIBRARIES += libodyncash_wallet.a
+CASH_INCLUDES += $(BDB_CPPFLAGS)
+EXTRA_LIBRARIES += libcash_wallet.a
 endif
 if ENABLE_ZMQ
-EXTRA_LIBRARIES += libodyncash_zmq.a
+EXTRA_LIBRARIES += libcash_zmq.a
 endif
 
-if BUILD_ODYNCASH_LIBS
-lib_LTLIBRARIES = libodyncashconsensus.la
-LIBODYNCASHCONSENSUS=libodyncashconsensus.la
+if BUILD_CASH_LIBS
+lib_LTLIBRARIES = libcashconsensus.la
+LIBCASHCONSENSUS=libcashconsensus.la
 else
-LIBODYNCASHCONSENSUS=
+LIBCASHCONSENSUS=
 endif
 
 bin_PROGRAMS =
@@ -59,17 +59,17 @@ TESTS =
 BENCHMARKS =
 DHT_TESTS =
 
-if BUILD_ODYNCASHD
-  bin_PROGRAMS += odyncashd
+if BUILD_CASHD
+  bin_PROGRAMS += cashd
 endif
 
-if BUILD_ODYNCASH_UTILS
-  bin_PROGRAMS += odyncash-cli odyncash-tx
+if BUILD_CASH_UTILS
+  bin_PROGRAMS += cash-cli cash-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# odyncash #
-ODYNCASH_CORE_H = \
+# cash #
+CASH_CORE_H = \
   activeservicenode.h \
   addrdb.h \
   addressindex.h \
@@ -251,12 +251,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
 	  $(abs_top_srcdir)
-libodyncash_util_a-clientversion.$(OBJEXT): obj/build.h
+libcash_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between odyncashd and odyncash-qt
-libodyncash_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libodyncash_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodyncash_server_a_SOURCES = \
+# server: shared between cashd and cash-qt
+libcash_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libcash_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libcash_server_a_SOURCES = \
   activeservicenode.cpp \
   addrdb.cpp \
   addrman.cpp \
@@ -362,24 +362,24 @@ libodyncash_server_a_SOURCES = \
   validationinterface.cpp \
   versionbits.cpp \
   warnings.cpp \
-  $(ODYNCASH_CORE_H)
+  $(CASH_CORE_H)
 
 if ENABLE_ZMQ
-LIBODYNCASH_ZMQ=libodyncash_zmq.a
+LIBCASH_ZMQ=libcash_zmq.a
 
-libodyncash_zmq_a_CPPFLAGS = $(ODYNCASH_INCLUDES) $(ZMQ_CFLAGS)
-libodyncash_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodyncash_zmq_a_SOURCES = \
+libcash_zmq_a_CPPFLAGS = $(CASH_INCLUDES) $(ZMQ_CFLAGS)
+libcash_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libcash_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between odyncashd and odyncash-qt, but only linked
+# wallet: shared between cashd and cash-qt, but only linked
 # when wallet enabled
-libodyncash_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES)
-libodyncash_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodyncash_wallet_a_SOURCES = \
+libcash_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES)
+libcash_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libcash_wallet_a_SOURCES = \
   bdap/stealth.cpp \
   keepass.cpp \
   policy/rbf.cpp \
@@ -394,12 +394,12 @@ libodyncash_wallet_a_SOURCES = \
   wallet/wallet.cpp \
   wallet/wallet_ismine.cpp \
   wallet/walletdb.cpp \
-  $(ODYNCASH_CORE_H)
+  $(CASH_CORE_H)
 
 # crypto primitives library
-crypto_libodyncash_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_CONFIG_INCLUDES) $(PIC_FLAGS)
-crypto_libodyncash_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
-crypto_libodyncash_crypto_a_SOURCES = \
+crypto_libcash_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_CONFIG_INCLUDES) $(PIC_FLAGS)
+crypto_libcash_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
+crypto_libcash_crypto_a_SOURCES = \
   crypto/argon2d/argon2.c \
   crypto/argon2d/argon2.h \
   crypto/argon2d/core.c \
@@ -435,9 +435,9 @@ crypto_libodyncash_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # consensus: shared between all executables that validate any consensus rules.
-libodyncash_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES)
-libodyncash_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodyncash_consensus_a_SOURCES = \
+libcash_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES)
+libcash_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libcash_consensus_a_SOURCES = \
   amount.cpp \
   amount.h \
   arith_uint256.cpp \
@@ -455,7 +455,7 @@ libodyncash_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/odyncashconsensus.cpp \
+  script/cashconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -468,10 +468,10 @@ libodyncash_consensus_a_SOURCES = \
   uint256.h \
   version.h
 
-# common: shared between odyncashd, and odyncash-qt and non-server tools
-libodyncash_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES)
-libodyncash_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodyncash_common_a_SOURCES = \
+# common: shared between cashd, and cash-qt and non-server tools
+libcash_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES)
+libcash_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libcash_common_a_SOURCES = \
   base58.cpp \
   bdap/stealth.cpp \
   bip39.cpp \
@@ -491,14 +491,14 @@ libodyncash_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   wallet/wallet_ismine.cpp \
-  $(ODYNCASH_CORE_H)
+  $(CASH_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libodyncash_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES)
-libodyncash_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodyncash_util_a_SOURCES = \
+libcash_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES)
+libcash_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libcash_util_a_SOURCES = \
   chainparamsbase.cpp \
   clientversion.cpp \
   compat/glibc_sanity.cpp \
@@ -514,40 +514,40 @@ libodyncash_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(ODYNCASH_CORE_H)
+  $(CASH_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libodyncash_util_a_SOURCES += compat/glibc_compat.cpp
+libcash_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between odyncash-cli and odyncash-qt
-libodyncash_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES)
-libodyncash_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodyncash_cli_a_SOURCES = \
+# cli: shared between cash-cli and cash-qt
+libcash_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES)
+libcash_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libcash_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(ODYNCASH_CORE_H)
+  $(CASH_CORE_H)
 
-nodist_libodyncash_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libcash_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# odyncashd binary #
-odyncashd_SOURCES = odyncashd.cpp
-odyncashd_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES)
-odyncashd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-odyncashd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# cashd binary #
+cashd_SOURCES = cashd.cpp
+cashd_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES)
+cashd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+cashd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-odyncashd_SOURCES += odyncashd-res.rc
+cashd_SOURCES += cashd-res.rc
 endif
 
-odyncashd_LDADD = \
-  $(LIBODYNCASH_SERVER) \
-  $(LIBODYNCASH_COMMON) \
+cashd_LDADD = \
+  $(LIBCASH_SERVER) \
+  $(LIBCASH_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBODYNCASH_UTIL) \
-  $(LIBODYNCASH_CONSENSUS) \
-  $(LIBODYNCASH_CRYPTO) \
+  $(LIBCASH_UTIL) \
+  $(LIBCASH_CONSENSUS) \
+  $(LIBCASH_CRYPTO) \
   $(LIBVGP) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
@@ -556,70 +556,70 @@ odyncashd_LDADD = \
   $(LIBTORRENT)
 
 if ENABLE_ZMQ
-odyncashd_LDADD += $(LIBODYNCASH_ZMQ) $(ZMQ_LIBS)
+cashd_LDADD += $(LIBCASH_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-odyncashd_LDADD += libodyncash_wallet.a
+cashd_LDADD += libcash_wallet.a
 endif
 
-odyncashd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+cashd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 
-# odyncash-cli binary #
-odyncash_cli_SOURCES = odyncash-cli.cpp
-odyncash_cli_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES) $(EVENT_CFLAGS)
-odyncash_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-odyncash_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# cash-cli binary #
+cash_cli_SOURCES = cash-cli.cpp
+cash_cli_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES) $(EVENT_CFLAGS)
+cash_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+cash_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-odyncash_cli_SOURCES += odyncash-cli-res.rc
+cash_cli_SOURCES += cash-cli-res.rc
 endif
 
-odyncash_cli_LDADD = \
-  $(LIBODYNCASH_CLI) \
+cash_cli_LDADD = \
+  $(LIBCASH_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBODYNCASH_UTIL) \
-  $(LIBODYNCASH_CRYPTO)
+  $(LIBCASH_UTIL) \
+  $(LIBCASH_CRYPTO)
 
-odyncash_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+cash_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# odyncash-tx binary #
-odyncash_tx_SOURCES = odyncash-tx.cpp
-odyncash_tx_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNCASH_INCLUDES)
-odyncash_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-odyncash_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# cash-tx binary #
+cash_tx_SOURCES = cash-tx.cpp
+cash_tx_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES)
+cash_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+cash_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-odyncash_tx_SOURCES += odyncash-tx-res.rc
+cash_tx_SOURCES += cash-tx-res.rc
 endif
 
-odyncash_tx_LDADD = \
+cash_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBODYNCASH_COMMON) \
-  $(LIBODYNCASH_UTIL) \
-  $(LIBODYNCASH_CONSENSUS) \
-  $(LIBODYNCASH_CRYPTO) \
+  $(LIBCASH_COMMON) \
+  $(LIBCASH_UTIL) \
+  $(LIBCASH_CONSENSUS) \
+  $(LIBCASH_CRYPTO) \
   $(LIBVGP) \
   $(LIBSECP256K1)  \
   $(LIBTORRENT)
 
-odyncash_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+cash_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# odyncashconsensus library #
-if BUILD_ODYNCASH_LIBS
-include_HEADERS = script/odyncashconsensus.h
-libodyncashconsensus_la_SOURCES = $(crypto_libodyncash_crypto_a_SOURCES) $(libodyncash_consensus_a_SOURCES)
+# cashconsensus library #
+if BUILD_CASH_LIBS
+include_HEADERS = script/cashconsensus.h
+libcashconsensus_la_SOURCES = $(crypto_libcash_crypto_a_SOURCES) $(libcash_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libodyncashconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libcashconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libodyncashconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libodyncashconsensus_la_LIBADD = $(LIBSECP256K1) $(BOOST_LIBS)
-libodyncashconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_ODYNCASH_INTERNAL
-libodyncashconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libcashconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libcashconsensus_la_LIBADD = $(LIBSECP256K1) $(BOOST_LIBS)
+libcashconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_CASH_INTERNAL
+libcashconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -652,7 +652,7 @@ clean-local:
 	-$(MAKE) -C secp256k1 clean
 	-$(MAKE) -C univalue clean
 	-rm -f leveldb/*/*.gcda leveldb/*/*.gcno leveldb/helpers/memenv/*.gcda leveldb/helpers/memenv/*.gcno
-	-rm -f config/odyncash-config.* config/stamp-h1
+	-rm -f config/cash-config.* config/stamp-h1
 
 .rc.o:
 	@test -f $(WINDRES)

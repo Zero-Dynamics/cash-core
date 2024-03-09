@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_IDENTITY_H
-#define ODYNCASH_BDAP_IDENTITY_H
+#ifndef CASH_BDAP_IDENTITY_H
+#define CASH_BDAP_IDENTITY_H
 
 #include "bdap.h"
 #include "domainentry.h"
@@ -148,4 +148,4 @@ public:
 
 };
 
-#endif // ODYNCASH_BDAP_DOMAINENTRY_H
+#endif // CASH_BDAP_DOMAINENTRY_H

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_TIMEDATA_H
-#define ODYNCASH_TIMEDATA_H
+#ifndef CASH_TIMEDATA_H
+#define CASH_TIMEDATA_H
 
 #include <stdint.h>
 
@@ -80,4 +80,4 @@ int64_t GetAdjustedTime();
 int64_t GetNodesOffset();
 void AddTimeData(const CNetAddr& ip, int64_t nTime);
 
-#endif // ODYNCASH_TIMEDATA_H
+#endif // CASH_TIMEDATA_H

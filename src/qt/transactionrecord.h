@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_TRANSACTIONRECORD_H
-#define ODYNCASH_QT_TRANSACTIONRECORD_H
+#ifndef CASH_QT_TRANSACTIONRECORD_H
+#define CASH_QT_TRANSACTIONRECORD_H
 
 #include "amount.h"
 #include "uint256.h"
@@ -165,4 +165,4 @@ public:
     bool statusUpdateNeeded();
 };
 
-#endif // ODYNCASH_QT_TRANSACTIONRECORD_H
+#endif // CASH_QT_TRANSACTIONRECORD_H

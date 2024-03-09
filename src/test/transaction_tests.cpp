@@ -4,7 +4,7 @@
 
 #include "data/tx_invalid.json.h"
 #include "data/tx_valid.json.h"
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 
 #include "bdap/stealth.h"
 #include "clientversion.h"

@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_KEY_STEALTH_H
-#define ODYNCASH_KEY_STEALTH_H
+#ifndef CASH_KEY_STEALTH_H
+#define CASH_KEY_STEALTH_H
 
 #include <key.h>
 #include <serialize.h>
@@ -144,5 +144,5 @@ void ECC_Start_Stealth();
 void ECC_Stop_Stealth();
 
 
-#endif  // ODYNCASH_KEY_STEALTH_H
+#endif  // CASH_KEY_STEALTH_H
 

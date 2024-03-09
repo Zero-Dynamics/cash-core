@@ -418,7 +418,7 @@ bool CreateSignatureProof(const CKey& key, const std::string& strFQDN, std::vect
     ss << strFQDN;
 
     if (!key.SignCompact(ss.GetHash(), vchSignatureProof)) {
-        COdynCashAddress addr(key.GetPubKey().GetID());
+        CCashAddress addr(key.GetPubKey().GetID());
         LogPrint("bdap", "%s -- Failed to sign BDAP account %s with the %s wallet address\n", __func__, strFQDN, addr.ToString());
         return false;
     }
@@ -426,7 +426,7 @@ bool CreateSignatureProof(const CKey& key, const std::string& strFQDN, std::vect
 }
 
 // Verifies that the signature for the FQDN matches the input address 
-bool SignatureProofIsValid(const COdynCashAddress& addr,  const std::string& strFQDN, const std::vector<unsigned char>& vchSig)
+bool SignatureProofIsValid(const CCashAddress& addr,  const std::string& strFQDN, const std::vector<unsigned char>& vchSig)
 {
     CHashWriter ss(SER_GETHASH, 0);
     ss << strMessageMagic;
@@ -438,8 +438,8 @@ bool SignatureProofIsValid(const COdynCashAddress& addr,  const std::string& str
         return false;
     }
 
-    if (!(COdynCashAddress(pubkey.GetID()) == addr)) {
-        COdynCashAddress sigAddress(pubkey.GetID());
+    if (!(CCashAddress(pubkey.GetID()) == addr)) {
+        CCashAddress sigAddress(pubkey.GetID());
         LogPrint("bdap", "%s -- Signature address %s does not match input address = %s\n", __func__, sigAddress.ToString(), addr.ToString());
         return false;
     }

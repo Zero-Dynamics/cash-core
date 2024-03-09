@@ -10,7 +10,7 @@
 #include "sync.h"
 #include "uint256.h"
 
-class COdynCashAddress;
+class CCashAddress;
 class CScript;
 class CTransaction;
 
@@ -110,7 +110,7 @@ public:
     bool UnserializeFromTx(const CTransaction& tx);
     bool UnserializeFromScript(const CScript& fluidScript);
     void Serialize(std::vector<unsigned char>& vchData);
-    COdynCashAddress GetDestinationAddress() const;
+    CCashAddress GetDestinationAddress() const;
 };
 
 static CCriticalSection cs_fluid_mint;

@@ -6,8 +6,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_ADDRMAN_H
-#define ODYNCASH_ADDRMAN_H
+#ifndef CASH_ADDRMAN_H
+#define CASH_ADDRMAN_H
 
 #include "netaddress.h"
 #include "protocol.h"
@@ -594,4 +594,4 @@ public:
     }
 };
 
-#endif // ODYNCASH_ADDRMAN_H
+#endif // CASH_ADDRMAN_H

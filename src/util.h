@@ -9,11 +9,11 @@
  * Server/client environment: argument handling, config file parsing,
  * logging, thread wrappers
  */
-#ifndef ODYNCASH_UTIL_H
-#define ODYNCASH_UTIL_H
+#ifndef CASH_UTIL_H
+#define CASH_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include "amount.h"
@@ -40,14 +40,14 @@
 
 // Uncomment the following line to enable debugging messages
 // or enable on a per file basis prior to inclusion of util.h
-//#define ENABLE_ODYNCASH_DEBUG
-#ifdef ENABLE_ODYNCASH_DEBUG
+//#define ENABLE_CASH_DEBUG
+#ifdef ENABLE_CASH_DEBUG
 #define DBG(x) x
 #else
 #define DBG(x)
 #endif
 
-//OdynCash only features
+//Cash only features
 
 extern bool fServiceNodeMode;
 extern bool fLiteMode;
@@ -62,7 +62,7 @@ static const bool DEFAULT_LOGTHREADNAMES = false;
  * Maximum amount of time that a block timestamp is allowed to exceed the
  * current network-adjusted time before the block will be accepted.
  */
-static const int64_t MAX_FUTURE_BLOCK_TIME = 30 * 30; // ~15 minutes for OdynCash or 30 blocks
+static const int64_t MAX_FUTURE_BLOCK_TIME = 30 * 30; // ~15 minutes for Cash or 30 blocks
 
 /** Signals for translation. */
 class CTranslationInterface
@@ -83,8 +83,8 @@ extern bool fLogIPs;
 extern std::atomic<bool> fReopenDebugLog;
 extern CTranslationInterface translationInterface;
 
-extern const char* const ODYNCASH_CONF_FILENAME;
-extern const char* const ODYNCASH_PID_FILENAME;
+extern const char* const CASH_CONF_FILENAME;
+extern const char* const CASH_PID_FILENAME;
 
 /**
  * Translation function: Call Translate signal on UI interface, which returns a boost::optional result.
@@ -315,4 +315,4 @@ std::string SafeIntVersionToString(uint32_t nVersion);
 
 bool FileExists(const std::string& strFilePath);
 
-#endif // ODYNCASH_UTIL_H
+#endif // CASH_UTIL_H

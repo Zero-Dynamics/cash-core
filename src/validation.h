@@ -5,11 +5,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_VALIDATION_H
-#define ODYNCASH_VALIDATION_H
+#ifndef CASH_VALIDATION_H
+#define CASH_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/odyncash-config.h"
+#include "config/cash-config.h"
 #endif
 
 #include "amount.h"
@@ -158,7 +158,7 @@ static const unsigned int MAX_BLOCKS_TO_ANNOUNCE = 12;
 /** Maximum number of unconnecting headers announcements before DoS score */
 static const int MAX_UNCONNECTING_HEADERS = 10;
 
-//Odyncash Constants
+//Cash Constants
 static const CAmount BLOCKCHAIN_INIT_REWARD = COIN * 0;
 static const CAmount PHASE_1_POW_REWARD = COIN * 0.160;
 static const CAmount PHASE_1_SERVICENODE_PAYMENT = COIN * 0.640;
@@ -599,4 +599,4 @@ public:
         : OpType(op_str), nValue(value), vParameters(params) {}
 };
 
-#endif // ODYNCASH_VALIDATION_H
+#endif // CASH_VALIDATION_H

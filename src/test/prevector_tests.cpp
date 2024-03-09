@@ -8,7 +8,7 @@
 #include "serialize.h"
 #include "streams.h"
 
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 #include "test/test_random.h"
 
 #include <vector>

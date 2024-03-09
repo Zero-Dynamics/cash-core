@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_WARNINGS_H
-#define ODYNCASH_WARNINGS_H
+#ifndef CASH_WARNINGS_H
+#define CASH_WARNINGS_H
 
 #include <stdlib.h>
 #include <string>
@@ -19,4 +19,4 @@ std::string GetWarnings(const std::string& strFor);
 
 static const bool DEFAULT_TESTSAFEMODE = false;
 
-#endif //  ODYNCASH_WARNINGS_H
+#endif //  CASH_WARNINGS_H

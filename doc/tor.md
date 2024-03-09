@@ -1,7 +1,7 @@
 TOR SUPPORT IN 0DYNC
 =======================
 
-It is possible to run OdynCash as a Tor hidden service, and connect to such services.
+It is possible to run Cash as a Tor hidden service, and connect to such services.
 
 The following directions assume you have a Tor proxy running on port 9050. Many
 distributions default to having a SOCKS proxy listening on port 9050, but others
@@ -10,10 +10,10 @@ port. See [Tor Project FAQ:TBBSocksPort](https://www.torproject.org/docs/faq.htm
 for how to properly configure Tor.
 
 
-1. Run odyncash behind a Tor proxy
+1. Run cash behind a Tor proxy
 ----------------------------------
 
-The first step is running OdynCash behind a Tor proxy. This will already make all
+The first step is running Cash behind a Tor proxy. This will already make all
 outgoing connections be anonymized, but more is possible.
 
 	-proxy=ip:port  Set the proxy server. If SOCKS5 is selected (default), this proxy
@@ -37,31 +37,31 @@ outgoing connections be anonymized, but more is possible.
 An example how to start the client if the Tor proxy is running on local host on
 port 9050 and only allows .onion nodes to connect:
 
-	./odyncashd -onion=127.0.0.1:9050 -onlynet=tor -listen=0 -addnode=ssapp53tmftyjmjb.onion
+	./cashd -onion=127.0.0.1:9050 -onlynet=tor -listen=0 -addnode=ssapp53tmftyjmjb.onion
 
 In a typical situation, this suffices to run behind a Tor proxy:
 
-	./odyncashd -proxy=127.0.0.1:9050
+	./cashd -proxy=127.0.0.1:9050
 
 
-2. Run a odyncash hidden server
+2. Run a cash hidden server
 -------------------------------
 
 If you configure your Tor system accordingly, it is possible to make your node also
 reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equivalent
 config file):
 
-	HiddenServiceDir /var/lib/tor/odyncash-service/
+	HiddenServiceDir /var/lib/tor/cash-service/
 	HiddenServicePort 44400 127.0.0.1:44400
 	HiddenServicePort 44500 127.0.0.1:44500
 
 The directory can be different of course, but (both) port numbers should be equal to
-your odyncashd's P2P listen port (44400 by default).
+your cashd's P2P listen port (44400 by default).
 
-	-externalip=X   You can tell odyncash about its publicly reachable address using
+	-externalip=X   You can tell cash about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
 	                configuration, you can find your onion address in
-	                /var/lib/tor/odyncash-service/hostname. Onion addresses are given
+	                /var/lib/tor/cash-service/hostname. Onion addresses are given
 	                preference for your node to advertize itself with, for connections
 	                coming from unroutable addresses (such as 127.0.0.1, where the
 	                Tor proxy typically runs).
@@ -78,17 +78,17 @@ your odyncashd's P2P listen port (44400 by default).
 
 In a typical situation, where you're only reachable via Tor, this should suffice:
 
-	./odyncashd -proxy=127.0.0.1:9050 -externalip=ssapp53tmftyjmjb.onion -listen
+	./cashd -proxy=127.0.0.1:9050 -externalip=ssapp53tmftyjmjb.onion -listen
 
 (obviously, replace the Onion address with your own). If you don't care too much
 about hiding your node, and want to be reachable on IPv4 as well, additionally
 specify:
 
-	./odyncashd ... -discover
+	./cashd ... -discover
 
 and open port 44400 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
 
-	./odyncashd -onion=127.0.0.1:9050 -externalip=ssapp53tmftyjmjb.onion -discover
+	./cashd -onion=127.0.0.1:9050 -externalip=ssapp53tmftyjmjb.onion -discover

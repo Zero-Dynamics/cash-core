@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CORE_IO_H
-#define ODYNCASH_CORE_IO_H
+#ifndef CASH_CORE_IO_H
+#define CASH_CORE_IO_H
 
 #include <string>
 #include <vector>
@@ -33,4 +33,4 @@ std::string EncodeHexTx(const CTransaction& tx);
 void ScriptPubKeyToUniv(const CScript& scriptPubKey, UniValue& out, bool fIncludeHex);
 void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry);
 
-#endif // ODYNCASH_CORE_IO_H
+#endif // CASH_CORE_IO_H

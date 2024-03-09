@@ -2,14 +2,14 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_MINER_IMPL_CPU_H
-#define ODYNCASH_MINER_IMPL_CPU_H
+#ifndef CASH_MINER_IMPL_CPU_H
+#define CASH_MINER_IMPL_CPU_H
 
 #include "miner/internal/miner-base.h"
 
 
 /**
- * OdynCash CPU miner.
+ * Cash CPU miner.
  */
 class CPUMiner final : public MinerBase
 {
@@ -33,4 +33,4 @@ protected:
     virtual int64_t TryMineBlock(CBlock& block) override;
 };
 
-#endif // ODYNCASH_MINER_IMPL_CPU_H
+#endif // CASH_MINER_IMPL_CPU_H

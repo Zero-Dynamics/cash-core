@@ -18,13 +18,13 @@
 
 #include <boost/algorithm/string.hpp>
 
-BdapUpdateAccountDialog::BdapUpdateAccountDialog(QWidget *parent, BDAP::ObjectType accountType, std::string account, std::string commonName, std::string expirationDate, int OdynCashUnits) : QDialog(parent),
+BdapUpdateAccountDialog::BdapUpdateAccountDialog(QWidget *parent, BDAP::ObjectType accountType, std::string account, std::string commonName, std::string expirationDate, int CashUnits) : QDialog(parent),
                                                         ui(new Ui::BdapUpdateAccountDialog)
 {
     //By default, accountType is USER. so only change stuff if different
     ui->setupUi(this);
     inputAccountType = accountType;
-    nOdynCashUnits = OdynCashUnits;
+    nCashUnits = CashUnits;
 
     std::string objectID = "";
     std::vector<std::string> results;
@@ -120,7 +120,7 @@ void BdapUpdateAccountDialog::updateAccount()
 
     } //end inputAccountType if
 
-    if (!bdapFeesPopup(this,OP_BDAP_MODIFY,OP_BDAP_ACCOUNT_ENTRY,inputAccountType,nOdynCashUnits,regMonths)) {
+    if (!bdapFeesPopup(this,OP_BDAP_MODIFY,OP_BDAP_ACCOUNT_ENTRY,inputAccountType,nCashUnits,regMonths)) {
         goClose();
         return;
     }

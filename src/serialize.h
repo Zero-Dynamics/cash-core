@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_SERIALIZE_H
-#define ODYNCASH_SERIALIZE_H
+#ifndef CASH_SERIALIZE_H
+#define CASH_SERIALIZE_H
 
 #include "compat/endian.h"
 #include "prevector.h"
@@ -1104,4 +1104,4 @@ size_t GetSerializeSize(const S& s, const T& t)
     return (CSizeComputer(s.GetType(), s.GetVersion()) << t).size();
 }
 
-#endif // ODYNCASH_SERIALIZE_H
+#endif // CASH_SERIALIZE_H

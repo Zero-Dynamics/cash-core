@@ -7,7 +7,7 @@
 # Test replace by fee code
 #
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 from test_framework.script import *
 from test_framework.mininode import *
@@ -66,7 +66,7 @@ def make_utxo(node, amount, confirmed=True, scriptPubKey=CScript([1])):
 
     return COutPoint(int(txid, 16), 0)
 
-class ReplaceByFeeTest(OdynCashTestFramework):
+class ReplaceByFeeTest(CashTestFramework):
 
     def setup_network(self):
         self.nodes = []

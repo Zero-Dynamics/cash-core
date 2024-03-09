@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_INTERNAL_MINERS_CONTROLLER_H
-#define ODYNCASH_INTERNAL_MINERS_CONTROLLER_H
+#ifndef CASH_INTERNAL_MINERS_CONTROLLER_H
+#define CASH_INTERNAL_MINERS_CONTROLLER_H
 
 #include <boost/signals2.hpp>
 
@@ -117,4 +117,4 @@ private:
     virtual void NotifyTransaction(const CTransaction& txn, const CBlockIndex* pindex, int posInBlock);
 };
 
-#endif // ODYNCASH_INTERNAL_MINERS_CONTROLLER_H
+#endif // CASH_INTERNAL_MINERS_CONTROLLER_H

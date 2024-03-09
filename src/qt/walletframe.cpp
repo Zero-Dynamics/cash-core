@@ -7,7 +7,7 @@
 
 #include "walletframe.h"
 
-#include "odyncashgui.h"
+#include "cashgui.h"
 #include "walletview.h"
 
 #include <cstdio>
@@ -15,7 +15,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 
-WalletFrame::WalletFrame(const PlatformStyle* _platformStyle, OdynCashGUI* _gui) : QFrame(_gui),
+WalletFrame::WalletFrame(const PlatformStyle* _platformStyle, CashGUI* _gui) : QFrame(_gui),
                                                                                   gui(_gui),
                                                                                   platformStyle(_platformStyle)
 {
@@ -46,7 +46,7 @@ bool WalletFrame::addWallet(const QString& name, WalletModel* walletModel)
         return false;
 
     WalletView* walletView = new WalletView(platformStyle, this);
-    walletView->setOdynCashGUI(gui);
+    walletView->setCashGUI(gui);
     walletView->setClientModel(clientModel);
     walletView->setWalletModel(walletModel);
     walletView->showOutOfSyncWarning(bOutOfSync);

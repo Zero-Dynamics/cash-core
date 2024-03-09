@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_MINER_H
-#define ODYNCASH_MINER_H
+#ifndef CASH_MINER_H
+#define CASH_MINER_H
 
 #include "miner-util.h" // IWYU pragma: keep
 
@@ -38,4 +38,4 @@ void SetCPUMinerThreads(uint8_t target);
 /** Sets amount of GPU miner threads */
 void SetGPUMinerThreads(uint8_t target);
 
-#endif // ODYNCASH_MINER_H
+#endif // CASH_MINER_H

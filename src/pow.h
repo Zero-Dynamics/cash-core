@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_POW_H
-#define ODYNCASH_POW_H
+#ifndef CASH_POW_H
+#define CASH_POW_H
 
 #include <arith_uint256.h>
 #include <chain.h>
@@ -31,4 +31,4 @@ unsigned int DigiShield(const CBlockIndex* pindexLast,
 /** Check whether a block hash satisfies the proof-of-work requirement specified by nBits */
 bool CheckProofOfWork(uint256 hash, unsigned int nBits, const Consensus::Params&);
 
-#endif // ODYNCASH_POW_H
+#endif // CASH_POW_H

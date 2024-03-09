@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_SCRIPT_SCRIPT_H
-#define ODYNCASH_SCRIPT_SCRIPT_H
+#ifndef CASH_SCRIPT_SCRIPT_H
+#define CASH_SCRIPT_SCRIPT_H
 
 #include "crypto/common.h"
 #include "prevector.h"
@@ -212,8 +212,8 @@ enum opcodetype {
     OP_BDAP_SIDECHAIN_CHECKPOINT = 0x0e, // = BDAP sub chain checkpoint
     OP_BDAP_ASSET = 0x0f,                // = BDAP asset
 
-    // odyncash extended reserved
-    OP_ODYNCASH_EXTENDED = 0x10,
+    // cash extended reserved
+    OP_CASH_EXTENDED = 0x10,
 
     // invalid operation code
     OP_INVALIDOPCODE = 0xff,
@@ -772,4 +772,4 @@ bool DecodeBDAPScript(const CScript& script, int& op, int& op2, std::vector<std:
 bool DecodeBDAPScript(const CScript& script, int& op1, int& op2, std::vector<std::vector<unsigned char> >& vvch);
 bool RemoveBDAPScript(const CScript& scriptIn, CScript& scriptOut);
 
-#endif // ODYNCASH_SCRIPT_SCRIPT_H
+#endif // CASH_SCRIPT_SCRIPT_H

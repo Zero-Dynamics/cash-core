@@ -1,0 +1,33 @@
+# /etc/conf.d/cashd: config file for /etc/init.d/cashd
+
+# Config file location
+#CASHD_CONFIGFILE="/etc/cash/cash.conf"
+
+# What directory to write pidfile to?  (created and owned by $CASHD_USER)
+#CASHD_PIDDIR="/var/run/cashd"
+
+# What filename to give the pidfile
+#CASHD_PIDFILE="${CASHD_PIDDIR}/cashd.pid"
+
+# Where to write cashd data (be mindful that the blockchain is large)
+#CASHD_DATADIR="/var/lib/cashd"
+
+# User and group to own cashd process
+#CASHD_USER="cash"
+#CASHD_GROUP="cash"
+
+# Path to cashd executable
+#CASHD_BIN="/usr/bin/cashd"
+
+# Nice value to run cashd under
+#CASHD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+CASHD_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for cashd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+CASHD_SIGTERM_TIMEOUT=60

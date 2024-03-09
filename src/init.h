@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_INIT_H
-#define ODYNCASH_INIT_H
+#ifndef CASH_INIT_H
+#define CASH_INIT_H
 
 #include <string>
 
@@ -59,8 +59,8 @@ void SwapMnemonicWalletFile();
 
 /** The help message mode determines what help message to show */
 enum HelpMessageMode {
-    HMM_ODYNCASHD,
-    HMM_ODYNCASH_QT
+    HMM_CASHD,
+    HMM_CASH_QT
 };
 
 /** Help for options shared between UI and daemon (for -help) */
@@ -68,4 +68,4 @@ std::string HelpMessage(HelpMessageMode mode);
 /** Returns licensing information (for -version) */
 std::string LicenseInfo();
 
-#endif // ODYNCASH_INIT_H
+#endif // CASH_INIT_H

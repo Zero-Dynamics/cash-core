@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_STREAMS_H
-#define ODYNCASH_STREAMS_H
+#ifndef CASH_STREAMS_H
+#define CASH_STREAMS_H
 
 #include "serialize.h"
 #include "support/allocators/zeroafterfree.h"
@@ -662,4 +662,4 @@ public:
     }
 };
 
-#endif // ODYNCASH_STREAMS_H
+#endif // CASH_STREAMS_H

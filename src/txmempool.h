@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_TXMEMPOOL_H
-#define ODYNCASH_TXMEMPOOL_H
+#ifndef CASH_TXMEMPOOL_H
+#define CASH_TXMEMPOOL_H
 
 #include <map>
 #include <memory>
@@ -775,4 +775,4 @@ struct TxCoinAgePriorityCompare {
     }
 };
 
-#endif // ODYNCASH_TXMEMPOOL_H
+#endif // CASH_TXMEMPOOL_H

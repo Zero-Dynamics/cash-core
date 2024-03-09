@@ -1,14 +1,14 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-[![Build Status](https://travis-ci.org/duality-solutions/OdynCash.png?branch=master)](https://travis-ci.org/duality-solutions/OdynCash)
+[![Build Status](https://travis-ci.org/duality-solutions/Cash.png?branch=master)](https://travis-ci.org/duality-solutions/Cash)
 
-# **OdynCash (0DYNC) v1.0.0.0**
+# **Cash (0DYNC) v1.0.0.0**
 
-![0DYNC logo](https://github.com/duality-solutions/OdynCash/blob/master/src/qt/res/icons/drk/about.png)
+![0DYNC logo](https://github.com/duality-solutions/Cash/blob/master/src/qt/res/icons/drk/about.png)
 
 **Copyright (c) 2016-2021 [Zero Dynamics](https://)**
 
-What is [OdynCash](https://www/cash)?
+What is [Cash](https://www/cash)?
 ----------------
 * Coin Suffix: 0DYNC
 * PoW Mining Algorithm: Argon2d
@@ -28,7 +28,7 @@ What is [OdynCash](https://www/cash)?
 * Max Block Size: 4MB
 
 
-[OdynCash(0DYNC)](https://www/cash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
+[Cash(0DYNC)](https://www/cash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Cash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
 
 **MainNet Parameters**
 P2P Port = 44400
@@ -51,11 +51,11 @@ Magic Bytes = 0x2f 0x32 0x15 0x3f
 
 UNIX BUILD NOTES
 ====================
-Some notes on how to build [OdynCash](https://www/cash) in Unix.
+Some notes on how to build [Cash](https://www/cash) in Unix.
 
 Note
 ---------------------
-Always use absolute paths to configure and compile OdynCash and the dependencies,
+Always use absolute paths to configure and compile Cash and the dependencies,
 for example, when specifying the the path of the dependency:
 
     ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
@@ -73,7 +73,7 @@ make
 make install # optional
 ```
 
-This will build odyncash-qt as well if the dependencies are met.
+This will build cash-qt as well if the dependencies are met.
 
 Dependencies
 ---------------------
@@ -102,12 +102,12 @@ For the versions used in the release, see [release-process.md](release-process.m
 System requirements
 --------------------
 
-C++ compilers are memory-hungry. It is recommended to have at least 3 GB of memory available when compiling OdynCash.
+C++ compilers are memory-hungry. It is recommended to have at least 3 GB of memory available when compiling Cash.
 
 Dependency Build Instructions: Ubuntu & Debian
 ----------------------------------------------
 
-It is required to build OdynCash on Ubuntu 20.04LTS(Focal) or later due to C++14/GCC7 requirements. Also OpenSSL 1.1.1f is included in Ubuntu 20.04LTS and later. It is required to use OpenSSL 1.1.1LTS.
+It is required to build Cash on Ubuntu 20.04LTS(Focal) or later due to C++14/GCC7 requirements. Also OpenSSL 1.1.1f is included in Ubuntu 20.04LTS and later. It is required to use OpenSSL 1.1.1LTS.
 
 Build requirements:
 
@@ -150,7 +150,7 @@ ZMQ dependencies (provides ZMQ API 4.x):
 Dependencies for the GUI: Ubuntu & Debian
 -----------------------------------------
 
-If you want to build OdynCash-Qt, make sure that the required packages for Qt development are installed. Qt 5 is necessary to build the GUI. If both Qt 4 and Qt 5 are installed, Qt 5 will be used. Pass `--with-gui=qt5` to configure to choose Qt5. To build without GUI pass `--without-gui`.
+If you want to build Cash-Qt, make sure that the required packages for Qt development are installed. Qt 5 is necessary to build the GUI. If both Qt 4 and Qt 5 are installed, Qt 5 will be used. Pass `--with-gui=qt5` to configure to choose Qt5. To build without GUI pass `--without-gui`.
 
 For Qt 5 you need the following:
 
@@ -160,12 +160,12 @@ libqrencode (optional) can be installed with:
 
     sudo apt-get install libqrencode-dev
 
-Once these are installed, they will be found by configure and a odyncash-qt executable will be
+Once these are installed, they will be found by configure and a cash-qt executable will be
 built by default.
 
 Notes
 -----
-The release is built with GCC and then "strip odyncashd" to strip the debug
+The release is built with GCC and then "strip cashd" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 miniupnpc
@@ -197,10 +197,10 @@ If you have to, or wish to build Berkeley DB 4.8 yourself:
 
 ```
     bash
-    ODYNCASH_ROOT=$(pwd)
+    CASH_ROOT=$(pwd)
 
     # Pick some path to install BDB to, here we create a directory within the odyn directory
-    BDB_PREFIX="${ODYNCASH_ROOT}/db4"
+    BDB_PREFIX="${CASH_ROOT}/db4"
     mkdir -p $BDB_PREFIX
 
     # Fetch the source and verify that it is not tampered with
@@ -216,8 +216,8 @@ If you have to, or wish to build Berkeley DB 4.8 yourself:
     make
     sudo make install
 
-    # Configure OdynCash to use our own-built instance of BDB
-    cd $ODYNCASH_ROOT
+    # Configure Cash to use our own-built instance of BDB
+    cd $CASH_ROOT
     ./configure (other args...) LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/"
 ```
 
@@ -234,7 +234,7 @@ If you need to build Boost yourself, in terminal enter:
 
 Security
 --------
-To help make your OdynCash installation more secure by making certain attacks impossible to exploit even if a vulnerability is found, binaries are hardened by default.
+To help make your Cash installation more secure by making certain attacks impossible to exploit even if a vulnerability is found, binaries are hardened by default.
 
 This can be disabled with:
 
@@ -258,7 +258,7 @@ Hardening enables the following features:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-    scanelf -e ./odyncashd
+    scanelf -e ./cashd
 
 
     The output should contain:
@@ -274,7 +274,7 @@ Hardening enables the following features:
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    `scanelf -e ./odyncashd`
+    `scanelf -e ./cashd`
 
     the output should contain:
     STK/REL/PTL
@@ -356,11 +356,11 @@ At configure time for CUDA(Nvidia):
 
 or run the daemon with:
 
-    ./src/odyncashd -staking=1
+    ./src/cashd -staking=1
 
 or Qt wallet with:
 
-    ./src/qt/odyncash-qt -staking=1
+    ./src/qt/cash-qt -staking=1
 
 
 Example Build Command
@@ -381,7 +381,7 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 1. Make sure you installed everything through homebrew mentioned above
 2. Do a proper ./configure --with-gui=qt5 --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "odyncash-qt" as project name, enter src/qt as location
+4. Enter "cash-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_WINSHUTDOWNMONITOR_H
-#define ODYNCASH_QT_WINSHUTDOWNMONITOR_H
+#ifndef CASH_QT_WINSHUTDOWNMONITOR_H
+#define CASH_QT_WINSHUTDOWNMONITOR_H
 
 #ifdef WIN32
 #include <QByteArray>
@@ -29,4 +29,4 @@ public:
 #endif
 #endif
 
-#endif // ODYNCASH_QT_WINSHUTDOWNMONITOR_H
+#endif // CASH_QT_WINSHUTDOWNMONITOR_H

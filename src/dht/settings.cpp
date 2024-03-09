@@ -21,7 +21,7 @@ CDHTSettings::CDHTSettings(const uint16_t ordinal, const uint16_t threads, const
     nPort = Params().GetDefaultPort() + (ordinal + 11);
     nTotalThreads = threads;
     fMultiThreads = multithreaded;
-    user_agent = "OdynCash v" + FormatFullVersion();
+    user_agent = "Cash v" + FormatFullVersion();
     // Uses UDP port 33311 for mainnet, 333411 for testnet, 33511 for regtest, or 33611 for privatenet
     listen_interfaces = "";
     if (!fMultiThreads) {
@@ -131,7 +131,7 @@ void CDHTSettings::LoadSettings()
         ses->apply_settings(params.settings);
         ses->set_dht_storage(CDHTStorageConstructor);
     }
-    // OdynCash LibTorrent Settings
+    // Cash LibTorrent Settings
     // see https://www.libtorrent.org/reference-Settings.html#dht_settings
     // DHT Settings
 
@@ -1251,7 +1251,7 @@ void CDHTSettings::LoadSettings()
     // this is the client name and version identifier sent to peers in the
     // handshake message. If this is an empty string, the user_agent is
     // used instead
-    //settings.set_str(settings_pack:handshake_client_version, "OdynCash"); //todo: add version to user agent
+    //settings.set_str(settings_pack:handshake_client_version, "Cash"); //todo: add version to user agent
 
     // ``outgoing_interfaces``
     // sets the network interface this session will use when it opens

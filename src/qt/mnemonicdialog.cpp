@@ -328,7 +328,7 @@ void MnemonicDialog::importPrivatekey(bool forceRescan){
         QMessageBox::critical(this, "Error", QString("Error: ") + QString::fromStdString("privatekey is null"));
         return;
     }
-    COdynCashSecret vchSecret;
+    CCashSecret vchSecret;
     bool fGood = vchSecret.SetString(privatekeystr.toStdString());
 
     if (!fGood) {

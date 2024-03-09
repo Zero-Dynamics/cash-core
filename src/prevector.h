@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_PREVECTOR_H
-#define ODYNCASH_PREVECTOR_H
+#ifndef CASH_PREVECTOR_H
+#define CASH_PREVECTOR_H
 
 
 #include <assert.h>
@@ -549,4 +549,4 @@ public:
 };
 #pragma pack(pop)
 
-#endif // ODYNCASH_PREVECTOR_H
+#endif // CASH_PREVECTOR_H

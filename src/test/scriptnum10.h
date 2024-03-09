@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_TEST_SCRIPTNUM10_H
-#define ODYNCASH_TEST_SCRIPTNUM10_H
+#ifndef CASH_TEST_SCRIPTNUM10_H
+#define CASH_TEST_SCRIPTNUM10_H
 
 #include <algorithm>
 #include <limits>
@@ -180,4 +180,4 @@ private:
 };
 
 
-#endif // ODYNCASH_TEST_BIGNUM_H
+#endif // CASH_TEST_BIGNUM_H

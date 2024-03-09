@@ -5,7 +5,7 @@
 #include "chain.h"
 #include "test_random.h"
 #include "util.h"
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 
 #include <vector>
 

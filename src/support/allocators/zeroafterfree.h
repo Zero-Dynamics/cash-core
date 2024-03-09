@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_SUPPORT_ALLOCATORS_ZEROAFTERFREE_H
-#define ODYNCASH_SUPPORT_ALLOCATORS_ZEROAFTERFREE_H
+#ifndef CASH_SUPPORT_ALLOCATORS_ZEROAFTERFREE_H
+#define CASH_SUPPORT_ALLOCATORS_ZEROAFTERFREE_H
 
 #include "support/cleanse.h"
 
@@ -45,4 +45,4 @@ struct zero_after_free_allocator : public std::allocator<T> {
 // Byte-vector that clears its contents before deletion.
 typedef std::vector<char, zero_after_free_allocator<char> > CSerializeData;
 
-#endif // ODYNCASH_SUPPORT_ALLOCATORS_ZEROAFTERFREE_H
+#endif // CASH_SUPPORT_ALLOCATORS_ZEROAFTERFREE_H

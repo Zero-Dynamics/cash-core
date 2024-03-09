@@ -5,7 +5,7 @@
 
 # Exercise the listtransactions API
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 from test_framework.mininode import CTransaction, COIN
 from io import BytesIO
@@ -16,7 +16,7 @@ def txFromHex(hexstring):
     tx.deserialize(f)
     return tx
 
-class ListTransactionsTest(OdynCashTestFramework):
+class ListTransactionsTest(CashTestFramework):
 
     def setup_nodes(self):
         #This test requires mocktime
@@ -94,7 +94,7 @@ class ListTransactionsTest(OdynCashTestFramework):
                            {"category":"receive","amount":Decimal("0.1")},
                            {"txid":txid, "account" : "watchonly"} )
 
-        # rbf is disabled in OdynCash
+        # rbf is disabled in Cash
         # self.run_rbf_opt_in_test()
 
     # Check that the opt-in-rbf flag works properly, for sent and received

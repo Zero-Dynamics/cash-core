@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_NTP_H
-#define ODYNCASH_NTP_H
+#ifndef CASH_NTP_H
+#define CASH_NTP_H
 
 // Get time from random server and return server address.
 int64_t NtpGetTime(CNetAddr& ip);
@@ -23,4 +23,4 @@ void ThreadNtpSamples();
 // NTP offset
 int64_t GetNtpOffset();
 
-#endif // ODYNCASH_NTP_H
+#endif // CASH_NTP_H

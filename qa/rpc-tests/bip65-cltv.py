@@ -7,10 +7,10 @@
 # Test the CHECKLOCKTIMEVERIFY (BIP65) soft-fork logic
 #
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 
-class BIP65Test(OdynCashTestFramework):
+class BIP65Test(CashTestFramework):
 
     def setup_network(self):
         self.nodes = []

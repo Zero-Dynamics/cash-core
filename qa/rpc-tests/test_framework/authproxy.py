@@ -51,7 +51,7 @@ USER_AGENT = "AuthServiceProxy/0.1"
 
 HTTP_TIMEOUT = 30
 
-log = logging.getLogger("OdynCashRPC")
+log = logging.getLogger("CashRPC")
 
 class JSONRPCException(Exception):
     def __init__(self, rpc_error):

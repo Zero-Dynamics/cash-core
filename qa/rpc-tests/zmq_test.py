@@ -7,7 +7,7 @@
 # Test ZMQ interface
 #
 
-from test_framework.test_framework import OdynCashTestFramework
+from test_framework.test_framework import CashTestFramework
 from test_framework.util import *
 import zmq
 import binascii
@@ -21,7 +21,7 @@ try:
 except ImportError:
     import urlparse
 
-class ZMQTest (OdynCashTestFramework):
+class ZMQTest (CashTestFramework):
 
     port = 28332
 

@@ -74,7 +74,7 @@ bool GetMintingInstructions(const int nHeight, CFluidMint& fluidMint)
 }
 
 /** Checks if any given address is a current sovereign wallet address (invoked by RPC) */
-bool IsSovereignAddress(const COdynCashAddress& inputAddress)
+bool IsSovereignAddress(const CCashAddress& inputAddress)
 {
     if (!inputAddress.IsValid()) {
         return false;
@@ -90,7 +90,7 @@ bool IsSovereignAddress(const COdynCashAddress& inputAddress)
     }
 
     for (const std::vector<unsigned char>& vchAddress : lastSovereign.SovereignAddresses) {
-        COdynCashAddress attemptKey(StringFromCharVector(vchAddress));
+        CCashAddress attemptKey(StringFromCharVector(vchAddress));
         if (attemptKey.IsValid() && inputAddress == attemptKey) {
             return true;
         }
@@ -172,16 +172,16 @@ bool CheckSignatureQuorum(const std::vector<unsigned char>& vchFluidScript, std:
         return false;
     }
 
-    std::pair<COdynCashAddress, bool> keyOne;
-    std::pair<COdynCashAddress, bool> keyTwo;
-    std::pair<COdynCashAddress, bool> keyThree;
+    std::pair<CCashAddress, bool> keyOne;
+    std::pair<CCashAddress, bool> keyTwo;
+    std::pair<CCashAddress, bool> keyThree;
     keyOne.second = false;
     keyTwo.second = false;
     keyThree.second = false;
 
     for (const std::string& sovereignAddress : fluidSovereigns) {
-        COdynCashAddress attemptKey;
-        COdynCashAddress xKey(sovereignAddress);
+        CCashAddress attemptKey;
+        CCashAddress xKey(sovereignAddress);
 
         if (!xKey.IsValid())
             return false;

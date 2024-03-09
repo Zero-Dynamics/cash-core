@@ -1,6 +1,6 @@
 ### TestGen ###
 
-Utilities to generate test vectors for the data-driven OdynCash tests.
+Utilities to generate test vectors for the data-driven Cash tests.
 
 Usage:
 

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_GUIUTIL_H
-#define ODYNCASH_QT_GUIUTIL_H
+#ifndef CASH_QT_GUIUTIL_H
+#define CASH_QT_GUIUTIL_H
 
 #include "amount.h"
 #include "miner/miner.h"
@@ -42,8 +42,8 @@ namespace GUIUtil
 // Create human-readable string from date
 QString dateTimeStr(const QDateTime& datetime);
 QString dateTimeStr(qint64 nTime);
-// Render OdynCash addresses in monospace font
-QFont OdynCashAddressFont();
+// Render Cash addresses in monospace font
+QFont CashAddressFont();
 // Return a monospace font
 QFont fixedPitchFont();
 
@@ -51,10 +51,10 @@ QFont fixedPitchFont();
 void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent);
 void setupAmountWidget(QLineEdit* widget, QWidget* parent);
 
-// Parse "odyncash:" URI into recipient object, return true on successful parsing
-bool parseOdynCashURI(const QUrl& uri, SendCoinsRecipient* out);
-bool parseOdynCashURI(QString uri, SendCoinsRecipient* out);
-QString formatOdynCashURI(const SendCoinsRecipient& info);
+// Parse "cash:" URI into recipient object, return true on successful parsing
+bool parseCashURI(const QUrl& uri, SendCoinsRecipient* out);
+bool parseCashURI(QString uri, SendCoinsRecipient* out);
+QString formatCashURI(const SendCoinsRecipient& info);
 
 // Returns true if given address+amount meets "dust" definition
 bool isDust(const QString& address, const CAmount& amount);
@@ -116,7 +116,7 @@ bool isObscured(QWidget* w);
 // Open debug.log
 void openDebugLogfile();
 
-// Open odyncash.conf
+// Open cash.conf
 void openConfigfile();
 
 // Open servicenode.conf
@@ -277,4 +277,4 @@ QString HashRateUnits(int64_t hashRate);
 
 } // namespace GUIUtil
 
-#endif // ODYNCASH_QT_GUIUTIL_H
+#endif // CASH_QT_GUIUTIL_H

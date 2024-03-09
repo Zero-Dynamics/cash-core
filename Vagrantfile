@@ -1,8 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VM_NAME = "odyncash-v2.4"
-ODYNCASH_PATH = "/opt/odyncash"
+VM_NAME = "cash-v2.4"
+CASH_PATH = "/opt/cash"
 
 # ugly hack to prevent hashicorp's bitrot. See https://github.com/hashicorp/vagrant/issues/9442
 # this setting is required for pre-2.0 vagrant, but causes an error as of 2.0.3,
@@ -118,9 +118,9 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
 
     # enables symlinks for windows
-    override.vm.synced_folder ".", ODYNCASH_PATH
-    override.vm.synced_folder ".odyncash", "/home/vagrant/.odyncash"
-    vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/#{ODYNCASH_PATH}", "1"]
+    override.vm.synced_folder ".", CASH_PATH
+    override.vm.synced_folder ".cash", "/home/vagrant/.cash"
+    vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/#{CASH_PATH}", "1"]
   end
 
   config.vm.provider :libvirt do |libvirt, override|
@@ -128,9 +128,9 @@ Vagrant.configure("2") do |config|
     libvirt.memory = assign_ram_mb
     libvirt.default_prefix = VM_NAME
 
-    # /opt/odyncash/odyncash and /root/.odyncash are used by vagrant-spk
-    override.vm.synced_folder ".", ODYNCASH_PATH, type: "9p", accessmode: "passthrough"
-    override.vm.synced_folder ".odyncash", "/home/vagrant/.odyncash", type: "9p", accessmode: "passthrough"
+    # /opt/cash/cash and /root/.cash are used by vagrant-spk
+    override.vm.synced_folder ".", CASH_PATH, type: "9p", accessmode: "passthrough"
+    override.vm.synced_folder ".cash", "/home/vagrant/.cash", type: "9p", accessmode: "passthrough"
   end
 
   # View the documentation for the provider you are using for more
@@ -139,13 +139,13 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: "bash #{ODYNCASH_PATH}/odyncash-devenv/scripts/setup.sh", keep_color: true, env: {"VAGRANT" => "1"}
+  # config.vm.provision "shell", inline: "bash #{CASH_PATH}/cash-devenv/scripts/setup.sh", keep_color: true, env: {"VAGRANT" => "1"}
   config.vm.provision "shell", inline: <<-SHELL
     sudo add-apt-repository -y ppa:bitcoin/bitcoin
     sudo apt-get update
     sudo apt-get install -qy libdb4.8-dev libdb4.8++-dev build-essential libtool autotools-dev autoconf pkg-config libssl-dev libcrypto++-dev libevent-dev git libboost-all-dev libminiupnpc-dev libzmq3-dev
-    sudo bash -c 'echo "OdynCash in /opt/odyncash" >/etc/motd'
-    cd /opt/odyncash && ./autogen.sh && ./configure --without-gui --disable-gpu && make -j12
+    sudo bash -c 'echo "Cash in /opt/cash" >/etc/motd'
+    cd /opt/cash && ./autogen.sh && ./configure --without-gui --disable-gpu && make -j12
   SHELL
 
 end

@@ -2,8 +2,8 @@
 // Copyright (c) 2009-2015 The Bitcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ODYNCASH_POLICYESTIMATOR_H
-#define ODYNCASH_POLICYESTIMATOR_H
+#ifndef CASH_POLICYESTIMATOR_H
+#define CASH_POLICYESTIMATOR_H
 
 #include "amount.h"
 #include "random.h"
@@ -258,4 +258,4 @@ private:
     unsigned int trackedTxs;
     unsigned int untrackedTxs;
 };
-#endif /*ODYNCASH_POLICYESTIMATOR_H */
+#endif /*CASH_POLICYESTIMATOR_H */

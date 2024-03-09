@@ -8,7 +8,7 @@
 # Helpful routines for regression testing
 #
 
-# Add python-odyncashrpc to module search path:
+# Add python-cashrpc to module search path:
 import os
 import sys
 
@@ -143,13 +143,13 @@ def sync_servicenodes(rpc_connections):
     for node in rpc_connections:
         wait_to_sync(node)
 
-odyncashd_processes = {}
+cashd_processes = {}
 
 def initialize_datadir(dirname, n):
     datadir = os.path.join(dirname, "node"+str(n))
     if not os.path.isdir(datadir):
         os.makedirs(datadir)
-    with open(os.path.join(datadir, "odyncash.conf"), 'w') as f:
+    with open(os.path.join(datadir, "cash.conf"), 'w') as f:
         f.write("regtest=1\n")
         f.write("rpcuser=rt\n")
         f.write("rpcpassword=rt\n")
@@ -161,14 +161,14 @@ def initialize_datadir(dirname, n):
 def rpc_url(i, rpchost=None):
     return "http://rt:rt@%s:%d" % (rpchost or '127.0.0.1', rpc_port(i))
 
-def wait_for_odyncashd_start(process, url, i):
+def wait_for_cashd_start(process, url, i):
     '''
-    Wait for odyncashd to start. This means that RPC is accessible and fully initialized.
-    Raise an exception if odyncashd exits during initialization.
+    Wait for cashd to start. This means that RPC is accessible and fully initialized.
+    Raise an exception if cashd exits during initialization.
     '''
     while True:
         if process.poll() is not None:
-            raise Exception('odyncashd exited with status %i during initialization' % process.returncode)
+            raise Exception('cashd exited with status %i during initialization' % process.returncode)
         try:
             rpc = get_rpc_proxy(url, i)
             blocks = rpc.getblockcount()
@@ -197,16 +197,16 @@ def initialize_chain(test_dir):
             if os.path.isdir(os.path.join("cache","node"+str(i))):
                 shutil.rmtree(os.path.join("cache","node"+str(i)))
 
-        # Create cache directories, run odyncashds:
+        # Create cache directories, run cashds:
         for i in range(4):
             datadir=initialize_datadir("cache", i)
-            args = [ os.getenv("ODYNCASHD", "odyncashd"), "-server", "-keypool=1", "-datadir="+datadir, "-discover=0" ]
+            args = [ os.getenv("CASHD", "cashd"), "-server", "-keypool=1", "-datadir="+datadir, "-discover=0" ]
             if i > 0:
                 args.append("-connect=127.0.0.1:"+str(p2p_port(0)))
-            odyncashd_processes[i] = subprocess.Popen(args)
+            cashd_processes[i] = subprocess.Popen(args)
             if os.getenv("PYTHON_DEBUG", ""):
-                print "initialize_chain: odyncashd started, waiting for RPC to come up"
-            wait_for_odyncashd_start(odyncashd_processes[i], rpc_url(i), i)
+                print "initialize_chain: cashd started, waiting for RPC to come up"
+            wait_for_cashd_start(cashd_processes[i], rpc_url(i), i)
             if os.getenv("PYTHON_DEBUG", ""):
                 print "initialize_chain: RPC succesfully started"
 
@@ -235,7 +235,7 @@ def initialize_chain(test_dir):
 
         # Shut them down, and clean up cache directories:
         stop_nodes(rpcs)
-        wait_odyncashds()
+        wait_cashds()
         disable_mocktime()
         for i in range(4):
             os.remove(log_filename("cache", i, "debug.log"))
@@ -247,7 +247,7 @@ def initialize_chain(test_dir):
         from_dir = os.path.join("cache", "node"+str(i))
         to_dir = os.path.join(test_dir,  "node"+str(i))
         shutil.copytree(from_dir, to_dir)
-        initialize_datadir(test_dir, i) # Overwrite port/rpcport in odyncash.conf
+        initialize_datadir(test_dir, i) # Overwrite port/rpcport in cash.conf
 
 def initialize_chain_clean(test_dir, num_nodes):
     """
@@ -280,19 +280,19 @@ def _rpchost_to_args(rpchost):
 
 def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=None):
     """
-    Start a odyncashd and return RPC connection to it
+    Start a cashd and return RPC connection to it
     """
     datadir = os.path.join(dirname, "node"+str(i))
     if binary is None:
-        binary = os.getenv("ODYNCASHD", "odyncashd")
+        binary = os.getenv("CASHD", "cashd")
     # RPC tests still depend on free transactions
     args = [ binary, "-datadir="+datadir, "-server", "-keypool=1", "-discover=0", "-rest", "-blockprioritysize=50000", "-mocktime="+str(get_mocktime()) ]
     if extra_args is not None: args.extend(extra_args)
-    odyncashd_processes[i] = subprocess.Popen(args)
+    cashd_processes[i] = subprocess.Popen(args)
     if os.getenv("PYTHON_DEBUG", ""):
-        print "start_node: odyncashd started, waiting for RPC to come up"
+        print "start_node: cashd started, waiting for RPC to come up"
     url = rpc_url(i, rpchost)
-    wait_for_odyncashd_start(odyncashd_processes[i], url, i)
+    wait_for_cashd_start(cashd_processes[i], url, i)
     if os.getenv("PYTHON_DEBUG", ""):
         print "start_node: RPC succesfully started"
     proxy = get_rpc_proxy(url, i, timeout=timewait)
@@ -304,7 +304,7 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=
 
 def start_nodes(num_nodes, dirname, extra_args=None, rpchost=None, binary=None):
     """
-    Start multiple odyncashds, return RPC connections to them
+    Start multiple cashds, return RPC connections to them
     """
     if extra_args is None: extra_args = [ None for i in range(num_nodes) ]
     if binary is None: binary = [ None for i in range(num_nodes) ]
@@ -322,8 +322,8 @@ def log_filename(dirname, n_node, logname):
 
 def stop_node(node, i):
     node.stop()
-    odyncashd_processes[i].wait()
-    del odyncashd_processes[i]
+    cashd_processes[i].wait()
+    del cashd_processes[i]
 
 def stop_nodes(nodes):
     for node in nodes:
@@ -334,11 +334,11 @@ def set_node_times(nodes, t):
     for node in nodes:
         node.setmocktime(t)
 
-def wait_odyncashds():
-    # Wait for all odyncashds to cleanly exit
-    for odyncashd in odyncashd_processes.values():
-        odyncashd.wait()
-    odyncashd_processes.clear()
+def wait_cashds():
+    # Wait for all cashds to cleanly exit
+    for cashd in cashd_processes.values():
+        cashd.wait()
+    cashd_processes.clear()
 
 def connect_nodes(from_connection, node_num):
     ip_port = "127.0.0.1:"+str(p2p_port(node_num))

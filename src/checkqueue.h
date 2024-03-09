@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CHECKQUEUE_H
-#define ODYNCASH_CHECKQUEUE_H
+#ifndef CASH_CHECKQUEUE_H
+#define CASH_CHECKQUEUE_H
 
 #include <algorithm>
 #include <vector>
@@ -222,4 +222,4 @@ public:
     }
 };
 
-#endif // ODYNCASH_CHECKQUEUE_H
+#endif // CASH_CHECKQUEUE_H

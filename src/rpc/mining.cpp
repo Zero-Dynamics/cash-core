@@ -162,7 +162,7 @@ UniValue getgenerate(const JSONRPCRequest& request)
             "getgenerate\n"
             "\nReturn if the server is set to generate coins or not. The default is false.\n"
             "It is set with the command line argument -gen (or " +
-            std::string(ODYNCASH_CONF_FILENAME) + " setting gen)\n"
+            std::string(CASH_CONF_FILENAME) + " setting gen)\n"
                                                  "It can also be set with the setgenerate call.\n"
                                                  "\nResult\n"
                                                  "true|false      (boolean) If the server is set to generate coins or not\n"
@@ -262,7 +262,7 @@ UniValue generatetoaddress(const JSONRPCRequest& request)
             "\nMine blocks immediately to a specified address (before the RPC call returns)\n"
             "\nArguments:\n"
             "1. numblocks    (numeric, required) How many blocks are generated immediately.\n"
-            "2. address    (string, required) The address to send the newly generated OdynCash to.\n"
+            "2. address    (string, required) The address to send the newly generated Cash to.\n"
             "3. maxtries     (numeric, optional) How many iterations to try (default = 1000000).\n"
             "\nResult\n"
             "[ blockhashes ]     (array) hashes of blocks generated\n"
@@ -281,7 +281,7 @@ UniValue generatetoaddress(const JSONRPCRequest& request)
         nMaxTries = request.params[2].get_int();
     }
 
-    COdynCashAddress address(request.params[1].get_str());
+    CCashAddress address(request.params[1].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Error: Invalid address");
 
@@ -658,19 +658,19 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
 
     if (Params().MiningRequiresPeers()) {
         if (g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0)
-            throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "OdynCash is not connected!");
+            throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Cash is not connected!");
 
         if (IsInitialBlockDownload())
-            throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "OdynCash is downloading blocks...");
+            throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Cash is downloading blocks...");
     }
 
     CScript payee;
     if (sporkManager.IsSporkActive(SPORK_8_SERVICENODE_PAYMENT_ENFORCEMENT) && !servicenodeSync.IsWinnersListSynced() && !snpayments.GetBlockPayee(chainActive.Height() + 1, payee))
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "OdynCash is downloading ServiceNode winners...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Cash is downloading ServiceNode winners...");
 
     // next block is a superblock and we need governance info to correctly construct it
     if (sporkManager.IsSporkActive(SPORK_9_SUPERBLOCKS_ENABLED) && !servicenodeSync.IsSynced() && CSuperblock::IsValidBlockHeight(chainActive.Height() + 1))
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "OdynCash is syncing with network...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Cash is syncing with network...");
 
     static unsigned int nTransactionsUpdatedLast;
 
@@ -868,7 +868,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     if (pblocktemplate->txoutServiceNode != CTxOut()) {
         CTxDestination address1;
         ExtractDestination(pblocktemplate->txoutServiceNode.scriptPubKey, address1);
-        COdynCashAddress address2(address1);
+        CCashAddress address2(address1);
         servicenodeObj.push_back(Pair("payee", address2.ToString().c_str()));
         servicenodeObj.push_back(Pair("script", HexStr(pblocktemplate->txoutServiceNode.scriptPubKey.begin(), pblocktemplate->txoutServiceNode.scriptPubKey.end())));
         servicenodeObj.push_back(Pair("amount", pblocktemplate->txoutServiceNode.nValue));
@@ -883,7 +883,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             UniValue entry(UniValue::VOBJ);
             CTxDestination address1;
             ExtractDestination(txout.scriptPubKey, address1);
-            COdynCashAddress address2(address1);
+            CCashAddress address2(address1);
             entry.push_back(Pair("payee", address2.ToString().c_str()));
             entry.push_back(Pair("script", HexStr(txout.scriptPubKey.begin(), txout.scriptPubKey.end())));
             entry.push_back(Pair("amount", txout.nValue));
@@ -898,7 +898,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
         CAmount fluidIssuance = nCoinbaseValue - GetFluidServiceNodeReward(nHeight) - GetFluidMiningReward(nHeight);
         if (fluidIssuance > 0) {
             UniValue entry(UniValue::VOBJ);
-            COdynCashAddress mintAddress = fluidMint.GetDestinationAddress();
+            CCashAddress mintAddress = fluidMint.GetDestinationAddress();
             if (!mintAddress.IsScript()) {
                 scriptMint = GetScriptForDestination(mintAddress.Get());
             } else {

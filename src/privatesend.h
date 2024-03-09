@@ -404,7 +404,7 @@ public:
     static std::vector<CAmount> GetStandardDenominations() { return vecStandardDenominations; }
     static CAmount GetSmallestDenomination() { return vecStandardDenominations.back(); }
 
-    /// Get the denominations for a specific amount of OdynCash.
+    /// Get the denominations for a specific amount of Cash.
     static int GetDenominationsByAmounts(const std::vector<CAmount>& vecAmount);
 
     static bool IsDenominatedAmount(CAmount nInputAmount);

@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_WALLET_DB_H
-#define ODYNCASH_WALLET_DB_H
+#ifndef CASH_WALLET_DB_H
+#define CASH_WALLET_DB_H
 
 #include "clientversion.h"
 #include "serialize.h"
@@ -311,4 +311,4 @@ public:
     bool static Rewrite(const std::string& strFile, const char* pszSkip = NULL);
 };
 
-#endif // ODYNCASH_WALLET_DB_H
+#endif // CASH_WALLET_DB_H

@@ -307,7 +307,7 @@
           <string>OK</string>
          </property>
          <property name="icon">
-          <iconset resource="../odyncash.qrc">
+          <iconset resource="../cash.qrc">
            <normaloff>:/icons/drk/transaction_confirmed</normaloff>:/icons/drk/transaction_confirmed</iconset>
          </property>
         </widget>
@@ -332,7 +332,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../odyncash.qrc"/>
+  <include location="../cash.qrc"/>
  </resources>
  <connections/>
 </ui>

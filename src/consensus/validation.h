@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CONSENSUS_VALIDATION_H
-#define ODYNCASH_CONSENSUS_VALIDATION_H
+#ifndef CASH_CONSENSUS_VALIDATION_H
+#define CASH_CONSENSUS_VALIDATION_H
 
 #include <string>
 
@@ -90,4 +90,4 @@ public:
     std::string GetDebugMessage() const { return strDebugMessage; }
 };
 
-#endif // ODYNCASH_CONSENSUS_VALIDATION_H
+#endif // CASH_CONSENSUS_VALIDATION_H

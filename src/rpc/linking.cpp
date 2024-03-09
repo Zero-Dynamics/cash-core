@@ -186,7 +186,7 @@ static UniValue SendLinkRequest(const JSONRPCRequest& request)
     if (!GetDomainEntry(vchRecipientFQDN, entryRecipient))
         throw std::runtime_error("BDAP_SEND_LINK_RPC_ERROR: ERRCODE: 4005 - Recipient " + strRecipientFQDN + _(" not found."));
 
-    COdynCashAddress addressRequestor = entryRequestor.GetWalletAddress();
+    CCashAddress addressRequestor = entryRequestor.GetWalletAddress();
     CKeyID keyID;
     if (!addressRequestor.GetKeyID(keyID))
         throw std::runtime_error("BDAP_SEND_LINK_RPC_ERROR: ERRCODE: 4006 - Could not get " + strRequestorFQDN + _("'s wallet address key ") + addressRequestor.ToString());
@@ -269,7 +269,7 @@ static UniValue SendLinkRequest(const JSONRPCRequest& request)
 
     LogPrint("bdap", "%s -- monthlyFee %d, oneTimeFee %d, depositFee %d\n", __func__, FormatMoney(monthlyFee), FormatMoney(oneTimeFee), FormatMoney(depositFee));
 
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
@@ -369,7 +369,7 @@ static UniValue SendLinkAccept(const JSONRPCRequest& request)
     if (!GetDomainEntry(vchRequestorFQDN, entryRequestor))
         throw std::runtime_error("BDAP_ACCEPT_LINK_RPC_ERROR: ERRCODE: 4107 - Requestor " + strRequestorFQDN + _(" not found."));
 
-    COdynCashAddress addressAcceptor = entryAcceptor.GetWalletAddress();
+    CCashAddress addressAcceptor = entryAcceptor.GetWalletAddress();
     CKeyID keyID;
     if (!addressAcceptor.GetKeyID(keyID))
         throw std::runtime_error("BDAP_ACCEPT_LINK_RPC_ERROR: ERRCODE: 4108 - Could not get " + strAcceptorFQDN + _("'s wallet address key ") + addressAcceptor.ToString());
@@ -449,7 +449,7 @@ static UniValue SendLinkAccept(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_BDAP_FEE_UNKNOWN, strprintf("Error calculating BDAP fees."));
     LogPrint("bdap", "%s -- monthlyFee %d, oneTimeFee %d, depositFee %d\n", __func__, FormatMoney(monthlyFee), FormatMoney(oneTimeFee), FormatMoney(depositFee));
 
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
@@ -1082,7 +1082,7 @@ static UniValue SendMessage(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
 
     CKeyID keyID = newPubKey.GetID();
-    COdynCashAddress walletAddress = COdynCashAddress(keyID);
+    CCashAddress walletAddress = CCashAddress(keyID);
     std::vector<unsigned char> vchWalletPubKey(newPubKey.begin(), newPubKey.end());
 
     CUnsignedVGPMessage unsignedMessage(subjectID, messageID, vchWalletPubKey, timestamp, stoptime);

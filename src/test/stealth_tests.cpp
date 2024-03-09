@@ -11,7 +11,7 @@
 #include "uint256.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_odyncash.h"
+#include "test/test_cash.h"
 #include "bdap/stealth.h"
 #include "wallet/wallet.h"
 
@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(stealth_test1)
 
     CTxDestination newDest;
     BOOST_CHECK(ExtractDestination(scriptDest, newDest));
-    COdynCashAddress newAddress;
+    CCashAddress newAddress;
     newAddress.Set(newDest);
     BOOST_CHECK(newAddress.IsValid());
     //std::cout << "Derived " << newAddress.ToString() <<  " address from stealth\n";
@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE(stealth_test1)
     std::string scan_private_key_str = "MktpUfR5RiRrFCkLWYxUEQ9portxgHADvpvByv8dD5aLNH4ZjVM5";
     std::string spend_private_key_str = "MmVtgDTFTUMe6b5mk166QFPFLpem1J1HtS8EhSMZNo5aGsZxZS96";
     
-    COdynCashSecret scanSecret, spendSecret;
+    CCashSecret scanSecret, spendSecret;
 
     scanSecret.SetString(scan_private_key_str);
     spendSecret.SetString(spend_private_key_str);
@@ -135,7 +135,7 @@ BOOST_AUTO_TEST_CASE(stealth_test1)
 
     BOOST_CHECK(sSpendR == sSpendRCompare);
 
-    COdynCashAddress addressCompare(sSpendR.GetPubKey().GetID());
+    CCashAddress addressCompare(sSpendR.GetPubKey().GetID());
 
     BOOST_CHECK(newAddress == addressCompare);
 
@@ -173,7 +173,7 @@ BOOST_AUTO_TEST_CASE(stealth_test1_negative)
 
     CTxDestination newDest;
     BOOST_CHECK(ExtractDestination(scriptDest, newDest));
-    COdynCashAddress newAddress;
+    CCashAddress newAddress;
     newAddress.Set(newDest);
     BOOST_CHECK(newAddress.IsValid());
     //std::cout << "Derived " << newAddress.ToString() <<  " address from stealth\n";
@@ -340,7 +340,7 @@ BOOST_AUTO_TEST_CASE(stealth_test2)
 
     BOOST_CHECK(sSpendR == sSpendRCompare);
 
-    COdynCashAddress addressCompare(sSpendR.GetPubKey().GetID());
+    CCashAddress addressCompare(sSpendR.GetPubKey().GetID());
 
     BOOST_CHECK(address == addressCompare.Get());
 

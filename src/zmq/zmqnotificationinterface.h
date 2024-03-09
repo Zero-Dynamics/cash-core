@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_ZMQ_ZMQNOTIFICATIONINTERFACE_H
-#define ODYNCASH_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#ifndef CASH_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#define CASH_ZMQ_ZMQNOTIFICATIONINTERFACE_H
 
 #include "validationinterface.h"
 #include <string>
@@ -39,4 +39,4 @@ private:
     std::list<CZMQAbstractNotifier*> notifiers;
 };
 
-#endif // ODYNCASH_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#endif // CASH_ZMQ_ZMQNOTIFICATIONINTERFACE_H

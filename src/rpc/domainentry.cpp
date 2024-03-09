@@ -61,7 +61,7 @@ static UniValue AddDomainEntry(const JSONRPCRequest& request, BDAP::ObjectType b
         throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
 
     CKeyID keyWalletID = pubWalletKey.GetID();
-    COdynCashAddress walletAddress = COdynCashAddress(keyWalletID);
+    CCashAddress walletAddress = CCashAddress(keyWalletID);
 
     pwalletMain->SetAddressBook(keyWalletID, strObjectID, "bdap-wallet");
     txDomainEntry.WalletAddress = vchFromString(walletAddress.ToString());
@@ -113,7 +113,7 @@ static UniValue AddDomainEntry(const JSONRPCRequest& request, BDAP::ObjectType b
     if (!txDomainEntry.ValidateValues(strMessage))
         throw std::runtime_error("BDAP_ADD_PUBLIC_ENTRY_RPC_ERROR: ERRCODE: 3508 - " + strMessage);
 
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
@@ -474,7 +474,7 @@ static UniValue UpdateDomainEntry(const JSONRPCRequest& request, BDAP::ObjectTyp
     scriptPubKey << CScript::EncodeOP_N(OP_BDAP_MODIFY) << CScript::EncodeOP_N(OP_BDAP_ACCOUNT_ENTRY)
                  << vchFullObjectPath << txUpdatedEntry.DHTPublicKey << vchMonths << OP_2DROP << OP_2DROP << OP_DROP;
 
-    COdynCashAddress walletAddress(stringFromVch(txUpdatedEntry.WalletAddress));
+    CCashAddress walletAddress(stringFromVch(txUpdatedEntry.WalletAddress));
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
     scriptPubKey += scriptDestination;
@@ -493,7 +493,7 @@ static UniValue UpdateDomainEntry(const JSONRPCRequest& request, BDAP::ObjectTyp
     if (!txUpdatedEntry.ValidateValues(strMessage))
         throw std::runtime_error("BDAP_UPDATE_PUBLIC_ENTRY_RPC_ERROR: ERRCODE: 3705 - " + strMessage);
 
-    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPOdynCashAmount();
+    CAmount curBalance = pwalletMain->GetBalance() + pwalletMain->GetBDAPCashAmount();
     if (monthlyFee + oneTimeFee + depositFee > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
@@ -653,7 +653,7 @@ static UniValue DeleteDomainEntry(const JSONRPCRequest& request, BDAP::ObjectTyp
     scriptPubKey << CScript::EncodeOP_N(OP_BDAP_DELETE) << CScript::EncodeOP_N(OP_BDAP_ACCOUNT_ENTRY)
                  << vchFullObjectPath << txDeletedEntry.DHTPublicKey << OP_2DROP << OP_2DROP;
 
-    COdynCashAddress walletAddress(stringFromVch(txDeletedEntry.WalletAddress));
+    CCashAddress walletAddress(stringFromVch(txDeletedEntry.WalletAddress));
     CScript scriptDestination;
     scriptDestination = GetScriptForDestination(walletAddress.Get());
     scriptPubKey += scriptDestination;
@@ -829,8 +829,8 @@ UniValue makekeypair(const JSONRPCRequest& request)
     vchSecretC.SetPrivKey(vchPrivKeyC, true);
     result.push_back(Pair("private_key", HexStr<CPrivKey::iterator>(vchPrivKeyC.begin(), vchPrivKeyC.end())));
     result.push_back(Pair("public_key", HexStr(key.GetPubKey())));
-    result.push_back(Pair("address", COdynCashAddress(keyIDC).ToString()));
-    result.push_back(Pair("address_private_key", COdynCashSecret(vchSecretC).ToString()));
+    result.push_back(Pair("address", CCashAddress(keyIDC).ToString()));
+    result.push_back(Pair("address_private_key", CCashSecret(vchSecretC).ToString()));
 
    //get uncompressed versions
     key.SetCompressedBoolean(false); //toggle to false
@@ -840,8 +840,8 @@ UniValue makekeypair(const JSONRPCRequest& request)
     vchSecret.SetPrivKey(vchPrivKey, false);
     //result.push_back(Pair("private_key_uncompressed", HexStr<CPrivKey::iterator>(vchPrivKey.begin(), vchPrivKey.end())));
     result.push_back(Pair("public_key_uncompressed", HexStr(key.GetPubKey())));
-    result.push_back(Pair("address_uncompressed", COdynCashAddress(keyID).ToString()));
-    result.push_back(Pair("address_private_key_uncompressed", COdynCashSecret(vchSecret).ToString()));
+    result.push_back(Pair("address_uncompressed", CCashAddress(keyID).ToString()));
+    result.push_back(Pair("address_private_key_uncompressed", CCashSecret(vchSecret).ToString()));
 
     return result;
 }
@@ -955,11 +955,11 @@ UniValue makecredits(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 3)
         throw std::runtime_error(
-            "makecredits \"odyncashaddress\" \"amount\"\n"
-            "\nConvert your OdynCash (0DYNC) to BDAP colored credits\n"
+            "makecredits \"cashaddress\" \"amount\"\n"
+            "\nConvert your Cash (0DYNC) to BDAP colored credits\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"odyncashaddress\"       (string)            The destination wallet address\n"
+            "1. \"cashaddress\"       (string)            The destination wallet address\n"
             "2. \"amount\"               (int)               The amount in " + CURRENCY_UNIT + " to color. eg 0.1\n"
             "\nResult:\n"
             "  \"tx id\"                 (string)            The transaction id for the coin coloring\n"
@@ -998,7 +998,7 @@ UniValue makecredits(const JSONRPCRequest& request)
         fStealthAddress = true;
         CTxDestination newDest;
         if (ExtractDestination(scriptDestination, newDest))
-            LogPrint("bdap", "%s -- Stealth send to address: %s\n", __func__, COdynCashAddress(newDest).ToString());
+            LogPrint("bdap", "%s -- Stealth send to address: %s\n", __func__, CCashAddress(newDest).ToString());
     }
     else {
         scriptDestination = GetScriptForDestination(dest);
@@ -1034,12 +1034,12 @@ UniValue getcredits(const JSONRPCRequest& request)
             "  \"type\"                    (string)            The credit type.\n"
             "  \"operation\"               (string)            The operation code used in the tx output\n"
             "  \"address\"                 (string)            The address holding the unspent BDAP credits\n"
-            "  \"odyncash_amount\"          (int)               The unspent BDAP amount int 0DYNC\n"
+            "  \"cash_amount\"          (int)               The unspent BDAP amount int 0DYNC\n"
             "  \"credits\"                 (int)               The unspent BDAP credits\n"
             "  },...n \n"
             "\"total_credits\"             (int)               The total credits available.\n"
             "\"total_deposits\"            (int)               The total deposits available.\n"
-            "\"total_odyncash\"             (int)               The total OdynCash available that are BDAP colored.\n"
+            "\"total_cash\"             (int)               The total Cash available that are BDAP colored.\n"
             "\nExamples:\n"
             + HelpExampleCli("getcredits", "") +
             "\nAs a JSON-RPC call\n"
@@ -1062,7 +1062,7 @@ UniValue getcredits(const JSONRPCRequest& request)
         std::vector<std::vector<unsigned char>> vvch;
         credit.first.GetBDAPOpCodes(opCode1, opCode2, vvch);
         std::string strOpType = GetBDAPOpTypeString(opCode1, opCode2);
-        const COdynCashAddress address = GetScriptAddress(credit.first.scriptPubKey);
+        const CCashAddress address = GetScriptAddress(credit.first.scriptPubKey);
         std::string strType = "unknown";
         std::string strAccount =  "";
         std::string strPubKey =  "";
@@ -1102,7 +1102,7 @@ UniValue getcredits(const JSONRPCRequest& request)
             oCredit.push_back(Pair("pubkey", strPubKey));
         if (strSharedPubKey.size() > 0)
             oCredit.push_back(Pair("shared_pubkey", strSharedPubKey));
-        oCredit.push_back(Pair("odyncash_amount", FormatMoney(credit.first.nValue)));
+        oCredit.push_back(Pair("cash_amount", FormatMoney(credit.first.nValue)));
         oCredit.push_back(Pair("credits", credit.first.nValue/BDAP_CREDIT));
         std::string strOutput = credit.second.hash.ToString() + "-" + std::to_string(credit.second.n);
         result.push_back(Pair(strOutput, oCredit));
@@ -1112,7 +1112,7 @@ UniValue getcredits(const JSONRPCRequest& request)
 
     result.push_back(Pair("total_credits", nTotalCredits/BDAP_CREDIT));
     result.push_back(Pair("total_deposits", nTotalDeposits/BDAP_CREDIT));
-    result.push_back(Pair("total_odyncash", FormatMoney(nTotalAmount)));
+    result.push_back(Pair("total_cash", FormatMoney(nTotalAmount)));
 
     return result;
 }
@@ -1147,13 +1147,13 @@ UniValue bdapfees(const JSONRPCRequest& request)
     nNewUserMonthly = monthlyFee;
     nNewUserDeposit = depositFee;
     nNewUserOnetime = oneTimeFee;
-    oNewUserFee.push_back(Pair("monthly_odyncash", FormatMoney(nNewUserMonthly)));
+    oNewUserFee.push_back(Pair("monthly_cash", FormatMoney(nNewUserMonthly)));
     oNewUserFee.push_back(Pair("monthly_credits", nNewUserMonthly/BDAP_CREDIT));
-    oNewUserFee.push_back(Pair("deposit_odyncash", FormatMoney(nNewUserDeposit)));
+    oNewUserFee.push_back(Pair("deposit_cash", FormatMoney(nNewUserDeposit)));
     oNewUserFee.push_back(Pair("deposit_credits", nNewUserDeposit/BDAP_CREDIT));
     oNewUserFee.push_back(Pair("one-time", FormatMoney(nNewUserOnetime)));
     oNewUserFee.push_back(Pair("one-time_credits", nNewUserOnetime/BDAP_CREDIT));
-    oNewUserFee.push_back(Pair("total_odyncash", FormatMoney((nNewUserMonthly + nNewUserDeposit + nNewUserOnetime))));
+    oNewUserFee.push_back(Pair("total_cash", FormatMoney((nNewUserMonthly + nNewUserDeposit + nNewUserOnetime))));
     oNewUserFee.push_back(Pair("total_credits", (nNewUserMonthly + nNewUserDeposit + nNewUserOnetime)/BDAP_CREDIT));
     oFees.push_back(Pair("new_user", oNewUserFee));
 
@@ -1165,13 +1165,13 @@ UniValue bdapfees(const JSONRPCRequest& request)
     nUpdateUserMonthly = monthlyFee;
     nUpdateUserDeposit = depositFee;
     nUpdateUserOnetime = oneTimeFee;
-    oUpdateUserFee.push_back(Pair("monthly_odyncash", FormatMoney(nUpdateUserMonthly)));
+    oUpdateUserFee.push_back(Pair("monthly_cash", FormatMoney(nUpdateUserMonthly)));
     oUpdateUserFee.push_back(Pair("monthly_credits", nUpdateUserMonthly/BDAP_CREDIT));
-    oUpdateUserFee.push_back(Pair("deposit_odyncash", FormatMoney(nUpdateUserDeposit)));
+    oUpdateUserFee.push_back(Pair("deposit_cash", FormatMoney(nUpdateUserDeposit)));
     oUpdateUserFee.push_back(Pair("deposit_credits", nUpdateUserDeposit/BDAP_CREDIT));
-    oUpdateUserFee.push_back(Pair("one-time_odyncash", FormatMoney(nUpdateUserOnetime)));
+    oUpdateUserFee.push_back(Pair("one-time_cash", FormatMoney(nUpdateUserOnetime)));
     oUpdateUserFee.push_back(Pair("one-time_credits", nUpdateUserOnetime/BDAP_CREDIT));
-    oUpdateUserFee.push_back(Pair("total_odyncash", FormatMoney((nUpdateUserMonthly + nUpdateUserDeposit + nUpdateUserOnetime))));
+    oUpdateUserFee.push_back(Pair("total_cash", FormatMoney((nUpdateUserMonthly + nUpdateUserDeposit + nUpdateUserOnetime))));
     oUpdateUserFee.push_back(Pair("total_credits", (nUpdateUserMonthly + nUpdateUserDeposit + nUpdateUserOnetime)/BDAP_CREDIT));
     oFees.push_back(Pair("update_user", oUpdateUserFee));
 
@@ -1183,13 +1183,13 @@ UniValue bdapfees(const JSONRPCRequest& request)
     nLinkRequestMonthly = monthlyFee;
     nLinkRequestDeposit = depositFee;
     nLinkRequestOnetime = oneTimeFee;
-    oLinkRequestFee.push_back(Pair("monthly_odyncash", FormatMoney(nLinkRequestMonthly)));
+    oLinkRequestFee.push_back(Pair("monthly_cash", FormatMoney(nLinkRequestMonthly)));
     oLinkRequestFee.push_back(Pair("monthly_credits", nLinkRequestMonthly/BDAP_CREDIT));
-    oLinkRequestFee.push_back(Pair("deposit_odyncash", FormatMoney(nLinkRequestDeposit)));
+    oLinkRequestFee.push_back(Pair("deposit_cash", FormatMoney(nLinkRequestDeposit)));
     oLinkRequestFee.push_back(Pair("deposit_credits", nLinkRequestDeposit/BDAP_CREDIT));
-    oLinkRequestFee.push_back(Pair("one-time_odyncash", FormatMoney(nLinkRequestOnetime)));
+    oLinkRequestFee.push_back(Pair("one-time_cash", FormatMoney(nLinkRequestOnetime)));
     oLinkRequestFee.push_back(Pair("one-time_credits", nLinkRequestOnetime/BDAP_CREDIT));
-    oLinkRequestFee.push_back(Pair("total_odyncash", FormatMoney((nLinkRequestMonthly + nLinkRequestDeposit + nLinkRequestOnetime))));
+    oLinkRequestFee.push_back(Pair("total_cash", FormatMoney((nLinkRequestMonthly + nLinkRequestDeposit + nLinkRequestOnetime))));
     oLinkRequestFee.push_back(Pair("total_credits", (nLinkRequestMonthly + nLinkRequestDeposit + nLinkRequestOnetime)/BDAP_CREDIT));
     oFees.push_back(Pair("new_link_request", oLinkRequestFee));
 
@@ -1201,13 +1201,13 @@ UniValue bdapfees(const JSONRPCRequest& request)
     nLinkAcceptMonthly = monthlyFee;
     nLinkAcceptDeposit = depositFee;
     nLinkAcceptOnetime = oneTimeFee;
-    oLinkAcceptFee.push_back(Pair("monthly_odyncash", FormatMoney(nLinkAcceptMonthly)));
+    oLinkAcceptFee.push_back(Pair("monthly_cash", FormatMoney(nLinkAcceptMonthly)));
     oLinkAcceptFee.push_back(Pair("monthly_credits", nLinkAcceptMonthly/BDAP_CREDIT));
-    oLinkAcceptFee.push_back(Pair("deposit_odyncash", FormatMoney(nLinkAcceptDeposit)));
+    oLinkAcceptFee.push_back(Pair("deposit_cash", FormatMoney(nLinkAcceptDeposit)));
     oLinkAcceptFee.push_back(Pair("deposit_credits", nLinkAcceptDeposit/BDAP_CREDIT));
-    oLinkAcceptFee.push_back(Pair("one-time_odyncash", FormatMoney(nLinkAcceptOnetime)));
+    oLinkAcceptFee.push_back(Pair("one-time_cash", FormatMoney(nLinkAcceptOnetime)));
     oLinkAcceptFee.push_back(Pair("one-time_credits", nLinkAcceptOnetime/BDAP_CREDIT));
-    oLinkAcceptFee.push_back(Pair("total_odyncash", FormatMoney((nLinkAcceptMonthly + nLinkAcceptDeposit + nLinkAcceptOnetime))));
+    oLinkAcceptFee.push_back(Pair("total_cash", FormatMoney((nLinkAcceptMonthly + nLinkAcceptDeposit + nLinkAcceptOnetime))));
     oLinkAcceptFee.push_back(Pair("total_credits", (nLinkAcceptMonthly + nLinkAcceptDeposit + nLinkAcceptOnetime)/BDAP_CREDIT));
     oFees.push_back(Pair("new_link_accept", oLinkAcceptFee));
 
@@ -1231,7 +1231,7 @@ static const CRPCCommand commands[] =
     { "bdap",            "addgroup",                 &addgroup,                     true, {"account id", "common name", "registration days"} },
     { "bdap",            "getgroupinfo",             &getgroupinfo,                 true, {"account id"} },
     { "bdap",            "mybdapaccounts",           &mybdapaccounts,               true, {} },
-    { "bdap",            "makecredits",              &makecredits,                  true, {"odyncashaddress", "amount"} },
+    { "bdap",            "makecredits",              &makecredits,                  true, {"cashaddress", "amount"} },
     { "bdap",            "getcredits",               &getcredits,                   true, {} },
     { "bdap",            "bdapfees",                 &bdapfees,                     true, {} },
 #endif //ENABLE_WALLET

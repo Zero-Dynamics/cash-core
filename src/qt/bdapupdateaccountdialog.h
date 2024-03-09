@@ -23,14 +23,14 @@ class BdapUpdateAccountDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit BdapUpdateAccountDialog(QWidget *parent = 0, BDAP::ObjectType accountType = BDAP::ObjectType::BDAP_USER, std::string account = "", std::string commonName = "", std::string expirationDate = "", int OdynCashUnits = 0);
+    explicit BdapUpdateAccountDialog(QWidget *parent = 0, BDAP::ObjectType accountType = BDAP::ObjectType::BDAP_USER, std::string account = "", std::string commonName = "", std::string expirationDate = "", int CashUnits = 0);
     ~BdapUpdateAccountDialog();
 
 private:
     Ui::BdapUpdateAccountDialog* ui;
     std::string ignoreErrorCode(const std::string input);
     BDAP::ObjectType inputAccountType;
-    int nOdynCashUnits;
+    int nCashUnits;
 
 private Q_SLOTS:
 

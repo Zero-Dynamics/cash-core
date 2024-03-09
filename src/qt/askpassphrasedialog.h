@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_ASKPASSPHRASEDIALOG_H
-#define ODYNCASH_QT_ASKPASSPHRASEDIALOG_H
+#ifndef CASH_QT_ASKPASSPHRASEDIALOG_H
+#define CASH_QT_ASKPASSPHRASEDIALOG_H
 
 #include <QDialog>
 
@@ -54,4 +54,4 @@ protected:
     bool eventFilter(QObject* object, QEvent* event);
 };
 
-#endif // ODYNCASH_QT_ASKPASSPHRASEDIALOG_H
+#endif // CASH_QT_ASKPASSPHRASEDIALOG_H

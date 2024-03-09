@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_QT_SENDCOINSDIALOG_H
-#define ODYNCASH_QT_SENDCOINSDIALOG_H
+#ifndef CASH_QT_SENDCOINSDIALOG_H
+#define CASH_QT_SENDCOINSDIALOG_H
 
 #include "walletmodel.h"
 
@@ -33,7 +33,7 @@ QT_BEGIN_NAMESPACE
 class QUrl;
 QT_END_NAMESPACE
 
-/** Dialog for sending OdynCash */
+/** Dialog for sending Cash */
 class SendCoinsDialog : public QDialog
 {
     Q_OBJECT
@@ -126,4 +126,4 @@ private:
     int secDelay;
 };
 
-#endif // ODYNCASH_QT_SENDCOINSDIALOG_H
+#endif // CASH_QT_SENDCOINSDIALOG_H

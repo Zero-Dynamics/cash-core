@@ -872,7 +872,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="OdynCashAmountField" name="customFee"/>
+                  <widget class="CashAmountField" name="customFee"/>
                  </item>
                  <item>
                   <spacer name="horizontalSpacer_6">
@@ -894,7 +894,7 @@
                  <item>
                   <widget class="QCheckBox" name="checkBoxMinimumFee">
                    <property name="toolTip">
-                    <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for OdynCash transactions than the network can process.</string>
+                    <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Cash transactions than the network can process.</string>
                    </property>
                    <property name="text">
                     <string/>
@@ -907,7 +907,7 @@
                     <bool>true</bool>
                    </property>
                    <property name="toolTip">
-                    <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for OdynCash transactions than the network can process.</string>
+                    <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Cash transactions than the network can process.</string>
                    </property>
                    <property name="text">
                     <string>(read the tooltip)</string>
@@ -1473,14 +1473,14 @@ border-radius: 4px;
    <header>qvalidatedlineedit.h</header>
   </customwidget>
   <customwidget>
-   <class>OdynCashAmountField</class>
+   <class>CashAmountField</class>
    <extends>QLineEdit</extends>
-   <header>odyncashamountfield.h</header>
+   <header>cashamountfield.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../odyncash.qrc"/>
+  <include location="../cash.qrc"/>
  </resources>
  <connections/>
  <buttongroups>

@@ -1,4 +1,4 @@
-odyncash               ICON    "pixmaps/odyncash.ico"
+cash               ICON    "pixmaps/cash.ico"
 
 #include "wx/msw/wx.rc"
 

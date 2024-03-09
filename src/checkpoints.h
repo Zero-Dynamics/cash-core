@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_CHECKPOINTS_H
-#define ODYNCASH_CHECKPOINTS_H
+#ifndef CASH_CHECKPOINTS_H
+#define CASH_CHECKPOINTS_H
 
 #include "uint256.h"
 
@@ -29,4 +29,4 @@ bool CheckBlock(int nHeight, const uint256& hash, bool fMatchesCheckpoint = fals
 
 } //namespace Checkpoints
 
-#endif // ODYNCASH_CHECKPOINTS_H
+#endif // CASH_CHECKPOINTS_H

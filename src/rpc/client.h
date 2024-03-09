@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_RPCCLIENT_H
-#define ODYNCASH_RPCCLIENT_H
+#ifndef CASH_RPCCLIENT_H
+#define CASH_RPCCLIENT_H
 
 #include <univalue.h>
 
@@ -23,4 +23,4 @@ UniValue RPCConvertNamedValues(const std::string& strMethod, const std::vector<s
  */
 UniValue ParseNonRFCJSONValue(const std::string& strVal);
 
-#endif // ODYNCASH_RPCCLIENT_H
+#endif // CASH_RPCCLIENT_H

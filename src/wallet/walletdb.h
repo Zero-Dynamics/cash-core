@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_WALLET_WALLETDB_H
-#define ODYNCASH_WALLET_WALLETDB_H
+#ifndef CASH_WALLET_WALLETDB_H
+#define CASH_WALLET_WALLETDB_H
 
 #include "amount.h"
 #include "hdchain.h"
@@ -173,4 +173,4 @@ private:
 
 void ThreadFlushWalletDB();
 
-#endif // ODYNCASH_WALLET_WALLETDB_H
+#endif // CASH_WALLET_WALLETDB_H

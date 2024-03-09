@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_SUPPORT_EVENTS_H
-#define ODYNCASH_SUPPORT_EVENTS_H
+#ifndef CASH_SUPPORT_EVENTS_H
+#define CASH_SUPPORT_EVENTS_H
 
 #include <ios>
 #include <memory>
@@ -61,4 +61,4 @@ raii_evhttp_connection obtain_evhttp_connection_base(struct event_base* base, st
     return result;
 }
 
-#endif // ODYNCASH_SUPPORT_EVENTS_H
+#endif // CASH_SUPPORT_EVENTS_H

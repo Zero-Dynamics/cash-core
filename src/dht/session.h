@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_DHT_SESSION_H
-#define ODYNCASH_DHT_SESSION_H
+#ifndef CASH_DHT_SESSION_H
+#define CASH_DHT_SESSION_H
 
 #include "dht/datarecord.h"
 #include "dht/sessionevents.h"
@@ -133,4 +133,4 @@ namespace DHT
                             std::string& recordValue, int64_t& lastSequence);
 }
 
-#endif // ODYNCASH_DHT_SESSION_H
+#endif // CASH_DHT_SESSION_H

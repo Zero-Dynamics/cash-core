@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNCASH_BDAP_LINKING_H
-#define ODYNCASH_BDAP_LINKING_H
+#ifndef CASH_BDAP_LINKING_H
+#define CASH_BDAP_LINKING_H
 
 #include "bdap.h"
 #include "primitives/transaction.h"
 #include "serialize.h"
 #include "uint256.h"
 
-class COdynCashAddress;
+class CCashAddress;
 class CKey;
 class CTxMemPool;
 class CTransaction;
@@ -291,6 +291,6 @@ public:
 
 bool LinkPubKeyExistsInMemPool(const CTxMemPool& pool, const std::vector<unsigned char>& vchPubKey, const std::string& strOpType, std::string& errorMessage);
 bool CreateSignatureProof(const CKey& key, const std::string& strFQDN, std::vector<unsigned char>& vchSignatureProof);
-bool SignatureProofIsValid(const COdynCashAddress& addr,  const std::string& strFQDN, const std::vector<unsigned char>& vchSig);
+bool SignatureProofIsValid(const CCashAddress& addr,  const std::string& strFQDN, const std::vector<unsigned char>& vchSig);
 
-#endif // ODYNCASH_BDAP_LINKING_H
+#endif // CASH_BDAP_LINKING_H

@@ -7,7 +7,7 @@
 
 #include "recentrequeststablemodel.h"
 
-#include "odyncashunits.h"
+#include "cashunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -85,9 +85,9 @@ QVariant RecentRequestsTableModel::data(const QModelIndex& index, int role) cons
             if (rec->recipient.amount == 0 && role == Qt::DisplayRole)
                 return tr("(no amount requested)");
             else if (role == Qt::EditRole)
-                return OdynCashUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount, false, OdynCashUnits::separatorNever);
+                return CashUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount, false, CashUnits::separatorNever);
             else
-                return OdynCashUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount);
+                return CashUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount);
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (index.column() == Amount)
@@ -121,7 +121,7 @@ void RecentRequestsTableModel::updateAmountColumnTitle()
 /** Gets title for amount column including current display unit if optionsModel reference available. */
 QString RecentRequestsTableModel::getAmountTitle()
 {
-    return (this->walletModel->getOptionsModel() != NULL) ? tr("Requested") + " (" + OdynCashUnits::name(this->walletModel->getOptionsModel()->getDisplayUnit()) + ")" : "";
+    return (this->walletModel->getOptionsModel() != NULL) ? tr("Requested") + " (" + CashUnits::name(this->walletModel->getOptionsModel()->getDisplayUnit()) + ")" : "";
 }
 
 QModelIndex RecentRequestsTableModel::index(int row, int column, const QModelIndex& parent) const
