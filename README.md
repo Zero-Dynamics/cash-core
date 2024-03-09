@@ -6,36 +6,29 @@
 
 ![0DYNC logo](https://github.com/duality-solutions/OdynCash/blob/master/src/qt/res/icons/drk/about.png)
 
-**Copyright (c) 2016-2021 [Duality Blockchain Solutions](https://duality.solutions/)**
+**Copyright (c) 2016-2021 [Zero Dynamics](https://)**
 
-What is [OdynCash](https://duality.solutions/odyn)?
+What is [OdynCash](https://www/cash)?
 ----------------
 * Coin Suffix: 0DYNC
 * PoW Mining Algorithm: Argon2d
 * PoW Difficulty Algorithm: Digishield V3
 * PoW Period: Unlimited
-* PoW Target Spacing: 128 Seconds
+* PoW Target Spacing: 30 Seconds
 * PoW Reward per Block: Controlled via Fluid Protocol
-* PoW Reward Start Height: Block 5,137
-* PoS Mining Algorithm: Blake2b
-* PoS Period: Unlimited
-* PoS Target Spacing: 128 Seconds
-* PoS Reward per Block: Controlled via Fluid Protocol
-* PoS Reward Start Height: Controlled via SPORK activation
+* PoW Reward Start Height: Block 20,160
 * Maturity: 10 Blocks
-* PoW Blocks: ~675 per day
-* PoS Blocks: ~675 per day
-* Total Blocks Per Day: ~1350
+* PoW Blocks: ~2,880 per day
 * ServiceNode Collateral Amount: 1000 0DYNC
 * ServiceNode Min Confirmation: 17 Blocks
 * ServiceNode Reward: Controlled via Fluid Protocol
-* ServiceNode Reward Start Height: Block 10,273
+* ServiceNode Reward Start Height: Block 40,320
 * Total Coins: 2<sup>63</sup> - 1
 * Min TX Fee: 0.0001 0DYNC
 * Max Block Size: 4MB
 
 
-[OdynCash(0DYNC)](https://duality.solutions/odyn) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
+[OdynCash(0DYNC)](https://www/cash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. OdynCash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
 
 **MainNet Parameters**
 P2P Port = 44400
@@ -58,7 +51,7 @@ Magic Bytes = 0x2f 0x32 0x15 0x3f
 
 UNIX BUILD NOTES
 ====================
-Some notes on how to build [OdynCash](https://duality.solutions/odyn) in Unix.
+Some notes on how to build [OdynCash](https://www/cash) in Unix.
 
 Note
 ---------------------
