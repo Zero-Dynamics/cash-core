@@ -1,5 +1,5 @@
 ---
-name: "odyncash-2.5.0.0"
+name: "odyncash-1.0.0.0"
 enable_cache: true
 suites:
 - "trusty"

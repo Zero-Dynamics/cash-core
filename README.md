@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/duality-solutions/OdynCash.png?branch=master)](https://travis-ci.org/duality-solutions/OdynCash)
 
-# **OdynCash (0DYNC) v2.5.0.0**
+# **OdynCash (0DYNC) v1.0.0.0**
 
 ![0DYNC logo](https://github.com/duality-solutions/OdynCash/blob/master/src/qt/res/icons/drk/about.png)
 
