@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="s1"
+   sodipodi:docname="browse.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xml:space="preserve"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><defs
+     id="defs10" /><sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.8222656"
+     inkscape:cx="94.113613"
+     inkscape:cy="105.08896"
+     inkscape:window-width="3440"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="s1" /><title
+     id="title1">QR coder</title><desc
+     id="desc1">Manually edited diagram of qr code</desc><!--  <rect x="0" y="0" width="300" height="422" stroke="none" fill="#CFA"/>  --><!-- vim:nowrap:sw=2:so=2:et:ai: --><metadata
+     id="metadata10"><rdf:RDF><cc:Work
+         rdf:about=""><dc:title>QR coder</dc:title></cc:Work></rdf:RDF></metadata><path
+     id="path11"
+     style="fill:#e5e4e2;stroke-width:0.484153;stroke:none;stroke-opacity:1;fill-opacity:1"
+     d="M 75.398438 32.986328 C 57.504578 32.929839 39.570942 33.267985 37.029297 34.046875 C 27.897207 36.845411 20.948601 43.519341 17.824219 52.494141 C 15.589845 58.912397 15.687779 218.40781 17.927734 220.95898 C 18.739383 221.88339 19.884361 222.73394 20.470703 222.84766 C 23.700272 223.47404 26.274591 222.37297 27.671875 219.76758 C 28.518403 218.18911 28.556641 214.67911 28.556641 138.36328 C 28.556641 47.326704 28.128281 55.913476 32.927734 50.662109 C 37.984278 45.129445 36.895621 45.281161 72.855469 45.113281 C 94.626182 45.011644 105.29636 45.13463 107.47266 45.511719 C 115.3196 46.871362 120.60608 52.690157 121.36328 60.798828 C 122.04491 68.098269 117.10005 67.53125 180.0957 67.53125 C 243.17439 67.53125 242.62786 67.615728 237.94727 58.564453 C 236.51204 55.789021 239.15001 55.931481 184.06836 55.669922 C 133.08959 55.427845 133.09059 55.426883 131.9082 52.042969 C 128.98856 43.687113 122.28503 37.212204 113.52539 34.287109 C 111.14637 33.492686 93.292297 33.042818 75.398438 32.986328 z M 180.60547 80.279297 C 159.49864 80.281989 138.3672 80.994562 135.39844 82.412109 C 128.61395 85.651612 123.96382 91.855407 122.80469 99.216797 C 122.2669 102.63256 122.26777 102.63263 92.478516 102.64062 C 60.141371 102.64974 58.764147 102.74481 53.681641 105.32031 C 48.497349 107.94739 43.456254 114.41048 42.140625 120.11719 C 41.261641 123.92988 41.47086 202.52978 42.369141 205.97852 C 44.267313 213.26608 49.732163 219.92385 55.523438 222.00781 C 58.5593 223.10025 216.60441 222.7478 220.16797 221.64062 C 230.62402 218.39196 236.93362 211.89549 238.17969 203.09375 C 238.83158 198.48938 238.82442 104.01776 238.17188 99.484375 C 237.11845 92.166052 232.40735 85.735128 225.66016 82.400391 C 222.79353 80.983586 201.7123 80.276605 180.60547 80.279297 z " /></svg>

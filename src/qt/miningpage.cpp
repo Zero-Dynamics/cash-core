@@ -196,18 +196,25 @@ void MiningPage::updateUI()
 
 void MiningPage::updatePushSwitch(QPushButton* pushSwitch, bool minerOn)
 {
+    QString theme = GUIUtil::getThemeName();
     if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
         pushSwitch->setToolTip(tr("Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!"));
         pushSwitch->setText(tr("Disabled"));
+        ui->pushSwitchCPUMining->setIcon(QIcon(":/icons/" + theme + "/refresh"));
+        ui->pushSwitchGPUMining->setIcon(QIcon(":/icons/" + theme + "/refresh"));
         pushSwitch->setEnabled(false);
         return;
     }
     if (minerOn) {
         pushSwitch->setToolTip(tr("Click 'Stop mining' to stop mining!"));
         pushSwitch->setText(tr("Stop mining"));
+        ui->pushSwitchCPUMining->setIcon(QIcon(":/icons/" + theme + "/stop"));
+        ui->pushSwitchGPUMining->setIcon(QIcon(":/icons/" + theme + "/stop"));
     } else if (!minerOn) {
         pushSwitch->setToolTip(tr("Click 'Start mining' to begin mining!"));
         pushSwitch->setText(tr("Start mining"));
+        ui->pushSwitchCPUMining->setIcon(QIcon(":/icons/" + theme + "/start"));
+        ui->pushSwitchGPUMining->setIcon(QIcon(":/icons/" + theme + "/start"));
     }
     pushSwitch->setEnabled(true);
 }

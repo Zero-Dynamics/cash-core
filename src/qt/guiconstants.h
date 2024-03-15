@@ -20,7 +20,7 @@ static const int STATUSBAR_ICONSIZE = 16;
 static const bool DEFAULT_SPLASHSCREEN = true;
 
 /* Invalid field background style */
-#define STYLE_INVALID "background:#FF8080"
+#define STYLE_INVALID "background:#E16082"
 
 /* Transaction list -- unconfirmed transaction */
 #define COLOR_UNCONFIRMED QColor(128, 128, 128)
@@ -61,8 +61,8 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "Duality Solutions"
-#define QAPP_ORG_DOMAIN "duality.solutions"
+#define QAPP_ORG_NAME "Zero Dynamics"
+#define QAPP_ORG_DOMAIN " "
 #define QAPP_APP_NAME_DEFAULT "Cash-Qt"
 #define QAPP_APP_NAME_TESTNET "Cash-Qt-testnet"
 

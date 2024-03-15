@@ -95,10 +95,10 @@ WalletView::WalletView(const PlatformStyle* _platformStyle, QWidget* parent) : Q
     addWidget(sendCoinsPage);
     addWidget(receiveCoinsPage);
     addWidget(transactionsPage);
+    addWidget(miningPage);
     if (settings.value("fShowServiceNodesTab").toBool()) {
         addWidget(servicenodeListPage);
     }
-    addWidget(miningPage);
     addWidget(bdapPage);
 
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
@@ -171,11 +171,11 @@ void WalletView::setWalletModel(WalletModel* _walletModel)
     usedReceivingAddressesPage->setModel(_walletModel->getAddressTableModel());
     usedSendingAddressesPage->setModel(_walletModel->getAddressTableModel());
     transactionView->setModel(_walletModel);
+    miningPage->setModel(_walletModel);
     QSettings settings;
     if (settings.value("fShowServiceNodesTab").toBool()) {
         servicenodeListPage->setWalletModel(_walletModel);
     }
-    miningPage->setModel(_walletModel);
     bdapPage->setModel(_walletModel);
 
     if (_walletModel) {
@@ -254,17 +254,17 @@ void WalletView::gotoHistoryPage()
     setCurrentWidget(transactionsPage);
 }
 
+void WalletView::gotoMiningPage()
+{
+    setCurrentWidget(miningPage);
+}
+
 void WalletView::gotoServiceNodePage()
 {
     QSettings settings;
     if (settings.value("fShowServiceNodesTab").toBool()) {
         setCurrentWidget(servicenodeListPage);
     }
-}
-
-void WalletView::gotoMiningPage()
-{
-    setCurrentWidget(miningPage);
 }
 
 void WalletView::gotoBdapPage()

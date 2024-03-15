@@ -48,8 +48,8 @@ SendCoinsDialog::SendCoinsDialog(const PlatformStyle* _platformStyle, QWidget* p
         ui->clearButton->setIcon(QIcon());
         ui->sendButton->setIcon(QIcon());
     } else {
-        ui->addButton->setIcon(QIcon(":/icons/" + theme + "/add"));
-        ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
+        ui->addButton->setIcon(QIcon(":/icons/" + theme + "/drkpurple_add"));
+        ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/drkpurple_remove"));
         ui->sendButton->setIcon(QIcon(":/icons/" + theme + "/send"));
     }
 
@@ -721,9 +721,7 @@ void SendCoinsDialog::updateSmartFeeLabel()
         ui->labelSmartFee2->show(); // (Smart fee not initialized yet. This usually takes a few blocks...)
         ui->labelFeeEstimation->setText("");
         ui->fallbackFeeWarningLabel->setVisible(true);
-        int lightness = ui->fallbackFeeWarningLabel->palette().color(QPalette::WindowText).lightness();
-        QColor warning_colour(221 - (lightness / 5), 37 - (lightness / 3), 13 - (lightness / 14));
-        ui->fallbackFeeWarningLabel->setStyleSheet("QLabel { color: " + warning_colour.name() + "; }");
+        ui->fallbackFeeWarningLabel->setStyleSheet("QLabel { color: #800000; }");
         ui->fallbackFeeWarningLabel->setIndent(QFontMetrics(ui->fallbackFeeWarningLabel->font()).width("x"));
     } else {
         ui->labelSmartFee->setText(CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
@@ -819,7 +817,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
     if (model && model->getAddressTableModel()) {
         // Default to no change address until verified
         CoinControlDialog::coinControl->destChange = CNoDestination();
-        ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
+        ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color: #800000;}");
 
         CDebitAddress addr = CDebitAddress(text.toStdString());
 
@@ -845,12 +843,12 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
                     CoinControlDialog::coinControl->destChange = addr.Get();
                 else {
                     ui->lineEditCoinControlChange->setText("");
-                    ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:white;}");
+                    ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:#e5e4e2;}");
                     ui->labelCoinControlChangeLabel->setText("");
                 }
             } else // Known change address
             {
-                ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:white;}");
+                ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:#e5e4e2;}");
 
                 // Query label
                 QString associatedLabel = model->getAddressTableModel()->labelForAddress(text);

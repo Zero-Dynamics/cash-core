@@ -73,8 +73,8 @@ private:
     AddressBookPage* usedReceivingAddressesPage;
     QWidget* transactionsPage;
     TransactionView* transactionView;
-    ServiceNodeList* servicenodeListPage;
     MiningPage* miningPage;
+    ServiceNodeList* servicenodeListPage;
     BdapPage* bdapPage;
 
     QProgressDialog* progressDialog;
@@ -90,10 +90,10 @@ public Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-    /** Switch to ServiceNode page */
-    void gotoServiceNodePage();
     /** Switch to mining page */
     void gotoMiningPage();
+    /** Switch to ServiceNode page */
+    void gotoServiceNodePage();
     /** Switch to bdap page */
     void gotoBdapPage();
 

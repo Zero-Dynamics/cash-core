@@ -14,197 +14,23 @@
    <string>Import – recovery phrase/private key</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
-    <widget class="QTextBrowser" name="textBrowser">
-     <property name="palette">
-      <palette>
-       <active>
-        <colorrole role="WindowText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Button">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Text">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="ButtonText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Base">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Window">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </active>
-       <inactive>
-        <colorrole role="WindowText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Button">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Text">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="ButtonText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Base">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Window">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </inactive>
-       <disabled>
-        <colorrole role="WindowText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Button">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Text">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="ButtonText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Base">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-        <colorrole role="Window">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </disabled>
-      </palette>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_12">
+     <property name="text">
+      <string>Wallet already has an HD account loaded.
+By importing another recovery phrase a new account will be created and set as the default.
+The wallet will receive on addresses from the new imported account only.
+Your old account wallet file will be renamed to wallat.dat.before-mnemonic-import.&lt;isodate&gt; in your data directory
+      </string>
      </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
      </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustToContents</enum>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.SF NS Text'; font-size:13pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -293,7 +119,7 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QTextEdit" name="mnemonicEdit">
            <property name="styleSheet">
-            <string notr="true">background-color: #999999;</string>
+            <string notr="true">background-color: #e5e4e2; color: #440128; font-size: 13pt;</string>
            </property>
            <property name="placeholderText">
             <string>Enter your BIP39 compliant Recovery Phrase/Mnemonic.</string>
@@ -312,7 +138,7 @@ p, li { white-space: pre-wrap; }
            <item row="0" column="1">
             <widget class="QLineEdit" name="lineEditPassPhrase">
              <property name="styleSheet">
-              <string notr="true">background-color: #999999;</string>
+              <string notr="true">background-color: #e5e4e2; color: #440128; font-size: 12pt;</string>
              </property>
              <property name="placeholderText">
               <string>Enter a passphrase to protect your Recovery Phrase. (optional)</string>
@@ -339,8 +165,7 @@ p, li { white-space: pre-wrap; }
            <item row="2" column="0">
             <widget class="QLabel" name="labelWarning">
              <property name="styleSheet">
-              <string notr="true">color: red;
-font-weight: bold;</string>
+              <string notr="true">color: #800000; font-weight: bold;</string>
              </property>
              <property name="text">
               <string>Warning</string>
@@ -354,7 +179,8 @@ font-weight: bold;</string>
             <widget class="QLabel" name="label_8">
              <property name="text">
               <string>Please ensure you backup your Recovery Phrase and Passphrase - they are not recoverable!
-Wallet will restart after mnemonic has been imported.</string>
+Wallet will restart after mnemonic has been imported.
+              </string>
              </property>
             </widget>
            </item>
@@ -513,7 +339,7 @@ Wallet will restart after mnemonic has been imported.</string>
          <item>
           <widget class="QTextEdit" name="textEditNewRecoveryPhrase">
            <property name="styleSheet">
-            <string notr="true">background-color: #999999;</string>
+            <string notr="true">background-color: #e5e4e2; color: #440128; font-size: 13pt;</string>
            </property>
           </widget>
          </item>
@@ -668,11 +494,8 @@ Wallet will restart after mnemonic has been imported.</string>
          </item>
          <item>
           <widget class="QLineEdit" name="privatekeyEdit">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+           <property name="styleSheet">
+            <string notr="true">background-color: #e5e4e2; color: #440128; font-size: 12pt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -796,7 +619,11 @@ Wallet will restart after mnemonic has been imported.</string>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_7">
            <item>
-            <widget class="QLineEdit" name="fileEdit"/>
+            <widget class="QLineEdit" name="fileEdit">
+             <property name="styleSheet">
+              <string notr="true">background-color: #e5e4e2; color: #440128; font-size: 12pt;</string>
+             </property>
+             </widget>
            </item>
            <item>
             <widget class="QPushButton" name="fileButton">
@@ -812,10 +639,10 @@ Wallet will restart after mnemonic has been imported.</string>
              <property name="icon">
               <iconset resource="../cash.qrc">
                <normaloff>:/icons/drk/browse</normaloff>:/icons/drk/browse</iconset>
-             </property>
-            </widget>
-           </item>
-          </layout>
+              </property>
+             </widget>
+            </item>
+           </layout>
          </item>
          <item>
           <widget class="QLabel" name="label_5">
@@ -905,20 +732,21 @@ Wallet will restart after mnemonic has been imported.</string>
      </widget>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_12">
-     <property name="text">
-      <string>Wallet already has an HD account loaded.
-By importing another recovery phrase a new account will be created and set as the default.
-The wallet will receive on addresses from the new imported account only.
-Your old account wallet file will be renamed to wallat.dat.before-mnemonic-import.&lt;isodate&gt; in your data directory
-</string>
+   <item row="2" column="0">
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
      </property>
-     <property name="textFormat">
-      <enum>Qt::AutoText</enum>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
      </property>
-     <property name="wordWrap">
-      <bool>true</bool>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+              &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+              p, li { white-space: pre-wrap; }
+              &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+              &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.SF NS Text'; font-size:13pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+      </string>
      </property>
     </widget>
    </item>

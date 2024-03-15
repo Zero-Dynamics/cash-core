@@ -26,7 +26,7 @@
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">QLabel { background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0 #F0D0A0, stop:1 #F8D488); color:#000000; }</string>
+      <string notr="true">QLabel { background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0 #F0D0A0, stop:1 #F8D488); color:#120006; }</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -76,7 +76,7 @@
                <string>The displayed information may be out of date. Your wallet automatically synchronizes with the Cash network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="styleSheet">
-               <string notr="true">QLabel { color: red; }</string>
+               <string notr="true">QLabel { color: #800000; }</string>
               </property>
               <property name="text">
                <string notr="true">(out of sync)</string>
@@ -445,7 +445,7 @@
                <string>The displayed information may be out of date. Your wallet automatically synchronizes with the Cash network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="styleSheet">
-               <string notr="true">QLabel { color: red; }</string>
+               <string notr="true">QLabel { color: #800000; }</string>
               </property>
               <property name="text">
                <string notr="true">(out of sync)</string>
@@ -505,7 +505,7 @@
               </property>
               <property name="styleSheet">
                <string notr="true">border-width:1px;
-border-color:rgb(82,0,114);
+border-color:rgb(102,2,60);
 border-style:solid;</string>
               </property>
               <property name="value">
@@ -614,6 +614,10 @@ border-style:solid;</string>
              <layout class="QHBoxLayout" name="horizontalLayout_debugbuttons">
               <item>
                <widget class="QPushButton" name="privateSendAuto">
+                <property name="icon">
+                 <iconset resource="../cash.qrc">
+                  <normaloff>:/icons/drk/tx_mix</normaloff>:/icons/drk/tx_mix</iconset>
+                </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -630,6 +634,10 @@ border-style:solid;</string>
               </item>
               <item>
                <widget class="QPushButton" name="privateSendReset">
+                <property name="icon">
+                 <iconset resource="../cash.qrc">
+                  <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
+                </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -649,6 +657,10 @@ border-style:solid;</string>
               </item>
               <item>
                <widget class="QPushButton" name="privateSendInfo">
+                <property name="icon">
+                 <iconset resource="../cash.qrc">
+                  <normaloff>:/icons/drk/information</normaloff>:/icons/drk/information</iconset>
+                </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -720,7 +732,7 @@ border-style:solid;</string>
                <string>The displayed information may be out of date. Your wallet automatically synchronizes with the Cash network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="styleSheet">
-               <string notr="true">QLabel { color: red; }</string>
+               <string notr="true">QLabel { color: #800000; }</string>
               </property>
               <property name="text">
                <string notr="true">(out of sync)</string>

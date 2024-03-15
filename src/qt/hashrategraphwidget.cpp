@@ -37,7 +37,7 @@ void HashRateGraphWidget::initGraph(QPainter& painter)
     int m_width = width();
 
     QColor axisCol(Qt::gray);
-    QColor firstCol(Qt::yellow);
+    QColor firstCol("#99035a");
     painter.setPen(firstCol);
 
     //Compute height and width steps
@@ -88,7 +88,7 @@ void HashRateGraphWidget::drawHashRate(QPainter& painter)
         painter.drawPath(path);
     }
     // Write axis hashrate label
-    painter.setPen(Qt::yellow);
+    QColor firstCol("#99035a");
     painter.drawText(XMARGIN, YMARGIN + (GRID_HEIGHT / 2), QString("%1").arg(GUIUtil::FormatHashRate(iMaxHashRate)));
 }
 

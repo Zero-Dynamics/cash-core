@@ -43,9 +43,9 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(const PlatformStyle* _platformS
     ui->clearButton_VM->setIcon(QIcon());
 #else
     ui->signMessageButton_SM->setIcon(QIcon(":/icons/" + theme + "/edit"));
-    ui->clearButton_SM->setIcon(QIcon(":/icons/" + theme + "/remove"));
+    ui->clearButton_SM->setIcon(QIcon(":/icons/" + theme + "/drkpurlpe_remove"));
     ui->verifyMessageButton_VM->setIcon(QIcon(":/icons/" + theme + "/transaction_0"));
-    ui->clearButton_VM->setIcon(QIcon(":/icons/" + theme + "/remove"));
+    ui->clearButton_VM->setIcon(QIcon(":/icons/" + theme + "/drkpurple_remove"));
 #endif
 
     // These icons are needed on Mac also
@@ -131,28 +131,28 @@ void SignVerifyMessageDialog::on_signMessageButton_SM_clicked()
 
     CDebitAddress addr(ui->addressIn_SM->text().toStdString());
     if (!addr.IsValid()) {
-        ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_SM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_SM->setText(tr("The entered address is invalid.") + QString(" ") + tr("Please check the address and try again."));
         return;
     }
     CKeyID keyID;
     if (!addr.GetKeyID(keyID)) {
         ui->addressIn_SM->setValid(false);
-        ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_SM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_SM->setText(tr("The entered address does not refer to a key.") + QString(" ") + tr("Please check the address and try again."));
         return;
     }
 
     WalletModel::UnlockContext ctx(model->requestUnlock());
     if (!ctx.isValid()) {
-        ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_SM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_SM->setText(tr("Wallet unlock was cancelled."));
         return;
     }
 
     CKey key;
     if (!model->getPrivKey(keyID, key)) {
-        ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_SM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_SM->setText(tr("Private key for the entered address is not available."));
         return;
     }
@@ -163,12 +163,12 @@ void SignVerifyMessageDialog::on_signMessageButton_SM_clicked()
 
     std::vector<unsigned char> vchSig;
     if (!key.SignCompact(ss.GetHash(), vchSig)) {
-        ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_SM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_SM->setText(QString("<nobr>") + tr("Message signing failed.") + QString("</nobr>"));
         return;
     }
 
-    ui->statusLabel_SM->setStyleSheet("QLabel { color: green; }");
+    ui->statusLabel_SM->setStyleSheet("QLabel { color: #136207; }");
     ui->statusLabel_SM->setText(QString("<nobr>") + tr("Message signed.") + QString("</nobr>"));
 
     ui->signatureOut_SM->setText(QString::fromStdString(EncodeBase64(&vchSig[0], vchSig.size())));
@@ -204,14 +204,14 @@ void SignVerifyMessageDialog::on_verifyMessageButton_VM_clicked()
 {
     CDebitAddress addr(ui->addressIn_VM->text().toStdString());
     if (!addr.IsValid()) {
-        ui->statusLabel_VM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_VM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_VM->setText(tr("The entered address is invalid.") + QString(" ") + tr("Please check the address and try again."));
         return;
     }
     CKeyID keyID;
     if (!addr.GetKeyID(keyID)) {
         ui->addressIn_VM->setValid(false);
-        ui->statusLabel_VM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_VM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_VM->setText(tr("The entered address does not refer to a key.") + QString(" ") + tr("Please check the address and try again."));
         return;
     }
@@ -221,7 +221,7 @@ void SignVerifyMessageDialog::on_verifyMessageButton_VM_clicked()
 
     if (fInvalid) {
         ui->signatureIn_VM->setValid(false);
-        ui->statusLabel_VM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_VM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_VM->setText(tr("The signature could not be decoded.") + QString(" ") + tr("Please check the signature and try again."));
         return;
     }
@@ -233,18 +233,18 @@ void SignVerifyMessageDialog::on_verifyMessageButton_VM_clicked()
     CPubKey pubkey;
     if (!pubkey.RecoverCompact(ss.GetHash(), vchSig)) {
         ui->signatureIn_VM->setValid(false);
-        ui->statusLabel_VM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_VM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_VM->setText(tr("The signature did not match the message digest.") + QString(" ") + tr("Please check the signature and try again."));
         return;
     }
 
     if (!(CDebitAddress(pubkey.GetID()) == addr)) {
-        ui->statusLabel_VM->setStyleSheet("QLabel { color: red; }");
+        ui->statusLabel_VM->setStyleSheet("QLabel { color: #800000; }");
         ui->statusLabel_VM->setText(QString("<nobr>") + tr("Message verification failed.") + QString("</nobr>"));
         return;
     }
 
-    ui->statusLabel_VM->setStyleSheet("QLabel { color: green; }");
+    ui->statusLabel_VM->setStyleSheet("QLabel { color: #136207; }");
     ui->statusLabel_VM->setText(QString("<nobr>") + tr("Message verified.") + QString("</nobr>"));
 }
 

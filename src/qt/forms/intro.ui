@@ -14,8 +14,8 @@
    <string>Welcome</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);</string>
+   <string notr="true">color: rgb(229, 228, 226);
+background-color: rgb(18, 0, 6);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -945,8 +945,8 @@ background-color: rgb(0, 0, 0);</string>
          <item>
           <widget class="QLineEdit" name="dataDirectory">
            <property name="styleSheet">
-            <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(18, 0, 6);
+background-color: rgb(229, 228, 226);</string>
            </property>
           </widget>
          </item>
@@ -999,8 +999,8 @@ background-color: rgb(255, 255, 255);</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
+          <string notr="true">background-color: rgb(229, 228, 226);
+color: rgb(18, 0, 6);</string>
          </property>
          <property name="text">
           <string/>
@@ -1035,8 +1035,8 @@ color: rgb(0, 0, 0);</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
+          <string notr="true">background-color: rgb(229, 228, 226);
+color: rgb(18, 0, 6);</string>
          </property>
          <property name="textFormat">
           <enum>Qt::RichText</enum>

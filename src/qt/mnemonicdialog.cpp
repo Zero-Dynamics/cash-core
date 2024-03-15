@@ -42,8 +42,10 @@ MnemonicDialog::MnemonicDialog(QWidget *parent) :
 //        // Restore failed (perhaps missing setting), center the window
 //        move(QApplication::desktop()->availableGeometry().center() - frameGeometry().center());
 //    }
-    QString restyleSheet = "QPushButton{background-color:rgb(255,149,0);color: black;   border-radius: 2px;border-style: outset;border: 1px groove gray}""QPushButton:pressed{background-color:rgb(112, 170, 245);border-style: inset;border: 1px groove gray }";
-    QString styleSheet = "QPushButton{background-color:rgb(27,173,248);color: black;   border-radius: 2px;border-style: outset;border: 1px groove gray}""QPushButton:pressed{background-color:rgb(112, 170, 245);border-style: inset; border: 1px groove gray}";
+
+    QString styleSheet = "QPushButton{ background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128); border:0; border-radius:3px; color:#e5e4e2; font-size:12px; font-weight:bold; padding-left:25px; padding-right:25px; padding-top:5px; padding-bottom:5px; }; QPushButton:hover { background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128); border:0; border-radius:3px; color:#e5e4e2; font-size:12px; font-weight:bold; padding-left:25px; padding-right:25px; padding-top:5px; padding-bottom:5px; }; QPushButton:pressed { background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128); border:0; border-radius:3px; color:#e5e4e2; font-size:12px; font-weight:bold; padding-left:25px; padding-right:25px; padding-top:5px; padding-bottom:5px; }";
+
+    QString restyleSheet = "QPushButton{ background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2); border:1px solid #e5e4e2; color:#440128; padding-left:10px; padding-right:10px;}; QPushButtoButton:hover { background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2); color:#440128; }; QushButton:pressed { background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2); border:1px solid #e5e4e2; }";
 
     ui->importMnemonic->setStyleSheet(styleSheet);
     ui->reimportMnemonic->setStyleSheet(restyleSheet);
@@ -64,10 +66,10 @@ MnemonicDialog::MnemonicDialog(QWidget *parent) :
 
     //initialize Language dropdowns
     std::vector<std::string> languageOptions = {
-        "English", 
+        "English",
         "Chinese Simplified",
         "Chinese Traditional",
-        "French", 
+        "French",
         //"German",
         "Italian",
         "Japanese",
@@ -116,7 +118,7 @@ void MnemonicDialog::combobox2ItemChanged(int input)
 void MnemonicDialog::on_importPrivatekey_clicked()
 {
     bool ForceRescan = true;
-    
+
     importPrivatekey(ForceRescan);
 }
 
@@ -162,14 +164,14 @@ void MnemonicDialog::on_toolButtonImportMnemonic_Paste_clicked()
 
 void MnemonicDialog::on_toolButtonImportMnemonic_Clear_clicked()
 {
-    ui->mnemonicEdit->setText("");  
+    ui->mnemonicEdit->setText("");
 }
 
 
 
 void MnemonicDialog::on_toolButtonCreateMnemonic_Clear_clicked()
 {
-    ui->textEditNewRecoveryPhrase->setText("");  
+    ui->textEditNewRecoveryPhrase->setText("");
 }
 
 
@@ -195,7 +197,7 @@ void MnemonicDialog::on_fileButton_clicked()
     QString dataDir = GUIUtil::boostPathToQString(GetDataDir(false));
     QString dir = QDir::toNativeSeparators(QFileDialog::getOpenFileName(this, tr("Choose File"),dataDir));
     if(!dir.isEmpty())
-        ui->fileEdit->setText(dir);        
+        ui->fileEdit->setText(dir);
 }
 
 void MnemonicDialog::on_reimportMnemonic_clicked()
@@ -206,7 +208,7 @@ void MnemonicDialog::on_reimportMnemonic_clicked()
 
 void MnemonicDialog::createMnemonic() {
     ui->textEditNewRecoveryPhrase->clear();
-    
+
     int value = std::stoi(ui->comboBoxBytesOfEntropy->currentText().toStdString());
     QString languageValue = ui->comboBoxLanguage->currentText();
     languageValue.replace(QString(" "),QString(""));
@@ -218,7 +220,7 @@ void MnemonicDialog::createMnemonic() {
 
     SecureString recoveryPhrase = CMnemonic::Generate(value,selectLanguage);
 
-    
+
     ui->textEditNewRecoveryPhrase->setText(recoveryPhrase.c_str());
 
 
@@ -316,7 +318,7 @@ void MnemonicDialog::importWallet(bool forceRescan){
     filepath.insert(0,QString("importwallet "));
     if(forceRescan)
         filepath.append(QString(" true"));
-        
+
     Q_EMIT cmdToConsole(filepath);
 }
 
@@ -338,6 +340,6 @@ void MnemonicDialog::importPrivatekey(bool forceRescan){
     privatekeystr.insert(0,QString("importprivkey "));
     if(forceRescan)
         privatekeystr.append(QString(" \"\" true"));
-    
+
     Q_EMIT cmdToConsole(privatekeystr);
 }

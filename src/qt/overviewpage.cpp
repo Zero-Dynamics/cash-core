@@ -161,8 +161,10 @@ OverviewPage::OverviewPage(const PlatformStyle* platformStyle, QWidget* parent) 
     } else {
         if (!privateSendClient.fEnablePrivateSend) {
             ui->togglePrivateSend->setText(tr("Start Mixing"));
+            ui->togglePrivateSend->setIcon(QIcon(":/icons/" + theme + "/start"));
         } else {
             ui->togglePrivateSend->setText(tr("Stop Mixing"));
+            ui->togglePrivateSend->setIcon(QIcon(":/icons/" + theme + "/stop"));
         }
         // Disable privateSendClient builtin support for automatic backups while we are in GUI,
         // we'll handle automatic backups and user warnings in privateSendStatus()

@@ -124,8 +124,8 @@ private:
     QAction* receiveCoinsAction;
     QAction* receiveCoinsMenuAction;
     QAction* historyAction;
-    QAction* servicenodeAction;
     QAction* miningAction;
+    QAction* servicenodeAction;
     QAction* bdapAction;
     QAction* quitAction;
     QAction* usedSendingAddressesAction;
@@ -243,10 +243,10 @@ private Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-    /** Switch to ServiceNode page */
-    void gotoServiceNodePage();
     /** Switch to mining page */
     void gotoMiningPage();
+    /** Switch to ServiceNode page */
+    void gotoServiceNodePage();
     /** Switch to BDAP page */
     void gotoBdapPage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */

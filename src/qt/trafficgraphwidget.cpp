@@ -78,12 +78,12 @@ float chooseOut(const TrafficSample& sample)
 void TrafficGraphWidget::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
-    painter.fillRect(rect(), Qt::black);
+    painter.fillRect(rect(), QColor("#120006"));
 
     if (fMax <= 0.0f)
         return;
 
-    QColor axisCol(Qt::gray);
+    QColor axisCol(QColor("#e5e4e2"));
     int h = height() - YMARGIN * 2;
     painter.setPen(axisCol);
     painter.drawLine(XMARGIN, YMARGIN + h, width() - XMARGIN, YMARGIN + h);
@@ -104,7 +104,7 @@ void TrafficGraphWidget::paintEvent(QPaintEvent*)
     }
     // if we drew 3 or fewer lines, break them up at the next lower order of magnitude
     if (fMax / val <= 3.0f) {
-        axisCol = axisCol.darker();
+        axisCol = axisCol.darker(125);
         val = pow(10.0f, base - 1);
         painter.setPen(axisCol);
         painter.drawText(XMARGIN, YMARGIN + h - h * val / fMax - yMarginText, QString("%1 %2").arg(val).arg(units));
@@ -123,14 +123,14 @@ void TrafficGraphWidget::paintEvent(QPaintEvent*)
     if (!queue.empty()) {
         QPainterPath pIn;
         paintPath(pIn, queue, boost::bind(chooseIn, _1));
-        painter.fillPath(pIn, QColor(0, 255, 0, 128));
-        painter.setPen(Qt::green);
+        painter.fillPath(pIn, QColor(19, 98, 7, 128));
+        painter.setPen(QColor(19, 98, 7, 255));
         painter.drawPath(pIn);
 
         QPainterPath pOut;
         paintPath(pOut, queue, boost::bind(chooseOut, _1));
-        painter.fillPath(pOut, QColor(255, 0, 0, 128));
-        painter.setPen(Qt::red);
+        painter.fillPath(pOut, QColor(128, 0, 0, 128));
+        painter.setPen(QColor(128, 0, 0, 255));
         painter.drawPath(pOut);
     }
 }

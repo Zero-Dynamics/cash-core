@@ -103,8 +103,8 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
                                                                                                                  receiveCoinsAction(0),
                                                                                                                  receiveCoinsMenuAction(0),
                                                                                                                  historyAction(0),
-                                                                                                                 servicenodeAction(0),
                                                                                                                  miningAction(0),
+                                                                                                                 servicenodeAction(0),
                                                                                                                  bdapAction(0),
                                                                                                                  quitAction(0),
                                                                                                                  usedSendingAddressesAction(0),
@@ -215,7 +215,7 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
     labelWalletHDStatusIcon = new QLabel();
     labelConnectionsIcon = new QPushButton();
     labelConnectionsIcon->setFlat(true); // Make the button look like a label, but clickable
-    labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
+    labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(18,0,6,1.000);}");
     labelConnectionsIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     // Jump to peers tab by clicking on connections icon
     connect(labelConnectionsIcon, SIGNAL(clicked()), this, SLOT(showPeers()));
@@ -347,28 +347,28 @@ void CashGUI::createActions()
 #endif
     tabGroup->addAction(historyAction);
 
+    miningAction = new QAction(QIcon(":/icons/" + theme + "/tx_mined"), tr("&Mining"), this);
+    miningAction->setStatusTip(tr("Mine Cash(0DYNC)"));
+    miningAction->setToolTip(miningAction->statusTip());
+    miningAction->setCheckable(true);
+#ifdef Q_OS_MAC
+    miningAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+#else
+    miningAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+#endif
+    tabGroup->addAction(miningAction);
+
 #ifdef ENABLE_WALLET
     servicenodeAction = new QAction(QIcon(":/icons/" + theme + "/servicenodes"), tr("&ServiceNodes"), this);
     servicenodeAction->setStatusTip(tr("Browse ServiceNodes"));
     servicenodeAction->setToolTip(servicenodeAction->statusTip());
     servicenodeAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    servicenodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+    servicenodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
 #else
-    servicenodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    servicenodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
 #endif
     tabGroup->addAction(servicenodeAction);
-
-    miningAction = new QAction(QIcon(":/icons/" + theme + "/tx_mined"), tr("&Mining"), this);
-    miningAction->setStatusTip(tr("Mine Cash(0DYNC)"));
-    miningAction->setToolTip(miningAction->statusTip());
-    miningAction->setCheckable(true);
-#ifdef Q_OS_MAC
-    miningAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
-#else
-    miningAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
-#endif
-    tabGroup->addAction(miningAction);
 
     bdapAction = new QAction(QIcon(":/icons/" + theme + "/bdap"), tr("&BDAP"), this);
     bdapAction->setStatusTip(tr("BDAP"));
@@ -393,12 +393,12 @@ void CashGUI::createActions()
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(receiveCoinsMenuAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(receiveCoinsMenuAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
+    connect(miningAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(servicenodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(servicenodeAction, SIGNAL(triggered()), this, SLOT(gotoServiceNodePage()));
-    connect(miningAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
     connect(bdapAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(bdapAction, SIGNAL(triggered()), this, SLOT(gotoBdapPage()));
 
@@ -437,7 +437,7 @@ void CashGUI::createActions()
     verifyMessageAction = new QAction(QIcon(":/icons/" + theme + "/transaction_0"), tr("&Verify message..."), this);
     verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Cash addresses"));
 
-    openInfoAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Information"), this);
+    openInfoAction = new QAction(QIcon(":/icons/" + theme + "/information"), tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));
     openRPCConsoleAction = new QAction(QIcon(":/icons/" + theme + "/debugwindow"), tr("&Debug console"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging console"));
@@ -465,17 +465,17 @@ void CashGUI::createActions()
     usedReceivingAddressesAction = new QAction(QIcon(":/icons/" + theme + "/address-book"), tr("&Receiving addresses..."), this);
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
-    openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon), tr("Open &URI..."), this);
+    openAction = new QAction(QIcon(":/icons/" + theme + "/browse"), tr("Open &URI..."), this);
     openAction->setStatusTip(tr("Open a cash: URI"));
 
-    mnemonicAction = new QAction(platformStyle->TextColorIcon(":/icons/open"), tr("&Import mnemonic/private key..."), this);
+    mnemonicAction = new QAction(QIcon(":/icons/" + theme + "/filesave"), tr("&Import mnemonic/private key..."), this);
     mnemonicAction->setStatusTip(tr("Import Mnemonic Phrase or Private Key"));
 
-    showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
+    showHelpMessageAction = new QAction(QIcon(":/icons/" + theme + "/information"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
     showHelpMessageAction->setStatusTip(tr("Show the Cash help message to get a list with possible Cash command-line options"));
 
-    showPrivateSendHelpAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&PrivateSend information"), this);
+    showPrivateSendHelpAction = new QAction(QIcon(":/icons/" + theme + "/information"), tr("&PrivateSend information"), this);
     showPrivateSendHelpAction->setMenuRole(QAction::NoRole);
     showPrivateSendHelpAction->setStatusTip(tr("Show the PrivateSend basic information"));
 
@@ -594,8 +594,8 @@ void CashGUI::createToolBars()
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
-        toolbar->addAction(servicenodeAction);
         toolbar->addAction(miningAction);
+        toolbar->addAction(servicenodeAction);
         toolbar->addAction(bdapAction);
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
@@ -737,8 +737,8 @@ void CashGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsAction->setEnabled(enabled);
     receiveCoinsMenuAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
-    servicenodeAction->setEnabled(enabled);
     miningAction->setEnabled(enabled);
+    servicenodeAction->setEnabled(enabled);
     bdapAction->setEnabled(enabled);
     encryptWalletAction->setEnabled(enabled);
     backupWalletAction->setEnabled(enabled);
@@ -776,8 +776,8 @@ void CashGUI::createIconMenu(QMenu* pmenu)
     pmenu->addAction(sendCoinsAction);
     pmenu->addAction(receiveCoinsAction);
     pmenu->addAction(historyAction);
-    pmenu->addAction(servicenodeAction);
     pmenu->addAction(miningAction);
+    pmenu->addAction(servicenodeAction);
     pmenu->addAction(bdapAction);
     pmenu->addSeparator();
     pmenu->addAction(optionsAction);
@@ -936,18 +936,18 @@ void CashGUI::gotoHistoryPage()
         walletFrame->gotoHistoryPage();
 }
 
-void CashGUI::gotoServiceNodePage()
-{
-    servicenodeAction->setChecked(true);
-    if (walletFrame)
-        walletFrame->gotoServiceNodePage();
-}
-
 void CashGUI::gotoMiningPage()
 {
     miningAction->setChecked(true);
     if (walletFrame)
         walletFrame->gotoMiningPage();
+}
+
+void CashGUI::gotoServiceNodePage()
+{
+    servicenodeAction->setChecked(true);
+    if (walletFrame)
+        walletFrame->gotoServiceNodePage();
 }
 
 void CashGUI::gotoBdapPage()
@@ -1339,7 +1339,7 @@ void CashGUI::setHDStatus(int hdEnabled)
 {
     QString theme = GUIUtil::getThemeName();
 
-    labelWalletHDStatusIcon->setPixmap(platformStyle->SingleColorIcon(hdEnabled ? ":/icons/" + theme + "/hd_enabled" : ":/icons/" + theme + "/hd_disabled").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+    labelWalletHDStatusIcon->setPixmap(platformStyle->SingleColorIcon(hdEnabled ? ":/icons/" + theme + "/hd_enabled" : ":/icons/" + theme + "/hd_disabled").pixmap(20, STATUSBAR_ICONSIZE));
     labelWalletHDStatusIcon->setToolTip(hdEnabled ? tr("HD key generation is <b>enabled</b>") : tr("HD key generation is <b>disabled</b>"));
 
     // eventually disable the QLabel to set its opacity to 50%
@@ -1554,7 +1554,7 @@ void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel* _optionsModel)
 /** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status bar */
 void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits)
 {
-    setPixmap(QIcon(":/icons/drk/unit_" + CashUnits::id(newUnits)).pixmap(33, STATUSBAR_ICONSIZE));
+    setPixmap(QIcon(":/icons/drk/unit_" + CashUnits::id(newUnits)).pixmap(56, STATUSBAR_ICONSIZE));
 }
 
 /** Shows context menu with Display Unit options by the mouse coordinates */

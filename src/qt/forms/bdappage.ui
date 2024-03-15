@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>887</width>
-    <height>457</height>
+    <width>960</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,9 +20,7 @@
       <string/>
      </property>
      <property name="styleSheet">
-      <string notr="true">QTabWidget:tab-bar { alignment: left; }
-QTabBar { alignment: left; }
-</string>
+      <string notr="true">QTabWidget:tab-bar { alignment: left; } QTabBar { alignment: left; }</string>
      </property>
      <property name="currentIndex">
       <number>0</number>
@@ -84,6 +82,10 @@ QTabBar { alignment: left; }
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="icon">
+              <iconset resource="../cash.qrc">
+               <normaloff>:/icons/drk/refresh</normaloff>:/icons/drk/refresh</iconset>
+             </property>
              <property name="text">
               <string>Refresh</string>
              </property>
@@ -93,6 +95,9 @@ QTabBar { alignment: left; }
          </item>
          <item>
           <widget class="QTableWidget" name="tableWidget_Users">
+           <property name="styleSheet">
+            <string>* { background-color: #120006; border: 1px solid #440128;}</string>
+           </property>
            <property name="editTriggers">
             <set>QAbstractItemView::NoEditTriggers</set>
            </property>
@@ -292,6 +297,10 @@ QTabBar { alignment: left; }
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="icon">
+              <iconset resource="../cash.qrc">
+               <normaloff>:/icons/drk/refresh</normaloff>:/icons/drk/refresh</iconset>
+             </property>
              <property name="text">
               <string>Refresh</string>
              </property>
@@ -303,6 +312,9 @@ QTabBar { alignment: left; }
           <widget class="QTableWidget" name="tableWidget_Groups">
            <property name="editTriggers">
             <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="styleSheet">
+            <string>* { background-color: #120006; border: 1px solid #440128;}</string>
            </property>
            <property name="selectionMode">
             <enum>QAbstractItemView::SingleSelection</enum>
@@ -513,6 +525,9 @@ QTabBar { alignment: left; }
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
              </property>
+             <property name="styleSheet">
+              <string>* { background-color: #120006; border: 1px solid #440128;}</string>
+             </property>
              <property name="selectionMode">
               <enum>QAbstractItemView::SingleSelection</enum>
              </property>
@@ -607,7 +622,7 @@ QTabBar { alignment: left; }
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/transaction_abandoned</normaloff>:/icons/drk/transaction_abandoned</iconset>
+                 <normaloff>:/icons/drk/drkpurple_transaction_abandoned</normaloff>:/icons/drk/drkpurple_transaction_abandoned</iconset>
                </property>
               </widget>
              </item>
@@ -689,6 +704,9 @@ QTabBar { alignment: left; }
             <widget class="QTableWidget" name="tableWidgetPendingRequest">
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
+             </property>
+             <property name="styleSheet">
+              <string>* { background-color: #120006; border: 1px solid #440128;}</string>
              </property>
              <property name="selectionMode">
               <enum>QAbstractItemView::SingleSelection</enum>
@@ -807,6 +825,10 @@ QTabBar { alignment: left; }
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="icon">
+                <iconset resource="../cash.qrc">
+                 <normaloff>:/icons/drk/refresh</normaloff>:/icons/drk/refresh</iconset>
+               </property>
                <property name="text">
                 <string>Refresh All</string>
                </property>
@@ -836,6 +858,9 @@ QTabBar { alignment: left; }
             <widget class="QTableWidget" name="tableWidgetComplete">
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
+             </property>
+             <property name="styleSheet">
+              <string>* { background-color: #120006; border: 1px solid #440128;}</string>
              </property>
              <property name="selectionMode">
               <enum>QAbstractItemView::SingleSelection</enum>

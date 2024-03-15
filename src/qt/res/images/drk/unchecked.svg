@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg1"
+   width="16"
+   height="16"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <rect
+     style="fill:#e5e4e2;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.96;paint-order:stroke fill markers"
+     id="rect2"
+     width="16"
+     height="16"
+     x="0"
+     y="0"
+     ry="0" />
+  <path
+     id="rect1"
+     style="display:none;fill:#66023c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.0375382;paint-order:stroke fill markers"
+     d="M 0,0 V 16 H 16 V 0 Z m 12.638672,3.8710938 c 0.156527,5e-6 0.31418,0.060273 0.433594,0.1796874 L 13.9375,4.9160156 c 0.238836,0.2388363 0.238836,0.6264061 0,0.8652344 l -7.0332031,7.033203 c -0.238869,0.238879 -0.6263654,0.238912 -0.8652344,0 L 2.0625,8.8378906 C 1.8236634,8.5990543 1.8236634,8.2134375 2.0625,7.9746094 L 2.9277344,7.109375 c 0.2388691,-0.2388365 0.626406,-0.2388365 0.8652344,0 L 6.4707031,9.7871094 12.207031,4.0507812 c 0.119435,-0.1194344 0.275113,-0.1796925 0.431641,-0.1796874 z" />
+</svg>
+<!--
+Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+

@@ -354,14 +354,6 @@ At configure time for CUDA(Nvidia):
 
     --enable-gpu --enable-cuda
 
-or run the daemon with:
-
-    ./src/cashd -staking=1
-
-or Qt wallet with:
-
-    ./src/qt/cash-qt -staking=1
-
 
 Example Build Command
 --------------------

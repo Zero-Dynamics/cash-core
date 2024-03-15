@@ -6,60 +6,262 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>860</width>
-    <height>474</height>
+    <width>960</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_0">
      <item>
       <widget class="QTabWidget" name="tabWidget">
-       <property name="palette">
-        <palette>
-         <active/>
-         <inactive/>
-         <disabled/>
-        </palette>
-       </property>
        <property name="styleSheet">
-        <string notr="true">QTabWidget:tab-bar { alignment: left; }
-QTabBar { alignment: left; }
-</string>
+        <string notr="true">QTabWidget:tab-bar { alignment: left; } QTabBar { alignment: left; }</string>
        </property>
        <property name="currentIndex">
         <number>0</number>
        </property>
        <widget class="QWidget" name="CPU">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
         </property>
         <attribute name="title">
          <string>CPU</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_1">
+           <item>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>Number of CPU threads to use:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QLabel" name="labelNCPUCores">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+                 </property>
+                 <property name="text">
+                  <string>4</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSlider" name="sliderCPUCores">
+                 <property name="minimumSize">
+                  <size>
+                   <width>250</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_3">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>Your hashrate (built-in miner):</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="labelCPUMinerHashRate">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>Network hashrate:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="labelNetHashRateCPU">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>?</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>Average spacing between your blocks:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLabel" name="labelNextCPUBlock">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>∞</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_1">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_1">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QPushButton" name="pushSwitchCPUMining">
+             <property name="styleSheet">
+              <string notr="true">QPushButton { /* Global Button Style */
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+               border:0;
+               border-radius:3px;
+               color:#e5e4e2;
+               font-size:12px;
+               font-weight:bold;
+               padding-left:25px;
+               padding-right:25px;
+               padding-top:5px;
+               padding-bottom:5px;
+               }
+
+               QPushButton:hover {
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
+               }
+
+               QPushButton:focus {
+               border:none;
+               outline:none;
+               }
+
+               QPushButton:pressed {
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+               border:1px solid #520072;}
+              </string>
+             </property>
+             <property name="text">
+              <string>Start mining</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>100</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBoxShowCPUGraph">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+             </property>
+             <property name="text">
+              <string>Show Hash Meter Graph</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="HashRateGraphWidget" name="minerCPUHashRateWidget" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_1">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>200</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
          <item row="3" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_8">
            <item>
@@ -69,64 +271,6 @@ color: rgb(255, 255, 255);</string>
                <width>250</width>
                <height>0</height>
               </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSlider::groove:horizontal {
-                border: 1px solid #bbb;
-                background: white;
-                height: 10px;
-                border-radius: 4px;
-                }
-
-                QSlider::sub-page:horizontal {
-                background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
-                    stop: 0 #66e, stop: 1 #bbf);
-                background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
-                    stop: 0 #bbf, stop: 1 #520072);
-                border: 1px solid #777;
-                height: 10px;
-                border-radius: 4px;
-                }
-
-                QSlider::add-page:horizontal {
-                background: #fff;
-                border: 1px solid #777;
-                height: 10px;
-                border-radius: 4px;
-                }
-
-                QSlider::handle:horizontal {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                    stop:0 #eee, stop:1 #520072);
-                border: 1px solid #777;
-                width: 13px;
-                margin-top: -2px;
-                margin-bottom: -2px;
-                border-radius: 4px;
-                }
-
-                QSlider::handle:horizontal:hover {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                    stop:0 #fff, stop:1 #ddd);
-                border: 1px solid #444;
-                border-radius: 4px;
-                }
-
-                QSlider::sub-page:horizontal:disabled {
-                background: #bbb;
-                border-color: #999;
-                }
-
-                QSlider::add-page:horizontal:disabled {
-                background: #eee;
-                border-color: #999;
-                }
-
-                QSlider::handle:horizontal:disabled {
-                background: #eee;
-                border: 1px solid #aaa;
-                border-radius: 4px;
-          }</string>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -165,33 +309,34 @@ color: rgb(255, 255, 255);</string>
            </item>
            <item>
             <widget class="QPushButton" name="pushButtonClearCPUData">
+             <property name="icon">
+              <iconset resource="../cash.qrc">
+               <normaloff>:/icons/drk/drkpurple_remove</normaloff>:/icons/drk/drkpurple_remove</iconset>
+             </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton { /* Global Button Style */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+              <string notr="true">QPushButton { /* Clear Button */
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+               border:0;
+               border-radius:3px;
+               color:#440128;
+               padding-left:10px;
+               padding-right:10px;
+               }
 
-QPushButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
-}
+               QPushButton:hover {
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
+               color:#440128;
+               }
 
-QPushButton:focus {
-border:none;
-outline:none;
-}
+               QPushButton:focus {
+               border:none;
+               outline:none;
+               }
 
-QPushButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:1px solid #520072;
-}</string>
+               QPushButton:pressed {
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+               border:1px solid #120006;}
+              </string>
              </property>
              <property name="text">
               <string>Clear</string>
@@ -200,323 +345,18 @@ border:1px solid #520072;
            </item>
           </layout>
          </item>
-         <item row="2" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
-           <item>
-            <widget class="HashRateGraphWidget" name="minerCPUHashRateWidget" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer_1">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>10</width>
-               <height>200</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-         <item row="1" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QPushButton" name="pushSwitchCPUMining">
-             <property name="styleSheet">
-              <string notr="true">QPushButton { /* Global Button Style */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
-
-QPushButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
-}
-
-QPushButton:focus {
-border:none;
-outline:none;
-}
-
-QPushButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:1px solid #520072;
-}</string>
-             </property>
-             <property name="text">
-              <string>Start mining</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>100</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBoxShowCPUGraph">
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-             </property>
-             <property name="text">
-              <string>Show Hash Meter Graph</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_1">
-           <item>
-            <layout class="QGridLayout" name="gridLayout">
-             <item row="0" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <item>
-                <widget class="QLabel" name="labelNCPUCores">
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-                 </property>
-                 <property name="text">
-                  <string>4</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QSlider" name="sliderCPUCores">
-                 <property name="minimumSize">
-                  <size>
-                   <width>250</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QSlider::groove:horizontal {
-border: 1px solid #bbb;
-background: white;
-height: 10px;
-border-radius: 4px;
-}
-
-QSlider::sub-page:horizontal {
-background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
-    stop: 0 #66e, stop: 1 #bbf);
-background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
-    stop: 0 #bbf, stop: 1 #520072);
-border: 1px solid #777;
-height: 10px;
-border-radius: 4px;
-}
-
-QSlider::add-page:horizontal {
-background: #fff;
-border: 1px solid #777;
-height: 10px;
-border-radius: 4px;
-}
-
-QSlider::handle:horizontal {
-background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-    stop:0 #eee, stop:1 #520072);
-border: 1px solid #777;
-width: 13px;
-margin-top: -2px;
-margin-bottom: -2px;
-border-radius: 4px;
-}
-
-QSlider::handle:horizontal:hover {
-background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-    stop:0 #fff, stop:1 #ddd);
-border: 1px solid #444;
-border-radius: 4px;
-}
-
-QSlider::sub-page:horizontal:disabled {
-background: #bbb;
-border-color: #999;
-}
-
-QSlider::add-page:horizontal:disabled {
-background: #eee;
-border-color: #999;
-}
-
-QSlider::handle:horizontal:disabled {
-background: #eee;
-border: 1px solid #aaa;
-border-radius: 4px;
-}</string>
-                 </property>
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_1">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_2">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>Average spacing between your blocks:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_3">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>Your hashrate (built-in miner):</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_4">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>Network hashrate:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_5">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>Number of CPU threads to use:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLabel" name="labelCPUMinerHashRate">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>0</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLabel" name="labelNetHashRateCPU">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>?</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLabel" name="labelNextCPUBlock">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>∞</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_1">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
+         <item row="4" column="0">
+          <widget class="QLabel" name="labelAddress">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
        <widget class="QWidget" name="GPU">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
         </property>
         <attribute name="title">
          <string>GPU</string>
@@ -526,13 +366,22 @@ color: rgb(255, 255, 255);</string>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
             <layout class="QGridLayout" name="gridLayout_2">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_10">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>Number of GPU devices to use:</string>
+               </property>
+              </widget>
+             </item>
              <item row="0" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
                 <widget class="QLabel" name="labelNGPUCores">
                  <property name="styleSheet">
-                  <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+                  <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
                  </property>
                  <property name="text">
                   <string>4</string>
@@ -550,64 +399,6 @@ color: rgb(255, 255, 255);</string>
                    <height>0</height>
                   </size>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">QSlider::groove:horizontal {
-border: 1px solid #bbb;
-background: white;
-height: 10px;
-border-radius: 4px;
-}
-
-QSlider::sub-page:horizontal {
-background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
-    stop: 0 #66e, stop: 1 #bbf);
-background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
-    stop: 0 #bbf, stop: 1 #520072);
-border: 1px solid #777;
-height: 10px;
-border-radius: 4px;
-}
-
-QSlider::add-page:horizontal {
-background: #fff;
-border: 1px solid #777;
-height: 10px;
-border-radius: 4px;
-}
-
-QSlider::handle:horizontal {
-background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-    stop:0 #eee, stop:1 #520072);
-border: 1px solid #777;
-width: 13px;
-margin-top: -2px;
-margin-bottom: -2px;
-border-radius: 4px;
-}
-
-QSlider::handle:horizontal:hover {
-background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-    stop:0 #fff, stop:1 #ddd);
-border: 1px solid #444;
-border-radius: 4px;
-}
-
-QSlider::sub-page:horizontal:disabled {
-background: #bbb;
-border-color: #999;
-}
-
-QSlider::add-page:horizontal:disabled {
-background: #eee;
-border-color: #999;
-}
-
-QSlider::handle:horizontal:disabled {
-background: #eee;
-border: 1px solid #aaa;
-border-radius: 4px;
-}</string>
-                 </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -615,91 +406,73 @@ border-radius: 4px;
                </item>
               </layout>
              </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_6">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_7">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>Average spacing between your blocks:</string>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_8">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
                </property>
                <property name="text">
                 <string>Your hashrate (built-in miner):</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_9">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>Network hashrate:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_10">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-               </property>
-               <property name="text">
-                <string>Number of GPU devices to use:</string>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="1">
               <widget class="QLabel" name="labelGPUMinerHashRate">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
                </property>
                <property name="text">
                 <string>0</string>
                </property>
               </widget>
              </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_9">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>Network hashrate:</string>
+               </property>
+              </widget>
+             </item>
              <item row="2" column="1">
               <widget class="QLabel" name="labelNetHashRateGPU">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
                </property>
                <property name="text">
                 <string>?</string>
                </property>
               </widget>
              </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_7">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string>Average spacing between your blocks:</string>
+               </property>
+              </widget>
+             </item>
              <item row="3" column="1">
               <widget class="QLabel" name="labelNextGPUBlock">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
                </property>
                <property name="text">
                 <string>∞</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
+               </property>
+               <property name="text">
+                <string/>
                </property>
               </widget>
              </item>
@@ -712,7 +485,7 @@ color: rgb(255, 255, 255);</string>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>40</width>
+               <width>10</width>
                <height>20</height>
               </size>
              </property>
@@ -726,31 +499,31 @@ color: rgb(255, 255, 255);</string>
             <widget class="QPushButton" name="pushSwitchGPUMining">
              <property name="styleSheet">
               <string notr="true">QPushButton { /* Global Button Style */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+               border:0;
+               border-radius:3px;
+               color:#e5e4e2;
+               font-size:12px;
+               font-weight:bold;
+               padding-left:25px;
+               padding-right:25px;
+               padding-top:5px;
+               padding-bottom:5px;
+               }
 
-QPushButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
-}
+               QPushButton:hover {
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
+               }
 
-QPushButton:focus {
-border:none;
-outline:none;
-}
+               QPushButton:focus {
+               border:none;
+               outline:none;
+               }
 
-QPushButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:1px solid #520072;
-}</string>
+               QPushButton:pressed {
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+               border:1px solid #520072;}
+              </string>
              </property>
              <property name="text">
               <string>Start mining</string>
@@ -773,8 +546,7 @@ border:1px solid #520072;
            <item>
             <widget class="QCheckBox" name="checkBoxShowGPUGraph">
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+              <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
              </property>
              <property name="text">
               <string>Show Hash Meter Graph</string>
@@ -800,15 +572,8 @@ color: rgb(255, 255, 255);</string>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
            <item>
             <widget class="HashRateGraphWidget" name="minerGPUHashRateWidget" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+              <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
              </property>
             </widget>
            </item>
@@ -836,64 +601,6 @@ color: rgb(255, 255, 255);</string>
                <width>250</width>
                <height>0</height>
               </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSlider::groove:horizontal {
-                border: 1px solid #bbb;
-                background: white;
-                height: 10px;
-                border-radius: 4px;
-                }
-
-                QSlider::sub-page:horizontal {
-                background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
-                    stop: 0 #66e, stop: 1 #bbf);
-                background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
-                    stop: 0 #bbf, stop: 1 #520072);
-                border: 1px solid #777;
-                height: 10px;
-                border-radius: 4px;
-                }
-
-                QSlider::add-page:horizontal {
-                background: #fff;
-                border: 1px solid #777;
-                height: 10px;
-                border-radius: 4px;
-                }
-
-                QSlider::handle:horizontal {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                    stop:0 #eee, stop:1 #520072);
-                border: 1px solid #777;
-                width: 13px;
-                margin-top: -2px;
-                margin-bottom: -2px;
-                border-radius: 4px;
-                }
-
-                QSlider::handle:horizontal:hover {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                    stop:0 #fff, stop:1 #ddd);
-                border: 1px solid #444;
-                border-radius: 4px;
-                }
-
-                QSlider::sub-page:horizontal:disabled {
-                background: #bbb;
-                border-color: #999;
-                }
-
-                QSlider::add-page:horizontal:disabled {
-                background: #eee;
-                border-color: #999;
-                }
-
-                QSlider::handle:horizontal:disabled {
-                background: #eee;
-                border: 1px solid #aaa;
-                border-radius: 4px;
-          }</string>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -932,33 +639,34 @@ color: rgb(255, 255, 255);</string>
            </item>
            <item>
             <widget class="QPushButton" name="pushButtonClearGPUData">
+             <property name="icon">
+              <iconset resource="../cash.qrc">
+               <normaloff>:/icons/drk/drkpurple_remove</normaloff>:/icons/drk/drkpurple_remove</iconset>
+             </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton { /* Global Button Style */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+              <string notr="true">QPushButton { /* Clear Button */
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+               border:0;
+               border-radius:3px;
+               color:#440128;
+               padding-left:10px;
+               padding-right:10px;
+               }
 
-QPushButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
-}
+               QPushButton:hover {
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
+               color:#440128;
+               }
 
-QPushButton:focus {
-border:none;
-outline:none;
-}
+               QPushButton:focus {
+               border:none;
+               outline:none;
+               }
 
-QPushButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:1px solid #520072;
-}</string>
+               QPushButton:pressed {
+               background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+               border:1px solid #120006;}
+              </string>
              </property>
              <property name="text">
               <string>Clear</string>
@@ -967,18 +675,18 @@ border:1px solid #520072;
            </item>
           </layout>
          </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="labelAddress">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="labelAddress">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

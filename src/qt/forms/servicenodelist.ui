@@ -6,58 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>887</width>
-    <height>457</height>
+    <width>960</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="topLayout">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_0">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="bottomMargin">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true">QTabWidget:tab-bar { alignment: left; } QTabBar { alignment: left; }</string>
+     </property>
+     <property name="currentIndex">
       <number>0</number>
      </property>
-     <item>
-      <spacer name="horizontalSpacer0">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QTabWidget" name="tabWidget">
-       <property name="styleSheet">
-        <string notr="true">QTabWidget:tab-bar { alignment: left; }
-QTabBar { alignment: left; }
-</string>
-       </property>
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <widget class="QWidget" name="tabMyServiceNodes">
+     <widget class="QWidget" name="tabMyServiceNodes">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
         </property>
         <attribute name="title">
          <string>My ServiceNodes</string>
@@ -76,8 +43,7 @@ color: rgb(255, 255, 255);</string>
              <item>
               <widget class="QLabel" name="updateNote">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
                </property>
                <property name="text">
                 <string>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see "ENABLED" in "Status" field.</string>
@@ -95,8 +61,7 @@ color: rgb(255, 255, 255);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">color: rgb(0, 0, 0);
-background-color:(255,255,255);</string>
+              <string notr="true">color: rgb(18, 0, 6); background-color:(102, 2, 60);</string>
              </property>
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
@@ -160,45 +125,49 @@ background-color:(255,255,255);</string>
              </property>
              <item>
               <widget class="QPushButton" name="startAllButton">
+               <property name="icon">
+                <iconset resource="../cash.qrc">
+                 <normaloff>:/icons/drk/start</normaloff>:/icons/drk/start</iconset>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QWidget#ServiceNodeList .QPushButton#startAllButton {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+                  }
 
-QWidget#ServiceNodeList .QPushButton#startAllButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+                  QWidget#ServiceNodeList .QPushButton#startAllButton:hover {
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+                  }
 
-QWidget#ServiceNodeList .QPushButton#startAllButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}</string>
+                  QWidget#ServiceNodeList .QPushButton#startAllButton:pressed {
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;}
+                </string>
                </property>
                <property name="text">
                 <string>Start &amp;all</string>
@@ -207,45 +176,49 @@ padding-bottom:5px;
              </item>
              <item>
               <widget class="QPushButton" name="startButton">
+               <property name="icon">
+                <iconset resource="../cash.qrc">
+                 <normaloff>:/icons/drk/start</normaloff>:/icons/drk/start</iconset>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QWidget#ServiceNodeList .QPushButton#startButton {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+                  }
 
-QWidget#ServiceNodeList .QPushButton#startButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+                  QWidget#ServiceNodeList .QPushButton#startButton:hover {
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+                  }
 
-QWidget#ServiceNodeList .QPushButton#startButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}</string>
+                  QWidget#ServiceNodeList .QPushButton#startButton:pressed {
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;}
+                </string>
                </property>
                <property name="text">
                 <string>S&amp;tart alias</string>
@@ -254,45 +227,49 @@ padding-bottom:5px;
              </item>
              <item>
               <widget class="QPushButton" name="startMissingButton">
+               <property name="icon">
+                <iconset resource="../cash.qrc">
+                 <normaloff>:/icons/drk/start</normaloff>:/icons/drk/start</iconset>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QWidget#ServiceNodeList .QPushButton#startMissingButton {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+                  }
 
-QWidget#ServiceNodeList .QPushButton#startMissingButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+                  QWidget#ServiceNodeList .QPushButton#startMissingButton:hover {
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+                  }
 
-QWidget#ServiceNodeList .QPushButton#startMissingButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}</string>
+                  QWidget#ServiceNodeList .QPushButton#startMissingButton:pressed {
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;}
+                </string>
                </property>
                <property name="text">
                 <string>Start &amp;MISSING</string>
@@ -301,45 +278,49 @@ padding-bottom:5px;
              </item>
              <item>
               <widget class="QPushButton" name="UpdateButton">
+               <property name="icon">
+                <iconset resource="../cash.qrc">
+                 <normaloff>:/icons/drk/refresh</normaloff>:/icons/drk/refresh</iconset>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QWidget#ServiceNodeList .QPushButton#UpdateButton {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+                  }
 
-QWidget#ServiceNodeList .QPushButton#UpdateButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BA77D4, stop: .1 #9F2DCC, stop: .95 #9F2DCC, stop: 1 #7400A1);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}
+                  QWidget#ServiceNodeList .QPushButton#UpdateButton:hover {
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+                  }
 
-QWidget#ServiceNodeList .QPushButton#UpdateButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #8F5BA3, stop: .1 #771F99, stop: .95 #771F99, stop: 1 #520072);
-border:0;
-border-radius:3px;
-color:#ffffff;
-font-size:12px;
-font-weight:bold;
-padding-left:25px;
-padding-right:25px;
-padding-top:5px;
-padding-bottom:5px;
-}</string>
+                  QWidget#ServiceNodeList .QPushButton#UpdateButton:pressed {
+                  background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
+                  border:0;
+                  border-radius:3px;
+                  color:#e5e4e2;
+                  font-size:12px;
+                  font-weight:bold;
+                  padding-left:25px;
+                  padding-right:25px;
+                  padding-top:5px;
+                  padding-bottom:5px;}
+                </string>
                </property>
                <property name="text">
                 <string>&amp;Update status</string>
@@ -379,10 +360,9 @@ padding-bottom:5px;
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="tabAllServiceNodes">
+     <widget class="QWidget" name="tabAllServiceNodes">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
         </property>
         <attribute name="title">
          <string>All ServiceNodes</string>
@@ -391,8 +371,7 @@ color: rgb(255, 255, 255);</string>
          <item row="1" column="0">
           <widget class="QTableWidget" name="tableWidgetServiceNodes">
            <property name="styleSheet">
-            <string notr="true">color: rgb(0, 0, 0);
-background-color:(255,255,255);</string>
+            <string notr="true">color: rgb(18, 0, 6); background-color:(102, 2, 60;</string>
            </property>
            <property name="editTriggers">
             <set>QAbstractItemView::NoEditTriggers</set>
@@ -449,9 +428,7 @@ background-color:(255,255,255);</string>
            <item>
             <widget class="QLabel" name="label_filter">
              <property name="styleSheet">
-              <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);
-</string>
+              <string notr="true">color: rgb(229, 228, 226); background-color: rgb(18, 0, 6);</string>
              </property>
              <property name="text">
               <string>Filter List:</string>
@@ -464,8 +441,7 @@ background-color: rgb(0, 0, 0);
               <string>Filter ServiceNode list</string>
              </property>
              <property name="styleSheet">
-              <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+              <string notr="true">color: rgb(18, 0, 6); background-color: rgb(229, 228, 226);</string>
              </property>
             </widget>
            </item>
@@ -485,8 +461,7 @@ background-color: rgb(255, 255, 255);</string>
            <item>
             <widget class="QLabel" name="label_count">
              <property name="styleSheet">
-              <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);</string>
+              <string notr="true">color: rgb(229, 228, 226);background-color: rgb(18, 0, 6);</string>
              </property>
              <property name="text">
               <string>Node Count:</string>
@@ -496,8 +471,7 @@ background-color: rgb(0, 0, 0);</string>
            <item>
             <widget class="QLabel" name="countLabel">
              <property name="styleSheet">
-              <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);</string>
+              <string notr="true">color: rgb(229, 228, 226);background-color: rgb(18, 0, 6);</string>
              </property>
              <property name="text">
               <string>0</string>
@@ -508,9 +482,7 @@ background-color: rgb(0, 0, 0);</string>
          </item>
         </layout>
        </widget>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
   </layout>
  </widget>

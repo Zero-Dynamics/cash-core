@@ -32,6 +32,7 @@
 
 #include <QDir>
 #include <QKeyEvent>
+#include <QListView>
 #include <QMenu>
 #include <QScrollBar>
 #include <QSettings>
@@ -376,7 +377,7 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent),
 #endif
 
     // Needed on Mac also
-    ui->clearButton->setIcon(QIcon(":/icons/drk/remove"));
+    ui->clearButton->setIcon(QIcon(":/icons/drk/drkpurple_clear"));
     ui->fontBiggerButton->setIcon(QIcon(":/icons/drk/fontbigger"));
     ui->fontSmallerButton->setIcon(QIcon(":/icons/drk/fontsmaller"));
 
@@ -390,9 +391,9 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent),
     connect(ui->btnClearTrafficGraph, SIGNAL(clicked()), ui->trafficGraph, SLOT(clear()));
 
     // Wallet Repair Buttons
-    // connect(ui->btn_salvagewallet, SIGNAL(clicked()), this, SLOT(walletSalvage()));
+    connect(ui->btn_salvagewallet, SIGNAL(clicked()), this, SLOT(walletSalvage()));
     // Disable salvage option in GUI, it's way too powerful and can lead to funds loss
-    ui->btn_salvagewallet->setEnabled(false);
+    //ui->btn_salvagewallet->setEnabled(false);
     connect(ui->btn_rescan, SIGNAL(clicked()), this, SLOT(walletRescan()));
     connect(ui->btn_zapwallettxes1, SIGNAL(clicked()), this, SLOT(walletZaptxes1()));
     connect(ui->btn_zapwallettxes2, SIGNAL(clicked()), this, SLOT(walletZaptxes2()));
@@ -633,7 +634,47 @@ void RPCConsole::setClientModel(ClientModel* model)
 
         autoCompleter = new QCompleter(wordList, this);
         ui->lineEdit->setCompleter(autoCompleter);
-        autoCompleter->popup()->installEventFilter(this);
+
+        // Get the popup widget of the QCompleter
+        QListView *popupView = qobject_cast<QListView *>(autoCompleter->popup());
+        if (popupView) {
+            // Apply stylesheet to the popup view
+            popupView->setStyleSheet("background-color: #e5e4e2; color: #440128; border: 1px solid #66023c;");
+
+            // Set the selected item color
+            QPalette palette = popupView->palette();
+            palette.setColor(QPalette::Highlight, QColor("#66023c"));
+            popupView->setPalette(palette);
+
+            // Apply stylesheet to the vertical scrollbar
+            QString scrollbarStyle = "QScrollBar:vertical {"
+                                     "    border: 1px solid #440128;"
+                                     "    background-color: #e5e4e2;" // Background color of the scrollbar
+                                     "    width: 18px;" // Width of the scrollbar
+                                     "    margin: 18px 0px 18px 0px;"
+                                     "}"
+                                     "QScrollBar::handle:vertical {"
+                                     "    background-color: #440128;" // Color of the handle
+                                     "    min-height: 20x;" // Minimum height of the handle
+                                     "}"
+                                     "QScrollBar::add-line:vertical {"
+                                     "    subcontrol-origin: margin;" // Adjust origin of the arrow button
+                                     "    position: absolute;"
+                                     "    height: 18px;" // Height of the arrow button
+                                     "    width: 18px;" // Width of the arrow button
+                                     "    top: 36px;" // Adjust position of the arrow button
+                                     "}"
+                                     "QScrollBar::sub-line:vertical {"
+                                     "    subcontrol-origin: margin;" // Adjust origin of the arrow button
+                                     "    position: absolute;"
+                                     "    height: 18px;" // Height of the arrow button
+                                     "    width: 18px;" // Width of the arrow button
+                                     "    top: 0px;" // Adjust position of the arrow button
+                                     "}";
+
+            popupView->verticalScrollBar()->setStyleSheet(scrollbarStyle);
+        }
+
         // Start thread to execute RPC commands.
         startExecutor();
     }
@@ -783,12 +824,12 @@ void RPCConsole::clear(bool clearHistory)
     ui->messagesWidget->document()->setDefaultStyleSheet(
         QString(
             "table { }"
-            "td.time { color: #808080; font-size: %2; padding-top: 3px; } "
-            "td.message { font-family: %1; font-size: %2; white-space:pre-wrap; } "
-            "td.cmd-request { color: #006060; } "
-            "td.cmd-error { color: red; } "
-            ".secwarning { color: red; }"
-            "b { color: #006060; } ")
+            "td.time { color: #440128; font-size: %2; padding-top: 3px; } "
+            "td.message { font-family: %1; font-size: %2; white-space:pre-wrap; color: #440128; } "
+            "td.cmd-request { color: #136207; } "
+            "td.cmd-error { color: #800000; } "
+            ".secwarning { color: #800000; font-weight: bold; }"
+            "b { color: #136207; } ")
             .arg(fixedFontInfo.family(), QString("%1pt").arg(consoleFontSize)));
 
 #ifdef Q_OS_MAC
