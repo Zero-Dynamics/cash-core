@@ -63,30 +63,30 @@ std::vector<std::pair<std::string, CDebitAddress> > CFluidParameters::Initialise
 {
     std::vector<std::pair<std::string, CDebitAddress> > x;
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-        x.push_back(std::make_pair("Main01", CDebitAddress("CRCwbdsgxPBDf198nghTvgYV3Ya1SB1ywL")));
-        x.push_back(std::make_pair("Main02", CDebitAddress("CbrerNCZCBifEJ7tSuCoaoSGZrySyuQrAD")));
-        x.push_back(std::make_pair("Main03", CDebitAddress("CX4cx31ApAKhYxBLeQomNjmMURnTHwKuG5")));
-        x.push_back(std::make_pair("Main04", CDebitAddress("CTs3mZGS9YCn1VjrCiiDJrm5jipKPidBNp")));
-        x.push_back(std::make_pair("Main05", CDebitAddress("CZ4rxXSctpb8ik8xeVgn2uzEzokDdKMgXY")));
+        x.push_back(std::make_pair("Main01", CDebitAddress("CMRbmYckH5TKhkFev8y4gCrpMo7gZ96xoD")));
+        x.push_back(std::make_pair("Main02", CDebitAddress("CVrMHUfNfFUnzbTM2m7ZpCjtXSuzyKfyG6")));
+        x.push_back(std::make_pair("Main03", CDebitAddress("CeCbHRu59fqW6a3RoZfcz148mrAmyQjXCU")));
+        x.push_back(std::make_pair("Main04", CDebitAddress("CHt97fgnG9LXzQNyWaqYNW3EhRumLCENqS")));
+        x.push_back(std::make_pair("Main05", CDebitAddress("CaJQVSM8A9ZVfeJq9S8q1v7AxzE1XVHzo8")));
     } else if (Params().NetworkIDString() == CBaseChainParams::TESTNET) {
-        x.push_back(std::make_pair("Test01", CDebitAddress("c2YHaLRkmRiwjqQCMdkqnCAYcv8W1frwVW"))); //importprivkey JKVM7EwqJUkC3c46pki2aFKhbdoNES1d5PXVXR2a7Yr5CCidJtev
-        x.push_back(std::make_pair("Test02", CDebitAddress("c7JXVTevCMGaM3BaVrgwsuz1r6Y4Mj3BMu"))); //importprivkey JNU7DLpT2VrUkA2uoJux6ZUanES8ziPamPRuBnUdVgR4HG9AFWwh
-        x.push_back(std::make_pair("Test03", CDebitAddress("cJ755YwZmHgTKKFqSeN2rBcS7rHokDEcA1"))); //importprivkey JQrJSj9g7qCA9dTb5mvLprFJBr9YBa7rdv9pn2H5hbTAMaARWfTX
-        x.push_back(std::make_pair("Test04", CDebitAddress("c3mW5Z4TLR8T1uno3CCaewgLHdnCEXMYfi"))); //importprivkey JNRu9mWV3tgiF3oQ5z1BxrYNhwtN78z59HhucXhQNf6JUdwZ2uGS
-        x.push_back(std::make_pair("Test05", CDebitAddress("cGXBu883sb8obGrYKmhQyyRUb3yAcE3WwL"))); //importprivkey JLQz4dECjW1VFmYdJSne36AGoYgwbhXtvzrBvFh6XM5QFWUqd1Ud
+        x.push_back(std::make_pair("Test01", CDebitAddress("cFWG3ehFrwnmGjtg1NJJyPE72fHkWu5Sfe"))); //importprivkey aboX2GQU61mLKkSM95keNAhvbgcpN5Rdaq9ZbouAiVfmkWanzmjW
+        x.push_back(std::make_pair("Test02", CDebitAddress("c2xbM7uqFaagjCsqK6bNKHu1QeCr9PtHkp"))); //importprivkey aejV3C4nunDUyM67J7MjC6sGN8vvMSDkzYzzscCvhLg7yqtMHWPp
+        x.push_back(std::make_pair("Test03", CDebitAddress("cBFo7y2Z1poM954HLvCneWGwPi6Jh1xsPd"))); //importprivkey ae4orEKkQv9za7mzAZVqxuymgJ3KZUXfu2fQKAzpG4ENWp4po3Z9
+        x.push_back(std::make_pair("Test04", CDebitAddress("cMDjfnWnADPxMas9eHEP4TwEEELgXMd4nQ"))); //importprivkey aevGrNXvZ4JYWHvDc5kCpWjdNN59vDxD6j3WUqYdvTau7PyZYfR9
+        x.push_back(std::make_pair("Test05", CDebitAddress("c927QBgjEtWJB9BhgbDxhQzPq68Nw9hWyf"))); //importprivkey afdsuYrhAr75p2pCqFjkN7XqEFARix1r5XoFoNrQK1ov5qYCd7jS
     } else if (Params().NetworkIDString() == CBaseChainParams::REGTEST) {
-        x.push_back(std::make_pair("RegTest01", CDebitAddress("yetdGdzrn23oa9eZY6JZdLRHmFAuhGHJDf"))); //importprivkey JRC9coYMqK5Po3TCW6FAq9VspUXXi93dL6mkGntjZJuVPs4ek8CU
-        x.push_back(std::make_pair("RegTest02", CDebitAddress("yNDzTJSZAQbTDyg56jokB5NrXELPQcbdYo"))); //importprivkey JQqGPvNs8uRgUjyg8sxSgVCNWmovkDFftD7yYakF1XSZqHp5j6Jn
-        x.push_back(std::make_pair("RegTest03", CDebitAddress("yP1RqGh3Qo2Lw71SKg6L5xeZuSoM3t5D92"))); //importprivkey JSDGgri6UUgKtchPuFpoNH5CyjCzrHsUXX5PC1yZzvg2GzBMKauV
-        x.push_back(std::make_pair("RegTest04", CDebitAddress("yh7fJifTfz2ajUP9v1r1pRk6xFVjjsdtx6"))); //importprivkey JTKtanyGuUozhsdbr1WQYkmcEJvYoq1cWrCGAfGZMpZ5W3GB79hN
-        x.push_back(std::make_pair("RegTest05", CDebitAddress("yhtmJD4NmzrVmgWM6NPiM8oBHihBvRboPR"))); //importprivkey JK7QWn8PHwibJwps2LZ8vGZvkRygTVXQJLsWsX45v5dybY2bVYs9
+        x.push_back(std::make_pair("RegTest01", CDebitAddress("yVTakBsj3x1deP3wjuKr7YetnAB4hH7HaD"))); //importprivkey agqNZR7pQJsZwrYmMEGCsUfgDcVerdfsZq73DJe8qFzM6Y3QonXd
+        x.push_back(std::make_pair("RegTest02", CDebitAddress("yeCMR9T3Ps9VESzmdk5ohTeLiTbnbaBZRz"))); //importprivkey agHopWBGyoa78jSNajt1fM2S5ZjvUBbCDAtRD44VxZTdWzXRnsDZ
+        x.push_back(std::make_pair("RegTest03", CDebitAddress("ya8DWb1kvsamWoDgyE7DF6qoR6BqrYKP1f"))); //importprivkey ae2UGRep6n2rUAwvzYZyHrru25tDA1DJycaL7PpcEbcmP1u14N1e
+        x.push_back(std::make_pair("RegTest04", CDebitAddress("yLdaHs5E4zWfuFgzgtqGPx6UeRtB5DfmVi"))); //importprivkey ahJn46JnVrGq1raQdoEVuUi5RYa2NSjUNtCXUgvfUfKkNcbhUmyf
+        x.push_back(std::make_pair("RegTest05", CDebitAddress("yPbK1Kkq7q8WxVL5gAmScUZawigHt9vfTF"))); //importprivkey agfro3kMD8kLSmkgb9zKGpc2uaNfFtnJLWo4QJjPPAoFtG33df3h
     }
     else if (Params().NetworkIDString() == CBaseChainParams::PRIVATENET) {
-        x.push_back(std::make_pair("Priv01", CDebitAddress("zKXEXKPeHfKVXSKmondoAM36JhRhAbQDSE"))); //importprivkey JQgSpok9HeLhLhsXC8N8SDjHoYMbU8NFyyDRGRCfGh4fnNGAPfCZ
-        x.push_back(std::make_pair("Priv02", CDebitAddress("zWcDistayTNZTVf9i7UuhA4qwooDBSF1oH"))); //importprivkey JNqiT33xxr3Jgdefmt1W6Q15tWAPsie4uudSBWp3a8PqKNBe2g7z
-        x.push_back(std::make_pair("Priv03", CDebitAddress("zJxmkXMRngJS5uvetehaGerkC7FrgBexK3"))); //importprivkey JQVv8nZ9DAYRDvgbuixmsUTdc1vuqXfBVMnDJGguZiGPH5Jz77p4
-        x.push_back(std::make_pair("Priv04", CDebitAddress("zUUp4CjoVvCGrvE6ZC1P5uuMDXV5V7cWhx"))); //importprivkey JKmiYdkEJBKvUespKEj5pPgiJDzDCTr9jKqQjbUtSomZ7M55PFoL
-        x.push_back(std::make_pair("Priv05", CDebitAddress("zS2FEzSeuMQQjLep1AM6YB2MLzDvRMqP6P"))); //importprivkey JLUMq6z5ze14xjq8L4QWj6akPCgm7nbxoErSGRU5G1dBRS9UChx2
+        x.push_back(std::make_pair("Priv01", CDebitAddress("zXxBSLdnM37xNRNupWzoXuHZ8Y5E9qG15Y"))); //importprivkey ahbXGXSgonHhJe5gNU5zGQbQ1pTQiCCQK99S7PdJdqUb8MtoyGey
+        x.push_back(std::make_pair("Priv02", CDebitAddress("zDqX4cYz94K4xNYjicvKGvMHdspsXZqN3j"))); //importprivkey aebYzznt5oh1SGAtzDZSbVFTfLo7uzEFg29iSscA5YauhaQBf54S
+        x.push_back(std::make_pair("Priv03", CDebitAddress("zF6KFaNUX9VgZ7zZj8uWAoGCNKYCnbb9eS"))); //importprivkey agUzkeSkYi9oJND6mwhXNAVteHiu7RAp8NLVYHJybrSGKgphR44U
+        x.push_back(std::make_pair("Priv04", CDebitAddress("zCiLScE3RRommWgWCkSygtDkdvtuyzowuj"))); //importprivkey afMC8dtcoE1n13mSBpKjRCJL2LYxaaP4XZrCYMPfrCUanDtuwVSn
+        x.push_back(std::make_pair("Priv05", CDebitAddress("z92TwCnVLxQRNxsCyQnz4Qvwh4xqsE9WxV"))); //importprivkey aeZomS8gkLK9ehj9fVKnjr36D1kRMVTQa4dyEUiBqz7z7DVi9r3p
     }
     return x;
 }

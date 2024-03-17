@@ -121,7 +121,7 @@ CServiceNode::CollateralStatus CServiceNode::CheckCollateral(const COutPoint& ou
         return COLLATERAL_UTXO_NOT_FOUND;
     }
 
-    if (coin.out.nValue != 50000 * COIN) {
+    if (coin.out.nValue != 15000 * COIN) {
         return COLLATERAL_INVALID_AMOUNT;
     }
 

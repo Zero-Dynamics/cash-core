@@ -116,7 +116,7 @@ public:
 
         consensus.nRewardsStart = 20160;               // PoW Rewards begin on block 20160
         consensus.nServiceNodePaymentsStartBlock = 40320;  // ServiceNode Payments begin on block 40320
-        consensus.nMinCountServiceNodesPaymentStart = 10; // ServiceNode Payments begin once 10 ServiceNodes exist or more.
+        consensus.nMinCountServiceNodesPaymentStart = 5; // ServiceNode Payments begin once 10 ServiceNodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 11;
         consensus.nInstantSendKeepLock = 24;
         consensus.nBudgetPaymentsStartBlock = 8766;   // actual historical value
@@ -189,7 +189,7 @@ public:
         startNewChain = false;
         nSwitchDifficultyBlock = 87660;
 
-        genesis = CreateGenesisBlock(1709842909, 196251, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1710715047, 279676, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -197,7 +197,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("00000974c1f3ee2e8b619ea7393767337c464ceba9ed36d9954ac0257db9470b"));
+            assert(consensus.hashGenesisBlock == uint256S("00000d4d67a6c4baa101c94ebd2e2d05e94a669a31e3fe8a34751af6a81f6c56"));
             assert(genesis.hashMerkleRoot == uint256S("2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
 
@@ -207,10 +207,10 @@ public:
 
         // Cash addresses start with 'C'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 28);
-        // Cash script addresses start with '5'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 10);
+        // Cash script addresses start with 'M'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 50);
         // Cash private keys start with 'P'
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 55);
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 152);
         // Cash BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         // Cash BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
@@ -233,7 +233,7 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60 * 60; // fulfilled requests expire in 1 hour
 
-        vSporkAddresses = {"CKqHtBvSEjjJ8tgT2nkGwTNqSRZxbR9uEE"};
+        vSporkAddresses = {"CHh77xpQC3kcZbvSSPSguZ8YyLsSEYx6KY"};
         nMinSporkKeys = 1;
 
         checkpointData = (CCheckpointData){
@@ -332,7 +332,7 @@ public:
         startNewChain = false;
         nSwitchDifficultyBlock = 5000; // ~ 1 week
 
-        genesis = CreateGenesisBlock(1709843085, 43, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1710715253, 175, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -340,7 +340,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("009b89eab393aca775c778117c622aea225f929852e4b49c198c87bf384e112b"));
+            assert(consensus.hashGenesisBlock == uint256S("001a3abffbef345ec744e9da493a635a18f2204c3caf2e88fe434af6c1e0190f"));
             assert(genesis.hashMerkleRoot == uint256S("2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
         vFixedSeeds.clear();
@@ -350,10 +350,10 @@ public:
 
         // Testnet Cash addresses start with 'c'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 87);
-        // Testnet Cash script addresses start with '8' or '9'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
-        // Testnet private keys start with 'p' (Bitcoin defaults)
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 117);
+        // Testnet Cash script addresses start with '2'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
+        // Testnet private keys start with 'a'
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 227);
         // Testnet Cash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Testnet Cash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
@@ -375,7 +375,7 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
-        vSporkAddresses = {"c1zbn1z8C2hFPvv92S6FcVdBZEjbGXuiep"}; // JPv9xBsuEkBKLNfGpUUfH6gAWi8Am7hjxbFQnfZh33UxtsWhtSQD
+        vSporkAddresses = {"cPZ6455uZnD6SXjkR8cyREXW4AEGd3XQrR"}; // ahA8aFhLzyd6dGumNg9PUwMW9fNouDp19dmw9EEW2UFM58d6DHSy
         nMinSporkKeys = 1;
 
         checkpointData = (CCheckpointData){
@@ -466,7 +466,7 @@ public:
         startNewChain = false;
         nSwitchDifficultyBlock = 500;
 
-        genesis = CreateGenesisBlock(1709843085, 3225, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1710715253, 6384, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -474,7 +474,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("00043339f806bc25c3e72227917d8589f6ee1308826d9f243ec1c736e6447316"));
+            assert(consensus.hashGenesisBlock == uint256S("000787843423b0f4511247c9fb613278d916d6a132dd3368597766ed0d323c07"));
             assert(genesis.hashMerkleRoot == uint256S("2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
 
@@ -491,7 +491,7 @@ public:
 
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
 
-        vSporkAddresses = {"ySfeoaBR2TesKCeMXLuuhtZncsg6kWYsb4"}; //private key: JN2o8FqwbguGjT7W8esteKHY6Pt5JjN2WBGLELNu98BiUAdZ8Wf7
+        vSporkAddresses = {"yQpLXyTyZSiMVyu3GBiwNP1AZASaRKaXdq"}; //private key: acg75cnWNuicdKTPJgqzEViZCDNTVMxPvg2FwgdPFc2fv1ic4qyd
         nMinSporkKeys = 1;
 
         checkpointData = (CCheckpointData){
@@ -506,10 +506,10 @@ public:
 
         // Regtest Cash addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 140);
-        // Regtest Cash script addresses start with '8' or '9'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
-        // Regtest private keys start with 'p' (Bitcoin defaults)
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 117);
+        // Regtest Cash script addresses start with '2'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
+        // Regtest private keys start with 'a' (Bitcoin defaults)
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 227);
         // Regtest Cash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Regtest Cash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
@@ -595,7 +595,7 @@ public:
         startNewChain = false;
         nSwitchDifficultyBlock = 500000;
 
-        genesis = CreateGenesisBlock(1709843087, 168667, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1710715258, 7819, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -603,7 +603,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("00002a9b0fa4c870befd160955f9ab7b0582b2dffd3a84408e471df0341c76da"));
+            assert(consensus.hashGenesisBlock == uint256S("000092664700f54f20a6fcce6c34b0c718411d5784af096dec25e3bce137c34d"));
             assert(genesis.hashMerkleRoot == uint256S("2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
         vFixedSeeds.clear();
@@ -613,10 +613,10 @@ public:
 
         // Privatenet Cash addresses start with 'z'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 142);
-        // Privatenet Cash script addresses start with '8' or '9'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
-        // Privatenet private keys start with 'p' (Bitcoin defaults)
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 117);
+        // Privatenet Cash script addresses start with '2'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
+        // Privatenet private keys start with 'a' (Bitcoin defaults)
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 227);
         // Privatenet Cash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Privatenet Cash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
@@ -638,8 +638,8 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
-        // To import spork key (zTpQH62k6oNbUmfvBpnNcDfpqzTYeKGFsQ): importprivkey JT8K4qAfBgmXqZSvn2VfiSTj6uwVBRGuzYzdWk8cejcW3x8rVQ1K
-        vSporkAddresses = {"zTpQH62k6oNbUmfvBpnNcDfpqzTYeKGFsQ"};
+        // To import spork key (zFev59VAYq2J8T9zVLqq4v2AeX5r4RwAVd): importprivkey agAjA71T8gLXD2kSnvdALu3aYWM5tTvbVMhUmhmiS5Q8e2EkWfmb
+        vSporkAddresses = {"zFev59VAYq2J8T9zVLqq4v2AeX5r4RwAVd"};
         nMinSporkKeys = 1;
 
         checkpointData = (CCheckpointData){
