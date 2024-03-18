@@ -602,7 +602,7 @@ QTabBar { alignment: left; }</string>
              <width>24</width>
              <height>24</height>
             </size>
-           </property>           
+           </property>
            <property name="shortcut">
             <string notr="true">Ctrl+L</string>
            </property>
@@ -632,9 +632,6 @@ QTabBar { alignment: left; }</string>
          </property>
          <property name="columnCount" stdset="0">
           <number>2</number>
-         </property>
-         <property name="styleSheet">
-          <string>* { background-color: #e5e4e2; }</string>
          </property>
         </widget>
        </item>

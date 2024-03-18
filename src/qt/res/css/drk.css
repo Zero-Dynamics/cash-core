@@ -50,6 +50,10 @@ background-color:#440128;
 color:#e5e4e2;
 }
 
+QMenu::item:disabled {
+color: #888;
+}
+
 QToolBar {
 background-color:#440128;
 border:0px solid #000;
@@ -911,6 +915,29 @@ max-width:60px;
 
 QDialog#RPCConsole QTextEdit#messagesWidget { /* Console Messages Window */
 border:0;
+background-color: #e5e4e2;
+}
+
+QDialog#RPCConsole QTextEdit#messagesWidget QMenu {
+    /* Styles for the popup menu associated with the QTextEdit */
+    background-color: #120006; /* Change this to your desired background color */
+    border: 1px solid #440128; /* Change this to your desired border color */
+}
+
+QDialog#RPCConsole QTextEdit#messagesWidget QMenu::item {
+    /* Styles for menu items */
+    color: #e5e4e2;
+}
+
+QDialog#RPCConsole QTextEdit#messagesWidget QMenu::item:selected {
+    /* Styles for selected menu items */
+    background-color: #440128;
+    color: #e5e4e2;
+}
+
+/* Styles for disabled menu items */
+QDialog#RPCConsole QTextEdit#messagesWidget QMenu::item:disabled {
+    color: #888; /* Change this to your desired color for disabled items */
 }
 
 QDialog#RPCConsole QLineEdit#lineEdit { /* Console Input */
