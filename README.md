@@ -135,9 +135,13 @@ To enable the change run
 
     sudo apt-get update
 
-for other Debian & Ubuntu (with ppa):
+for Ubuntu (with ppa):
 
     sudo apt-get install libdb4.8-dev libdb4.8++-dev
+
+For Debian
+
+    wget https://raw.githubusercontent.com/Zero-Dynamics/installation-tools/master/install_libdb4.8.sh && chmod +x install_libdb4.8.sh && ./install_libdb4.8.sh amd64 && rm install_libdb4.8.sh
 
 Optional (see --with-miniupnpc and --enable-upnp-default):
 
