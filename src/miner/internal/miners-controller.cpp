@@ -9,6 +9,7 @@
 #include "net.h"
 #include "validation.h"
 #include "validationinterface.h"
+#include <boost/bind.hpp>
 
 
 MinersController::MinersController(const CChainParams& chainparams, CConnman& connman)

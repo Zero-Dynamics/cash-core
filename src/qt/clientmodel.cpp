@@ -26,6 +26,7 @@
 #include "servicenodeman.h"
 #include "privatesend-client.h"
 
+#include <boost/bind.hpp>
 #include <stdint.h>
 
 #include <QDebug>

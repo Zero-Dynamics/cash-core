@@ -29,6 +29,7 @@
 #include <QIcon>
 #include <QList>
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
 static int column_alignments[] = {
@@ -582,15 +583,15 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord* wtx)
         return QIcon(":/icons/" + theme + "/transaction_abandoned");
     case TransactionStatus::Confirming:
         switch (wtx->status.depth) {
-        case 1: 
+        case 1:
             return QIcon(":/icons/" + theme + "/transaction_1");
-        case 2: 
+        case 2:
             return QIcon(":/icons/" + theme + "/transaction_2");
-        case 3: 
+        case 3:
             return QIcon(":/icons/" + theme + "/transaction_3");
-        case 4: 
+        case 4:
             return QIcon(":/icons/" + theme + "/transaction_4");
-        default: 
+        default:
             return QIcon(":/icons/" + theme + "/transaction_5");
         };
     case TransactionStatus::Confirmed:

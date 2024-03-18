@@ -42,6 +42,7 @@
 #include "util.h"
 #include "validation.h"
 
+#include <boost/bind.hpp>
 #include <iostream>
 
 #include <QAction>

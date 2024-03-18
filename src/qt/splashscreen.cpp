@@ -23,6 +23,8 @@
 #include "wallet/wallet.h"
 #endif
 
+#include <boost/bind.hpp>
+
 #include <QApplication>
 #include <QCloseEvent>
 #include <QDesktopWidget>

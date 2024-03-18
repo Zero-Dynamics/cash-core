@@ -27,6 +27,7 @@
 #include <event2/http.h>
 #include <event2/keyvalq_struct.h>
 #include <event2/thread.h>
+#include <deque>
 #include <event2/util.h>
 
 #ifdef EVENT__HAVE_NETINET_IN_H

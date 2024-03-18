@@ -209,6 +209,9 @@ If you have to, or wish to build Berkeley DB 4.8 yourself:
     # -> db-4.8.30.NC.tar.gz: OK
     tar -xzvf db-4.8.30.NC.tar.gz
 
+    #Patch db-4.8.30.NC/dbinc/atomic.h
+    sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' db-4.8.30.NC/dbinc/atomic.h
+
     # Build the library and install to our prefix
     cd db-4.8.30.NC/build_unix/
     #  Note: Do a static build so that it can be embedded into the exectuable, instead of having to find a .so at runtime

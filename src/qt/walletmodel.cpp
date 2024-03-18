@@ -30,6 +30,7 @@
 
 #include <stdint.h>
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
 #include <QDebug>
