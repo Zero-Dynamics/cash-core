@@ -143,6 +143,10 @@ For Debian
 
     wget https://raw.githubusercontent.com/Zero-Dynamics/installation-tools/master/install_libdb4.8.sh && chmod +x install_libdb4.8.sh && ./install_libdb4.8.sh amd64 && rm install_libdb4.8.sh
 
+For Debian, also install Berkeley Software Distribution utilities
+
+    sudo apt-get install bsdmainutils
+
 Optional (see --with-miniupnpc and --enable-upnp-default):
 
     sudo apt-get install libminiupnpc-dev
