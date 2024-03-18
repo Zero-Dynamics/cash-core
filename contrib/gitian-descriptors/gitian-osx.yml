@@ -29,7 +29,7 @@ packages:
 - "fonts-tuffy"
 reference_datetime: "2024-01-01 00:00:00"
 remotes:
-- "url": "https://github.com/duality-solutions/cash.git"
+- "url": "https://github.com/zero-dynamics/cash-core.git"
   "dir": "cash"
 files:
 - "MacOSX10.11.sdk.tar.gz"

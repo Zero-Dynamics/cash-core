@@ -2,13 +2,13 @@
 
 ## Abstract
 
-[BDAP (Blockchain Directory Access Protocol)](https://duality.solutions/bdap) gives programmable access control and direct communication with users on the network, adding a layer of resource hierarchy and providing a distributed database with account linking, making it possible to develop core information systems using the blockchain technology of [Cash](https://github.com/duality-solutions/cash) and [Sequence](https://github.com/duality-solutions/sequence). This design allows user controlled nodes to securely connect, privately share data without a third-party intermediary, and to scale the database up indefinitely.
+[BDAP (Blockchain Directory Access Protocol)](https://duality.solutions/bdap) gives programmable access control and direct communication with users on the network, adding a layer of resource hierarchy and providing a distributed database with account linking, making it possible to develop core information systems using the blockchain technology of [Cash](https://github.com/zero-dynamics/cash-core). This design allows user controlled nodes to securely connect, privately share data without a third-party intermediary, and to scale the database up indefinitely.
 
 BDAP enables the creation of applications across the spectrum of industry, drastically reducing the costs involved with core information systems. Removing the requirement for the majority of administration roles and the need for trusted third parties. Rendering current centralized database systems such as [LDAP (Lightweight Directory Access Protocol)](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol) a thing of the past.
 
 ## Technical Information
 
-[BDAP](https://duality.solutions/bdap) is used to create and amend entries on a [libtorrent](https://github.com/arvidn/libtorrent) based DHT (Distributed Hash Table), and utilizes the blockchain of [Cash](https://github.com/duality-solutions/cash) to provide decentralization and security. 
+[BDAP](https://duality.solutions/bdap) is used to create and amend entries on a [libtorrent](https://github.com/arvidn/libtorrent) based DHT (Distributed Hash Table), and utilizes the blockchain of [Cash](https://github.com/zero-dynamics/cash-core) to provide decentralization and security.
 
 ### BDAP Development Kit (BDK)
 
@@ -30,7 +30,7 @@ Needs content.
 
 Needs content.
 
-### BDAP Entry Linking 
+### BDAP Entry Linking
 
 Entry linking is a type of DAP binding operation and is used to manage domain entry link requests. When linking entries, we use stealth addresses so the linkage requests remain private. Link requests (class CLinkRequest) are stored, serialized and encrypted in a [BDAP](https://duality.solutions/bdap) ```OP_RETURN``` transaction. The link request recipient can decrypt the [BDAP](https://duality.solutions/bdap) ```OP_RETURN``` transaction and get the needed information (class CLinkAccept) to accept the link request. It is used to bootstrap the linkage relationship with a new set of public keys.
 
@@ -56,7 +56,7 @@ CharString SignatureProof; // Requestor's BDAP account ownership proof by signin
 CharString RequestorFullObjectPath; // Requestor's BDAP object path
 
 CharString RecipientFullObjectPath; // Recipient's BDAP object path
-    
+
 uint256 txLinkRequestHash; // transaction hash for the link request.
 
 CharString RecipientPubKey; // ed25519 public key new/unique for this link
@@ -116,8 +116,8 @@ Needs content.
 
 ### BDAP Code
 
-All of the code for [BDAP](https://duality.solutions/bdap) can be found in the [/src/bdap/](https://github.com/duality-solutions/Cash/tree/master/src/bdap) directory of [Cash](https://github.com/duality-solutions/cash).
+All of the code for [BDAP](https://duality.solutions/bdap) can be found in the [/src/bdap/](https://github.com/zero-dynamics/cash-core/tree/master/src/bdap) directory of [Cash](https://github.com/zero-dynamics/cash-core).
 
 ### DHT Code
 
-All of the code for the DHT can be found in the [/src/dht/](https://github.com/duality-solutions/Cash/tree/master/src/dht) directory of [Cash](https://github.com/duality-solutions/cash).
+All of the code for the DHT can be found in the [/src/dht/](https://github.com/zero-dynamics/cash-core/tree/master/src/dht) directory of [Cash](https://github.com/zero-dynamics/cash-core).

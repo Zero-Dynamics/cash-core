@@ -22,8 +22,8 @@ Build-Depends: debhelper,
  libqrencode-dev
 Standards-Version: 3.9.2
 Homepage: http://www.cashpay.io/
-Vcs-Git: git://github.com/duality-solutions/cash.git
-Vcs-Browser: http://github.com/duality-solutions/cash
+Vcs-Git: git://github.com/zero-dynamics/cash-core.git
+Vcs-Browser: http://github.com/zero-dynamics/cash-core
 
 Package: cashd
 Architecture: any

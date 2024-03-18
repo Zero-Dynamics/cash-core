@@ -1,10 +1,10 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-[![Build Status](https://travis-ci.org/duality-solutions/Cash.png?branch=master)](https://travis-ci.org/duality-solutions/Cash)
+[![Build Status](https://travis-ci.org/zero-dynamics/cash-core.png?branch=master)](https://travis-ci.org/zero-dynamics/cash-core)
 
 # **Cash (0DYNC) v1.0.0.0**
 
-![0DYNC logo](https://github.com/duality-solutions/Cash/blob/master/src/qt/res/icons/drk/about.png)
+![0DYNC logo](https://github.com/zero-dynamics/cash-core/blob/master/src/qt/res/icons/drk/about.png)
 
 **Copyright (c) 2016-2021 [Zero Dynamics](https://)**
 
@@ -199,7 +199,7 @@ If you have to, or wish to build Berkeley DB 4.8 yourself:
     bash
     CASH_ROOT=$(pwd)
 
-    # Pick some path to install BDB to, here we create a directory within the odyn directory
+    # Pick some path to install BDB to, here we create a directory within the cash-core directory
     BDB_PREFIX="${CASH_ROOT}/db4"
     mkdir -p $BDB_PREFIX
 
@@ -268,7 +268,7 @@ Hardening enables the following features:
 
 * Non-executable Stack
     If the stack is executable then trivial stack based buffer overflow exploits are possible if
-    vulnerable buffers are found. By default, odyn should be built with a non-executable stack
+    vulnerable buffers are found. By default, cash-core should be built with a non-executable stack
     but if one of the libraries it uses asks for an executable stack or someone makes a mistake
     and uses a compiler extension which requires an executable stack, it will silently build an
     executable without the non-executable stack protection.
@@ -284,7 +284,7 @@ Hardening enables the following features:
 
 Disable-wallet mode
 --------------------
-When the intention is to run only a P2P node without a wallet, odyn may be compiled in
+When the intention is to run only a P2P node without a wallet, cash-core may be compiled in
 disable-wallet mode with:
 
     ./configure --disable-wallet

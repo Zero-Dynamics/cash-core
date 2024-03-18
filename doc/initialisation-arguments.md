@@ -1,4 +1,4 @@
-![0DYNC logo](https://github.com/duality-solutions/Logos/blob/master/Duality%20Logos/Cash/PNG/128x128.png)
+![0DYNC logo](https://github.com/zero-dynamics/Logos/blob/master/0-DYN%20Logos/Cash/PNG/128x128.png)
 
 CASH INITIALISATION ARGUMENTS
 ================================

@@ -34,7 +34,7 @@ apt-get -y install libminiupnpc-dev libdb++-dev libboost-system-dev \
 ```
 useradd -m -d /home/cash -s /bin/bash cash
 su - cash
-git clone https://github.com/duality-solutions/Cash src
+git clone https://github.com/zero-dynamics/cash-core src
 cd src
 ./autogen.sh
 ./configure --disable-tests --disable-gui-tests --disable-bench \

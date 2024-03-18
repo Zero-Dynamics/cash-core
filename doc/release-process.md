@@ -2,7 +2,7 @@ Release Process
 ====================
 
 * update translations (ping wumpus, Diapolo or tcatm on IRC)
-* see https://github.com/duality-solutions/cash/blob/master/doc/translation_process.md#syncing-with-transifex
+* see https://github.com/zero-dynamics/cash-core/blob/master/doc/translation_process.md#syncing-with-transifex
 
 * * *
 
@@ -137,14 +137,14 @@ rm SHA256SUMS
 - Update cashpay.io version ***TODO***
 
   - First, check to see if the cashpay.io maintainers have prepared a
-    release: https://github.com/duality-solutions/cash/labels/Releases
+    release: https://github.com/zero-dynamics/cash-core/labels/Releases
 
       - If they have, it will have previously failed their Travis CI
         checks because the final release files weren't uploaded.
         Trigger a Travis CI rebuild---if it passes, merge.
 
   - If they have not prepared a release, follow the Cash.org release
-    instructions: https://github.com/duality-solutions/cash#release-notes
+    instructions: https://github.com/zero-dynamics/cash-core#release-notes
 
   - After the pull request is merged, the website will automatically show the newest version within 15 minutes, as well
     as update the OS download links. Ping @saivann/@harding (saivann/harding on Freenode) in case anything goes wrong

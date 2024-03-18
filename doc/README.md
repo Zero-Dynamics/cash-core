@@ -1,16 +1,16 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-[![Build Status](https://travis-ci.org/duality-solutions/Cash.png?branch=master)](https://travis-ci.org/duality-solutions/Cash)
-[![Stories in Ready](https://badge.waffle.io/duality-solutions/Cash.png?label=ready&title=Ready)](https://waffle.io/duality-solutions/Cash)
+[![Build Status](https://travis-ci.org/zero-dynamics/cash-core.png?branch=master)](https://travis-ci.org/zero-dynamics/cash-core)
+[![Stories in Ready](https://badge.waffle.io/zero-dynamics/cash-core.png?label=ready&title=Ready)](https://waffle.io/zero-dynamics/cash-core)
 
 Graph on Pull Request History
 ====================================
 
-[![Throughput Graph](https://graphs.waffle.io/duality-solutions/Cash/throughput.svg)](https://waffle.io/duality-solutions/Cash/metrics/throughput)  
+[![Throughput Graph](https://graphs.waffle.io/zero-dynamics/cash-core/throughput.svg)](https://waffle.io/zero-dynamics/cash-core/metrics/throughput)  
 
 # **Cash (0DYNC) v2.4.0.0**
 
-![0DYNC logo](https://github.com/duality-solutions/Cash/blob/master/src/qt/res/icons/drk/about.png)
+![0DYNC logo](https://github.com/zero-dynamics/cash-core/blob/master/src/qt/res/icons/drk/about.png)
 
 **Copyright (c) 2016-2021 [Duality Blockchain Solutions](https://duality.solutions/)**
 
