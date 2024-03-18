@@ -15,13 +15,13 @@ What is [Cash](https://www/cash)?
 * PoW Difficulty Algorithm: Digishield V3
 * PoW Period: Unlimited
 * PoW Target Spacing: 30 Seconds
-* PoW Reward per Block: Controlled via Fluid Protocol
+* PoW Reward per Block: 25% × ServiceNode Reward, controlled via Fluid Protocol
 * PoW Reward Start Height: Block 20,160
 * Maturity: 10 Blocks
 * PoW Blocks: ~2,880 per day
-* ServiceNode Collateral Amount: 1000 0DYNC
+* ServiceNode Collateral Amount: 15000 0DYNC
 * ServiceNode Min Confirmation: 17 Blocks
-* ServiceNode Reward: Controlled via Fluid Protocol
+* ServiceNode Reward: 7.3% × network collateral ÷ ( PoW Blocks × 365¼ days), controlled via Fluid Protocol
 * ServiceNode Reward Start Height: Block 40,320
 * Total Coins: 2<sup>63</sup> - 1
 * Min TX Fee: 0.0001 0DYNC
