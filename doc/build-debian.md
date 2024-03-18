@@ -1,6 +1,6 @@
 # Debian 9 (Stretch) build guide for Cash
 
-**NOTE: Lines ending in \ are part of a shell command that spreads over multiple 
+**NOTE: Lines ending in \ are part of a shell command that spreads over multiple
 lines, these can be copypasted as a whole (as opposed to line-by-line).**
 
 ## Update the system
@@ -28,7 +28,7 @@ apt-get -y install libminiupnpc-dev libdb++-dev libboost-system-dev \
           libboost-filesystem-dev libboost-program-options-dev \
           libboost-thread-dev libboost-chrono-dev libssl1.0-dev libevent-dev
 ```
-          
+
 ## Cash build
 
 ```
@@ -95,9 +95,9 @@ in the getinfo-output. If the numbers match, the installation is completed.
 ```
 cash-cli getinfo
 {
-  "version": 2040400,
-  "protocolversion": 71050,
-  "walletversion": 204000,
+  "version": 1000000,
+  "protocolversion": 70000,
+  "walletversion": 100000,
   "balance": 0.00000000,
   "privatesend_balance": 0.00000000,
   "blocks": 193619,
