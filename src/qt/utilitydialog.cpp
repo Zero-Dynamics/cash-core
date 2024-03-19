@@ -177,6 +177,10 @@ ShutdownWindow::ShutdownWindow(QWidget* parent, Qt::WindowFlags f) : QWidget(par
         tr("Cash is shutting down...") + "<br /><br />" +
         tr("Do not shut down the computer until this window disappears.")));
     setLayout(layout);
+
+    // Set background color & color using style sheet
+    setStyleSheet("background-color: #120006; color: #e5e4e2;");
+
 }
 
 QWidget* ShutdownWindow::showShutdownWindow(CashGUI* window)
