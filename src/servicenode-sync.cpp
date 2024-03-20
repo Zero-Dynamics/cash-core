@@ -359,7 +359,7 @@ void CServiceNodeSync::ProcessTick(CConnman& connman)
                 nRequestedServiceNodeAttempt++;
 
                 // ask node for all payment votes it has (new nodes will only return votes for future payments)
-                if (pnode->nVersion == 70900) {
+                if (pnode->nVersion == 70000) {
                     connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SERVICENODEPAYMENTSYNC, snpayments.GetStorageLimit()));
                 } else {
                     connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SERVICENODEPAYMENTSYNC));
