@@ -200,7 +200,7 @@ public:
     {
         READWRITE(nDenom);
         int nVersion = s.GetVersion();
-        if (nVersion == 70900 && (s.GetType() & SER_NETWORK)) {
+        if (nVersion == 70000 && (s.GetType() & SER_NETWORK)) {
             // converting from/to old format
             CTxIn txin{};
             if (ser_action.ForRead()) {
@@ -288,7 +288,7 @@ public:
     {
         READWRITE(tx);
         int nVersion = s.GetVersion();
-        if (nVersion == 70900 && (s.GetType() & SER_NETWORK)) {
+        if (nVersion == 70000 && (s.GetType() & SER_NETWORK)) {
             // converting from/to old format
             CTxIn txin{};
             if (ser_action.ForRead()) {
