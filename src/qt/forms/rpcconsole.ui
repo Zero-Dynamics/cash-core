@@ -595,7 +595,7 @@ QTabBar { alignment: left; }</string>
            </property>
            <property name="icon">
             <iconset resource="../cash.qrc">
-             <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/drkpurple_clear</iconset>
+             <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/tyrianpurple_clear</iconset>
            </property>
            <property name="iconSize">
             <size>

@@ -366,6 +366,9 @@
           <property name="text">
            <string>Tree mode</string>
           </property>
+          <property name="styleSheet">
+              <string>* { color: #66023C; }</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -378,6 +381,9 @@
           </property>
           <property name="text">
            <string>List mode</string>
+          </property>
+          <property name="styleSheet">
+              <string>* { color: #66023C; }</string>
           </property>
           <property name="checked">
            <bool>true</bool>

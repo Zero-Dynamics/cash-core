@@ -226,7 +226,7 @@ void CoinControlDialog::buttonToggleLockClicked()
             } else {
                 model->lockCoin(outpt);
                 item->setDisabled(true);
-                item->setIcon(COLUMN_CHECKBOX, QIcon(":/icons/" + theme + "/lock_closed"));
+                item->setIcon(COLUMN_CHECKBOX, QIcon(":/icons/" + theme + "/darkpurple_lock_closed"));
             }
             updateLabelLocked();
         }
@@ -311,7 +311,7 @@ void CoinControlDialog::lockCoin()
     COutPoint outpt(uint256S(contextMenuItem->text(COLUMN_TXHASH).toStdString()), contextMenuItem->text(COLUMN_VOUT_INDEX).toUInt());
     model->lockCoin(outpt);
     contextMenuItem->setDisabled(true);
-    contextMenuItem->setIcon(COLUMN_CHECKBOX, QIcon(":/icons/" + theme + "/lock_closed"));
+    contextMenuItem->setIcon(COLUMN_CHECKBOX, QIcon(":/icons/" + theme + "/darkpurple_lock_closed"));
     updateLabelLocked();
 }
 
@@ -628,7 +628,7 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
     }
 
     // turn labels "red"
-    l7->setStyleSheet((fDust) ? "color:red;" : "");
+    l7->setStyleSheet((fDust) ? "color:#800000;" : "");
 
     QString toolTipDust = tr("This label turns red if any recipient receives an amount smaller than the current dust threshold.");
 
@@ -778,7 +778,7 @@ void CoinControlDialog::updateView()
                 COutPoint outpt(txhash, out.i);
                 coinControl->UnSelect(outpt); // just to be sure
                 itemOutput->setDisabled(true);
-                itemOutput->setIcon(COLUMN_CHECKBOX, QIcon(":/icons/" + theme + "/lock_closed"));
+                itemOutput->setIcon(COLUMN_CHECKBOX, QIcon(":/icons/" + theme + "/darkpurple_lock_closed"));
             }
 
             // set checkbox

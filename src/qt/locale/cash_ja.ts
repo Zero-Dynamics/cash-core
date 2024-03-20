@@ -1381,8 +1381,8 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         </translation>
     </message>
     <message>
-        <source>Not enough compatible inputs to anonymize &lt;span style=&apos;color:red;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style=&apos;color:red;&apos;&gt;%2&lt;/span&gt; instead</source>
-        <translation>匿名化するのに十分な互換性のある入力&lt;span style=&apos;color:red;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;は匿名化 &lt;span style=&apos;color:red;&apos;&gt;%2&lt;/span&gt; 代わりに</translation>
+        <source>Not enough compatible inputs to anonymize &lt;span style=&apos;color:#800000;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style=&apos;color:#800000;&apos;&gt;%2&lt;/span&gt; instead</source>
+        <translation>匿名化するのに十分な互換性のある入力&lt;span style=&apos;color:#800000;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;は匿名化 &lt;span style=&apos;color:#800000;&apos;&gt;%2&lt;/span&gt; 代わりに</translation>
     </message>
     <message>
         <source>Overall progress</source>

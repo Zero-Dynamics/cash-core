@@ -616,7 +616,7 @@ border-style:solid;</string>
                <widget class="QPushButton" name="privateSendAuto">
                 <property name="icon">
                  <iconset resource="../cash.qrc">
-                  <normaloff>:/icons/drk/tx_mix</normaloff>:/icons/drk/tx_mix</iconset>
+                  <normaloff>:/icons/drk/tx_inout</normaloff>:/icons/drk/tx_inout</iconset>
                 </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -719,7 +719,10 @@ border-style:solid;</string>
                </font>
               </property>
               <property name="text">
-               <string>Recent transactions</string>
+                  <string>Recent transactions</string>
+              </property>
+              <property name="styleSheet">
+                  <string>* { color: #440128; }</string>
               </property>
              </widget>
             </item>

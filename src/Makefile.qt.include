@@ -216,15 +216,34 @@ RES_ICONS = \
   qt/res/icons/drk/connect2_16.svg \
   qt/res/icons/drk/connect3_16.svg \
   qt/res/icons/drk/connect4_16.svg \
+  qt/res/icons/drk/darkpurple_bdap.svg \
+  qt/res/icons/drk/darkpurple_clock1.svg \
+  qt/res/icons/drk/darkpurple_clock2.svg \
+  qt/res/icons/drk/darkpurple_clock3.svg \
+  qt/res/icons/drk/darkpurple_clock4.svg \
+  qt/res/icons/drk/darkpurple_clock5.svg \
+  qt/res/icons/drk/darkpurple_eye.svg \
+  qt/res/icons/drk/darkpurple_fluid.svg \
+  qt/res/icons/drk/darkpurple_lock_closed.svg \
+  qt/res/icons/drk/darkpurple_lock_open.svg \
+  qt/res/icons/drk/darkpurple_transaction0.svg \
+  qt/res/icons/drk/darkpurple_transaction2.svg \
+  qt/res/icons/drk/darkpurple_transaction_abandoned.svg \
+  qt/res/icons/drk/darkpurple_tx_inout.svg \
+  qt/res/icons/drk/darkpurple_tx_input.svg \
+  qt/res/icons/drk/darkpurple_tx_mined.svg \
+  qt/res/icons/drk/darkpurple_tx_output.svg \
+  qt/res/icons/drk/darkpurple_tx_staked.svg \
+  qt/res/icons/drk/darkpurple_verify.svg \
   qt/res/icons/drk/debugwindow.svg \
-  qt/res/icons/drk/drkpurple_add.svg \
-  qt/res/icons/drk/drkpurple_clear.svg \
-  qt/res/icons/drk/drkpurple_editpaste.svg \
-  qt/res/icons/drk/drkpurple_address-book.svg \
-  qt/res/icons/drk/drkpurple_editcopy.svg \
-  qt/res/icons/drk/drkpurple_eye.svg \
-  qt/res/icons/drk/drkpurple_transaction_abandoned.svg \
-  qt/res/icons/drk/drkpurple_remove.svg \
+  qt/res/icons/drk/tyrianpurple_add.svg \
+  qt/res/icons/drk/tyrianpurple_clear.svg \
+  qt/res/icons/drk/tyrianpurple_editpaste.svg \
+  qt/res/icons/drk/tyrianpurple_address-book.svg \
+  qt/res/icons/drk/tyrianpurple_editcopy.svg \
+  qt/res/icons/drk/tyrianpurple_eye.svg \
+  qt/res/icons/drk/tyrianpurple_transaction_abandoned.svg \
+  qt/res/icons/drk/tyrianpurple_remove.svg \
   qt/res/icons/drk/cash_testnet.ico \
   qt/res/icons/drk/cash_testnet.png \
   qt/res/icons/drk/cash.png \
@@ -238,8 +257,8 @@ RES_ICONS = \
   qt/res/icons/drk/eye.svg \
   qt/res/icons/drk/filesave.svg \
   qt/res/icons/drk/fluid.svg \
-  qt/res/icons/drk/hd_disabled.png \
-  qt/res/icons/drk/hd_enabled.png \
+  qt/res/icons/drk/hd_disabled.svg \
+  qt/res/icons/drk/hd_enabled.svg \
   qt/res/icons/drk/history.svg \
   qt/res/icons/drk/key.svg \
   qt/res/icons/drk/information.svg \
@@ -261,10 +280,9 @@ RES_ICONS = \
   qt/res/icons/drk/transaction2.svg \
   qt/res/icons/drk/tx_inout.svg \
   qt/res/icons/drk/tx_input.svg \
-  qt/res/icons/drk/tx_fee.svg \
   qt/res/icons/drk/tx_mined.svg \
-  qt/res/icons/drk/tx_mix.svg \
   qt/res/icons/drk/tx_output.svg \
+  qt/res/icons/drk/tx_staked.svg \
   qt/res/icons/drk/unit_0dync.png \
   qt/res/icons/drk/unit_m0dync.png \
   qt/res/icons/drk/unit_satoshis.png \
@@ -349,12 +367,12 @@ RES_IMAGES = \
   qt/res/images/drk/about.png \
   qt/res/images/drk/checked.svg \
   qt/res/images/drk/drk_walletFrame.png \
-  qt/res/images/drk/drkpurple_downArrow_small.svg \
-  qt/res/images/drk/drkpurple_downArrow.svg \
-  qt/res/images/drk/drkpurple_leftArrow_small.svg \
-  qt/res/images/drk/drkpurple_qtreeview_selected.svg \
-  qt/res/images/drk/drkpurple_rightArrow_small.svg \
-  qt/res/images/drk/drkpurple_upArrow_small.svg \
+  qt/res/images/drk/tyrianpurple_downArrow_small.svg \
+  qt/res/images/drk/tyrianpurple_downArrow.svg \
+  qt/res/images/drk/tyrianpurple_leftArrow_small.svg \
+  qt/res/images/drk/tyrianpurple_qtreeview_selected.svg \
+  qt/res/images/drk/tyrianpurple_rightArrow_small.svg \
+  qt/res/images/drk/tyrianpurple_upArrow_small.svg \
   qt/res/images/drk/cash_logo_horizontal.png \
   qt/res/images/drk/splash_testnet.png \
   qt/res/images/drk/splash.png \

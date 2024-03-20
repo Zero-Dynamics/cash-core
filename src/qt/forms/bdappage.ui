@@ -602,7 +602,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/drkpurple_remove</normaloff>:/icons/drk/drkpurple_remove</iconset>
+                 <normaloff>:/icons/drk/tyrianpurple_remove</normaloff>:/icons/drk/tyrianpurple_remove</iconset>
                </property>
               </widget>
              </item>
@@ -622,7 +622,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/drkpurple_transaction_abandoned</normaloff>:/icons/drk/drkpurple_transaction_abandoned</iconset>
+                 <normaloff>:/icons/drk/tyrianpurple_transaction_abandoned</normaloff>:/icons/drk/tyrianpurple_transaction_abandoned</iconset>
                </property>
               </widget>
              </item>
@@ -765,7 +765,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/drkpurple_remove</normaloff>:/icons/drk/drkpurple_remove</iconset>
+                 <normaloff>:/icons/drk/tyrianpurple_remove</normaloff>:/icons/drk/tyrianpurple_remove</iconset>
                </property>
               </widget>
              </item>
@@ -919,7 +919,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/drkpurple_remove</normaloff>:/icons/drk/drkpurple_remove</iconset>
+                 <normaloff>:/icons/drk/tyrianpurple_remove</normaloff>:/icons/drk/tyrianpurple_remove</iconset>
                </property>
               </widget>
              </item>

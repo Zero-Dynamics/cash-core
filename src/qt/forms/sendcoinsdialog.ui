@@ -137,7 +137,7 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color:red;font-weight:bold;</string>
+             <string notr="true">color:#800000;font-weight:bold;</string>
             </property>
             <property name="text">
              <string>Insufficient funds!</string>
@@ -743,7 +743,7 @@
                <widget class="QPushButton" name="buttonChooseFee">
                 <property name="icon">
                  <iconset resource="../cash.qrc">
-                  <normaloff>:/icons/drk/tx_fee</normaloff>:/icons/drk/tx_fee</iconset>
+                  <normaloff>:/icons/drk/tx_output</normaloff>:/icons/drk/tx_output</iconset>
                  </property>
                 <property name="text">
                  <string>Choose...</string>

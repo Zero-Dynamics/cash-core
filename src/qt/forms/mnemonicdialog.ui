@@ -84,7 +84,7 @@ Your old account wallet file will be renamed to wallat.dat.before-mnemonic-impor
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/drkpurple_editpaste</normaloff>:/icons/drk/drkpurple_editpaste</iconset>
+               <normaloff>:/icons/drk/tyrianpurple_editpaste</normaloff>:/icons/drk/tyrianpurple_editpaste</iconset>
              </property>
              <property name="iconSize">
               <size>

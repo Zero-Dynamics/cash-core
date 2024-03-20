@@ -3,7 +3,7 @@
    version="1.1"
    viewBox="0 0 256 256"
    id="svg1"
-   sodipodi:docname="drkpurple_eye.svg"
+   sodipodi:docname="tyrianpurple_clear.svg"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -21,24 +21,18 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="4.5820312"
-     inkscape:cx="128"
+     inkscape:cx="127.89088"
      inkscape:cy="128"
-     inkscape:window-width="1920"
-     inkscape:window-height="1129"
-     inkscape:window-x="3432"
+     inkscape:window-width="3440"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg1" />
   <title
-     id="title1">eye</title>
+     id="title1">quit</title>
   <path
-     d="m244.38 124.76c-15.93-23.76-35.38-44.04-60.56-58.06-33.89-18.85-68.77-20.61-103.95-4-29.15 13.85-50.87 36.14-68.65 62.61-1.47 2.2-1 3.84 0.3 5.84 12.64 19 27.79 35.6 46.3 49 21 15.24 44.18 24.1 71.28 24.47a112.24 112.24 0 0 0 45.57-10.62c29.79-14.06 52.12-36.38 70.17-63.45 1.53-2.25 0.82-3.87-0.46-5.79zm-116.38 55.13a50.68 50.68 0 1 1 50.68-50.68 50.68 50.68 0 0 1-50.68 50.68z"
+     d="m 190.70596,173.67463 a 12.742674,12.742674 0 0 1 0,17.96898 l -0.068,0.068 a 12.742674,12.742674 0 0 1 -17.96898,0 l -44.91679,-44.91679 -44.916798,44.91112 a 12.742674,12.742674 0 0 1 -17.968985,0 l -0.06802,-0.068 a 12.742674,12.742674 0 0 1 0,-17.96898 L 109.71516,128.75217 64.798366,83.835372 a 12.742674,12.742674 0 0 1 0,-17.968985 l 0.06802,-0.06802 a 12.742674,12.742674 0 0 1 17.968985,0 l 44.916799,44.916793 44.92246,-44.916793 a 12.742674,12.742674 0 0 1 17.96898,0 l 0.068,0.06802 a 12.742674,12.742674 0 0 1 0,17.968985 l -44.91679,44.916798 z"
      id="path1"
-     style="fill:#66023c;fill-opacity:1" />
-  <circle
-     cx="128"
-     cy="128"
-     r="22.7"
-     id="circle1"
-     style="fill:#66023c;fill-opacity:1" />
+     style="fill:#66023c;fill-opacity:1;stroke-width:0.566845" />
 </svg>

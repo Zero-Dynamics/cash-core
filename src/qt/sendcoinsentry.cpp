@@ -38,9 +38,9 @@ SendCoinsEntry::SendCoinsEntry(const PlatformStyle* _platformStyle, QWidget* par
     // These icons are needed on Mac also!
     ui->addressBookButton->setIcon(QIcon(":/icons/" + theme + "/address-book"));
     ui->pasteButton->setIcon(QIcon(":/icons/" + theme + "/editpaste"));
-    ui->deleteButton->setIcon(QIcon(":/icons/" + theme + "/drkpurple_remove"));
-    ui->deleteButton_is->setIcon(QIcon(":/icons/" + theme + "/drkpurple_remove"));
-    ui->deleteButton_s->setIcon(QIcon(":/icons/" + theme + "/drkpurple_remove"));
+    ui->deleteButton->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
+    ui->deleteButton_is->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
+    ui->deleteButton_s->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
 
     // normal cash address field
     GUIUtil::setupAddressWidget(ui->payTo, this);

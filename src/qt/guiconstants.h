@@ -23,11 +23,11 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 #define STYLE_INVALID "background:#E16082"
 
 /* Transaction list -- unconfirmed transaction */
-#define COLOR_UNCONFIRMED QColor(128, 128, 128)
+#define COLOR_UNCONFIRMED QColor(162, 162, 162)
 /* Transaction list -- negative amount */
-#define COLOR_NEGATIVE QColor(255, 0, 0)
+#define COLOR_NEGATIVE QColor(128, 0, 0)
 /* Transaction list -- bare address (without label) */
-#define COLOR_BAREADDRESS QColor(140, 140, 140)
+#define COLOR_BAREADDRESS QColor(136, 136, 136)
 /* Transaction list -- TX status decoration - open until date */
 #define COLOR_TX_STATUS_OPENUNTILDATE QColor(64, 64, 255)
 /* Transaction list -- TX status decoration - offline */
@@ -35,15 +35,15 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /* Transaction list -- TX status decoration - danger, tx needs attention */
 #define COLOR_TX_STATUS_DANGER QColor(200, 100, 100)
 /* Transaction list -- TX status decoration - default color */
-#define COLOR_BLACK QColor(0, 0, 0)
+#define COLOR_BLACK QColor(18, 0, 6)
 /* Transaction list -- TX status decoration - Locked by InstantSend (Dark Blue) */
 #define COLOR_TX_STATUS_LOCKED QColor(13, 81, 140)
 /* Transaction list -- TX status decoration - Fluid Transaction (Light Blue) */
-#define COLOR_FLUID_TX QColor(11, 129, 158)
+#define COLOR_FLUID_TX QColor(0, 35, 102)
 /* Transaction list -- TX status decoration - ServiceNode Reward (Purple)*/
-#define COLOR_SERVICENODE_REWARD QColor(150, 20, 150)
+#define COLOR_SERVICENODE_REWARD QColor(102, 2, 60)
 /* Transaction list -- TX status decoration - Generated (Gold) */
-#define COLOR_GENERATED QColor(156, 123, 19)
+#define COLOR_GENERATED QColor(207, 181, 59)
 /* Transaction list -- TX status decoration - orphan (Light Gray) */
 #define COLOR_ORPHAN QColor(211, 211, 211)
 

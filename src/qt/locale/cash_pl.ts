@@ -1717,8 +1717,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         </translation>
     </message>
     <message>
-        <source>Not enough compatible inputs to anonymize &lt;span style=&apos;color:red;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style=&apos;color:red;&apos;&gt;%2&lt;/span&gt; instead</source>
-        <translation>Nie ma wystraczająco kompatybilnych wkładów do anonimizacji&lt;span styl=&apos;color:czerwony;&apos;&gt;%1&lt;/span&gt;,&lt;br/&gt; nastąpi anonimizowanie &lt;span style=&apos;color:red;&apos;&gt;%2&lt;/span&gt; zamiast</translation>
+        <source>Not enough compatible inputs to anonymize &lt;span style=&apos;color:#800000;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style=&apos;color:#800000;&apos;&gt;%2&lt;/span&gt; instead</source>
+        <translation>Nie ma wystraczająco kompatybilnych wkładów do anonimizacji&lt;span styl=&apos;color:czerwony;&apos;&gt;%1&lt;/span&gt;,&lt;br/&gt; nastąpi anonimizowanie &lt;span style=&apos;color:#800000;&apos;&gt;%2&lt;/span&gt; zamiast</translation>
     </message>
     <message>
         <source>Overall progress</source>

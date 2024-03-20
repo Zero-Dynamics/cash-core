@@ -80,11 +80,11 @@ void HashRateGraphWidget::drawHashRate(QPainter& painter)
         }
         path.lineTo(x, YMARGIN + h);
         if (graphType == MINER_CPU_HASHRATE || graphType == MINER_GPU_HASHRATE) {
-            painter.fillPath(path, QColor(0, 255, 0, 128)); //green
-            painter.setPen(Qt::red);
+            painter.fillPath(path, QColor(102, 2, 60, 160)); //Dark
+            painter.setPen(QColor(102, 2, 60, 255));
         } else if (graphType == NETWORK_HASHRATE) {
-            painter.fillPath(path, QColor(255, 0, 0, 128)); //red
-            painter.setPen(Qt::green);
+            painter.fillPath(path, QColor(229, 228, 226, 160)); //Light
+            painter.setPen(QColor(229, 228, 226, 255));
         }
         painter.drawPath(path);
     }

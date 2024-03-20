@@ -413,13 +413,13 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     case TransactionRecord::Fluid:
         return QIcon(":/icons/" + theme + "/fluid");
     case TransactionRecord::DNReward:
-        return QIcon(":/icons/" + theme + "/servicenode_network");
+        return QIcon(":/icons/" + theme + "/tx_staked");
     case TransactionRecord::Generated:
         return QIcon(":/icons/" + theme + "/tx_mined");
     case TransactionRecord::RecvWithPrivateSend:
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::RecvFromOther:
-        return QIcon(":/icons/" + theme + "/tx_input");
+        return QIcon(":/icons/" + theme + "/darkpurple_tx_input");
     case TransactionRecord::PrivateSend:
     case TransactionRecord::SendToAddress:
     case TransactionRecord::SendToOther:
@@ -578,34 +578,34 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord* wtx)
     case TransactionStatus::Offline:
         return COLOR_TX_STATUS_OFFLINE;
     case TransactionStatus::Unconfirmed:
-        return QIcon(":/icons/" + theme + "/transaction_0");
+        return QIcon(":/icons/" + theme + "/darkpurple_transaction_0");
     case TransactionStatus::Abandoned:
-        return QIcon(":/icons/" + theme + "/transaction_abandoned");
+        return QIcon(":/icons/" + theme + "/darkpurple_transaction_abandoned");
     case TransactionStatus::Confirming:
         switch (wtx->status.depth) {
         case 1:
-            return QIcon(":/icons/" + theme + "/transaction_1");
+            return QIcon(":/icons/" + theme + "/darkpurple_transaction_1");
         case 2:
-            return QIcon(":/icons/" + theme + "/transaction_2");
+            return QIcon(":/icons/" + theme + "/darkpurple_transaction_2");
         case 3:
-            return QIcon(":/icons/" + theme + "/transaction_3");
+            return QIcon(":/icons/" + theme + "/darkpurple_transaction_3");
         case 4:
-            return QIcon(":/icons/" + theme + "/transaction_4");
+            return QIcon(":/icons/" + theme + "/darkpurple_transaction_4");
         default:
-            return QIcon(":/icons/" + theme + "/transaction_5");
+            return QIcon(":/icons/" + theme + "/darkpurple_transaction_5");
         };
     case TransactionStatus::Confirmed:
-        return QIcon(":/icons/" + theme + "/transaction_confirmed");
+        return QIcon(":/icons/" + theme + "/darkpurple_transaction_confirmed");
     case TransactionStatus::Conflicted:
-        return QIcon(":/icons/" + theme + "/transaction_conflicted");
+        return QIcon(":/icons/" + theme + "/darkpurple_transaction_conflicted");
     case TransactionStatus::Immature: {
         int total = wtx->status.depth + wtx->status.matures_in;
         int part = (wtx->status.depth * 5 / total) + 1;
-        return QIcon(QString(":/icons/" + theme + "/transaction_%1").arg(part));
+        return QIcon(QString(":/icons/" + theme + "/darkpurple_transaction_%1").arg(part));
     }
     case TransactionStatus::MaturesWarning:
     case TransactionStatus::NotAccepted:
-        return QIcon(":/icons/" + theme + "/transaction_0");
+        return QIcon(":/icons/" + theme + "/darkpurple_transaction_0");
     default:
         return COLOR_BLACK;
     }
@@ -615,7 +615,7 @@ QVariant TransactionTableModel::txWatchonlyDecoration(const TransactionRecord* w
 {
     QString theme = GUIUtil::getThemeName();
     if (wtx->involvesWatchAddress)
-        return QIcon(":/icons/" + theme + "/eye");
+        return QIcon(":/icons/" + theme + "/darkpurple_eye");
     else
         return QVariant();
 }
@@ -624,7 +624,7 @@ QVariant TransactionTableModel::txInstantSendDecoration(const TransactionRecord 
 {
     if (wtx->status.lockedByInstantSend) {
         QString theme = GUIUtil::getThemeName();
-        return QIcon(":/icons/" + theme + "/verify");
+        return QIcon(":/icons/" + theme + "/darkpurple_verify");
     }
     return QVariant();
 }

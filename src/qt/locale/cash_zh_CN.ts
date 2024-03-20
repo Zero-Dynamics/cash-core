@@ -1557,8 +1557,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         </translation>
     </message>
     <message>
-        <source>Not enough compatible inputs to anonymize &lt;span style=&apos;color:red;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style=&apos;color:red;&apos;&gt;%2&lt;/span&gt; instead</source>
-        <translation>没有足够相容的输入来进行匿名处理&lt;span style=&apos;color:red;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;将匿名处理 &lt;span style=&apos;color:red;&apos;&gt;%2&lt;/span&gt; 作为代替</translation>
+        <source>Not enough compatible inputs to anonymize &lt;span style=&apos;color:#800000;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style=&apos;color:#800000;&apos;&gt;%2&lt;/span&gt; instead</source>
+        <translation>没有足够相容的输入来进行匿名处理&lt;span style=&apos;color:#800000;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;将匿名处理 &lt;span style=&apos;color:#800000;&apos;&gt;%2&lt;/span&gt; 作为代替</translation>
     </message>
     <message>
         <source>Overall progress</source>

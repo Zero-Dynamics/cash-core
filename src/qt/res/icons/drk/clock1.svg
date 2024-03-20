@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
 <svg
    version="1.1"
-   viewBox="0 0 256 256"
-   id="svg2"
-   sodipodi:docname="clock1.svg"
-   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   id="Ebene_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 255.99999 255.99999"
+   enable-background="new 0 0 841.9 841.9"
    xml:space="preserve"
+   sodipodi:docname="clock_0.svg"
+   width="256"
+   height="256"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
-     id="defs2" /><sodipodi:namedview
-     id="namedview2"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="6.4799708"
-     inkscape:cx="47.762561"
-     inkscape:cy="136.18889"
-     inkscape:window-width="3440"
-     inkscape:window-height="1369"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" /><title
-     id="title1">clock1</title><ellipse
-     style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#e5e4e2;stroke-width:25;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-     id="path4"
-     cx="128"
-     cy="128"
-     ry="104.88988"
-     rx="104.88985" /><rect
-     style="fill:#e5e4e2;fill-opacity:1;fill-rule:evenodd;stroke:#e5e4e2;stroke-width:16.8263;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-     id="rect6"
-     width="8.1737461"
-     height="73.173744"
-     x="123.91312"
-     y="58.913074"
-     ry="4.108664"
-     rx="4.0868731" /><rect
-     style="fill:#e5e4e2;fill-opacity:1;fill-rule:evenodd;stroke:#e5e4e2;stroke-width:15.5788;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-     id="rect7"
-     width="54.421227"
-     height="9.4211578"
-     x="123.28937"
-     y="123.28942"
-     ry="4.3005657"
-     rx="7.6965103" /></svg>
+   id="defs2" /><sodipodi:namedview
+   id="namedview2"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="1.1082076"
+   inkscape:cx="420.95001"
+   inkscape:cy="420.95001"
+   inkscape:window-width="3440"
+   inkscape:window-height="1369"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Ebene_1" />
+
+<g
+   id="g2"
+   transform="translate(-169.7,-292.9)"
+   style="stroke:none;stroke-opacity:1;fill:#e5e4e2;fill-opacity:1"><g
+     id="g1"
+     transform="matrix(0.43604914,0,0,0.43604914,167.88817,237.36692)"
+     style="stroke:none;stroke-opacity:1;fill:#e5e4e2;fill-opacity:1">
+	<path
+   d="m 297.6,677.3 c -68.5,0 -132.9,-26.7 -181.3,-75.1 -48.4,-48.4 -75,-112.8 -75,-181.3 0,-68.5 26.7,-132.9 75.1,-181.3 48.4,-48.4 112.8,-75.1 181.3,-75.1 68.5,0 132.9,26.7 181.3,75.1 48.4,48.4 75.1,112.8 75.1,181.3 0,68.5 -26.7,132.9 -75.1,181.3 -48.4,48.4 -112.9,75.1 -181.4,75.1 z m 0,-472.7 c -57.8,0 -112.1,22.5 -153,63.4 -40.9,40.9 -63.4,95.2 -63.4,153 0,57.8 22.5,112.1 63.4,153 40.9,40.9 95.2,63.4 153,63.4 57.8,0 112.1,-22.5 153,-63.4 40.9,-40.9 63.4,-95.2 63.4,-153 0,-57.8 -22.5,-112.1 -63.4,-153 -40.8,-40.9 -95.2,-63.4 -153,-63.4 z"
+   id="path1"
+   style="stroke:none;stroke-opacity:1;fill:#e5e4e2;fill-opacity:1" />
+</g><path
+     fill="#000000"
+     d="m 295.86859,434.72276 h 43.4305 c 6.49713,0 10.81402,-4.31689 10.81402,-10.81402 0,-6.49713 -4.31689,-10.81402 -10.81402,-10.81402 h -32.61648 v -54.41893 c 0,-6.49713 -4.31688,-10.81402 -10.81402,-10.81402 -6.49713,0 -10.81402,4.31689 -10.81402,10.81402 v 65.23295 c 0,5.40701 4.3605,10.81402 10.81402,10.81402 z"
+     id="path2"
+     style="stroke-width:0.436049;stroke:none;stroke-opacity:1;fill:#e5e4e2;fill-opacity:1" /></g>
+</svg>

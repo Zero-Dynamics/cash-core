@@ -377,7 +377,7 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent),
 #endif
 
     // Needed on Mac also
-    ui->clearButton->setIcon(QIcon(":/icons/drk/drkpurple_clear"));
+    ui->clearButton->setIcon(QIcon(":/icons/drk/tyrianpurple_clear"));
     ui->fontBiggerButton->setIcon(QIcon(":/icons/drk/fontbigger"));
     ui->fontSmallerButton->setIcon(QIcon(":/icons/drk/fontsmaller"));
 

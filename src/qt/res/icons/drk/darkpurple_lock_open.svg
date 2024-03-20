@@ -3,7 +3,7 @@
    version="1.1"
    viewBox="0 0 256 256"
    id="svg1"
-   sodipodi:docname="drkpurple_add.svg"
+   sodipodi:docname="lock_open.svg"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -21,18 +21,18 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="4.5820312"
-     inkscape:cx="128"
+     inkscape:cx="127.89088"
      inkscape:cy="128"
-     inkscape:window-width="1920"
-     inkscape:window-height="1129"
-     inkscape:window-x="3432"
+     inkscape:window-width="3440"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg1" />
   <title
-     id="title1">add</title>
+     id="title1">lock_open</title>
   <path
-     d="M128.79,10.15A117.63,117.63,0,1,0,246.27,128,117.38,117.38,0,0,0,128.79,10.15Zm62.46,130c-2.07,3.06-4.92,4.95-8.07,4.95H146.69v36.49a8.65,8.65,0,0,1-2,5.44c-2.86,3.55-8.44,6-14.86,6-6.13,0-11.49-2.2-14.45-5.49a8.8,8.8,0,0,1-2.45-5.92V145.1H76.4a9.26,9.26,0,0,1-6.83-3.36c-2.78-3.08-4.58-8-4.58-13.54,0-9.34,5.11-16.9,11.41-16.9h36.49V74.81c0-6.31,7.57-11.41,16.9-11.41a21.61,21.61,0,0,1,12,3.34c3.06,2.07,4.95,4.92,4.95,8.07V111.3h36.49c6.31,0,11.41,7.57,11.41,16.9A21.58,21.58,0,0,1,191.25,140.15Z"
+     d="M189,11.12h-21.3c-24.23,0-43.88,17.9-43.88,40V97H46.58a23.52,23.52,0,0,0-23.46,23.45v101a23.52,23.52,0,0,0,23.46,23.45H168.49A23.52,23.52,0,0,0,192,221.43v-101A23.51,23.51,0,0,0,168.49,97H153.21V61.88c0-12.81,7.4-23.2,21.46-23.2H182c12.82,0,19.44,8.65,21.2,19.9a4.26,4.26,0,0,0,0,.61v59.29c0,4.37,9.74,7.9,16.85,7.9s12.85-3.53,12.85-7.9V51.11C232.88,29,213.23,11.12,189,11.12ZM107.54,193.68a22.75,22.75,0,1,1,22.75-22.75A22.76,22.76,0,0,1,107.54,193.68Z"
      id="path1"
-     style="fill:#66023c;fill-opacity:1" />
+     style="fill:#440128;fill-opacity:1" />
 </svg>

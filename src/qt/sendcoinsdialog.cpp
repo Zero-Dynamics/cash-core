@@ -48,8 +48,8 @@ SendCoinsDialog::SendCoinsDialog(const PlatformStyle* _platformStyle, QWidget* p
         ui->clearButton->setIcon(QIcon());
         ui->sendButton->setIcon(QIcon());
     } else {
-        ui->addButton->setIcon(QIcon(":/icons/" + theme + "/drkpurple_add"));
-        ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/drkpurple_remove"));
+        ui->addButton->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_add"));
+        ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
         ui->sendButton->setIcon(QIcon(":/icons/" + theme + "/send"));
     }
 
