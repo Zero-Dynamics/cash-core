@@ -62,11 +62,11 @@
         <translation>Адреси за получаване</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Това са вашите Cash адреси за изпращане на плащания. Преди изпращане винаги проверявайте количеството и адреса за получаване на монетите.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Това са вашите Cash адреси за получаване на плащания. Препоръчително е да използвате нов адрес за всяка нова транзакция. </translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
         <translation>&amp;Изпращане</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Изпращане на монети към Cash адрес</translation>
     </message>
     <message>
@@ -355,7 +355,7 @@
         <translation>Подписване на &amp;съобщение...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Подпиши съобщения с твоите Cash адреси за да докажеш че ги притежаваш</translation>
     </message>
     <message>
@@ -363,7 +363,7 @@
         <translation>&amp;Проверка на съобщение...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Проверете съобщенията, за да сте сигурни че са подписани с определен Cash адрес</translation>
     </message>
     <message>
@@ -983,7 +983,7 @@ Address: %4
         <translation>Редактиране на адрес за изпращане</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Cash address.</source>
+        <source>The entered address "%1" is not a valid Cash debit address.</source>
         <translation>Въведеният адрес "%1" не е валиден Cash адрес.</translation>
     </message>
     <message>
@@ -1636,7 +1636,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Невалиден адрес за плащане %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>Грешка при анализ на URI! Това може да е следствие от неправилен Cash адрес или неправилно зададени URI параметри.</translation>
     </message>
     <message>
@@ -1734,7 +1734,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Сума</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Въведете Cash адрес (напр.%1)</translation>
     </message>
     <message>
@@ -2608,7 +2608,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Плати само минималната такса от %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Внимание: Невалиден Cash адрес</translation>
     </message>
     <message>
@@ -2631,7 +2631,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Плати &amp;На:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>Cash адресът да изпрати плащането към </translation>
     </message>
     <message>
@@ -2725,7 +2725,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Можете да подпишете съобщение като доказателство, че притежавате определен адрес. Бъдете внимателни и не подписвайте съобщения, които биха разкрили лична информация без вашето съгласие.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>Cash адресът да подпише съобщението</translation>
     </message>
     <message>
@@ -2757,7 +2757,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Копиране на текущия подпис в системния клипборд</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Подпиши съобщението за да докажеш че притежаваш този Cash адрес</translation>
     </message>
     <message>
@@ -2781,11 +2781,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Въведете подписания адрес, съобщението (уверете се, че сте копирали редовете, спациите, табовете и другите точно) и подпишете отдолу, за да удостоверите съобщението. Внимавайте да не вмъкнете излишни символи в подписа от това, което е в самото съобщение, за да избегнете риска от злонамерна външа намеса.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>Cash адресът ,с който е подписано съобщението</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Проверете съобщението, за да сте сигурни че е подписано с определен Cash адрес</translation>
     </message>
     <message>

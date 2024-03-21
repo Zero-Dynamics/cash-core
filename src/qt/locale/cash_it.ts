@@ -62,11 +62,11 @@
         <translation>Indirizzi di ricezione</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Questi sono i tuoi indirizzi Cash per inviare i pagamenti. Controlla sempre l'ammontare e l'indirizzo destinatario prima di inviare i cash.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Questi sono i tuoi indirizzi di Cash per ricevere i pagamenti. Si raccomanda di usare un nuovo indirizzo di ricezione per ogni operazione.</translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
         <translation>&amp;Invia</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Spedire cash ad un indirizzo Cash</translation>
     </message>
     <message>
@@ -355,7 +355,7 @@
         <translation>Firma il &amp;messaggio...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Firma i messaggi con il tuo indirizzo Cash per dimostrarne che li possiedi</translation>
     </message>
     <message>
@@ -363,7 +363,7 @@
         <translation>&amp;Verifica messaggio...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Verificare i messaggi per assicurarsi che sono firmati con gli indirizzi specificati di Cash</translation>
     </message>
     <message>
@@ -948,7 +948,7 @@ Indirizzo: %4
         <translation>Modifica indirizzo d'invio</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Cash address.</source>
+        <source>The entered address "%1" is not a valid Cash debit address.</source>
         <translation>L'indirizzo inserito "%1" non é un indirizzo Cash valido</translation>
     </message>
     <message>
@@ -1580,7 +1580,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Invalido indirizzo di pago %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>Impossibile interpretare l'URI! La causa puó essere un indirizzo Cash non valido o parametri URI non corretti.</translation>
     </message>
     <message>
@@ -1662,7 +1662,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Importo</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Inserire un indirizzo Cash (e.g. %1)</translation>
     </message>
     <message>
@@ -2476,7 +2476,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Pagare solo la minima commissione di %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>ATTENZIONE: Indirizzo Cash non valido</translation>
     </message>
     <message>
@@ -2503,7 +2503,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Paga &amp;a:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>L'indirizzo Cash per inviare il pagamento a </translation>
     </message>
     <message>
@@ -2593,7 +2593,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Puoi firmare messaggi con i tuoi indirizzi in modo da dimostrarne il possesso. Presta attenzione a non firmare dichiarazioni vaghe, attacchi di phishing potrebbero cercare di spingerti ad apporre la tua firma su di esse. Firma solo dichiarazioni completamente dettagliate e delle quali condividi in pieno il contenuto.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>L'indirizzo Cash con cui firmare il messaggio</translation>
     </message>
     <message>
@@ -2625,7 +2625,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Copia la firma corrente nella clipboard</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Firma il mssaggio per dimostrare il possesso di questo indirizzo Cash</translation>
     </message>
     <message>
@@ -2649,11 +2649,11 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Inserisci l'indirizzo del firmatario, il messaggio (assicurati di copiare esattamente anche i ritorni a capo, gli spazi, le tabulazioni, etc..) e la firma qui sotto, per verificare il messaggio. Presta attenzione a non vedere nella firma più di quanto non sia riportato nel messaggio stesso, per evitare di cadere vittima di attacchi di tipo man-in-the-middle.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>L'indirizzo Cash con cui era firmato il messaggio</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Verifica il messaggio per assicurarti sia stato firmato con l'indirizzo Cash specificato</translation>
     </message>
     <message>

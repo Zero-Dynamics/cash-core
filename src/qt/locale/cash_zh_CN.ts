@@ -62,11 +62,11 @@
         <translation>正在接收地址</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>这些是你要付款过去的动态币地址。在付款之前，务必检查金额和收款地址是否正确。</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>这些是你用来收款的动态币地址。建议在每次交易时，都使用一个新的收款地址。</translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
         <translation>发送(&amp;S)</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>发送币至动态币地址</translation>
     </message>
     <message>
@@ -355,7 +355,7 @@
         <translation>消息签名(&amp;M)...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>用动态币地址签署讯息来证明地址是你的</translation>
     </message>
     <message>
@@ -363,7 +363,7 @@
         <translation>验证消息(&amp;V)...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>验证讯息是用来确定讯息是用指定的动态币地址签署的</translation>
     </message>
     <message>
@@ -983,7 +983,7 @@ Address: %4
         <translation>编辑发送地址</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
         <translation>输入的地址&quot;%1&quot;不是有效的动态币地址。</translation>
     </message>
     <message>
@@ -1634,7 +1634,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>无效的付款地址 %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>链接不能被解析! 原因可能是无效的动态币地址或输入的链接有错。</translation>
     </message>
     <message>
@@ -1720,7 +1720,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>金额</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>输入动态币地址(e.g. %1)</translation>
     </message>
     <message>
@@ -2586,7 +2586,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>只付最低手续费%1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>警告：无效的动态币地址</translation>
     </message>
     <message>
@@ -2613,7 +2613,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>付给(&amp;T)：</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>选择发款地址</translation>
     </message>
     <message>
@@ -2703,7 +2703,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>您可以用你的地址对消息进行签名，以证明您是该地址的所有人。注意不要对模棱两可的消息签名，以免遭受钓鱼式攻击。请确保消息内容准确的表达了您的真实意愿。</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>对此地址进行签名</translation>
     </message>
     <message>
@@ -2735,7 +2735,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>复制当前签名至剪切板</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>签署信息证明你拥有此动态币地址</translation>
     </message>
     <message>
@@ -2759,11 +2759,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>在下面输入签名地址，消息（请确保换行符、空格符、制表符等等一个不漏）和签名以验证消息。请确保签名信息准确，提防中间人攻击。</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>已签名的地址</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>验证信息用来确保此被签署信息对应相对的动态币地址</translation>
     </message>
     <message>

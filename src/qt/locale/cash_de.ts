@@ -62,11 +62,11 @@
         <translation>Empfangsadressen</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Das sind Ihre Cash Adressen zum Durchführen von Überweisungen. Überprüfen Sie immer den Betrag und die Empfangsadresse, bevor Sie die Coins versenden</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Das sind Ihre Cash Adressen zum Empfangen von Zahlungen. Es wird empfohlen, für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
     </message>
     <message>
@@ -251,7 +251,7 @@
         <translation>&amp;Senden</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Coins an eine Cash Adresse senden</translation>
     </message>
     <message>
@@ -367,7 +367,7 @@
         <translation>Nachricht &amp;signieren...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Signieren der Nachricht mit Ihrer Cash Adresse um zeigen, daß Sie der Inhaber sind</translation>
     </message>
     <message>
@@ -375,7 +375,7 @@
         <translation>&amp;Nachricht verifizieren...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Nachrichten verifizieren um sicherzustellen, dass diese mit spezifizierten Cash Adressen signiert worden sind</translation>
     </message>
     <message>
@@ -1035,7 +1035,7 @@ Adresse: %4
         <translation>Zahlungsadresse bearbeiten</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
         <translation>Die eingegebene Adresse &quot;%1&quot; ist keine gültige Cash Adresse.</translation>
     </message>
     <message>
@@ -1798,7 +1798,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Ungültige Zahlungsadresse %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>URI kann nicht zugeordnet werden! Dies kann durch eine ungültige Cash Adresse oder durch fehlerhafte URI Parameter verursacht werden.</translation>
     </message>
     <message>
@@ -1896,7 +1896,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Betrag</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Cash Adresse eingeben (zB. %1)</translation>
     </message>
     <message>
@@ -2785,7 +2785,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Nur die minimalen Gebühren von %1 bezahlen</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Warnung: Ungültige Cash Adresse</translation>
     </message>
     <message>
@@ -2812,7 +2812,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Zahlungsempfänger:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>Die Cash Adresse, an welcher überwiesen werden soll</translation>
     </message>
     <message>
@@ -2920,7 +2920,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Sie können Nachrichten mit Ihren Adressen signieren, um Ihren Besitz nachzuweisen . Seien Sie vorsichtig und signieren Sie nichts Unbekanntes, da Pishingangriffe versuchen Sie auszutricksen, um mit Ihrer Identität zu signieren . Signieren Sie nur vollständige und detailierte Mitteilungen, mit denen Sie einverstanden sind.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>Die Cash Adresse, mit welcher die Nachricht signiert werden soll</translation>
     </message>
     <message>
@@ -2952,7 +2952,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Kopieren der aktuellen Signatur in den Zwischenspeicher des Systems.</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Signieren der Nachricht um zu beweisen, dass Sie der Besitzer sind </translation>
     </message>
     <message>
@@ -2976,11 +2976,11 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Signierte Adresse, Nachricht (Sicherstellen, daß Sie Zeilenumbrüche, Leerzeichen, Tabulatoren usw. genau kopieren.) und die Signatur unterhalb einfügen um die Nachricht zu verifizieren. Beachten Sie  in der Signatur nicht mehr einzulesen, als in der signierten Nachricht selbst enthalten ist, um nicht von Man-In-the-Middle Angriffe ausgetrickst zu werden</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>Die Cash Adresse, mit welcher die Nachricht signiert wurde</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Verifizieren der Nachricht, um sicherzustellen, dass diese mit der spezifischen Cash Adresse signiert wurde</translation>
     </message>
     <message>

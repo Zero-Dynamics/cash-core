@@ -62,11 +62,11 @@
         <translation>收款位址</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>這些是你要付款過去的達世幣位址。在付錢之前，務必要檢查金額和收款位址是否正確。</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>這些是你用來收款的達世幣位址。建議在每次交易時，都使用一個新的收款位址。</translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
         <translation>發送(&amp;S)</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>付錢給一個達世幣位址</translation>
     </message>
     <message>
@@ -355,7 +355,7 @@
         <translation>簽署訊息(&amp;M)...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>用達世幣位址簽署訊息來證明位址是你的</translation>
     </message>
     <message>
@@ -363,7 +363,7 @@
         <translation>驗證訊息(&amp;V)...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>驗證訊息是用來確定訊息是用指定的達世幣位址簽署的</translation>
     </message>
     <message>
@@ -943,7 +943,7 @@ Address: %4
         <translation>編輯付款位址</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Cash address.</source>
+        <source>The entered address "%1" is not a valid Cash debit address.</source>
         <translation>輸入的位址 %1 並不是有效的達世幣位址。</translation>
     </message>
     <message>
@@ -1572,7 +1572,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>無效的付款位址 %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>沒辦法解析 URI 位址！可能是因為達世幣位址無效，或是 URI 參數格式錯誤。</translation>
     </message>
     <message>
@@ -1658,7 +1658,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>金額</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>輸入達世幣位址 (例如 %1)</translation>
     </message>
     <message>
@@ -2452,7 +2452,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>只付最低手續費 %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>警告: 無效的達世幣位址</translation>
     </message>
     <message>
@@ -2475,7 +2475,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>付給:(&amp;T)</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>接收付款的達世幣位址</translation>
     </message>
     <message>
@@ -2565,7 +2565,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>你可以用自己的位址簽署訊息，來證明你對位址的所有權。但是請小心，不要簽署語意含糊不清的內容，因為釣魚式詐騙可能會用騙你簽署的手法來冒充是你。只有在語句中的細節你都同意時才簽署。</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>用來簽署訊息的達世幣位址</translation>
     </message>
     <message>
@@ -2597,7 +2597,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>複製目前的簽章到系統剪貼簿</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>簽署這個訊息來證明這個達世幣位址是你的</translation>
     </message>
     <message>
@@ -2621,11 +2621,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>請在下面輸入簽署的位址，訊息(請確定完整複製了所包含的換行，空格，跳位符號等等)，以及簽章，來驗證這個訊息。請小心，除了訊息內容以外，不要對簽章本身過度解讀，以避免被用「中間人攻擊法」詐騙。</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>簽署這個訊息的達世幣位址</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>驗證這個訊息來確定是用指定的達世幣位址簽署的</translation>
     </message>
     <message>
@@ -4053,7 +4053,7 @@ https://www.transifex.com/projects/p/cash/</translation>
     <message>
         <source>Time:</source>
         <translation>時間：</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>截止日期：</translation>

@@ -62,11 +62,11 @@
         <translation>Địa chỉ nhận</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Đây là các địa chỉ Cash của bạn để gửi thanh toán. Luôn luôn kiểm tra số tiền và địa chỉ nhận trước khi bạn gửi tiền.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Đây là các địa chỉ Cash của bạn để nhận thanh toán. Gợi ý là sử dụng một địa chỉ nhận mới cho mỗi giao dịch.</translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
         <translation>&amp;Gửi</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Gửi tiền vào địa chỉ Cash</translation>
     </message>
     <message>
@@ -355,7 +355,7 @@
         <translation>Ký vào &amp;thông điệp...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Ký vào thông điệp với địa chỉ Cash để chứng minh bạn là chủ của chúng</translation>
     </message>
     <message>
@@ -363,7 +363,7 @@
         <translation>&amp;Kiểm tra thông điệp...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Kiểm tra thông điệp để đảm bảo rằng nó đã được ký bằng địa chỉ Cash nhất định</translation>
     </message>
     <message>
@@ -995,7 +995,7 @@ Kiểu: %3
         <translation>Sửa địa chỉ gửi</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Cash address.</source>
+        <source>The entered address "%1" is not a valid Cash debit address.</source>
         <translation>Địa chỉ vừa nhập "%1" không phải địa chỉ Cash hợp lệ.</translation>
     </message>
     <message>
@@ -1685,7 +1685,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Địa chỉ thanh toán không hợp lệ %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>URI không thể phân tích. Nó có thể bởi địa chỉ Cash không hợp lệ hoặc thông số URI dị hình.</translation>
     </message>
     <message>
@@ -1771,7 +1771,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Số lượng</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Hãy nhập một địa chỉ Cash (VD: %1)</translation>
     </message>
     <message>
@@ -2653,7 +2653,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Thanh toán chỉ mức phí tối thiểu của %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Cảnh báo: Địa chỉ Cash không hợp lệ</translation>
     </message>
     <message>
@@ -2680,7 +2680,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Trả &amp;Cho</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>Địa chỉ Cash để gửi thanh toán</translation>
     </message>
     <message>
@@ -2770,7 +2770,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Bạn có thể ký vào thông điệp với địa chỉ của bạn để chứng minh bạn là chủ của nó. Hãy cẩn thận không ký vào những gì mơ hồ, như là thứ lừa đảo để lừa bạn ký xác nhận của bạn vào đó cho họ. Chỉ ký vào những gì mà bạn hoàn thoàn đồng ý.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>Địa chỉ Cash để ký cho thông điệp</translation>
     </message>
     <message>
@@ -2802,7 +2802,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Copy chữ ký hiện tại vào bộ đệm của hệ thống</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Ký vào thông điệp để chứng tỏ bạn sở hữu địa chỉ Cash</translation>
     </message>
     <message>
@@ -2826,11 +2826,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Hãy nhập địa chỉ ký, thông điệp (hãy chắc chắn rằng bạn copy cả các dấu xuống dòng, dấu cách, tab,... một cách chính xác) và chữ ký dưới đây để xác thực cho thông điệp. Hãy cẩn thận không thêm vào chữ ký hơn so với bản thân nó trong thông điệp đã ký, để tránh bị đánh lừa bởi kiểu tấn công người trung gian.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>Địa chỉ Cash mà thông điệp được ký bởi</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Kiểm tra lại thông điệp để đảm bảo rằng nó được ký với địa chỉ Cash cụ thể</translation>
     </message>
     <message>
@@ -5144,7 +5144,7 @@ ví dụ: alertnotify=echo %%s | mail -s "Cash Alert" admin@foo.com
     <message>
         <source>Time:</source>
         <translation>Thời gian:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Ngày hết hạn:</translation>

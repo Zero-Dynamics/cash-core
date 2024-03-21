@@ -62,11 +62,11 @@
         <translation>Ontvangstadressen</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Dit zijn uw Cash adressen om betalingen mee te verzenden. Controleer altijd het bedrag en het ontvangstadres voordat u uw Cash verzendt.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Dit zijn uw Cash adressen om betalingen te ontvangen. Wij raden u aan om voor iedere transactie een nieuw adres aan te maken.</translation>
     </message>
     <message>
@@ -251,7 +251,7 @@
         <translation>&amp;Verzenden</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Munten verzenden naar een Cash adres</translation>
     </message>
     <message>
@@ -367,7 +367,7 @@
         <translation>Onderteken &amp;bericht...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Onderteken bericht met Cash adressen om aan te tonen dat u de eigenaar bent</translation>
     </message>
     <message>
@@ -375,7 +375,7 @@
         <translation>&amp;Verifieer bericht...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Verifieer berichten om te controleren of ze zijn ondertekend met opgegeven Cash adressen</translation>
     </message>
     <message>
@@ -989,11 +989,11 @@ Adres: %4
     </message>
     <message>
         <source>PrivateSend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Cash&apos;s configuration screen.</source>
-        <translation>PrivateSend is succesvol ingesteld op hoog (% 1 en 8 ronden). U kunt dit op elk moment wijzigen door het configuratiescherm van Cash&apos;s te openen.</translation>    
+        <translation>PrivateSend is succesvol ingesteld op hoog (% 1 en 8 ronden). U kunt dit op elk moment wijzigen door het configuratiescherm van Cash&apos;s te openen.</translation>
     </message>
     <message>
         <source>PrivateSend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Cash&apos;s configuration screen.</source>
-        <translation>PrivateSend is succesvol ingesteld op hoog (% 1 en 16 ronden). U kunt dit op elk moment wijzigen door het configuratiescherm van Cash&apos;s te openen.</translation>   
+        <translation>PrivateSend is succesvol ingesteld op hoog (% 1 en 16 ronden). U kunt dit op elk moment wijzigen door het configuratiescherm van Cash&apos;s te openen.</translation>
             </message>
 </context>
 <context>
@@ -1035,7 +1035,7 @@ Adres: %4
         <translation>Bewerk verzendadres</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
         <translation>Het ingevoerde adres &quot;%1&quot; is geen geldig dynamisch adres.</translation>
     </message>
     <message>
@@ -1789,7 +1789,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Ongeldig betaal adres %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>URI kan niet worden geparsed! Dit kan worden veroorzaakt door een ongeldig Cash adres of onjuist geformuleerde URI-parameters.</translation>
     </message>
     <message>
@@ -1887,7 +1887,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Bedrag</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Voer een dynamisch adres in  (bijv. %1)</translation>
     </message>
     <message>
@@ -2775,7 +2775,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Betaal de minimale vergoeding van %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Waarschuwing: ongeldig Cash adres</translation>
     </message>
     <message>
@@ -2802,7 +2802,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Betalen &amp;aan:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>Het Cash adres waarnaar de betaling moet worden verzonden</translation>
     </message>
     <message>
@@ -2910,7 +2910,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>U kunt berichten ondertekenen met uw adressen om te bewijzen dat u de eigenaar bent. Pas op dat u niets vaags ondertekent, want phishing-aanvallen kunnen u proberen te misleiden om uw identiteit aan hen te laten zien. Teken alleen volledig uitgewerkte verklaringen waarmee u instemt.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>Het Cash adres waarmee het bericht wordt ondertekend</translation>
     </message>
     <message>
@@ -2942,7 +2942,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Kopieer de huidige handtekening naar het systeemklembord</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Onderteken het bericht om te bewijzen dat u dit Cash adres bezit</translation>
     </message>
     <message>
@@ -2966,11 +2966,11 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Voer het ondertekeningsadres in, bericht (zorg ervoor dat u regelafbrekingen, spaties, tabbladen, ect. exact kopieert) en handtekening hieronder om het bericht te verifiëren. Zorg ervoor dat u niet meer leest in de handtekening dan in het ondertekende bericht zelf, om te voorkomen dat u wordt misleid door een man-in-the-middle-aanval.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>Het Cash adres waarop het bericht is ondertekend</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Het Cash adres waarop het bericht is ondertekend</translation>
     </message>
     <message>
@@ -5549,7 +5549,7 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
     <message>
         <source>Time:</source>
         <translation>Tijd:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Vervaldatum:</translation>

@@ -23,7 +23,7 @@ public:
     State validate(QString& input, int& pos) const;
 };
 
-/** Cash address widget validator, checks for a valid Cash address.
+/** Cash debit address widget validator, checks for a valid Cash debit address.
  */
 class DebitAddressCheckValidator : public QValidator
 {

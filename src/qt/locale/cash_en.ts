@@ -78,13 +78,13 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</translation>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</translation>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -326,8 +326,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Send coins to a Cash address</source>
-        <translation>Send coins to a Cash address</translation>
+        <source>Send coins to a Cash debit address</source>
+        <translation>Send coins to a Cash debit address</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -452,8 +452,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
-        <translation>Sign messages with your Cash addresses to prove you own them</translation>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
+        <translation>Sign messages with your Cash debit addresses to prove you own them</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -462,8 +462,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
-        <translation>Verify messages to ensure they were signed with specified Cash addresses</translation>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
+        <translation>Verify messages to ensure they were signed with specified Cash debit addresses</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -1195,8 +1195,8 @@ Address: %4
     </message>
     <message>
         <location line="+71"/>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
-        <translation>The entered address &quot;%1&quot; is not a valid Cash address.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
+        <translation>The entered address &quot;%1&quot; is not a valid Cash debit address.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2113,8 +2113,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+8"/>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
-        <translation>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
+        <translation>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -2221,8 +2221,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+110"/>
-        <source>Enter a Cash address (e.g. %1)</source>
-        <translation>Enter a Cash address (e.g. %1)</translation>
+        <source>Enter a Cash debit address (e.g. %1)</source>
+        <translation>Enter a Cash debit address (e.g. %1)</translation>
     </message>
     <message>
         <location line="+760"/>
@@ -3299,8 +3299,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+129"/>
-        <source>Warning: Invalid Cash address</source>
-        <translation>Warning: Invalid Cash address</translation>
+        <source>Warning: Invalid Cash debit address</source>
+        <translation>Warning: Invalid Cash debit address</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -3327,8 +3327,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The Cash address to send the payment to</source>
-        <translation>The Cash address to send the payment to</translation>
+        <source>The Cash debit address to send the payment to</source>
+        <translation>The Cash debit address to send the payment to</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -3444,8 +3444,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The Cash address to sign the message with</source>
-        <translation>The Cash address to sign the message with</translation>
+        <source>The Cash debit address to sign the message with</source>
+        <translation>The Cash debit address to sign the message with</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -3486,8 +3486,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Cash address</source>
-        <translation>Sign the message to prove you own this Cash address</translation>
+        <source>Sign the message to prove you own this Cash debit address</source>
+        <translation>Sign the message to prove you own this Cash debit address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3517,13 +3517,13 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The Cash address the message was signed with</source>
-        <translation>The Cash address the message was signed with</translation>
+        <source>The Cash debit address the message was signed with</source>
+        <translation>The Cash debit address the message was signed with</translation>
     </message>
     <message>
         <location line="+37"/>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
-        <translation>Verify the message to ensure it was signed with the specified Cash address</translation>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
+        <translation>Verify the message to ensure it was signed with the specified Cash debit address</translation>
     </message>
     <message>
         <location line="+3"/>

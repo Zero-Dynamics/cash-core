@@ -83,7 +83,7 @@ DebitAddressCheckValidator::DebitAddressCheckValidator(QObject* parent) : QValid
 QValidator::State DebitAddressCheckValidator::validate(QString& input, int& pos) const
 {
     Q_UNUSED(pos);
-    // Validate the passed Cash address
+    // Validate the passed Cash debit address
     const CTxDestination dest = DecodeDestination(input.toStdString());
     if (IsValidDestination(dest))
         return QValidator::Acceptable;

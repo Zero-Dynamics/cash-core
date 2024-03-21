@@ -62,11 +62,11 @@
         <translation>Adresa prijatia</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Toto sú Vaše Cash adresy pre posielanie platieb. Pred poslaním mincí vždy overte sumu a doručovaciu adresu.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Toto sú Vaše Cash adresy pre posielanie platieb. Pre každú transakciu sa doporučuje použiť novú doručovaciu adresu.</translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
         <translation>&amp;Odoslať</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Poslať mince na Cash adresu</translation>
     </message>
     <message>
@@ -355,7 +355,7 @@
         <translation>Podpísať &amp;správu...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Podpísať správy s Vašimi Cash adresami ako dôkaz že ich vlastníte</translation>
     </message>
     <message>
@@ -363,7 +363,7 @@
         <translation>Overiť správu</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Overiť správy pre uistenie, že boli podpísané zadanými Cash adresami</translation>
     </message>
     <message>
@@ -950,7 +950,7 @@ Adresa: %4</translation>
         <translation>Upraviť odosielaciu adresu</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Cash address.</source>
+        <source>The entered address "%1" is not a valid Cash debit address.</source>
         <translation>Zadaná adresa "%1" nie je platná Cash adresa.</translation>
     </message>
     <message>
@@ -1591,7 +1591,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Neplatná adresa platby %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>URI sa nedá analyzovať! Toto môže byť spôsobené neplatnou Cash adresou, alebo nesprávnym tvarom URI parametrov.</translation>
     </message>
     <message>
@@ -1677,7 +1677,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Suma</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Zadajte Cash adresu (e.g. %1)</translation>
     </message>
     <message>
@@ -2499,7 +2499,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Platiť iba minimálny poplatok %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Upozornenie: Neplatná Cash adresa</translation>
     </message>
     <message>
@@ -2522,7 +2522,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Zapla&amp;tiť:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>Cash adresa pre poslanie platby</translation>
     </message>
     <message>
@@ -2612,7 +2612,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Môžete podpísať správy svojou adresou a dokázať, že ju vlastníte. Buďte opatrní a podpíšte len prehlásenia s ktorými plne súhlasíte, nakoľko útoky typu "phishing" Vás môžu lákať k ich podpísaniu.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>Cash adresa na podpísanie správy</translation>
     </message>
     <message>
@@ -2644,7 +2644,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Kopírovať práve zvolenú adresu do systémového klipbordu</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Podpísať spravu aby ste dokázali, že vlastníte túto Cash adresu</translation>
     </message>
     <message>
@@ -2668,11 +2668,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Vložte podpisovaciu adresu, správu (uistite sa, že kopírujete ukončenia riadkov, medzery, odrážky, atď. presne) a podpis pod to na overenie adresy. Buďte opatrní a nečítajte ako podpísané viac než je v samotnej podpísanej správe a môžete sa tak vyhnúť podvodu mitm útokom.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>Adresa Cash s ktorou bola podpísaná správa</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Overiť správu pre uistenie, že bola podpísaná zadanou Cash adresou</translation>
     </message>
     <message>
@@ -4647,7 +4647,7 @@ napríklad: alertnotify=echo %%s | mail -s "Cash Upozornenie" admin@foo.com
     <message>
         <source>Time:</source>
         <translation>čas:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Dátum spotreby:</translation>

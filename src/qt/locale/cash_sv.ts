@@ -62,11 +62,11 @@
         <translation>Mottagaradresser</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Det här är dina Cash-adresser för att skicka betalningar. Kontrollera alltid summan och den mottagande adressen innan du skickar dina mynt.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Detta är dina Cash-adresser för att ta emot betalningar. Det rekommenderas att använda en ny mottagningsadress för varje transaktion.</translation>
     </message>
     <message>
@@ -252,7 +252,7 @@ Var vänlig och försök igen.</translation>
         <translation>&amp;Skicka</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Skicka Cash till en Cash adress</translation>
     </message>
     <message>
@@ -368,7 +368,7 @@ Var vänlig och försök igen.</translation>
         <translation>Signera &amp;meddelande...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Signera meddelanden med dina Cash-adresser för att bevisa att du äger dem</translation>
     </message>
     <message>
@@ -376,7 +376,7 @@ Var vänlig och försök igen.</translation>
         <translation>&amp;Verifiera meddelande...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Verifiera meddelanden för att vara säker på att de signerades med den angivna Cash adressen</translation>
     </message>
     <message>
@@ -993,11 +993,11 @@ Adres: %4
     </message>
     <message>
         <source>PrivateSend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Cash&apos;s configuration screen.</source>
-        <translation>PrivateSend har framgångsrikt ställts in till hög (% 1 och 8 rundor). Du kan ändra detta när som helst genom att öppna Cash&apos;s konfigurationsskärm.</translation>    
+        <translation>PrivateSend har framgångsrikt ställts in till hög (% 1 och 8 rundor). Du kan ändra detta när som helst genom att öppna Cash&apos;s konfigurationsskärm.</translation>
     </message>
     <message>
         <source>PrivateSend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Cash&apos;s configuration screen.</source>
-        <translation>PrivateSend har framgångsrikt ställts in till maximal (% 1 och 16 rundor). Du kan ändra detta när som helst genom att öppna Cash&apos;s konfigurationsskärm.</translation>   
+        <translation>PrivateSend har framgångsrikt ställts in till maximal (% 1 och 16 rundor). Du kan ändra detta när som helst genom att öppna Cash&apos;s konfigurationsskärm.</translation>
             </message>
 </context>
 <context>
@@ -1039,7 +1039,7 @@ Adres: %4
         <translation>Redigera sändningsadress</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
         <translation>Den angivna adressen &quot;%1&quot; är inte en giltig Cash adress.</translation>
     </message>
     <message>
@@ -1141,7 +1141,7 @@ Adres: %4
     	<translation>
 &lt;h3&gt;PrivateSend Grunderna&lt;/h3&gt;
 PrivateSend ger dig sann ekonomisk integritet genom att dölja ursprunget för dina pengar.
-Alla Cash i din plånbok består av olika &#39;ingångar&#39; 
+Alla Cash i din plånbok består av olika &#39;ingångar&#39;
 som du kan tänka på som separata, diskreta mynt.&lt;br&gt; PrivateSend använder en innovativ process för att blanda dina ingångar med ingångarna till två andra personer, utan att dina mynt någonsin lämnar din plånbok.
 Du behåller kontrollen över dina pengar hela tiden.&lt;hr&gt;&lt;b&gt;PrivateSend Processen fungerar så här:&lt;/b&gt;&lt;ol type=&#39;1&#39;&gt;&lt;li&gt;PrivateSend börjar genom att bryta dina transaktionsinsatser ner till standardbeteckningar.
 Dessa valörer är 0.001, 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC -- likt vanliga pengar du använder varje dag.&lt;/li&gt;
@@ -1804,7 +1804,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Ogiltig betalningsadress %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>URI kan inte parsas! Detta kan orsakas av en ogiltig Cash-adress eller felaktiga URI-parametrar.</translation>
     </message>
     <message>
@@ -1902,7 +1902,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Mängd</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Ange en Cash-adress (t.ex %1)</translation>
     </message>
     <message>
@@ -2788,7 +2788,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Betala endast minsta avgift på %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Varning: Ogiltig Cash adress</translation>
     </message>
     <message>
@@ -2815,7 +2815,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Betala &amp;Till:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>Cash adress att sända betalning till</translation>
     </message>
     <message>
@@ -2923,7 +2923,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Du kan skriva meddelanden med dina adresser för att bevisa att du äger dem. Var försiktig så att du inte loggar något vagt, eftersom phishing-attacker kan försöka lura dig om att underteckna din identitet över dem. Anteckna bara helt detaljerade uttalanden som du godkänner.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>Het Cash att signera meddelandet med</translation>
     </message>
     <message>
@@ -2955,7 +2955,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Kopiera signaturen till systemets Urklipp</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Signera meddelandet för att bevisa att du äger denna Cash Adress</translation>
     </message>
     <message>
@@ -2979,11 +2979,11 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Skriv in signeringsadressen, meddelandet (se till att du kopierar radbrytningar, mellanslag, flikar, etc.) och har med en underskrift nedan för att verifiera meddelandet. Var försiktig så att du inte läser mer in i signaturen än vad som står i det signerade meddelandet, för att undvika att bli lurad av en man-i-mitten attack.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>Het Cash som meddelandet signerades med</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Verifiera meddelandet för att vara säker på att det signerades med angiven Cash Adress</translation>
     </message>
     <message>
@@ -5562,7 +5562,7 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
     <message>
         <source>Time:</source>
         <translation>Tid:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Utgångsdatum:</translation>

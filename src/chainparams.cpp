@@ -205,9 +205,9 @@ public:
         // vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet02.dnsseeder.network"));
         // vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet03.dnsseeder.network"));
 
-        // Cash addresses start with 'C'
+        // Cash debit addresses start with 'C'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 28);
-        // Cash script addresses start with 'M'
+        // Cash script debit addresses start with 'M'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 50);
         // Cash private keys start with 'P'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 152);
@@ -215,7 +215,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         // Cash BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
-        // Cash Stealth Address start with 'L'
+        // Cash Stealth debit address start with 'L'
         base58Prefixes[STEALTH_ADDRESS] = {0x0F};
         // Cash BIP44 coin type is '5'
         nExtCoinType = 5;
@@ -349,9 +349,9 @@ public:
         //vSeeds.push_back(CDNSSeedData("",  ""));
         //vSeeds.push_back(CDNSSeedData("", ""));
 
-        // Testnet Cash addresses start with 'c'
+        // Testnet Cash debit addresses start with 'c'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 87);
-        // Testnet Cash script addresses start with '2'
+        // Testnet Cash script debit addresses start with '2'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
         // Testnet private keys start with 'a'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 227);
@@ -359,7 +359,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Testnet Cash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Cash Stealth Address start with 'T'
+        // Cash Stealth debit address start with 'T'
         base58Prefixes[STEALTH_ADDRESS] = {0x15};
         // Testnet Cash BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
@@ -505,9 +505,9 @@ public:
             0.1 // * estimated number of transactions per second after that timestamp
         };
 
-        // Regtest Cash addresses start with 'y'
+        // Regtest Cash debit addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 140);
-        // Regtest Cash script addresses start with '2'
+        // Regtest Cash script debit addresses start with '2'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
         // Regtest private keys start with 'a' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 227);
@@ -515,7 +515,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Regtest Cash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Cash Stealth Address start with 'R'
+        // Cash Stealth debit address start with 'R'
         base58Prefixes[STEALTH_ADDRESS] = {0x13};
         // Regtest Cash BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
@@ -612,9 +612,9 @@ public:
         //vSeeds.push_back(CDNSSeedData("",  ""));
         //vSeeds.push_back(CDNSSeedData("", ""));
 
-        // Privatenet Cash addresses start with 'z'
+        // Privatenet Cash debit addresses start with 'z'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 142);
-        // Privatenet Cash script addresses start with '2'
+        // Privatenet Cash script debit addresses start with '2'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
         // Privatenet private keys start with 'a' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 227);
@@ -622,7 +622,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         // Privatenet Cash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Privatenet Stealth Address start with 'P'
+        // Privatenet Stealth debit address start with 'P'
         base58Prefixes[STEALTH_ADDRESS] = {0x12};
         // Privatenet Cash BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;

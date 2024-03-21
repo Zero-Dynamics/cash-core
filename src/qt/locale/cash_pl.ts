@@ -62,11 +62,11 @@
         <translation>Adres odbioru</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>To są twoje adresy Cash do wysyłania płatności. Zawsze sprawdzaj ilość płatności oraz adres odbioru przed wysłaniem.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>To są twoje adresy Cash do otrzymywania płatności. Zaleca się użycie nowego adresu odbioru do każdej tranzakcji.</translation>
     </message>
     <message>
@@ -251,7 +251,7 @@
         <translation>&amp;Wyślij</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Wyślij monety na adres Cash</translation>
     </message>
     <message>
@@ -367,7 +367,7 @@
         <translation>Wpisz &amp;wiadomość...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Wpisz wiadomość twojego adresu Cash, aby potwierdzić, że jest twoją własnością</translation>
     </message>
     <message>
@@ -375,7 +375,7 @@
         <translation>&amp;Zweryfikuj wiadomość...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Weryfikuj wiadomości aby upewnić się że były one wpisane ze specyficznego adresu Cash</translation>
     </message>
     <message>
@@ -989,11 +989,11 @@ Adres: %4
     </message>
     <message>
         <source>PrivateSend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Cash&apos;s configuration screen.</source>
-        <translation>PrivateSend ustawiona pomyślnie do wysokości(% 1 en 8 rund). Możesz je zmienić w każdej chwili poprzez otworzenie ekranu konfiguracji Cash&apos;s</translation>    
+        <translation>PrivateSend ustawiona pomyślnie do wysokości(% 1 en 8 rund). Możesz je zmienić w każdej chwili poprzez otworzenie ekranu konfiguracji Cash&apos;s</translation>
     </message>
     <message>
         <source>PrivateSend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Cash&apos;s configuration screen.</source>
-        <translation>PrivateSend ustawiona pomyślnie do PrivateSend ustawiona pomyślnie do maksimum (% 1 en 16 rund). Możesz je zmienić w każdej chwili poprzez otworzenie ekranu konfiguracji Cash&apos;s</translation>   
+        <translation>PrivateSend ustawiona pomyślnie do PrivateSend ustawiona pomyślnie do maksimum (% 1 en 16 rund). Możesz je zmienić w każdej chwili poprzez otworzenie ekranu konfiguracji Cash&apos;s</translation>
             </message>
 </context>
 <context>
@@ -1035,7 +1035,7 @@ Adres: %4
         <translation>Edytuj adres wysyłający</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
         <translation>Wprowadzony adres &quot;%1&quot; nie jest poprawnym adresem Cash.</translation>
     </message>
     <message>
@@ -1152,7 +1152,7 @@ Dynody miksują wkłady oraz instruują wszystkich trzech użytkowników&#39; po
 YTwój portfel płaci denominację bezpośrednio do siebie, ale w różnych adresach (zwanych adres zmiany).&lt;/li&gt;
 &lt;li&gt;Aby nakazać pełne przesłonięcie twoich funduszy, twój portfel musi powtórzyć ten proces pewną ilość razy po każdej denominacji.
 Za każdym razem kiedy proces ten jest zakończony, je&#39;st nazwany &#39;runda&#39;. Każda runda PrivateSend sprawia, że jest niewyobrażalnie trudno zidentyfikować źródło pochodzenia twoich funduszy.&lt;/li&gt;
-&lt;li&gt;Ten proces miksowania zdarza się w tle bez żadnej interwencji z twojej strony. Kiedy zechcesz dokonać tranzakcji, 
+&lt;li&gt;Ten proces miksowania zdarza się w tle bez żadnej interwencji z twojej strony. Kiedy zechcesz dokonać tranzakcji,
 twoje fundusze będą już zanonimizowane. Nie ma potrzeby dodatkowego pisania.&lt;/li&gt;
 &lt;/ol&gt; &lt;hr&gt;
 &lt;b&gt;WAŻNE:&lt;/b&gt; twój portfel zawiera tylko 2000 z tych &#39;adresów zamin&#39;. Za każdym razem, kiedy ma miejsce miksowanie, zostaje użytych do 9 twoich adresów.
@@ -1802,7 +1802,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Nieprawidłowy adres opłaty %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>URI nie może być zanalizowany.</translation>
     </message>
     <message>
@@ -1900,7 +1900,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Ilość</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Wprowadź adres Cash (np. %1)</translation>
     </message>
     <message>
@@ -2788,7 +2788,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Zapłać tylko minimalną opłatę %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Ostrzeżenie: Niewłaściwy adres Cash</translation>
     </message>
     <message>
@@ -2815,7 +2815,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Zapłać &amp;do:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>Adres Cash do wysłania opłaty</translation>
     </message>
     <message>
@@ -2923,7 +2923,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Możesz podpisać wiadomości twoimi adresami, aby udowodnić, że je posiadasz. Bądź ostrożny, aby nie podpisywać niczego niejasnego, wirusowe ataki mogą prowokować cię do podpisania twojej tożsamości do nich. Podpisuj tylko w peni-zaznaczone opisy z którymi się zgadzasz</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>Adres Cash do podpisania wiadomości</translation>
     </message>
     <message>
@@ -2955,7 +2955,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Kopiuj aktualny podpis do tablicy systemu</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Podpisz wiadomość aby udowodnić że posiadasz ten adres Cash</translation>
     </message>
     <message>
@@ -2979,11 +2979,11 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Wpisz adres podpisu, wiadomość (upewnij się, że dokładnien skopiowałeś linie przerwyniki, odstępy, tabulatory itp) i podpis poniżej jest do zweryfikowania wiadomości. Bądź ostrożny, aby nie wczytywać się bardziej w podpis, niż to co zawiera wiadomość sama w sobie, aby nie dać się sprowokować atakiem środkowego-pośrednika/man-in-the-middle.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>Adres Cash, którym wiadomość została podpisana</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Zweryfikuj  wiadomość, aby upewnić się, że została podpisana specyficznym adresem Cash</translation>
     </message>
     <message>
@@ -4489,7 +4489,7 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
     </message>
     <message>
         <source>Importing...</source>
-        <translation>Importuje...</translation> 
+        <translation>Importuje...</translation>
     </message>
     <message>
         <source>Imports blocks from external blk000??.dat file</source>
@@ -5561,7 +5561,7 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
     <message>
         <source>Time:</source>
         <translation>Czas:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Termin ważności:</translation>

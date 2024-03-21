@@ -233,7 +233,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
                     Q_EMIT receivedPaymentRequest(recipient);
             } else
                 Q_EMIT message(tr("URI handling"),
-                    tr("URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters."),
+                    tr("URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters."),
                     CClientUIInterface::ICON_WARNING);
 
             return;

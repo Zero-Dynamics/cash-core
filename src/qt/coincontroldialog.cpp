@@ -720,7 +720,7 @@ void CoinControlDialog::updateView()
             if (ExtractDestination(out.tx->tx->vout[out.i].scriptPubKey, outputAddress)) {
                 sAddress = QString::fromStdString(CDebitAddress(outputAddress).ToString());
 
-                // if listMode or change => show cash address. In tree mode, address is not shown again for direct wallet address outputs
+                // if listMode or change => show Cash debit address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))
                     itemOutput->setText(COLUMN_ADDRESS, sAddress);
 

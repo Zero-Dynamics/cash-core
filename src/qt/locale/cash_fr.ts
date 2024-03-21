@@ -62,11 +62,11 @@
         <translation>Adresses de réception</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Ce sont vos adresses Cash pour l'envoi de paiements. Vérifiez toujours le montant et l'adresse de réception avant l'envoi de monnaies.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Ce sont vos adresses Cash pour la réception de paiements. Il est recommandé d'utiliser une nouvelle adresse de réception pour chaque transaction.</translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
         <translation>&amp;Envoyer</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Envoyer des pièces sur une adresse Cash</translation>
     </message>
     <message>
@@ -355,7 +355,7 @@
         <translation>&amp;Signer le message...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Signer les messages avec votre adresses Cash pour prouver que vous êtes le propriétaire</translation>
     </message>
     <message>
@@ -363,7 +363,7 @@
         <translation>&amp;Vérifier un message...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Vérifier les messages pour vous assurer qu'ils ont été signés avec les adresses Cash spécifiées</translation>
     </message>
     <message>
@@ -995,7 +995,7 @@ Adresse : %4
         <translation>Modifier l’adresse d'envoi</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Cash address.</source>
+        <source>The entered address "%1" is not a valid Cash debit address.</source>
         <translation>L'adresse entrée "%1" est pas une adresse Cash valide</translation>
     </message>
     <message>
@@ -1675,7 +1675,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Adresse de paiement %1 invalide</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>L'URI ne peut être analysé ! Ceci peut être causé par une adresse Cash invalide ou par des paramètres d'URI mal composé.</translation>
     </message>
     <message>
@@ -1761,7 +1761,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Montant</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Entrez une adresse Cash (e.g. %1)</translation>
     </message>
     <message>
@@ -2643,7 +2643,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Payer seulement les frais minimum de %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Attention: adresse Cash invalide</translation>
     </message>
     <message>
@@ -2670,7 +2670,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>&amp;Payer à :</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>L'adresse Cash à laquelle envoyer de la monnaie</translation>
     </message>
     <message>
@@ -2760,7 +2760,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Vous pouvez signer des messages avec vos adresses pour prouver que vous les détenez. Faites attention de ne pas signer de vague car des attaques d'hameçonnage peuvent essayer d'usurper votre identité par votre signature. Ne signez que des déclarations entièrement détaillées et avec lesquelles vous serez d'accord.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>L'adresse Cash avec laquelle signer le message</translation>
     </message>
     <message>
@@ -2792,7 +2792,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Copier la signature actuelle dans le presse-papier</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Signer le message pour prouver que vous possédez cette adresse Cash</translation>
     </message>
     <message>
@@ -2816,11 +2816,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Saisir ci-dessous l'adresse de signature, le message (assurez-vous d'avoir copié exactement les retours à la ligne, les espaces, tabulations etc.) et la signature pour vérifier le message. Faire attention à ne pas déduire davantage de la signature que ce qui est contenu dans le message signé lui-même pour éviter d'être trompé par une attaque d'homme du milieu.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>L'adresse Cash avec laquelle le message a été signé</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Vérifier le message pour s'assurer qu'il a été signé avec l'adresse Cash spécifiée</translation>
     </message>
     <message>
@@ -5131,7 +5131,7 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
     <message>
         <source>Time:</source>
         <translation>Temps:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Date d'expiration:</translation>

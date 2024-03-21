@@ -115,13 +115,13 @@ UniValue getnewaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
             "getnewaddress ( \"account\" )\n"
-            "\nReturns a new Cash address for receiving payments.\n"
+            "\nReturns a new Cash debit address for receiving payments.\n"
             "If 'account' is specified (DEPRECATED), it is added to the address book \n"
             "so payments received with the address will be credited to 'account'.\n"
             "\nArguments:\n"
             "1. \"account\"        (string, optional) DEPRECATED. The account name for the address to be linked to. If not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"debitaddress\"    (string) The new cash address\n"
+            "\"debitaddress\"    (string) The new Cash debit address\n"
             "\nExamples:\n" +
             HelpExampleCli("getnewaddress", "") + HelpExampleRpc("getnewaddress", ""));
 
@@ -159,13 +159,13 @@ UniValue getnewed25519address(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
             "getnewed25519address ( \"account\" )\n"
-            "\nReturns a new Cash address for receiving payments.\n"
+            "\nReturns a new Cash debit address for receiving payments.\n"
             "If 'account' is specified (DEPRECATED), it is added to the address book \n"
             "so payments received with the address will be credited to 'account'.\n"
             "\nArguments:\n"
             "1. \"account\"        (string, optional) DEPRECATED. The account name for the address to be linked to. If not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"debitaddress\"    (string) The new cash address\n"
+            "\"debitaddress\"    (string) The new Cash debit address\n"
             "\nExamples:\n" +
             HelpExampleCli("getnewed25519address", "") + HelpExampleRpc("getnewed25519address", ""));
 
@@ -252,11 +252,11 @@ UniValue getaccountaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
             "getaccountaddress \"account\"\n"
-            "\nDEPRECATED. Returns the current Cash address for receiving payments to this account.\n"
+            "\nDEPRECATED. Returns the current Cash debit address for receiving payments to this account.\n"
             "\nArguments:\n"
             "1. \"account\"       (string, required) The account name for the address. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created and a new address created  if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"debitaddress\"   (string) The account cash address\n"
+            "\"debitaddress\"   (string) The account Cash debit address\n"
             "\nExamples:\n" +
             HelpExampleCli("getaccountaddress", "") + HelpExampleCli("getaccountaddress", "\"\"") + HelpExampleCli("getaccountaddress", "\"myaccount\"") + HelpExampleRpc("getaccountaddress", "\"myaccount\""));
 
@@ -280,7 +280,7 @@ UniValue getrawchangeaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
             "getrawchangeaddress\n"
-            "\nReturns a new Cash address, for receiving change.\n"
+            "\nReturns a new Cash debit address, for receiving change.\n"
             "This is for use with raw transactions, NOT normal use.\n"
             "\nResult:\n"
             "\"address\"    (string) The address\n"
@@ -315,7 +315,7 @@ UniValue setaccount(const JSONRPCRequest& request)
             "setaccount \"debitaddress\" \"account\"\n"
             "\nDEPRECATED. Sets the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"debitaddress\"  (string, required) The cash address to be associated with an account.\n"
+            "1. \"debitaddress\"  (string, required) The Cash debit address to be associated with an account.\n"
             "2. \"account\"         (string, required) The account to assign the address to.\n"
             "\nExamples:\n" +
             HelpExampleCli("setaccount", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"tabby\"") + HelpExampleRpc("setaccount", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", \"tabby\""));
@@ -324,7 +324,7 @@ UniValue setaccount(const JSONRPCRequest& request)
 
     CDebitAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash debit address");
 
     std::string strAccount;
     if (request.params.size() > 1)
@@ -356,7 +356,7 @@ UniValue getaccount(const JSONRPCRequest& request)
             "getaccount \"debitaddress\"\n"
             "\nDEPRECATED. Returns the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"debitaddress\"  (string, required) The cash address for account lookup.\n"
+            "1. \"debitaddress\"  (string, required) The Cash debit address for account lookup.\n"
             "\nResult:\n"
             "\"accountname\"        (string) the account address\n"
             "\nExamples:\n" +
@@ -366,7 +366,7 @@ UniValue getaccount(const JSONRPCRequest& request)
 
     CDebitAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash debit address");
 
     std::string strAccount;
     std::map<CTxDestination, CAddressBookData>::iterator mi = pwalletMain->mapAddressBook.find(address.Get());
@@ -389,7 +389,7 @@ UniValue getaddressesbyaccount(const JSONRPCRequest& request)
             "1. \"account\"  (string, required) The account name.\n"
             "\nResult:\n"
             "[                     (json array of string)\n"
-            "  \"debitaddress\"  (string) a cash address associated with the given account\n"
+            "  \"debitaddress\"  (string) a Cash debit address associated with the given account\n"
             "  ,...\n"
             "]\n"
             "\nExamples:\n" +
@@ -440,7 +440,7 @@ static void SendMoney(const CTxDestination& address, CAmount nValue, bool fSubtr
         if (ExtractDestination(scriptPubKey, newDest))
             LogPrint("bdap", "%s -- Stealth send to address: %s\n", __func__, CDebitAddress(newDest).ToString());
     } else {
-        // Parse Cash address
+        // Parse Cash debit address
         scriptPubKey = GetScriptForDestination(address);
     }
 
@@ -622,7 +622,7 @@ void SendCustomTransaction(const CScript& generatedScript, CWalletTx& wtxNew, CA
     if (nValue > curBalance)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "Insufficient funds");
 
-    // Parse Cash address
+    // Parse Cash debit address
     CScript scriptPubKey = generatedScript;
 
     LogPrintf("Script Public Key to be sent over to custom transaction processing: %s\n", ScriptToAsmStr(scriptPubKey));
@@ -733,7 +733,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
             "\nSend an amount to a given address.\n" +
             HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"debitaddress\" (string, required) The Cash address to send to.\n"
+            "1. \"debitaddress\" (string, required) The Cash debit address to send to.\n"
             "2. \"amount\"      (numeric or string, required) The amount in " +
             CURRENCY_UNIT + " to send. eg 0.1\n"
                             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
@@ -797,7 +797,7 @@ UniValue instantsendtoaddress(const JSONRPCRequest& request)
             "\nSend an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n" +
             HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"debitaddress\"  (string, required) The cash address to send to.\n"
+            "1. \"debitaddress\"  (string, required) The Cash debit address to send to.\n"
             "2. \"amount\"      (numeric, required) The amount in btc to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -815,7 +815,7 @@ UniValue instantsendtoaddress(const JSONRPCRequest& request)
 
     CTxDestination dest = DecodeDestination(request.params[0].get_str());
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash debit address");
 
     // Amount
     CAmount nAmount = AmountFromValue(request.params[1]);
@@ -855,7 +855,7 @@ UniValue listaddressgroupings(const JSONRPCRequest& request)
             "[\n"
             "  [\n"
             "    [\n"
-            "      \"debitaddress\",     (string) The cash address\n"
+            "      \"debitaddress\",     (string) The Cash debit address\n"
             "      amount,                 (numeric) The amount in " +
             CURRENCY_UNIT + "\n"
                             "      \"account\"             (string, optional) The account (DEPRECATED)\n"
@@ -902,7 +902,7 @@ UniValue listaddressbalances(const JSONRPCRequest& request)
             CURRENCY_UNIT + " an address should have to be shown in the list\n"
                             "\nResult:\n"
                             "{\n"
-                            "  \"address\": amount,       (string) The Cash address and the amount in " +
+                            "  \"address\": amount,       (string) The Cash debit address and the amount in " +
             CURRENCY_UNIT + "\n"
                             "  ,...\n"
                             "}\n"
@@ -938,7 +938,7 @@ UniValue signmessage(const JSONRPCRequest& request)
             "\nSign a message with the private key of an address" +
             HelpRequiringPassphrase() + "\n"
                                         "\nArguments:\n"
-                                        "1. \"debitaddress\"  (string, required) The cash address to use for the private key.\n"
+                                        "1. \"debitaddress\"  (string, required) The Cash debit address to use for the private key.\n"
                                         "2. \"message\"         (string, required) The message to create a signature of.\n"
                                         "\nResult:\n"
                                         "\"signature\"          (string) The signature of the message encoded in base 64\n"
@@ -989,7 +989,7 @@ UniValue getreceivedbyaddress(const JSONRPCRequest& request)
             "getreceivedbyaddress \"debitaddress\" ( minconf addlocked )\n"
             "\nReturns the total amount received by the given debitaddress in transactions with specified minimum number of confirmations.\n"
             "\nArguments:\n"
-            "1. \"debitaddress\"  (string, required) The cash address for transactions.\n"
+            "1. \"debitaddress\"  (string, required) The Cash debit address for transactions.\n"
             "2. minconf        (numeric, optional, default=1) Only include transactions confirmed at least this many times.\n"
             "3. addlocked           (bool, optional, default=false) Whether to include transactions locked via InstantSend.\n"
                             "\nResult:\n"
@@ -1004,10 +1004,10 @@ UniValue getreceivedbyaddress(const JSONRPCRequest& request)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    // Cash address
+    // Cash debit address
     CDebitAddress address = CDebitAddress(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash debit address");
     CScript scriptPubKey = GetScriptForDestination(address.Get());
     if (!IsMine(*pwalletMain, scriptPubKey))
         return ValueFromAmount(0);
@@ -1229,11 +1229,11 @@ UniValue sendfrom(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() < 3 || request.params.size() > 7)
         throw std::runtime_error(
             "sendfrom \"fromaccount\" \"todebitaddress\" amount ( minconf addlocked \"comment\" \"comment-to\" )\n"
-            "\nDEPRECATED (use sendtoaddress). Sent an amount from an account to a cash address." +
+            "\nDEPRECATED (use sendtoaddress). Sent an amount from an account to a Cash debit address." +
             HelpRequiringPassphrase() + "\n"
                                         "\nArguments:\n"
                                         "1. \"fromaccount\"    (string, required) The name of the account to send funds from. May be the default account using \"\".\n"
-                                        "2. \"todebitaddress\"  (string, required) The cash address to send funds to.\n"
+                                        "2. \"todebitaddress\"  (string, required) The Cash debit address to send funds to.\n"
                                         "3. amount           (numeric or string, required) The amount in " +
             CURRENCY_UNIT + " (transaction fee is added on top).\n"
                             "4. minconf          (numeric, optional, default=1) Only use funds with at least this many confirmations.\n"
@@ -1257,7 +1257,7 @@ UniValue sendfrom(const JSONRPCRequest& request)
 
     const CDebitAddress address(request.params[1].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash debit address");
 
     CAmount nAmount = AmountFromValue(request.params[2]);
     if (nAmount <= 0)
@@ -1301,7 +1301,7 @@ UniValue sendmany(const JSONRPCRequest& request)
                                         "1. \"fromaccount\"           (string, required) DEPRECATED. The account to send the funds from. Should be \"\" for the default account\n"
                                         "2. \"amounts\"               (string, required) A json object with addresses and amounts\n"
                                         "    {\n"
-                                        "      \"address\":amount     (numeric or string) The cash address is the key, the numeric amount (can be string) in " +
+                                        "      \"address\":amount     (numeric or string) The Cash debit address is the key, the numeric amount (can be string) in " +
             CURRENCY_UNIT + " is the value\n"
                             "      ,...\n"
                             "    }\n"
@@ -1357,7 +1357,7 @@ UniValue sendmany(const JSONRPCRequest& request)
         bool fStealthAddress = false;
         CTxDestination dest = DecodeDestination(name_);
         if (!IsValidDestination(dest))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Invalid Cash address %s", name_));
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Invalid Cash debit address %s", name_));
 
         if (setDestAddress.count(dest))
             throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf("Invalid parameter, duplicated address:  %s", name_));
@@ -1446,20 +1446,20 @@ UniValue addmultisigaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 3) {
         std::string msg = "addmultisigaddress nrequired [\"key\",...] ( \"account\" )\n"
                           "\nAdd a nrequired-to-sign multisignature address to the wallet.\n"
-                          "Each key is a Cash address or hex-encoded public key.\n"
+                          "Each key is a Cash debit address or hex-encoded public key.\n"
                           "If 'account' is specified (DEPRECATED), assign address to that account.\n"
 
                           "\nArguments:\n"
                           "1. nrequired        (numeric, required) The number of required signatures out of the n keys or addresses.\n"
-                          "2. \"keysobject\"   (string, required) A json array of cash addresses or hex-encoded public keys\n"
+                          "2. \"keysobject\"   (string, required) A json array of Cash debit addresses or hex-encoded public keys\n"
                           "     [\n"
-                          "       \"address\"  (string) cash address or hex-encoded public key\n"
+                          "       \"address\"  (string) Cash debit address or hex-encoded public key\n"
                           "       ...,\n"
                           "     ]\n"
                           "3. \"account\"      (string, optional) DEPRECATED. An account to assign the addresses to.\n"
 
                           "\nResult:\n"
-                          "\"debitaddress\"  (string) A cash address associated with the keys.\n"
+                          "\"debitaddress\"  (string) A Cash debit address associated with the keys.\n"
 
                           "\nExamples:\n"
                           "\nAdd a multisig address from 2 addresses\n" +
@@ -1804,7 +1804,7 @@ UniValue listtransactions(const JSONRPCRequest& request)
             "  {\n"
             "    \"account\":\"accountname\",  (string) DEPRECATED. The account name associated with the transaction. \n"
             "                                                It will be \"\" for the default account.\n"
-            "    \"address\":\"address\",    (string) The cash address of the transaction. Not present for \n"
+            "    \"address\":\"address\",    (string) The Cash debit address of the transaction. Not present for \n"
             "                                                move transactions (category = move).\n"
             "    \"category\":\"send|receive|move\", (string) The transaction category. 'move' is a local (off blockchain)\n"
             "                                                transaction between accounts, and not associated with an address,\n"
@@ -2007,7 +2007,7 @@ UniValue listsinceblock(const JSONRPCRequest& request)
             "{\n"
             "  \"transactions\": [\n"
             "    \"account\":\"accountname\",  (string) DEPRECATED. The account name associated with the transaction. Will be \"\" for the default account.\n"
-            "    \"address\":\"address\",    (string) The cash address of the transaction. Not present for move transactions (category = move).\n"
+            "    \"address\":\"address\",    (string) The Cash debit address of the transaction. Not present for move transactions (category = move).\n"
             "    \"category\":\"send|receive\",  (string) The transaction category. 'send' has negative amounts, 'receive' has positive amounts.\n"
             "    \"amount\": x.xxx,          (numeric) The amount in " +
             CURRENCY_UNIT + ". This is negative for the 'send' category, and for the 'move' category for moves \n"
@@ -2123,7 +2123,7 @@ UniValue gettransaction(const JSONRPCRequest& request)
                             "  \"details\" : [\n"
                             "    {\n"
                             "      \"account\" : \"accountname\",      (string) DEPRECATED. The account name involved in the transaction, can be \"\" for the default account.\n"
-                            "      \"address\" : \"address\",          (string) The cash address involved in the transaction\n"
+                            "      \"address\" : \"address\",          (string) The Cash debit address involved in the transaction\n"
                             "      \"category\" : \"send|receive\",    (string) The category, either 'send' or 'receive'\n"
                             "      \"amount\" : x.xxx,               (numeric) The amount in " +
             CURRENCY_UNIT + "\n"
@@ -2879,9 +2879,9 @@ UniValue listunspent(const JSONRPCRequest& request)
             "\nArguments:\n"
             "1. minconf          (numeric, optional, default=1) The minimum confirmations to filter\n"
             "2. maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter\n"
-            "3. \"addresses\"      (string) A json array of cash addresses to filter\n"
+            "3. \"addresses\"      (string) A json array of Cash debit addresses to filter\n"
             "    [\n"
-            "      \"address\"     (string) cash address\n"
+            "      \"address\"     (string) Cash debit address\n"
             "      ,...\n"
             "    ]\n"
             "4. include_unsafe (bool, optional, default=true) Include outputs that are not safe to spend\n"
@@ -2893,7 +2893,7 @@ UniValue listunspent(const JSONRPCRequest& request)
             "  {\n"
             "    \"txid\" : \"txid\",          (string) the transaction id \n"
             "    \"vout\" : n,               (numeric) the vout value\n"
-            "    \"address\" : \"address\",    (string) the cash address\n"
+            "    \"address\" : \"address\",    (string) the Cash debit address\n"
             "    \"account\" : \"account\",    (string) DEPRECATED. The associated account, or \"\" for the default account\n"
             "    \"scriptPubKey\" : \"key\",   (string) the script key\n"
             "    \"amount\" : x.xxx,         (numeric) the transaction output amount in " +
@@ -2930,7 +2930,7 @@ UniValue listunspent(const JSONRPCRequest& request)
             const UniValue& input = inputs[idx];
             CDebitAddress address(input.get_str());
             if (!address.IsValid())
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Cash address: ") + input.get_str());
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Cash debit address: ") + input.get_str());
             if (setAddress.count(address))
                 throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ") + input.get_str());
             setAddress.insert(address);
@@ -3011,7 +3011,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
             "1. \"hexstring\"           (string, required) The hex string of the raw transaction\n"
             "2. options                 (object, optional)\n"
             "   {\n"
-            "     \"changeAddress\"          (string, optional, default pool address) The cash address to receive the change\n"
+            "     \"changeAddress\"          (string, optional, default pool address) The Cash debit address to receive the change\n"
             "     \"changePosition\"         (numeric, optional, default random) The index of the change output\n"
             "     \"includeWatching\"        (boolean, optional, default false) Also select inputs which are watch only\n"
             "     \"lockUnspents\"           (boolean, optional, default false) Lock selected unspent outputs\n"
@@ -3077,7 +3077,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
                 CDebitAddress address(options["changeAddress"].get_str());
 
                 if (!address.IsValid())
-                    throw JSONRPCError(RPC_INVALID_PARAMETER, "changeAddress must be a valid cash address");
+                    throw JSONRPCError(RPC_INVALID_PARAMETER, "changeAddress must be a valid Cash debit address");
 
                 changeAddress = address.Get();
             }

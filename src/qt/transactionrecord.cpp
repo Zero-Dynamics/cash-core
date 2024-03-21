@@ -62,7 +62,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 sub.credit = txout.nValue;
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                 if (ExtractDestination(txout.scriptPubKey, address) && IsMine(*wallet, address)) {
-                    // Received by Cash Address
+                    // Received by Cash debit address
                     sub.type = TransactionRecord::RecvWithAddress;
                     sub.address = CDebitAddress(address).ToString();
                 } else {
@@ -127,7 +127,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 sub.type = TransactionRecord::PrivateSend;
                 CTxDestination address;
                 if (ExtractDestination(wtx.tx->vout[0].scriptPubKey, address)) {
-                    // Sent to Cash Address
+                    // Sent to Cash debit address
                     sub.address = CDebitAddress(address).ToString();
                 } else {
                     // Sent to IP, or other non-address transaction like OP_EVAL
@@ -196,7 +196,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
 
                 CTxDestination address;
                 if (ExtractDestination(txout.scriptPubKey, address)) {
-                    // Sent to Cash Address
+                    // Sent to Cash debit address
                     sub.type = TransactionRecord::SendToAddress;
                     sub.address = CDebitAddress(address).ToString();
                 } else {

@@ -257,7 +257,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
     Q_FOREACH (const SendCoinsRecipient& rcp, recipients) {
         if (rcp.fSubtractFeeFromAmount)
             fSubtractFeeFromAmount = true;
-        {   // User-entered cash address / amount:
+        {   // User-entered Cash debit address / amount:
             if(!validateAddress(rcp.address))
             {
                 return InvalidAddress;

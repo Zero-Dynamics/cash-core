@@ -62,11 +62,11 @@
         <translation>Получение адресов</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Это ваши динамические адреса для отправки платежей. Всегда проверяйте сумму и адрес получателя перед отправкой монет.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Это ваши динамические адреса для приема платежей. Рекомендуется использовать новый адрес получения для каждой транзакции.</translation>
     </message>
     <message>
@@ -251,7 +251,7 @@
         <translation>&amp;Отправить</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Отправить монеты на адрес Cash</translation>
     </message>
     <message>
@@ -367,7 +367,7 @@
         <translation>Підписати &amp; повідомлення...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Подпишите сообщения с ваших адресов Cash, чтобы доказать, что вы владеете ими</translation>
     </message>
     <message>
@@ -375,7 +375,7 @@
         <translation>&amp;Проверьте сообщение...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Проверьте сообщения, чтобы убедиться, что они были подписаны с указанными адресами Cash</translation>
     </message>
     <message>
@@ -1035,7 +1035,7 @@ DirecciГіn: %4
         <translation>Изменить адрес отправки</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
         <translation>Введенный адрес &quot;%1&quot; не является действительным адресом Cash.</translation>
     </message>
     <message>
@@ -1787,7 +1787,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Неверный платежный адрес %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>URI не может быть проанализирован! Это может быть вызвано неверным адресом Cash или неправильными параметрами URI.</translation>
     </message>
     <message>
@@ -1868,7 +1868,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
     <message>
         <source>Address/Hostname</source>
         <translation>Адрес/Имя хоста</translation>
-    </message>	
+    </message>
     <message>
         <source>User Agent</source>
         <translation>Агент пользователя</translation>
@@ -1885,7 +1885,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Сумма</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Введите адрес Cash (пр. %1)</translation>
     </message>
     <message>
@@ -2771,7 +2771,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Платите только минимальную плату %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Предупреждение: неверный адрес Cash</translation>
     </message>
     <message>
@@ -2798,7 +2798,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Оплатить &amp;На:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>Адрес Cash для отправки платежа на</translation>
     </message>
     <message>
@@ -2906,7 +2906,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Вы можете подписывать своими адресами сообщения, чтобы доказать, что вы являетесь их владельцем. Будьте осторожны, чтобы не подписать что-либо сомнительное, поскольку фишинговые атаки могут попытаться обмануть вас, чтобы вы их подписали. Подписывайте только те заявления, в которых вы уверены.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>Адрес Cash для подписи сообщения с</translation>
     </message>
     <message>
@@ -2938,7 +2938,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Скопируйте текущую подпись в системный буфер обмена</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Подпишите сообщение, чтобы подтвердить, что у вас есть этот адрес Cash</translation>
     </message>
     <message>
@@ -2962,11 +2962,11 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Введите подписаный адрес, сообщение (убедитесь, что вы точно копируете разрывы строк, пробелы, табуляции и т. Д.) И подпись ниже, чтобы проверить сообщение. Будьте внимательны, чтобы не прочитать в подписи больше, чем то, что есть в самом подписанном сообщении, чтобы не быть обманутым с помощью атаки «человек посередине».</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>Адрес Cash, сообщение было подписано с</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Проверьте сообщение, чтобы убедиться, что оно было подписано с указанным адресом Cash.</translation>
     </message>
     <message>
@@ -5538,7 +5538,7 @@ rpcpassword =%s
     <message>
         <source>Time:</source>
         <translation>Время:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Срок годности:</translation>

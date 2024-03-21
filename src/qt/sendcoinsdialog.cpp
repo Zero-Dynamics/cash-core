@@ -826,7 +826,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
             ui->labelCoinControlChangeLabel->setText("");
         } else if (!addr.IsValid()) // Invalid address
         {
-            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Cash address"));
+            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Cash debit address"));
         } else // Valid address
         {
             CKeyID keyid;

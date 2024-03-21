@@ -223,7 +223,7 @@
         <translation>送る (&amp;S)</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>コインをO0DYNCCASHに送信します住所</translation>
     </message>
     <message>
@@ -1826,7 +1826,7 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>-zapwallettxes=2: ブロックチェーンからトランザクションを回復します（メタデータをドロップします）。</translation>
     </message>
     <message>
-    
+
         <source>-upgradewallet: Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself!)</source>
         <translation>-upgradewallet: 起動時にウォレットを最新の形式にアップグレードします。 （注：これはウォレット自体の更新ではありません！）</translation>
     </message>
@@ -4210,7 +4210,7 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
     <message>
         <source>Time:</source>
         <translation>時間：</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>有効期限：</translation>

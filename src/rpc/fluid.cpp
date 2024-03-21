@@ -190,7 +190,7 @@ UniValue burncash(const JSONRPCRequest& request)
         strAddress = request.params[1].get_str();
         CDebitAddress address(strAddress);
         if (!address.IsValid())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash debit address");
 
         scriptSendFrom = GetScriptForDestination(address.Get());
     }
@@ -255,7 +255,7 @@ UniValue signtoken(const JSONRPCRequest& request)
             "signtoken \"address\" \"tokenkey\"\n"
             "\nSign a Fluid Protocol Token\n"
             "\nArguments:\n"
-            "1. \"address\"         (string, required) The Cash Address which will be used to sign.\n"
+            "1. \"address\"         (string, required) The Cash debit address which will be used to sign.\n"
             "2. \"tokenkey\"         (string, required) The token which has to be initially signed\n"
             "\nExamples:\n" +
             HelpExampleCli("signtoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") +
@@ -265,7 +265,7 @@ UniValue signtoken(const JSONRPCRequest& request)
 
     CDebitAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash debit address");
 
     if (!fluid.VerifyAddressOwnership(address))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Address is not fluid protocol sovereign address");
@@ -293,7 +293,7 @@ UniValue consenttoken(const JSONRPCRequest& request)
             "consenttoken \"address\" \"tokenkey\"\n"
             "\nGive consent to a Fluid Protocol Token as a second party\n"
             "\nArguments:\n"
-            "1. \"address\"         (string, required) The Cash Address which will be used to give consent.\n"
+            "1. \"address\"         (string, required) The Cash debit address which will be used to give consent.\n"
             "2. \"tokenkey\"         (string, required) The token which has to be been signed by one party\n"
             "\nExamples:\n" +
             HelpExampleCli("consenttoken", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"3130303030303030303030303a3a313439393336353333363a3a445148697036443655376d46335761795a32747337794478737a71687779367a5a6a20494f42447a557167773\"") +
@@ -303,7 +303,7 @@ UniValue consenttoken(const JSONRPCRequest& request)
 
     CDebitAddress address(request.params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cash debit address");
 
     if (!IsHex(request.params[1].get_str()))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Hex string is invalid! Token incorrect");

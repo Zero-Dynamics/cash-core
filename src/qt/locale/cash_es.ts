@@ -62,11 +62,11 @@
         <translation>Direcciones de recepción</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Estas son sus direcciones de Cash para enviar pagos. Siempre verifique la cantidad y la dirección de recepción antes de enviar monedas.</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Estas son sus direcciones de Cash para recibir pagos. Se recomienda utilizar una nueva dirección de recepción para cada transacción.</translation>
     </message>
     <message>
@@ -251,7 +251,7 @@
         <translation>&amp;Enviar</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>Enviar monedas a una dirección de Cash</translation>
     </message>
     <message>
@@ -367,7 +367,7 @@
         <translation>Firmar &amp;mensaje...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>Firme mensajes con sus direcciones de Cash para probar que le pertenecen</translation>
     </message>
     <message>
@@ -375,7 +375,7 @@
         <translation>&amp;Verifique mensaje...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>Verifique los mensajes para asegurarse de que han sido firmados con direcciones de Cash específicas</translation>
     </message>
     <message>
@@ -1035,7 +1035,7 @@ Dirección: %4
         <translation>Editar dirección de envío</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
         <translation>La dirección ingresada &quot;%1&quot; no es una dirección de Cash válida.</translation>
     </message>
     <message>
@@ -1789,7 +1789,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Dirección de pago no válida %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>La URI no puede ser analizada! Esto puede ser causado por una dirección Cash no válida o por parámetros de URI malformados.</translation>
     </message>
     <message>
@@ -1887,7 +1887,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Cantidad</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Ingrese una dirección de Cash  (ej. %1)</translation>
     </message>
     <message>
@@ -2775,7 +2775,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Pague solo la comisión mínima de %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>Advertencia: Dirección de Cash inválida</translation>
     </message>
     <message>
@@ -2802,7 +2802,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Pagar &amp;a:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>La dirección de Cash para enviar el pago</translation>
     </message>
     <message>
@@ -2910,7 +2910,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Puede firmar mensajes con sus direcciones para demostrar que las posee. Tenga cuidado de no firmar nada impreciso, ya que los ataques de phishing pueden intentar engañarlo para que firme su identidad para ellos. Solo firme las declaraciones totalmente detalladas, las cuales usted acepte.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>La dirección de Cash con la cual firmar el mensaje</translation>
     </message>
     <message>
@@ -2942,7 +2942,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Copiar la firma actual al portapapeles del sistema.</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>Firme el mensaje para demostrar que posee esta dirección de Cash</translation>
     </message>
     <message>
@@ -2966,11 +2966,11 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Ingrese la dirección de firma, el mensaje (asegúrese de copiar exactamente los saltos de línea, espacios, tabulaciones, etc.) y la firma a continuación para verificar el mensaje. Tenga cuidado de no leer más en la firma de lo que está en el mensaje firmado, para evitar ser engañado por un ataque de "hombre en el medio".</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>La dirección de Cash con la cual fué firmado el mensaje</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>Verifique el mensaje para asegurarse de que se firmó con la dirección de Cash especificada</translation>
     </message>
     <message>
@@ -5540,7 +5540,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Alerta Cash&quot; admin@foo.co
     <message>
         <source>Time:</source>
         <translation>Hora:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Fecha de caducidad:</translation>

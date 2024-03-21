@@ -42,9 +42,9 @@ SendCoinsEntry::SendCoinsEntry(const PlatformStyle* _platformStyle, QWidget* par
     ui->deleteButton_is->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
     ui->deleteButton_s->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
 
-    // normal cash address field
+    // normal Cash debit address field
     GUIUtil::setupAddressWidget(ui->payTo, this);
-    // just a label for displaying cash address(es)
+    // just a label for displaying Cash debit address(es)
     ui->payTo_is->setFont(GUIUtil::fixedPitchFont());
 
     // Connect signals

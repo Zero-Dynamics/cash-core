@@ -308,7 +308,7 @@ void CashGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/" + theme + "/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a debit address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a Cash debit address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -434,9 +434,9 @@ void CashGUI::createActions()
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     signMessageAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your Cash addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your Cash debit addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/" + theme + "/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Cash addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Cash debit addresses"));
 
     openInfoAction = new QAction(QIcon(":/icons/" + theme + "/information"), tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));

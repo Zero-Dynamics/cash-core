@@ -511,7 +511,7 @@ UniValue servicenodelist(const JSONRPCRequest& request)
             "  lastpaidblock  - Print the last block height a node was paid on the network\n"
             "  lastpaidtime   - Print the last time a node was paid on the network\n"
             "  lastseen       - Print timestamp of when a servicenode was last seen on the network\n"
-            "  payee          - Print Cash address associated with a servicenode (can be additionally filtered,\n"
+            "  payee          - Print Cash debit address associated with a servicenode (can be additionally filtered,\n"
             "                   partial match)\n"
             "  protocol       - Print protocol of a servicenode (can be additionally filtered, exact match)\n"
             "  pubkey         - Print the servicenode (not collateral) public key\n"

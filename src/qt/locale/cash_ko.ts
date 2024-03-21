@@ -62,11 +62,11 @@
         <translation>接收地址</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Cash debit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>这是您的Cash支付地址，在发送数字货币前，请务必检查好金额和接收地址的正确性。</translation>
     </message>
     <message>
-        <source>These are your Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Cash debit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>这是您的Cash接收地址，推荐为每笔交易使用新的接收地址。</translation>
     </message>
     <message>
@@ -251,7 +251,7 @@
         <translation>发送</translation>
     </message>
     <message>
-        <source>Send coins to a Cash address</source>
+        <source>Send coins to a Cash debit address</source>
         <translation>发送数字货币到 Cash 地址</translation>
     </message>
     <message>
@@ -367,7 +367,7 @@
         <translation>消息签名...</translation>
     </message>
     <message>
-        <source>Sign messages with your Cash addresses to prove you own them</source>
+        <source>Sign messages with your Cash debit addresses to prove you own them</source>
         <translation>使用 Cash 地址关联的私钥为消息签名，以证明您拥有这个地址</translation>
     </message>
     <message>
@@ -375,7 +375,7 @@
         <translation>验证消息...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Cash addresses</source>
+        <source>Verify messages to ensure they were signed with specified Cash debit addresses</source>
         <translation>验证消息，以确保该消息是由指定的 Cash 地址所有者签名的</translation>
     </message>
     <message>
@@ -1032,7 +1032,7 @@ Address: %4
         <translation>보내는 주소 수정</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Cash address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Cash debit address.</source>
         <translation>입력된 주소 &quot;%1&quot;는 올바른 Cash 주소가 아닙니다.</translation>
     </message>
     <message>
@@ -1799,7 +1799,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>잘못된 지불 주소 %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Cash address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Cash debit address or malformed URI parameters.</source>
         <translation>URI를 파싱 할 수 없습니다! 이 오류는 Cash 주소가 잘못되었거나 잘못된 URI 매개 변수로 인해 발생할 수 있습니다.</translation>
     </message>
     <message>
@@ -1897,7 +1897,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>양</translation>
     </message>
     <message>
-        <source>Enter a Cash address (e.g. %1)</source>
+        <source>Enter a Cash debit address (e.g. %1)</source>
         <translation>Cash 주소 입력 (예:%1)</translation>
     </message>
     <message>
@@ -2781,7 +2781,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>최저 수수료 만 지불하십시오 %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Cash address</source>
+        <source>Warning: Invalid Cash debit address</source>
         <translation>경고: 잘못된 Cash 주소</translation>
     </message>
     <message>
@@ -2812,7 +2812,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>~에 &amp;지불하다:</translation>
     </message>
     <message>
-        <source>The Cash address to send the payment to</source>
+        <source>The Cash debit address to send the payment to</source>
         <translation>지불을 보낼 Cash 주소</translation>
     </message>
     <message>
@@ -2920,7 +2920,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>자신의 주소로 메시지에 서명 할 수 있습니다. 피싱 (Phishing) 공격이 사용자를 속여 자신의 신원을 확인하도록 속일 수 있으므로 막연한 내용의 서명을하지 않도록주의하십시오. 귀하가 동의하는 완전한 진술에만 서명하십시오.</translation>
     </message>
     <message>
-        <source>The Cash address to sign the message with</source>
+        <source>The Cash debit address to sign the message with</source>
         <translation>메시지에 서명 할 Cash 주소</translation>
     </message>
     <message>
@@ -2952,7 +2952,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>현재 서명을 시스템 클립 보드로 복사하십시오</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Cash address</source>
+        <source>Sign the message to prove you own this Cash debit address</source>
         <translation>이 Cash 주소를 소유하고 있음을 증명하는 메시지에 서명하십시오</translation>
     </message>
     <message>
@@ -2976,11 +2976,11 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>메시지를 확인하기 위해 서명 주소, 메시지 (줄 바꿈, 공백, 탭 등을 정확하게 복사하십시오) 및 서명을 입력하십시오. 중간자 (man-in-the-middle) 공격에 의해 속임을 당하지 않으려면 서명 된 메시지 자체에있는 것보다 서명에 더 많은 것을 읽지 않도록주의하십시오.</translation>
     </message>
     <message>
-        <source>The Cash address the message was signed with</source>
+        <source>The Cash debit address the message was signed with</source>
         <translation>메시지가 서명 된 Cash 주소</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Cash address</source>
+        <source>Verify the message to ensure it was signed with the specified Cash debit address</source>
         <translation>지정된 Cash 주소로 서명되었는지 확인하기 위해 메시지를 확인하십시오</translation>
     </message>
     <message>
@@ -5535,7 +5535,7 @@ rpcpassword=%s
     <message>
         <source>Time:</source>
         <translation>시각:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>만료 날짜 :</translation>
