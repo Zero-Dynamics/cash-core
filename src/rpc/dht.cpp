@@ -54,7 +54,7 @@ static UniValue GetMutable(const JSONRPCRequest& request)
             "  }\n"
             "\nExamples\n" +
            HelpExampleCli("dht getmutable", "517c4242c95214e5eb631e1ddf4e7dac5e815f0578f88491b81fd36df3c2a16a avatar") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("dht getmutable", "517c4242c95214e5eb631e1ddf4e7dac5e815f0578f88491b81fd36df3c2a16a avatar"));
 
     UniValue result(UniValue::VOBJ);
@@ -106,9 +106,9 @@ static UniValue PutMutable(const JSONRPCRequest& request)
             "  \"DHT Entry Value\"            (string)  Mutable entry value\n"
             "  }\n"
             "\nExamples\n" +
-           HelpExampleCli("dht putmutable", "\"https://duality.solutions/duality/logos/dual.png\" \"avatar\" \"517c4242c95214e5eb631e1ddf4e7dac5e815f0578f88491b81fd36df3c2a16a\" \"bf8b4f66bdd9e7dc526ddc3637a4edf8e0ac86b7df5e249fc6514a0a1c047cd0\"") +
-           "\nAs a JSON-RPC call\n" + 
-           HelpExampleRpc("dht putmutable", "\"https://duality.solutions/duality/logos/dual.png\" \"avatar\" \"517c4242c95214e5eb631e1ddf4e7dac5e815f0578f88491b81fd36df3c2a16a\" \"bf8b4f66bdd9e7dc526ddc3637a4edf8e0ac86b7df5e249fc6514a0a1c047cd0\""));
+           HelpExampleCli("dht putmutable", "\"https://github.com/Zero-Dynamics/Logos/blob/master/0-DYN%20Logos/Zero%20Dynamics/PNG/512x512.png\" \"avatar\" \"517c4242c95214e5eb631e1ddf4e7dac5e815f0578f88491b81fd36df3c2a16a\" \"bf8b4f66bdd9e7dc526ddc3637a4edf8e0ac86b7df5e249fc6514a0a1c047cd0\"") +
+           "\nAs a JSON-RPC call\n" +
+           HelpExampleRpc("dht putmutable", "\"https://github.com/Zero-Dynamics/Logos/blob/master/0-DYN%20Logos/Zero%20Dynamics/PNG/512x512.png\" \"avatar\" \"517c4242c95214e5eb631e1ddf4e7dac5e815f0578f88491b81fd36df3c2a16a\" \"bf8b4f66bdd9e7dc526ddc3637a4edf8e0ac86b7df5e249fc6514a0a1c047cd0\""));
 
     UniValue result(UniValue::VOBJ);
 
@@ -191,7 +191,7 @@ static UniValue PutRecord(const JSONRPCRequest& request)
             "  }\n"
             "\nExamples\n" +
             HelpExampleCli("dht putrecord", "duality avatar \"https://duality.solutions/duality/graphics/header/bdap.png\" 0") +
-            "\nAs a JSON-RPC call\n" + 
+            "\nAs a JSON-RPC call\n" +
             HelpExampleRpc("dht putrecord", "duality avatar \"https://duality.solutions/duality/graphics/header/bdap.png\" 0"));
 
     EnsureWalletIsUnlocked();
@@ -236,7 +236,7 @@ static UniValue PutRecord(const JSONRPCRequest& request)
     int64_t iSequence = 0;
     std::string strHeaderHex;
     std::string strHeaderSalt = strOperationType + ":" + std::to_string(0);
-    // we need the last sequence number to update an existing DHT entry. 
+    // we need the last sequence number to update an existing DHT entry.
     DHT::SubmitGetAuthoritative(0, getKey.GetDHTPubKey(), strHeaderSalt, 20000, strHeaderHex, iSequence);
     CRecordHeader header(strHeaderHex);
     if (header.nUnlockTime  > GetTime())
@@ -295,7 +295,7 @@ static UniValue ClearRecord(const JSONRPCRequest& request)
             "  }\n"
             "\nExamples\n" +
             HelpExampleCli("dht clearrecord", "duality auth") +
-            "\nAs a JSON-RPC call\n" + 
+            "\nAs a JSON-RPC call\n" +
             HelpExampleRpc("dht clearrecord", "duality auth"));
 
     EnsureWalletIsUnlocked();
@@ -340,7 +340,7 @@ static UniValue ClearRecord(const JSONRPCRequest& request)
     int64_t iSequence = 0;
     std::string strHeaderHex;
     std::string strHeaderSalt = strOperationType + ":" + std::to_string(0);
-    // we need the last sequence number to update an existing DHT entry. 
+    // we need the last sequence number to update an existing DHT entry.
     DHT::SubmitGetAuthoritative(0, getKey.GetDHTPubKey(), strHeaderSalt, 20000, strHeaderHex, iSequence);
     CRecordHeader header(strHeaderHex);
 
@@ -394,14 +394,14 @@ static UniValue GetRecord(const JSONRPCRequest& request)
             "  }\n"
             "\nExamples\n" +
            HelpExampleCli("dht getrecord", "Duality avatar") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("dht getrecord", "Duality avatar"));
 
     EnsureWalletIsUnlocked();
 
     int64_t nStart = GetTimeMillis();
     UniValue result(UniValue::VOBJ);
-   
+
     if (!DHT::SessionStatus())
         throw JSONRPCError(RPC_DHT_NOT_STARTED, strprintf("dht %s failed. DHT session not started.", request.params[0].get_str()));
 
@@ -482,7 +482,7 @@ static UniValue GetLinkRecord(const JSONRPCRequest& request)
             "  }\n"
             "\nExamples\n" +
            HelpExampleCli("dht getlinkrecord", "duality bob auth") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("dht getlinkrecord", "duality bob auth"));
 
     EnsureWalletIsUnlocked();
@@ -599,7 +599,7 @@ static UniValue GetAllLinkRecords(const JSONRPCRequest& request)
             "  }\n"
             "\nExamples\n" +
            HelpExampleCli("dht getalllinkrecords", "duality pshare-offer") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("dht getalllinkrecords", "duality pshare-offer"));
 
     EnsureWalletIsUnlocked();
@@ -607,7 +607,7 @@ static UniValue GetAllLinkRecords(const JSONRPCRequest& request)
     int64_t nStart = GetTimeMillis();
 
     UniValue results(UniValue::VOBJ);
-   
+
     if (!DHT::SessionStatus())
         throw JSONRPCError(RPC_DHT_NOT_STARTED, strprintf("dht %s failed. DHT session not started.", request.params[0].get_str()));
 
@@ -689,7 +689,7 @@ static UniValue PutLinkRecord(const JSONRPCRequest& request)
             "  }\n"
             "\nExamples\n" +
            HelpExampleCli("dht putlinkrecord", "duality bob auth \"save this auth data\"") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("dht putlinkrecord", "duality bob auth \"save this auth data\""));
 
     EnsureWalletIsUnlocked();
@@ -818,7 +818,7 @@ static UniValue ClearLinkRecord(const JSONRPCRequest& request)
             "  }\n"
             "\nExamples\n" +
            HelpExampleCli("dht clearlinkrecord", "duality bob auth") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("dht clearlinkrecord", "duality bob auth"));
 
     EnsureWalletIsUnlocked();
@@ -1000,7 +1000,7 @@ static UniValue ReannounceLocalMutable(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("dht reannounce", "\"88196b9f8ca5f1dfb095bd48e18d97157f7a4435\"") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("dht reannounce", "\"88196b9f8ca5f1dfb095bd48e18d97157f7a4435\""));
 
     if (!DHT::SessionStatus())
@@ -1042,7 +1042,7 @@ static UniValue GetHashTableEvents(const JSONRPCRequest& request)
             "}\n"
             "\nExamples\n" +
            HelpExampleCli("dht reannounce", "\"88196b9f8ca5f1dfb095bd48e18d97157f7a4435\"") +
-           "\nAs a JSON-RPC call\n" + 
+           "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("dht reannounce", "\"88196b9f8ca5f1dfb095bd48e18d97157f7a4435\""));
 
     if (!DHT::SessionStatus())
@@ -1251,10 +1251,10 @@ UniValue dht_rpc(const JSONRPCRequest& request)
             "\nAs a JSON-RPC call\n"
             + HelpExampleRpc("dht getrecord", "superman avatar"));
     }
-    if (strCommand == "getmutable" || strCommand == "putmutable" || 
-            strCommand == "getrecord" || strCommand == "putrecord" || strCommand == "clearrecord" || 
+    if (strCommand == "getmutable" || strCommand == "putmutable" ||
+            strCommand == "getrecord" || strCommand == "putrecord" || strCommand == "clearrecord" ||
             strCommand == "getlinkrecord" || strCommand == "putlinkrecord" || strCommand == "clearlinkrecord" || strCommand == "getalllinkrecords" ||
-            strCommand == "status" || strCommand == "reannounce" || strCommand == "events") 
+            strCommand == "status" || strCommand == "reannounce" || strCommand == "events")
     {
         if (!sporkManager.IsSporkActive(SPORK_30_ACTIVATE_BDAP))
             throw JSONRPCError(RPC_BDAP_SPORK_INACTIVE, strprintf("Can not use the DHT until the BDAP spork is active."));

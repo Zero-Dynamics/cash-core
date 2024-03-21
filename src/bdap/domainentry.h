@@ -51,11 +51,11 @@ public:
     static const int CURRENT_VERSION = 1;
     int nVersion;
     CharString RootOID; // Canonical Object ID
-    //CN=John Smith,OU=Public,DC=BDAP,DC=IO, O=Duality Blockchain Solutions, UID=johnsmith21
+    //CN=John Smith,OU=Public,DC=BDAP,DC=IO, O=Zero Dynamics, UID=johnsmith21
     CharString DomainComponent; // DC. Like DC=bdap.io. required. controls child objects
     CharString CommonName; // CN. Like CN=John Smith
     CharString OrganizationalUnit; // OU. Like OU=sales. blank for top level domain directories
-    CharString OrganizationName; // O. Like Duality Blockchain Solutions
+    CharString OrganizationName; // O. Like Zero Dynamics
     CharString ObjectID; // UID. Like johnsmith21.  blank for top level domain directories
     unsigned int nObjectType; // see enum above
     CharString WalletAddress; // used to send collateral funds for this directory record.
@@ -143,7 +143,7 @@ public:
         txHash = b.txHash;
         return *this;
     }
- 
+
     inline bool IsNull() const { return (DomainComponent.empty()); }
     bool UnserializeFromTx(const CTransactionRef& tx);
     bool UnserializeFromData(const std::vector<unsigned char>& vchData, const std::vector<unsigned char>& vchHash);

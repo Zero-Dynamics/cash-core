@@ -72,10 +72,10 @@ static constexpr unsigned int MAX_BDAP_AUDIT_HASH_SIZE    = 64;
 static const std::string DEFAULT_PUBLIC_DOMAIN            = "bdap.io";
 static const std::string DEFAULT_PUBLIC_OU                = "public";
 static const std::string DEFAULT_ADMIN_OU                 = "admin";
-static const std::string DEFAULT_ORGANIZATION_NAME        = "Duality Blockchain Solutions";
+static const std::string DEFAULT_ORGANIZATION_NAME        = "Zero Dynamics";
 /*
 BDAP Root OID: 2.16.840.1.114564
-{joint-iso-ccitt(2) country(16) US(840) organization(1) BDAP(114564)} 
+{joint-iso-ccitt(2) country(16) US(840) organization(1) BDAP(114564)}
 */
 static const std::string DEFAULT_OID_PREFIX               = "2.16.840.1.114564";
 

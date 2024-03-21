@@ -604,9 +604,9 @@ UniValue updategroup(const JSONRPCRequest& request)
             "  \"expired\"                    (boolean) Account expired\n"
             "  }\n"
             "\nExamples\n" +
-           HelpExampleCli("updategroup", "Duality \"Updated, Duality Blockchain Solutions Group\" 700" ) +
+           HelpExampleCli("updategroup", "0-DYN \"Updated, Zero Dynamics Group\" 700" ) +
            "\nAs a JSON-RPC call\n" +
-           HelpExampleRpc("updategroup", "Duality \"Updated, Duality Blockchain Solutions Group\" 700"));
+           HelpExampleRpc("updategroup", "0-DYN \"Updated, Zero Dynamics Group\" 700"));
 
     if (!servicenodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
@@ -879,9 +879,9 @@ UniValue addgroup(const JSONRPCRequest& request)
             "  \"expired\"                    (boolean) Account expired\n"
             "  }\n"
             "\nExamples\n" +
-           HelpExampleCli("addgroup", "Duality \"Duality Blockchain Solutions Group\"") +
+           HelpExampleCli("addgroup", "0-DYN \"Zero Dynamics Group\"") +
            "\nAs a JSON-RPC call\n" +
-           HelpExampleRpc("addgroup", "Duality \"Duality Blockchain Solutions Group\""));
+           HelpExampleRpc("addgroup", "0-DYN \"Zero Dynamics Group\""));
 
     //Check to see if wallet needs upgrading
     if(pwalletMain->WalletNeedsUpgrading())

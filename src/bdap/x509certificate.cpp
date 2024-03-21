@@ -33,18 +33,18 @@
 #endif
 
 int add_ext(X509 *cert, int nid, char *value);
-int add_ext_req(STACK_OF(X509_EXTENSION) *sk, int nid, char *value); 
+int add_ext_req(STACK_OF(X509_EXTENSION) *sk, int nid, char *value);
 bool vchPEMfromX509(X509 *x509, std::vector<unsigned char>& vchPEM);
 bool vchPEMfromX509req(X509_REQ *x509, std::vector<unsigned char>& vchPEM);
 
-void CX509Certificate::Serialize(std::vector<unsigned char>& vchData) 
+void CX509Certificate::Serialize(std::vector<unsigned char>& vchData)
 {
     CDataStream dsEntryX509Certificate(SER_NETWORK, PROTOCOL_VERSION);
     dsEntryX509Certificate << *this;
     vchData = std::vector<unsigned char>(dsEntryX509Certificate.begin(), dsEntryX509Certificate.end());
 }
 
-bool CX509Certificate::UnserializeFromData(const std::vector<unsigned char>& vchData, const std::vector<unsigned char>& vchHash) 
+bool CX509Certificate::UnserializeFromData(const std::vector<unsigned char>& vchData, const std::vector<unsigned char>& vchHash)
 {
     try {
         CDataStream dsEntryX509Certificate(vchData, SER_NETWORK, PROTOCOL_VERSION);
@@ -66,7 +66,7 @@ bool CX509Certificate::UnserializeFromData(const std::vector<unsigned char>& vch
     return true;
 }
 
-bool CX509Certificate::UnserializeFromTx(const CTransactionRef& tx, const unsigned int& height) 
+bool CX509Certificate::UnserializeFromTx(const CTransactionRef& tx, const unsigned int& height)
 {
     std::vector<unsigned char> vchData;
     std::vector<unsigned char> vchHash;
@@ -120,21 +120,21 @@ bool CX509Certificate::UnserializeFromTx(const CTransactionRef& tx, const unsign
 std::string CX509Certificate::GetPubKeyHex() const
 {
     std::vector<unsigned char> certPubKey = SubjectPublicKey;
-    
+
     return ToHex(&certPubKey[0], certPubKey.size());
 }
 
 std::string CX509Certificate::GetIssuerPubKeyHex() const
 {
     std::vector<unsigned char> certPubKey = IssuerPublicKey;
-    
+
     return ToHex(&certPubKey[0], certPubKey.size());
 }
 
 std::string CX509Certificate::GetPubKeyBase64() const
 {
     std::vector<unsigned char> certPubKey = SubjectPublicKey;
-    
+
     return EncodeBase64(&certPubKey[0], certPubKey.size());
 }
 
@@ -287,7 +287,7 @@ unsigned char* CX509Certificate::TestSign(const std::vector<unsigned char>& vchP
     EVP_MD_CTX *mdctx = NULL;
     int ret = 0;
     //size_t *slen;
-    
+
     EVP_PKEY* privkeyEd25519;
     EVP_PKEY_CTX *pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_ED25519, NULL);
     privkeyEd25519=EVP_PKEY_new();
@@ -315,7 +315,7 @@ unsigned char* CX509Certificate::TestSign(const std::vector<unsigned char>& vchP
 
     /* Create the Message Digest Context */
     if(!(mdctx = EVP_MD_CTX_new())) goto err;
-    
+
     /* Initialise the DigestSign operation - SHA-256 has been selected as the message digest function in this example */
     if(1 != EVP_DigestSignInit(mdctx, &pctx, NULL, NULL, privkeyEd25519)) goto err;
 
@@ -345,7 +345,7 @@ unsigned char* CX509Certificate::TestSign(const std::vector<unsigned char>& vchP
     {
         //return false;
     }
-    
+
     // /* Clean up */
     // //if(*sig && !ret) OPENSSL_free(*sig);
     if(mdctx) EVP_MD_CTX_destroy(mdctx);
@@ -365,7 +365,7 @@ bool CX509Certificate::CheckIfExistsInMemPool(const CTxMemPool& pool, std::strin
         const CTransactionRef& tx = e.GetSharedTx();
         if (tx->nVersion != BDAP_TX_VERSION) {
             continue;
-        } 
+        }
         //TODO: debug make sure it's hitting this
         for (const CTxOut& txOut : tx->vout) {
             if (IsBDAPDataOutput(txOut)) {
@@ -400,7 +400,7 @@ int add_ext(X509 *cert, int nid, char *value)
     return 1;
 }
 
-int add_ext_req(STACK_OF(X509_EXTENSION) *sk, int nid, char *value) 
+int add_ext_req(STACK_OF(X509_EXTENSION) *sk, int nid, char *value)
 {
     X509_EXTENSION *ex;
     ex = X509V3_EXT_conf_nid(NULL, NULL, nid, value);
@@ -593,7 +593,7 @@ bool CX509Certificate::X509SelfSign(const std::vector<unsigned char>& vchSubject
     //self signed so subject=issuer
     X509_set_issuer_name(certificate,subjectName);
 
-    char* basicConstraints = strdup("critical,CA:TRUE"); 
+    char* basicConstraints = strdup("critical,CA:TRUE");
     char* keyUsage = strdup("critical,keyCertSign,cRLSign");
     char* keyIdentifier = strdup("hash");
     char* authKeyIdentifier = strdup("keyid,issuer");
@@ -673,7 +673,7 @@ bool CX509Certificate::X509RootCASign(const std::vector<unsigned char>& vchIssue
     //self signed so subject=issuer
     X509_set_issuer_name(certificateCA,subjectName);
 
-    char* basicConstraints = strdup("critical,CA:TRUE"); 
+    char* basicConstraints = strdup("critical,CA:TRUE");
     char* keyUsage = strdup("critical,keyCertSign,cRLSign");
     char* keyIdentifier = strdup("hash");
     char* authKeyIdentifier = strdup("keyid,issuer");
@@ -765,7 +765,7 @@ bool CX509Certificate::X509Export(const std::vector<unsigned char>& vchSubjectPr
 
 } //X509Export
 
-bool CX509Certificate::X509ExportRoot(std::string filename)  
+bool CX509Certificate::X509ExportRoot(std::string filename)
 {
     OpenSSL_add_all_algorithms();
     OpenSSL_add_all_digests();
@@ -781,7 +781,7 @@ bool CX509Certificate::X509ExportRoot(std::string filename)
     if (x509File == NULL) {
         return false;
     }
-    
+
     //retrieve root certificate from PEM
     X509 *certificate = NULL;
     BIO *certbio = NULL;
@@ -857,7 +857,7 @@ bool CX509Certificate::X509TestApproveSign(const std::vector<unsigned char>& vch
     //self signed so subject=issuer
     X509_set_issuer_name(certificateCA,subjectName);
 
-    char* basicConstraints = strdup("critical,CA:TRUE"); 
+    char* basicConstraints = strdup("critical,CA:TRUE");
     char* keyUsage = strdup("critical,keyCertSign,cRLSign");
     char* keyIdentifier = strdup("hash");
     char* authKeyIdentifier = strdup("keyid,issuer");
@@ -969,7 +969,7 @@ bool CX509Certificate::X509TestApproveSign(const std::vector<unsigned char>& vch
 
     X509_EXTENSION *ex;
     X509V3_CTX v3ctx;
-    X509V3_set_ctx(&v3ctx, certificateCA, certificateCRT, 0, 0, 0); 
+    X509V3_set_ctx(&v3ctx, certificateCA, certificateCRT, 0, 0, 0);
 
     ex = X509V3_EXT_conf_nid(0, &v3ctx, NID_basic_constraints, "critical,CA:FALSE");
     X509_add_ext(certificateCRT, ex, -1);
@@ -1016,7 +1016,7 @@ bool CX509Certificate::X509TestApproveSign(const std::vector<unsigned char>& vch
     X509_free(certificateCRT);
     X509_REQ_free(certificateREQ);
 
-    return true;    
+    return true;
 } //X509TestApproveSign
 
 bool CX509Certificate::X509ApproveSign(const std::vector<unsigned char>& pemCA, const std::vector<unsigned char>& vchIssuerPrivSeedBytes)  //Pass PrivKeySeedBytes
@@ -1081,7 +1081,7 @@ bool CX509Certificate::X509ApproveSign(const std::vector<unsigned char>& pemCA, 
     //self signed so subject=issuer
     X509_set_issuer_name(certificate,issuerName);
 
-    // char* basicConstraints = strdup("critical,CA:TRUE"); 
+    // char* basicConstraints = strdup("critical,CA:TRUE");
     // char* keyUsage = strdup("critical,keyCertSign,cRLSign");
     // char* keyIdentifier = strdup("hash");
 
@@ -1092,7 +1092,7 @@ bool CX509Certificate::X509ApproveSign(const std::vector<unsigned char>& pemCA, 
     //assign x509 extensions. retrieve authority key identifier from root certificate
     X509_EXTENSION *ex;
     X509V3_CTX v3ctx;
-    X509V3_set_ctx(&v3ctx, certificateCA, certificate, 0, 0, 0); 
+    X509V3_set_ctx(&v3ctx, certificateCA, certificate, 0, 0, 0);
 
     ex = X509V3_EXT_conf_nid(0, &v3ctx, NID_basic_constraints, "critical,CA:FALSE");
     X509_add_ext(certificate, ex, -1);
@@ -1139,7 +1139,7 @@ bool CX509Certificate::X509ApproveSign(const std::vector<unsigned char>& pemCA, 
 } //X509ApproveSign
 
 std::string CX509Certificate::GetPEMSubject() const {
-  
+
     X509 *certRetrieve = NULL;
     BIO *certbio = NULL;
 
@@ -1166,7 +1166,7 @@ std::string CX509Certificate::GetPEMSubject() const {
 }
 
 std::string CX509Certificate::GetReqPEMSubject() const {
-  
+
     X509_REQ *certRetrieve = NULL;
     BIO *certbio = NULL;
 
@@ -1193,7 +1193,7 @@ std::string CX509Certificate::GetReqPEMSubject() const {
 }
 
 std::string CX509Certificate::GetPEMIssuer() const {
-  
+
     X509 *certRetrieve = NULL;
     BIO *certbio = NULL;
 
@@ -1220,7 +1220,7 @@ std::string CX509Certificate::GetPEMIssuer() const {
 }
 
 std::string CX509Certificate::GetPEMPubKey() const {
-  
+
     X509 *certRetrieve = NULL;
     BIO *certbio = NULL;
 
@@ -1249,7 +1249,7 @@ std::string CX509Certificate::GetPEMPubKey() const {
 
     std::string pubkey(mem->data, mem->length);
 
-    outputString = pubkey;    
+    outputString = pubkey;
 
     X509_free(certRetrieve);
     BIO_free(certbio);
@@ -1258,7 +1258,7 @@ std::string CX509Certificate::GetPEMPubKey() const {
 }
 
 std::string CX509Certificate::GetReqPEMPubKey() const {
-  
+
     X509_REQ *certRetrieve = NULL;
     BIO *certbio = NULL;
 
@@ -1287,7 +1287,7 @@ std::string CX509Certificate::GetReqPEMPubKey() const {
 
     std::string pubkey(mem->data, mem->length);
 
-    outputString = pubkey;    
+    outputString = pubkey;
 
     X509_REQ_free(certRetrieve);
     BIO_free(certbio);
@@ -1392,7 +1392,7 @@ bool CX509Certificate::ValidatePEM(std::string& errorMessage) const
     std::string certIssuer = stringFromVch(Issuer);
     std::string certPublickKey = GetPubKeyBase64();
     std::string certSerialNumber = std::to_string(SerialNumber);
-    std::string BDAPprefix = "/C=US/O=Duality Blockchain Solutions/CN=";
+    std::string BDAPprefix = "/C=US/O=Zero Dynamics/CN=";
 
     if (!IsApproved()) { //REQUEST
         std::string PEMSubject = GetReqPEMSubject();
@@ -1488,49 +1488,49 @@ bool CX509Certificate::ValidateValues(std::string& errorMessage) const
     }
 
     // check subject owner path
-    if (Subject.size() > MAX_OBJECT_FULL_PATH_LENGTH) 
+    if (Subject.size() > MAX_OBJECT_FULL_PATH_LENGTH)
     {
         errorMessage = "Invalid Subject full path name. Can not have more than " + std::to_string(MAX_OBJECT_FULL_PATH_LENGTH) + " characters.";
         return false;
     }
 
     // check SubjectSignature
-    if (SubjectSignature.size() > MAX_CERTIFICATE_SIGNATURE_LENGTH) 
+    if (SubjectSignature.size() > MAX_CERTIFICATE_SIGNATURE_LENGTH)
     {
         errorMessage = "Invalid SubjectSignature. Can not have more than " + std::to_string(MAX_CERTIFICATE_SIGNATURE_LENGTH) + " characters.";
         return false;
     }
 
     // check issuer owner path
-    if (Issuer.size() > MAX_OBJECT_FULL_PATH_LENGTH) 
+    if (Issuer.size() > MAX_OBJECT_FULL_PATH_LENGTH)
     {
         errorMessage = "Invalid Issuer full path name. Can not have more than " + std::to_string(MAX_OBJECT_FULL_PATH_LENGTH) + " characters.";
         return false;
     }
 
     // check SubjectPublicKey
-    if (SubjectPublicKey.size() > MAX_CERTIFICATE_KEY_LENGTH) 
+    if (SubjectPublicKey.size() > MAX_CERTIFICATE_KEY_LENGTH)
     {
         errorMessage = "Invalid SubjectPublicKey. Can not have more than " + std::to_string(MAX_CERTIFICATE_KEY_LENGTH) + " characters.";
         return false;
     }
 
     // check IssuerPublicKey
-    if (IssuerPublicKey.size() > MAX_CERTIFICATE_KEY_LENGTH) 
+    if (IssuerPublicKey.size() > MAX_CERTIFICATE_KEY_LENGTH)
     {
         errorMessage = "Invalid IssuerPublicKey. Can not have more than " + std::to_string(MAX_CERTIFICATE_KEY_LENGTH) + " characters.";
         return false;
     }
 
     // check IssuerSignature
-    if (IssuerSignature.size() > MAX_CERTIFICATE_SIGNATURE_LENGTH) 
+    if (IssuerSignature.size() > MAX_CERTIFICATE_SIGNATURE_LENGTH)
     {
         errorMessage = "Invalid IssuerSignature. Can not have more than " + std::to_string(MAX_CERTIFICATE_SIGNATURE_LENGTH) + " characters.";
         return false;
     }
 
     // check ExternalVerificationFile
-    if (ExternalVerificationFile.size() > MAX_CERTIFICATE_FILENAME) 
+    if (ExternalVerificationFile.size() > MAX_CERTIFICATE_FILENAME)
     {
         errorMessage = "Invalid ExternalVerificationFile. Can not have more than " + std::to_string(MAX_CERTIFICATE_FILENAME) + " characters.";
         return false;
@@ -1613,6 +1613,6 @@ bool BuildX509CertificateJson(const CX509Certificate& certificate, UniValue& oCe
         oCertificate.push_back(Pair("valid_until", AddMonthsToBlockTime(nApproveTime,certificate.MonthsValid)));
         oCertificate.push_back(Pair("approve_height", std::to_string(certificate.nHeightSigned)));
     }
-    
+
     return true;
 }
