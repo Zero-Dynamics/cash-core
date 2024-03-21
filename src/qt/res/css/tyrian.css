@@ -1,5 +1,5 @@
 WalletFrame {
-border-image: url(':/images/drk/drk_walletFrame') 0 0 0 0 stretch stretch;
+border-image: url(':/images/tyrian/dark_walletFrame') 0 0 0 0 stretch stretch;
 border-top:0px solid #000;
 margin:0;
 padding:0;
@@ -174,7 +174,7 @@ outline: none;
 }
 
 QComboBox::down-arrow {
-border-image: url(':/images/drk/tyrianpurple_downArrow') 0 0 0 0 stretch stretch;
+border-image: url(':/images/tyrian/tyrianpurple_downArrow') 0 0 0 0 stretch stretch;
 }
 
 QComboBox QListView {
@@ -230,7 +230,7 @@ padding-top:2px;
 }
 
 QAbstractSpinBox::up-arrow {
-image:url(':/images/drk/tyrianpurple_upArrow_small');
+image:url(':/images/tyrian/tyrianpurple_upArrow_small');
 }
 
 QAbstractSpinBox::down-button {
@@ -248,7 +248,7 @@ padding-bottom:2px;
 }
 
 QAbstractSpinBox::down-arrow {
-image:url(':/images/drk/tyrianpurple_downArrow_small');
+image:url(':/images/tyrian/tyrianpurple_downArrow_small');
 }
 
 /*******************************************************/
@@ -263,35 +263,35 @@ height: 16px;
 }
 
 QCheckBox::indicator:unchecked {
-image:url(':/images/drk/unchecked');
+image:url(':/images/tyrian/unchecked');
 }
 
 QCheckBox::indicator:unchecked:hover {
-image:url(':/images/drk/unchecked');
+image:url(':/images/tyrian/unchecked');
 }
 
 QCheckBox::indicator:unchecked:pressed {
-image:url(':/images/drk/checked');
+image:url(':/images/tyrian/checked');
 }
 
 QCheckBox::indicator:checked {
-image:url(':/images/drk/checked');
+image:url(':/images/tyrian/checked');
 }
 
 QCheckBox::indicator:checked:hover {
-image:url(':/images/drk/checked');
+image:url(':/images/tyrian/checked');
 }
 
 QCheckBox::indicator:checked:pressed {
-image:url(':/images/drk/unchecked');
+image:url(':/images/tyrian/unchecked');
 }
 
 QCheckBox::indicator:indeterminate:hover {
-image:url(':/images/drk/unchecked');
+image:url(':/images/tyrian/unchecked');
 }
 
 QCheckBox::indicator:indeterminate:pressed {
-image:url(':/images/drk/checked');
+image:url(':/images/tyrian/checked');
 }
 
 /*******************************************************/
@@ -391,7 +391,6 @@ border:0px solid #e5e4e2;
 
 QTableView::item { /* Table Item */
 background-color:#e5e4e2;
-color:#440128;
 font-size:12px;
 }
 
@@ -470,19 +469,19 @@ height:10px;
 }
 
 QScrollBar:up-arrow {
-background-image: url(':/images/drk/tyrianpurple_upArrow_small');
+background-image: url(':/images/tyrian/tyrianpurple_upArrow_small');
 }
 
 QScrollBar:down-arrow {
-background-image: url(':/images/drk/tyrianpurple_downArrow_small');
+background-image: url(':/images/tyrian/tyrianpurple_downArrow_small');
 }
 
 QScrollBar:left-arrow {
-background-image: url(':/images/drk/tyrianpurple_leftArrow_small');
+background-image: url(':/images/tyrian/tyrianpurple_leftArrow_small');
 }
 
 QScrollBar:right-arrow {
-background-image: url(':/images/drk/tyrianpurple_rightArrow_small');
+background-image: url(':/images/tyrian/tyrianpurple_rightArrow_small');
 }
 
 
@@ -599,7 +598,7 @@ background-color:#e5e4e2;
 }
 
 QDialog#SignVerifyMessageDialog QPushButton#pasteButton_SM { /* Paste Button */
-/* qproperty-icon: url(":/icons/drk/tyrianpurple_editpaste"); */
+/* qproperty-icon: url(":/icons/tyrian/tyrianpurple_editpaste"); */
 background-color:transparent;
 padding-left:15px;
 }
@@ -609,7 +608,7 @@ font-size:10px;
 }
 
 QDialog#SignVerifyMessageDialog QPushButton#copySignatureButton_SM { /* Copy Button */
-/* qproperty-icon: url(":/icons/drk/tyrianpurple_editcopy"); */
+/* qproperty-icon: url(":/icons/tyrian/tyrianpurple_editcopy"); */
 background-color:transparent;
 padding-left:10px;
 padding-right:10px;
@@ -1051,7 +1050,7 @@ min-height:35px;
 
 QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
-font-size:12px;
+font-size:14px;
 font-weight:bold;
 color:#66023c;
 margin-left:0px;
@@ -1692,7 +1691,7 @@ color:#440128;
 }
 
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:selected { /* Coin Control Branch Icon */
-background-image: url(':/images/drk/tyrianpurple_qtreeview_selected');
+background-image: url(':/images/tyrian/tyrianpurple_qtreeview_selected');
 background-repeat:no-repeat;
 background-position:center;
 background-color:#e5e4e2;
@@ -1700,7 +1699,7 @@ color:#440128;
 }
 
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:checked { /* Coin Control Branch Icon */
-background-image: url(':/images/drk/tyrianpurple_qtreeview_selected');
+background-image: url(':/images/tyrian/tyrianpurple_qtreeview_selected');
 background-repeat:no-repeat;
 background-position:center;
 background-color:#e5e4e2;

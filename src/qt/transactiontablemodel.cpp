@@ -411,11 +411,11 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     QString theme = GUIUtil::getThemeName();
     switch (wtx->type) {
     case TransactionRecord::Fluid:
-        return QIcon(":/icons/" + theme + "/fluid");
+        return QIcon(":/icons/" + theme + "/darkpurple_fluid");
     case TransactionRecord::DNReward:
-        return QIcon(":/icons/" + theme + "/tx_staked");
+        return QIcon(":/icons/" + theme + "/darkpurple_tx_staked");
     case TransactionRecord::Generated:
-        return QIcon(":/icons/" + theme + "/tx_mined");
+        return QIcon(":/icons/" + theme + "/darkpurple_tx_mined");
     case TransactionRecord::RecvWithPrivateSend:
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::RecvFromOther:
@@ -425,34 +425,34 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     case TransactionRecord::SendToOther:
         return QIcon(":/icons/" + theme + "/tx_output");
     case TransactionRecord::NewDomainUser:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::UpdateDomainUser:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::DeleteDomainUser:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::RevokeDomainUser:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::NewDomainGroup:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::UpdateDomainGroup:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::DeleteDomainGroup:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::RevokeDomainGroup:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::NewAudit:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::NewCertificate:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::ApproveCertificate:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::ApproveRootCertificate:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::LinkRequest:
     case TransactionRecord::LinkAccept:
-        return QIcon(":/icons/" + theme + "/bdap");
+        return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     default:
-        return QIcon(":/icons/" + theme + "/tx_inout");
+        return QIcon(":/icons/" + theme + "/darkpurple_tx_inout");
     }
 }
 
@@ -607,7 +607,7 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord* wtx)
     case TransactionStatus::NotAccepted:
         return QIcon(":/icons/" + theme + "/darkpurple_transaction_0");
     default:
-        return COLOR_BLACK;
+        return COLOR_DARK_PURPLE;
     }
 }
 
@@ -728,7 +728,7 @@ QVariant TransactionTableModel::data(const QModelIndex& index, int role) const
         }
         // To avoid overriding above conditional formats a default text color for this QTableView is not defined in stylesheet,
         // so we must always return a color here
-        return COLOR_BLACK;
+        return COLOR_DARK_PURPLE;
     case TypeRole:
         return rec->type;
     case DateRole:

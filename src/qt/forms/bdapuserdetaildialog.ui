@@ -213,7 +213,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/transaction_confirmed</normaloff>:/icons/drk/transaction_confirmed</iconset>
+           <normaloff>:/icons/tyrian/transaction_confirmed</normaloff>:/icons/tyrian/transaction_confirmed</iconset>
          </property>
         </widget>
        </item>

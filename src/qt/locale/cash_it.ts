@@ -878,15 +878,15 @@ Indirizzo: %4
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
-        <translation>Questa opzione è la più veloce e ti costerà ~0.025DRK circa per anonimizzare 1000DRK</translation>
+        <translation>Questa opzione è la più veloce e ti costerà ~0.025 0DYNC circa per anonimizzare 1000 0DYNC</translation>
     </message>
     <message>
         <source>This option is moderately fast and will cost about 0.05 0DYNC to anonymize 1000 0DYNC</source>
-        <translation>Questa opzione è moderatamente veloce e costerà 0.05DRK circa per anonimizzare 1000DRK</translation>
+        <translation>Questa opzione è moderatamente veloce e costerà 0.05 0DYNC circa per anonimizzare 1000 0DYNC</translation>
     </message>
     <message>
         <source>0.1 0DYNC per 1000 0DYNC you anonymize.</source>
-        <translation>0.1DRK ogni 1000DRK anonimizzati.</translation>
+        <translation>0.1 0DYNC ogni 1000 0DYNC anonimizzati.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1287,7 +1287,7 @@ Di conseguenza, anche gli utenti che hanno disabilitato i backup avranno Private
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
 https://www.transifex.com/projects/p/cash/</source>
-        <translation>La tua lingua manca o la traduzione è incompleta? Contribuisci alla traduzione qui: 
+        <translation>La tua lingua manca o la traduzione è incompleta? Contribuisci alla traduzione qui:
 https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
@@ -4419,7 +4419,7 @@ Più URL vengono separati da una barra verticale |.</translation>
     <message>
         <source>Time:</source>
         <translation>Tempo:</translation>
-    </message>   
+    </message>
     <message>
         <source>Expiration Date:</source>
         <translation>Data di scadenza:</translation>

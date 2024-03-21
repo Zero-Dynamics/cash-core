@@ -10,7 +10,7 @@ Graph on Pull Request History
 
 # **Cash (0DYNC) v2.4.0.0**
 
-![0DYNC logo](https://github.com/zero-dynamics/cash-core/blob/master/src/qt/res/icons/drk/about.png)
+![0DYNC logo](https://github.com/zero-dynamics/cash-core/blob/master/src/qt/res/icons/tyrian/about.png)
 
 **Copyright (c) 2016-2021 [Duality Blockchain Solutions](https://duality.solutions/)**
 

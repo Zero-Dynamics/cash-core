@@ -93,8 +93,8 @@ QLabel { color: rgb(255,255,255);  }
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/icons/drk/warning</normaloff>
-                 <disabledoff>:/icons/drk/warning</disabledoff>:/icons/drk/warning</iconset>
+                 <normaloff>:/icons/tyrian/warning</normaloff>
+                 <disabledoff>:/icons/tyrian/warning</disabledoff>:/icons/tyrian/warning</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -401,7 +401,7 @@ color: rgb(229, 228, 226);</string>
             <widget class="QPushButton" name="closeButton">
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
+               <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
               </property>
              <property name="text">
               <string>Hide</string>

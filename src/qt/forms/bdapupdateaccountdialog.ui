@@ -93,7 +93,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/transaction_confirmed</normaloff>:/icons/drk/transaction_confirmed</iconset>
+           <normaloff>:/icons/tyrian/transaction_confirmed</normaloff>:/icons/tyrian/transaction_confirmed</iconset>
          </property>
         </widget>
        </item>
@@ -140,7 +140,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/edit</normaloff>:/icons/drk/edit</iconset>
+           <normaloff>:/icons/tyrian/edit</normaloff>:/icons/tyrian/edit</iconset>
          </property>
         </widget>
        </item>
@@ -157,7 +157,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/quit</normaloff>:/icons/drk/quit</iconset>
+           <normaloff>:/icons/tyrian/quit</normaloff>:/icons/tyrian/quit</iconset>
          </property>
         </widget>
        </item>

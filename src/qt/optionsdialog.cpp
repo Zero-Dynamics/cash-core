@@ -92,7 +92,7 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet) : QDialog(paren
     }
 
     /* Theme selector */
-    ui->theme->addItem(QString("CASH-purple"), QVariant("drk"));
+    ui->theme->addItem(QString("Tyrian purple"), QVariant("tyrian"));
 
     /* Language selector */
     QDir translations(":translations");

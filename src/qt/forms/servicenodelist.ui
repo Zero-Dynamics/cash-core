@@ -127,7 +127,7 @@
               <widget class="QPushButton" name="startAllButton">
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/start</normaloff>:/icons/drk/start</iconset>
+                 <normaloff>:/icons/tyrian/start</normaloff>:/icons/tyrian/start</iconset>
                </property>
                <property name="styleSheet">
                 <string notr="true">QWidget#ServiceNodeList .QPushButton#startAllButton {
@@ -178,7 +178,7 @@
               <widget class="QPushButton" name="startButton">
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/start</normaloff>:/icons/drk/start</iconset>
+                 <normaloff>:/icons/tyrian/start</normaloff>:/icons/tyrian/start</iconset>
                </property>
                <property name="styleSheet">
                 <string notr="true">QWidget#ServiceNodeList .QPushButton#startButton {
@@ -229,7 +229,7 @@
               <widget class="QPushButton" name="startMissingButton">
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/start</normaloff>:/icons/drk/start</iconset>
+                 <normaloff>:/icons/tyrian/start</normaloff>:/icons/tyrian/start</iconset>
                </property>
                <property name="styleSheet">
                 <string notr="true">QWidget#ServiceNodeList .QPushButton#startMissingButton {
@@ -280,7 +280,7 @@
               <widget class="QPushButton" name="UpdateButton">
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/refresh</normaloff>:/icons/drk/refresh</iconset>
+                 <normaloff>:/icons/tyrian/refresh</normaloff>:/icons/tyrian/refresh</iconset>
                </property>
                <property name="styleSheet">
                 <string notr="true">QWidget#ServiceNodeList .QPushButton#UpdateButton {

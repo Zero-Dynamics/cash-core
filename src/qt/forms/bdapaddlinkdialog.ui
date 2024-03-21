@@ -103,7 +103,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
+           <normaloff>:/icons/tyrian/add</normaloff>:/icons/tyrian/add</iconset>
          </property>
         </widget>
        </item>
@@ -120,7 +120,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/transaction_conflicted</normaloff>:/icons/drk/transaction_conflicted</iconset>
+           <normaloff>:/icons/tyrian/transaction_conflicted</normaloff>:/icons/tyrian/transaction_conflicted</iconset>
          </property>
         </widget>
        </item>

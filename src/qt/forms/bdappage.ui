@@ -84,7 +84,7 @@
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/refresh</normaloff>:/icons/drk/refresh</iconset>
+               <normaloff>:/icons/tyrian/refresh</normaloff>:/icons/tyrian/refresh</iconset>
              </property>
              <property name="text">
               <string>Refresh</string>
@@ -164,7 +164,7 @@
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
+               <normaloff>:/icons/tyrian/add</normaloff>:/icons/tyrian/add</iconset>
              </property>
              <property name="autoDefault">
               <bool>false</bool>
@@ -184,7 +184,7 @@
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/edit</normaloff>:/icons/drk/edit</iconset>
+               <normaloff>:/icons/tyrian/edit</normaloff>:/icons/tyrian/edit</iconset>
              </property>
             </widget>
            </item>
@@ -204,7 +204,7 @@
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
+               <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
              </property>
              <property name="autoDefault">
               <bool>false</bool>
@@ -299,7 +299,7 @@
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/refresh</normaloff>:/icons/drk/refresh</iconset>
+               <normaloff>:/icons/tyrian/refresh</normaloff>:/icons/tyrian/refresh</iconset>
              </property>
              <property name="text">
               <string>Refresh</string>
@@ -378,7 +378,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
+                 <normaloff>:/icons/tyrian/add</normaloff>:/icons/tyrian/add</iconset>
                </property>
                <property name="autoDefault">
                 <bool>false</bool>
@@ -398,7 +398,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/edit</normaloff>:/icons/drk/edit</iconset>
+                 <normaloff>:/icons/tyrian/edit</normaloff>:/icons/tyrian/edit</iconset>
                </property>
               </widget>
              </item>
@@ -418,7 +418,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
+                 <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
                </property>
                <property name="autoDefault">
                 <bool>false</bool>
@@ -582,7 +582,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/transaction_confirmed</normaloff>:/icons/drk/transaction_confirmed</iconset>
+                 <normaloff>:/icons/tyrian/transaction_confirmed</normaloff>:/icons/tyrian/transaction_confirmed</iconset>
                </property>
               </widget>
              </item>
@@ -602,7 +602,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/tyrianpurple_remove</normaloff>:/icons/drk/tyrianpurple_remove</iconset>
+                 <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
                </property>
               </widget>
              </item>
@@ -622,7 +622,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/tyrianpurple_transaction_abandoned</normaloff>:/icons/drk/tyrianpurple_transaction_abandoned</iconset>
+                 <normaloff>:/icons/tyrian/tyrianpurple_transaction_abandoned</normaloff>:/icons/tyrian/tyrianpurple_transaction_abandoned</iconset>
                </property>
               </widget>
              </item>
@@ -765,7 +765,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/tyrianpurple_remove</normaloff>:/icons/drk/tyrianpurple_remove</iconset>
+                 <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
                </property>
               </widget>
              </item>
@@ -827,7 +827,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/refresh</normaloff>:/icons/drk/refresh</iconset>
+                 <normaloff>:/icons/tyrian/refresh</normaloff>:/icons/tyrian/refresh</iconset>
                </property>
                <property name="text">
                 <string>Refresh All</string>
@@ -919,7 +919,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/drk/tyrianpurple_remove</normaloff>:/icons/drk/tyrianpurple_remove</iconset>
+                 <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
                </property>
               </widget>
              </item>
@@ -970,7 +970,7 @@
            </property>
            <property name="icon">
             <iconset resource="../cash.qrc">
-             <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
+             <normaloff>:/icons/tyrian/add</normaloff>:/icons/tyrian/add</iconset>
            </property>
           </widget>
          </item>

@@ -595,7 +595,7 @@ QTabBar { alignment: left; }</string>
            </property>
            <property name="icon">
             <iconset resource="../cash.qrc">
-             <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/tyrianpurple_clear</iconset>
+             <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/tyrianpurple_clear</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -656,8 +656,8 @@ QTabBar { alignment: left; }</string>
            </property>
            <property name="icon">
             <iconset resource="../cash.qrc">
-             <normaloff>:/icons/drk/prompticon</normaloff>
-             <disabledoff>:/icons/drk/prompticon</disabledoff>:/icons/drk/prompticon</iconset>
+             <normaloff>:/icons/tyrian/prompticon</normaloff>
+             <disabledoff>:/icons/tyrian/prompticon</disabledoff>:/icons/tyrian/prompticon</iconset>
            </property>
            <property name="iconSize">
             <size>

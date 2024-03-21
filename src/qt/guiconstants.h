@@ -35,7 +35,7 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /* Transaction list -- TX status decoration - danger, tx needs attention */
 #define COLOR_TX_STATUS_DANGER QColor(200, 100, 100)
 /* Transaction list -- TX status decoration - default color */
-#define COLOR_BLACK QColor(18, 0, 6)
+#define COLOR_DARK_PURPLE QColor(68, 1, 40)
 /* Transaction list -- TX status decoration - Locked by InstantSend (Dark Blue) */
 #define COLOR_TX_STATUS_LOCKED QColor(13, 81, 140)
 /* Transaction list -- TX status decoration - Fluid Transaction (Light Blue) */

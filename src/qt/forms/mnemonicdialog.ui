@@ -84,7 +84,7 @@ Your old account wallet file will be renamed to wallat.dat.before-mnemonic-impor
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/tyrianpurple_editpaste</normaloff>:/icons/drk/tyrianpurple_editpaste</iconset>
+               <normaloff>:/icons/tyrian/tyrianpurple_editpaste</normaloff>:/icons/tyrian/tyrianpurple_editpaste</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -104,7 +104,7 @@ Your old account wallet file will be renamed to wallat.dat.before-mnemonic-impor
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
+               <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -304,7 +304,7 @@ Wallet will restart after mnemonic has been imported.
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/editcopy</normaloff>:/icons/drk/editcopy</iconset>
+               <normaloff>:/icons/tyrian/editcopy</normaloff>:/icons/tyrian/editcopy</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -324,7 +324,7 @@ Wallet will restart after mnemonic has been imported.
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
+               <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -638,7 +638,7 @@ Wallet will restart after mnemonic has been imported.
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/browse</normaloff>:/icons/drk/browse</iconset>
+               <normaloff>:/icons/tyrian/browse</normaloff>:/icons/tyrian/browse</iconset>
               </property>
              </widget>
             </item>

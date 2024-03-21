@@ -377,9 +377,9 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent),
 #endif
 
     // Needed on Mac also
-    ui->clearButton->setIcon(QIcon(":/icons/drk/tyrianpurple_clear"));
-    ui->fontBiggerButton->setIcon(QIcon(":/icons/drk/fontbigger"));
-    ui->fontSmallerButton->setIcon(QIcon(":/icons/drk/fontsmaller"));
+    ui->clearButton->setIcon(QIcon(":/icons/tyrian/tyrianpurple_clear"));
+    ui->fontBiggerButton->setIcon(QIcon(":/icons/tyrian/fontbigger"));
+    ui->fontSmallerButton->setIcon(QIcon(":/icons/tyrian/fontsmaller"));
 
     // Install event filter for up and down arrow
     ui->lineEdit->installEventFilter(this);
@@ -806,7 +806,7 @@ void RPCConsole::clear(bool clearHistory)
     ui->lineEdit->clear();
     ui->lineEdit->setFocus();
 
-    QString iconPath = ":/icons/drk/";
+    QString iconPath = ":/icons/tyrian/";
     QString iconName = "";
 
     // Add smoothly scaled icon images.

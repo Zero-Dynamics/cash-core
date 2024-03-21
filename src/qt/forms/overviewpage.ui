@@ -616,7 +616,7 @@ border-style:solid;</string>
                <widget class="QPushButton" name="privateSendAuto">
                 <property name="icon">
                  <iconset resource="../cash.qrc">
-                  <normaloff>:/icons/drk/tx_inout</normaloff>:/icons/drk/tx_inout</iconset>
+                  <normaloff>:/icons/tyrian/tx_inout</normaloff>:/icons/tyrian/tx_inout</iconset>
                 </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -636,7 +636,7 @@ border-style:solid;</string>
                <widget class="QPushButton" name="privateSendReset">
                 <property name="icon">
                  <iconset resource="../cash.qrc">
-                  <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
+                  <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
                 </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -659,7 +659,7 @@ border-style:solid;</string>
                <widget class="QPushButton" name="privateSendInfo">
                 <property name="icon">
                  <iconset resource="../cash.qrc">
-                  <normaloff>:/icons/drk/information</normaloff>:/icons/drk/information</iconset>
+                  <normaloff>:/icons/tyrian/information</normaloff>:/icons/tyrian/information</iconset>
                 </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">

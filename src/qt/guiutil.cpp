@@ -900,7 +900,7 @@ QString getThemeName()
     if (!theme.isEmpty()) {
         return theme;
     }
-    return QString("drk");
+    return QString("tyrian");
 }
 
 // Open CSS when configured
@@ -911,8 +911,8 @@ QString loadStyleSheet()
     QString cssName;
     QString theme = settings.value("theme", "").toString();
 
-    cssName = QString(":/css/drk");
-    settings.setValue("theme", "drk");
+    cssName = QString(":/css/tyrian");
+    settings.setValue("theme", "tyrian");
 
     QFile qFile(cssName);
     if (qFile.open(QFile::ReadOnly)) {

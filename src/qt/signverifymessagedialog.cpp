@@ -43,7 +43,7 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(const PlatformStyle* _platformS
     ui->clearButton_VM->setIcon(QIcon());
 #else
     ui->signMessageButton_SM->setIcon(QIcon(":/icons/" + theme + "/edit"));
-    ui->clearButton_SM->setIcon(QIcon(":/icons/" + theme + "/drkpurlpe_remove"));
+    ui->clearButton_SM->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
     ui->verifyMessageButton_VM->setIcon(QIcon(":/icons/" + theme + "/transaction_0"));
     ui->clearButton_VM->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
 #endif

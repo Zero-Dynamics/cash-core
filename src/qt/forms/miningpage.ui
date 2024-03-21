@@ -311,7 +311,7 @@
             <widget class="QPushButton" name="pushButtonClearCPUData">
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/tyrianpurple_remove</normaloff>:/icons/drk/tyrianpurple_remove</iconset>
+               <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton { /* Clear Button */
@@ -641,7 +641,7 @@
             <widget class="QPushButton" name="pushButtonClearGPUData">
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/drk/tyrianpurple_remove</normaloff>:/icons/drk/tyrianpurple_remove</iconset>
+               <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton { /* Clear Button */

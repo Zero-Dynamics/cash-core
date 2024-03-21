@@ -105,7 +105,7 @@
            <widget class="QPushButton" name="pushButtonCoinControl">
             <property name="icon">
              <iconset resource="../cash.qrc">
-              <normaloff>:/icons/drk/prompticon</normaloff>:/icons/drk/prompticon</iconset>
+              <normaloff>:/icons/tyrian/prompticon</normaloff>:/icons/tyrian/prompticon</iconset>
              </property>
             <property name="styleSheet">
              <string notr="true"/>
@@ -743,7 +743,7 @@
                <widget class="QPushButton" name="buttonChooseFee">
                 <property name="icon">
                  <iconset resource="../cash.qrc">
-                  <normaloff>:/icons/drk/tx_output</normaloff>:/icons/drk/tx_output</iconset>
+                  <normaloff>:/icons/tyrian/tx_output</normaloff>:/icons/tyrian/tx_output</iconset>
                  </property>
                 <property name="text">
                  <string>Choose...</string>
@@ -806,7 +806,7 @@
             </property>
             <property name="icon">
              <iconset resource="../cash.qrc">
-              <normaloff>:/icons/drk/remove</normaloff>:/icons/drk/remove</iconset>
+              <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
              </property>
             <property name="text">
              <string>Hide</string>

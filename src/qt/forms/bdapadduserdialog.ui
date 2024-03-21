@@ -87,7 +87,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/synced</normaloff>:/icons/drk/synced</iconset>
+           <normaloff>:/icons/tyrian/synced</normaloff>:/icons/tyrian/synced</iconset>
          </property>
         </widget>
        </item>
@@ -137,7 +137,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/add</normaloff>:/icons/drk/add</iconset>
+           <normaloff>:/icons/tyrian/add</normaloff>:/icons/tyrian/add</iconset>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -154,7 +154,7 @@
          </property>
          <property name="icon">
           <iconset resource="../cash.qrc">
-           <normaloff>:/icons/drk/transaction_conflicted</normaloff>:/icons/drk/transaction_conflicted</iconset>
+           <normaloff>:/icons/tyrian/transaction_conflicted</normaloff>:/icons/tyrian/transaction_conflicted</iconset>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
