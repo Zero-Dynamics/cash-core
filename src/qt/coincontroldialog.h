@@ -84,8 +84,9 @@ private:
         COLUMN_PRIVATESEND_ROUNDS,
         COLUMN_DATE,
         COLUMN_CONFIRMATIONS,
-        COLUMN_TXHASH,
-        COLUMN_VOUT_INDEX
+        COLUMN_VOUT_INDEX,
+        COLUMN_TXHASH
+
     };
 
     friend class CCoinControlWidgetItem;

@@ -138,8 +138,8 @@ OverviewPage::OverviewPage(const PlatformStyle* platformStyle, QWidget* parent) 
 
     // init "out of sync" warning labels
     ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
-    ui->labelPrivateSendSyncStatus->setText("(" + tr("out of sync") + ")");
-    ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
+    // ui->labelPrivateSendSyncStatus->setText("(" + tr("out of sync") + ")");
+    // ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
 
     // hide PS frame (helps to preserve saved size)
     // we'll setup and make it visible in updateAdvancedPSUI() later if we are not in litemode
@@ -322,8 +322,8 @@ void OverviewPage::updateAlerts(const QString& warnings)
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
     ui->labelWalletStatus->setVisible(fShow);
-    ui->labelPrivateSendSyncStatus->setVisible(fShow);
-    ui->labelTransactionsStatus->setVisible(fShow);
+    // ui->labelPrivateSendSyncStatus->setVisible(fShow);
+    // ui->labelTransactionsStatus->setVisible(fShow);
 }
 
 void OverviewPage::hideOrphans(bool fHide)

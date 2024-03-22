@@ -139,15 +139,16 @@ CoinControlDialog::CoinControlDialog(const PlatformStyle* _platformStyle, QWidge
     // see https://github.com/bitcoin/bitcoin/issues/5716
     ui->treeWidget->headerItem()->setText(COLUMN_CHECKBOX, QString());
 
-    ui->treeWidget->setColumnWidth(COLUMN_CHECKBOX, 84);
-    ui->treeWidget->setColumnWidth(COLUMN_AMOUNT, 100);
-    ui->treeWidget->setColumnWidth(COLUMN_LABEL, 170);
-    ui->treeWidget->setColumnWidth(COLUMN_ADDRESS, 190);
-    ui->treeWidget->setColumnWidth(COLUMN_PRIVATESEND_ROUNDS, 88);
-    ui->treeWidget->setColumnWidth(COLUMN_DATE, 80);
+    ui->treeWidget->setColumnWidth(COLUMN_CHECKBOX, 80);
+    ui->treeWidget->setColumnWidth(COLUMN_AMOUNT, 150);
+    ui->treeWidget->setColumnWidth(COLUMN_LABEL, 225);
+    ui->treeWidget->setColumnWidth(COLUMN_ADDRESS, 360);
+    ui->treeWidget->setColumnWidth(COLUMN_PRIVATESEND_ROUNDS, 80);
+    ui->treeWidget->setColumnWidth(COLUMN_DATE, 160);
     ui->treeWidget->setColumnWidth(COLUMN_CONFIRMATIONS, 100);
-    ui->treeWidget->setColumnHidden(COLUMN_TXHASH, true);     // store transacton hash in this column, but don't show it
-    ui->treeWidget->setColumnHidden(COLUMN_VOUT_INDEX, true); // store vout index in this column, but don't show it
+    ui->treeWidget->setColumnWidth(COLUMN_VOUT_INDEX, 50);
+    ui->treeWidget->setColumnWidth(COLUMN_TXHASH, 640);
+
 
     // default view is sorted by amount desc
     sortView(COLUMN_AMOUNT, Qt::DescendingOrder);
@@ -766,12 +767,12 @@ void CoinControlDialog::updateView()
             itemOutput->setText(COLUMN_CONFIRMATIONS, QString::number(out.nDepth));
             itemOutput->setData(COLUMN_CONFIRMATIONS, Qt::UserRole, QVariant((qlonglong)out.nDepth));
 
+            // vout index
+            itemOutput->setText(COLUMN_VOUT_INDEX, QString::number(out.i));
+
             // transaction hash
             uint256 txhash = out.tx->GetHash();
             itemOutput->setText(COLUMN_TXHASH, QString::fromStdString(txhash.GetHex()));
-
-            // vout index
-            itemOutput->setText(COLUMN_VOUT_INDEX, QString::number(out.i));
 
             // disable locked coins
             if (model->isLockedCoin(txhash, out.i)) {

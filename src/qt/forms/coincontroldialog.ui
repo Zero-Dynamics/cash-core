@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
-    <height>500</height>
+    <width>1335</width>
+    <height>825</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -424,7 +424,7 @@
       <bool>false</bool>
      </property>
      <property name="columnCount">
-      <number>11</number>
+      <number>9</number>
      </property>
      <attribute name="headerShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -472,22 +472,12 @@
      </column>
      <column>
       <property name="text">
-       <string/>
+       <string>Index</string>
       </property>
-     </column>
+     </column>     
      <column>
       <property name="text">
-       <string/>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string/>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string/>
+       <string>Transaction ID</string>
       </property>
      </column>
     </widget>

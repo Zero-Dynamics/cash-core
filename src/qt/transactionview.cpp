@@ -53,21 +53,21 @@ TransactionView::TransactionView(const PlatformStyle* platformStyle, QWidget* pa
     hlayout->setContentsMargins(0, 0, 0, 0);
     if (platformStyle->getUseExtraSpacing()) {
         hlayout->setSpacing(0);
-        hlayout->addSpacing(6);
+        hlayout->addSpacing(0);
     } else {
-        hlayout->setSpacing(1);
-        hlayout->addSpacing(5);
+        hlayout->setSpacing(0);
+        hlayout->addSpacing(0);
     }
     QString theme = GUIUtil::getThemeName();
     watchOnlyWidget = new QComboBox(this);
-    watchOnlyWidget->setFixedWidth(24);
-    watchOnlyWidget->addItem("", TransactionFilterProxy::WatchOnlyFilter_All);
+    watchOnlyWidget->setFixedWidth(60);
+    watchOnlyWidget->addItem(QIcon(":/icons/" + theme + "/darkpurple_eye"), "", TransactionFilterProxy::WatchOnlyFilter_All);
     watchOnlyWidget->addItem(QIcon(":/icons/" + theme + "/darkpurple_eye_plus"), "", TransactionFilterProxy::WatchOnlyFilter_Yes);
     watchOnlyWidget->addItem(QIcon(":/icons/" + theme + "/darkpurple_eye_minus"), "", TransactionFilterProxy::WatchOnlyFilter_No);
     hlayout->addWidget(watchOnlyWidget);
 
     instantsendWidget = new QComboBox(this);
-    instantsendWidget->setFixedWidth(24);
+    instantsendWidget->setFixedWidth(60);
     instantsendWidget->addItem(tr("All"), TransactionFilterProxy::InstantSendFilter_All);
     instantsendWidget->addItem(tr("Locked by InstantSend"), TransactionFilterProxy::InstantSendFilter_Yes);
     instantsendWidget->addItem(tr("Not locked by InstantSend"), TransactionFilterProxy::InstantSendFilter_No);
@@ -75,9 +75,9 @@ TransactionView::TransactionView(const PlatformStyle* platformStyle, QWidget* pa
 
     dateWidget = new QComboBox(this);
     if (platformStyle->getUseExtraSpacing()) {
-        dateWidget->setFixedWidth(120);
+        dateWidget->setFixedWidth(175);
     } else {
-        dateWidget->setFixedWidth(120);
+        dateWidget->setFixedWidth(175);
     }
     dateWidget->addItem(tr("All"), All);
     dateWidget->addItem(tr("Today"), Today);
@@ -93,7 +93,7 @@ TransactionView::TransactionView(const PlatformStyle* platformStyle, QWidget* pa
     if (platformStyle->getUseExtraSpacing()) {
         typeWidget->setFixedWidth(TYPE_COLUMN_WIDTH);
     } else {
-        typeWidget->setFixedWidth(TYPE_COLUMN_WIDTH - 1);
+        typeWidget->setFixedWidth(TYPE_COLUMN_WIDTH);
     }
 
     typeWidget->addItem(tr("All"), TransactionFilterProxy::ALL_TYPES);
@@ -138,9 +138,9 @@ TransactionView::TransactionView(const PlatformStyle* platformStyle, QWidget* pa
     amountWidget->setPlaceholderText(tr("Min amount"));
 #endif
     if (platformStyle->getUseExtraSpacing()) {
-        amountWidget->setFixedWidth(118);
+        amountWidget->setFixedWidth(120);
     } else {
-        amountWidget->setFixedWidth(125);
+        amountWidget->setFixedWidth(120);
     }
     amountWidget->setValidator(new QDoubleValidator(0, 1e20, 8, this));
     amountWidget->setObjectName("amountWidget");
@@ -158,7 +158,7 @@ TransactionView::TransactionView(const PlatformStyle* platformStyle, QWidget* pa
     int width = view->verticalScrollBar()->sizeHint().width();
     // Cover scroll bar width with spacing
     if (platformStyle->getUseExtraSpacing()) {
-        hlayout->addSpacing(width + 2);
+        hlayout->addSpacing(width);
     } else {
         hlayout->addSpacing(width);
     }

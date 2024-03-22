@@ -53,13 +53,13 @@ public:
     };
 
     enum ColumnWidths {
-        STATUS_COLUMN_WIDTH = 30,
-        WATCHONLY_COLUMN_WIDTH = 23,
-        INSTANTSEND_COLUMN_WIDTH = 23,
-        DATE_COLUMN_WIDTH = 120,
-        TYPE_COLUMN_WIDTH = 240,
+        STATUS_COLUMN_WIDTH = 60,
+        WATCHONLY_COLUMN_WIDTH = 60,
+        INSTANTSEND_COLUMN_WIDTH = 60,
+        DATE_COLUMN_WIDTH = 175,
+        TYPE_COLUMN_WIDTH = 225,
         AMOUNT_MINIMUM_COLUMN_WIDTH = 120,
-        MINIMUM_COLUMN_WIDTH = 23
+        MINIMUM_COLUMN_WIDTH = 60
     };
 
 private:
@@ -73,7 +73,7 @@ private:
     QLineEdit* addressWidget;
     QLineEdit* amountWidget;
     QAction* hideOrphansAction;
-    
+
     QMenu* contextMenu;
     QSignalMapper* mapperThirdPartyTxUrls;
 
