@@ -943,10 +943,28 @@ QDialog#RPCConsole QLineEdit#lineEdit { /* Console Input */
 font-size:14px;
 }
 
-QDialog#RPCConsole QPushButton#clearButton { /* Console Clear Button */
-background-color:#e5e4e2;
+QDialog#RPCConsole QPushButton#clearButton  { /* Console Clear Button */
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:0;
+border-radius:3px;
+color:#440128;
 padding-left:10px;
 padding-right:10px;
+}
+
+QDialog#RPCConsole QPushButton#clearButton:hover {
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
+color:#440128;
+}
+
+QDialog#RPCConsole QPushButton#clearButton:focus {
+border:none;
+outline:none;
+}
+
+QDialog#RPCConsole QPushButton#clearButton:pressed {
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:1px solid #120006;
 }
 
 QDialog#RPCConsole .QGroupBox #line { /* Network In Line */
