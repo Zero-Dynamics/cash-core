@@ -204,7 +204,7 @@
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
+               <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
              </property>
              <property name="autoDefault">
               <bool>false</bool>
@@ -418,7 +418,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
+                 <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
                </property>
                <property name="autoDefault">
                 <bool>false</bool>
@@ -602,7 +602,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../cash.qrc">
-                 <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
+                 <normaloff>:/icons/tyrian/tyrianpurple_clear</normaloff>:/icons/tyrian/tyrianpurple_clear</iconset>
                </property>
               </widget>
              </item>

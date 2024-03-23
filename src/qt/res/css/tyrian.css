@@ -1260,82 +1260,35 @@ color:#66023c;
 
 /* PRIVATESEND BUTTONS */
 
-QWidget .QFrame#framePrivateSend .QPushButton { /* PrivateSend Buttons - General Attributes */
-border:0px solid #e5e4e2;
+QWidget .QFrame#framePrivateSend .QPushButton#togglePrivateSend QPushButton { /* Start PrivateSend Mixing */
 }
 
-QWidget .QFrame#framePrivateSend QPushButton:focus {
-border:none;
-outline:none;
+QWidget .QFrame#framePrivateSend .QPushButton#privateSendAuto QPushButton { /* Try Mix Button */
 }
 
-QWidget .QFrame#framePrivateSend .QPushButton#runAutoDenom { /* No idea why this button is in the .UI file... */
-qproperty-geometry: rect(0 0 0 0);
+QWidget .QFrame#framePrivateSend .QPushButton#privateSendInfo QPushButton { /* Try Mix Button */
 }
 
-QWidget .QFrame#framePrivateSend .QPushButton#togglePrivateSend { /* Start PrivateSend Mixing */
-qproperty-geometry: rect(115 268 295 40);
-font-size:15px;
-font-weight:bold;
-color:#e5e4e2;
+QWidget .QFrame#framePrivateSend .QPushButton#privateSendReset { /* Reset Button */
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:0;
+border-radius:3px;
+color:#440128;
 padding-left:10px;
 padding-right:10px;
-padding-top:5px;
-padding-bottom:6px;
 }
 
-QWidget .QFrame#framePrivateSend .QPushButton#togglePrivateSend:hover {
-
-}
-
-QWidget .QFrame#framePrivateSend .QPushButton#PrivateSendAuto { /* Try Mix Button */
-qproperty-geometry: rect(120 314 140 25);
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
-border:0;
-border-radius:3px;
-color:#440128;
-min-height:25px;
-font-size:9px;
-padding:0px;
-}
-
-QWidget .QFrame#framePrivateSend .QPushButton#PrivateSendAuto:hover {
+QWidget .QFrame#framePrivateSend .QPushButton#privateSendReset:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
 color:#440128;
 }
 
-QWidget .QFrame#framePrivateSend .QPushButton#PrivateSendAuto:focus {
+QWidget .QFrame#framePrivateSend .QPushButton#privateSendReset:focus {
 border:none;
 outline:none;
 }
 
-QWidget .QFrame#framePrivateSend .QPushButton#PrivateSendAuto:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
-border:1px solid #120006;
-}
-
-QWidget .QFrame#framePrivateSend .QPushButton#PrivateSendReset { /* Reset Button */
-qproperty-geometry: rect(265 314 140 25);
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
-border:0;
-border-radius:3px;
-color:#440128;
-min-height:25px;
-font-size:9px;
-padding:0px;
-}
-
-QWidget .QFrame#framePrivateSend .QPushButton#PrivateSendReset:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
-color:#440128;
-}
-
-QWidget .QFrame#framePrivateSend .QPushButton#PrivateSendReset:focus {
-border:none;
-outline:none;
-}
-
-QWidget .QFrame#framePrivateSend .QPushButton#PrivateSendReset:pressed {
+QWidget .QFrame#framePrivateSend .QPushButton#privateSendReset:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
 border:1px solid #120006;
 }
@@ -1428,6 +1381,9 @@ padding-left:10px;
 padding-right:10px;
 }
 
+QDialog#SendCoinsDialog .QPushButton#addButton QPushButton { /* Add Button */
+}
+
 QDialog#SendCoinsDialog .QPushButton#clearButton { /* Clear Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
 border:0;
@@ -1448,30 +1404,6 @@ outline:none;
 }
 
 QDialog#SendCoinsDialog .QPushButton#clearButton:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
-border:1px solid #120006;
-}
-
-QDialog#SendCoinsDialog .QPushButton#addButton { /* Add Button */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
-border:0;
-border-radius:3px;
-color:#440128;
-padding-left:10px;
-padding-right:10px;
-}
-
-QDialog#SendCoinsDialog .QPushButton#addButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
-color:#440128;
-}
-
-QDialog#SendCoinsDialog .QPushButton#addButton:focus {
-border:none;
-outline:none;
-}
-
-QDialog#SendCoinsDialog .QPushButton#addButton:pressed {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
 border:1px solid #120006;
 }
@@ -2033,6 +1965,62 @@ QWidget#BdapPage .QPushButton:disabled {
     color:#66023c;
 }
 
+QWidget#BdapPage QPushButton#deleteUser { /* Delete User Button */
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:0;
+border-radius:3px;
+color:#440128;
+padding-left:10px;
+padding-right:10px;
+}
+
+QWidget#BdapPage QPushButton#deleteUser:hover {
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
+color:#440128;
+}
+
+QWidget#BdapPage QPushButton#deleteUser:focus {
+border:none;
+outline:none;
+}
+
+QWidget#BdapPage QPushButton#deleteUser:pressed {
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:1px solid #120006;
+}
+
+QWidget#BdapPage QPushButton#deleteGroup { /* Delete Group Button */
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:0;
+border-radius:3px;
+color:#440128;
+padding-left:10px;
+padding-right:10px;
+}
+
+QWidget#BdapPage QPushButton#deleteGroup:hover {
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
+color:#440128;
+}
+
+QWidget#BdapPage QPushButton#deleteGroup:focus {
+border:none;
+outline:none;
+}
+
+QWidget#BdapPage QPushButton#deleteGroup:pressed {
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:1px solid #120006;
+}
+
+QWidget#BdapPage QPushButton#deleteGroup { /* Delete Group Button */
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:0;
+border-radius:3px;
+color:#440128;
+padding-left:10px;
+padding-right:10px;
+}
 /*******************************************************/
 /* BDAPADDUSERDIALOG and BDAPADDLINKDIALOG */
 QDialog#BdapAddUserDialog, QDialog#BdapAddLinkDialog {

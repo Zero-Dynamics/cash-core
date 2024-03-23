@@ -44,13 +44,13 @@ SendCoinsDialog::SendCoinsDialog(const PlatformStyle* _platformStyle, QWidget* p
     QString theme = GUIUtil::getThemeName();
 
     if (!_platformStyle->getImagesOnButtons()) {
+        ui->sendButton->setIcon(QIcon());
         ui->addButton->setIcon(QIcon());
         ui->clearButton->setIcon(QIcon());
-        ui->sendButton->setIcon(QIcon());
     } else {
-        ui->addButton->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_add"));
-        ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
         ui->sendButton->setIcon(QIcon(":/icons/" + theme + "/send"));
+        ui->addButton->setIcon(QIcon(":/icons/" + theme + "/add"));
+        ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/tyrianpurple_remove"));
     }
 
     GUIUtil::setupAddressWidget(ui->lineEditCoinControlChange, this);

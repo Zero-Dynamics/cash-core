@@ -192,7 +192,13 @@
 
                QPushButton:pressed {
                background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
-               border:1px solid #520072;}
+               border:1px solid #520072;
+               }
+
+               QPushButton:disabled {
+               background-color: #440128;
+               color:#e5e4e2;
+               }
               </string>
              </property>
              <property name="text">
@@ -335,7 +341,13 @@
 
                QPushButton:pressed {
                background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
-               border:1px solid #120006;}
+               border:1px solid #120006;
+               }
+
+               QPushButton:disabled {
+               background-color: #440128;
+               color:#e5e4e2;
+               }
               </string>
              </property>
              <property name="text">
