@@ -136,13 +136,14 @@ public:
         consensus.nPowAveragingWindow = 17;
         consensus.nPowMaxAdjustUp = 16;
         consensus.nPowMaxAdjustDown = 24;
+        // consensus.nPowTargetTimespan = 12 * 60 * 60; // Cash: 0.5 days, not used in Cash
         consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 321; // 95% of nMinerConfirmationWindow
-        consensus.nMinerConfirmationWindow = 40;        // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 1368; // 95% of nMinerConfirmationWindow
+        consensus.nMinerConfirmationWindow = 1440;        // nPowTargetTimespan / nPowTargetSpacing
         consensus.nMaxReorganizationDepth = 100;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
@@ -284,13 +285,14 @@ public:
         consensus.nPowAveragingWindow = 17;
         consensus.nPowMaxAdjustUp = 16;
         consensus.nPowMaxAdjustDown = 24;
+        // consensus.nPowTargetTimespan = 12 * 60 * 60; // Cash: 0.5 days, not used in Cash
         consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 254; // 75% of nMinerConfirmationWindow
-        consensus.nMinerConfirmationWindow = 30;        // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 1080; // 75% of nMinerConfirmationWindow
+        consensus.nMinerConfirmationWindow = 1440;        // nPowTargetTimespan / nPowTargetSpacing
         consensus.nMaxReorganizationDepth = 100;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
@@ -426,13 +428,14 @@ public:
         consensus.nPowAveragingWindow = 17;
         consensus.nPowMaxAdjustUp = 16;
         consensus.nPowMaxAdjustDown = 24;
+        // consensus.nPowTargetTimespan = 12 * 60 * 60; // Cash: 0.5 days, not used in Cash
         consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
-        consensus.nRuleChangeActivationThreshold = 254; // 75% of nMinerConfirmationWindow
-        consensus.nMinerConfirmationWindow = 30;        // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 1080; // 75% of nMinerConfirmationWindow
+        consensus.nMinerConfirmationWindow = 1440;        // nPowTargetTimespan / nPowTargetSpacing
         consensus.nMaxReorganizationDepth = 100;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
@@ -561,13 +564,14 @@ public:
         consensus.nPowAveragingWindow = 17;
         consensus.nPowMaxAdjustUp = 16;
         consensus.nPowMaxAdjustDown = 24;
+        // consensus.nPowTargetTimespan = 12 * 60 * 60; // Cash: 0.5 days, not used in Cash
         consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 254; // 75% of nMinerConfirmationWindow
-        consensus.nMinerConfirmationWindow = 30;        // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 1080; // 75% of nMinerConfirmationWindow
+        consensus.nMinerConfirmationWindow = 1080;        // nPowTargetTimespan / nPowTargetSpacing
         consensus.nMaxReorganizationDepth = 100;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
