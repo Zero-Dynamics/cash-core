@@ -599,6 +599,8 @@ void CashGUI::createToolBars()
         toolbar->addAction(servicenodeAction);
         toolbar->addAction(bdapAction);
 
+        overviewAction->setChecked(true);
+        
         /** Create additional container for toolbar and walletFrame and make it the central widget.
             This is a workaround mostly for toolbar styling on Mac OS but should work fine for every other OSes too.
         */
