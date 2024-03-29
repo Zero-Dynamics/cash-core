@@ -222,25 +222,25 @@ extern const char* SENDHEADERS;
  * Indicates that a node is willing to provide blocks via "cmpctblock" messages.
  * May indicate that a node prefers to receive new block announcements via a
  * "cmpctblock" message rather than an "inv", depending on message contents.
- * @since protocol version 71000 as described by BIP 152
+ * @since protocol version 70000 as described by BIP 152
  */
 extern const char* SENDCMPCT;
 /**
  * Contains a CBlockHeaderAndShortTxIDs object - providing a header and
  * list of "short txids".
- * @since protocol version 71000 as described by BIP 152
+ * @since protocol version 70000 as described by BIP 152
  */
 extern const char* CMPCTBLOCK;
 /**
  * Contains a BlockTransactionsRequest
  * Peer should respond with "blocktxn" message.
- * @since protocol version 71000 as described by BIP 152
+ * @since protocol version 70000 as described by BIP 152
  */
 extern const char* GETBLOCKTXN;
 /**
  * Contains a BlockTransactions.
  * Sent in response to a "getblocktxn" message.
- * @since protocol version 71000 as described by BIP 152
+ * @since protocol version 70000 as described by BIP 152
  */
 extern const char* BLOCKTXN;
 // Cash message types

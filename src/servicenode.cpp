@@ -639,7 +639,7 @@ uint256 CServiceNodeBroadcast::GetHash() const
 
 uint256 CServiceNodeBroadcast::GetSignatureHash() const
 {
-    // TODO: replace with "return SerializeHash(*this);" after migration to 71000
+    // TODO: replace with "return SerializeHash(*this);" after migration to 70000
     CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
     ss << outpoint;
     ss << addr;
@@ -739,7 +739,7 @@ uint256 CServiceNodePing::GetHash() const
 {
     CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
     if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
-        // TODO: replace with "return SerializeHash(*this);" after migration to 71000
+        // TODO: replace with "return SerializeHash(*this);" after migration to 70000
         ss << servicenodeOutpoint;
         ss << blockHash;
         ss << sigTime;
