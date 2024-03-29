@@ -908,6 +908,10 @@ QDialog#RPCConsole QWidget#tab_peers  QLabel#peerHeading { /* Peers Info Header 
 color:#e5e4e2;
 }
 
+QDialog#RPCConsole QWidget#tab_peers QTableView#peerWidget { /* Peers Table */
+color:#440128;
+}
+
 QDialog#RPCConsole QPushButton#openDebugLogfileButton {
 max-width:60px;
 }
