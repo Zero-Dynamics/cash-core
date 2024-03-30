@@ -304,10 +304,10 @@ uint64_t SipHashUint256Extra(uint64_t k0, uint64_t k1, const uint256& val, uint3
 /// Secret length: 0
 /// Associated data: None
 /// Associated data length: 0
-/// Memory cost: 500 kibibytes
-/// Lanes: 8 parallel thread
+/// Memory cost: 2048 kibibytes
+/// Lanes: 12 parallel thread
 /// Threads: 1 threads
-/// Time Constraint: 2 iteration
+/// Time Constraint: 3 iteration
 inline int Argon2d_Phase1_Hash(const void* in, const size_t size, const void* out)
 {
     argon2_context context;
@@ -325,10 +325,10 @@ inline int Argon2d_Phase1_Hash(const void* in, const size_t size, const void* ou
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 500; // Memory in KiB (512KB)
-    context.lanes = 8;    // Degree of Parallelism
+    context.m_cost = 2048; // Memory in KiB (2048 KB)
+    context.lanes = 12;    // Degree of Parallelism
     context.threads = 1;  // Threads
-    context.t_cost = 2;   // Iterations
+    context.t_cost = 3;   // Iterations
 
     return argon2_ctx(&context, Argon2_d);
 }
@@ -344,10 +344,10 @@ inline int Argon2d_Phase1_Hash(const void* in, const size_t size, const void* ou
 /// Secret length: 0
 /// Associated data: None
 /// Associated data length: 0
-/// Memory cost: 16000 kibibytes
-/// Lanes: 1 parallel threads
+/// Memory cost: 8192 kibibytes
+/// Lanes: 12 parallel threads
 /// Threads: 1 threads
-/// Time Constraint: 1 iterations
+/// Time Constraint: 3 iterations
 inline int Argon2d_Phase2_Hash(const void* in, const size_t size, const void* out)
 {
     argon2_context context;
@@ -365,10 +365,10 @@ inline int Argon2d_Phase2_Hash(const void* in, const size_t size, const void* ou
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 16000; // Memory in KiB (~16384KB)
-    context.lanes = 1;    // Degree of Parallelism
+    context.m_cost = 4096; // Memory in KiB (4096 KB)
+    context.lanes = 16;    // Degree of Parallelism
     context.threads = 1;   // Threads
-    context.t_cost = 1;    // Iterations
+    context.t_cost = 4;    // Iterations
 
     return argon2_ctx(&context, Argon2_d);
 }
