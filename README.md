@@ -16,16 +16,16 @@ What is [Cash](https://www/cash)?
 * PoW Period: Unlimited
 * PoW Target Spacing: 30 Seconds
 * PoW Reward per Block: 25% × ServiceNode Reward, controlled via Fluid Protocol
-* PoW Reward Start Height: Block 20,160
-* Maturity: 10 Blocks
+* PoW Reward Start Height: Block 2,880
+* Maturity: 40 Blocks
 * PoW Blocks: ~2,880 per day
-* ServiceNode Collateral Amount: 15000 0DYNC
-* ServiceNode Min Confirmation: 17 Blocks
+* ServiceNode Collateral Amount: 15,000 0DYNC
+* ServiceNode Min Confirmation: 60 Blocks
 * ServiceNode Reward: 7.3% × network collateral ÷ ( PoW Blocks × 365¼ days), controlled via Fluid Protocol
-* ServiceNode Reward Start Height: Block 40,320
+* ServiceNode Reward Start Height: Block 4,320
 * Total Coins: 2<sup>63</sup> - 1
 * Min TX Fee: 0.0001 0DYNC
-* Max Block Size: 4MB
+* Max Block Size: 1.5 MB
 
 
 [Cash(0DYNC)](https://www/cash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Cash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
