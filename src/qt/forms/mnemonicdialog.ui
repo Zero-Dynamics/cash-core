@@ -84,7 +84,7 @@ Your old account wallet file will be renamed to wallat.dat.before-mnemonic-impor
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/tyrian/tyrianpurple_editpaste</normaloff>:/icons/tyrian/tyrianpurple_editpaste</iconset>
+               <normaloff>:/icons/tyrian/editpaste</normaloff>:/icons/tyrian/editpaste</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -104,7 +104,7 @@ Your old account wallet file will be renamed to wallat.dat.before-mnemonic-impor
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
+               <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -324,7 +324,7 @@ Wallet will restart after mnemonic has been imported.
              </property>
              <property name="icon">
               <iconset resource="../cash.qrc">
-               <normaloff>:/icons/tyrian/remove</normaloff>:/icons/tyrian/remove</iconset>
+               <normaloff>:/icons/tyrian/tyrianpurple_remove</normaloff>:/icons/tyrian/tyrianpurple_remove</iconset>
              </property>
              <property name="iconSize">
               <size>

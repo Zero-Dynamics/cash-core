@@ -609,7 +609,11 @@ padding-left:15px;
 }
 
 QDialog#SignVerifyMessageDialog QLineEdit:!focus { /* Font Hack */
-font-size:10px;
+font-size:14px;
+}
+
+QDialog#SignVerifyMessageDialog QPlainTextEdit:!focus {
+color:#440128;
 }
 
 QDialog#SignVerifyMessageDialog QPushButton#copySignatureButton_SM { /* Copy Button */
@@ -675,8 +679,8 @@ border:1px solid #120006;
 }
 
 QDialog#SignVerifyMessageDialog .QTabWidget#tabWidget::pane {
-    background-color:#120006;
-    border: 1px solid #66023c;
+background-color:#120006;
+border: 1px solid #66023c;
 }
 
 QDialog#SignVerifyMessageDialog .QTabWidget {

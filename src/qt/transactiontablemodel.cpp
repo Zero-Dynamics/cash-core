@@ -544,6 +544,8 @@ QVariant TransactionTableModel::addressColor(const TransactionRecord* wtx) const
         QString label = walletModel->getAddressTableModel()->labelForAddress(QString::fromStdString(wtx->address));
         if (label.isEmpty())
             return COLOR_BAREADDRESS;
+        else
+            return COLOR_DARK_PURPLE;            
     } break;
     case TransactionRecord::SendToSelf:
     case TransactionRecord::PrivateSendCreateDenominations:
