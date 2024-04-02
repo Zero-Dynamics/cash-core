@@ -394,6 +394,11 @@ background-color:#e5e4e2;
 font-size:12px;
 }
 
+QTableView::item:hover { /* Table Item Hover */
+background-color:#e5e4e2;
+color:#66023c;
+}
+
 QTableView::item:selected { /* Table Item Selected */
 background-color:#e5e4e2;
 color:#99035a;
@@ -710,6 +715,31 @@ QWidget#AddressBookPage {
 background-color:#120006;
 }
 
+QWidget#AddressBookPage QTableView#tableView { /* Addressbook Table */
+background-color: transparent;
+border:0px solid #e5e4e2;
+}
+
+QWidget#AddressBookPage QTableView#tableView::item { /* Addressbook Table Item */
+background-color:#e5e4e2;
+color:#440128;
+}
+
+QWidget#AddressBookPage QTableView#tableView::item:hover { /* Addressbook Table Item Hover */
+background-color:#e5e4e2;
+color:#66023c;
+}
+
+QWidget#AddressBookPage QTableView#tableView::item:selected { /* Addressbook Table Item Selected */
+background-color:#e5e4e2;
+color:#99035a;
+}
+
+QWidget#AddressBookPage QTableView#tableView QLineEdit {
+background-color: #A6738F;
+color: #e5e4e2;
+}
+
 QWidget#AddressBookPage QPushButton#newAddress { /* New Address Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
 border:0;
@@ -737,30 +767,6 @@ background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, 
 border:1px solid #120006;
 }
 
-QWidget#AddressBookPage QPushButton#copyAddress { /* Copy Address Button */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
-border:0;
-border-radius:3px;
-color:#440128;
-padding-left:10px;
-padding-right:10px;
-}
-
-QWidget#AddressBookPage QPushButton#copyAddress:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
-color:#440128;
-}
-
-QWidget#AddressBookPage QPushButton#copyAddress:focus {
-border:none;
-outline:none;
-}
-
-QWidget#AddressBookPage QPushButton#copyAddress:pressed {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
-border:1px solid #120006;
-}
-
 QWidget#AddressBookPage QPushButton#deleteAddress { /* Delete Address Button */
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
 border:0;
@@ -785,6 +791,30 @@ background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, 
 border:1px solid #120006;
 }
 
+QWidget#AddressBookPage QPushButton#closeButton { /* Close Address Button */
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:0;
+border-radius:3px;
+color:#440128;
+padding-left:10px;
+padding-right:10px;
+}
+
+QWidget#AddressBookPage QPushButton#closeButton:hover {
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 rgba(239, 238, 236, 255), stop: .95 rgba(239, 238, 236, 255), stop: 1 #e5e4e2);
+color:#440128;
+}
+    
+QWidget#AddressBookPage QPushButton#closeButton:focus {
+border:none;
+outline:none;
+}
+    
+QWidget#AddressBookPage QPushButton#closeButton:pressed {
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #120006, stop: .1 rgba(249, 248, 246, 128), stop: .95 rgba(249, 248, 246, 255), stop: 1 #e5e4e2);
+border:1px solid #120006;
+}
+
 QWidget#AddressBookPage QTableView { /* Address Listing */
 font-size:12px;
 }
@@ -793,13 +823,33 @@ QWidget#AddressBookPage QHeaderView::section { /* Min width for Windows fix */
 min-width:260px;
 }
 
+QWidget#ReceiveCoinsDialog QTableView#recentRequestsView { /* Receive Dialog Table */
+background:transparent;
+border:0px solid #e5e4e2;
+}
+
+QWidget#ReceiveCoinsDialog QTableView#recentRequestsView::item { /* Receive Dialog Table Item */
+background-color:#e5e4e2;
+color:#440128;
+}
+
+QWidget#ReceiveCoinsDialog QTableView#recentRequestsView::item:hover { /* Receive Dialog Table Item Hover */
+background-color:#e5e4e2;
+color:#66023c;
+}
+
+QWidget#ReceiveCoinsDialog QTableView#recentRequestsView::item:selected { /* Receive Dialog Table Item Selected */
+background-color:#e5e4e2;
+color:#99035a;
+}
+
 /* ERROR DIALOGS */
 QMessageBox {
-    background-color: #120006;
+background-color: #120006;
 }
 
 QMessageBox QLabel {
-    color: #e5e4e2;
+color: #e5e4e2;
 }
 
 /* SETTINGS MENU */
@@ -898,18 +948,30 @@ QDialog#RPCConsole { /* RPC Console Dialog Box */
 background-color:#120006;
 }
 
+QDialog#RPCConsole .QTabWidget QTabBar::tab {
+background-color:#440128;
+color:#e5e4e2;
+border-top: 1px solid #66023c;
+}
+
+QDialog#RPCConsole .QTabWidget QTabBar::tab:first {
+border-left: 1px solid #66023c;
+}
+
+QDialog#RPCConsole .QTabWidget QTabBar::tab:last {
+border-right: 1px solid #66023c;
+}
+
+QDialog#RPCConsole .QTabWidget QTabBar::tab:selected, QDialog#RPCConsole .QTabWidget QTabBar::tab:hover {
+background-color:#66023c;
+color:#e5e4e2;
+}
+
+
 QDialog#RPCConsole QWidget#tab_info QLabel#label_11, QDialog#RPCConsole QWidget#tab_info QLabel#label_10 { /* Margin between Network and Block Chain headers */
 qproperty-alignment: 'AlignBottom';
 min-height:25px;
 min-width:180px;
-}
-
-QDialog#RPCConsole QWidget#tab_peers  QLabel#peerHeading { /* Peers Info Header */
-color:#e5e4e2;
-}
-
-QDialog#RPCConsole QWidget#tab_peers QTableView#peerWidget { /* Peers Table */
-color:#440128;
 }
 
 QDialog#RPCConsole QPushButton#openDebugLogfileButton {
@@ -922,25 +984,23 @@ background-color: #e5e4e2;
 }
 
 QDialog#RPCConsole QTextEdit#messagesWidget QMenu {
-    /* Styles for the popup menu associated with the QTextEdit */
-    background-color: #120006; /* Change this to your desired background color */
-    border: 1px solid #440128; /* Change this to your desired border color */
+/* Styles for the popup menu associated with the QTextEdit */
+background-color: #120006; /* Change this to your desired background color */
+border: 1px solid #440128; /* Change this to your desired border color */
 }
 
-QDialog#RPCConsole QTextEdit#messagesWidget QMenu::item {
-    /* Styles for menu items */
-    color: #e5e4e2;
+QDialog#RPCConsole QTextEdit#messagesWidget QMenu::item { /* Styles for menu items */
+color: #e5e4e2;
 }
 
-QDialog#RPCConsole QTextEdit#messagesWidget QMenu::item:selected {
-    /* Styles for selected menu items */
-    background-color: #440128;
-    color: #e5e4e2;
+QDialog#RPCConsole QTextEdit#messagesWidget QMenu::item:selected { /* Styles for selected menu items */
+background-color: #440128;
+color: #e5e4e2;
 }
 
 /* Styles for disabled menu items */
 QDialog#RPCConsole QTextEdit#messagesWidget QMenu::item:disabled {
-    color: #888; /* Change this to your desired color for disabled items */
+color: #888; /* Change this to your desired color for disabled items */
 }
 
 QDialog#RPCConsole QLineEdit#lineEdit { /* Console Input */
@@ -977,6 +1037,50 @@ background-color:#136207;
 
 QDialog#RPCConsole .QGroupBox #line_2 { /* Network Out Line */
 background:#800000;
+}
+
+QDialog#RPCConsole QWidget#tab_peers  QLabel#peerHeading { /* Peers Info Header */
+color:#e5e4e2;
+}
+
+QDialog#RPCConsole QWidget#tab_peers QTableView#peerWidget { /* Peers Table */
+background:transparent;
+border:0px solid #e5e4e2;
+}
+
+QDialog#RPCConsole QWidget#tab_peers QTableView#peerWidget::item { /* Peers Table Item */
+background-color:#e5e4e2;
+color:#440128;
+}
+
+QDialog#RPCConsole QWidget#tab_peers QTableView#peerWidget::item:hover { /* Peers Table Item Hover */
+background-color:#e5e4e2;
+color:#66023c;
+}
+
+QDialog#RPCConsole QWidget#tab_peers QTableView#peerWidget::item:selected { /* Peers Table Item Selected */
+background-color:#e5e4e2;
+color:#99035a;
+}
+
+QDialog#RPCConsole QWidget#tab_peers QTableView#banlistWidget { /* Banlist Table */
+background:transparent;
+border:0px solid #e5e4e2;
+}
+
+QDialog#RPCConsole QWidget#tab_peers QTableView#banlistWidget::item { /* Banlist Table Item */
+background-color:#e5e4e2;
+color:#440128;
+}
+
+QDialog#RPCConsole QWidget#tab_peers QTableView#banlistWidget::item:hover { /* Banlist Table Item Hover */
+background-color:#e5e4e2;
+color:#66023c;
+}
+
+QDialog#RPCConsole QWidget#tab_peers QTableView#banlistWidget::item:selected { /* Banlist Table Item Selected */
+background-color:#e5e4e2;
+color:#99035a;
 }
 
 /* HELP MENU */
@@ -1414,22 +1518,18 @@ border:1px solid #120006;
 
 QDialog#SendCoinsDialog .QFrame#frameFee .QFrame#frameFeeSelection .QRadioButton#radioSmartFee {
 color:#66023c;
-background-color:transparent;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameFee .QFrame#frameFeeSelection .QRadioButton#radioCustomFee {
 color:#66023c;
-background-color:transparent;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameFee .QFrame#frameFeeSelection .QRadioButton#radioCustomPerKilobyte {
 color:#66023c;
-background-color:transparent;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameFee .QFrame#frameFeeSelection .QRadioButton#radioCustomAtLeast {
 color:#66023c;
-background-color:transparent;
 }
 
 QDialog#SendCoinsDialog .QCheckBox#checkUsePrivateSend { /* PrivateSend Checkbox */
@@ -1613,12 +1713,10 @@ QDialog#CoinControlDialog .QDialogButtonBox#buttonBox QPushButton { /* Coin Cont
 
 QDialog#CoinControlDialog .QFrame#frame .QRadioButton#radioTreeMode { /* Coin Control Tree Mode Selector */
 color:#66023c;
-background-color:transparent;
 }
 
 QDialog#CoinControlDialog .QFrame#frame .QRadioButton#radioListMode { /* Coin Control List Mode Selector */
 color:#66023c;
-background-color:transparent;
 }
 
 QDialog#CoinControlDialog QHeaderView::section:first { /* Bug Fix: the number "1" displays in this table for some reason... */
@@ -1631,17 +1729,46 @@ background-color:#e5e4e2;
 border:0px solid #66023c;
 }
 
-QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::item {
+QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::item { 
+background-color: #e5e4e2;    
+color:#440128;
+font-size:12px;
+}
+
+QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::item:hover { /* Coin Control Item (hover) */
+background-color:#e5e4e2;
+color:#66023c;
 }
 
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::item:selected { /* Coin Control Item (selected) */
 background-color:#e5e4e2;
-color:#440128;
+color:#99035a;
 }
 
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::item:checked { /* Coin Control Item (checked) */
 background-color:#e5e4e2;
 color:#440128;
+}
+
+QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch { /* Coin Control Branch */
+background-color: #e5e4e2;
+color:#440128;    
+}
+
+QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:open { /* Coin Control Branch Open */
+background-image: url(':/images/tyrian/tyrianpurple_downArrow_small');
+background-repeat:no-repeat;
+background-position:center;
+background-color: #e5e4e2;
+color:#440128;    
+}
+
+QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:closed { /* Coin Control Branch Closed */
+background-image: url(':/images/tyrian/tyrianpurple_rightArrow_small');
+background-repeat:no-repeat;
+background-position:center;
+background-color: #e5e4e2;
+color:#440128;    
 }
 
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:selected { /* Coin Control Branch Icon */
@@ -1758,7 +1885,7 @@ background-color:#120006;
 }
 
 QDialog#ReceiveRequestDialog QTextEdit { /* Contents of Receive Coin Dialog */
-border:1px solid #440128;
+background-color:#120006;
 }
 
 /* TRANSACTIONS PAGE */
@@ -1798,8 +1925,8 @@ border:1px solid #440128;
 /* SERVICENODE NETWORK PAGE */
 
 QWidget#ServiceNodeList .QTabWidget#tabWidget::pane {
-    background-color:#120006;
-    border: 1px solid #66023c;
+background-color:#120006;
+border: 1px solid #66023c;
 }
 
 QWidget#ServiceNodeList .QTabWidget {

@@ -23,11 +23,11 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 #define STYLE_INVALID "background:#E16082"
 
 /* Transaction list -- unconfirmed transaction */
-#define COLOR_UNCONFIRMED QColor(162, 162, 162)
+#define COLOR_UNCONFIRMED QColor(136, 136, 136)
 /* Transaction list -- negative amount */
 #define COLOR_NEGATIVE QColor(128, 0, 0)
 /* Transaction list -- bare address (without label) */
-#define COLOR_BAREADDRESS QColor(136, 136, 136)
+#define COLOR_BAREADDRESS QColor(102, 102, 102)
 /* Transaction list -- TX status decoration - open until date */
 #define COLOR_TX_STATUS_OPENUNTILDATE QColor(64, 64, 255)
 /* Transaction list -- TX status decoration - offline */

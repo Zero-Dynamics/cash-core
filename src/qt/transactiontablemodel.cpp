@@ -423,7 +423,7 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     case TransactionRecord::PrivateSend:
     case TransactionRecord::SendToAddress:
     case TransactionRecord::SendToOther:
-        return QIcon(":/icons/" + theme + "/tx_output");
+        return QIcon(":/icons/" + theme + "/darkpurple_tx_output");
     case TransactionRecord::NewDomainUser:
         return QIcon(":/icons/" + theme + "/darkpurple_bdap");
     case TransactionRecord::UpdateDomainUser:

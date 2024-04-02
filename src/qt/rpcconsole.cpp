@@ -68,10 +68,10 @@ const struct {
     const char* url;
     const char* source;
 } ICON_MAPPING[] = {
-    {"cmd-request", ":/icons/tx_input"},
-    {"cmd-reply", ":/icons/tx_output"},
-    {"cmd-error", ":/icons/tx_output"},
-    {"misc", ":/icons/tx_inout"},
+    {"cmd-request", ":/icons/darkpurple_tx_input"},
+    {"cmd-reply", ":/icons/darkpurple_tx_output"},
+    {"cmd-error", ":/icons/darkpurple_tx_output"},
+    {"misc", ":/icons/darkpurple_tx_inout"},
     {NULL, NULL}};
 
 /* Object for executing console RPC commands in a separate thread.
