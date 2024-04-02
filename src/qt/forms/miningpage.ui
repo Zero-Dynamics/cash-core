@@ -688,7 +688,7 @@
           </layout>
          </item>
          <item row="4" column="0">
-          <widget class="QLabel" name="labelAddress">
+          <widget class="QLabel" name="labelAddress2">
            <property name="text">
             <string/>
            </property>

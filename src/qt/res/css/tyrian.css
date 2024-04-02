@@ -2032,6 +2032,10 @@ QLabel#MiningPage .QTabWidget#tabWidget, Qlabel#labelAddress {
 color:#e5e4e2;
 }
 
+QLabel#MiningPage .QTabWidget#tabWidget, Qlabel#labelAddress2 {
+color:#e5e4e2;
+}
+
 /*******************************************************/
 /* BDAP MENU */
 

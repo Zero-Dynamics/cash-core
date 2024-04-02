@@ -31,6 +31,7 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
             CDebitAddress Address;
             Address.Set(Secret.GetKey().GetPubKey().GetID());
             ui->labelAddress->setText(QString("All mined coins will go to %1").arg(Address.ToString().c_str()));
+            ui->labelAddress2->setText(QString("All mined coins will go to %1").arg(Address.ToString().c_str()));            
             hasMiningprivkey = true;
         }
     }
