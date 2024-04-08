@@ -115,7 +115,7 @@ public:
         strNetworkID = "main";
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
-        consensus.nServiceNodePaymentsStartBlock = 4320;  // ServiceNode Payments begin on block 20160
+        consensus.nServiceNodePaymentsStartBlock = 4320;  // ServiceNode Payments begin on block 4320
         consensus.nMinCountServiceNodesPaymentStart = 5; // ServiceNode Payments begin once 5 ServiceNodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
         consensus.nInstantSendKeepLock = 120;
@@ -124,7 +124,7 @@ public:
         consensus.nBudgetPaymentsWindowBlocks = 3600;
         consensus.nBudgetProposalEstablishingTime = 24 * 60 * 60;
         consensus.nSuperblockStartBlock = 2880;
-        consensus.nSuperblockStartHash = uint256S("");
+        consensus.nSuperblockStartHash = uint256S("0x00001b47d210cf6d453324e0ca3a533ff2dea2248891b090cb0c054b47504b90");
         consensus.nSuperblockCycle = 87660; // 2880 (Blocks per day) x 365.25 (Days per Year) / 12 = 87660
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
@@ -136,7 +136,7 @@ public:
         consensus.nPowAveragingWindow = 10080; // 3.5 days
         consensus.nPowMaxAdjustUp = 181/22; // 1 + ~9%
         consensus.nPowMaxAdjustDown = 213/16; // 1 - ~13%, 1 - up x down ≈ 0.1phi, 213 / 16 x 22 / 181 ≈ phi
-        consensus.nPowTargetTimespan = 7 * 24 * 60 * 60; // Cash: 1 weeks, not used in Cash
+        consensus.nPowTargetTimespan = 7 * 24 * 60 * 60; // Cash: 1 week
         consensus.nPowTargetSpacing = 60 / 2;
         consensus.nUpdateDiffAlgoHeight = 120; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
@@ -172,7 +172,7 @@ public:
         consensus.nMinimumChainWork = 0;
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0001e58b714aa879f8d8ed3576363270b5a02d55abb0ff59096c578b29864845"); //0
+        consensus.defaultAssumeValid = uint256S("0x00000a455bce338b91fd651b7686cbe40aaa2b7ef8382727cc5f97eef1223484"); //600
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -238,11 +238,11 @@ public:
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
                 (0,         uint256S("0x0001e58b714aa879f8d8ed3576363270b5a02d55abb0ff59096c578b29864845"))
-                // (600,       uint256S("0x"))
-                // (1000,      uint256S("0x"))
-                // (1600,      uint256S("0x"))
-                // (2600,      uint256S("0x"))
-                // (4200,      uint256S("0x"))
+                (600,       uint256S("0x00000a455bce338b91fd651b7686cbe40aaa2b7ef8382727cc5f97eef1223484"))
+                (1000,      uint256S("0x000015b0be37a462f580d3c17d9eae2d1ee53a03c4932748310908c567107b87"))
+                (1600,      uint256S("0x0000073ba16f079dbf6d98d0c3cb50e61f930a67d8d5a5be5f796ec9fb3931cb"))
+                (2600,      uint256S("0x00001700c173f833c158dada94ef763b2a0bd385dad1f7855d9cfc461b981031"))
+                (4200,      uint256S("0x0000138d9183413ff5346fb507b1da05715cb94270ee5419517a8feaa299a046"))
                 // (6800,      uint256S("0x"))
                 // (11000,     uint256S("0x"))
                 // (17800,     uint256S("0x"))
@@ -271,7 +271,7 @@ public:
         strNetworkID = "test";
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
-        consensus.nServiceNodePaymentsStartBlock = 4320;  // ServiceNode Payments begin on block 20160
+        consensus.nServiceNodePaymentsStartBlock = 4320;  // ServiceNode Payments begin on block 4320
         consensus.nMinCountServiceNodesPaymentStart = 5; // ServiceNode Payments begin once 5 ServiceNodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
         consensus.nInstantSendKeepLock = 120;
@@ -292,7 +292,7 @@ public:
         consensus.nPowAveragingWindow = 10080; // 3.5 days
         consensus.nPowMaxAdjustUp = 181/22; // 1 + ~9%
         consensus.nPowMaxAdjustDown = 213/16; // 1 - ~13%, 1 - up x down ≈ 0.1phi, 213 / 16 x 22 / 181 ≈ phi
-        consensus.nPowTargetTimespan = 7 * 24 * 60 * 60; // Cash: 1 weeks, not used in Cash
+        consensus.nPowTargetTimespan = 7 * 24 * 60 * 60; // Cash: 1 week
         consensus.nPowTargetSpacing = 60 / 2;
         consensus.nUpdateDiffAlgoHeight = 120; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
@@ -433,7 +433,7 @@ public:
         consensus.nPowAveragingWindow = 1440;
         consensus.nPowMaxAdjustUp = 181/22; // 1 + ~9%
         consensus.nPowMaxAdjustDown = 213/16; // 1 - ~13%, 1 - up x down ≈ 0.1phi, 213 / 16 x 22 / 181 ≈ phi
-        consensus.nPowTargetTimespan = 12 * 60 * 60; // Cash: 0.5 days, not used in Cash
+        consensus.nPowTargetTimespan = 12 * 60 * 60; // Cash: 0.5 days
         consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
@@ -567,7 +567,7 @@ public:
         consensus.nPowAveragingWindow = 1440;
         consensus.nPowMaxAdjustUp = 181/22; // 1 + ~9%
         consensus.nPowMaxAdjustDown = 213/16; // 1 - ~13%, 1 - up x down ≈ 0.1phi, 213 / 16 x 22 / 181 ≈ phi
-        consensus.nPowTargetTimespan = 12 * 60 * 60; // Cash: 0.5 days, not used in Cash
+        consensus.nPowTargetTimespan = 12 * 60 * 60; // Cash: 0.5 days
         consensus.nPowTargetSpacing = 30;
         consensus.nUpdateDiffAlgoHeight = 10; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
