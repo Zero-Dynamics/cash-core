@@ -768,7 +768,7 @@
 * Remove AddRef call in CNode constructor and do AddRef in AcceptConnection
 * Fix races, clean up args, move wallet backup dir check to wallet.cpp
 * Added check for open() returning a NULL pointer.
-* Limit IS quorums by updated DNs only
+* Limit IS quorums by updated SNs only
 * Fix nStart warning and actually use it
 * Fix LevelDB warning in leveldb/util/logging.cc
 * Update univalue and secp256k1 libraries (June 2018)
@@ -927,7 +927,7 @@
 * Fix edge case for IS (skip inputs that are too large)
 * allow up to 40 chars in proposal name
 * Multiple Fixes/Implement connman broadly
-* Add more logging for DN votes and DNs missing votes
+* Add more logging for DN votes and SNs missing votes
 * Remove bogus assert on number of oubound connections.
 * update nCollateralMinConfBlockHash for local (hot) servicenode on dn start
 * Fix sync reset on lack of activity

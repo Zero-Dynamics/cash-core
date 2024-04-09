@@ -825,8 +825,8 @@ void CServiceNodePayments::CheckBlockVotes(int nBlockHeight)
     if (!servicenodeSync.IsWinnersListSynced())
         return;
 
-    CServiceNodeMan::rank_pair_vec_t dns;
-    if (!snodeman.GetServiceNodeRanks(dns, nBlockHeight - 101, GetMinServiceNodePaymentsProto())) {
+    CServiceNodeMan::rank_pair_vec_t sns;
+    if (!snodeman.GetServiceNodeRanks(sns, nBlockHeight - 101, GetMinServiceNodePaymentsProto())) {
         LogPrintf("CServiceNodePayments::CheckBlockVotes -- nBlockHeight=%d, GetServiceNodeRanks failed\n", nBlockHeight);
         return;
     }
@@ -838,7 +838,7 @@ void CServiceNodePayments::CheckBlockVotes(int nBlockHeight)
     LOCK2(cs_mapServiceNodeBlocks, cs_mapServiceNodePaymentVotes);
 
     int i{0};
-    for (const auto& sn : dns) {
+    for (const auto& sn : sns) {
         CScript payee;
         bool found = false;
 
