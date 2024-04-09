@@ -49,7 +49,7 @@ void CPSNotificationInterface::UpdatedBlockTip(const CBlockIndex* pindexNew, con
     if (fLiteMode)
         return;
 
-    dnodeman.UpdatedBlockTip(pindexNew);
+    snodeman.UpdatedBlockTip(pindexNew);
     CPrivateSend::UpdatedBlockTip(pindexNew);
 #ifdef ENABLE_WALLET
     privateSendClient.UpdatedBlockTip(pindexNew);

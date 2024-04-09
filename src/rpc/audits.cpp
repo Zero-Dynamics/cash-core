@@ -318,7 +318,7 @@ static UniValue GetAudits(const JSONRPCRequest& request)
 
     //Search by owner
     if (searchByOwner) {
-        readAuditState = pAuditDB->ReadAuditDN(vchOwnerFQDN, vAudits);
+        readAuditState = pAuditDB->ReadAuditSN(vchOwnerFQDN, vAudits);
     }
     else { //Search by TxId
         readAuditState = pAuditDB->ReadAuditTxId(vchTxId,singleAudit);

@@ -429,7 +429,7 @@ void openConfigfile()
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
 
-void openDNConfigfile()
+void openSNConfigfile()
 {
     boost::filesystem::path pathConfig = GetServiceNodeConfigFile();
 

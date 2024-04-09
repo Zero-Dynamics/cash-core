@@ -364,7 +364,7 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
         return tr("Sent to");
     case TransactionRecord::SendToSelf:
         return tr("Payment to yourself");
-    case TransactionRecord::DNReward:
+    case TransactionRecord::SNReward:
         return tr("ServiceNode Reward");
     case TransactionRecord::Generated:
         return tr("Mined");
@@ -412,7 +412,7 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     switch (wtx->type) {
     case TransactionRecord::Fluid:
         return QIcon(":/icons/" + theme + "/darkpurple_fluid");
-    case TransactionRecord::DNReward:
+    case TransactionRecord::SNReward:
         return QIcon(":/icons/" + theme + "/darkpurple_tx_staked");
     case TransactionRecord::Generated:
         return QIcon(":/icons/" + theme + "/darkpurple_tx_mined");
@@ -472,7 +472,7 @@ QString TransactionTableModel::formatTxToAddress(const TransactionRecord* wtx, b
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::RecvWithPrivateSend:
     case TransactionRecord::SendToAddress:
-    case TransactionRecord::DNReward:
+    case TransactionRecord::SNReward:
     case TransactionRecord::Generated:
     case TransactionRecord::PrivateSend:
         return lookupAddress(wtx->address, tooltip) + watchAddress;
@@ -519,7 +519,7 @@ QVariant TransactionTableModel::addressColor(const TransactionRecord* wtx) const
     case TransactionRecord::Fluid:
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::SendToAddress:
-    case TransactionRecord::DNReward: {
+    case TransactionRecord::SNReward: {
         QString label = walletModel->getAddressTableModel()->labelForAddress(QString::fromStdString(wtx->address));
         if (label.isEmpty())
             return COLOR_BAREADDRESS;
@@ -635,7 +635,7 @@ QString TransactionTableModel::formatTooltip(const TransactionRecord* rec) const
 {
     QString tooltip = formatTxStatus(rec) + QString("\n") + formatTxType(rec);
     if (rec->type == TransactionRecord::RecvFromOther || rec->type == TransactionRecord::SendToOther ||
-        rec->type == TransactionRecord::SendToAddress || rec->type == TransactionRecord::RecvWithAddress || rec->type == TransactionRecord::DNReward) {
+        rec->type == TransactionRecord::SendToAddress || rec->type == TransactionRecord::RecvWithAddress || rec->type == TransactionRecord::SNReward) {
         tooltip += QString(" ") + formatTxToAddress(rec, true);
     }
     return tooltip;
@@ -715,7 +715,7 @@ QVariant TransactionTableModel::data(const QModelIndex& index, int role) const
             return COLOR_FLUID_TX;
         }
         // ServiceNode Rewards
-        if (rec->type == TransactionRecord::DNReward) {
+        if (rec->type == TransactionRecord::SNReward) {
                 return COLOR_SERVICENODE_REWARD;
         }
         // Generated Rewards

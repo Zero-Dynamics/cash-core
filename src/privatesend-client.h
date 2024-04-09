@@ -152,7 +152,7 @@ public:
 
     std::string GetStatus(bool fWaitForBlock);
 
-    bool GetMixingServiceNodeInfo(servicenode_info_t& dnInfoRet) const;
+    bool GetMixingServiceNodeInfo(servicenode_info_t& snInfoRet) const;
 
     /// Passively run mixing in the background according to the configuration in settings
     bool DoAutomaticDenominating(CConnman& connman, bool fDryRun = false);
@@ -232,7 +232,7 @@ public:
     std::string GetStatuses();
     std::string GetSessionDenoms();
 
-    bool GetMixingServiceNodesInfo(std::vector<servicenode_info_t>& vecDnInfoRet) const;
+    bool GetMixingServiceNodesInfo(std::vector<servicenode_info_t>& vecSnInfoRet) const;
 
     /// Passively run mixing in the background according to the configuration in settings
     bool DoAutomaticDenominating(CConnman& connman, bool fDryRun = false);
@@ -241,7 +241,7 @@ public:
 
     void ProcessPendingPsaRequest(CConnman& connman);
 
-    void AddUsedServiceNode(const COutPoint& outpointDn);
+    void AddUsedServiceNode(const COutPoint& outpointSn);
     servicenode_info_t GetNotUsedServiceNode();
 
     void UpdatedSuccessBlock();

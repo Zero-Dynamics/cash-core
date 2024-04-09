@@ -44,11 +44,11 @@ void CDHTSettings::LoadPeerList()
 {
     std::string strPeerList = "";
     // get all ServiceNodes above the minimum protocol version
-    std::map<COutPoint, CServiceNode> mapServiceNodes = dnodeman.GetFullServiceNodeMap();
-    for (auto& dnpair : mapServiceNodes) {
-        CServiceNode dn = dnpair.second;
-        if (dn.nProtocolVersion >= MIN_DHT_PROTO_VERSION) {
-            std::string strServiceNodeIP = dn.addr.ToString();
+    std::map<COutPoint, CServiceNode> mapServiceNodes = snodeman.GetFullServiceNodeMap();
+    for (auto& snpair : mapServiceNodes) {
+        CServiceNode sn = snpair.second;
+        if (sn.nProtocolVersion >= MIN_DHT_PROTO_VERSION) {
+            std::string strServiceNodeIP = sn.addr.ToString();
             size_t pos = strServiceNodeIP.find(":");
             if (pos != std::string::npos && strServiceNodeIP.size() > 5) {
                 // remove port from IP address string

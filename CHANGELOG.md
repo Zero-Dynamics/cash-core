@@ -586,8 +586,8 @@
 * RPC: fix wallet lock check in
 * minor reformatting
 * Remove explicit wallet lock in ServiceNodeList::StartAll()
-* Do not create dnb until servicenodeSync is finished
-* Don't drop dnb's for outdated DN's
+* Do not create snb until servicenodeSync is finished
+* Don't drop snb's for outdated DN's
 * Fix previous commit and fix 2 Spork issues
 * PrepareDenominate fix
 * Sync DN list and DNW list from 3 peers max
@@ -922,7 +922,7 @@
 * Reduce nMinerConfirmationWindow to 30 blocks
 * [Qt] Reduce a significant cs_main lock freeze 
 * remove InstantSend votes for failed lock attemts after some timeout
-* Fix dnp relay bug
+* Fix snp relay bug
 * fix trafficgraphdatatests for qt4
 * Fix edge case for IS (skip inputs that are too large)
 * allow up to 40 chars in proposal name
@@ -937,7 +937,7 @@
 * RPC help formatting updates
 * Relay govobj and govvote to every compatible peer, not only to the one with the same version
 * remove send addresses from listreceivedbyaddress output
-* Remove cs_main from ThreadDnbRequestConnections
+* Remove cs_main from ThreadSnbRequestConnections
 * do not calculate stuff that are not going to be visible in simple PSUI anyway & fix fSkipUnconfirmed
 * Keep track of wallet UTXOs and use them for PS balances and rounds calculations
 * speedup MakeCollateralAmounts by skiping denominated inputs early
@@ -995,7 +995,7 @@
 * Make sure mixing messages are relayed/accepted properly
 * backport 9008: Remove assert(nMaxInbound > 0)
 * Backport Bitcoin PR#8049: Expose information on whether transaction relay is enabled in (#1545)
-* fix potential deadlock in CServiceNodeMan::CheckDnbAndUpdateServiceNodeList
+* fix potential deadlock in CServiceNodeMan::CheckSnbAndUpdateServiceNodeList
 * fix potential deadlock in CGovernanceManager::ProcessVote
 * add 6 to strAllowedChars
 * Backport Bitcoin PR#8085: p2p: Begin encapsulation

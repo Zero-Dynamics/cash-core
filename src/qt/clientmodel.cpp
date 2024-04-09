@@ -53,10 +53,10 @@ ClientModel::ClientModel(OptionsModel* _optionsModel, QObject* parent) : QObject
     connect(pollTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
     pollTimer->start(MODEL_UPDATE_DELAY);
 
-    pollDnTimer = new QTimer(this);
-    connect(pollDnTimer, SIGNAL(timeout()), this, SLOT(updateDnTimer()));
+    pollSnTimer = new QTimer(this);
+    connect(pollSnTimer, SIGNAL(timeout()), this, SLOT(updateSnTimer()));
     // no need to update as frequent as data for balances/txes/blocks
-    pollDnTimer->start(MODEL_UPDATE_DELAY * 4);
+    pollSnTimer->start(MODEL_UPDATE_DELAY * 4);
 
     subscribeToCoreSignals();
 }
@@ -84,14 +84,14 @@ int ClientModel::getNumConnections(unsigned int flags) const
 
 QString ClientModel::getServiceNodeCountString() const
 {
-    // return tr("Total: %1 (PS compatible: %2 / Enabled: %3) (IPv4: %4, IPv6: %5, TOR: %6)").arg(QString::number((int)dnodeman.size()))
+    // return tr("Total: %1 (PS compatible: %2 / Enabled: %3) (IPv4: %4, IPv6: %5, TOR: %6)").arg(QString::number((int)snodeman.size()))
     return tr("Total: %1 (PS compatible: %2 / Enabled: %3)")
-        .arg(QString::number((int)dnodeman.size()))
-        .arg(QString::number((int)dnodeman.CountEnabled(MIN_PRIVATESEND_PEER_PROTO_VERSION)))
-        .arg(QString::number((int)dnodeman.CountEnabled()));
-    // .arg(QString::number((int)dnodeman.CountByIP(NET_IPV4)))
-    // .arg(QString::number((int)dnodeman.CountByIP(NET_IPV6)))
-    // .arg(QString::number((int)dnodeman.CountByIP(NET_TOR)));
+        .arg(QString::number((int)snodeman.size()))
+        .arg(QString::number((int)snodeman.CountEnabled(MIN_PRIVATESEND_PEER_PROTO_VERSION)))
+        .arg(QString::number((int)snodeman.CountEnabled()));
+    // .arg(QString::number((int)snodeman.CountByIP(NET_IPV4)))
+    // .arg(QString::number((int)snodeman.CountByIP(NET_IPV6)))
+    // .arg(QString::number((int)snodeman.CountByIP(NET_TOR)));
 }
 
 int ClientModel::getNumBlocks() const
@@ -178,7 +178,7 @@ void ClientModel::updateTimer()
     Q_EMIT bytesChanged(getTotalBytesRecv(), getTotalBytesSent());
 }
 
-void ClientModel::updateDnTimer()
+void ClientModel::updateSnTimer()
 {
     QString newServiceNodeCountString = getServiceNodeCountString();
 

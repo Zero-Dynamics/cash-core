@@ -65,7 +65,7 @@ private:
     std::map<COutPoint, uint256> mapLockedOutpoints;           // utxo - tx hash
 
     //track servicenodes who voted with no txreq (for DOS protection)
-    std::map<COutPoint, int64_t> mapServiceNodeOrphanVotes; // dn outpoint - time
+    std::map<COutPoint, int64_t> mapServiceNodeOrphanVotes; // sn outpoint - time
 
     bool CreateTxLockCandidate(const CTxLockRequest& txLockRequest);
     void CreateEmptyTxLockCandidate(const uint256& txHash);

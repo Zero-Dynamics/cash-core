@@ -241,8 +241,8 @@ bool CGovernanceVote::IsValid(bool fSignatureCheck) const
         return false;
     }
 
-    servicenode_info_t infoDn;
-    if (!dnodeman.GetServiceNodeInfo(servicenodeOutpoint, infoDn)) {
+    servicenode_info_t infoSn;
+    if (!snodeman.GetServiceNodeInfo(servicenodeOutpoint, infoSn)) {
         LogPrint("gobject", "CGovernanceVote::IsValid -- Unknown ServiceNode - %s\n", servicenodeOutpoint.ToStringShort());
         return false;
     }
@@ -250,7 +250,7 @@ bool CGovernanceVote::IsValid(bool fSignatureCheck) const
     if (!fSignatureCheck)
         return true;
 
-    return CheckSignature(infoDn.pubKeyServiceNode);
+    return CheckSignature(infoSn.pubKeyServiceNode);
 }
 
 bool operator==(const CGovernanceVote& vote1, const CGovernanceVote& vote2)

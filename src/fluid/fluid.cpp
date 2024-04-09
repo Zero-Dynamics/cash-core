@@ -561,7 +561,7 @@ CAmount GetStandardPoWBlockPayment(const int& nHeight)
 CAmount GetStandardServiceNodePayment(const int& nHeight)
 {
     if (nHeight > Params().GetConsensus().nServiceNodePaymentsStartBlock) {
-        LogPrint("fluid", "GetStandardServiceNodePayment() : create=%s DN Payment=%d\n", FormatMoney(PHASE_2_SERVICENODE_PAYMENT), PHASE_2_SERVICENODE_PAYMENT);
+        LogPrint("fluid", "GetStandardServiceNodePayment() : create=%s SN Payment=%d\n", FormatMoney(PHASE_2_SERVICENODE_PAYMENT), PHASE_2_SERVICENODE_PAYMENT);
         return PHASE_2_SERVICENODE_PAYMENT; // 1.618 0DYNC
     } else {
         return BLOCKCHAIN_INIT_REWARD; // 0 0DYNC

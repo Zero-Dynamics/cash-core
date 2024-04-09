@@ -80,7 +80,7 @@ public:
     enum Type {
         Other,
         Fluid,
-        DNReward,
+        SNReward,
         Generated,
         SendToAddress,
         SendToOther,

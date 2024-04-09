@@ -253,7 +253,7 @@ void CInstantSend::Vote(CTxLockCandidate& txLockCandidate, CConnman& connman)
 
         int nRank;
         int nMinRequiredProtocol = std::max(MIN_INSTANTSEND_PROTO_VERSION, snpayments.GetMinServiceNodePaymentsProto());
-        if (!dnodeman.GetServiceNodeRank(activeServiceNode.outpoint, nRank, nLockInputHeight, nMinRequiredProtocol)) {
+        if (!snodeman.GetServiceNodeRank(activeServiceNode.outpoint, nRank, nLockInputHeight, nMinRequiredProtocol)) {
             LogPrint("instantsend", "CInstantSend::Vote -- Can't calculate rank for servicenode %s\n", activeServiceNode.outpoint.ToStringShort());
             continue;
         }
@@ -331,7 +331,7 @@ bool CInstantSend::ProcessNewTxLockVote(CNode* pfrom, const CTxLockVote& vote, C
     uint256 nVoteHash = vote.GetHash();
 
     if (!vote.IsValid(pfrom, connman)) {
-        // could be because of missing DN
+        // could be because of missing SN
         LogPrint("instantsend", "CInstantSend::%s -- Vote is invalid, txid=%s\n", __func__, txHash.ToString());
         return false;
     }
@@ -363,18 +363,18 @@ bool CInstantSend::ProcessNewTxLockVote(CNode* pfrom, const CTxLockVote& vote, C
         // TODO: make sure this works good enough for multi-quorum
 
         int nServiceNodeOrphanExpireTime = GetTime() + 60 * 10; // keep time data for 10 minutes
-        auto itDnOV = mapServiceNodeOrphanVotes.find(vote.GetServiceNodeOutpoint());
-        if (itDnOV == mapServiceNodeOrphanVotes.end()) {
+        auto itSnOV = mapServiceNodeOrphanVotes.find(vote.GetServiceNodeOutpoint());
+        if (itSnOV == mapServiceNodeOrphanVotes.end()) {
             mapServiceNodeOrphanVotes.emplace(vote.GetServiceNodeOutpoint(), nServiceNodeOrphanExpireTime);
         } else {
-            if (itDnOV->second > GetTime() && itDnOV->second > GetAverageServiceNodeOrphanVoteTime()) {
+            if (itSnOV->second > GetTime() && itSnOV->second > GetAverageServiceNodeOrphanVoteTime()) {
                 LogPrint("instantsend", "CInstantSend::%s -- servicenode is spamming orphan Transaction Lock Votes: txid=%s  servicenode=%s\n",
                     __func__, txHash.ToString(), vote.GetServiceNodeOutpoint().ToStringShort());
                 // Misbehaving(pfrom->id, 1);
                 return false;
             }
             // not spamming, refresh
-            itDnOV->second = nServiceNodeOrphanExpireTime;
+            itSnOV->second = nServiceNodeOrphanExpireTime;
         }
 
         return true;
@@ -471,7 +471,7 @@ void CInstantSend::UpdateVotedOutpoints(const CTxLockVote& vote, CTxLockCandidat
                     txLockCandidate.MarkOutpointAsAttacked(vote.GetOutpoint());
                     it2->second.MarkOutpointAsAttacked(vote.GetOutpoint());
                     // apply maximum PoSe ban score to this servicenode i.e. PoSe-ban it instantly
-                    dnodeman.PoSeBan(vote.GetServiceNodeOutpoint());
+                    snodeman.PoSeBan(vote.GetServiceNodeOutpoint());
                     // NOTE: This vote must be relayed further to let all other nodes know about such
                     // misbehaviour of this servicenode. This way they should also be able to construct
                     // conflicting lock and PoSe-ban this servicenode.
@@ -597,7 +597,7 @@ bool CInstantSend::ResolveConflicts(const CTxLockCandidate& txLockCandidate)
         uint256 hashConflicting;
         if (GetLockedOutPointTxHash(txin.prevout, hashConflicting) && txHash != hashConflicting) {
             // completed lock which conflicts with another completed one?
-            // this means that majority of DNs in the quorum for this specific tx input are malicious!
+            // this means that majority of SNs in the quorum for this specific tx input are malicious!
             std::map<uint256, CTxLockCandidate>::iterator itLockCandidate = mapTxLockCandidates.find(txHash);
             std::map<uint256, CTxLockCandidate>::iterator itLockCandidateConflicting = mapTxLockCandidates.find(hashConflicting);
             if (itLockCandidate == mapTxLockCandidates.end() || itLockCandidateConflicting == mapTxLockCandidates.end()) {
@@ -1048,9 +1048,9 @@ bool CTxLockRequest::IsSimple() const
 
 bool CTxLockVote::IsValid(CNode* pnode, CConnman& connman) const
 {
-    if (!dnodeman.Has(outpointServiceNode)) {
+    if (!snodeman.Has(outpointServiceNode)) {
         LogPrint("instantsend", "CTxLockVote::IsValid -- Unknown servicenode %s\n", outpointServiceNode.ToStringShort());
-        dnodeman.AskForDN(pnode, outpointServiceNode, connman);
+        snodeman.AskForSN(pnode, outpointServiceNode, connman);
         return false;
     }
 
@@ -1064,7 +1064,7 @@ bool CTxLockVote::IsValid(CNode* pnode, CConnman& connman) const
 
     int nRank;
     int nMinRequiredProtocol = std::max(MIN_INSTANTSEND_PROTO_VERSION, snpayments.GetMinServiceNodePaymentsProto());
-    if (!dnodeman.GetServiceNodeRank(outpointServiceNode, nRank, nLockInputHeight, nMinRequiredProtocol)) {
+    if (!snodeman.GetServiceNodeRank(outpointServiceNode, nRank, nLockInputHeight, nMinRequiredProtocol)) {
         //can be caused by past versions trying to vote with an invalid protocol
         LogPrint("instantsend", "CTxLockVote::IsValid -- Can't calculate rank for servicenode %s\n", outpointServiceNode.ToStringShort());
         return false;
@@ -1100,9 +1100,9 @@ bool CTxLockVote::CheckSignature() const
 {
     std::string strError;
 
-    servicenode_info_t infoDn;
+    servicenode_info_t infoSn;
 
-    if (!dnodeman.GetServiceNodeInfo(outpointServiceNode, infoDn)) {
+    if (!snodeman.GetServiceNodeInfo(outpointServiceNode, infoSn)) {
         LogPrintf("CTxLockVote::CheckSignature -- Unknown ServiceNode: servicenode=%s\n", outpointServiceNode.ToString());
         return false;
     }
@@ -1110,10 +1110,10 @@ bool CTxLockVote::CheckSignature() const
     if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
         uint256 hash = GetSignatureHash();
 
-        if (!CHashSigner::VerifyHash(hash, infoDn.pubKeyServiceNode, vchServiceNodeSignature, strError)) {
+        if (!CHashSigner::VerifyHash(hash, infoSn.pubKeyServiceNode, vchServiceNodeSignature, strError)) {
             // could be a signature in old format
             std::string strMessage = txHash.ToString() + outpoint.ToStringShort();
-            if (!CMessageSigner::VerifyMessage(infoDn.pubKeyServiceNode, vchServiceNodeSignature, strMessage, strError)) {
+            if (!CMessageSigner::VerifyMessage(infoSn.pubKeyServiceNode, vchServiceNodeSignature, strMessage, strError)) {
                 // nope, not in old format either
                 LogPrintf("CTxLockVote::CheckSignature -- VerifyMessage() failed, error: %s\n", strError);
                 return false;
@@ -1121,7 +1121,7 @@ bool CTxLockVote::CheckSignature() const
         }
     } else {
         std::string strMessage = txHash.ToString() + outpoint.ToStringShort();
-        if (!CMessageSigner::VerifyMessage(infoDn.pubKeyServiceNode, vchServiceNodeSignature, strMessage, strError)) {
+        if (!CMessageSigner::VerifyMessage(infoSn.pubKeyServiceNode, vchServiceNodeSignature, strMessage, strError)) {
             LogPrintf("CTxLockVote::CheckSignature -- VerifyMessage() failed, error: %s\n", strError);
             return false;
         }

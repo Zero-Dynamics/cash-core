@@ -120,7 +120,7 @@ void openDebugLogfile();
 void openConfigfile();
 
 // Open servicenode.conf
-void openDNConfigfile();
+void openSNConfigfile();
 
 // Browse backup folder
 void showBackups();

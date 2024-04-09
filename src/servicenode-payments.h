@@ -17,8 +17,8 @@ class CServiceNodeBlockPayees;
 class CServiceNodePayments;
 class CServiceNodePaymentVote;
 
-static const int DNPAYMENTS_SIGNATURES_REQUIRED = 10;
-static const int DNPAYMENTS_SIGNATURES_TOTAL = 20;
+static const int SNPAYMENTS_SIGNATURES_REQUIRED = 10;
+static const int SNPAYMENTS_SIGNATURES_TOTAL = 20;
 
 //! minimum peer version that can receive and send servicenode payment messages,
 //  vote for servicenode and be elected as a payment winner
@@ -219,7 +219,7 @@ public:
 
     bool GetBlockPayee(int nBlockHeight, CScript& payeeRet) const;
     bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight) const;
-    bool IsScheduled(const servicenode_info_t& dnInfo, int nNotBlockHeight) const;
+    bool IsScheduled(const servicenode_info_t& snInfo, int nNotBlockHeight) const;
 
     bool UpdateLastVote(const CServiceNodePaymentVote& vote);
 

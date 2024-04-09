@@ -112,22 +112,22 @@ void ServiceNodeList::StartAlias(std::string strAlias)
     std::string strStatusHtml;
     strStatusHtml += "<center>Alias: " + strAlias;
 
-    for (const auto& dne : servicenodeConfig.getEntries()) {
-        if (dne.getAlias() == strAlias) {
+    for (const auto& sne : servicenodeConfig.getEntries()) {
+        if (sne.getAlias() == strAlias) {
             std::string strError;
-            CServiceNodeBroadcast dnb;
+            CServiceNodeBroadcast snb;
 
-            bool fSuccess = CServiceNodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
+            bool fSuccess = CServiceNodeBroadcast::Create(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strError, snb);
 
             int nDoS;
-            if (fSuccess && !dnodeman.CheckDnbAndUpdateServiceNodeList(NULL, dnb, nDoS, *g_connman)) {
-                strError = "Failed to verify DNB";
+            if (fSuccess && !snodeman.CheckSnbAndUpdateServiceNodeList(NULL, snb, nDoS, *g_connman)) {
+                strError = "Failed to verify SNB";
                 fSuccess = false;
             }
 
             if (fSuccess) {
                 strStatusHtml += "<br>Successfully started ServiceNode.";
-                dnodeman.NotifyServiceNodeUpdates(*g_connman);
+                snodeman.NotifyServiceNodeUpdates(*g_connman);
             } else {
                 strStatusHtml += "<br>Failed to start ServiceNode.<br>Error: " + strError;
             }
@@ -149,34 +149,34 @@ void ServiceNodeList::StartAll(std::string strCommand)
     int nCountFailed = 0;
     std::string strFailedHtml;
 
-    for (const auto& dne : servicenodeConfig.getEntries()) {
+    for (const auto& sne : servicenodeConfig.getEntries()) {
         std::string strError;
-        CServiceNodeBroadcast dnb;
+        CServiceNodeBroadcast snb;
 
         int32_t nOutputIndex = 0;
-        if (!ParseInt32(dne.getOutputIndex(), &nOutputIndex)) {
+        if (!ParseInt32(sne.getOutputIndex(), &nOutputIndex)) {
             continue;
         }
 
-        COutPoint outpoint = COutPoint(uint256S(dne.getTxHash()), nOutputIndex);
+        COutPoint outpoint = COutPoint(uint256S(sne.getTxHash()), nOutputIndex);
 
-        if (strCommand == "start-missing" && dnodeman.Has(outpoint))
+        if (strCommand == "start-missing" && snodeman.Has(outpoint))
             continue;
 
-        bool fSuccess = CServiceNodeBroadcast::Create(dne.getIp(), dne.getPrivKey(), dne.getTxHash(), dne.getOutputIndex(), strError, dnb);
+        bool fSuccess = CServiceNodeBroadcast::Create(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strError, snb);
 
         int nDoS;
-        if (fSuccess && !dnodeman.CheckDnbAndUpdateServiceNodeList(NULL, dnb, nDoS, *g_connman)) {
-            strError = "Failed to verify DNB";
+        if (fSuccess && !snodeman.CheckSnbAndUpdateServiceNodeList(NULL, snb, nDoS, *g_connman)) {
+            strError = "Failed to verify SNB";
             fSuccess = false;
         }
 
         if (fSuccess) {
             nCountSuccessful++;
-            dnodeman.NotifyServiceNodeUpdates(*g_connman);
+            snodeman.NotifyServiceNodeUpdates(*g_connman);
         } else {
             nCountFailed++;
-            strFailedHtml += "\nFailed to start " + dne.getAlias() + ". Error: " + strError;
+            strFailedHtml += "\nFailed to start " + sne.getAlias() + ". Error: " + strError;
         }
     }
 
@@ -211,17 +211,17 @@ void ServiceNodeList::updateMyServiceNodeInfo(QString strAlias, QString strAddr,
         ui->tableWidgetMyServiceNodes->insertRow(nNewRow);
     }
 
-    servicenode_info_t infoDn;
-    bool fFound = dnodeman.GetServiceNodeInfo(outpoint, infoDn);
+    servicenode_info_t infoSn;
+    bool fFound = snodeman.GetServiceNodeInfo(outpoint, infoSn);
 
     QTableWidgetItem* aliasItem = new QTableWidgetItem(strAlias);
-    QTableWidgetItem* addrItem = new QTableWidgetItem(fFound ? QString::fromStdString(infoDn.addr.ToString()) : strAddr);
-    QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(fFound ? infoDn.nProtocolVersion : -1));
-    QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(fFound ? CServiceNode::StateToString(infoDn.nActiveState) : "MISSING"));
-    QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::fromStdString(DurationToDHMS(fFound ? (infoDn.nTimeLastPing - infoDn.sigTime) : 0)));
+    QTableWidgetItem* addrItem = new QTableWidgetItem(fFound ? QString::fromStdString(infoSn.addr.ToString()) : strAddr);
+    QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(fFound ? infoSn.nProtocolVersion : -1));
+    QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(fFound ? CServiceNode::StateToString(infoSn.nActiveState) : "MISSING"));
+    QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::fromStdString(DurationToDHMS(fFound ? (infoSn.nTimeLastPing - infoSn.sigTime) : 0)));
     QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M",
-        fFound ? infoDn.nTimeLastPing + GetOffsetFromUtc() : 0)));
-    QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(fFound ? CDebitAddress(infoDn.pubKeyCollateralAddress.GetID()).ToString() : ""));
+        fFound ? infoSn.nTimeLastPing + GetOffsetFromUtc() : 0)));
+    QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(fFound ? CDebitAddress(infoSn.pubKeyCollateralAddress.GetID()).ToString() : ""));
 
     ui->tableWidgetMyServiceNodes->setItem(nNewRow, 0, aliasItem);
     ui->tableWidgetMyServiceNodes->setItem(nNewRow, 1, addrItem);
@@ -234,7 +234,7 @@ void ServiceNodeList::updateMyServiceNodeInfo(QString strAlias, QString strAddr,
 
 void ServiceNodeList::updateMyNodeList(bool fForce)
 {
-    TRY_LOCK(cs_mydnlist, fLockAcquired);
+    TRY_LOCK(cs_mysnlist, fLockAcquired);
     if (!fLockAcquired) {
         return;
     }
@@ -255,13 +255,13 @@ void ServiceNodeList::updateMyNodeList(bool fForce)
     int nSelectedRow = selected.count() ? selected.at(0).row() : 0;
 
     ui->tableWidgetServiceNodes->setSortingEnabled(false);
-    for (const auto& dne : servicenodeConfig.getEntries()) {
+    for (const auto& sne : servicenodeConfig.getEntries()) {
         int32_t nOutputIndex = 0;
-        if (!ParseInt32(dne.getOutputIndex(), &nOutputIndex)) {
+        if (!ParseInt32(sne.getOutputIndex(), &nOutputIndex)) {
             continue;
         }
 
-        updateMyServiceNodeInfo(QString::fromStdString(dne.getAlias()), QString::fromStdString(dne.getIp()), COutPoint(uint256S(dne.getTxHash()), nOutputIndex));
+        updateMyServiceNodeInfo(QString::fromStdString(sne.getAlias()), QString::fromStdString(sne.getIp()), COutPoint(uint256S(sne.getTxHash()), nOutputIndex));
     }
     ui->tableWidgetMyServiceNodes->selectRow(nSelectedRow);
     ui->tableWidgetServiceNodes->setSortingEnabled(true);
@@ -272,7 +272,7 @@ void ServiceNodeList::updateMyNodeList(bool fForce)
 
 void ServiceNodeList::updateNodeList()
 {
-    TRY_LOCK(cs_dnlist, fLockAcquired);
+    TRY_LOCK(cs_snlist, fLockAcquired);
     if (!fLockAcquired) {
         return;
     }
@@ -296,19 +296,19 @@ void ServiceNodeList::updateNodeList()
     ui->tableWidgetServiceNodes->setSortingEnabled(false);
     ui->tableWidgetServiceNodes->clearContents();
     ui->tableWidgetServiceNodes->setRowCount(0);
-    std::map<COutPoint, CServiceNode> mapServiceNodes = dnodeman.GetFullServiceNodeMap();
+    std::map<COutPoint, CServiceNode> mapServiceNodes = snodeman.GetFullServiceNodeMap();
     int offsetFromUtc = GetOffsetFromUtc();
 
-    for (const auto& dnpair : mapServiceNodes) {
-        CServiceNode dn = dnpair.second;
+    for (const auto& snpair : mapServiceNodes) {
+        CServiceNode sn = snpair.second;
         // populate list
         // Address, Protocol, Status, Active Seconds, Last Seen, Pub Key
-        QTableWidgetItem* addressItem = new QTableWidgetItem(QString::fromStdString(dn.addr.ToString()));
-        QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(dn.nProtocolVersion));
-        QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(dn.GetStatus()));
-        QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::fromStdString(DurationToDHMS(dn.lastPing.sigTime - dn.sigTime)));
-        QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", dn.lastPing.sigTime + offsetFromUtc)));
-        QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(CDebitAddress(dn.pubKeyCollateralAddress.GetID()).ToString()));
+        QTableWidgetItem* addressItem = new QTableWidgetItem(QString::fromStdString(sn.addr.ToString()));
+        QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(sn.nProtocolVersion));
+        QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(sn.GetStatus()));
+        QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::fromStdString(DurationToDHMS(sn.lastPing.sigTime - sn.sigTime)));
+        QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", sn.lastPing.sigTime + offsetFromUtc)));
+        QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(CDebitAddress(sn.pubKeyCollateralAddress.GetID()).ToString()));
 
         if (strCurrentFilter != "") {
             strToFilter = addressItem->text() + " " +
@@ -346,7 +346,7 @@ void ServiceNodeList::on_startButton_clicked()
 {
     std::string strAlias;
     {
-        LOCK(cs_mydnlist);
+        LOCK(cs_mysnlist);
         // Find selected node alias
         QItemSelectionModel* selectionModel = ui->tableWidgetMyServiceNodes->selectionModel();
         QModelIndexList selected = selectionModel->selectedRows();

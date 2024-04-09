@@ -13,12 +13,12 @@ const struct BIP9DeploymentInfo VersionBitsDeploymentInfo[Consensus::MAX_VERSION
     {
         /*.name =*/"testdummy",
         /*.gbt_force =*/true,
-        /*.check_dn_protocol =*/false,
+        /*.check_sn_protocol =*/false,
     },
     {
         /*.name =*/"csv",
         /*.gbt_force =*/true,
-        /*.check_dn_protocol =*/false,
+        /*.check_sn_protocol =*/false,
     },
     {
         /*.name =*/ "bip147",

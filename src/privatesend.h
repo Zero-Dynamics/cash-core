@@ -40,10 +40,10 @@ enum PoolMessage {
     ERR_INVALID_SCRIPT,
     ERR_INVALID_TX,
     ERR_MAXIMUM,
-    ERR_DN_LIST,
+    ERR_SN_LIST,
     ERR_MODE,
     ERR_NON_STANDARD_PUBKEY,
-    ERR_NOT_A_DN, // not used
+    ERR_NOT_A_SN, // not used
     ERR_QUEUE_FULL,
     ERR_RECENT,
     ERR_SESSION,

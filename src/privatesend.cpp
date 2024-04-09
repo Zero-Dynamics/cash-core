@@ -495,13 +495,13 @@ std::string CPrivateSend::GetMessageByID(PoolMessage nMessageID)
         return _("Transaction not valid.");
     case ERR_MAXIMUM:
         return _("Entry exceeds maximum size.");
-    case ERR_DN_LIST:
+    case ERR_SN_LIST:
         return _("Not in the ServiceNode list.");
     case ERR_MODE:
         return _("Incompatible mode.");
     case ERR_NON_STANDARD_PUBKEY:
         return _("Non-standard public key detected.");
-    case ERR_NOT_A_DN:
+    case ERR_NOT_A_SN:
         return _("This is not a ServiceNode."); // not used
     case ERR_QUEUE_FULL:
         return _("ServiceNode queue is full.");

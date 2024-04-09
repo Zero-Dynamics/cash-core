@@ -14,8 +14,8 @@ class CServiceNode;
 class CServiceNodeBroadcast;
 
 static const int SERVICENODE_CHECK_SECONDS = 5;
-static const int SERVICENODE_MIN_DNB_SECONDS = 5 * 60;
-static const int SERVICENODE_MIN_DNP_SECONDS = 10 * 60;
+static const int SERVICENODE_MIN_SNB_SECONDS = 5 * 60;
+static const int SERVICENODE_MIN_SNP_SECONDS = 10 * 60;
 static const int SERVICENODE_EXPIRATION_SECONDS = 65 * 60;
 static const int SERVICENODE_SENTINEL_PING_MAX_SECONDS = 120 * 60;
 static const int SERVICENODE_NEW_START_REQUIRED_SECONDS = 180 * 60;
@@ -36,7 +36,7 @@ class CServiceNodePing
 public:
     COutPoint servicenodeOutpoint{};
     uint256 blockHash{};
-    int64_t sigTime{}; //dnb message times
+    int64_t sigTime{}; //snb message times
     std::vector<unsigned char> vchSig{};
     bool fSentinelIsCurrent = false; // true if last sentinel ping was actual
     // DSB is always 0, other 3 bits corresponds to x.x.x version scheme
@@ -99,7 +99,7 @@ public:
     bool Sign(const CKey& keyServiceNode, const CPubKey& pubKeyServiceNode);
     bool CheckSignature(const CPubKey& pubKeyServiceNode, int& nDos) const;
     bool SimpleCheck(int& nDos);
-    bool CheckAndUpdate(CServiceNode* pdn, bool fFromNewBroadcast, int& nDos, CConnman& connman);
+    bool CheckAndUpdate(CServiceNode* psn, bool fFromNewBroadcast, int& nDos, CConnman& connman);
     void Relay(CConnman& connman);
 
     std::string GetSentinelString() const;
@@ -129,13 +129,13 @@ struct servicenode_info_t {
 
     servicenode_info_t(int activeState, int protoVer, int64_t sTime) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime} {}
 
-    servicenode_info_t(int activeState, int protoVer, int64_t sTime, COutPoint const& outpnt, CService const& addr, CPubKey const& pkCollAddr, CPubKey const& pkDN) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime},
+    servicenode_info_t(int activeState, int protoVer, int64_t sTime, COutPoint const& outpnt, CService const& addr, CPubKey const& pkCollAddr, CPubKey const& pkSN) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime},
                                                                                                                                                                  outpoint{outpnt}, addr{addr},
-                                                                                                                                                                 pubKeyCollateralAddress{pkCollAddr}, pubKeyServiceNode{pkDN} {}
+                                                                                                                                                                 pubKeyCollateralAddress{pkCollAddr}, pubKeyServiceNode{pkSN} {}
 
     int nActiveState = 0;
     int nProtocolVersion = 0;
-    int64_t sigTime = 0; //dnb message time
+    int64_t sigTime = 0; //snb message time
 
     COutPoint outpoint{};
     CService addr{};
@@ -145,8 +145,8 @@ struct servicenode_info_t {
     int64_t nLastPsq = 0; //the psq count from the last psq broadcast of this node
     int64_t nTimeLastChecked = 0;
     int64_t nTimeLastPaid = 0;
-    int64_t nTimeLastPing = 0; //* not in CDN
-    bool fInfoValid = false;   //* not in CDN
+    int64_t nTimeLastPing = 0; //* not in CSN
+    bool fInfoValid = false;   //* not in CSN
 };
 
 //
@@ -194,7 +194,7 @@ public:
 
     CServiceNode();
     CServiceNode(const CServiceNode& other);
-    CServiceNode(const CServiceNodeBroadcast& dnb);
+    CServiceNode(const CServiceNodeBroadcast& snb);
     CServiceNode(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyServiceNodeNew, int nProtocolVersionIn);
 
     ADD_SERIALIZE_METHODS;
@@ -241,7 +241,7 @@ public:
     // CALCULATE A RANK AGAINST OF GIVEN BLOCK
     arith_uint256 CalculateScore(const uint256& blockHash) const;
 
-    bool UpdateFromNewBroadcast(CServiceNodeBroadcast& dnb, CConnman& connman);
+    bool UpdateFromNewBroadcast(CServiceNodeBroadcast& snb, CConnman& connman);
 
     static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey);
     static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey, int& nHeightRet);
@@ -360,7 +360,7 @@ class CServiceNodeBroadcast : public CServiceNode
 public:
     bool fRecovery;
     CServiceNodeBroadcast() : CServiceNode(), fRecovery(false) {}
-    CServiceNodeBroadcast(const CServiceNode& dn) : CServiceNode(dn), fRecovery(false) {}
+    CServiceNodeBroadcast(const CServiceNode& sn) : CServiceNode(sn), fRecovery(false) {}
     CServiceNodeBroadcast(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyServiceNodeNew, int nProtocolVersionIn) : CServiceNode(addrNew, outpointNew, pubKeyCollateralAddressNew, pubKeyServiceNodeNew, nProtocolVersionIn), fRecovery(false) {}
 
     ADD_SERIALIZE_METHODS;
@@ -400,11 +400,11 @@ public:
     uint256 GetSignatureHash() const;
 
     /// Create ServiceNode broadcast, needs to be relayed manually after that
-    static bool Create(const COutPoint& outpoint, const CService& service, const CKey& keyCollateralAddressNew, const CPubKey& pubKeyCollateralAddressNew, const CKey& keyServiceNodeNew, const CPubKey& pubKeyServiceNodeNew, std::string& strErrorRet, CServiceNodeBroadcast& dnbRet);
-    static bool Create(const std::string strService, const std::string strKey, const std::string strTxHash, const std::string strOutputIndex, std::string& strErrorRet, CServiceNodeBroadcast& dnbRet, bool fOffline = false);
+    static bool Create(const COutPoint& outpoint, const CService& service, const CKey& keyCollateralAddressNew, const CPubKey& pubKeyCollateralAddressNew, const CKey& keyServiceNodeNew, const CPubKey& pubKeyServiceNodeNew, std::string& strErrorRet, CServiceNodeBroadcast& snbRet);
+    static bool Create(const std::string strService, const std::string strKey, const std::string strTxHash, const std::string strOutputIndex, std::string& strErrorRet, CServiceNodeBroadcast& snbRet, bool fOffline = false);
 
     bool SimpleCheck(int& nDos);
-    bool Update(CServiceNode* pdn, int& nDos, CConnman& connman);
+    bool Update(CServiceNode* psn, int& nDos, CConnman& connman);
     bool CheckOutpoint(int& nDos);
 
     bool Sign(const CKey& keyCollateralAddress);

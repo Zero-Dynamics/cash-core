@@ -99,7 +99,7 @@ private:
     BanTableModel* banTableModel;
 
     QTimer* pollTimer;
-    QTimer* pollDnTimer;
+    QTimer* pollSnTimer;
 
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
@@ -121,7 +121,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     void updateTimer();
-    void updateDnTimer();
+    void updateSnTimer();
     void updateNumConnections(int numConnections);
     void updateAlert(const QString& hash, int status);
     void updateBanlist();

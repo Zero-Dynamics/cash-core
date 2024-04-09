@@ -48,7 +48,7 @@ bool UndoAddAudit(const CAudit& audit)
 bool CAuditDB::AddAudit(const CAudit& audit) 
 { 
     bool writeState = false;
-    bool writeStateDN = false;
+    bool writeStateSN = false;
     bool auditHashWriteState = true;
     {
         LOCK(cs_bdap_audit);
@@ -64,18 +64,18 @@ bool CAuditDB::AddAudit(const CAudit& audit)
         }
         if (audit.vchOwnerFullObjectPath.size() > 0) {
             std::vector<std::vector<unsigned char>> vvTxId;
-            CDBWrapper::Read(make_pair(std::string("dn"), audit.vchOwnerFullObjectPath), vvTxId);
+            CDBWrapper::Read(make_pair(std::string("sn"), audit.vchOwnerFullObjectPath), vvTxId);
             vvTxId.push_back(vchFromString(audit.txHash.ToString()));
 
-            writeStateDN = Write(make_pair(std::string("dn"), audit.vchOwnerFullObjectPath), vvTxId);
+            writeStateSN = Write(make_pair(std::string("sn"), audit.vchOwnerFullObjectPath), vvTxId);
         }
         else {
-            writeStateDN = true;
+            writeStateSN = true;
         }
         writeState = Write(make_pair(std::string("txid"), vchFromString(audit.txHash.ToString())), audit);
     }
 
-    return writeState && auditHashWriteState && writeStateDN;
+    return writeState && auditHashWriteState && writeStateSN;
 }
 
 bool CAuditDB::ReadAuditTxId(const std::vector<unsigned char>& vchTxId, CAudit& audit) 
@@ -84,12 +84,12 @@ bool CAuditDB::ReadAuditTxId(const std::vector<unsigned char>& vchTxId, CAudit& 
     return CDBWrapper::Read(make_pair(std::string("txid"), vchTxId), audit);
 }
 
-bool CAuditDB::ReadAuditDN(const std::vector<unsigned char>& vchOwnerFullObjectPath, std::vector<CAudit>& vAudits) 
+bool CAuditDB::ReadAuditSN(const std::vector<unsigned char>& vchOwnerFullObjectPath, std::vector<CAudit>& vAudits) 
 {
     LOCK(cs_bdap_audit);
     std::vector<std::vector<unsigned char>> vvTxId;
     bool readState = false;
-    readState = CDBWrapper::Read(make_pair(std::string("dn"), vchOwnerFullObjectPath), vvTxId);
+    readState = CDBWrapper::Read(make_pair(std::string("sn"), vchOwnerFullObjectPath), vvTxId);
 
     if (readState) {
         for (const std::vector<unsigned char>& vchTxId : vvTxId) {
@@ -138,9 +138,9 @@ bool CAuditDB::EraseAuditTxId(const std::vector<unsigned char>& vchTxId)
     }
     if (audit.vchOwnerFullObjectPath.size() > 0) {
         std::vector<std::vector<unsigned char>> vvTxId;
-        CDBWrapper::Read(make_pair(std::string("dn"), audit.vchOwnerFullObjectPath), vvTxId);
+        CDBWrapper::Read(make_pair(std::string("sn"), audit.vchOwnerFullObjectPath), vvTxId);
         if (vvTxId.size() == 1 && vvTxId[0] == vchTxId) {
-            CDBWrapper::Erase(make_pair(std::string("dn"), audit.vchOwnerFullObjectPath));
+            CDBWrapper::Erase(make_pair(std::string("sn"), audit.vchOwnerFullObjectPath));
         }
         else {
             std::vector<std::vector<unsigned char>> vvTxIdNew;
@@ -149,7 +149,7 @@ bool CAuditDB::EraseAuditTxId(const std::vector<unsigned char>& vchTxId)
                     vvTxIdNew.push_back(txid);
                 }
             }
-            Write(make_pair(std::string("dn"), audit.vchOwnerFullObjectPath), vvTxIdNew);
+            Write(make_pair(std::string("sn"), audit.vchOwnerFullObjectPath), vvTxIdNew);
         }
     }
     return CDBWrapper::Erase(make_pair(std::string("txid"), vchTxId));

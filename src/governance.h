@@ -306,7 +306,7 @@ public:
 
     // These commands are only used in RPC
     std::vector<CGovernanceVote> GetMatchingVotes(const uint256& nParentHash) const;
-    std::vector<CGovernanceVote> GetCurrentVotes(const uint256& nParentHash, const COutPoint& dnCollateralOutpointFilter) const;
+    std::vector<CGovernanceVote> GetCurrentVotes(const uint256& nParentHash, const COutPoint& snCollateralOutpointFilter) const;
     std::vector<const CGovernanceObject*> GetAllNewerThan(int64_t nMoreThanTime) const;
 
     void AddGovernanceObject(CGovernanceObject& govobj, CConnman& connman, CNode* pfrom = nullptr);

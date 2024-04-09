@@ -147,7 +147,7 @@ private:
     QAction* openPeersAction;
     QAction* openRepairAction;
     QAction* openConfEditorAction;
-    QAction* openDNConfEditorAction;
+    QAction* openSNConfEditorAction;
     QAction* showBackupsAction;
     QAction* openAction;
     QAction *mnemonicAction;
@@ -276,7 +276,7 @@ private Q_SLOTS:
     /** Open external (default) editor with cash.conf */
     void showConfEditor();
     /** Open external (default) editor with servicenode.conf */
-    void showDNConfEditor();
+    void showSNConfEditor();
     /** Show folder with wallet backups in default file browser */
     void showBackups();
 

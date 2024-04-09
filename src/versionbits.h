@@ -40,7 +40,7 @@ struct BIP9DeploymentInfo {
     /** Whether GBT clients can safely ignore this rule in simplified usage */
     bool gbt_force;
     /** Whether to check current MN protocol or not */
-    bool check_dn_protocol;
+    bool check_sn_protocol;
 };
 
 extern const struct BIP9DeploymentInfo VersionBitsDeploymentInfo[];
