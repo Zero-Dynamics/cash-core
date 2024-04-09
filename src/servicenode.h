@@ -27,9 +27,9 @@ static const int SERVICENODE_POSE_BAN_MAX_SCORE = 5;
 //
 
 // sentinel version before sentinel ping implementation
-#define DEFAULT_SENTINEL_VERSION 0x010001
+#define DEFAULT_SENTINEL_VERSION 0x010000
 // daemon version before implementation of nDaemonVersion in CServiceNodePing
-#define DEFAULT_DAEMON_VERSION 203050
+#define DEFAULT_DAEMON_VERSION 100000
 
 class CServiceNodePing
 {
