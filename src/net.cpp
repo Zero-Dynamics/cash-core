@@ -2289,7 +2289,7 @@ bool CConnman::Start(CScheduler& scheduler, std::string& strNodeError, Options c
         threadOpenConnections = std::thread(&TraceThread<std::function<void()> >, "opencon", std::function<void()>(std::bind(&CConnman::ThreadOpenConnections, this)));
 
     // Initiate servicenode connections
-    threadOpenServiceNodeConnections = std::thread(&TraceThread<std::function<void()> >, "dncon", std::function<void()>(std::bind(&CConnman::ThreadOpenServiceNodeConnections, this)));
+    threadOpenServiceNodeConnections = std::thread(&TraceThread<std::function<void()> >, "sncon", std::function<void()>(std::bind(&CConnman::ThreadOpenServiceNodeConnections, this)));
 
     // Process messages
     threadMessageHandler = std::thread(&TraceThread<std::function<void()> >, "msghand", std::function<void()>(std::bind(&CConnman::ThreadMessageHandler, this)));

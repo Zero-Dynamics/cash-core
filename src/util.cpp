@@ -679,7 +679,7 @@ boost::filesystem::path GetConfigFile(const std::string& confPath)
 
 boost::filesystem::path GetServiceNodeConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-dnconf", "servicenode.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-snconf", "servicenode.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir() / pathConfigFile;
     return pathConfigFile;

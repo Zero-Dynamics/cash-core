@@ -24,7 +24,7 @@
 
 * Use std::function and std::bind in scheduler instead of boost/std mix
 * [ServiceNode] Do not call sentinel methods when spork is inactive
-* [ServiceNode] Remove dncache.dat file
+* [ServiceNode] Remove sncache.dat file
 
 
 **Dynamic v2.4.4.0**
