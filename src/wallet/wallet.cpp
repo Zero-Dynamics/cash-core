@@ -3566,7 +3566,7 @@ bool CWallet::SelectCoinsGroupedByAddresses(std::vector<CompactTallyItem>& vecTa
                 // ignore collaterals
                 if (CPrivateSend::IsCollateralAmount(wtx.tx->vout[i].nValue))
                     continue;
-                if (fServiceNodeMode && wtx.tx->vout[i].nValue == 1000 * COIN)
+                if (fServiceNodeMode && wtx.tx->vout[i].nValue == 15000 * COIN)
                     continue;
                 // ignore outputs that are 10 times smaller then the smallest denomination
                 // otherwise they will just lead to higher fee / lower priority
@@ -3637,7 +3637,7 @@ bool CWallet::SelectPrivateCoins(CAmount nValueMin, CAmount nValueMax, std::vect
         //do not allow collaterals to be selected
         if (CPrivateSend::IsCollateralAmount(out.tx->tx->vout[out.i].nValue))
             continue;
-        if (fServiceNodeMode && out.tx->tx->vout[out.i].nValue == 1000 * COIN)
+        if (fServiceNodeMode && out.tx->tx->vout[out.i].nValue == 15000 * COIN)
             continue; //servicenode input
 
         if (nValueRet + out.tx->tx->vout[out.i].nValue <= nValueMax) {
