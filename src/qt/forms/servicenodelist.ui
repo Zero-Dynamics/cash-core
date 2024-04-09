@@ -371,7 +371,7 @@
          <item row="1" column="0">
           <widget class="QTableWidget" name="tableWidgetServiceNodes">
            <property name="styleSheet">
-            <string notr="true">color: rgb(18, 0, 6); background-color:(102, 2, 60;</string>
+            <string notr="true">color: rgb(18, 0, 6); background-color:(102, 2, 60);</string>
            </property>
            <property name="editTriggers">
             <set>QAbstractItemView::NoEditTriggers</set>
