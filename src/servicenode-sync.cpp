@@ -292,8 +292,8 @@ void CServiceNodeSync::ProcessTick(CConnman& connman)
                     return;
                 }
 
-                // request from three peers max
-                if (nRequestedServiceNodeAttempt > 2) {
+                // request from five peers max
+                if (nRequestedServiceNodeAttempt > 5) {
                     connman.ReleaseNodeVector(vNodesCopy);
                     return;
                 }
@@ -343,8 +343,8 @@ void CServiceNodeSync::ProcessTick(CConnman& connman)
                     return;
                 }
 
-                // request from three peers max
-                if (nRequestedServiceNodeAttempt > 2) {
+                // request from five peers max
+                if (nRequestedServiceNodeAttempt > 4) {
                     connman.ReleaseNodeVector(vNodesCopy);
                     return;
                 }
