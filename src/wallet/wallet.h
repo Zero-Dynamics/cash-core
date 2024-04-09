@@ -110,7 +110,7 @@ enum AvailableCoinsType {
     ALL_COINS,
     ONLY_DENOMINATED,
     ONLY_NONDENOMINATED,
-    ONLY_1000, // find servicenode outputs including locked ones (use with caution)
+    ONLY_15000, // find servicenode outputs including locked ones (use with caution)
     ONLY_PRIVATESEND_COLLATERAL
 };
 

@@ -2979,8 +2979,8 @@ void CWallet::AvailableCoins(std::vector<COutput>& vCoins, bool fOnlyConfirmed, 
                     if (CPrivateSend::IsCollateralAmount(pcoin->tx->vout[i].nValue))
                         continue; // do not use collateral amounts
                     found = !CPrivateSend::IsDenominatedAmount(pcoin->tx->vout[i].nValue);
-                } else if (nCoinType == ONLY_1000) {
-                    found = pcoin->tx->vout[i].nValue == 1000 * COIN;
+                } else if (nCoinType == ONLY_15000) {
+                    found = pcoin->tx->vout[i].nValue == 15000 * COIN;
                 } else if (nCoinType == ONLY_PRIVATESEND_COLLATERAL) {
                     found = CPrivateSend::IsCollateralAmount(pcoin->tx->vout[i].nValue);
                 } else {
@@ -3013,7 +3013,7 @@ void CWallet::AvailableCoins(std::vector<COutput>& vCoins, bool fOnlyConfirmed, 
 
                 isminetype mine = IsMine(pcoin->tx->vout[i]);
                 if (!(IsSpent(wtxid, i)) && mine != ISMINE_NO &&
-                    (!IsLockedCoin((*it).first, i) || nCoinType == ONLY_1000) &&
+                    (!IsLockedCoin((*it).first, i) || nCoinType == ONLY_15000) &&
                     (pcoin->tx->vout[i].nValue > 0 || fIncludeZeroValue) &&
                     (!coinControl || !coinControl->HasSelected() || coinControl->fAllowOtherInputs || coinControl->IsSelected(COutPoint((*it).first, i))))
                     vCoins.push_back(COutput(pcoin, i, nDepth,
@@ -3684,7 +3684,7 @@ bool CWallet::GetServiceNodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pub
 
     // Find possible candidates
     std::vector<COutput> vPossibleCoins;
-    AvailableCoins(vPossibleCoins, true, NULL, false, ONLY_1000);
+    AvailableCoins(vPossibleCoins, true, NULL, false, ONLY_15000);
     if (vPossibleCoins.empty()) {
         LogPrintf("CWallet::GetServiceNodeOutpointAndKeys -- Could not locate any valid servicenode vin\n");
         return false;

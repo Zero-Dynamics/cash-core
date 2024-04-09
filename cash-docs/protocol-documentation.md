@@ -59,9 +59,9 @@ Whenever a ServiceNode comes online or a client is syncing, they will send this 
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
-| 41 | vin | CTxIn | The unspent output which is holding 1000 Cash
+| 41 | vin | CTxIn | The unspent output which is holding 15000 Cash
 | # | addr | CService | IPv4 address of the ServiceNode
-| 33-65 | pubKeyCollateralAddress | CPubKey | CPubKey of the main 1000 Cash unspent output
+| 33-65 | pubKeyCollateralAddress | CPubKey | CPubKey of the main 15000 Cash unspent output
 | 33-65 | pubKeyServiceNode | CPubKey | CPubKey of the secondary signing key (For all other messaging other than announce message)
 | 71-73 | sig | char[] | Signature of this message (verifiable via pubKeyCollateralAddress)
 | 8 | sigTime | int64_t | Time which the signature was created
