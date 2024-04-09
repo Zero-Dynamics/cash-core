@@ -22,15 +22,15 @@ What is [Cash](https://duality.solutions/cash)?
 * PoW Period: Unlimited
 * PoW Target Spacing: 30 Seconds
 * PoW Reward per Block: Controlled via Fluid Protocol
-* PoW Reward Start Height: Block 20,160
-* Maturity: 10 Blocks
-* PoW Blocks: ~2880 per day
-* ServiceNode Collateral Amount: 50000 0DYNC
+* PoW Reward Start Height: Block 2,880
+* Maturity: 40 Blocks
+* PoW Blocks: ~2,880 per day
+* ServiceNode Collateral Amount: 15,000 0DYNC
 * ServiceNode Min Confirmation: 17 Blocks
 * ServiceNode Reward: Controlled via Fluid Protocol
-* ServiceNode Reward Start Height: Block 40,320
+* ServiceNode Reward Start Height: Block 4,320
 * Total Coins: 2<sup>63</sup> - 1
-* Min TX Fee: 0.0001 0DYNC
+* Min TX Fee: 0.00001 0DYNC
 
 
 [Cash(0DYNC)](https://duality.solutions/cash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Cash can be used to run incentivized ServiceNodes; the second tier of nodes on the network processing, verifying, validating and storing data.
