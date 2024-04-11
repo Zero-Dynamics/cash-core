@@ -24,7 +24,7 @@ class CNode;
 class CVGPMessage;
 
 static constexpr size_t MAX_MESSAGE_SIZE = 8192;
-static constexpr int MIN_VGP_MESSAGE_PEER_PROTO_VERSION = 70000;
+static constexpr int MIN_VGP_MESSAGE_PEER_PROTO_VERSION = 71000;
 static constexpr size_t MAX_MESSAGE_DATA_LENGTH = 8192;
 static constexpr uint32_t MIN_CLIENT_VERSION = 1000000;
 static constexpr size_t MAX_SIGNATURE_SIZE = 72;

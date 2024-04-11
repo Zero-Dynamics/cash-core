@@ -7,7 +7,7 @@
 
 #include <libtorrent/session.hpp>
 
-static constexpr int MIN_DHT_PROTO_VERSION = 70000;
+static constexpr int MIN_DHT_PROTO_VERSION = 71000;
 
 class CDHTSettings {
 private:

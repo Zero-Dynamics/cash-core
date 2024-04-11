@@ -28,9 +28,9 @@ extern CInstantSend instantsend;
     (1000/2900.0)**5 = 0.004875397277841433
 */
 
-static const int MIN_INSTANTSEND_PROTO_VERSION = 70000;
+static const int MIN_INSTANTSEND_PROTO_VERSION = 71000;
 
-static const int MIN_INSTANTSEND_WITHOUT_FEE_PROTO_VERSION = 70000;
+static const int MIN_INSTANTSEND_WITHOUT_FEE_PROTO_VERSION = 71000;
 
 // For how long we are going to accept votes/locks
 // after we saw the first one for a specific transaction

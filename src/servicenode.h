@@ -53,7 +53,7 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action)
     {
         int nVersion = s.GetVersion();
-        if (nVersion == 70000 && (s.GetType() & SER_NETWORK)) {
+        if (nVersion == 70900 && (s.GetType() & SER_NETWORK)) {
             // converting from/to old format
             CTxIn txin{};
             if (ser_action.ForRead()) {
@@ -73,7 +73,7 @@ public:
             READWRITE(vchSig);
         }
         if (ser_action.ForRead() && s.size() == 0) {
-            // TODO: drop this after migration to 70000
+            // TODO: drop this after migration to 71000
             fSentinelIsCurrent = false;
             nSentinelVersion = DEFAULT_SENTINEL_VERSION;
             nDaemonVersion = DEFAULT_DAEMON_VERSION;
@@ -82,11 +82,11 @@ public:
         READWRITE(fSentinelIsCurrent);
         READWRITE(nSentinelVersion);
         if (ser_action.ForRead() && s.size() == 0) {
-            // TODO: drop this after migration to 70000
+            // TODO: drop this after migration to 71000
             nDaemonVersion = DEFAULT_DAEMON_VERSION;
             return;
         }
-        if (!(nVersion == 70000 && (s.GetType() & SER_NETWORK))) {
+        if (!(nVersion == 70900 && (s.GetType() & SER_NETWORK))) {
             READWRITE(nDaemonVersion);
         }
     }
@@ -204,7 +204,7 @@ public:
     {
         LOCK(cs);
         int nVersion = s.GetVersion();
-        if (nVersion == 70000 && (s.GetType() & SER_NETWORK)) {
+        if (nVersion == 70900 && (s.GetType() & SER_NETWORK)) {
             // converting from/to old format
             CTxIn txin{};
             if (ser_action.ForRead()) {
@@ -369,7 +369,7 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action)
     {
         int nVersion = s.GetVersion();
-        if (nVersion == 70000 && (s.GetType() & SER_NETWORK)) {
+        if (nVersion == 70900 && (s.GetType() & SER_NETWORK)) {
             // converting from/to old format
             CTxIn txin{};
             if (ser_action.ForRead()) {
@@ -437,7 +437,7 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action)
     {
         int nVersion = s.GetVersion();
-        if (nVersion == 70000 && (s.GetType() & SER_NETWORK)) {
+        if (nVersion == 70900 && (s.GetType() & SER_NETWORK)) {
             // converting from/to old format
             CTxIn txin1{};
             CTxIn txin2{};
