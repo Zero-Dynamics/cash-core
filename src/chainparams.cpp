@@ -172,7 +172,7 @@ public:
         consensus.nMinimumChainWork = 0;
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0000138d9183413ff5346fb507b1da05715cb94270ee5419517a8feaa299a046"); //4200
+        consensus.defaultAssumeValid = uint256S("0x00000a1ba362a1b1c0afdca1b60f6a31bc93d9fa956214584407444314c4eee0"); //11000
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -243,8 +243,8 @@ public:
                 (1600,      uint256S("0x0000073ba16f079dbf6d98d0c3cb50e61f930a67d8d5a5be5f796ec9fb3931cb"))
                 (2600,      uint256S("0x00001700c173f833c158dada94ef763b2a0bd385dad1f7855d9cfc461b981031"))
                 (4200,      uint256S("0x0000138d9183413ff5346fb507b1da05715cb94270ee5419517a8feaa299a046"))
-                // (6800,      uint256S("0x"))
-                // (11000,     uint256S("0x"))
+                (6800,      uint256S("0x00002bd24876c583beb0a3ae8206fa5656b794e55892fc2135675026f93b157c"))
+                (11000,     uint256S("0x00000a1ba362a1b1c0afdca1b60f6a31bc93d9fa956214584407444314c4eee0"))
                 // (17800,     uint256S("0x"))
                 // (28800,     uint256S("0x"))
                 // (60000,     uint256S("0x"))
@@ -294,7 +294,7 @@ public:
         consensus.nPowMaxAdjustDown = 213/16; // 1 - ~13%, 1 - up x down ≈ 0.1phi, 213 / 16 x 22 / 181 ≈ phi
         consensus.nPowTargetTimespan = 7 * 24 * 60 * 60; // Cash: 1 week
         consensus.nPowTargetSpacing = 60 / 2;
-        consensus.nUpdateDiffAlgoHeight = 120; // Cash: Algorithm fork block
+        consensus.nUpdateDiffAlgoHeight = 120000000; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
