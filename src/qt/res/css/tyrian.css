@@ -1180,7 +1180,7 @@ min-height:35px;
 
 QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
-font-size:15px;
+font-size:13px;
 font-weight:bold;
 color:#66023c;
 margin-left:0px;
@@ -1420,7 +1420,7 @@ margin-left:72px;
 margin-right:5px;
 padding-right:5px;
 font-weight:bold;
-font-size:17px;
+font-size:16px;
 min-height:24px;
 color: #66023c;
 }
