@@ -231,6 +231,12 @@ std::string CAudit::ToString() const
         );
 }
 
+UniValue makeUniValuePair(const std::string& key, const UniValue& value) {
+    UniValue pair(UniValue::VOBJ);
+    pair.pushKV(key, value);
+    return pair;
+}
+
 bool BuildAuditJson(const CAudit& audit, UniValue& oAudit)
 {
     int64_t nTime = 0;
@@ -240,25 +246,25 @@ bool BuildAuditJson(const CAudit& audit, UniValue& oAudit)
     int counter = 0;
     for(const std::vector<unsigned char>& vchAudit : auditData.vAuditData) {
         counter++;
-        oAuditHashes.push_back(Pair("audit_hash" + std::to_string(counter), stringFromVch(vchAudit)));
+        oAuditHashes.push_back(makeUniValuePair("audit_hash" + std::to_string(counter), stringFromVch(vchAudit)));
     }
-    oAudit.push_back(Pair("version", std::to_string(audit.Version())));
-    oAudit.push_back(Pair("audit_count", auditData.vAuditData.size()));
-    oAudit.push_back(Pair("audit_hashes", oAuditHashes));
-    oAudit.push_back(Pair("timestamp", std::to_string(auditData.nTimeStamp)));
-    oAudit.push_back(Pair("owner", stringFromVch(audit.vchOwnerFullObjectPath)));
-    oAudit.push_back(Pair("signed", audit.IsSigned() ? "True" : "False"));
-    oAudit.push_back(Pair("algorithm_type", stringFromVch(audit.vchAlgorithmType)));
-    oAudit.push_back(Pair("description", stringFromVch(audit.vchDescription)));
-    oAudit.push_back(Pair("txid", audit.txHash.GetHex()));
+    oAudit.push_back(makeUniValuePair("version", std::to_string(audit.Version())));
+    oAudit.push_back(makeUniValuePair("audit_count", std::to_string(auditData.vAuditData.size())));
+    oAudit.push_back(makeUniValuePair("audit_hashes", oAuditHashes));
+    oAudit.push_back(makeUniValuePair("timestamp", std::to_string(auditData.nTimeStamp)));
+    oAudit.push_back(makeUniValuePair("owner", stringFromVch(audit.vchOwnerFullObjectPath)));
+    oAudit.push_back(makeUniValuePair("signed", audit.IsSigned() ? "True" : "False"));
+    oAudit.push_back(makeUniValuePair("algorithm_type", stringFromVch(audit.vchAlgorithmType)));
+    oAudit.push_back(makeUniValuePair("description", stringFromVch(audit.vchDescription)));
+    oAudit.push_back(makeUniValuePair("txid", audit.txHash.GetHex()));
     if ((unsigned int)chainActive.Height() >= audit.nHeight) {
         CBlockIndex *pindex = chainActive[audit.nHeight];
         if (pindex) {
             nTime = pindex->GetBlockTime();
         }
     }
-    oAudit.push_back(Pair("block_time", nTime));
-    oAudit.push_back(Pair("block_height", std::to_string(audit.nHeight)));
+    oAudit.push_back(makeUniValuePair("block_time", std::to_string(nTime)));
+    oAudit.push_back(makeUniValuePair("block_height", std::to_string(audit.nHeight)));
     return true;
 }
 
@@ -267,22 +273,22 @@ bool BuildVerifyAuditJson(const CAudit& audit, UniValue& oAudit)
     int64_t nTime = 0;
     CAuditData auditData = audit.GetAuditData();
 
-    oAudit.push_back(Pair("version", std::to_string(audit.Version())));
-    oAudit.push_back(Pair("audit_count", auditData.vAuditData.size()));
-    oAudit.push_back(Pair("timestamp", std::to_string(auditData.nTimeStamp)));
-    oAudit.push_back(Pair("owner", stringFromVch(audit.vchOwnerFullObjectPath)));
-    oAudit.push_back(Pair("signed", audit.IsSigned() ? "True" : "False"));
-    oAudit.push_back(Pair("algorithm_type", stringFromVch(audit.vchAlgorithmType)));
-    oAudit.push_back(Pair("description", stringFromVch(audit.vchDescription)));
-    oAudit.push_back(Pair("txid", audit.txHash.GetHex()));
+    oAudit.push_back(makeUniValuePair("version", std::to_string(audit.Version())));
+    oAudit.push_back(makeUniValuePair("audit_count", std::to_string(auditData.vAuditData.size())));
+    oAudit.push_back(makeUniValuePair("timestamp", std::to_string(auditData.nTimeStamp)));
+    oAudit.push_back(makeUniValuePair("owner", stringFromVch(audit.vchOwnerFullObjectPath)));
+    oAudit.push_back(makeUniValuePair("signed", audit.IsSigned() ? "True" : "False"));
+    oAudit.push_back(makeUniValuePair("algorithm_type", stringFromVch(audit.vchAlgorithmType)));
+    oAudit.push_back(makeUniValuePair("description", stringFromVch(audit.vchDescription)));
+    oAudit.push_back(makeUniValuePair("txid", audit.txHash.GetHex()));
     if ((unsigned int)chainActive.Height() >= audit.nHeight) {
         CBlockIndex *pindex = chainActive[audit.nHeight];
         if (pindex) {
             nTime = pindex->GetBlockTime();
         }
     }
-    oAudit.push_back(Pair("block_time", nTime));
-    oAudit.push_back(Pair("block_height", std::to_string(audit.nHeight)));
+    oAudit.push_back(makeUniValuePair("block_time", std::to_string(nTime)));
+    oAudit.push_back(makeUniValuePair("block_height", std::to_string(audit.nHeight)));
     return true;
 }
 

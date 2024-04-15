@@ -169,5 +169,6 @@ public:
 
 bool BuildAuditJson(const CAudit& audit, UniValue& oAudit);
 bool BuildVerifyAuditJson(const CAudit& audit, UniValue& oAudit);
+UniValue makeUniValuePair(const std::string& key, const UniValue& value);
 
 #endif // CASH_BDAP_AUDITDATA_H
