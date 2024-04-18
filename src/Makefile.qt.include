@@ -200,99 +200,99 @@ RES_ICONS = \
   qt/res/icons/cash.png \
   qt/res/icons/tyrian/about.png \
   qt/res/icons/tyrian/about_qt.png \
-  qt/res/icons/tyrian/add.svg \
-  qt/res/icons/tyrian/address-book.svg \
-  qt/res/icons/tyrian/bdap.svg \
-  qt/res/icons/tyrian/browse.svg \
-  qt/res/icons/tyrian/chevron.svg \
-  qt/res/icons/tyrian/clock1.svg \
-  qt/res/icons/tyrian/clock2.svg \
-  qt/res/icons/tyrian/clock3.svg \
-  qt/res/icons/tyrian/clock4.svg \
-  qt/res/icons/tyrian/clock5.svg \
-  qt/res/icons/tyrian/configure.svg \
-  qt/res/icons/tyrian/connect0_16.svg \
-  qt/res/icons/tyrian/connect1_16.svg \
-  qt/res/icons/tyrian/connect2_16.svg \
-  qt/res/icons/tyrian/connect3_16.svg \
-  qt/res/icons/tyrian/connect4_16.svg \
-  qt/res/icons/tyrian/darkpurple_bdap.svg \
-  qt/res/icons/tyrian/darkpurple_clock1.svg \
-  qt/res/icons/tyrian/darkpurple_clock2.svg \
-  qt/res/icons/tyrian/darkpurple_clock3.svg \
-  qt/res/icons/tyrian/darkpurple_clock4.svg \
-  qt/res/icons/tyrian/darkpurple_clock5.svg \
-  qt/res/icons/tyrian/darkpurple_eye.svg \
-  qt/res/icons/tyrian/darkpurple_eye_minus.svg \
-  qt/res/icons/tyrian/darkpurple_eye_plus.svg \
-  qt/res/icons/tyrian/darkpurple_fluid.svg \
-  qt/res/icons/tyrian/darkpurple_lock_closed.svg \
-  qt/res/icons/tyrian/darkpurple_lock_open.svg \
-  qt/res/icons/tyrian/darkpurple_transaction0.svg \
-  qt/res/icons/tyrian/darkpurple_transaction2.svg \
-  qt/res/icons/tyrian/darkpurple_transaction_abandoned.svg \
-  qt/res/icons/tyrian/darkpurple_tx_inout.svg \
-  qt/res/icons/tyrian/darkpurple_tx_input.svg \
-  qt/res/icons/tyrian/darkpurple_tx_mined.svg \
-  qt/res/icons/tyrian/darkpurple_tx_output.svg \
-  qt/res/icons/tyrian/darkpurple_tx_staked.svg \
-  qt/res/icons/tyrian/darkpurple_verify.svg \
-  qt/res/icons/tyrian/debugwindow.svg \
-  qt/res/icons/tyrian/tyrianpurple_add.svg \
-  qt/res/icons/tyrian/tyrianpurple_clear.svg \
-  qt/res/icons/tyrian/tyrianpurple_editpaste.svg \
-  qt/res/icons/tyrian/tyrianpurple_address-book.svg \
-  qt/res/icons/tyrian/tyrianpurple_editcopy.svg \
-  qt/res/icons/tyrian/tyrianpurple_eye.svg \
-  qt/res/icons/tyrian/tyrianpurple_transaction_abandoned.svg \
-  qt/res/icons/tyrian/tyrianpurple_remove.svg \
+  qt/res/icons/tyrian/add.png \
+  qt/res/icons/tyrian/address-book.png \
+  qt/res/icons/tyrian/bdap.png \
+  qt/res/icons/tyrian/browse.png \
+  qt/res/icons/tyrian/chevron.png \
+  qt/res/icons/tyrian/clock1.png \
+  qt/res/icons/tyrian/clock2.png \
+  qt/res/icons/tyrian/clock3.png \
+  qt/res/icons/tyrian/clock4.png \
+  qt/res/icons/tyrian/clock5.png \
+  qt/res/icons/tyrian/configure.png \
+  qt/res/icons/tyrian/connect0_16.png \
+  qt/res/icons/tyrian/connect1_16.png \
+  qt/res/icons/tyrian/connect2_16.png \
+  qt/res/icons/tyrian/connect3_16.png \
+  qt/res/icons/tyrian/connect4_16.png \
+  qt/res/icons/tyrian/darkpurple_bdap.png \
+  qt/res/icons/tyrian/darkpurple_clock1.png \
+  qt/res/icons/tyrian/darkpurple_clock2.png \
+  qt/res/icons/tyrian/darkpurple_clock3.png \
+  qt/res/icons/tyrian/darkpurple_clock4.png \
+  qt/res/icons/tyrian/darkpurple_clock5.png \
+  qt/res/icons/tyrian/darkpurple_eye.png \
+  qt/res/icons/tyrian/darkpurple_eye_minus.png \
+  qt/res/icons/tyrian/darkpurple_eye_plus.png \
+  qt/res/icons/tyrian/darkpurple_fluid.png \
+  qt/res/icons/tyrian/darkpurple_lock_closed.png \
+  qt/res/icons/tyrian/darkpurple_lock_open.png \
+  qt/res/icons/tyrian/darkpurple_transaction0.png \
+  qt/res/icons/tyrian/darkpurple_transaction2.png \
+  qt/res/icons/tyrian/darkpurple_transaction_abandoned.png \
+  qt/res/icons/tyrian/darkpurple_tx_inout.png \
+  qt/res/icons/tyrian/darkpurple_tx_input.png \
+  qt/res/icons/tyrian/darkpurple_tx_mined.png \
+  qt/res/icons/tyrian/darkpurple_tx_output.png \
+  qt/res/icons/tyrian/darkpurple_tx_staked.png \
+  qt/res/icons/tyrian/darkpurple_verify.png \
+  qt/res/icons/tyrian/debugwindow.png \
+  qt/res/icons/tyrian/tyrianpurple_add.png \
+  qt/res/icons/tyrian/tyrianpurple_clear.png \
+  qt/res/icons/tyrian/tyrianpurple_editpaste.png \
+  qt/res/icons/tyrian/tyrianpurple_address-book.png \
+  qt/res/icons/tyrian/tyrianpurple_editcopy.png \
+  qt/res/icons/tyrian/tyrianpurple_eye.png \
+  qt/res/icons/tyrian/tyrianpurple_transaction_abandoned.png \
+  qt/res/icons/tyrian/tyrianpurple_remove.png \
   qt/res/icons/tyrian/cash_testnet.ico \
   qt/res/icons/tyrian/cash_testnet.png \
   qt/res/icons/tyrian/cash.png \
-  qt/res/icons/tyrian/servicenode_network.svg \
-  qt/res/icons/tyrian/edit.svg \
-  qt/res/icons/tyrian/editcopy.svg \
-  qt/res/icons/tyrian/editpaste.svg \
-  qt/res/icons/tyrian/export.svg \
-  qt/res/icons/tyrian/eye_minus.svg \
-  qt/res/icons/tyrian/eye_plus.svg \
-  qt/res/icons/tyrian/eye.svg \
-  qt/res/icons/tyrian/filesave.svg \
-  qt/res/icons/tyrian/fluid.svg \
-  qt/res/icons/tyrian/hd_disabled.svg \
-  qt/res/icons/tyrian/hd_enabled.svg \
-  qt/res/icons/tyrian/history.svg \
-  qt/res/icons/tyrian/key.svg \
-  qt/res/icons/tyrian/information.svg \
-  qt/res/icons/tyrian/lock_closed.svg \
-  qt/res/icons/tyrian/lock_open.svg \
-  qt/res/icons/tyrian/notsynced.svg \
-  qt/res/icons/tyrian/overview.svg \
-  qt/res/icons/tyrian/quit.svg \
-  qt/res/icons/tyrian/receive.svg \
-  qt/res/icons/tyrian/refresh.svg \
-  qt/res/icons/tyrian/remove.svg \
-  qt/res/icons/tyrian/send.svg \
-  qt/res/icons/tyrian/start.svg \
-  qt/res/icons/tyrian/stop.svg \
-  qt/res/icons/tyrian/synced.svg \
-  qt/res/icons/tyrian/transaction_abandoned.svg \
-  qt/res/icons/tyrian/transaction_conflicted.svg \
-  qt/res/icons/tyrian/transaction0.svg \
-  qt/res/icons/tyrian/transaction2.svg \
-  qt/res/icons/tyrian/tx_inout.svg \
-  qt/res/icons/tyrian/tx_input.svg \
-  qt/res/icons/tyrian/tx_mined.svg \
-  qt/res/icons/tyrian/tx_output.svg \
-  qt/res/icons/tyrian/tx_staked.svg \
+  qt/res/icons/tyrian/servicenode_network.png \
+  qt/res/icons/tyrian/edit.png \
+  qt/res/icons/tyrian/editcopy.png \
+  qt/res/icons/tyrian/editpaste.png \
+  qt/res/icons/tyrian/export.png \
+  qt/res/icons/tyrian/eye_minus.png \
+  qt/res/icons/tyrian/eye_plus.png \
+  qt/res/icons/tyrian/eye.png \
+  qt/res/icons/tyrian/filesave.png \
+  qt/res/icons/tyrian/fluid.png \
+  qt/res/icons/tyrian/hd_disabled.png \
+  qt/res/icons/tyrian/hd_enabled.png \
+  qt/res/icons/tyrian/history.png \
+  qt/res/icons/tyrian/key.png \
+  qt/res/icons/tyrian/information.png \
+  qt/res/icons/tyrian/lock_closed.png \
+  qt/res/icons/tyrian/lock_open.png \
+  qt/res/icons/tyrian/notsynced.png \
+  qt/res/icons/tyrian/overview.png \
+  qt/res/icons/tyrian/quit.png \
+  qt/res/icons/tyrian/receive.png \
+  qt/res/icons/tyrian/refresh.png \
+  qt/res/icons/tyrian/remove.png \
+  qt/res/icons/tyrian/send.png \
+  qt/res/icons/tyrian/start.png \
+  qt/res/icons/tyrian/stop.png \
+  qt/res/icons/tyrian/synced.png \
+  qt/res/icons/tyrian/transaction_abandoned.png \
+  qt/res/icons/tyrian/transaction_conflicted.png \
+  qt/res/icons/tyrian/transaction0.png \
+  qt/res/icons/tyrian/transaction2.png \
+  qt/res/icons/tyrian/tx_inout.png \
+  qt/res/icons/tyrian/tx_input.png \
+  qt/res/icons/tyrian/tx_mined.png \
+  qt/res/icons/tyrian/tx_output.png \
+  qt/res/icons/tyrian/tx_staked.png \
   qt/res/icons/tyrian/unit_0dync.png \
   qt/res/icons/tyrian/unit_m0dync.png \
   qt/res/icons/tyrian/unit_satoshis.png \
   qt/res/icons/tyrian/unit_u0dync.png \
-  qt/res/icons/tyrian/fontbigger.svg \
-  qt/res/icons/tyrian/fontsmaller.svg \
-  qt/res/icons/tyrian/verify.svg \
-  qt/res/icons/tyrian/warning.svg
+  qt/res/icons/tyrian/fontbigger.png \
+  qt/res/icons/tyrian/fontsmaller.png \
+  qt/res/icons/tyrian/verify.png \
+  qt/res/icons/tyrian/warning.png
 
 CASH_QT_CPP = \
   qt/bantablemodel.cpp \
@@ -367,23 +367,23 @@ endif
 
 RES_IMAGES = \
   qt/res/images/tyrian/about.png \
-  qt/res/images/tyrian/checked.svg \
+  qt/res/images/tyrian/checked.png \
   qt/res/images/tyrian/dark_walletFrame.png \
-  qt/res/images/tyrian/tyrianpurple_downArrow_small.svg \
-  qt/res/images/tyrian/tyrianpurple_downArrow.svg \
-  qt/res/images/tyrian/tyrianpurple_leftArrow_small.svg \
-  qt/res/images/tyrian/tyrianpurple_qtreeview_selected.svg \
-  qt/res/images/tyrian/tyrianpurple_rightArrow_small.svg \
-  qt/res/images/tyrian/tyrianpurple_upArrow_small.svg \
+  qt/res/images/tyrian/tyrianpurple_downArrow_small.png \
+  qt/res/images/tyrian/tyrianpurple_downArrow.png \
+  qt/res/images/tyrian/tyrianpurple_leftArrow_small.png \
+  qt/res/images/tyrian/tyrianpurple_qtreeview_selected.png \
+  qt/res/images/tyrian/tyrianpurple_rightArrow_small.png \
+  qt/res/images/tyrian/tyrianpurple_upArrow_small.png \
   qt/res/images/tyrian/cash_logo_horizontal.png \
   qt/res/images/tyrian/splash_testnet.png \
   qt/res/images/tyrian/splash.png \
-  qt/res/images/tyrian/unchecked.svg
+  qt/res/images/tyrian/unchecked.png
 
 RES_CSS = \
   qt/res/css/tyrian.css
 
-RES_MOVIES = $(wildcard qt/res/movies/spinner-*.svg)
+RES_MOVIES = $(wildcard qt/res/movies/spinner-*.png)
 
 CASH_RC = qt/res/cash-qt-res.rc
 
