@@ -138,9 +138,9 @@ TransactionView::TransactionView(const PlatformStyle* platformStyle, QWidget* pa
     amountWidget->setPlaceholderText(tr("Min amount"));
 #endif
     if (platformStyle->getUseExtraSpacing()) {
-        amountWidget->setFixedWidth(120);
+        amountWidget->setFixedWidth(150);
     } else {
-        amountWidget->setFixedWidth(120);
+        amountWidget->setFixedWidth(150);
     }
     amountWidget->setValidator(new QDoubleValidator(0, 1e20, 8, this));
     amountWidget->setObjectName("amountWidget");
