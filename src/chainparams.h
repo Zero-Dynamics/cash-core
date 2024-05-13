@@ -71,9 +71,6 @@ public:
     bool DefaultConsistencyChecks() const { return fDefaultConsistencyChecks; }
     /** Policy: Filter transactions that do not match well-defined patterns */
     bool RequireStandard() const { return fRequireStandard; }
-    /** returns the max future time (and drift in seconds) allowed for a block in the future **/
-    int FutureBlockTimeDrift(const bool isPoS) const { return nFutureTimeDriftPoS; }
-    uint32_t MaxFutureBlockTime(uint32_t time, const bool isPoS) const { return time + FutureBlockTimeDrift(isPoS); }
     /** Require addresses specified with "-externalip" parameter to be routable */
     bool RequireRoutableExternalIP() const { return fRequireRoutableExternalIP; }
     uint64_t PruneAfterHeight() const { return nPruneAfterHeight; }
@@ -126,7 +123,6 @@ protected:
     std::vector<std::string> vSporkAddresses;
     int nMinSporkKeys;
     std::string strServiceNodePaymentsPubKey;
-    int nFutureTimeDriftPoS;
 };
 
 /**
