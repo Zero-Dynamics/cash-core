@@ -172,7 +172,7 @@ public:
         consensus.nMinimumChainWork = 0;
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0000211f4bfcd6e761d309453673d3c7242c057417aea5a71735b77a635641aa"); //17800
+        consensus.defaultAssumeValid = uint256S("0x00001b481bcdd0f8dd86739018e9c9bbd08405bf98a8c62e9c02c2d469f5c3c0"); //100000
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -247,8 +247,14 @@ public:
                 (6800,      uint256S("0x00002bd24876c583beb0a3ae8206fa5656b794e55892fc2135675026f93b157c"))
                 (11000,     uint256S("0x00000a1ba362a1b1c0afdca1b60f6a31bc93d9fa956214584407444314c4eee0"))
                 (17800,     uint256S("0x0000211f4bfcd6e761d309453673d3c7242c057417aea5a71735b77a635641aa"))
-                // (28800,     uint256S("0x"))
-                // (60000,     uint256S("0x"))
+                (28800,     uint256S("0x00003d8a599764a660c8110041896499bd70d55579859089907ee08db77d7f84"))
+                (60000,     uint256S("0x000048983785dfe116c99a82312534d89da61e7fbe0bcc3794ee3754c552db82"))
+                (100000,    uint256S("0x00001b481bcdd0f8dd86739018e9c9bbd08405bf98a8c62e9c02c2d469f5c3c0"))
+                // (200000,    uint256S("0x"))
+                // (400000,    uint256S("0x"))
+                // (1000000,   uint256S("0x"))
+                // (2000000,   uint256S("0x"))
+                // (3000000,   uint256S("0x"))
         };
 
         chainTxData = ChainTxData{
