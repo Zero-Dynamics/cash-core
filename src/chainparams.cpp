@@ -329,7 +329,7 @@ public:
         consensus.nMinimumChainWork = 0; // 210
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("00003a1d930035936c91926910d264691a5572845deac0d39d376ce8e03a8a411"); // 0
+        consensus.defaultAssumeValid = uint256S("0x000219a1077561888d00b3fbddbb432747ca32e9cafc23e672f1123e2046c271"); // 0
 
         pchMessageStart[0] = 0x2d;
         pchMessageStart[1] = 0x37;
@@ -342,7 +342,7 @@ public:
         startNewChain = false;
         nSwitchDifficultyBlock = 250;
 
-        genesis = CreateGenesisBlock(1711904477, 3166, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1715763246, 11400, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -350,7 +350,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("0x0003a1d930035936c91926910d264691a5572845deac0d39d376ce8e03a8a411"));
+            assert(consensus.hashGenesisBlock == uint256S("0x000219a1077561888d00b3fbddbb432747ca32e9cafc23e672f1123e2046c271"));
             assert(genesis.hashMerkleRoot == uint256S("0x2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
         vFixedSeeds.clear();
@@ -390,7 +390,7 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            (0, uint256S("0x0003a1d930035936c91926910d264691a5572845deac0d39d376ce8e03a8a411"))
+            (0, uint256S("0x000219a1077561888d00b3fbddbb432747ca32e9cafc23e672f1123e2046c271"))
         };
 
         chainTxData = ChainTxData{
