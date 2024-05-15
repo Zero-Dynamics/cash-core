@@ -279,7 +279,7 @@ public:
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
         consensus.nServiceNodePaymentsStartBlock = 4320;  // ServiceNode Payments begin on block 4320
-        consensus.nMinCountServiceNodesPaymentStart = 5; // ServiceNode Payments begin once 5 ServiceNodes exist or more.
+        consensus.nMinCountServiceNodesPaymentStart = 2; // ServiceNode Payments begin once 2 ServiceNodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
         consensus.nInstantSendKeepLock = 120;
         consensus.nBudgetPaymentsStartBlock = 8640;   // actual historical value
@@ -332,10 +332,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ISAUTOLOCKS].nThreshold = 50; // 50% of 100
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = 0; // 210
+        consensus.nMinimumChainWork = 0; // 0
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x000219a1077561888d00b3fbddbb432747ca32e9cafc23e672f1123e2046c271"); // 0
+        consensus.defaultAssumeValid = uint256S("0x0000363213ff7374b187953b60476058f7542f287252b798cea1dc9695314890"); // 0
 
         pchMessageStart[0] = 0x2d;
         pchMessageStart[1] = 0x37;
@@ -346,9 +346,9 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT + 100;
         nPruneAfterHeight = 100;
         startNewChain = false;
-        nSwitchDifficultyBlock = 250;
+        nSwitchDifficultyBlock = 150;
 
-        genesis = CreateGenesisBlock(1715763246, 11400, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1715786423, 172, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -356,7 +356,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if (!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("0x000219a1077561888d00b3fbddbb432747ca32e9cafc23e672f1123e2046c271"));
+            assert(consensus.hashGenesisBlock == uint256S("0x0000363213ff7374b187953b60476058f7542f287252b798cea1dc9695314890"));
             assert(genesis.hashMerkleRoot == uint256S("0x2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
         vFixedSeeds.clear();
@@ -396,7 +396,7 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            (0, uint256S("0x000219a1077561888d00b3fbddbb432747ca32e9cafc23e672f1123e2046c271"))
+            (0, uint256S("0x0000363213ff7374b187953b60476058f7542f287252b798cea1dc9695314890"))
         };
 
         chainTxData = ChainTxData{
