@@ -16,6 +16,7 @@
 #include "validation.h"
 
 #include <algorithm>
+#include <cmath>
 
 
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex)
@@ -31,7 +32,10 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     if (pindexLast->nHeight + 1 <= params.nUpdateDiffAlgoHeight)
         return UintToArith256(params.powLimit).GetCompact(); // genesis block and first x (nUpdateDiffAlgoHeight) blocks use the default difficulty
 
-    return DigiShield(pindexLast, params.nPowAveragingWindow, params.AveragingWindowTimespan(), params.MinActualTimespan(), params.MaxActualTimespan(), params);
+    if (pindexLast->nHeight + 1 <= Params().DifficultySwitchBlock())
+        return DigiShield(pindexLast, params.nPowAveragingWindow, params.AveragingWindowTimespan(), params.MinActualTimespan(), params.MaxActualTimespan(), params); 
+   
+    return DigiShield(pindexLast, 2880, 2880 * (60 / 2), ((2880 * (60 * 2)) * (100-(50-25/sin(54)))) / 100, ((2880 * (60 / 2)) * (25/sin(54))+100) / 100, params);    
 }
 
 unsigned int DigiShield(const CBlockIndex* pindexLast, const int64_t AveragingWindow, const int64_t AveragingWindowTimespan, const int64_t MinActualTimespan, const int64_t MaxActualTimespan, const Consensus::Params& params)

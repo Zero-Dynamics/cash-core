@@ -187,6 +187,7 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT;
         nPruneAfterHeight = 28800;
         startNewChain = false;
+        nSwitchDifficultyBlock = 250000;
 
         genesis = CreateGenesisBlock(1711904441, 9692, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -294,7 +295,7 @@ public:
         consensus.nPowMaxAdjustDown = 213/16; // 1 - ~13%, 1 - up x down ≈ 0.1phi, 213 / 16 x 22 / 181 ≈ phi
         consensus.nPowTargetTimespan = 7 * 24 * 60 * 60; // Cash: 1 week
         consensus.nPowTargetSpacing = 60 / 2;
-        consensus.nUpdateDiffAlgoHeight = 120000000; // Cash: Algorithm fork block
+        consensus.nUpdateDiffAlgoHeight = 120; // Cash: Algorithm fork block
         assert(maxUint / UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
@@ -339,6 +340,7 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT + 100;
         nPruneAfterHeight = 100;
         startNewChain = false;
+        nSwitchDifficultyBlock = 250;
 
         genesis = CreateGenesisBlock(1711904477, 3166, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -472,7 +474,8 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT + 200;
         nPruneAfterHeight = 100;
         startNewChain = false;
-
+        nSwitchDifficultyBlock = 25;
+        
         genesis = CreateGenesisBlock(1711904489, 3164, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
@@ -600,6 +603,7 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT + 300; // 33600
         nPruneAfterHeight = 100;
         startNewChain = false;
+        nSwitchDifficultyBlock = 25;
 
         genesis = CreateGenesisBlock(1711904501, 2921, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
