@@ -134,7 +134,7 @@ static const int64_t BLOCK_DOWNLOAD_TIMEOUT_PER_PEER = 125000;
 
 static const unsigned int DEFAULT_LIMITFREERELAY = 0;
 static const bool DEFAULT_RELAYPRIORITY = true;
-static const int64_t DEFAULT_MAX_TIP_AGE = 24 * 60 * 64;
+static const int64_t DEFAULT_MAX_TIP_AGE = 24 * 60 * 60;
 /** Maximum age of our tip in seconds for us to be considered current for fee estimation */
 static const int64_t MAX_FEE_ESTIMATION_TIP_AGE = 3 * 60 * 60;
 
@@ -229,16 +229,16 @@ extern bool fPruneMode;
 /** Number of MiB of block files that we're trying to stay below. */
 extern uint64_t nPruneTarget;
 /** Block files containing a block-height within MIN_BLOCKS_TO_KEEP of chainActive.Tip() will not be pruned. */
-static const unsigned int MIN_BLOCKS_TO_KEEP = 288;
+static const unsigned int MIN_BLOCKS_TO_KEEP = 360;
 
-static const signed int DEFAULT_CHECKBLOCKS = 10;
-static const unsigned int DEFAULT_CHECKLEVEL = 3;
+static const signed int DEFAULT_CHECKBLOCKS = 40;
+static const unsigned int DEFAULT_CHECKLEVEL = 4;
 
 // Require that user allocate at least 1590MB for block & undo files (blk???.dat and rev???.dat)
-// At 4MB per block, 288 blocks = 1152MB.
-// Add 15% for Undo data = 1325MB
-// Add 20% for Orphan block rate = 1590MB
-static const uint64_t MIN_DISK_SPACE_FOR_BLOCK_FILES = 1590 * 1024 * 1024;
+// At 1.5MB per block, 360 blocks = 540MB.
+// Add 15% for Undo data = 621MB
+// Add 20% for Orphan block rate = 746MB
+static const uint64_t MIN_DISK_SPACE_FOR_BLOCK_FILES = 746 * 1024 * 1024;
 
 /**
  * Process an incoming block. This only returns after the best known valid
