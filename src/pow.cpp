@@ -39,7 +39,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         pindexLast,
         2880,
         2880 * (60 / 2),
-        ((2880 * (60 * 2)) * (100 - (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
+        ((2880 * (60 / 2)) * (100 - (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
         ((2880 * (60 / 2)) * (100 + (25 / std::sin(M_PI * 54 / 180)))) / 100,
         params
     );
