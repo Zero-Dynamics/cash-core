@@ -1994,8 +1994,8 @@ void CheckForkWarningConditions()
                 SetfLargeWorkForkFound(true);
             }
         } else {
-            if (pindexBestInvalid->nHeight > chainActive.Height() + 10)
-                LogPrintf("%s: Warning: Found invalid chain at least ~10 blocks longer than our best chain.\nChain state database corruption likely.\n", __func__);
+            if (pindexBestInvalid->nHeight > chainActive.Height() + 40)
+                LogPrintf("%s: Warning: Found invalid chain at least ~40 blocks longer than our best chain.\nChain state database corruption likely.\n", __func__);
             else
                 LogPrintf("%s: Warning: Found invalid chain which has higher work (at least ~10 blocks worth of work) than our best chain.\nChain state database corruption likely.\n", __func__);
             SetfLargeWorkInvalidChainFound(true);
