@@ -34,19 +34,19 @@ What is [Cash](https://www/cash)?
 P2P Port = 44400
 RPC Port = 44450
 ServiceNodes = 44400
-Magic Bytes: 0x5e 0x61 0x74 0x80
+Magic Bytes: 0x5d 0x37 0x73 0x89
 
 **TestNet Parameters**
 P2P Port = 44500
 RPC Port = 44550
 ServiceNodes = 44500
-Magic Bytes: 0x2f 0x32 0x15 0x40
+Magic Bytes: 0x2d 0x37 0x16 0x42
 
 **RegTest Parameters**
 P2P Port = 44600
 RPC Port = 44650
 ServiceNodes = 44600
-Magic Bytes = 0x2f 0x32 0x15 0x3f
+Magic Bytes = 0x2d 0x37 0x16 0x42
 
 
 UNIX BUILD NOTES
