@@ -37,12 +37,22 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 
     return DigiShield(
         pindexLast,
-        2880,
-        2880 * (60 / 2),
-        ((2880 * (60 / 2)) * (100 - (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
-        ((2880 * (60 / 2)) * (100 + (25 / std::sin(M_PI * 54 / 180)))) / 100,
+        1 * 2880, 
+        1 * 2880 * (60 / 2), 
+        ((1 * 2880 * (60 / 2)) * (100 - (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
+        ((1 * 2880 * (60 / 2)) * (100 + (25 / std::sin(M_PI * 54 / 180)))) / 100,
         params
     );
+
+    //    if (pindexLast->nHeight + 1 <= Params().DifficultySwitchBlock())
+    //        return DigiShield(
+    //            pindexLast,
+    //            2 * 2880,
+    //            2 * 2880 * (60 / 2),
+    //            ((2 * 2880 * (60 / 2)) * (100 - (25 / std::sin(M_PI * 54 / 180) / std::sin(M_PI * 54 / 180)))) / 100,
+    //            ((2 * 2880 * (60 / 2)) * (100 + (50-25 / std::sin(M_PI * 54 / 180)))) / 100,
+    //            params
+    //        );
 }
 
 unsigned int DigiShield(const CBlockIndex* pindexLast, const int64_t AveragingWindow, const int64_t AveragingWindowTimespan, const int64_t MinActualTimespan, const int64_t MaxActualTimespan, const Consensus::Params& params)
