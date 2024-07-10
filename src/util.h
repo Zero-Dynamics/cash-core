@@ -62,7 +62,7 @@ static const bool DEFAULT_LOGTHREADNAMES = false;
  * Maximum amount of time that a block timestamp is allowed to exceed the
  * current network-adjusted time before the block will be accepted.
  */
-static const int64_t MAX_FUTURE_BLOCK_TIME = 30 * 30; // ~15 minutes for Cash or 30 blocks
+static const int64_t MAX_FUTURE_BLOCK_TIME = 36 * 60; // 36 minutes for Cash, or 72 blocks.
 
 /** Signals for translation. */
 class CTranslationInterface
