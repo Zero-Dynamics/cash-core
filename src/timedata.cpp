@@ -41,8 +41,8 @@ int64_t GetTimeOffset()
 {
     LOCK(cs_nTimeOffset);
 
-    // If NTP and system clock are in agreement within 40 minutes, then use NTP.
-    if (abs64(nNtpOffset) < 40 * 60)
+    // If NTP and system clock are in agreement within 12 minutes, then use NTP.
+    if (abs64(nNtpOffset) < 12 * 60)
         return nNtpOffset;
 
     return nTimeOffset;

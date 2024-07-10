@@ -516,8 +516,8 @@ void ThreadNtpSamples()
             }
         }
 
-        if (GetNodesOffset() == std::numeric_limits<int64_t>::max() && std::llabs(nNtpOffset) > 40 * 60) {
-            // If there is not enough node offsets data and NTP time offset is greater than 40 minutes then give a warning.
+        if (GetNodesOffset() == std::numeric_limits<int64_t>::max() && std::llabs(nNtpOffset) > 12 * 60) {
+            // If there is not enough node offsets data and NTP time offset is greater than 12 minutes then give a warning.
             std::string strMessage("Warning: Please check that your computer's date and time are correct! If your clock is wrong Cash will not work properly.");
             SetMiscWarning(strMessage);
             LogPrintf("*** %s\n", strMessage.c_str());
