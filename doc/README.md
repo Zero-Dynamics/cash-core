@@ -8,7 +8,7 @@ Graph on Pull Request History
 
 [![Throughput Graph](https://graphs.waffle.io/zero-dynamics/cash-core/throughput.svg)](https://waffle.io/zero-dynamics/cash-core/metrics/throughput)  
 
-# **Cash (0DYNC) v2.4.0.0**
+# **Cash (0DYNC) v1.0.2.0**
 
 ![0DYNC logo](https://github.com/zero-dynamics/cash-core/blob/master/src/qt/res/icons/tyrian/about.png)
 
