@@ -28,32 +28,46 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex)
 
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader& block, const Consensus::Params& params) {
     assert(pindexLast != nullptr);
+    int nextHeight = pindexLast->nHeight + 1;
+    int updateDiffAlgo = params.nUpdateDiffAlgoHeight;                              // Diff algo changes at blockheight 120.
+    int firstSwitchDifficultyBlock = Params().FirstDifficultySwitchBlock();         // Diff parameters switch for the first time at blockheight 250000.
+    //  int secondSwitchDifficultyBlock = Params().SecondDifficultySwitchBlock();   // Diff parameters switch for the second time at blockheight tbd.
 
-    if (pindexLast->nHeight + 1 <= params.nUpdateDiffAlgoHeight)
-        return UintToArith256(params.powLimit).GetCompact(); // Genesis block and first x (nUpdateDiffAlgoHeight) blocks use the default difficulty
+    if (nextHeight <= updateDiffAlgo) {
+        unsigned int defaultDifficulty = UintToArith256(params.powLimit).GetCompact();
+        return defaultDifficulty;
+    }
 
-    if (pindexLast->nHeight + 1 <= Params().DifficultySwitchBlock())
-        return DigiShield(pindexLast, params.nPowAveragingWindow, params.AveragingWindowTimespan(), params.MinActualTimespan(), params.MaxActualTimespan(), params); 
+    if (nextHeight <= firstSwitchDifficultyBlock) {
+        unsigned int oldDigiShieldDifficulty = DigiShield(
+            pindexLast, params.nPowAveragingWindow,
+            params.AveragingWindowTimespan(),
+            params.MinActualTimespan(),
+            params.MaxActualTimespan(),
+            params);
+        return oldDigiShieldDifficulty;
+    }
 
-    return DigiShield(
+    unsigned int currentDigiShieldDifficulty = DigiShield(
         pindexLast,
-        1 * 2880, 
-        1 * 2880 * (60 / 2), 
-        ((1 * 2880 * (60 / 2)) * (100 - (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
-        ((1 * 2880 * (60 / 2)) * (100 + (25 / std::sin(M_PI * 54 / 180)))) / 100,
-        params
-    );
-
-    //    if (pindexLast->nHeight + 1 <= Params().DifficultySwitchBlock())
-    //        return DigiShield(
-    //            pindexLast,
-    //            2 * 2880,
-    //            2 * 2880 * (60 / 2),
-    //            ((2 * 2880 * (60 / 2)) * (100 - (25 / std::sin(M_PI * 54 / 180) / std::sin(M_PI * 54 / 180)))) / 100,
-    //            ((2 * 2880 * (60 / 2)) * (100 + (50-25 / std::sin(M_PI * 54 / 180)))) / 100,
-    //            params
-    //        );
+        params.nPowAveragingWindow / 3.5,
+        params.AveragingWindowTimespan() / 3.5,
+        params.AveragingWindowTimespan() / 3.5 * (100 - (50 - 25 / std::sin(M_PI * 54 / 180))) / 100,
+        params.AveragingWindowTimespan() / 3.5 * (100 + (25 / std::sin(M_PI * 54 / 180))) / 100,
+        params);
+    return currentDigiShieldDifficulty;
 }
+
+//    if (nextHeight <= secondSwitchDifficultyBlock) {
+//        unsigned int newDigiShieldDifficulty = DigiShield(
+//            pindexLast,
+//            params.nPowAveragingWindow / 2,
+//            params.AveragingWindowTimespan() / 2,
+//            params.AveragingWindowTimespan() / 2 * (100 - (25 / std::sin(M_PI * 54 / 180) / std::sin(M_PI * 54 / 180)))) / 100,
+//            params.AveragingWindowTimespan() / 2 * (100 + (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
+//            params);
+//        return newDigiShieldDifficulty;
+//    }
 
 unsigned int DigiShield(const CBlockIndex* pindexLast, const int64_t AveragingWindow, const int64_t AveragingWindowTimespan, const int64_t MinActualTimespan, const int64_t MaxActualTimespan, const Consensus::Params& params)
 {
@@ -90,7 +104,8 @@ unsigned int DigiShield(const CBlockIndex* pindexLast, const int64_t AveragingWi
     if (bnNew > bnPowLimit)
         bnNew = bnPowLimit;
 
-    return bnNew.GetCompact();
+    unsigned int result = bnNew.GetCompact();
+    return result;
 }
 
 

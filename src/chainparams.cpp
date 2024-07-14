@@ -187,7 +187,8 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT;
         nPruneAfterHeight = 28800;
         startNewChain = false;
-        nSwitchDifficultyBlock = 250000;
+        nFirstSwitchDifficultyBlock = 250000;
+        // nSecondSwitchDifficultyBlock = TBD;
 
         genesis = CreateGenesisBlock(1711904441, 9692, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -346,7 +347,8 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT + 100;
         nPruneAfterHeight = 100;
         startNewChain = false;
-        nSwitchDifficultyBlock = 150;
+        nFirstSwitchDifficultyBlock = 150;
+        // nSecondSwitchDifficultyBlock = TBD;
 
         genesis = CreateGenesisBlock(1715786423, 172, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -480,8 +482,9 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT + 200;
         nPruneAfterHeight = 100;
         startNewChain = false;
-        nSwitchDifficultyBlock = 25;
-        
+        nFirstSwitchDifficultyBlock = 25;
+        // nSecondSwitchDifficultyBlock = TBD;
+
         genesis = CreateGenesisBlock(1711904489, 3164, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
@@ -609,7 +612,8 @@ public:
         nDefaultPort = DEFAULT_P2P_PORT + 300; // 33600
         nPruneAfterHeight = 100;
         startNewChain = false;
-        nSwitchDifficultyBlock = 25;
+        nFirstSwitchDifficultyBlock = 25;
+        // nSecondSwitchDifficultyBlock = TBD;
 
         genesis = CreateGenesisBlock(1711904501, 2921, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
