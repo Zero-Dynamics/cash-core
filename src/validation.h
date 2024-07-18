@@ -229,16 +229,16 @@ extern bool fPruneMode;
 /** Number of MiB of block files that we're trying to stay below. */
 extern uint64_t nPruneTarget;
 /** Block files containing a block-height within MIN_BLOCKS_TO_KEEP of chainActive.Tip() will not be pruned. */
-static const unsigned int MIN_BLOCKS_TO_KEEP = 360;
+static const unsigned int MIN_BLOCKS_TO_KEEP = 576;
 
 static const signed int DEFAULT_CHECKBLOCKS = MIN_BLOCKS_TO_KEEP;
-static const unsigned int DEFAULT_CHECKLEVEL = 4;
+static const unsigned int DEFAULT_CHECKLEVEL = 3;
 
 // Require that user allocate at least 1590MB for block & undo files (blk???.dat and rev???.dat)
-// At 1.5MB per block, 360 blocks = 540MB.
-// Add 15% for Undo data = 621MB
-// Add 20% for Orphan block rate = 746MB
-static const uint64_t MIN_DISK_SPACE_FOR_BLOCK_FILES = 746 * 1024 * 1024;
+// At 1.5MB per block, 576 blocks = 864MB.
+// Add 15% for Undo data = 994MB
+// Add 20% for Orphan block rate = 1193MB
+static const uint64_t MIN_DISK_SPACE_FOR_BLOCK_FILES = 1193 * 1024 * 1024;
 
 /**
  * Process an incoming block. This only returns after the best known valid
