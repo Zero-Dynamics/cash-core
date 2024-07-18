@@ -4172,6 +4172,15 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
     if (hash == Params().GetConsensus().hashGenesisBlock)
         return true;
 
+    // Hardcoded check for hash and nBits of block 121
+    if (hash.ToString() == "00000fb783aeedcf2c4003bdab7398a21f821da4107835a06ac01cce2f7a7af1" &&
+        block.nBits == 0x1e14d5c2)
+    {
+        // Log that the hardcoded exception is applied
+        LogPrintf("%s: Hardcoded exception applied at height %d for block %s\n", __func__, nHeight, hash.ToString());
+        return true;
+    }
+
     if (block.nBits != GetNextWorkRequired(pindexPrev, block, consensusParams)) {
         return state.DoS(100, error("%s : incorrect proof of work at %d", __func__, nHeight),
             REJECT_INVALID, "bad-diffbits");
