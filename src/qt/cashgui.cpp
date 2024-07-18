@@ -200,7 +200,10 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
 
     // Create status bar
     statusBar();
-
+    
+    // Apply style sheet to remove borders and padding on all platforms
+    statusBar()->setStyleSheet("QStatusBar { border: none; padding: 0px; }");
+    
     // Disable size grip because it looks ugly and nobody needs it
     statusBar()->setSizeGripEnabled(true);
 
