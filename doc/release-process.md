@@ -32,7 +32,7 @@ Release Process
  From a directory containing the cash source, gitian-builder and gitian.sigs
 
 	export SIGNER=(your gitian key, ie bluematt, sipa, etc)
-	export VERSION=(new version, e.g. 1.0.2.0)
+	export VERSION=(new version, e.g. 1.0.3.0)
 	pushd ./cash
 	git checkout v${VERSION}
 	popd
