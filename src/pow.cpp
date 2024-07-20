@@ -40,7 +40,8 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 
     if (nextHeight <= firstSwitchDifficultyBlock) {
         unsigned int oldDigiShieldDifficulty = DigiShield(
-            pindexLast, params.nPowAveragingWindow,
+            pindexLast, 
+            params.nPowAveragingWindow,
             params.AveragingWindowTimespan(),
             params.MinActualTimespan(),
             params.MaxActualTimespan(),
@@ -50,10 +51,10 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 
     unsigned int currentDigiShieldDifficulty = DigiShield(
         pindexLast,
-        params.nPowAveragingWindow / 3.5,
-        params.AveragingWindowTimespan() / 3.5,
-        params.AveragingWindowTimespan() / 3.5 * (100 - (50 - 25 / std::sin(M_PI * 54 / 180))) / 100,
-        params.AveragingWindowTimespan() / 3.5 * (100 + (25 / std::sin(M_PI * 54 / 180))) / 100,
+        params.nPowAveragingWindow * 10 / 35,
+        params.AveragingWindowTimespan() * 10 / 35,
+        params.AveragingWindowTimespan() * 10 / 35 * (100 - (50 - 25 / std::sin(M_PI * 54 / 180))) / 100,
+        params.AveragingWindowTimespan() * 10 / 35 * (100 + (25 / std::sin(M_PI * 54 / 180))) / 100,
         params);
     return currentDigiShieldDifficulty;
 }
@@ -61,10 +62,10 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 //    if (nextHeight <= secondSwitchDifficultyBlock) {
 //        unsigned int newDigiShieldDifficulty = DigiShield(
 //            pindexLast,
-//            params.nPowAveragingWindow / 2,
-//            params.AveragingWindowTimespan() / 2,
-//            params.AveragingWindowTimespan() / 2 * (100 - (25 / std::sin(M_PI * 54 / 180) / std::sin(M_PI * 54 / 180)))) / 100,
-//            params.AveragingWindowTimespan() / 2 * (100 + (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
+//            params.nPowAveragingWindow * 10 /  / 20,
+//            params.AveragingWindowTimespan() * 10 /  / 20,
+//            params.AveragingWindowTimespan() * 10 /  / 20 * (100 - (25 / std::sin(M_PI * 54 / 180) / std::sin(M_PI * 54 / 180)))) / 100,
+//            params.AveragingWindowTimespan() * 10 /  / 20 * (100 + (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
 //            params);
 //        return newDigiShieldDifficulty;
 //    }

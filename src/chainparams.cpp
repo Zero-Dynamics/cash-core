@@ -134,7 +134,7 @@ public:
         consensus.nMajorityWindow = 1000;
         consensus.powLimit = uint256S("0005ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 7 * 24 * 60 * 60; // Cash: 1 week
-        consensus.nPowAveragingWindow = 3.5 * 2880; // 3.5 days
+        consensus.nPowAveragingWindow = 10080; // 3.5 days
         consensus.nPowMaxAdjustUp = 181/22;
         consensus.nPowMaxAdjustDown = 213/16;
         consensus.nPowTargetSpacing = 60 / 2;
@@ -298,7 +298,7 @@ public:
         consensus.nMajorityWindow = 1000;
         consensus.powLimit = uint256S("0005ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 7 * 24 * 60 * 60; // Cash: 1 week
-        consensus.nPowAveragingWindow = 3.5 * 2880; // 3.5 days
+        consensus.nPowAveragingWindow = 10080; // 3.5 days
         consensus.nPowMaxAdjustUp = 181/22;
         consensus.nPowMaxAdjustDown = 213/16;
         consensus.nPowTargetSpacing = 60 / 2;
