@@ -1453,7 +1453,7 @@ void ThreadMapPort()
                 else
                     LogPrintf("UPnP Port Mapping successful.\n");
 
-                MilliSleep(20 * 60 * 1000); // Refresh every 20 minutes
+                MilliSleep(12 * 60 * 1000); // Refresh every 12 minutes
             }
         } catch (const boost::thread_interrupted&) {
             r = UPNP_DeletePortMapping(urls.controlURL, data.first.servicetype, port.c_str(), "TCP", 0);
