@@ -90,6 +90,8 @@ unsigned int DigiShield(const CBlockIndex* pindexLast, const int64_t AveragingWi
     int64_t nActualTimespan = nLastBlockTime - nFirstBlockTime;
     nActualTimespan = AveragingWindowTimespan + (nActualTimespan - AveragingWindowTimespan) / 4;
 
+    if (nActualTimespan < 0)
+        nActualTimespan = MaxActualTimespan;
     if (nActualTimespan < MinActualTimespan)
         nActualTimespan = MinActualTimespan;
     if (nActualTimespan > MaxActualTimespan)
