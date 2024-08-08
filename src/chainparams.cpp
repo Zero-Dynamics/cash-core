@@ -281,8 +281,8 @@ public:
         strNetworkID = "test";
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
-        consensus.nServiceNodePaymentsStartBlock = 4320;  // ServiceNode Payments begin on block 4320
-        consensus.nMinCountServiceNodesPaymentStart = 2; // ServiceNode Payments begin once 2 ServiceNodes exist or more.
+        consensus.nServiceNodePaymentsStartBlock = 43200;  // ServiceNode Payments begin on block 43200
+        consensus.nMinCountServiceNodesPaymentStart = 10; // ServiceNode Payments begin once 10 ServiceNodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
         consensus.nInstantSendKeepLock = 120;
         consensus.nBudgetPaymentsStartBlock = 8640;   // actual historical value
