@@ -31,44 +31,43 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     int nextHeight = pindexLast->nHeight + 1;
     int updateDiffAlgo = params.nUpdateDiffAlgoHeight;                              // Diff algo changes at blockheight 120.
     int firstSwitchDifficultyBlock = Params().FirstDifficultySwitchBlock();         // Diff parameters switch for the first time at blockheight 250000.
-    //  int secondSwitchDifficultyBlock = Params().SecondDifficultySwitchBlock();   // Diff parameters switch for the second time at blockheight tbd.
+    int secondSwitchDifficultyBlock = Params().SecondDifficultySwitchBlock();       // Diff parameters switch for the second time at blockheight tbd.
 
     if (nextHeight <= updateDiffAlgo) {
         unsigned int defaultDifficulty = UintToArith256(params.powLimit).GetCompact();
         return defaultDifficulty;
     }
 
+    // Parameters for previous DigiShield difficulty calculation
+    int averagingWindow = params.nPowAveragingWindow;
+    int windowTimespan = params.AveragingWindowTimespan();
+    int minTimespan = params.MinActualTimespan();
+    int maxTimespan = params.MaxActualTimespan();
+
     if (nextHeight <= firstSwitchDifficultyBlock) {
-        unsigned int oldDigiShieldDifficulty = DigiShield(
-            pindexLast, 
-            params.nPowAveragingWindow,
-            params.AveragingWindowTimespan(),
-            params.MinActualTimespan(),
-            params.MaxActualTimespan(),
-            params);
-        return oldDigiShieldDifficulty;
+        return DigiShield(pindexLast, averagingWindow, windowTimespan, minTimespan, maxTimespan, params);
     }
 
-    unsigned int currentDigiShieldDifficulty = DigiShield(
-        pindexLast,
-        params.nPowAveragingWindow * 10 / 35,
-        params.AveragingWindowTimespan() * 10 / 35,
-        params.AveragingWindowTimespan() * 10 / 35 * (100 - (50 - 25 / std::sin(M_PI * 54 / 180))) / 100,
-        params.AveragingWindowTimespan() * 10 / 35 * (100 + (25 / std::sin(M_PI * 54 / 180))) / 100,
-        params);
-    return currentDigiShieldDifficulty;
-}
+    // Parameters for current DigiShield difficulty calculation
+    int adjustedWindow = averagingWindow * 10 / 35;
+    int adjustedTimespan = windowTimespan * 10 / 35;
+    int minAdjustedTimespan = adjustedTimespan * (100 - (50 - 25 / std::sin(M_PI * 54 / 180))) / 100;
+    int maxAdjustedTimespan = adjustedTimespan * (100 + (25 / std::sin(M_PI * 54 / 180))) / 100;
 
-//    if (nextHeight <= secondSwitchDifficultyBlock) {
-//        unsigned int newDigiShieldDifficulty = DigiShield(
-//            pindexLast,
-//            params.nPowAveragingWindow * 10 /  / 20,
-//            params.AveragingWindowTimespan() * 10 /  / 20,
-//            params.AveragingWindowTimespan() * 10 /  / 20 * (100 - (25 / std::sin(M_PI * 54 / 180) / std::sin(M_PI * 54 / 180)))) / 100,
-//            params.AveragingWindowTimespan() * 10 /  / 20 * (100 + (50 - 25 / std::sin(M_PI * 54 / 180)))) / 100,
-//            params);
-//        return newDigiShieldDifficulty;
-//    }
+    return DigiShield(pindexLast, adjustedWindow, adjustedTimespan, minAdjustedTimespan, maxAdjustedTimespan, params);
+
+    if (nextHeight <= secondSwitchDifficultyBlock) {
+        return DigiShield(pindexLast, averagingWindow, windowTimespan, minTimespan, maxTimespan, params);
+    }
+
+    // Parameters for future DigiShield difficulty calculation
+    adjustedWindow = adjustedWindow * 10 / 20;
+    adjustedTimespan = windowTimespan * 10 / 20;
+    minAdjustedTimespan = adjustedTimespan * (100 - (100 - (25 / std::sin(M_PI * 54 / 180) / std::sin(M_PI * 54 / 180)))) / 100;
+    maxAdjustedTimespan = adjustedTimespan * (100 + (50 - 25 / std::sin(M_PI * 54 / 180))) / 100;
+  
+    return DigiShield(pindexLast, adjustedWindow, adjustedTimespan, minAdjustedTimespan, maxAdjustedTimespan, params);
+}
 
 unsigned int DigiShield(const CBlockIndex* pindexLast, const int64_t AveragingWindow, const int64_t AveragingWindowTimespan, const int64_t MinActualTimespan, const int64_t MaxActualTimespan, const Consensus::Params& params)
 {

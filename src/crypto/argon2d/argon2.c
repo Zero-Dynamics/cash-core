@@ -268,7 +268,6 @@ fail:
     return ret;
 }
 
-
 int argon2d_verify(const char *encoded, const void *pwd, const size_t pwdlen) {
 
     return argon2_verify(encoded, pwd, pwdlen, Argon2_d);

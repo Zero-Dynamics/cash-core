@@ -21,7 +21,6 @@
 #include "crypto/argon2gpu/opencl/processing-unit.h"
 #endif
 
-
 class MinerContext;
 
 namespace gpu
@@ -51,9 +50,9 @@ public:
     {
         gpu::Context global;
         return global.getAllDevices().size();
-    };
+    }
 
-    virtual const char* DeviceName() override { return "GPU"; };
+    virtual const char* DeviceName() override { return "GPU"; }
 
 protected:
     virtual int64_t TryMineBlock(CBlock& block) override;

@@ -6,7 +6,6 @@
 #include "primitives/block.h"
 
 #include "crypto/common.h"
-
 #include "hash.h"
 #include "tinyformat.h"
 #include "utilstrencodings.h"

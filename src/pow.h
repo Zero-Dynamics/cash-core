@@ -22,7 +22,7 @@ class uint256;
 
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex);
 
-unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader& block,  const Consensus::Params&);
+unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader& block, const Consensus::Params&);
 unsigned int DigiShield(const CBlockIndex* pindexLast, 
 	const int64_t AveragingWindow, const int64_t AveragingWindowTimespan, 
 	const int64_t MinActualTimespan, const int64_t MaxActualTimespan, 

@@ -677,7 +677,7 @@ public:
 };
 static CPrivateNetParams privateNetParams;
 
-static CChainParams* pCurrentParams = 0;
+static CChainParams* pCurrentParams = nullptr;
 
 const CChainParams& Params()
 {
@@ -699,10 +699,10 @@ CChainParams& Params(const std::string& chain)
         throw std::runtime_error(strprintf("%s: Unknown chain %s.", __func__, chain));
 }
 
-void SelectParams(const std::string& network)
+void SelectParams(const std::string& chain)
 {
-    SelectBaseParams(network);
-    pCurrentParams = &Params(network);
+    SelectBaseParams(chain);
+    pCurrentParams = &Params(chain);
 }
 
 void UpdateRegtestBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout)

@@ -407,7 +407,6 @@ int encode_string(char *dst, size_t dst_len, argon2_context *ctx,
       return validation_result;
     }
 
-
     SS("$");
     SS(type_string);
 

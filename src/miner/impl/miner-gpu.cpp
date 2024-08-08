@@ -1,4 +1,3 @@
-
 // Copyright (c) 2019-2021 Duality Blockchain Solutions Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -29,7 +28,7 @@ int64_t GPUMiner::TryMineBlock(CBlock& block)
     const std::uint64_t device_target = ArithToUint256(_hash_target).GetUint64(3);
     std::uint32_t start_nonce = block.nNonce;
 
-    //Increase nNonce for the next batch
+    // Increase nNonce for the next batch
     block.nNonce += _batch_size_target;
 
     std::uint32_t result_nonce = _processing_unit.scanNonces(input, start_nonce, device_target);
