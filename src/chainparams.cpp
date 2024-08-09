@@ -189,7 +189,7 @@ public:
         startNewChain = false;
         nFirstSwitchDifficultyBlock = 250000;
         nSecondSwitchDifficultyBlock = 17000000;
-        nFirstArgon2SwitchTime = 4070908800;
+        nFirstArgon2SwitchTime = 1724104800; // Date and time (CEST/GMT+2): Monday 20 August 2024 0:00:00
         nSecondArgon2SwitchTime = 4070908800;
         nThirdArgon2SwitchTime = 4070908800;
 
@@ -354,7 +354,7 @@ public:
         startNewChain = false;
         nFirstSwitchDifficultyBlock = 150;
         nSecondSwitchDifficultyBlock = 17000000;
-        nFirstArgon2SwitchTime = 4070908800;
+        nFirstArgon2SwitchTime = 1723104488; // Date and time (GMT): Monday 8 August 2024 8:08:08
         nSecondArgon2SwitchTime = 4070908800;
         nThirdArgon2SwitchTime = 4070908800;
 
