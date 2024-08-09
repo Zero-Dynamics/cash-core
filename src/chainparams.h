@@ -94,6 +94,10 @@ public:
     int MinSporkKeys() const { return nMinSporkKeys; }
     uint64_t FirstDifficultySwitchBlock() const { return nFirstSwitchDifficultyBlock; }
     uint64_t SecondDifficultySwitchBlock() const { return nSecondSwitchDifficultyBlock; }    
+    uint64_t FirstArgon2SwitchTime() const { return nFirstArgon2SwitchTime; } 
+    uint64_t SecondArgon2SwitchTime() const { return nSecondArgon2SwitchTime; } 
+    uint64_t ThirdArgon2SwitchTime() const { return nThirdArgon2SwitchTime; }
+    uint64_t Argon2V13UpgradeTime() const { return nArgon2V13UpgradeTime; }
 
 protected:
     CChainParams() {}
@@ -127,6 +131,10 @@ protected:
     std::string strServiceNodePaymentsPubKey;
     uint64_t nFirstSwitchDifficultyBlock;
     uint64_t nSecondSwitchDifficultyBlock;      
+    uint64_t nFirstArgon2SwitchTime;
+    uint64_t nSecondArgon2SwitchTime;
+    uint64_t nThirdArgon2SwitchTime;
+    uint64_t nArgon2V13UpgradeTime;
 };
 
 /**

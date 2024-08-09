@@ -188,7 +188,10 @@ public:
         nPruneAfterHeight = 28800;
         startNewChain = false;
         nFirstSwitchDifficultyBlock = 250000;
-        // nSecondSwitchDifficultyBlock = TBD;
+        nSecondSwitchDifficultyBlock = 17000000;
+        nFirstArgon2SwitchTime = 4070908800;
+        nSecondArgon2SwitchTime = 4070908800;
+        nThirdArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1711904441, 9692, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -350,7 +353,10 @@ public:
         nPruneAfterHeight = 100;
         startNewChain = false;
         nFirstSwitchDifficultyBlock = 150;
-        // nSecondSwitchDifficultyBlock = TBD;
+        nSecondSwitchDifficultyBlock = 17000000;
+        nFirstArgon2SwitchTime = 4070908800;
+        nSecondArgon2SwitchTime = 4070908800;
+        nThirdArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1715786423, 172, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -485,7 +491,10 @@ public:
         nPruneAfterHeight = 100;
         startNewChain = false;
         nFirstSwitchDifficultyBlock = 25;
-        // nSecondSwitchDifficultyBlock = TBD;
+        nSecondSwitchDifficultyBlock = 17000000;
+        nFirstArgon2SwitchTime = 4070908800;
+        nSecondArgon2SwitchTime = 4070908800;
+        nThirdArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1711904489, 3164, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -615,7 +624,10 @@ public:
         nPruneAfterHeight = 100;
         startNewChain = false;
         nFirstSwitchDifficultyBlock = 25;
-        // nSecondSwitchDifficultyBlock = TBD;
+        nSecondSwitchDifficultyBlock = 17000000;
+        nFirstArgon2SwitchTime = 4070908800;
+        nSecondArgon2SwitchTime = 4070908800;
+        nThirdArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1711904501, 2921, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
