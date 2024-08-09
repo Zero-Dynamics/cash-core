@@ -10,6 +10,8 @@
 #include "bdap/linkmanager.h"
 #include "bdap/utils.h"
 #include "bdap/vgp/include/encryption.h" // for VGP DecryptBDAPData
+#include "chainparams.h"
+#include "chainparamsbase.h"
 #include "clientversion.h"
 #include "dht/ed25519.h"
 #include "hash.h"
@@ -23,6 +25,7 @@
 #include "wallet/wallet.h"
 
 #include <cstdlib>
+#include <string>
 
 static std::map<uint256, CVGPMessage> mapMyVGPMessages;
 static CCriticalSection cs_mapMyVGPMessages;
@@ -156,7 +159,30 @@ uint256 CUnsignedVGPMessage::GetHash() const
 {
     CDataStream dsMessageData(SER_NETWORK, PROTOCOL_VERSION);
     dsMessageData << *this;
-    return hash_Argon2d(dsMessageData.begin(), dsMessageData.end(), 1);
+    
+    // Retrieve network parameters
+    std::string network = ChainNameFromCommandLine();
+    SelectParams(network);
+
+    // Get the current block time
+    uint64_t currentTime = nTimeStamp;
+
+    // Determine Argon2d phase
+    int hashPhase = 0;
+    const uint64_t FirstSwitchHeight = Params().FirstArgon2SwitchTime();
+    const uint64_t SecondSwitchHeight = Params().SecondArgon2SwitchTime();
+    const uint64_t ThirdSwitchHeight = Params().ThirdArgon2SwitchTime();
+
+    if (currentTime >= FirstSwitchHeight && currentTime < SecondSwitchHeight) {
+        hashPhase = 1;
+    } else if (currentTime >= SecondSwitchHeight && currentTime < ThirdSwitchHeight) {
+        hashPhase = 2;
+    } else if (currentTime >= ThirdSwitchHeight) {
+        hashPhase = 3;
+    }
+
+    // Return the hash using the determined Argon2d phase
+    return hash_Argon2d(dsMessageData.begin(), dsMessageData.end(), hashPhase);
 }
 
 bool CUnsignedVGPMessage::EncryptMessage(const std::vector<unsigned char>& vchType, const std::vector<unsigned char>& vchMessage, const std::vector<unsigned char>& vchSenderFQDN, 
