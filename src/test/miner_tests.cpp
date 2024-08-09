@@ -84,7 +84,7 @@ BOOST_AUTO_TEST_CASE(ScanNoncesGPU_check)
     auto& devices = global.getAllDevices();
     auto& device = devices[0];
     gpu::ProgramContext context(&global, {device}, argon2gpu::ARGON2_D, argon2gpu::ARGON2_VERSION_10);
-    gpu::Params params((std::size_t)OUTPUT_BYTES, 3, 2048, 12);
+    gpu::Params params((std::size_t)OUTPUT_BYTES, 2, 2000, 8);
     gpu::ProcessingUnit processingUnit(&context, &params, &device, 256, false, false);
 
     CBlock block;

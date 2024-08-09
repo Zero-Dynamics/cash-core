@@ -315,7 +315,7 @@ uint64_t SipHashUint256Extra(uint64_t k0, uint64_t k1, const uint256& val, uint3
 /// A memory cost, which defines the memory usage, given in kibibytes (1 kibibytes = kilobytes 1.024)
 /// A parallelism degree, which defines the number of parallel threads
 
-/// Argon2d Phase 1 Hash parameters
+/// Argon2d Phase 0 Hash parameters
 /// Salt and password are the block header.
 /// Output length: 32 bytes.
 /// Input length (in the case of a block header): 80 bytes.
@@ -330,6 +330,46 @@ uint64_t SipHashUint256Extra(uint64_t k0, uint64_t k1, const uint256& val, uint3
 /// Lanes: 12 parallel thread
 /// Threads: 1 threads
 /// Time Constraint: 3 iteration
+inline int Argon2d_Phase0_Hash(const void* in, const size_t size, const void* out)
+{
+    argon2_context context;
+    context.out = (uint8_t*)out;
+    context.outlen = (uint32_t)OUTPUT_BYTES;
+    context.pwd = (uint8_t*)in;
+    context.pwdlen = (uint32_t)size;
+    context.salt = (uint8_t*)in; //salt = input
+    context.saltlen = (uint32_t)size;
+    context.secret = NULL;
+    context.secretlen = 0;
+    context.ad = NULL;
+    context.adlen = 0;
+    context.allocate_cbk = NULL;
+    context.free_cbk = NULL;
+    context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
+    // main configurable Argon2 hash parameters
+    context.m_cost = 2048; // Memory in KiB (2097 KB)
+    context.lanes = 12;    // Degree of Parallelism
+    context.threads = 1;  // Threads
+    context.t_cost = 3;   // Iterations
+
+    return argon2_ctx(&context, Argon2_d);
+}
+
+/// Argon2d Phase 1 Hash parameters
+/// Salt and password are the block header.
+/// Output length: 32 bytes.
+/// Input length (in the case of a block header): 80 bytes.
+/// Salt length (same note as input length): 80 bytes.
+/// Input: Block header
+/// Salt: Block header (SAME AS INPUT)
+/// Secret data: None
+/// Secret length: 0
+/// Associated data: None
+/// Associated data length: 0
+/// Memory cost: 2000 kibibytes
+/// Lanes: 8 parallel threads
+/// Threads: 1 threads
+/// Time Constraint: 2 iterations
 inline int Argon2d_Phase1_Hash(const void* in, const size_t size, const void* out)
 {
     argon2_context context;
@@ -347,10 +387,10 @@ inline int Argon2d_Phase1_Hash(const void* in, const size_t size, const void* ou
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 2048; // Memory in KiB (2048 KB)
-    context.lanes = 12;    // Degree of Parallelism
-    context.threads = 1;  // Threads
-    context.t_cost = 3;   // Iterations
+    context.m_cost = 2000; // Memory in KiB (2048 KB)
+    context.lanes = 8;    // Degree of Parallelism
+    context.threads = 1;   // Threads
+    context.t_cost = 2;    // Iterations
 
     return argon2_ctx(&context, Argon2_d);
 }
@@ -366,10 +406,10 @@ inline int Argon2d_Phase1_Hash(const void* in, const size_t size, const void* ou
 /// Secret length: 0
 /// Associated data: None
 /// Associated data length: 0
-/// Memory cost: 8192 kibibytes
-/// Lanes: 12 parallel threads
+/// Memory cost: 4000 kibibytes
+/// Lanes: 8 parallel threads
 /// Threads: 1 threads
-/// Time Constraint: 3 iterations
+/// Time Constraint: 2 iterations
 inline int Argon2d_Phase2_Hash(const void* in, const size_t size, const void* out)
 {
     argon2_context context;
@@ -387,10 +427,50 @@ inline int Argon2d_Phase2_Hash(const void* in, const size_t size, const void* ou
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 4096; // Memory in KiB (4096 KB)
-    context.lanes = 16;    // Degree of Parallelism
+    context.m_cost = 4000; // Memory in KiB (4096 KB)
+    context.lanes = 8;    // Degree of Parallelism
     context.threads = 1;   // Threads
-    context.t_cost = 4;    // Iterations
+    context.t_cost = 2;    // Iterations
+
+    return argon2_ctx(&context, Argon2_d);
+}
+
+/// Argon2d Phase 3 Hash parameters
+/// Salt and password are the block header.
+/// Output length: 32 bytes.
+/// Input length (in the case of a block header): 80 bytes.
+/// Salt length (same note as input length): 80 bytes.
+/// Input: Block header
+/// Salt: Block header (SAME AS INPUT)
+/// Secret data: None
+/// Secret length: 0
+/// Associated data: None
+/// Associated data length: 0
+/// Memory cost: 8000 kibibytes
+/// Lanes: 64 parallel threads
+/// Threads: 1 threads
+/// Time Constraint: 2 iterations
+inline int Argon2d_Phase3_Hash(const void* in, const size_t size, const void* out)
+{
+    argon2_context context;
+    context.out = (uint8_t*)out;
+    context.outlen = (uint32_t)OUTPUT_BYTES;
+    context.pwd = (uint8_t*)in;
+    context.pwdlen = (uint32_t)size;
+    context.salt = (uint8_t*)in; //salt = input
+    context.saltlen = (uint32_t)size;
+    context.secret = NULL;
+    context.secretlen = 0;
+    context.ad = NULL;
+    context.adlen = 0;
+    context.allocate_cbk = NULL;
+    context.free_cbk = NULL;
+    context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
+    // main configurable Argon2 hash parameters
+    context.m_cost = 8000; // Memory in KiB (8192 KB)
+    context.lanes = 64;    // Degree of Parallelism
+    context.threads = 1;   // Threads
+    context.t_cost = 2;    // Iterations
 
     return argon2_ctx(&context, Argon2_d);
 }
@@ -408,12 +488,16 @@ inline uint256 hash_Argon2d(const T1 pbegin, const T1 pend, const unsigned int& 
         return hashResult;
     }
 
-    if (hashPhase == 1) {
+    if (hashPhase == 0) {
+        Argon2d_Phase0_Hash((const uint8_t*)input, size, (uint8_t*)&hashResult);
+    } else if (hashPhase == 1) {
         Argon2d_Phase1_Hash((const uint8_t*)input, size, (uint8_t*)&hashResult);
     } else if (hashPhase == 2) {
         Argon2d_Phase2_Hash((const uint8_t*)input, size, (uint8_t*)&hashResult);
+    } else if (hashPhase == 3) {
+        Argon2d_Phase3_Hash((const uint8_t*)input, size, (uint8_t*)&hashResult);
     } else {
-        Argon2d_Phase1_Hash((const uint8_t*)input, size, (uint8_t*)&hashResult);
+        Argon2d_Phase0_Hash((const uint8_t*)input, size, (uint8_t*)&hashResult);
     }
     return hashResult;
 }
