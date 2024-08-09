@@ -371,10 +371,11 @@ int encode_string(char *dst, size_t dst_len, argon2_context *ctx,
 #define SS(str)                                                                \
     do {                                                                       \
         size_t pp_len = strlen(str);                                           \
-        if (pp_len >= dst_len) {                                               \
+        if (pp_len + 1 > dst_len) {                                            \
             return ARGON2_ENCODING_FAIL;                                       \
         }                                                                      \
-        memcpy(dst, str, pp_len + 1);                                          \
+        memcpy(dst, str, pp_len);                                              \
+        dst[pp_len] = '\0';                                                    \
         dst += pp_len;                                                         \
         dst_len -= pp_len;                                                     \
     } while ((void)0, 0)
