@@ -8,8 +8,8 @@
  * License/Waiver or the Apache Public License 2.0, at your option. The terms of
  * these licenses can be found at:
  *
- * - CC0 1.0 Universal : http://creativecommons.org/publicdomain/zero/1.0
- * - Apache 2.0        : http://www.apache.org/licenses/LICENSE-2.0
+ * - CC0 1.0 Universal : https://creativecommons.org/publicdomain/zero/1.0
+ * - Apache 2.0        : https://www.apache.org/licenses/LICENSE-2.0
  *
  * You should have received a copy of both of these licenses along with this
  * software. If not, they may be obtained at the above URLs.
@@ -34,7 +34,7 @@ extern "C" {
 #ifdef A2_VISCTL
 #define ARGON2_PUBLIC __attribute__((visibility("default")))
 #define ARGON2_LOCAL __attribute__((visibility("hidden")))
-#elif _MSC_VER
+#elif defined(_MSC_VER)
 #define ARGON2_PUBLIC __declspec(dllexport)
 #define ARGON2_LOCAL
 #else
@@ -97,7 +97,7 @@ extern "C" {
 #define ARGON2_FLAG_CLEAR_SECRET (UINT32_C(1) << 1)
 
 /* Global flag to determine if we are wiping internal memory buffers. This flag
- * is defined in core.c and deafults to 1 (wipe internal memory). */
+ * is defined in core.c and defaults to 1 (wipe internal memory). */
 extern int FLAG_clear_internal_memory;
 
 /* Error codes */
