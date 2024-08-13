@@ -25,15 +25,15 @@ uint256 CBlockHeader::GetHash() const
 
     // Determine Argon2d phase
     int hashPhase = 0;
-    const uint64_t FirstSwitchHeight = Params().FirstArgon2SwitchTime();
-    const uint64_t SecondSwitchHeight = Params().SecondArgon2SwitchTime();
-    const uint64_t ThirdSwitchHeight = Params().ThirdArgon2SwitchTime();
+    const uint64_t FirstSwitchTime = Params().FirstArgon2SwitchTime();
+    const uint64_t SecondSwitchTime = Params().SecondArgon2SwitchTime();
+    const uint64_t ThirdSwitchTime = Params().ThirdArgon2SwitchTime();
 
-    if (currentTime >= FirstSwitchHeight && currentTime < SecondSwitchHeight) {
+    if (currentTime >= FirstSwitchTime && currentTime < SecondSwitchTime) {
         hashPhase = 1;
-    } else if (currentTime >= SecondSwitchHeight && currentTime < ThirdSwitchHeight) {
+    } else if (currentTime >= SecondSwitchTime && currentTime < ThirdSwitchTime) {
         hashPhase = 2;
-    } else if (currentTime >= ThirdSwitchHeight) {
+    } else if (currentTime >= ThirdSwitchTime) {
         hashPhase = 3;
     }
 
