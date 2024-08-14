@@ -16,6 +16,9 @@
 
 uint256 CBlockHeader::GetHash() const
 {
+    // UpdateCurrentBlockTime
+    CurrentBlockTime::UpdateCurrentBlockTime(nTime);
+
     // Retrieve network parameters
     std::string network = ChainNameFromCommandLine();
     SelectParams(network);
@@ -55,4 +58,15 @@ std::string CBlock::ToString() const
         s << "  " << vtx[i]->ToString() << "\n";
     }
     return s.str();
+}
+
+namespace CurrentBlockTime
+{
+    std::atomic<uint64_t> currentBlockTime{0};
+    void UpdateCurrentBlockTime(uint64_t nTime) {
+        CurrentBlockTime::currentBlockTime.store(nTime, std::memory_order_relaxed);
+    }
+    uint64_t GetCurrentBlockTime() {
+        return currentBlockTime.load(std::memory_order_acquire);
+    }
 }

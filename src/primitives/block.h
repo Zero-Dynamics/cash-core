@@ -12,6 +12,8 @@
 #include "uint256.h"
 #include "utilstrencodings.h"
 
+#include <atomic>
+
 /** Nodes collect new transactions into a block, hash them into a hash tree,
  * and scan through nonce values to make the block's hash satisfy proof-of-work
  * requirements.  When they solve the proof-of-work, they broadcast the block
@@ -162,5 +164,12 @@ struct CBlockLocator {
         return vHave.empty();
     }
 };
+
+namespace CurrentBlockTime {
+    extern std::atomic<uint64_t> currentBlockTime;
+
+    void UpdateCurrentBlockTime(uint64_t nTime);
+    uint64_t GetCurrentBlockTime();
+}
 
 #endif // CASH_PRIMITIVES_BLOCK_H
