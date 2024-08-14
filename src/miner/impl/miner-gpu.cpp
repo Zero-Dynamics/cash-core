@@ -13,10 +13,10 @@
 GPUMiner::GPUMiner(MinerContextRef ctx, std::size_t device_index)
     : MinerBase(ctx, device_index),
       _global(),
-      _params((std::size_t)OUTPUT_BYTES, 2, 2000, 8),
+      _params((std::size_t)OUTPUT_BYTES, 1, 187000, 8),
       _device(_global.getAllDevices()[device_index]),
       _context(&_global, {_device}, argon2gpu::ARGON2_D, argon2gpu::ARGON2_VERSION_10),
-      _batch_size_target(((_device.getTotalMemory() * 90 / 100 / 0x240000) / 16) * 16),
+      _batch_size_target(((_device.getTotalMemory() * 95 / 100 / 0xC000000) / 16) * 16),
       _processing_unit(&_context, &_params, &_device, _batch_size_target, false, false) {}
 
 int64_t GPUMiner::TryMineBlock(CBlock& block)
