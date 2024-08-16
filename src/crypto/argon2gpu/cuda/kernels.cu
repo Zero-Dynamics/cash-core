@@ -71,8 +71,8 @@ __device__ uint64_t u64_shuffle(uint64_t v, uint32_t thread)
 {
     uint32_t lo = u64_lo(v);
     uint32_t hi = u64_hi(v);
-    lo = __shfl(lo, thread);
-    hi = __shfl(hi, thread);
+    lo = __shfl_sync(0xFFFFFFFF, lo, thread);
+    hi = __shfl_sync(0xFFFFFFFF, hi, thread);
     return u64_build(hi, lo);
 }
 

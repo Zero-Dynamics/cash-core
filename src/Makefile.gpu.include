@@ -23,7 +23,16 @@ LIBCASH_GPU_LDADD_EXTRA += $(LIBCASH_GPU_CUDA)
 LIBCASH_GPU_LDADD_EXTRA += $(CUDA_LDLIBS)
 CASH_INCLUDES += $(CUDA_CFLAGS)
 
-NVCCFLAGS += -arch=sm_30 -w -lineinfo -Xcompiler='--std=c++11 $(CFLAGS)'
+NVCCFLAGS += -gencode=arch=compute_52,code=sm_52 \
+	-gencode=arch=compute_60,code=sm_60 \
+	-gencode=arch=compute_61,code=sm_61 \
+	-gencode=arch=compute_70,code=sm_70 \
+	-gencode=arch=compute_75,code=sm_75 \
+	-gencode=arch=compute_80,code=sm_80 \
+	-gencode=arch=compute_86,code=sm_86 \
+	-gencode=arch=compute_87,code=sm_87 \
+	-gencode=arch=compute_90,code=sm_90 \
+	-w -lineinfo -Xcompiler='--std=c++17 $(CFLAGS)'
 
 crypto_argon2gpu_cuda_libcash_gpu_cuda_a_AR = $(NVCC) $(NVCCFLAGS) -lib -o
 crypto_argon2gpu_cuda_libcash_gpu_cuda_a_LIBADD = $(CUDA_LDLIBS)
