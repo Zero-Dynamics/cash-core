@@ -49,10 +49,7 @@ public:
 
 #ifdef ENABLE_GPU
     // Returns GPU miners thread group
-    MinersThreadGroup<GPUMiner>& group_gpu()
-    {
-        return _group_gpu;
-    }
+    MinersThreadGroup<GPUMiner>& group_gpu() { return _group_gpu; }
 #endif // ENABLE_GPU
 
 protected:
