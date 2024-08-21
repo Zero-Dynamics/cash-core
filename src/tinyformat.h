@@ -847,7 +847,7 @@ typedef const FormatList& FormatListRef;
 
 namespace detail
 {
-// Format list subclass with fixed storage to avoid odincash allocation
+// Format list subclass with fixed storage to avoid odyncash allocation
 template <int N>
 class FormatListN : public FormatList
 {
