@@ -8,7 +8,7 @@
 #include "trafficgraphwidget.h"
 #include "clientmodel.h"
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 #include <QColor>
 #include <QPainter>
@@ -16,6 +16,8 @@
 #include <QTimer>
 
 #include <cmath>
+
+using namespace boost::placeholders;
 
 #define XMARGIN 10
 #define YMARGIN 10

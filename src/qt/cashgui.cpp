@@ -42,7 +42,7 @@
 #include "util.h"
 #include "validation.h"
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <iostream>
 
 #include <QAction>
@@ -82,6 +82,8 @@ const std::string CashGUI::DEFAULT_UIPLATFORM =
     "other"
 #endif
     ;
+
+using namespace boost::placeholders;
 
 const QString CashGUI::DEFAULT_WALLET = "~Default";
 

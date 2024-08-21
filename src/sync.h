@@ -95,7 +95,10 @@ public:
 
     bool try_lock() EXCLUSIVE_TRYLOCK_FUNCTION(true)
     {
-        return PARENT::try_lock();
+        bool acquired = PARENT::try_lock();
+        if (!acquired) {
+        }
+        return acquired;
     }
 
     using UniqueLock = std::unique_lock<PARENT>;
@@ -123,22 +126,26 @@ private:
     {
         EnterCritical(pszName, pszFile, nLine, (void*)(Base::mutex()));
 #ifdef DEBUG_LOCKCONTENTION
-        if (!Base::try_lock()) {
+        bool locked = Base::try_lock();
+        if (!locked) {
             PrintLockContention(pszName, pszFile, nLine);
-#endif
             Base::lock();
-#ifdef DEBUG_LOCKCONTENTION
+        } else {
+            // Lock acquired
         }
+#else
+        Base::lock();
 #endif
     }
 
     bool TryEnter(const char* pszName, const char* pszFile, int nLine)
     {
         EnterCritical(pszName, pszFile, nLine, (void*)(Base::mutex()), true);
-        Base::try_lock();
-        if (!Base::owns_lock())
-            LeaveCritical();
-        return Base::owns_lock();
+        bool locked = Base::try_lock();
+        if (!locked) {
+            LeaveCritical(); // Leave critical section if lock was not acquired
+        }
+        return locked;
     }
 
 public:

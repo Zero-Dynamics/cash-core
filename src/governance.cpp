@@ -21,6 +21,9 @@
 #include "util.h"
 #include "validationinterface.h"
 
+#include <algorithm>
+#include <random>  
+
 CGovernanceManager governance;
 
 int nSubmittedFinalBudget;
@@ -1106,9 +1109,9 @@ int CGovernanceManager::RequestGovernanceObjectVotes(const std::vector<CNode*>& 
     LogPrint("gobject", "CGovernanceManager::RequestGovernanceObjectVotes -- start: vTriggerObjHashes %d vOtherObjHashes %d mapAskedRecently %d\n",
         vTriggerObjHashes.size(), vOtherObjHashes.size(), mapAskedRecently.size());
 
-    FastRandomContext insecure_rand;
-    std::random_shuffle(vTriggerObjHashes.begin(), vTriggerObjHashes.end(), insecure_rand);
-    std::random_shuffle(vOtherObjHashes.begin(), vOtherObjHashes.end(), insecure_rand);
+    std::mt19937 rng(std::random_device{}());
+    std::shuffle(vTriggerObjHashes.begin(), vTriggerObjHashes.end(), rng);
+    std::shuffle(vOtherObjHashes.begin(), vOtherObjHashes.end(), rng);
 
     for (int i = 0; i < nMaxObjRequestsPerNode; ++i) {
         uint256 nHashGovobj;

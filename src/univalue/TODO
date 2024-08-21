@@ -1,7 +1,7 @@
 
 Rearrange tree for easier 'git subtree' style use
 
-Move towards C++11 etc.
+Move towards C++17 etc.
 
 Namespace support - must come up with useful shorthand, avoiding
 long Univalue::Univalue::Univalue usages forced upon library users.

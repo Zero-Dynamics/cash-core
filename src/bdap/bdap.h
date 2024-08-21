@@ -5,6 +5,7 @@
 #ifndef CASH_BDAP_H
 #define CASH_BDAP_H
 
+#include <cstdint>
 #include <string>
 #include <vector>
 

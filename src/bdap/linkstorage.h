@@ -9,6 +9,7 @@
 #include "uint256.h"
 
 #include <array>
+#include <cstdint>
 #include <vector>
 
 namespace BDAP {

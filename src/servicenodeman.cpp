@@ -25,6 +25,9 @@
 #include "warnings.h"
 #include "bdap/stealth.h"
 
+#include <algorithm>
+#include <random>  
+
 /** ServiceNode manager */
 CServiceNodeMan snodeman;
 
@@ -621,7 +624,7 @@ servicenode_info_t CServiceNodeMan::FindRandomNotInVec(const std::vector<COutPoi
 
     FastRandomContext insecure_rand;
     // shuffle pointers
-    std::random_shuffle(vpServiceNodesShuffled.begin(), vpServiceNodesShuffled.end(), insecure_rand);
+    std::shuffle(vpServiceNodesShuffled.begin(), vpServiceNodesShuffled.end(), insecure_rand);
     bool fExclude;
 
     // loop through

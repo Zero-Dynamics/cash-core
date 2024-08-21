@@ -17,6 +17,9 @@
 #include "util.h"
 #include "utilmoneystr.h"
 
+#include <algorithm>
+#include <random>  
+
 CPrivateSendServer privateSendServer;
 
 void CPrivateSendServer::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
@@ -447,21 +450,33 @@ void CPrivateSendServer::ChargeFees(CConnman& connman)
     if ((int)vecOffendersCollaterals.size() >= Params().PoolMaxTransactions())
         return;
 
-    //charge one of the offenders randomly
-    std::random_shuffle(vecOffendersCollaterals.begin(), vecOffendersCollaterals.end());
+    // Charge one of the offenders randomly
+    // Convert to vector of shared pointers
+    std::vector<std::shared_ptr<const CTransaction>> vecOffendersCollateralsShared;
+    vecOffendersCollateralsShared.reserve(vecOffendersCollaterals.size());
+    for (const auto& tx : vecOffendersCollaterals) {
+        vecOffendersCollateralsShared.push_back(std::make_shared<const CTransaction>(*tx));
+    }
+
+    // Create a random number generator
+    std::random_device rd; // Obtain a random number from hardware
+    std::mt19937 g(rd());  // Seed the generator
+
+    // Shuffle the vector using the random number generator
+    std::shuffle(vecOffendersCollateralsShared.begin(), vecOffendersCollateralsShared.end(), g);
 
     if (nState == POOL_STATE_ACCEPTING_ENTRIES || nState == POOL_STATE_SIGNING) {
         LogPrintf("CPrivateSendServer::ChargeFees -- found uncooperative node (didn't %s transaction), charging fees: %s\n",
-            (nState == POOL_STATE_SIGNING) ? "sign" : "send", vecOffendersCollaterals[0]->ToString());
+            (nState == POOL_STATE_SIGNING) ? "sign" : "send", vecOffendersCollateralsShared[0]->ToString());
 
         LOCK(cs_main);
 
         CValidationState state;
-        if (!AcceptToMemoryPool(mempool, state, vecOffendersCollaterals[0], false, NULL, NULL, false, maxTxFee)) {
+        if (!AcceptToMemoryPool(mempool, state, vecOffendersCollateralsShared[0], false, NULL, NULL, false, maxTxFee)) {
             // should never really happen
             LogPrintf("CPrivateSendServer::ChargeFees -- ERROR: AcceptToMemoryPool failed!\n");
         } else {
-            connman.RelayTransaction(*vecOffendersCollaterals[0]);
+            connman.RelayTransaction(*vecOffendersCollateralsShared[0]);
         }
     }
 }

@@ -21,7 +21,7 @@
 #include <unordered_map>
 
 #include <boost/algorithm/string/case_conv.hpp> // for to_upper()
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
 #include <boost/iostreams/concepts.hpp>
@@ -30,6 +30,7 @@
 #include <boost/signals2/signal.hpp>
 #include <boost/thread.hpp>
 
+using namespace boost::placeholders;
 using namespace RPCServer;
 
 static bool fRPCRunning = false;

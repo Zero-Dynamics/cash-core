@@ -48,7 +48,9 @@
 #include "validation.h" // For CheckTransaction
 #include "wallet/coincontrol.h"
 
+#include <algorithm>
 #include <assert.h>
+#include <random>  
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
@@ -3472,7 +3474,10 @@ bool CWallet::SelectPSInOutPairsByDenominations(int nDenom, CAmount nValueMin, C
     AvailableCoins(vCoins, true, NULL, false, ONLY_DENOMINATED);
     LogPrintf("CWallet::%s -- vCoins.size(): %d\n", __func__, vCoins.size());
 
-    std::random_shuffle(vCoins.rbegin(), vCoins.rend(), GetRandInt);
+    std::random_device rd;
+    std::mt19937 g(rd());
+
+    std::shuffle(vCoins.rbegin(), vCoins.rend(), g);
 
     std::vector<CAmount> vecPrivateSendDenominations = CPrivateSend::GetStandardDenominations();
     for (const auto& out : vCoins) {

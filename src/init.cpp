@@ -92,7 +92,7 @@
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/split.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/function.hpp>
 #include <boost/interprocess/sync/file_lock.hpp>
@@ -1914,8 +1914,9 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     std::vector<boost::filesystem::path> vImportFiles;
     if (mapMultiArgs.count("-loadblock")) {
-        BOOST_FOREACH (const std::string& strFile, mapMultiArgs.at("-loadblock"))
+        for (const std::string& strFile : mapMultiArgs.at("-loadblock")) {
             vImportFiles.push_back(strFile);
+        }
     }
     threadGroup.create_thread(boost::bind(&ThreadImport, vImportFiles));
     // Wait for genesis block to be processed

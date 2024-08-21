@@ -12,6 +12,7 @@ be dynamic.  Application developers that want to store data in the DHT can purch
 that allows their custom op code.
 */
 
+#include <cstdint>
 #include <string>
 #include <vector>
 

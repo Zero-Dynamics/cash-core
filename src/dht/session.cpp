@@ -37,8 +37,8 @@
 #include <cstdio> // for snprintf
 #include <cinttypes> // for PRId64 et.al.
 #include <cstdlib>
-#include <functional>
 #include <fstream>
+#include <functional>
 #include <thread>
 
 typedef std::map<std::string, CMutableGetEvent> DHTGetEventMap;

@@ -26,11 +26,13 @@
 #include "servicenodeman.h"
 #include "privatesend-client.h"
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <stdint.h>
 
 #include <QDebug>
 #include <QTimer>
+
+using namespace boost::placeholders;
 
 class CBlockIndex;
 
