@@ -205,9 +205,9 @@ public:
             assert(genesis.hashMerkleRoot == uint256S("0x2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
 
-        // vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet01.dnsseeder.network"));
-        // vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet02.dnsseeder.network"));
-        // vSeeds.push_back(CDNSSeedData("dnsseeder.network", "dyn-mainnet03.dnsseeder.network"));
+        vSeeds.push_back(CDNSSeedData("0dyn.online", "0dync-main01.0dyn.online"));
+        vSeeds.push_back(CDNSSeedData("0dyn.online", "0dync-main02.0dyn.online"));
+        vSeeds.push_back(CDNSSeedData("0dyn.online", "0dync-main03.0dyn.online"));
 
         // Cash debit addresses start with 'C'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 28);
@@ -367,8 +367,10 @@ public:
             assert(consensus.hashGenesisBlock == uint256S("0x0000363213ff7374b187953b60476058f7542f287252b798cea1dc9695314890"));
             assert(genesis.hashMerkleRoot == uint256S("0x2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
+
         vFixedSeeds.clear();
         vSeeds.clear();
+
         //vSeeds.push_back(CDNSSeedData("",  ""));
         //vSeeds.push_back(CDNSSeedData("", ""));
 
@@ -638,8 +640,10 @@ public:
             assert(consensus.hashGenesisBlock == uint256S("0x000c8d3910f0db972ffaa52714317c041f933b1de6089832faa3cf0e72324785"));
             assert(genesis.hashMerkleRoot == uint256S("0x2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
+
         vFixedSeeds.clear();
         vSeeds.clear();
+        
         //vSeeds.push_back(CDNSSeedData("",  ""));
         //vSeeds.push_back(CDNSSeedData("", ""));
 
