@@ -94,6 +94,10 @@ upnp_packages_$(NO_UPNP) = $(upnp_packages)
 packages += $($(host_arch)_$(host_os)_packages) $($(host_os)_packages) $(qt_packages_) $(wallet_packages_) $(upnp_packages_)
 native_packages += $($(host_arch)_$(host_os)_native_packages) $($(host_os)_native_packages)
 
+ifneq ($(qt_packages_),)
+native_packages += $(qt_native_packages)
+endif
+
 all_packages = $(packages) $(native_packages)
 
 meta_depends = Makefile funcs.mk builders/default.mk hosts/default.mk hosts/$(host_os).mk builders/$(build_os).mk
@@ -165,7 +169,7 @@ install: check-packages $(host_prefix)/share/config.site
 download-one: check-sources $(all_sources)
 
 download-osx:
-	@$(MAKE) -s HOST=x86_64-apple-darwin16 download-one
+	@$(MAKE) -s HOST=x86_64-apple-darwin11 download-one
 download-linux:
 	@$(MAKE) -s HOST=x86_64-unknown-linux-gnu download-one
 download-win:
