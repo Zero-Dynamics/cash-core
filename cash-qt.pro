@@ -108,14 +108,25 @@ contains(USE_UPNP, -) {
     LIBS += $$join(MINIUPNPC_LIB_PATH,,-L,) -lminiupnpc
 }
 
-# use: qmake "USE_DBUS=1" or qmake "USE_DBUS=0"
-linux:count(USE_DBUS, 0) {
-    USE_DBUS=1
+# Default to no DBus
+USE_DBUS = 0
+
+# Platform-specific settings
+linux: {
+    USE_DBUS = 1
 }
+
+# Add the necessary configuration only if USE_DBUS is set
 contains(USE_DBUS, 1) {
     message(Building with DBUS (Freedesktop notifications) support)
     DEFINES += USE_DBUS
     QT += dbus
+    CONFIG += qdbus
+} else {
+    message(DBUS support is disabled for this platform)
+    DEFINES -= USE_DBUS
+    QT -= dbus
+    CONFIG -= qdbus
 }
 
 contains(CASH_NEED_QT_PLUGINS, 1) {
