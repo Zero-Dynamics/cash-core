@@ -1,4 +1,4 @@
-packages:=boost openssl libevent
+packages:=boost openssl libevent gmp backtrace
 native_packages := native_ccache 
 
 qt_native_packages = native_protobuf
