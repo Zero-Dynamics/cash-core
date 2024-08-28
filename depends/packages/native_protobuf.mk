@@ -5,7 +5,7 @@ $(package)_file_name=protobuf-all-$($(package)_version).tar.gz
 $(package)_sha256_hash=1532154addf85080330fdd037949d4653dfce16550df5c70ea0cd212d8aff3af
 
 define $(package)_set_vars
-$(package)_config_opts=--disable-shared
+$(package)_config_opts=--disable-static
 endef
 
 define $(package)_config_cmds
