@@ -1,4 +1,4 @@
-Cashdnl require autoconf 2.71 (AS_ECHO/AS_ECHO_N)
+dnl require autoconf 2.71 (AS_ECHO/AS_ECHO_N)
 AC_PREREQ([2.71])
 define(_CLIENT_VERSION_MAJOR, 1)
 define(_CLIENT_VERSION_MINOR, 0)
@@ -48,19 +48,8 @@ case $host in
   ;;
 esac
 
-AC_ARG_ENABLE([c++20],
-  [AS_HELP_STRING([--enable-c++20],
-  [enable compilation in c++20 mode (disabled by default)])],
-  [use_cxx20=$enableval],
-  [use_cxx20=no])
-
-dnl Require C++17 or C++20 compiler (no GNU extensions)
-if test "x$use_cxx20" = xyes; then
-  AX_CXX_COMPILE_STDCXX([20], [noext], [mandatory])
-else
-  AX_CXX_COMPILE_STDCXX([17], [noext], [mandatory])
-fi
-
+dnl Require C++17 compiler (no GNU extensions)
+AX_CXX_COMPILE_STDCXX([17], [ext], [mandatory], [nodefault])
 dnl Check if -latomic is required for <std::atomic>
 CHECK_ATOMIC
 
@@ -74,7 +63,7 @@ AC_PROG_OBJCXX
 ])
 
 dnl Libtool init checks.
-LT_INIT([pic-only win32-dll])
+LT_INIT([pic-only])
 
 dnl Check/return PATH for base programs.
 AC_PATH_TOOL(AR, ar)
@@ -527,7 +516,7 @@ if test x$use_hardening != xno; then
     HARDENED_CPPFLAGS="$HARDENED_CPPFLAGS -D_FORTIFY_SOURCE=2"
   ])
 
-  AX_CHECK_LINK_FLAG([[-Wl,--dynamicbase]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,--dynamicbase"])
+  AX_CHECK_LINK_FLAG([[-Wl,--cashbase]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,--cashbase"])
   AX_CHECK_LINK_FLAG([[-Wl,--nxcompat]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,--nxcompat"])
   AX_CHECK_LINK_FLAG([[-Wl,--high-entropy-va]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,--high-entropy-va"])
   AX_CHECK_LINK_FLAG([[-Wl,-z,relro]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,-z,relro"])
@@ -594,6 +583,18 @@ AC_LINK_IFELSE([AC_LANG_SOURCE([
   ]
 )
 
+dnl SUPPRESSED_CPPFLAGS=SUPPRESS_WARNINGS([$SOME_CPPFLAGS])
+dnl Replace -I with -isystem in $SOME_CPPFLAGS to suppress warnings from
+dnl headers from its include directories and return the result.
+dnl See -isystem documentation:
+dnl https://gcc.gnu.org/onlinedocs/gcc/Directory-Options.html
+dnl https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-isystem-directory
+dnl Do not change "-I/usr/include" to "-isystem /usr/include" because that
+dnl is not necessary (/usr/include is already a system directory) and because
+dnl it would break GCC's #include_next.
+AC_DEFUN([SUPPRESS_WARNINGS],
+         [$(echo $1 |${SED} -E -e 's/(^| )-I/\1-isystem /g' -e 's;-isystem /usr/include([/ ]|$);-I/usr/include\1;g')])
+
 dnl check for gmtime_r(), fallback to gmtime_s() if that is unavailable
 dnl fail if neither are available.
 AC_MSG_CHECKING(for gmtime_r)
@@ -656,9 +657,20 @@ AM_CONDITIONAL([EMBEDDED_LIBTORRENT],[true])
 AC_SUBST(LIBTORRENT_CPPFLAGS)
 AC_SUBST(LIBTORRENT)
 
+# Apply suppression to Qt includes if necessary
+QT_INCLUDES_UNSUPPRESSED=$QT_INCLUDES
+if test x$suppress_external_warnings != xno ; then
+  QT_INCLUDES=SUPPRESS_WARNINGS($QT_INCLUDES)
+  QT_DBUS_INCLUDES=SUPPRESS_WARNINGS($QT_DBUS_INCLUDES)
+  QT_TEST_INCLUDES=SUPPRESS_WARNINGS($QT_TEST_INCLUDES)
+fi
+
 if test x$enable_wallet != xno; then
     dnl Check for libdb_cxx only if wallet enabled
     CASH_FIND_BDB48
+    if test x$suppress_external_warnings != xno ; then
+        BDB_CPPFLAGS=SUPPRESS_WARNINGS($BDB_CPPFLAGS)
+    fi    
 fi
 
 dnl Check for libminiupnpc (optional)
@@ -691,6 +703,10 @@ if test x$use_boost = xyes; then
   AX_BOOST_CHRONO
 fi
 
+if test x$suppress_external_warnings != xno; then
+    BOOST_CPPFLAGS=SUPPRESS_WARNINGS($BOOST_CPPFLAGS)
+fi
+
 if test x$use_reduce_exports = xyes; then
     CXXFLAGS="$CXXFLAGS $RE_CXXFLAGS"
     AX_CHECK_LINK_FLAG([[-Wl,--exclude-libs,ALL]], [RELDFLAGS="-Wl,--exclude-libs,ALL"])
@@ -718,7 +734,7 @@ if test x$use_tests = xyes; then
         #include <boost/test/unit_test.hpp>
     ])],
     [AC_MSG_RESULT([yes])
-     TESTDEFS="$TESTDEFS -DBOOST_TEST_DYN_LINK"],
+    TESTDEFS="$TESTDEFS -DBOOST_TEST_DYN_LINK"],
     [AC_MSG_RESULT([no])])
     LIBS="$TEMP_LIBS"
     CPPFLAGS="$TEMP_CPPFLAGS"
@@ -727,58 +743,65 @@ fi
 
 if test x$use_boost = xyes; then
 
-  dnl Define Boost libraries
-  BOOST_SYSTEM_LIB="-lboost_system"
-  BOOST_FILESYSTEM_LIB="-lboost_filesystem"
-  BOOST_PROGRAM_OPTIONS_LIB="-lboost_program_options"
-  BOOST_THREAD_LIB="-lboost_thread"
-  BOOST_CHRONO_LIB="-lboost_chrono"
+# Automatically detect the correct Boost libraries without requiring extra arguments
+
+AX_BOOST_BASE
+
+# Function to detect the correct Boost library variant
+AC_DEFUN([DETECT_BOOST_LIB],
+[
+  AC_MSG_CHECKING([for $1 library])
+  AC_SEARCH_LIBS([main], [$1],
+    [
+      AC_MSG_RESULT([found $1 without suffix])
+      eval "BOOST_${2}_LIB=-l$1"
+    ],
+    [
+      AC_SEARCH_LIBS([main], ["${1}-mt ${1}-s ${1}-x64 ${1}-mt-s-x64"],
+        [
+          AC_MSG_RESULT([found $1 with a suffix])
+          eval "BOOST_${2}_LIB=\$LIBS"
+        ],
+        [
+          AC_MSG_ERROR([$1 library not found])
+        ]
+      )
+    ]
+  )
+])
+
+if test x$use_boost = xyes; then
+  DETECT_BOOST_LIB([boost_system], [SYSTEM])
+  DETECT_BOOST_LIB([boost_filesystem], [FILESYSTEM])
+  DETECT_BOOST_LIB([boost_program_options], [PROGRAM_OPTIONS])
+  DETECT_BOOST_LIB([boost_thread], [THREAD])
+  DETECT_BOOST_LIB([boost_chrono], [CHRONO])
 
   BOOST_LIBS="$BOOST_LDFLAGS $BOOST_SYSTEM_LIB $BOOST_FILESYSTEM_LIB $BOOST_PROGRAM_OPTIONS_LIB $BOOST_THREAD_LIB $BOOST_CHRONO_LIB"
+fi
 
-  dnl Ensure Boost version is between 1.74 and 1.81
-  AC_MSG_CHECKING([for Boost version >= 1.74 and <= 1.81])
+  dnl Ensure Boost version is >= 1.74
+  AC_MSG_CHECKING([for Boost version >= 1.74])
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
     #include <boost/version.hpp>
-    #if BOOST_VERSION < 107400 || BOOST_VERSION > 108100
-    #error "Boost version is out of the acceptable range (1.74 to 1.81)"
+    #if BOOST_VERSION < 107400
+    #error "Boost version is out of the acceptable range (must be >= 1.74)"
     #endif
   ]])],
-  [AC_MSG_RESULT([yes])],
-  [AC_MSG_ERROR([Boost version is out of the acceptable range (1.74 to 1.81). Boost 1.74 to 1.81 is required.])])
+  [boost_sleep=yes; AC_DEFINE(HAVE_WORKING_BOOST_SLEEP, 1, [Define this symbol if boost sleep works])],
+  [boost_sleep=no])
+  LIBS="$TEMP_LIBS"
+  CPPFLAGS="$TEMP_CPPFLAGS"
 
-  CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
-  LDFLAGS="$LDFLAGS $BOOST_LDFLAGS"
-  LIBS="$LIBS $BOOST_LIBS"
-
-  dnl Handle cross-compilation: assume the Boost sleep implementation works
-  AC_MSG_CHECKING([whether cross-compiling])
-  AC_CANONICAL_HOST
-  if test "$host" != "$build"; then
-    AC_MSG_RESULT([yes])
-    AC_MSG_CHECKING([for working Boost sleep implementation])
-    AC_MSG_RESULT([assuming it works since we are cross-compiling])
-    AC_DEFINE(HAVE_WORKING_BOOST_SLEEP, 1, [Define this symbol if Boost sleep works])
-  else
-    AC_MSG_RESULT([no])
-    AC_MSG_CHECKING([for working Boost sleep implementation])
-    AC_LINK_IFELSE([AC_LANG_PROGRAM([[
-      #include <boost/thread.hpp>
-      #include <boost/chrono.hpp>
-    ]],[[
-      boost::this_thread::sleep_for(boost::chrono::milliseconds(100));
-    ]])],
-    [AC_MSG_RESULT([found])
-     AC_DEFINE(HAVE_WORKING_BOOST_SLEEP, 1, [Define this symbol if Boost sleep works])],
-    [AC_MSG_RESULT([not found])
-     AC_MSG_ERROR([No working Boost sleep implementation found.])])
+  if test x$boost_sleep != xyes; then
+    AC_MSG_ERROR(No working boost sleep implementation found.)
   fi
 fi
 
 if test x$use_pkgconfig = xyes; then
 
   if test x"$PKG_CONFIG" = "x"; then
-    AC_MSG_ERROR(pkg-config not found.)
+    AC_MSG_ERROR([pkg-config not found.])
   fi
 
   : #NOP
