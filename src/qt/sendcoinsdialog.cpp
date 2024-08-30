@@ -722,7 +722,7 @@ void SendCoinsDialog::updateSmartFeeLabel()
         ui->labelFeeEstimation->setText("");
         ui->fallbackFeeWarningLabel->setVisible(true);
         ui->fallbackFeeWarningLabel->setStyleSheet("QLabel { color: #800000; }");
-        ui->fallbackFeeWarningLabel->setIndent(QFontMetrics(ui->fallbackFeeWarningLabel->font()).width("x"));
+        ui->fallbackFeeWarningLabel->setIndent(QFontMetrics(ui->fallbackFeeWarningLabel->font()).horizontalAdvance("x"));
     } else {
         ui->labelSmartFee->setText(CashUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
                                        std::max(feeRate.GetFeePerK(), CWallet::GetRequiredFee(1000))) +

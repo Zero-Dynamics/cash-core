@@ -12,6 +12,7 @@ qrencode_android_packages = qrencode
 qrencode_darwin_packages = qrencode
 qrencode_mingw32_packages = qrencode
 
+qt_android_packages=qt
 qt_darwin_packages=qt
 qt_mingw32_packages=qt
 

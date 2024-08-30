@@ -1512,7 +1512,7 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle* pl
     int max_width = 0;
     const QFontMetrics fm(font());
     Q_FOREACH (const CashUnits::Unit unit, units) {
-        max_width = qMax(max_width, fm.width(CashUnits::name(unit)));
+        max_width = qMax(max_width, fm.horizontalAdvance(CashUnits::name(unit)));
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);

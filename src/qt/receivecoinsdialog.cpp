@@ -256,11 +256,19 @@ QModelIndex ReceiveCoinsDialog::selectedRow()
 // copy column of selected row to clipboard
 void ReceiveCoinsDialog::copyColumnToClipboard(int column)
 {
+    // Retrieve the index of the selected row
     QModelIndex firstIndex = selectedRow();
+    
+    // Check if the index is valid
     if (!firstIndex.isValid()) {
         return;
     }
-    GUIUtil::setClipboard(model->getRecentRequestsTableModel()->data(firstIndex.child(firstIndex.row(), column), Qt::EditRole).toString());
+    
+    // Create a new index for the desired column in the selected row
+    QModelIndex index = model->getRecentRequestsTableModel()->index(firstIndex.row(), column, QModelIndex());
+    
+    // Get the data from the model at the specified index and role
+    GUIUtil::setClipboard(model->getRecentRequestsTableModel()->data(index, Qt::EditRole).toString());
 }
 
 // context menu
