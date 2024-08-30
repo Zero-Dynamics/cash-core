@@ -18,6 +18,9 @@
 #include <algorithm>
 #include <cmath>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex)
 {
@@ -109,7 +112,6 @@ unsigned int DigiShield(const CBlockIndex* pindexLast, const int64_t AveragingWi
     unsigned int result = bnNew.GetCompact();
     return result;
 }
-
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits, const Consensus::Params& params)
 {
