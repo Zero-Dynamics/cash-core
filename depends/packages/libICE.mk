@@ -1,8 +1,8 @@
 package=libICE
-$(package)_version=1.0.9
+$(package)_version=1.2.4
 $(package)_download_path=http://xorg.freedesktop.org/releases/individual/lib/
-$(package)_file_name=$(package)-$($(package)_version).tar.bz2
-$(package)_sha256_hash=8f7032f2c1c64352b5423f6b48a8ebdc339cc63064af34d66a6c9aa79759e202
+$(package)_file_name=$(package)-$($(package)_version).tar.gz
+$(package)_sha256_hash=9aeb845049de475d0b47aac744e59e1a868ccf95ba669d04c91a1e06239b370b
 $(package)_dependencies=xtrans xproto
 
 define $(package)_set_vars
