@@ -6,7 +6,7 @@ $(package)_file_name=$(package)_$($(package)_version).tar.gz
 $(package)_sha256_hash=76a8348ff04d80141aeb1c0e55879f17f241f38238def0eb1df7c6d1ac1a2c26
 
 define $(package)_set_vars
-$(package)_config_opts=--disable-static --enable-host-shared --prefix=$(host_prefix)
+$(package)_config_opts=--disable-shared --enable-host-shared --prefix=$(host_prefix)
 endef
 
 define $(package)_config_cmds

@@ -6,7 +6,7 @@ $(package)_sha256_hash=21c6e720162858f15fe686cef833cf96a3e2a79875f84007d76f6d004
 $(package)_dependencies=libxcb
 
 define $(package)_set_vars
-$(package)_config_opts = --disable-static --disable-devel-docs --without-doxygen
+$(package)_config_opts = --disable-shared --disable-devel-docs --without-doxygen
 $(package)_config_opts += --disable-dependency-tracking --enable-option-checking
 $(package)_config_opts += --with-pic
 endef
