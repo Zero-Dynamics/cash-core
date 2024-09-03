@@ -23,8 +23,6 @@
 #include "ui_interface.h"
 
 #include <QComboBox>
-#include <QDate>
-#include <QDateTime>
 #include <QDateTimeEdit>
 #include <QDesktopServices>
 #include <QDoubleValidator>
@@ -265,7 +263,7 @@ void TransactionView::setModel(WalletModel* _model)
 
         if (_model->getOptionsModel()) {
             // Add third party transaction URLs to context menu
-            QStringList listUrls = _model->getOptionsModel()->getThirdPartyTxUrls().split("|", Qt::SkipEmptyParts);
+            QStringList listUrls = _model->getOptionsModel()->getThirdPartyTxUrls().split("|", QString::SkipEmptyParts);
             for (int i = 0; i < listUrls.size(); ++i) {
                 QString host = QUrl(listUrls[i].trimmed(), QUrl::StrictMode).host();
                 if (!host.isEmpty()) {
@@ -311,30 +309,30 @@ void TransactionView::chooseDate(int idx)
         break;
     case Today:
         transactionProxyModel->setDateRange(
-            QDateTime(current.startOfDay()),
+            QDateTime(current),
             TransactionFilterProxy::MAX_DATE);
         break;
     case ThisWeek: {
         // Find last Monday
         QDate startOfWeek = current.addDays(-(current.dayOfWeek() - 1));
         transactionProxyModel->setDateRange(
-            QDateTime(startOfWeek.startOfDay()),
+            QDateTime(startOfWeek),
             TransactionFilterProxy::MAX_DATE);
 
     } break;
     case ThisMonth:
         transactionProxyModel->setDateRange(
-            QDateTime(QDate(current.year(), current.month(), 1).startOfDay(Qt::LocalTime)),
+            QDateTime(QDate(current.year(), current.month(), 1)),
             TransactionFilterProxy::MAX_DATE);
         break;
     case LastMonth:
         transactionProxyModel->setDateRange(
-            QDateTime(QDate(current.year(), current.month(), 1).addMonths(-1).startOfDay()),
-            QDateTime(QDate(current.year(), current.month(), 1).startOfDay(Qt::LocalTime)));
+            QDateTime(QDate(current.year(), current.month(), 1).addMonths(-1)),
+            QDateTime(QDate(current.year(), current.month(), 1)));
         break;
     case ThisYear:
         transactionProxyModel->setDateRange(
-            QDateTime(QDate(current.year(), 1, 1).startOfDay()),
+            QDateTime(QDate(current.year(), 1, 1)),
             TransactionFilterProxy::MAX_DATE);
         break;
     case Range:
@@ -653,8 +651,8 @@ void TransactionView::dateRangeChanged()
     settings.setValue("transactionDateTo", dateTo->date().toString(PERSISTENCE_DATE_FORMAT));
 
     transactionProxyModel->setDateRange(
-        QDateTime(dateFrom->date().startOfDay(Qt::LocalTime)),
-        QDateTime(dateTo->date().startOfDay(Qt::LocalTime)));
+        QDateTime(dateFrom->date()),
+        QDateTime(dateTo->date()));
 }
 
 void TransactionView::focusTransaction(const QModelIndex& idx)
