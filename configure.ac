@@ -63,7 +63,7 @@ AC_PROG_OBJCXX
 ])
 
 dnl Libtool init checks.
-LT_INIT([pic-only])
+LT_INIT([pic-only win32-dll])
 
 dnl Check/return PATH for base programs.
 AC_PATH_TOOL(AR, ar)
@@ -780,12 +780,12 @@ if test x$use_boost = xyes; then
   BOOST_LIBS="$BOOST_LDFLAGS $BOOST_SYSTEM_LIB $BOOST_FILESYSTEM_LIB $BOOST_PROGRAM_OPTIONS_LIB $BOOST_THREAD_LIB $BOOST_CHRONO_LIB"
 fi
 
-  dnl Ensure Boost version is >= 1.74
-  AC_MSG_CHECKING([for Boost version >= 1.74])
+  dnl Ensure Boost version is >= 1.71
+  AC_MSG_CHECKING([for Boost version >= 1.71])
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
     #include <boost/version.hpp>
-    #if BOOST_VERSION < 107400
-    #error "Boost version is out of the acceptable range (must be >= 1.74)"
+    #if BOOST_VERSION < 107100
+    #error "Boost version is out of the acceptable range (must be >= 1.71)"
     #endif
   ]])],
   [boost_sleep=yes; AC_DEFINE(HAVE_WORKING_BOOST_SLEEP, 1, [Define this symbol if boost sleep works])],
