@@ -1,9 +1,10 @@
 package=libxcb
-$(package)_version=1.17.0
-$(package)_download_path=https://www.x.org/releases/individual/lib/
-$(package)_file_name=$(package)-$($(package)_version).tar.gz
-$(package)_sha256_hash=2c69287424c9e2128cb47ffe92171e10417041ec2963bceafb65cb3fcf8f0b85
+$(package)_version=1.14
+$(package)_download_path=https://xcb.freedesktop.org/dist
+$(package)_file_name=$(package)-$($(package)_version).tar.xz
+$(package)_sha256_hash=a55ed6db98d43469801262d81dc2572ed124edc3db31059d4e9916eb9f844c34
 $(package)_dependencies=xcb_proto libXau
+$(package)_patches = remove_pthread_stubs.patch
 
 define $(package)_set_vars
 $(package)_config_opts=--disable-static --disable-devel-docs --without-doxygen --without-launchd
@@ -19,7 +20,8 @@ $(package)_config_opts += --disable-xtest --disable-xv --disable-xvmc
 endef
 
 define $(package)_preprocess_cmds
-  cp -f $(BASEDIR)/config.guess $(BASEDIR)/config.sub build-aux
+  cp -f $(BASEDIR)/config.guess $(BASEDIR)/config.sub build-aux && \
+  patch -p1 -i $($(package)_patch_dir)/remove_pthread_stubs.patch
 endef
 
 define $(package)_config_cmds
