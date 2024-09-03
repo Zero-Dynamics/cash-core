@@ -1,5 +1,5 @@
-dnl require autoconf 2.71 (AS_ECHO/AS_ECHO_N)
-AC_PREREQ([2.71])
+dnl require autoconf 2.69 (AS_ECHO/AS_ECHO_N)
+AC_PREREQ([2.69])
 define(_CLIENT_VERSION_MAJOR, 1)
 define(_CLIENT_VERSION_MINOR, 0)
 define(_CLIENT_VERSION_REVISION, 5)
