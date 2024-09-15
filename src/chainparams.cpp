@@ -169,10 +169,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_ISAUTOLOCKS].nThreshold = 3226; // 80% of 4032
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = 436000;
+        consensus.nMinimumChainWork = 400000;
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x000020d76b4dd001085398decc2f2a72ce3f79e8dcf54075e4f697c36f99e7fd"); //436000
+        consensus.defaultAssumeValid = uint256S("0x00000b0c6f3993b990dddbeddff974707c62b8484acb9bd29d23a2808c325fdd"); //400000
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
