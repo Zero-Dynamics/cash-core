@@ -189,9 +189,8 @@ public:
         startNewChain = false;
         nFirstSwitchDifficultyBlock = 250000;
         nSecondSwitchDifficultyBlock = 17000000;
-        nFirstArgon2SwitchTime = 1724104800; // Date and time (CEST/GMT+2): Monday 20 August 2024 0:00:00
+        nFirstArgon2SwitchTime = 1724104800; // Date and time (CEST/GMT+2): Monday 21 August 2024 0:00:00
         nSecondArgon2SwitchTime = 4070908800;
-        nThirdArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1711904441, 9692, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -354,7 +353,6 @@ public:
         nSecondSwitchDifficultyBlock = 17000000;
         nFirstArgon2SwitchTime = 1723104488; // Date and time (GMT): Monday 8 August 2024 8:08:08
         nSecondArgon2SwitchTime = 4070908800;
-        nThirdArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1715786423, 172, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -494,7 +492,6 @@ public:
         nSecondSwitchDifficultyBlock = 17000000;
         nFirstArgon2SwitchTime = 4070908800;
         nSecondArgon2SwitchTime = 4070908800;
-        nThirdArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1711904489, 3164, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
@@ -627,7 +624,6 @@ public:
         nSecondSwitchDifficultyBlock = 17000000;
         nFirstArgon2SwitchTime = 4070908800;
         nSecondArgon2SwitchTime = 4070908800;
-        nThirdArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1711904501, 2921, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if (startNewChain == true) {
