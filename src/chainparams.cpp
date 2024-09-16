@@ -189,7 +189,7 @@ public:
         startNewChain = false;
         nFirstSwitchDifficultyBlock = 250000;
         nSecondSwitchDifficultyBlock = 17000000;
-        nFirstArgon2SwitchTime = 1724104800; // Date and time (CEST/GMT+2): Monday 21 August 2024 0:00:00
+        nFirstArgon2SwitchTime = 1726660000; // Date and time (GMT): Wednesday 18 September 2024 11:46:40
         nSecondArgon2SwitchTime = 4070908800;
 
         genesis = CreateGenesisBlock(1711904441, 9692, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
