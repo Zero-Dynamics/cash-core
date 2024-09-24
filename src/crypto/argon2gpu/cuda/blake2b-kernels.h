@@ -29,8 +29,8 @@ enum algo_constants {
 
 enum algo_params {
     ALGO_LANES = 8,
-    ALGO_MCOST = 187000,
-    ALGO_PASSES = 1,
+    ALGO_MCOST = 1000,
+    ALGO_PASSES = 2,
     ALGO_OUTLEN = 32,
     ALGO_VERSION = 0x10,
     ALGO_TOTAL_BLOCKS = (ALGO_MCOST / (4 * ALGO_LANES)) * 4 * ALGO_LANES,
