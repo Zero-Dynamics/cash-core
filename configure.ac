@@ -37,6 +37,16 @@ if test "x${CXXFLAGS+set}" = "xset"; then
 else
   CXXFLAGS_overridden=no
 fi
+
+# Cross-compilation setup
+AC_ARG_VAR([CROSS_COMPILE], [Prefix for cross-compilation tools, e.g., arm-linux-gnueabihf-])
+
+if test -z "$CROSS_COMPILE"; then
+    CROSS_COMPILE=""
+fi
+
+AC_SUBST([CROSS_COMPILE])
+
 AC_PROG_CXX
 
 dnl By default, libtool for mingw refuses to link static libs into a dll for

@@ -35,17 +35,26 @@ bool dockClickHandler(id self,SEL _cmd,...) {
 }
 
 void setupDockClickHandler() {
+    // Cast objc_msgSend to return id and take (id, SEL) as arguments
     Class cls = objc_getClass("NSApplication");
-    id appInst = objc_msgSend((id)cls, sel_registerName("sharedApplication"));
+    id (*sendMsg)(id, SEL) = (id (*)(id, SEL))objc_msgSend;
+    id appInst = sendMsg((id)cls, sel_registerName("sharedApplication"));
     
     if (appInst != NULL) {
-        id delegate = objc_msgSend(appInst, sel_registerName("delegate"));
-        Class delClass = (Class)objc_msgSend(delegate,  sel_registerName("class"));
+        id (*sendMsgDelegate)(id, SEL) = (id (*)(id, SEL))objc_msgSend;
+        id delegate = sendMsgDelegate(appInst, sel_registerName("delegate"));
+        
+        Class (*sendMsgClass)(id, SEL) = (Class (*)(id, SEL))objc_msgSend;
+        Class delClass = sendMsgClass(delegate, sel_registerName("class"));
+        
         SEL shouldHandle = sel_registerName("applicationShouldHandleReopen:hasVisibleWindows:");
-        if (class_getInstanceMethod(delClass, shouldHandle))
+        
+        // Check if method exists, and either replace or add it
+        if (class_getInstanceMethod(delClass, shouldHandle)) {
             class_replaceMethod(delClass, shouldHandle, (IMP)dockClickHandler, "B@:");
-        else
-            class_addMethod(delClass, shouldHandle, (IMP)dockClickHandler,"B@:");
+        } else {
+            class_addMethod(delClass, shouldHandle, (IMP)dockClickHandler, "B@:");
+        }
     }
 }
 

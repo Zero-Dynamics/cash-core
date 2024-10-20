@@ -113,10 +113,12 @@ darwin_CXX=env -u C_INCLUDE_PATH -u CPLUS_INCLUDE_PATH \
                -Xclang -internal-externc-isystem$(OSX_SDK)/usr/include
 
 darwin_CFLAGS=-pipe
-darwin_CXXFLAGS=$(darwin_CFLAGS) -static-libstdc++
+darwin_CXXFLAGS=$(darwin_CFLAGS)
 
 darwin_release_CFLAGS=-O2
 darwin_release_CXXFLAGS=$(darwin_release_CFLAGS)
 
 darwin_debug_CFLAGS=-O1
 darwin_debug_CXXFLAGS=$(darwin_debug_CFLAGS)
+
+darwin_cmake_system=Darwin

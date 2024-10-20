@@ -3171,7 +3171,10 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, const int nConfMin
     std::vector<std::pair<CAmount, std::pair<const CWalletTx*,unsigned int> > > vValue;
     CAmount nTotalLower = 0;
 
-    random_shuffle(vCoins.begin(), vCoins.end(), GetRandInt);
+    std::random_device rd;
+    std::mt19937 g(rd());
+
+    std::shuffle(vCoins.begin(), vCoins.end(), g);
 
     int tryDenomStart = 0;
     CAmount nMinChange = MIN_CHANGE;
