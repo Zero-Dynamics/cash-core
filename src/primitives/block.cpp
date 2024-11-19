@@ -19,17 +19,13 @@ uint256 CBlockHeader::GetHash() const
     // UpdateCurrentBlockTime
     CurrentBlockTime::UpdateCurrentBlockTime(nTime);
 
-    // Retrieve network parameters
-    std::string network = ChainNameFromCommandLine();
-    SelectParams(network);
-
     // Get the current block time
     uint64_t currentTime = nTime;
 
     // Determine Argon2d phase
     int hashPhase = 0;
-    const uint64_t FirstSwitchTime = Params().FirstArgon2SwitchTime();
-    const uint64_t SecondSwitchTime = Params().SecondArgon2SwitchTime();
+    const uint64_t FirstSwitchTime = Params(ChainNameFromCommandLine()).FirstArgon2SwitchTime();
+    const uint64_t SecondSwitchTime = Params(ChainNameFromCommandLine()).SecondArgon2SwitchTime();
 
     if (currentTime >= FirstSwitchTime && currentTime < SecondSwitchTime) {
         hashPhase = 1;
