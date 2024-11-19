@@ -689,12 +689,6 @@ static CPrivateNetParams privateNetParams;
 
 static CChainParams* pCurrentParams = nullptr;
 
-const CChainParams& Params()
-{
-    assert(pCurrentParams);
-    return *pCurrentParams;
-}
-
 CChainParams& Params(const std::string& chain)
 {
     if (chain == CBaseChainParams::MAIN)
@@ -707,6 +701,12 @@ CChainParams& Params(const std::string& chain)
         return privateNetParams;
     else
         throw std::runtime_error(strprintf("%s: Unknown chain %s.", __func__, chain));
+}
+
+const CChainParams& Params()
+{
+    assert(pCurrentParams);
+    return *pCurrentParams;
 }
 
 void SelectParams(const std::string& chain)

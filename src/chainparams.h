@@ -93,9 +93,9 @@ public:
     const std::vector<std::string>& SporkAddresses() const { return vSporkAddresses; }
     int MinSporkKeys() const { return nMinSporkKeys; }
     uint64_t FirstDifficultySwitchBlock() const { return nFirstSwitchDifficultyBlock; }
-    uint64_t SecondDifficultySwitchBlock() const { return nSecondSwitchDifficultyBlock; }    
-    uint64_t FirstArgon2SwitchTime() const { return nFirstArgon2SwitchTime; } 
-    uint64_t SecondArgon2SwitchTime() const { return nSecondArgon2SwitchTime; } 
+    uint64_t SecondDifficultySwitchBlock() const { return nSecondSwitchDifficultyBlock; }
+    uint64_t FirstArgon2SwitchTime() const { return nFirstArgon2SwitchTime; }
+    uint64_t SecondArgon2SwitchTime() const { return nSecondArgon2SwitchTime; }
     uint64_t Argon2V13UpgradeTime() const { return nArgon2V13UpgradeTime; }
 
 protected:
@@ -129,22 +129,22 @@ protected:
     int nMinSporkKeys;
     std::string strServiceNodePaymentsPubKey;
     uint64_t nFirstSwitchDifficultyBlock;
-    uint64_t nSecondSwitchDifficultyBlock;      
+    uint64_t nSecondSwitchDifficultyBlock;
     uint64_t nFirstArgon2SwitchTime;
     uint64_t nSecondArgon2SwitchTime;
     uint64_t nArgon2V13UpgradeTime;
 };
 
 /**
+ * @returns CChainParams for the given BIP70 chain name.
+ */
+CChainParams& Params(const std::string& chain);
+
+/**
  * Return the currently selected parameters. This won't change after app
  * startup, except for unit tests.
  */
 const CChainParams& Params();
-
-/**
- * @returns CChainParams for the given BIP70 chain name.
- */
-CChainParams& Params(const std::string& chain);
 
 /**
  * Sets the params returned by Params() to those for the given BIP70 chain name.
