@@ -715,6 +715,24 @@ void SelectParams(const std::string& chain)
     pCurrentParams = &Params(chain);
 }
 
+const uint64_t FirstSwitchTime() {
+    try {
+        const CChainParams& params = Params(ChainNameFromCommandLine());
+        return params.FirstArgon2SwitchTime();
+    } catch (const std::exception& e) {
+        throw std::runtime_error("Error retrieving SecondSwitchTime: " + std::string(e.what()));
+    }
+}
+
+const uint64_t SecondSwitchTime() {
+    try {
+        const CChainParams& params = Params(ChainNameFromCommandLine());
+        return params.SecondArgon2SwitchTime();
+    } catch (const std::exception& e) {
+        throw std::runtime_error("Error retrieving SecondSwitchTime: " + std::string(e.what()));
+    }
+}
+
 void UpdateRegtestBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout)
 {
     regTestParams.UpdateBIP9Parameters(d, nStartTime, nTimeout);

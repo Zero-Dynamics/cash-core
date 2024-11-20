@@ -165,12 +165,9 @@ uint256 CUnsignedVGPMessage::GetHash() const
 
     // Determine Argon2d phase
     int hashPhase = 0;
-    const uint64_t FirstSwitchTime = Params(ChainNameFromCommandLine()).FirstArgon2SwitchTime();
-    const uint64_t SecondSwitchTime = Params(ChainNameFromCommandLine()).SecondArgon2SwitchTime();
-
-    if (currentTime >= FirstSwitchTime && currentTime < SecondSwitchTime) {
+    if (currentTime >= FirstSwitchTime() && currentTime < SecondSwitchTime()) {
         hashPhase = 1;
-    } else if (currentTime >= SecondSwitchTime) {
+    } else if (currentTime >= SecondSwitchTime()) {
         hashPhase = 2;
     }
 

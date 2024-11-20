@@ -153,6 +153,16 @@ const CChainParams& Params();
 void SelectParams(const std::string& chain);
 
 /**
+ * Retrieves the FirstArgon2SwitchTime for the selected chain.
+ */
+const uint64_t FirstSwitchTime();
+
+/**
+ * Retrieves the SecondArgon2SwitchTime for the selected chain.
+ */
+const uint64_t SecondSwitchTime();
+
+/**
  * Allows modifying the BIP9 regtest parameters.
  */
 void UpdateRegtestBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout);
