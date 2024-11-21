@@ -204,7 +204,7 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
     statusBar();
 
     // Disable size grip because it looks ugly and nobody needs it
-    statusBar()->setSizeGripEnabled(true);
+    statusBar()->setSizeGripEnabled(false);
 
     // Status bar notification icons
     QFrame* frameBlocks = new QFrame();
