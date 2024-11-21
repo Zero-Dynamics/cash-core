@@ -165,11 +165,22 @@ uint256 CUnsignedVGPMessage::GetHash() const
 
     // Determine Argon2d phase
     int hashPhase = 0;
-    if (currentTime >= FirstSwitchTime() && currentTime < SecondSwitchTime()) {
-        hashPhase = 1;
-    } else if (currentTime >= SecondSwitchTime()) {
-        hashPhase = 2;
-    }
+
+    #ifdef __APPLE__
+        // On macOS we use hardcoded timestamps
+        if (currentTime >= 1726660000 && currentTime < 4070908800) {
+            hashPhase = 1;
+        } else if (currentTime >= 4070908800) {
+            hashPhase = 2;
+        }
+    #else  // For other platforms (Linux/Windows, etc.)
+        // Default logic based on dynamic switch times
+        if (currentTime >= FirstSwitchTime() && currentTime < SecondSwitchTime()) {
+            hashPhase = 1;
+        } else if (currentTime >= SecondSwitchTime()) {
+            hashPhase = 2;
+        }
+    #endif
 
     // Return the hash using the determined Argon2d phase
     return hash_Argon2d(dsMessageData.begin(), dsMessageData.end(), hashPhase);
