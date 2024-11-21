@@ -155,12 +155,12 @@ void SelectParams(const std::string& chain);
 /**
  * Retrieves the FirstArgon2SwitchTime for the selected chain.
  */
-const uint64_t FirstSwitchTime();
+uint64_t FirstSwitchTime();
 
 /**
  * Retrieves the SecondArgon2SwitchTime for the selected chain.
  */
-const uint64_t SecondSwitchTime();
+uint64_t SecondSwitchTime();
 
 /**
  * Allows modifying the BIP9 regtest parameters.

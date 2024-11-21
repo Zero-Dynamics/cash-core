@@ -715,7 +715,7 @@ void SelectParams(const std::string& chain)
     pCurrentParams = &Params(chain);
 }
 
-const uint64_t FirstSwitchTime() {
+uint64_t FirstSwitchTime() {
     try {
         const CChainParams& params = Params(ChainNameFromCommandLine());
         return params.FirstArgon2SwitchTime();
@@ -724,7 +724,7 @@ const uint64_t FirstSwitchTime() {
     }
 }
 
-const uint64_t SecondSwitchTime() {
+uint64_t SecondSwitchTime() {
     try {
         const CChainParams& params = Params(ChainNameFromCommandLine());
         return params.SecondArgon2SwitchTime();
