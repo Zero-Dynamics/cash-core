@@ -62,6 +62,7 @@
 #include <QStackedWidget>
 #include <QStatusBar>
 #include <QStyle>
+#include <QStyleFactory>
 #include <QTimer>
 #include <QToolBar>
 #include <QVBoxLayout>
@@ -137,6 +138,9 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
                                                                                                                  spinnerFrame(0),
                                                                                                                  platformStyle(_platformStyle)
 {
+    /* Set global application style */
+    QApplication::setStyle(QStyleFactory::create("Fusion"));
+
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 
