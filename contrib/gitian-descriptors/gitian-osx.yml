@@ -1,5 +1,5 @@
 ---
-name: "cash-osx-1.0.6.0"
+name: "cash-osx-1.1.0.0"
 enable_cache: true
 suites:
 - "trusty"
