@@ -212,7 +212,7 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
 
     // Status bar notification icons
     QFrame* frameBlocks = new QFrame();
-    frameBlocks->setContentsMargins(0, 0, 0, 0);
+    frameBlocks->setContentsMargins(0, 0, 2, 0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
     QHBoxLayout* frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3, 0, 3, 0);
@@ -241,9 +241,19 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addStretch();
 
+    // Create a container frame for the label
+    QFrame* frameLabel = new QFrame();
+    frameLabel->setContentsMargins(5, 0, 0, 0);  // Move the label slightly to the right
+    frameLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(true);
+    
+    // Set up the layout for the frame
+    frameLabel->setLayout(new QHBoxLayout());
+    frameLabel->layout()->addWidget(progressBarLabel);    
+    
     progressBar = new GUIUtil::ProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(true);
@@ -251,7 +261,7 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
     // Override style sheet for progress bar for styles that have a segmented progress bar,
     // as they make the text unreadable (workaround for issue #1071)
     // See https://qt-project.org/doc/qt-4.8/gallery.html
-    statusBar()->addWidget(progressBarLabel);
+    statusBar()->addWidget(frameLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
 
