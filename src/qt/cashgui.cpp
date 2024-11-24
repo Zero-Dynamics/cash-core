@@ -212,7 +212,7 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
 
     // Status bar notification icons
     QFrame* frameBlocks = new QFrame();
-    frameBlocks->setContentsMargins(0, 0, 2, 0);
+    frameBlocks->setContentsMargins(0, 0, 5, 0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
     QHBoxLayout* frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3, 0, 3, 0);
