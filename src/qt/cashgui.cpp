@@ -243,7 +243,7 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
 
     // Create a container frame for the label
     QFrame* frameLabel = new QFrame();
-    frameLabel->setContentsMargins(5, 0, 0, 0);  // Move the label slightly to the right
+    frameLabel->setContentsMargins(0, 0, 0, 0);  // Move the label slightly to the right
     frameLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
 
     // Progress bar and label for blocks download
