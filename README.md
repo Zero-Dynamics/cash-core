@@ -113,7 +113,30 @@ Build requirements:
 
     sudo apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev libcrypto++-dev libevent-dev git automake
 
-For Ubuntu 20.04LTS(Bionic) and later, or Debian 7 and later; libboost-all-dev has to be installed:
+For Ubuntu 24.04LTS(Noble Numbat); boost 1.81 has to be installed:
+
+    wget https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2 && \
+    tar --bzip2 -xf boost_1_81_0.tar.bz2 && \
+    cd boost_1_81_0 && \
+    ./bootstrap.sh --prefix=/usr/local $$ \
+    sudo ./b2 install
+
+Now set BOOST_ROOT, CXXFLAGS & LDFLAGS; to ensure that BOOST_ROOT is always set, you can add the export command to your shell's startup file.
+If you are using Bash, add it to ~/.bashrc:
+
+    echo 'export BOOST_ROOT=/usr/local' >> ~/.bashrc && \
+    echo 'export CXXFLAGS="-I/usr/local/include $CXXFLAGS"' >> ~/.bashrc && \
+    echo 'export LDFLAGS="-L/usr/local/lib $LDFLAGS"' >> ~/.bashrc && \
+    source ~/.bashrc
+
+If you are using Zsh, add it to ~/.zshrc:
+
+    echo 'export BOOST_ROOT=/usr/local' >> ~/.zshrc && \
+    echo 'export CXXFLAGS="-I/usr/local/include $CXXFLAGS"' >> ~/.zshrc && \
+    echo 'export LDFLAGS="-L/usr/local/lib $LDFLAGS"' >> ~/.zshrc && \
+    source ~/.zshrc
+
+For Ubuntu 20.04LTS(Bionic) and  22.04LTS(Jammy Jellyfish), or Debian 7 and later; libboost-all-dev has to be installed:
 
     sudo apt-get install libboost-all-dev
 
