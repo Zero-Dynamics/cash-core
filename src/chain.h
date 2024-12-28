@@ -17,6 +17,24 @@
 
 #include <vector>
 
+/**
+ * Maximum amount of time that a block timestamp is allowed to exceed the
+ * current network-adjusted time before the block will be accepted.
+ *
+ * Based on: https://github.com/zawy12/difficulty-algorithms/issues/3
+ * FTL = N*T/20 = 80 * 360 / 20
+ * Bitcoin original value: 2 * 60 * 60
+ */
+static constexpr int64_t MAX_FUTURE_BLOCK_TIME = 480 * 30 / 20;
+
+/**
+ * Timestamp window used as a grace period by code that compares external
+ * timestamps (such as timestamps passed to RPCs, or wallet key creation times)
+ * to block timestamps. This should be set at least as high as
+ * MAX_FUTURE_BLOCK_TIME.
+ */
+static constexpr int64_t TIMESTAMP_WINDOW = MAX_FUTURE_BLOCK_TIME;
+
 class CBlockFileInfo
 {
 public:

@@ -715,7 +715,7 @@ UniValue importwallet(const JSONRPCRequest& request)
     if (forcerescan || !neednotRescan) {
     pwalletMain->UpdateTimeFirstKey(nTimeBegin);
 
-    CBlockIndex* pindex = chainActive.FindEarliestAtLeast(nTimeBegin - 7200);
+    CBlockIndex* pindex = chainActive.FindEarliestAtLeast(nTimeBegin - TIMESTAMP_WINDOW);
 
     LogPrintf("Rescanning last %i blocks\n", pindex ? chainActive.Height() - pindex->nHeight + 1 : 0);
     pwalletMain->ScanForWalletTransactions(pindex);
@@ -1682,7 +1682,7 @@ UniValue importmulti(const JSONRPCRequest& mainRequest)
     }
 
     if (fRescan && fRunScan && requests.size()) {
-        CBlockIndex* pindex = nLowestTimestamp > minimumTimestamp ? chainActive.FindEarliestAtLeast(std::max<int64_t>(nLowestTimestamp - 7200, 0)) : chainActive.Genesis();
+        CBlockIndex* pindex = nLowestTimestamp > minimumTimestamp ? chainActive.FindEarliestAtLeast(std::max<int64_t>(nLowestTimestamp - TIMESTAMP_WINDOW, 0)) : chainActive.Genesis();
         CBlockIndex* scannedRange = nullptr;
         if (pindex) {
             scannedRange = pwalletMain->ScanForWalletTransactions(pindex, true);
@@ -1699,7 +1699,7 @@ UniValue importmulti(const JSONRPCRequest& mainRequest)
                 // range, or if the import result already has an error set, let
                 // the result stand unmodified. Otherwise replace the result
                 // with an error message.
-                if (GetImportTimestamp(request, now) - 7200 >= scannedRange->GetBlockTimeMax() || results.at(i).exists("error")) {
+                if (GetImportTimestamp(request, now) - TIMESTAMP_WINDOW >= scannedRange->GetBlockTimeMax() || results.at(i).exists("error")) {
                     response.push_back(results.at(i));
                 } else {
                     UniValue result = UniValue(UniValue::VOBJ);
