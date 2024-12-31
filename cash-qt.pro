@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = cash
-VERSION = 1.1.2.0
+VERSION = 1.1.3.0
 INCLUDEPATH += src \
                src/crypto \
                src/crypto/heavyhash \
