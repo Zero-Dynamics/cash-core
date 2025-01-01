@@ -4036,11 +4036,6 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const 
     if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
         return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "proof of work failed");
 
-    // Check timestamp
-    if (block.GetBlockTime() > GetAdjustedTime())
-        return state.Invalid(error("CheckBlockHeader() : block timestamp too far in the future"),
-                             REJECT_INVALID, "time-too-new");
-
     return true;
 }
 
