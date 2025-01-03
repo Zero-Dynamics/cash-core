@@ -19,7 +19,8 @@ clang_prog=$(build_prefix)/bin/clang
 clangxx_prog=$(clang_prog)++
 llvm_config_prog=$(build_prefix)/bin/llvm-config
 
-clang_resource_dir=$(build_prefix)/lib/clang/$(native_clang_version)
+darwin_OBJDUMP=$(build_prefix)/bin/$(host)-objdump
+
 else
 # FORCE_USE_SYSTEM_CLANG is non-empty, so we use the clang from the user's
 # system
