@@ -1,5 +1,17 @@
 ### Usage
 
+Additional cross compile requirements for Apple, tested on Ubuntu 20.04:
+
+    sudo apt-get install cmake libcap-dev libbz2-dev python3-pip libtinfo5
+
+Additional cross compile requirements for Linux, tested on Ubuntu 24.04:
+
+    sudo apt-get install bison autoconf-archive libexpat1-dev
+
+Additional cross compile requirements for Windows tested on Ubuntu 24.04:
+
+    sudo apt-get install mingw-w64
+
 To build dependencies for the current arch+OS:
 
     make
@@ -23,6 +35,7 @@ Common `host-platform-triplets` for cross compilation are:
 - `i686-w64-mingw32` for Win32
 - `x86_64-w64-mingw32` for Win64
 - `x86_64-apple-darwin` for MacOSX
+- `x86_64-pc-linux-gnu` for Linux
 - `arm-linux-gnueabihf` for Linux ARM 32 bit
 - `aarch64-linux-gnu` for Linux ARM 64 bit
 

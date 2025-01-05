@@ -119,7 +119,7 @@ For Ubuntu 24.04LTS(Noble Numbat); boost 1.81 has to be installed:
     tar --bzip2 -xf boost_1_81_0.tar.bz2 && \
     cd boost_1_81_0 && \
     ./bootstrap.sh --prefix=/usr/local && \
-    sudo ./b2 install
+    sudo ./b2 install && cd ..
 
 Now set BOOST_ROOT, CXXFLAGS & LDFLAGS; to ensure that BOOST_ROOT is always set, you can add the export command to your shell's startup file.
 If you are using Bash, add it to ~/.bashrc:
