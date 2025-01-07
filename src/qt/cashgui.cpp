@@ -65,6 +65,7 @@
 #include <QStyleFactory>
 #include <QTimer>
 #include <QToolBar>
+#include <QToolTip>
 #include <QVBoxLayout>
 
 #if QT_VERSION < 0x050000
@@ -139,8 +140,19 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
                                                                                                                  platformStyle(_platformStyle)
 {
     /* Set global application style */
-    QApplication::setStyle(QStyleFactory::create("Fusion"));
-
+    qApp->setStyle(QStyleFactory::create("Fusion"));
+    
+    QPalette palette;
+    palette = qApp->palette();
+    palette.setColor(QPalette::Window, QColor(32,32,32));
+    palette.setColor(QPalette::WindowText, QColor(229,228,226));
+    palette.setColor(QPalette::Base, QColor(18,0,6));
+    palette.setColor(QPalette::Text, QColor(229,228,226));
+    palette.setColor(QPalette::Highlight, QColor(102,2,60));
+    palette.setColor(QPalette::HighlightedText, QColor(229,228,226));
+    
+    qApp->setPalette(palette);
+   
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 
