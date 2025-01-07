@@ -204,9 +204,9 @@ public:
             assert(genesis.hashMerkleRoot == uint256S("0x2641029e7d5c403cd3c14716f29b395be8201db82168fd725292babf4a5ce11b"));
         }
 
-        vSeeds.push_back(CDNSSeedData("0dyn.online", "0dync-main01.0dyn.online"));
-        vSeeds.push_back(CDNSSeedData("0dyn.online", "0dync-main02.0dyn.online"));
-        vSeeds.push_back(CDNSSeedData("0dyn.online", "0dync-main03.0dyn.online"));
+        vSeeds.push_back(CDNSSeedData("0dyn.online", "cash-main01.0-dyn.online"));
+        vSeeds.push_back(CDNSSeedData("0dyn.online", "cash-main02.0-dyn.online"));
+        vSeeds.push_back(CDNSSeedData("0dyn.online", "cash-main03.0-dyn.online"));
 
         // Cash debit addresses start with 'C'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 28);
@@ -371,8 +371,8 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
 
-        //vSeeds.push_back(CDNSSeedData("",  ""));
-        //vSeeds.push_back(CDNSSeedData("", ""));
+        vSeeds.push_back(CDNSSeedData("0dyn.online", "cash-test01.0-dyn.online"));
+        vSeeds.push_back(CDNSSeedData("0dyn.online", "cash-test02.0-dyn.online"));
 
         // Testnet Cash debit addresses start with 'c'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 87);
