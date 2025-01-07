@@ -156,7 +156,7 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 
-    GUIUtil::restoreWindowGeometry("nWindow", QSize(1000, 750), this);
+    GUIUtil::restoreWindowGeometry("nWindow", QSize(1000, 833), this);
 
     QString windowTitle = tr("0-Dyn | Cash") + " ";
 #ifdef ENABLE_WALLET
