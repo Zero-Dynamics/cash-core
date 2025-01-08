@@ -324,7 +324,7 @@ HEADERS += \
     src/policy/rbf.h \
     src/primitives/block.h \
     src/primitives/transaction.h \
-    src/script/odynconsensus.h \
+    src/script/cashconsensus.h \
     src/script/interpreter.h \
     src/script/script_error.h \
     src/script/script.h \
@@ -507,7 +507,7 @@ SOURCES += \
     src/policy/rbf.cpp \
     src/primitives/block.cpp \
     src/primitives/transaction.cpp \
-    src/script/odynconsensus.cpp \
+    src/script/cashconsensus.cpp \
     src/script/interpreter.cpp \
     src/script/script_error.cpp \
     src/script/script.cpp \
