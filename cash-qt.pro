@@ -287,10 +287,10 @@ HEADERS += \
     src/qt/guiutil.h \
     src/qt/guiconstants.h \
     src/qt/editaddressdialog.h \
-    src/qt/odynunits.h \
-    src/qt/odyngui.h \
-    src/qt/odynamountfield.h \
-    src/qt/odynaddressvalidator.h \
+    src/qt/cashunits.h \
+    src/qt/cashgui.h \
+    src/qt/cashamountfield.h \
+    src/qt/debitaddressvalidator.h \
     src/qt/csvmodelwriter.h \
     src/qt/coincontroltreewidget.h \
     src/qt/coincontroldialog.h \
@@ -445,12 +445,12 @@ SOURCES += \
     src/qt/coincontroldialog.cpp \
     src/qt/coincontroltreewidget.cpp \
     src/qt/csvmodelwriter.cpp \
-    src/qt/odyn.cpp \
-    src/qt/odynaddressvalidator.cpp \
-    src/qt/odynamountfield.cpp \
-    src/qt/odyngui.cpp \
-    src/qt/odynstrings.cpp \
-    src/qt/odynunits.cpp \
+    src/qt/cash.cpp \
+    src/qt/debitaddressvalidator.cpp \
+    src/qt/cashamountfield.cpp \
+    src/qt/cashgui.cpp \
+    src/qt/cashstrings.cpp \
+    src/qt/cashunits.cpp \
     src/qt/editaddressdialog.cpp \
     src/qt/guiutil.cpp \
     src/qt/intro.cpp \
@@ -612,8 +612,8 @@ OTHER_FILES += \
     src/Makefile.am
 
 RESOURCES += \
-    src/qt/odyn.qrc \
-    src/qt/odyn_locale.qrc
+    src/qt/cash.qrc \
+    src/qt/cash_locale.qrc
 
 FORMS += \
     src/qt/forms/addressbookpage.ui \
