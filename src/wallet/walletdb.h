@@ -138,8 +138,8 @@ public:
     /// Erase destination data tuple from wallet database
     bool EraseDestData(const std::string& address, const std::string& key);
 
-    CAmount GetAccountCreditDebit(const std::string& strAccount);
-    void ListAccountCreditDebit(const std::string& strAccount, std::list<CAccountingEntry>& acentries);
+    CAmount GetAccountCashCredit(const std::string& strAccount);
+    void ListAccountCashCredit(const std::string& strAccount, std::list<CAccountingEntry>& acentries);
 
     DBErrors LoadWallet(CWallet* pwallet);
     DBErrors FindWalletTx(CWallet* pwallet, std::vector<uint256>& vTxHash, std::vector<CWalletTx>& vWtx);

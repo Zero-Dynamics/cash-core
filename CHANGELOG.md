@@ -644,7 +644,7 @@
 * Trivial: UndoReadFromDisk works on undo files (rev), not on block files
 * Move static global randomizer seeds into CConnman
 * [init] Get rid of some ENABLE_WALLET
-* Remove last reference to CWalletDB from accounting_tests.cpp/Remove pwalletdb parameter from CWallet::AddAccountingEntry/Add CWallet::ReorderTransactions and use in accounting_tests.cpp/Add CWallet::ListAccountCreditDebit
+* Remove last reference to CWalletDB from accounting_tests.cpp/Remove pwalletdb parameter from CWallet::AddAccountingEntry/Add CWallet::ReorderTransactions and use in accounting_tests.cpp/Add CWallet::ListAccountCashCredit
 * [Qt] RPC-Console: support nested commands and simple value queries
 * [Wallet] remove unused ThreadFlushWalletDB from removeprunedfunds
 * init: Get rid of fDisableWallet

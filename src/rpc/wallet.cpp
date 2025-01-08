@@ -1778,7 +1778,7 @@ void AcentryToJSON(const CAccountingEntry& acentry, const std::string& strAccoun
         entry.push_back(Pair("account", acentry.strAccount));
         entry.push_back(Pair("category", "move"));
         entry.push_back(Pair("time", acentry.nTime));
-        entry.push_back(Pair("amount", ValueFromAmount(acentry.nCreditDebit)));
+        entry.push_back(Pair("amount", ValueFromAmount(acentry.nCashCredit)));
         entry.push_back(Pair("otheraccount", acentry.strOtherAccount));
         entry.push_back(Pair("comment", acentry.strComment));
         ret.push_back(entry);
@@ -1981,7 +1981,7 @@ UniValue listaccounts(const JSONRPCRequest& request)
 
     const std::list<CAccountingEntry>& acentries = pwalletMain->laccentries;
     BOOST_FOREACH (const CAccountingEntry& entry, acentries)
-        mapAccountBalances[entry.strAccount] += entry.nCreditDebit;
+        mapAccountBalances[entry.strAccount] += entry.nCashCredit;
 
     UniValue ret(UniValue::VOBJ);
     BOOST_FOREACH (const PAIRTYPE(std::string, CAmount) & accountBalance, mapAccountBalances) {

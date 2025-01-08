@@ -1073,7 +1073,7 @@ DBErrors CWallet::ReorderTransactions()
         txByTime.insert(make_pair(wtx->nTimeReceived, TxPair(wtx, (CAccountingEntry*)0)));
     }
     std::list<CAccountingEntry> acentries;
-    walletdb.ListAccountCreditDebit("", acentries);
+    walletdb.ListAccountCashCredit("", acentries);
     BOOST_FOREACH (CAccountingEntry& entry, acentries) {
         txByTime.insert(make_pair(entry.nTime, TxPair((CWalletTx*)0, &entry)));
     }
@@ -1143,7 +1143,7 @@ bool CWallet::AccountMove(std::string strFrom, std::string strTo, CAmount nAmoun
     CAccountingEntry debit;
     debit.nOrderPos = IncOrderPosNext(&walletdb);
     debit.strAccount = strFrom;
-    debit.nCreditDebit = -nAmount;
+    debit.nCashCredit = -nAmount;
     debit.nTime = nNow;
     debit.strOtherAccount = strTo;
     debit.strComment = strComment;
@@ -1153,7 +1153,7 @@ bool CWallet::AccountMove(std::string strFrom, std::string strTo, CAmount nAmoun
     CAccountingEntry credit;
     credit.nOrderPos = IncOrderPosNext(&walletdb);
     credit.strAccount = strTo;
-    credit.nCreditDebit = nAmount;
+    credit.nCashCredit = nAmount;
     credit.nTime = nNow;
     credit.strOtherAccount = strFrom;
     credit.strComment = strComment;
@@ -4481,10 +4481,10 @@ bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, CCon
     return true;
 }
 
-void CWallet::ListAccountCreditDebit(const std::string& strAccount, std::list<CAccountingEntry>& entries)
+void CWallet::ListAccountCashCredit(const std::string& strAccount, std::list<CAccountingEntry>& entries)
 {
     CWalletDB walletdb(strWalletFile);
-    return walletdb.ListAccountCreditDebit(strAccount, entries);
+    return walletdb.ListAccountCashCredit(strAccount, entries);
 }
 
 bool CWallet::AddAccountingEntry(const CAccountingEntry& acentry)
@@ -5350,7 +5350,7 @@ CAmount CWallet::GetAccountBalance(CWalletDB& walletdb, const std::string& strAc
     }
 
     // Tally internal accounting entries
-    nBalance += walletdb.GetAccountCreditDebit(strAccount);
+    nBalance += walletdb.GetAccountCashCredit(strAccount);
 
     return nBalance;
 }

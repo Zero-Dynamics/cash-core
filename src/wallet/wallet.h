@@ -600,7 +600,7 @@ class CAccountingEntry
 {
 public:
     std::string strAccount;
-    CAmount nCreditDebit;
+    CAmount nCashCredit;
     int64_t nTime;
     std::string strOtherAccount;
     std::string strComment;
@@ -615,7 +615,7 @@ public:
 
     void SetNull()
     {
-        nCreditDebit = 0;
+        nCashCredit = 0;
         nTime = 0;
         strAccount.clear();
         strOtherAccount.clear();
@@ -633,7 +633,7 @@ public:
         if (!(s.GetType() & SER_GETHASH))
             READWRITE(nVersion);
         //! Note: strAccount is serialized as part of the key, not here.
-        READWRITE(nCreditDebit);
+        READWRITE(nCashCredit);
         READWRITE(nTime);
         READWRITE(LIMITED_STRING(strOtherAccount, 65536));
 
@@ -1155,7 +1155,7 @@ public:
     bool CreateCollateralTransaction(CMutableTransaction& txCollateral, std::string& strReason);
     bool ConvertList(std::vector<CTxIn> vecTxIn, std::vector<CAmount>& vecAmounts);
 
-    void ListAccountCreditDebit(const std::string& strAccount, std::list<CAccountingEntry>& entries);
+    void ListAccountCashCredit(const std::string& strAccount, std::list<CAccountingEntry>& entries);
     bool AddAccountingEntry(const CAccountingEntry&);
     bool AddAccountingEntry(const CAccountingEntry&, CWalletDB* pwalletdb);
 

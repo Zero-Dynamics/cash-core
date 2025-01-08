@@ -276,19 +276,19 @@ bool CWalletDB::WriteAccountingEntry_Backend(const CAccountingEntry& acentry)
     return WriteAccountingEntry(++nAccountingEntryNumber, acentry);
 }
 
-CAmount CWalletDB::GetAccountCreditDebit(const std::string& strAccount)
+CAmount CWalletDB::GetAccountCashCredit(const std::string& strAccount)
 {
     std::list<CAccountingEntry> entries;
-    ListAccountCreditDebit(strAccount, entries);
+    ListAccountCashCredit(strAccount, entries);
 
-    CAmount nCreditDebit = 0;
+    CAmount nCashCredit = 0;
     BOOST_FOREACH (const CAccountingEntry& entry, entries)
-        nCreditDebit += entry.nCreditDebit;
+        nCashCredit += entry.nCashCredit;
 
-    return nCreditDebit;
+    return nCashCredit;
 }
 
-void CWalletDB::ListAccountCreditDebit(const std::string& strAccount, std::list<CAccountingEntry>& entries)
+void CWalletDB::ListAccountCashCredit(const std::string& strAccount, std::list<CAccountingEntry>& entries)
 {
     bool fAllAccounts = (strAccount == "*");
 
@@ -778,7 +778,7 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
         result = pwallet->ReorderTransactions();
 
     pwallet->laccentries.clear();
-    ListAccountCreditDebit("*", pwallet->laccentries);
+    ListAccountCashCredit("*", pwallet->laccentries);
     BOOST_FOREACH (CAccountingEntry& entry, pwallet->laccentries) {
         pwallet->wtxOrdered.insert(make_pair(entry.nOrderPos, CWallet::TxPair((CWalletTx*)0, &entry)));
     }
