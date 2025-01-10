@@ -203,7 +203,7 @@ QString CashUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plus
 {
     QString str(formatWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
-    return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
+    return QString("<span style='white-space: nowrap;font-family: Arial;'>%1</span>").arg(str);
 }
 
 QString CashUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
@@ -222,7 +222,7 @@ QString CashUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool pluss
 {
     QString str(floorWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
-    return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
+    return QString("<span style='white-space: nowrap;font-family: Arial;'>%1</span>").arg(str);
 }
 
 bool CashUnits::parse(int unit, const QString& value, CAmount* val_out)

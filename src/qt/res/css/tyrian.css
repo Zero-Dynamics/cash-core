@@ -372,6 +372,7 @@ qproperty-alignment:center;
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 0.25, stop: 0 #a6738f, stop: 1 #66023c);
 color:#e5e4e2;
 min-height:25px;
+font-family: Arial, sans-serif;
 font-weight:bold;
 font-size:11px;
 outline:0;
@@ -1446,6 +1447,7 @@ QWidget .QFrame#frame_2 QListView { /* Transaction List */
 color:#e5e4e2;
 font-weight:normal;
 font-size:12px;
+font-family: Arial, sans-serif;
 max-width:369px;
 margin-top:12px;
 margin-left:0px; /* CSS Voodoo - set to -66px to hide default transaction icons */
@@ -1921,6 +1923,7 @@ font-weight:bold;
 
 QLabel#transactionSum { /* Example of setObjectName for widgets without name */
 color:#e5e4e2;
+font-family: Arial, sans-serif;
 }
 
 /* TRANSACTION DETAIL DIALOG */
