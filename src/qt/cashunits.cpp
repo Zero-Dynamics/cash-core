@@ -203,7 +203,34 @@ QString CashUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plus
 {
     QString str(formatWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
-    return QString("<span style='white-space: nowrap;font-family: Arial;'>%1</span>").arg(str);
+
+    str.replace("0DYNC", "");
+    str.replace("m", "");
+    str.replace("μ", "");
+    str.replace("satoshis", "");
+    str.replace("t", "");
+
+    QString unitName = name(unit);
+
+    if (unitName == "0DYNC") {
+        unitName = "₵ ";
+    } else if (unitName == "m0DYNC") {
+        unitName = "m₵ ";
+    } else if (unitName == "μ0DYNC") {
+        unitName = "μ₵ "; 
+    } else if (unitName == "satoshis") {
+        unitName = "10<sup>-8</sup>₵ ";
+    } else if (unitName == "t0DYNC") {
+        unitName = "t₵ ";
+    } else if (unitName == "tm0DYNC") {
+        unitName = "tm₵ ";
+    } else if (unitName == "tμ0DYNC") {
+        unitName = "tμ₵ "; 
+    } else if (unitName == "tsatoshis") {
+        unitName = "t10<sup>-8</sup>₵ ";
+    }
+
+    return QString("<span style='white-space: nowrap; font-family: Arial;'>%1 %2</span>").arg(unitName).arg(str);
 }
 
 QString CashUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
@@ -222,7 +249,39 @@ QString CashUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool pluss
 {
     QString str(floorWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
-    return QString("<span style='white-space: nowrap;font-family: Arial;'>%1</span>").arg(str);
+
+    str.replace("0DYNC", "");
+    str.replace("m", "");
+    str.replace("μ", "");
+    str.replace("satoshis", "");
+    str.replace("t", "");
+
+    QString unitName = name(unit);
+
+    if (unitName == "0DYNC") {
+        unitName = "₵    ";
+    } else if (unitName == "m0DYNC") {
+        unitName = "m₵   ";
+    } else if (unitName == "μ0DYNC") {
+        unitName = "μ₵   "; 
+    } else if (unitName == "satoshis") {
+        unitName = "10<sup>-8</sup>₵  ";
+    } else if (unitName == "t0DYNC") {
+        unitName = "t₵   ";
+    } else if (unitName == "tm0DYNC") {
+        unitName = "tm₵  ";
+    } else if (unitName == "tμ0DYNC") {
+        unitName = "tμ₵  "; 
+    } else if (unitName == "tsatoshis") {
+        unitName = "t10<sup>-8</sup>₵  ";
+    }
+
+    return QString("<table style='width: 100%; table-layout: fixed; font-family: Arial;'>"
+                   "<tr>"
+                   "<td style='text-align: left; white-space: nowrap; min-width: 38%;'>%1</td>"
+                   "<td style='text-align: right; white-space: nowrap; min-width: 62%;'>%2</td>"
+                   "</tr>"
+                   "</table>").arg(unitName).arg(str);
 }
 
 bool CashUnits::parse(int unit, const QString& value, CAmount* val_out)
