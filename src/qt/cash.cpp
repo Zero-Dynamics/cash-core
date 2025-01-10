@@ -517,6 +517,31 @@ int main(int argc, char* argv[])
 {
     SetupEnvironment();
 
+    #if defined(Q_OS_WIN)
+        // Step 1: Define custom command-line arguments
+        const char* newArgs[] = {
+            "-platform", "windows:darkmode=1",
+        };
+
+        // Step 2: Check if the system is Windows and only add custom arguments then
+        int newArgc = argc + sizeof(newArgs) / sizeof(newArgs[0]);
+        char** newArgv = new char*[newArgc];
+
+        // Copy original argv arguments to newArgv
+        for (int i = 0; i < argc; ++i) {
+            newArgv[i] = argv[i];
+        }
+
+        // Add custom arguments for Windows
+        for (int i = 0; i < sizeof(newArgs) / sizeof(newArgs[0]); ++i) {
+            newArgv[argc + i] = const_cast<char*>(newArgs[i]);
+        }
+
+        // Update argc and argv to use the newArgv and newArgc
+        argc = newArgc;
+        argv = newArgv;
+    #endif
+
     /// 1. Parse command-line options. These take precedence over anything else.
     // Command-line options take precedence:
     ParseParameters(argc, argv);
