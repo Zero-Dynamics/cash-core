@@ -21,8 +21,8 @@ class ClientModel;
 class QTableWidget;
 class QLabel;
 
-const int COMMONNAME_COLWIDTH = 450;
-const int FULLPATH_COLWIDTH = 350;
+const int COMMONNAME_COLWIDTH = 400;
+const int FULLPATH_COLWIDTH = 310;
 
 enum LinkActions {
     LINK_DEFAULT = 0,
