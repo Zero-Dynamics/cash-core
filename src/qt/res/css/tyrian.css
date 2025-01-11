@@ -10,6 +10,7 @@ background-color:#120006;
 }
 
 QProgressBar {
+border-color: #120006;
 color: #e5e4e2;
 background-color:#120006;
 }
