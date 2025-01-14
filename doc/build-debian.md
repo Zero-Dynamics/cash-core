@@ -95,7 +95,7 @@ in the getinfo-output. If the numbers match, the installation is completed.
 ```
 cash-cli getinfo
 {
-  "version": 1010400,
+  "version": 1010500,
   "protocolversion": 71150,
   "walletversion": 100000,
   "balance": 0.00000000,
