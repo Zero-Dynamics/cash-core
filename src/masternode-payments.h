@@ -3,55 +3,55 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CASH_SERVICENODE_PAYMENTS_H
-#define CASH_SERVICENODE_PAYMENTS_H
+#ifndef CASH_MASTERNODE_PAYMENTS_H
+#define CASH_MASTERNODE_PAYMENTS_H
 
 #include "core_io.h"
-#include "servicenode.h"
+#include "masternode.h"
 #include "key.h"
 #include "net_processing.h"
 #include "util.h"
 #include "utilstrencodings.h"
 
-class CServiceNodeBlockPayees;
-class CServiceNodePayments;
-class CServiceNodePaymentVote;
+class CMasternodeBlockPayees;
+class CMasternodePayments;
+class CMasternodePaymentVote;
 
-static const int SNPAYMENTS_SIGNATURES_REQUIRED = 10;
-static const int SNPAYMENTS_SIGNATURES_TOTAL = 20;
+static const int MNPAYMENTS_SIGNATURES_REQUIRED = 10;
+static const int MNPAYMENTS_SIGNATURES_TOTAL = 20;
 
-//! minimum peer version that can receive and send servicenode payment messages,
-//  vote for servicenode and be elected as a payment winner
+//! minimum peer version that can receive and send masternode payment messages,
+//  vote for masternode and be elected as a payment winner
 // V1 - Last protocol version before update
 // V2 - Newest protocol version
-static const int MIN_SERVICENODE_PAYMENT_PROTO_VERSION_1 = 71110;
-static const int MIN_SERVICENODE_PAYMENT_PROTO_VERSION_2 = 71140; // Only ServiceNodes > v1.1.0.0 will get paid after Spork 10 activation
+static const int MIN_MASTERNODE_PAYMENT_PROTO_VERSION_1 = 71110;
+static const int MIN_MASTERNODE_PAYMENT_PROTO_VERSION_2 = 71140; // Only Masternodes > v1.1.0.0 will get paid after Spork 10 activation
 
 extern CCriticalSection cs_vecPayees;
-extern CCriticalSection cs_mapServiceNodeBlocks;
-extern CCriticalSection cs_mapServiceNodePayeeVotes;
+extern CCriticalSection cs_mapMasternodeBlocks;
+extern CCriticalSection cs_mapMasternodePayeeVotes;
 
-extern CServiceNodePayments snpayments;
+extern CMasternodePayments mnpayments;
 
 /// TODO: all 4 functions do not belong here really, they should be refactored/moved somewhere (main.cpp ?)
 bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockReward, std::string& strErrorRet);
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward);
-void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutServiceNodeRet, std::vector<CTxOut>& voutSuperblockRet);
+void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutMasternodeRet, std::vector<CTxOut>& voutSuperblockRet);
 std::string GetRequiredPaymentsString(int nBlockHeight);
 
-class CServiceNodePayee
+class CMasternodePayee
 {
 private:
     CScript scriptPubKey;
     std::vector<uint256> vecVoteHashes;
 
 public:
-    CServiceNodePayee() : scriptPubKey(),
+    CMasternodePayee() : scriptPubKey(),
                      vecVoteHashes()
     {
     }
 
-    CServiceNodePayee(CScript payee, uint256 hashIn) : scriptPubKey(payee),
+    CMasternodePayee(CScript payee, uint256 hashIn) : scriptPubKey(payee),
                                                   vecVoteHashes()
     {
         vecVoteHashes.push_back(hashIn);
@@ -73,18 +73,18 @@ public:
     int GetVoteCount() const { return vecVoteHashes.size(); }
 };
 
-// Keep track of votes for payees from ServiceNodes
-class CServiceNodeBlockPayees
+// Keep track of votes for payees from Masternodes
+class CMasternodeBlockPayees
 {
 public:
     int nBlockHeight;
-    std::vector<CServiceNodePayee> vecPayees;
+    std::vector<CMasternodePayee> vecPayees;
 
-    CServiceNodeBlockPayees() : nBlockHeight(0),
+    CMasternodeBlockPayees() : nBlockHeight(0),
                            vecPayees()
     {
     }
-    CServiceNodeBlockPayees(int nBlockHeightIn) : nBlockHeight(nBlockHeightIn),
+    CMasternodeBlockPayees(int nBlockHeightIn) : nBlockHeight(nBlockHeightIn),
                                              vecPayees()
     {
     }
@@ -98,7 +98,7 @@ public:
         READWRITE(vecPayees);
     }
 
-    void AddPayee(const CServiceNodePaymentVote& vote);
+    void AddPayee(const CMasternodePaymentVote& vote);
     bool GetBestPayee(CScript& payeeRet) const;
     bool HasPayeeWithVotes(const CScript& payeeIn, int nVotesReq) const;
 
@@ -108,23 +108,23 @@ public:
 };
 
 // vote for the winning payment
-class CServiceNodePaymentVote
+class CMasternodePaymentVote
 {
 public:
-    COutPoint servicenodeOutpoint;
+    COutPoint masternodeOutpoint;
 
     int nBlockHeight;
     CScript payee;
     std::vector<unsigned char> vchSig;
 
-    CServiceNodePaymentVote() : servicenodeOutpoint(),
+    CMasternodePaymentVote() : masternodeOutpoint(),
                            nBlockHeight(0),
                            payee(),
                            vchSig()
     {
     }
 
-    CServiceNodePaymentVote(COutPoint outpoint, int nBlockHeight, CScript payee) : servicenodeOutpoint(outpoint),
+    CMasternodePaymentVote(COutPoint outpoint, int nBlockHeight, CScript payee) : masternodeOutpoint(outpoint),
                                                                               nBlockHeight(nBlockHeight),
                                                                               payee(payee),
                                                                               vchSig()
@@ -139,17 +139,17 @@ public:
         int nVersion = s.GetVersion();
         if (nVersion == 70900 && (s.GetType() & SER_NETWORK)) {
             // converting from/to old format
-            CTxIn vinServiceNode{};
+            CTxIn vinMasternode{};
             if (ser_action.ForRead()) {
-                READWRITE(vinServiceNode);
-                servicenodeOutpoint = vinServiceNode.prevout;
+                READWRITE(vinMasternode);
+                masternodeOutpoint = vinMasternode.prevout;
             } else {
-                vinServiceNode = CTxIn(servicenodeOutpoint);
-                READWRITE(vinServiceNode);
+                vinMasternode = CTxIn(masternodeOutpoint);
+                READWRITE(vinMasternode);
             }
         } else {
             // using new format directly
-            READWRITE(servicenodeOutpoint);
+            READWRITE(masternodeOutpoint);
         }
         READWRITE(nBlockHeight);
         READWRITE(*(CScriptBase*)(&payee));
@@ -162,7 +162,7 @@ public:
     uint256 GetSignatureHash() const;
 
     bool Sign();
-    bool CheckSignature(const CPubKey& pubKeyServiceNode, int nValidationHeight, int& nDos) const;
+    bool CheckSignature(const CPubKey& pubKeyMasternode, int nValidationHeight, int& nDos) const;
 
     bool IsValid(CNode* pnode, int nValidationHeight, std::string& strError, CConnman& connman) const;
     void Relay(CConnman& connman) const;
@@ -174,14 +174,14 @@ public:
 };
 
 //
-// ServiceNode Payments Class
+// Masternode Payments Class
 // Keeps track of who should get paid for which blocks
 //
 
-class CServiceNodePayments
+class CMasternodePayments
 {
 private:
-    // ServiceNode count times nStorageCoeff payments blocks should be stored ...
+    // Masternode count times nStorageCoeff payments blocks should be stored ...
     const float nStorageCoeff;
     // ... but at least nMinBlocksToStore (payments blocks)
     const int nMinBlocksToStore;
@@ -190,25 +190,25 @@ private:
     int nCachedBlockHeight;
 
 public:
-    std::map<uint256, CServiceNodePaymentVote> mapServiceNodePaymentVotes;
-    std::map<int, CServiceNodeBlockPayees> mapServiceNodeBlocks;
-    std::map<COutPoint, int> mapServiceNodesLastVote;
-    std::map<COutPoint, int> mapServiceNodesDidNotVote;
+    std::map<uint256, CMasternodePaymentVote> mapMasternodePaymentVotes;
+    std::map<int, CMasternodeBlockPayees> mapMasternodeBlocks;
+    std::map<COutPoint, int> mapMasternodesLastVote;
+    std::map<COutPoint, int> mapMasternodesDidNotVote;
 
-    CServiceNodePayments() : nStorageCoeff(1.25), nMinBlocksToStore(5000) {}
+    CMasternodePayments() : nStorageCoeff(1.25), nMinBlocksToStore(5000) {}
 
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action)
     {
-        READWRITE(mapServiceNodePaymentVotes);
-        READWRITE(mapServiceNodeBlocks);
+        READWRITE(mapMasternodePaymentVotes);
+        READWRITE(mapMasternodeBlocks);
     }
 
     void Clear();
 
-    bool AddOrUpdatePaymentVote(const CServiceNodePaymentVote& vote);
+    bool AddOrUpdatePaymentVote(const CMasternodePaymentVote& vote);
     bool HasVerifiedPaymentVote(const uint256& hashIn) const;
     bool ProcessBlock(int nBlockHeight, CConnman& connman);
     void CheckBlockVotes(int nBlockHeight);
@@ -219,18 +219,18 @@ public:
 
     bool GetBlockPayee(int nBlockHeight, CScript& payeeRet) const;
     bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight) const;
-    bool IsScheduled(const servicenode_info_t& snInfo, int nNotBlockHeight) const;
+    bool IsScheduled(const masternode_info_t& mnInfo, int nNotBlockHeight) const;
 
-    bool UpdateLastVote(const CServiceNodePaymentVote& vote);
+    bool UpdateLastVote(const CMasternodePaymentVote& vote);
 
-    int GetMinServiceNodePaymentsProto() const;
+    int GetMinMasternodePaymentsProto() const;
     void ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman);
     std::string GetRequiredPaymentsString(int nBlockHeight) const;
-    void FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutServiceNodeRet) const;
+    void FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutMasternodeRet) const;
     std::string ToString() const;
 
-    int GetBlockCount() const { return mapServiceNodeBlocks.size(); }
-    int GetVoteCount() const { return mapServiceNodePaymentVotes.size(); }
+    int GetBlockCount() const { return mapMasternodeBlocks.size(); }
+    int GetVoteCount() const { return mapMasternodePaymentVotes.size(); }
 
     bool IsEnoughData() const;
     int GetStorageLimit() const;
@@ -240,4 +240,4 @@ public:
     void DoMaintenance();
 };
 
-#endif // CASH_SERVICENODE_PAYMENTS_H
+#endif // CASH_MASTERNODE_PAYMENTS_H

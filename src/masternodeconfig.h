@@ -3,20 +3,20 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CASH_SERVICENODECONFIG_H
-#define CASH_SERVICENODECONFIG_H
+#ifndef CASH_MASTERNODECONFIG_H
+#define CASH_MASTERNODECONFIG_H
 
 #include "chainparams.h"
 #include "netbase.h"
 #include "util.h"
 
-class CServiceNodeConfig;
-extern CServiceNodeConfig servicenodeConfig;
+class CMasternodeConfig;
+extern CMasternodeConfig masternodeConfig;
 
-class CServiceNodeConfig
+class CMasternodeConfig
 {
 public:
-    class CServiceNodeEntry
+    class CMasternodeEntry
     {
     private:
         std::string alias;
@@ -26,7 +26,7 @@ public:
         std::string outputIndex;
 
     public:
-        CServiceNodeEntry(const std::string& alias, const std::string& ip, const std::string& privKey, const std::string& txHash, const std::string& outputIndex)
+        CMasternodeEntry(const std::string& alias, const std::string& ip, const std::string& privKey, const std::string& txHash, const std::string& outputIndex)
         {
             this->alias = alias;
             this->ip = ip;
@@ -86,16 +86,16 @@ public:
         }
     };
 
-    CServiceNodeConfig()
+    CMasternodeConfig()
     {
-        entries = std::vector<CServiceNodeEntry>();
+        entries = std::vector<CMasternodeEntry>();
     }
 
     void clear();
     bool read(std::string& strErr);
     void add(const std::string& alias, const std::string& ip, const std::string& privKey, const std::string& txHash, const std::string& outputIndex);
 
-    std::vector<CServiceNodeEntry>& getEntries()
+    std::vector<CMasternodeEntry>& getEntries()
     {
         return entries;
     }
@@ -106,8 +106,8 @@ public:
     }
 
 private:
-    std::vector<CServiceNodeEntry> entries;
+    std::vector<CMasternodeEntry> entries;
 };
 
 
-#endif // CASH_SERVICENODECONFIG_H
+#endif // CASH_MASTERNODECONFIG_H

@@ -429,11 +429,11 @@ void openConfigfile()
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
 
-void openSNConfigfile()
+void openMNConfigfile()
 {
-    boost::filesystem::path pathConfig = GetServiceNodeConfigFile();
+    boost::filesystem::path pathConfig = GetMasternodeConfigFile();
 
-    /* Open servicenode.conf with the associated application */
+    /* Open masternode.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }

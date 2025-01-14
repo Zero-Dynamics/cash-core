@@ -148,15 +148,15 @@ private:
     /// Data field - can be used for anything
     std::vector<unsigned char> vchData;
 
-    /// ServiceNode info for signed objects
-    COutPoint servicenodeOutpoint;
+    /// Masternode info for signed objects
+    COutPoint masternodeOutpoint;
     std::vector<unsigned char> vchSig;
 
     /// is valid by blockchain
     bool fCachedLocalValidity;
     std::string strLocalValidityError;
 
-    // VARIOUS FLAGS FOR OBJECT / SET VIA SERVICENODE VOTING
+    // VARIOUS FLAGS FOR OBJECT / SET VIA MASTERNODE VOTING
 
     /// true == minimum network support has been reached for this object to be funded (doesn't mean it will for sure though)
     bool fCachedFunding;
@@ -181,9 +181,9 @@ private:
     /// Failed to parse object data
     bool fUnparsable;
 
-    vote_m_t mapCurrentSNVotes;
+    vote_m_t mapCurrentMNVotes;
 
-    /// Limited map of votes orphaned by SN
+    /// Limited map of votes orphaned by MN
     vote_cmm_t cmmapOrphanVotes;
 
     CGovernanceObjectVoteFile fileVotes;
@@ -217,9 +217,9 @@ public:
         return nCollateralHash;
     }
 
-    const COutPoint& GetServiceNodeOutpoint() const
+    const COutPoint& GetMasternodeOutpoint() const
     {
-        return servicenodeOutpoint;
+        return masternodeOutpoint;
     }
 
     bool IsSetCachedFunding() const
@@ -264,9 +264,9 @@ public:
 
     // Signature related functions
 
-    void SetServiceNodeOutpoint(const COutPoint& outpoint);
-    bool Sign(const CKey& keyServiceNode, const CPubKey& pubKeyServiceNode);
-    bool CheckSignature(const CPubKey& pubKeyServiceNode) const;
+    void SetMasternodeOutpoint(const COutPoint& outpoint);
+    bool Sign(const CKey& keyMasternode, const CPubKey& pubKeyMasternode);
+    bool CheckSignature(const CPubKey& pubKeyMasternode) const;
 
     std::string GetSignatureMessage() const;
     uint256 GetSignatureHash() const;
@@ -275,7 +275,7 @@ public:
 
     bool IsValidLocally(std::string& strError, bool fCheckCollateral) const;
 
-    bool IsValidLocally(std::string& strError, bool& fMissingServiceNode, bool& fMissingConfirmations, bool fCheckCollateral) const;
+    bool IsValidLocally(std::string& strError, bool& fMissingMasternode, bool& fMissingConfirmations, bool fCheckCollateral) const;
 
     /// Check the collateral transaction for the budget proposal/finalized budget
     bool IsCollateralValid(std::string& strError, bool& fMissingConfirmations) const;
@@ -302,7 +302,7 @@ public:
     int GetNoCount(vote_signal_enum_t eVoteSignalIn) const;
     int GetAbstainCount(vote_signal_enum_t eVoteSignalIn) const;
 
-    bool GetCurrentSNVotes(const COutPoint& snCollateralOutpoint, vote_rec_t& voteRecord) const;
+    bool GetCurrentMNVotes(const COutPoint& mnCollateralOutpoint, vote_rec_t& voteRecord) const;
 
     // FUNCTIONS FOR DEALING WITH DATA STRING
 
@@ -342,14 +342,14 @@ public:
             CTxIn txin;
             if (ser_action.ForRead()) {
                 READWRITE(txin);
-                servicenodeOutpoint = txin.prevout;
+                masternodeOutpoint = txin.prevout;
             } else {
-                txin = CTxIn(servicenodeOutpoint);
+                txin = CTxIn(masternodeOutpoint);
                 READWRITE(txin);
             }
         } else {
             // using new format directly
-            READWRITE(servicenodeOutpoint);
+            READWRITE(masternodeOutpoint);
         }
         if (!(s.GetType() & SER_GETHASH)) {
             READWRITE(vchSig);
@@ -359,7 +359,7 @@ public:
             LogPrint("gobject", "CGovernanceObject::SerializationOp Reading/writing votes from/to disk\n");
             READWRITE(nDeletionTime);
             READWRITE(fExpired);
-            READWRITE(mapCurrentSNVotes);
+            READWRITE(mapCurrentMNVotes);
             READWRITE(fileVotes);
             LogPrint("gobject", "CGovernanceObject::SerializationOp hash = %s, vote count = %d\n", GetHash().ToString(), fileVotes.GetVoteCount());
         }
@@ -377,8 +377,8 @@ private:
         CGovernanceException& exception,
         CConnman& connman);
 
-    /// Called when SN's which have voted on this object have been removed
-    void ClearServiceNodeVotes();
+    /// Called when MN's which have voted on this object have been removed
+    void ClearMasternodeVotes();
 
     void CheckOrphanVotes(CConnman& connman);
 };

@@ -415,12 +415,12 @@
         <translation>Abrir arquivo de configuração</translation>
     </message>
     <message>
-        <source>Open &amp;ServiceNode Configuration File</source>
-        <translation>Abrir arquivo de configuração de ServiceNode</translation>
+        <source>Open &amp;Masternode Configuration File</source>
+        <translation>Abrir arquivo de configuração de Masternode</translation>
     </message>
     <message>
-        <source>Open ServiceNode configuration file</source>
-        <translation>Abrir arquivo de configuração de ServiceNode</translation>
+        <source>Open Masternode configuration file</source>
+        <translation>Abrir arquivo de configuração de Masternode</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -904,16 +904,16 @@ Endereço: %4
         <translation>Por favor seleccione um nível de privacidade.</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
-        <translation>Usar 2 servicenodes distintos para misturar os fundos até 1000 0DYNC</translation>
+        <source>Use 2 separate masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Usar 2 masternodes distintos para misturar os fundos até 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
-        <translation>Usar 8 servicenodes distintos para misturar os fundos até 1000 0DYNC</translation>
+        <source>Use 8 separate masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Usar 8 masternodes distintos para misturar os fundos até 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate servicenodes</source>
-        <translation>Usar 16 servicenodes</translation>
+        <source>Use 16 separate masternodes</source>
+        <translation>Usar 16 masternodes</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
@@ -1096,11 +1096,11 @@ Você mantém o controle do seu dinheiro o tempo todo.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 O PrivateSend começa dividindo suas entradas de transação em denominações padrão.
 Essas denominações são 0,001, 0,01 0DYNC, 0,1 0DYNC, 1 0DYNC, 10 0DYNC - mais ou menos como o papel-moeda que você usa todos os dias.&lt;/li&gt;
-Sua carteira envia solicitações para nós de software especialmente configurados na rede, chamados "ServiceNodes".
-Esses ServiceNodes são informados que você está interessado em misturar uma determinada denominação.
-Nenhuma informação identificável é enviada aos ServiceNodes, para que eles nunca saibam quem é quem. você é.&lt;/li&gt;
+Sua carteira envia solicitações para nós de software especialmente configurados na rede, chamados "Masternodes".
+Esses Masternodes são informados que você está interessado em misturar uma determinada denominação.
+Nenhuma informação identificável é enviada aos Masternodes, para que eles nunca saibam quem é quem. você é.&lt;/li&gt;
 Quando duas outras pessoas enviam mensagens semelhantes, indicando que desejam misturar a mesma denominação, inicia-se uma sessão de mixagem.
-O ServiceNode combina as entradas e instrui todos os três usuários&#39; carteiras para pagar de volta a entrada agora transformada.
+O Masternode combina as entradas e instrui todos os três usuários&#39; carteiras para pagar de volta a entrada agora transformada.
 Sua carteira paga essa denominação diretamente para si mesma, mas em um endereço diferente (chamado de endereço de alteração).&lt;/li&gt;
 Para ocultar totalmente seus fundos, sua carteira deve repetir esse processo várias vezes com cada denominação.
 Cada vez que o processo é concluído, ele é chamado de rodada. Cada rodada do PrivateSend torna exponencialmente mais difícil determinar a origem dos seus fundos.&lt;/li&gt;
@@ -1259,8 +1259,8 @@ Conseqüentemente, os usuários com backups desabilitados também terão o Priva
         <translation>Avançado</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Esta opção determina o número de servicenodes pelos quais uma entrada será anonimizada. &lt;br/&gt; Mais rondas de anonimização fornecem um maior grau de privacidade, mas também tem um custo mais elevado em taxas.</translation>
+        <source>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Esta opção determina o número de masternodes pelos quais uma entrada será anonimizada. &lt;br/&gt; Mais rondas de anonimização fornecem um maior grau de privacidade, mas também tem um custo mais elevado em taxas.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1536,8 +1536,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Pare de Misturar</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>As denominações que foram submetidas para o ServiceNode.&lt;br&gt;Para misturar, outros utilizadores terão que submeter denominações iguais.</translation>
+        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>As denominações que foram submetidas para o Masternode.&lt;br&gt;Para misturar, outros utilizadores terão que submeter denominações iguais.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1925,8 +1925,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Cadeia de blocos</translation>
     </message>
     <message>
-        <source>Number of ServiceNodes</source>
-        <translation>Número de ServiceNodes</translation>
+        <source>Number of Masternodes</source>
+        <translation>Número de Masternodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3401,7 +3401,7 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
 </context>
 <context>
-    <name>ServiceNodeList</name>
+    <name>MasternodeList</name>
     <message>
         <source>Form</source>
         <translation>Modelo</translation>
@@ -3415,16 +3415,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Contagem de nós:</translation>
     </message>
     <message>
-        <source>My ServiceNodes</source>
-        <translation>Meus ServiceNodes</translation>
+        <source>My Masternodes</source>
+        <translation>Meus Masternodes</translation>
     </message>
     <message>
-        <source>All ServiceNodes</source>
-        <translation>Todos os ServiceNodes</translation>
+        <source>All Masternodes</source>
+        <translation>Todos os Masternodes</translation>
     </message>
     <message>
-        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Nota: O status dos seus ServiceNodes na carteira local pode estar um pouco incorreto.&lt;br /&gt;Sempre espere a carteira sincronizar dados adicionais e verifique novamente em outro&lt;br /&gt;nó se o seu ServiceNode estiver em execução, mas você ainda não vê &quot;ENABLED&quot; no campo &quot;Status&quot;.</translation>
+        <source>Note: Status of your Masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Masternode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Nota: O status dos seus Masternodes na carteira local pode estar um pouco incorreto.&lt;br /&gt;Sempre espere a carteira sincronizar dados adicionais e verifique novamente em outro&lt;br /&gt;nó se o seu Masternode estiver em execução, mas você ainda não vê &quot;ENABLED&quot; no campo &quot;Status&quot;.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3479,16 +3479,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL ServiceNodes?</source>
-        <translation>Tem certeza de que deseja iniciar TODOS os ServiceNodes?</translation>
+        <source>Are you sure you want to start ALL Masternodes?</source>
+        <translation>Tem certeza de que deseja iniciar TODOS os Masternodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING ServiceNodes?</source>
-        <translation>Tem certeza de que deseja iniciar o MISSING ServiceNodes?</translation>
+        <source>Are you sure you want to start MISSING Masternodes?</source>
+        <translation>Tem certeza de que deseja iniciar o MISSING Masternodes?</translation>
     </message>
     <message>
-        <source>Confirm missing ServiceNodes start</source>
-        <translation>Confirme a falta do início dos ServiceNodes</translation>
+        <source>Confirm missing Masternodes start</source>
+        <translation>Confirme a falta do início dos Masternodes</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3499,16 +3499,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>O comando não está disponível no momento</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until ServiceNode list is synced</source>
-        <translation>Você não pode usar este comando até a lista ServiceNode ser sincronizada</translation>
+        <source>You can&apos;t use this command until Masternode list is synced</source>
+        <translation>Você não pode usar este comando até a lista Masternode ser sincronizada</translation>
     </message>
     <message>
-        <source>Confirm ServiceNode start</source>
-        <translation>Confirme o início do ServiceNode</translation>
+        <source>Confirm Masternode start</source>
+        <translation>Confirme o início do Masternode</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ServiceNode %1?</source>
-        <translation>Tem certeza de que deseja iniciar o ServiceNode %1?</translation>
+        <source>Are you sure you want to start Masternode %1?</source>
+        <translation>Tem certeza de que deseja iniciar o Masternode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3519,12 +3519,12 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Atualizando...</translation>
     </message>
     <message>
-        <source>Successfully started ServiceNode.</source>
-        <translation>Iniciado com sucesso o ServiceNode.</translation>
+        <source>Successfully started Masternode.</source>
+        <translation>Iniciado com sucesso o Masternode.</translation>
     </message>
     <message>
-        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
-        <translation>%d ServiceNodes iniciados com êxito, falha ao iniciar %d, total %d</translation>
+        <source>Successfully started %d Masternodes, failed to start %d, total %d</source>
+        <translation>%d Masternodes iniciados com êxito, falha ao iniciar %d, total %d</translation>
     </message>
 </context>
 <context>
@@ -3598,8 +3598,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Isso mostra o tempo médio entre os blocos que você minou</translation>
     </message>
     <message>
-        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain / ServiceNodes não são sincronizados, aguarde até que estejam totalmente sincronizados antes da mineração!</translation>
+        <source>Blockchain/Masternodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain / Masternodes não são sincronizados, aguarde até que estejam totalmente sincronizados antes da mineração!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -3824,8 +3824,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Aviso: wallet.dar corrompido mas os dados foram recuperados! A carteira original foi gravada como wallet{data/hora}.bak in %s; se o seu saldo ou transacções forem incorrectos deverá recuperar a partir de uma cópia de segurança.</translation>
     </message>
     <message>
-        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Tem que especificar uma servicenodepairingkey na configuração. Por favor verifique a documentação para ajuda.</translation>
+        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Tem que especificar uma masternodepairingkey na configuração. Por favor verifique a documentação para ajuda.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4146,12 +4146,12 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Desactivar safemode, ultrapassar o evento de modo de segurança real (default: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a servicenode (0-1, default: %u)</source>
-        <translation>Permitir ao cliente actuar como um servicenode (0-1, omissão: %u)</translation>
+        <source>Enable the client to act as a masternode (0-1, default: %u)</source>
+        <translation>Permitir ao cliente actuar como um masternode (0-1, omissão: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to ServiceNode.</source>
-        <translation>Erro conectando ao ServiceNode</translation>
+        <source>Error connecting to Masternode.</source>
+        <translation>Erro conectando ao Masternode</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Cash</source>
@@ -4290,11 +4290,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Carregando cache de orçamentos...</translation>
     </message>
     <message>
-        <source>Loading servicenode cache...</source>
-        <translation>A carregar a cache de servicenodes...</translation>
+        <source>Loading masternode cache...</source>
+        <translation>A carregar a cache de masternodes...</translation>
     </message>
     <message>
-        <source>Loading servicenode payment cache...</source>
+        <source>Loading masternode payment cache...</source>
         <translation>Carregando cache de pagamento de maternodes...</translation>
     </message>
     <message>
@@ -4302,8 +4302,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Bloqueio já efectuado.</translation>
     </message>
     <message>
-        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
-        <translation>Bloquear servicenode presentes no ficheiro de configuração (omissão: %u)</translation>
+        <source>Lock masternodes from masternode configuration file (default: %u)</source>
+        <translation>Bloquear masternode presentes no ficheiro de configuração (omissão: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4326,16 +4326,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Necessita especificar a porta com -whitebind: '%s'</translation>
     </message>
     <message>
-        <source>No ServiceNodes detected.</source>
-        <translation>Nenhum ServiceNode detectado.</translation>
+        <source>No Masternodes detected.</source>
+        <translation>Nenhum Masternode detectado.</translation>
     </message>
     <message>
-        <source>No compatible ServiceNode found.</source>
-        <translation>Nenhum ServiceNode compatível encontrado.</translation>
+        <source>No compatible Masternode found.</source>
+        <translation>Nenhum Masternode compatível encontrado.</translation>
     </message>
     <message>
-        <source>Not in the ServiceNode list.</source>
-        <translation>Não está na lista de ServiceNodes.</translation>
+        <source>Not in the Masternode list.</source>
+        <translation>Não está na lista de Masternodes.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4374,8 +4374,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Chave privada do servidor (default: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this servicenode (example: %s)</source>
-        <translation>Definir endereço:porta externo para ligação a este servicenode (ex: %s)</translation>
+        <source>Set external address:port to get to this masternode (example: %s)</source>
+        <translation>Definir endereço:porta externo para ligação a este masternode (ex: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4406,8 +4406,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Especificar timeout da conexão em milisegundos  (minimum: 1, default: %d)</translation>
     </message>
     <message>
-        <source>Specify servicenode configuration file (default: %s)</source>
-        <translation>Especificar ficheiro de configuração servicenode (default: %s)</translation>
+        <source>Specify masternode configuration file (default: %s)</source>
+        <translation>Especificar ficheiro de configuração masternode (default: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4422,36 +4422,36 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Para de correr após importação de blocos do disco (default: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to servicenode: %u / %d</source>
-        <translation>Apresentadas as seguintes entradas ao servicenode:  %u / %d </translation>
+        <source>Submitted following entries to masternode: %u / %d</source>
+        <translation>Apresentadas as seguintes entradas ao masternode:  %u / %d </translation>
     </message>
     <message>
-        <source>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Apresentado ao servicenode, esperando por mais entradas ( %u / %d ) %s</translation>
+        <source>Submitted to masternode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Apresentado ao masternode, esperando por mais entradas ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to servicenode, waiting in queue %s</source>
-        <translation>Apresentado ao servicenode, esperando na fila %s </translation>
+        <source>Submitted to masternode, waiting in queue %s</source>
+        <translation>Apresentado ao masternode, esperando na fila %s </translation>
     </message>
     <message>
         <source>Synchronizing budgets...</source>
         <translation>A sincronizar orçamentos...</translation>
     </message>
     <message>
-        <source>Synchronizing servicenode winners...</source>
-        <translation>A sincronizar servicenodes vencedores...</translation>
+        <source>Synchronizing masternode winners...</source>
+        <translation>A sincronizar masternodes vencedores...</translation>
     </message>
     <message>
-        <source>Synchronizing servicenodes...</source>
-        <translation>A sincronizar servicenodes...</translation>
+        <source>Synchronizing masternodes...</source>
+        <translation>A sincronizar masternodes...</translation>
     </message>
     <message>
         <source>Synchronizing sporks...</source>
         <translation>A sincronizar sporks...</translation>
     </message>
     <message>
-        <source>This is not a ServiceNode.</source>
-        <translation>Este não é um ServiceNode</translation>
+        <source>This is not a Masternode.</source>
+        <translation>Este não é um Masternode</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4462,8 +4462,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Utilize integração KeePass 2 usando plugin KeePassHttp (default: %u)</translation>
     </message>
     <message>
-        <source>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Utilize N servicenode distintos para anonimizar fundos (2-8, default: %u)</translation>
+        <source>Use N separate masternodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Utilize N masternode distintos para anonimizar fundos (2-8, default: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4486,32 +4486,32 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Tentar de novo...</translation>
     </message>
     <message>
-        <source>Invalid servicenodepairingkey. Please see documenation.</source>
-        <translation>servicenodepairingkey inválida. Por favor reveja a documentação.</translation>
+        <source>Invalid masternodepairingkey. Please see documenation.</source>
+        <translation>masternodepairingkey inválida. Por favor reveja a documentação.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>
         <translation>(deve ser 44400 para mainnet)</translation>
     </message>
     <message>
-        <source>Can't find random ServiceNode.</source>
-        <translation>Incapaz de encontrar ServiceNode aleatório.</translation>
+        <source>Can't find random Masternode.</source>
+        <translation>Incapaz de encontrar Masternode aleatório.</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
         <translation>Incapaz de misturar enquanto sincronização está a decorrer.</translation>
     </message>
     <message>
-        <source>Could not parse servicenode.conf</source>
-        <translation>Incapaz de analizar servicenode.conf</translation>
+        <source>Could not parse masternode.conf</source>
+        <translation>Incapaz de analizar masternode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: '%s'</source>
         <translation>Netmask especificado invalido na -whitelist: '%s'</translation>
     </message>
     <message>
-        <source>Invalid port detected in servicenode.conf</source>
-        <translation>Port inválido detectado em servicenode.conf</translation>
+        <source>Invalid port detected in masternode.conf</source>
+        <translation>Port inválido detectado em masternode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4570,16 +4570,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Certifique-se de criptografar sua carteira e excluir todos os backups não criptografados depois de verificar se a carteira funciona!</translation>
     </message>
     <message>
-        <source>ServiceNode options:</source>
-        <translation>Opções de servicenode:</translation>
+        <source>Masternode options:</source>
+        <translation>Opções de masternode:</translation>
     </message>
     <message>
-        <source>ServiceNode queue is full.</source>
-        <translation>A fila do servicenode está cheia.</translation>
+        <source>Masternode queue is full.</source>
+        <translation>A fila do masternode está cheia.</translation>
     </message>
     <message>
-        <source>ServiceNode:</source>
-        <translation>ServiceNode:</translation>
+        <source>Masternode:</source>
+        <translation>Masternode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4682,8 +4682,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Define o tamanho máximo do bloco em bytes (omissão %d)</translation>
     </message>
     <message>
-        <source>Set the servicenode private key</source>
-        <translation>Define a chave privada do servicenode</translation>
+        <source>Set the masternode private key</source>
+        <translation>Define a chave privada do masternode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

@@ -23,10 +23,10 @@ public:
     bool ReadCertificateIssuerRootCA(const std::vector<unsigned char>& vchIssuer, CX509Certificate& certificate); 
     bool ReadCertificateSerialNumber(const uint64_t& nSerialNumber, CX509Certificate& certificate); 
 
-    bool ReadCertificateSubjectSNRequest(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates, bool getAll = true);
-    bool ReadCertificateIssuerSNRequest(const std::vector<unsigned char>& vchIssuer, std::vector<CX509Certificate>& vCertificates, bool getAll = true);
-    bool ReadCertificateSubjectSNApprove(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates);
-    bool ReadCertificateIssuerSNApprove(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates);
+    bool ReadCertificateSubjectMNRequest(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates, bool getAll = true);
+    bool ReadCertificateIssuerMNRequest(const std::vector<unsigned char>& vchIssuer, std::vector<CX509Certificate>& vCertificates, bool getAll = true);
+    bool ReadCertificateSubjectMNApprove(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates);
+    bool ReadCertificateIssuerMNApprove(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates);
 
     bool EraseCertificateTxId(const std::vector<unsigned char>& vchTxId);
 };

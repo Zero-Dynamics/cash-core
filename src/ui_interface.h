@@ -83,8 +83,8 @@ public:
     /** Number of network connections changed. */
     boost::signals2::signal<void(int newNumConnections)> NotifyNumConnectionsChanged;
 
-    /** Number of ServiceNodes changed. */
-    boost::signals2::signal<void(int newNumServiceNodes)> NotifyStrServiceNodeCountChanged;
+    /** Number of Masternodes changed. */
+    boost::signals2::signal<void(int newNumMasternodes)> NotifyStrMasternodeCountChanged;
 
     /**
      * New, updated or cancelled alert.

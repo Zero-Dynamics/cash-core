@@ -7,7 +7,7 @@
 
 #include "base58.h"
 #include "clientversion.h"
-#include "servicenode-sync.h"
+#include "masternode-sync.h"
 #include "init.h"
 #include "net.h"
 #include "netbase.h"
@@ -124,7 +124,7 @@ UniValue debug(const JSONRPCRequest& request)
         throw std::runtime_error(
             "debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool"
             "|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|"
-            "cash|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject|dht|bdap|validation|stealth|)\n"
+            "cash|privatesend|instantsend|masternode|spork|keepass|mnpayments|gobject|dht|bdap|validation|stealth|)\n"
             "Change debug category on the fly. Specify single category or use a plus to specify many.\n"
             "\nExamples:\n" +
             HelpExampleCli("debug", "cash") + HelpExampleRpc("debug", "cash+net"));
@@ -141,37 +141,37 @@ UniValue debug(const JSONRPCRequest& request)
     return "Debug mode: " + (fDebug ? strMode : "off");
 }
 
-UniValue snsync(const JSONRPCRequest& request)
+UniValue mnsync(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
-            "snsync [status|next|reset]\n"
+            "mnsync [status|next|reset]\n"
             "Returns the sync status, updates to the next step or resets it entirely.\n");
 
     std::string strMode = request.params[0].get_str();
 
     if (strMode == "status") {
         UniValue objStatus(UniValue::VOBJ);
-        objStatus.push_back(Pair("AssetID", servicenodeSync.GetAssetID()));
-        objStatus.push_back(Pair("AssetName", servicenodeSync.GetAssetName()));
-        objStatus.push_back(Pair("AssetStartTime", servicenodeSync.GetAssetStartTime()));
-        objStatus.push_back(Pair("Attempt", servicenodeSync.GetAttempt()));
-        objStatus.push_back(Pair("IsBlockchainSynced", servicenodeSync.IsBlockchainSynced()));
-        objStatus.push_back(Pair("IsServiceNodeListSynced", servicenodeSync.IsServiceNodeListSynced()));
-        objStatus.push_back(Pair("IsWinnersListSynced", servicenodeSync.IsWinnersListSynced()));
-        objStatus.push_back(Pair("IsSynced", servicenodeSync.IsSynced()));
-        objStatus.push_back(Pair("IsFailed", servicenodeSync.IsFailed()));
+        objStatus.push_back(Pair("AssetID", masternodeSync.GetAssetID()));
+        objStatus.push_back(Pair("AssetName", masternodeSync.GetAssetName()));
+        objStatus.push_back(Pair("AssetStartTime", masternodeSync.GetAssetStartTime()));
+        objStatus.push_back(Pair("Attempt", masternodeSync.GetAttempt()));
+        objStatus.push_back(Pair("IsBlockchainSynced", masternodeSync.IsBlockchainSynced()));
+        objStatus.push_back(Pair("IsMasternodeListSynced", masternodeSync.IsMasternodeListSynced()));
+        objStatus.push_back(Pair("IsWinnersListSynced", masternodeSync.IsWinnersListSynced()));
+        objStatus.push_back(Pair("IsSynced", masternodeSync.IsSynced()));
+        objStatus.push_back(Pair("IsFailed", masternodeSync.IsFailed()));
         return objStatus;
     }
 
     if (strMode == "next") {
-        servicenodeSync.SwitchToNextAsset(*g_connman);
-        return "sync updated to " + servicenodeSync.GetAssetName();
+        masternodeSync.SwitchToNextAsset(*g_connman);
+        return "sync updated to " + masternodeSync.GetAssetName();
     }
 
     if (strMode == "reset") {
-        servicenodeSync.Reset();
-        servicenodeSync.SwitchToNextAsset(*g_connman);
+        masternodeSync.Reset();
+        masternodeSync.SwitchToNextAsset(*g_connman);
         return "success";
     }
     return "failure";
@@ -1124,7 +1124,7 @@ static const CRPCCommand commands[] =
         {"addressindex", "getaddressbalance", &getaddressbalance, false, {"addresses"}},
 
         /* Cash features */
-        {"cash", "snsync", &snsync, true, {}},
+        {"cash", "mnsync", &mnsync, true, {}},
         {"cash", "spork", &spork, true, {"value"}},
 
         /* Not shown in help */

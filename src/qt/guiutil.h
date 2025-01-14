@@ -119,8 +119,8 @@ void openDebugLogfile();
 // Open cash.conf
 void openConfigfile();
 
-// Open servicenode.conf
-void openSNConfigfile();
+// Open masternode.conf
+void openMNConfigfile();
 
 // Browse backup folder
 void showBackups();

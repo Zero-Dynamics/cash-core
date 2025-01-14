@@ -5,11 +5,11 @@
 
 #include "privatesend-server.h"
 
-#include "activeservicenode.h"
+#include "activemasternode.h"
 #include "consensus/validation.h"
 #include "core_io.h"
-#include "servicenode-sync.h"
-#include "servicenodeman.h"
+#include "masternode-sync.h"
+#include "masternodeman.h"
 #include "init.h"
 #include "netmessagemaker.h"
 #include "script/interpreter.h"
@@ -24,11 +24,11 @@ CPrivateSendServer privateSendServer;
 
 void CPrivateSendServer::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return;
     if (fLiteMode)
         return; // ignore all Cash related functionality
-    if (!servicenodeSync.IsBlockchainSynced())
+    if (!masternodeSync.IsBlockchainSynced())
         return;
 
     if (strCommand == NetMsgType::PSACCEPT) {
@@ -51,9 +51,9 @@ void CPrivateSendServer::ProcessMessage(CNode* pfrom, const std::string& strComm
 
         LogPrint("privatesend", "PSACCEPT -- nDenom %d (%s)  txCollateral %s", psa.nDenom, CPrivateSend::GetDenominationsToString(psa.nDenom), psa.txCollateral.ToString());
 
-        servicenode_info_t snInfo;
-        if (!snodeman.GetServiceNodeInfo(activeServiceNode.outpoint, snInfo)) {
-            PushStatus(pfrom, STATUS_REJECTED, ERR_SN_LIST, connman);
+        masternode_info_t mnInfo;
+        if (!mnodeman.GetMasternodeInfo(activeMasternode.outpoint, mnInfo)) {
+            PushStatus(pfrom, STATUS_REJECTED, ERR_MN_LIST, connman);
             return;
         }
 
@@ -63,7 +63,7 @@ void CPrivateSendServer::ProcessMessage(CNode* pfrom, const std::string& strComm
                 if (!lockRecv) return;
 
                 for (const auto& q : vecPrivateSendQueue) {
-                    if (q.servicenodeOutpoint == activeServiceNode.outpoint) {
+                    if (q.masternodeOutpoint == activeMasternode.outpoint) {
                         // refuse to create another queue this often
                         LogPrint("privatesend", "PSACCEPT -- last psq is still in queue, refuse to mix\n");
                         PushStatus(pfrom, STATUS_REJECTED, ERR_RECENT, connman);
@@ -72,7 +72,7 @@ void CPrivateSendServer::ProcessMessage(CNode* pfrom, const std::string& strComm
                 }
             }
 
-            if (snInfo.nLastPsq != 0 && snInfo.nLastPsq + snodeman.CountServiceNodes() / 5 > snodeman.nPsqCount) {
+            if (mnInfo.nLastPsq != 0 && mnInfo.nLastPsq + mnodeman.CountMasternodes() / 5 > mnodeman.nPsqCount) {
                 LogPrintf("PSACCEPT -- last psq too recent, must wait: addr=%s\n", pfrom->addr.ToString());
                 PushStatus(pfrom, STATUS_REJECTED, ERR_RECENT, connman);
                 return;
@@ -119,35 +119,35 @@ void CPrivateSendServer::ProcessMessage(CNode* pfrom, const std::string& strComm
         if (psq.IsExpired())
             return;
 
-        servicenode_info_t snInfo;
-        if (!snodeman.GetServiceNodeInfo(psq.servicenodeOutpoint, snInfo))
+        masternode_info_t mnInfo;
+        if (!mnodeman.GetMasternodeInfo(psq.masternodeOutpoint, mnInfo))
             return;
 
-        if (!psq.CheckSignature(snInfo.pubKeyServiceNode)) {
+        if (!psq.CheckSignature(mnInfo.pubKeyMasternode)) {
             // we probably have outdated info
-            snodeman.AskForSN(pfrom, psq.servicenodeOutpoint, connman);
+            mnodeman.AskForMN(pfrom, psq.masternodeOutpoint, connman);
             return;
         }
 
         if (!psq.fReady) {
             for (const auto& q : vecPrivateSendQueue) {
-                if (q.servicenodeOutpoint == psq.servicenodeOutpoint) {
-                    // no way same sn can send another "not yet ready" psq this soon
-                    LogPrint("privatesend", "PSQUEUE -- ServiceNode %s is sending WAY too many psq messages\n", snInfo.addr.ToString());
+                if (q.masternodeOutpoint == psq.masternodeOutpoint) {
+                    // no way same mn can send another "not yet ready" psq this soon
+                    LogPrint("privatesend", "PSQUEUE -- Masternode %s is sending WAY too many psq messages\n", mnInfo.addr.ToString());
                     return;
                 }
             }
 
-            int nThreshold = snInfo.nLastPsq + snodeman.CountServiceNodes() / 5;
-            LogPrint("privatesend", "PSQUEUE -- nLastPsq: %d  threshold: %d  nPsqCount: %d\n", snInfo.nLastPsq, nThreshold, snodeman.nPsqCount);
+            int nThreshold = mnInfo.nLastPsq + mnodeman.CountMasternodes() / 5;
+            LogPrint("privatesend", "PSQUEUE -- nLastPsq: %d  threshold: %d  nPsqCount: %d\n", mnInfo.nLastPsq, nThreshold, mnodeman.nPsqCount);
             //don't allow a few nodes to dominate the queuing process
-            if (snInfo.nLastPsq != 0 && nThreshold > snodeman.nPsqCount) {
-                LogPrint("privatesend", "PSQUEUE -- ServiceNode %s is sending too many psq messages\n", snInfo.addr.ToString());
+            if (mnInfo.nLastPsq != 0 && nThreshold > mnodeman.nPsqCount) {
+                LogPrint("privatesend", "PSQUEUE -- Masternode %s is sending too many psq messages\n", mnInfo.addr.ToString());
                 return;
             }
-            snodeman.AllowMixing(psq.servicenodeOutpoint);
+            mnodeman.AllowMixing(psq.masternodeOutpoint);
 
-            LogPrint("privatesend", "PSQUEUE -- new PrivateSend queue (%s) from servicenode %s\n", psq.ToString(), snInfo.addr.ToString());
+            LogPrint("privatesend", "PSQUEUE -- new PrivateSend queue (%s) from masternode %s\n", psq.ToString(), mnInfo.addr.ToString());
             vecPrivateSendQueue.push_back(psq);
             psq.Relay(connman);
         }
@@ -281,7 +281,7 @@ void CPrivateSendServer::ProcessMessage(CNode* pfrom, const std::string& strComm
 
 void CPrivateSendServer::SetNull()
 {
-    // SN side
+    // MN side
     vecSessionCollaterals.clear();
 
     CPrivateSendBaseSession::SetNull();
@@ -289,11 +289,11 @@ void CPrivateSendServer::SetNull()
 }
 
 //
-// Check the mixing progress and send client updates if a ServiceNode
+// Check the mixing progress and send client updates if a Masternode
 //
 void CPrivateSendServer::CheckPool(CConnman& connman)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return;
 
     LogPrint("privatesend", "CPrivateSendServer::CheckPool -- entries count %lu\n", GetEntriesCount());
@@ -341,8 +341,8 @@ void CPrivateSendServer::CreateFinalTransaction(CConnman& connman)
 
 void CPrivateSendServer::CommitFinalTransaction(CConnman& connman)
 {
-    if (!fServiceNodeMode)
-        return; // check and relay final tx only on servicenode
+    if (!fMasternodeMode)
+        return; // check and relay final tx only on masternode
 
     CTransactionRef finalTransaction = MakeTransactionRef(finalMutableTransaction);
     uint256 hashTx = finalTransaction->GetHash();
@@ -365,9 +365,9 @@ void CPrivateSendServer::CommitFinalTransaction(CConnman& connman)
 
     LogPrintf("CPrivateSendServer::CommitFinalTransaction -- CREATING PSTX\n");
 
-    // create and sign servicenode pstx transaction
+    // create and sign masternode pstx transaction
     if (!CPrivateSend::GetPSTX(hashTx)) {
-        CPrivateSendBroadcastTx pstxNew(finalTransaction, activeServiceNode.outpoint, GetAdjustedTime());
+        CPrivateSendBroadcastTx pstxNew(finalTransaction, activeMasternode.outpoint, GetAdjustedTime());
         pstxNew.Sign();
         CPrivateSend::AddPSTX(pstxNew);
     }
@@ -396,13 +396,13 @@ void CPrivateSendServer::CommitFinalTransaction(CConnman& connman)
 // a client submits a transaction then refused to sign, there must be a cost. Otherwise they
 // would be able to do this over and over again and bring the mixing to a halt.
 //
-// How does this work? Messages to ServiceNodes come in via NetMsgType::PSVIN, these require a valid collateral
-// transaction for the client to be able to enter the pool. This transaction is kept by the ServiceNode
+// How does this work? Messages to Masternodes come in via NetMsgType::PSVIN, these require a valid collateral
+// transaction for the client to be able to enter the pool. This transaction is kept by the Masternode
 // until the transaction is either complete or fails.
 //
 void CPrivateSendServer::ChargeFees(CConnman& connman)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return;
 
     //we don't need to charge collateral for every offence.
@@ -495,7 +495,7 @@ void CPrivateSendServer::ChargeFees(CConnman& connman)
 */
 void CPrivateSendServer::ChargeRandomFees(CConnman& connman)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return;
 
     LOCK(cs_main);
@@ -520,7 +520,7 @@ void CPrivateSendServer::ChargeRandomFees(CConnman& connman)
 //
 void CPrivateSendServer::CheckTimeout(CConnman& connman)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return;
 
     CheckQueue();
@@ -543,13 +543,13 @@ void CPrivateSendServer::CheckTimeout(CConnman& connman)
 */
 void CPrivateSendServer::CheckForCompleteQueue(CConnman& connman)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return;
 
     if (nState == POOL_STATE_QUEUE && IsSessionReady()) {
         SetState(POOL_STATE_ACCEPTING_ENTRIES);
 
-        CPrivateSendQueue psq(nSessionDenom, activeServiceNode.outpoint, GetAdjustedTime(), true);
+        CPrivateSendQueue psq(nSessionDenom, activeMasternode.outpoint, GetAdjustedTime(), true);
         LogPrint("privatesend", "CPrivateSendServer::CheckForCompleteQueue -- queue is ready, signing and relaying (%s)\n", psq.ToString());
         psq.Sign();
         psq.Relay(connman);
@@ -603,7 +603,7 @@ bool CPrivateSendServer::IsInputScriptSigValid(const CTxIn& txin)
 //
 bool CPrivateSendServer::AddEntry(const CPrivateSendEntry& entryNew, PoolMessage& nMessageIDRet)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return false;
 
     for (const auto& txin : entryNew.vecTxPSIn) {
@@ -713,7 +713,7 @@ bool CPrivateSendServer::IsOutputsCompatibleWithSessionDenom(const std::vector<C
 
 bool CPrivateSendServer::IsAcceptablePSA(const CPrivateSendAccept& psa, PoolMessage& nMessageIDRet)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return false;
 
     // is denom even smth legit?
@@ -736,7 +736,7 @@ bool CPrivateSendServer::IsAcceptablePSA(const CPrivateSendAccept& psa, PoolMess
 
 bool CPrivateSendServer::CreateNewSession(const CPrivateSendAccept& psa, PoolMessage& nMessageIDRet, CConnman& connman)
 {
-    if (!fServiceNodeMode || nSessionID != 0)
+    if (!fMasternodeMode || nSessionID != 0)
         return false;
 
     // new session can only be started in idle mode
@@ -760,7 +760,7 @@ bool CPrivateSendServer::CreateNewSession(const CPrivateSendAccept& psa, PoolMes
 
     if (!fUnitTest) {
         //broadcast that I'm accepting entries, only if it's the first entry through
-        CPrivateSendQueue psq(psa.nDenom, activeServiceNode.outpoint, GetAdjustedTime(), false);
+        CPrivateSendQueue psq(psa.nDenom, activeMasternode.outpoint, GetAdjustedTime(), false);
         LogPrint("privatesend", "CPrivateSendServer::CreateNewSession -- signing and relaying new queue: %s\n", psq.ToString());
         psq.Sign();
         psq.Relay(connman);
@@ -776,7 +776,7 @@ bool CPrivateSendServer::CreateNewSession(const CPrivateSendAccept& psa, PoolMes
 
 bool CPrivateSendServer::AddUserToExistingSession(const CPrivateSendAccept& psa, PoolMessage& nMessageIDRet)
 {
-    if (!fServiceNodeMode || nSessionID == 0 || IsSessionReady())
+    if (!fMasternodeMode || nSessionID == 0 || IsSessionReady())
         return false;
 
     if (!IsAcceptablePSA(psa, nMessageIDRet)) {
@@ -896,11 +896,11 @@ void CPrivateSendServer::RelayCompletedTransaction(PoolMessage nMessageID, CConn
 
 void CPrivateSendServer::SetState(PoolState nStateNew)
 {
-    if (!fServiceNodeMode)
+    if (!fMasternodeMode)
         return;
 
     if (nStateNew == POOL_STATE_ERROR || nStateNew == POOL_STATE_SUCCESS) {
-        LogPrint("privatesend", "CPrivateSendServer::SetState -- Can't set state to ERROR or SUCCESS as a ServiceNode. \n");
+        LogPrint("privatesend", "CPrivateSendServer::SetState -- Can't set state to ERROR or SUCCESS as a Masternode. \n");
         return;
     }
 
@@ -912,10 +912,10 @@ void CPrivateSendServer::DoMaintenance(CConnman& connman)
 {
     if (fLiteMode)
         return; // disable all Cash specific functionality
-    if (!fServiceNodeMode)
-        return; // only run on servicenodes
+    if (!fMasternodeMode)
+        return; // only run on masternodes
 
-    if (!servicenodeSync.IsBlockchainSynced() || ShutdownRequested())
+    if (!masternodeSync.IsBlockchainSynced() || ShutdownRequested())
         return;
 
     privateSendServer.CheckTimeout(connman);

@@ -4,7 +4,7 @@
 
 #include "dht/session.h"
 
-#include "activeservicenode.h"
+#include "activemasternode.h"
 #include "bdap/linkstorage.h"
 #include "bdap/utils.h"
 #include "chainparams.h"
@@ -15,7 +15,7 @@
 #include "dht/mutable.h"
 #include "dht/mutabledb.h"
 #include "dht/settings.h"
-#include "servicenode-sync.h"
+#include "masternode-sync.h"
 #include "net.h"
 #include "spork.h"
 #include "util.h"
@@ -410,11 +410,11 @@ void static StartDHTNetwork(const CChainParams& chainparams, CConnman& connman)
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
     RenameThread("dht-session");
     try {
-        // Busy-wait for the network to come online so we get a full list of ServiceNodes
+        // Busy-wait for the network to come online so we get a full list of Masternodes
         do {
             bool fvNodesEmpty = connman.GetNodeCount(CConnman::CONNECTIONS_ALL) == 0;
-            if (!fvNodesEmpty && !IsInitialBlockDownload() && servicenodeSync.IsSynced() && 
-                servicenodeSync.IsBlockchainSynced() && sporkManager.IsSporkActive(SPORK_30_ACTIVATE_BDAP))
+            if (!fvNodesEmpty && !IsInitialBlockDownload() && masternodeSync.IsSynced() && 
+                masternodeSync.IsBlockchainSynced() && sporkManager.IsSporkActive(SPORK_30_ACTIVATE_BDAP))
                     break;
 
             MilliSleep(1000);
@@ -424,11 +424,11 @@ void static StartDHTNetwork(const CChainParams& chainparams, CConnman& connman)
         } while (true);
         // start all DHT sessions
         size_t nRunningThreads = fMultiThreads ? nThreads : 1;
-        // ServiceNodes use a fixed peer id for the DHT.
-        std::string strServiceNodePeerID;
-        if (fServiceNodeMode) {
-            MilliSleep(1000); // wait a second to make sure we have the ServiceNode service address loaded.
-            strServiceNodePeerID = GetServiceNodeHashID(activeServiceNode.service.ToString(false));
+        // Masternodes use a fixed peer id for the DHT.
+        std::string strMasternodePeerID;
+        if (fMasternodeMode) {
+            MilliSleep(1000); // wait a second to make sure we have the Masternode service address loaded.
+            strMasternodePeerID = GetMasternodeHashID(activeMasternode.service.ToString(false));
         }
 
         if (nRunningThreads > 1) {
@@ -437,8 +437,8 @@ void static StartDHTNetwork(const CChainParams& chainparams, CConnman& connman)
                 std::shared_ptr<CHashTableSession> pDHTSession(new CHashTableSession());
                 CDHTSettings settings(i, nThreads, fMultiThreads);
                 pDHTSession->strName = strprintf("dht-%d", std::to_string(i));
-                if (fServiceNodeMode)
-                    settings.LoadPeerID(strServiceNodePeerID);
+                if (fMasternodeMode)
+                    settings.LoadPeerID(strMasternodePeerID);
                 settings.LoadSettings();
                 pDHTSession->Session = settings.GetSession();
                 std::shared_ptr<std::thread> pSessionThread = std::make_shared<std::thread>(std::bind(&StartEventListener, std::ref(pDHTSession)));
@@ -452,15 +452,15 @@ void static StartDHTNetwork(const CChainParams& chainparams, CConnman& connman)
             std::shared_ptr<CHashTableSession> pDHTSession(new CHashTableSession());
             CDHTSettings settings(i, nThreads, fMultiThreads);
             pDHTSession->strName = strprintf("dht-%d", std::to_string(i));
-            if (fServiceNodeMode)
-                settings.LoadPeerID(strServiceNodePeerID);
+            if (fMasternodeMode)
+                settings.LoadPeerID(strMasternodePeerID);
             settings.LoadSettings();
             pDHTSession->Session = settings.GetSession();
             std::shared_ptr<std::thread> pSessionThread = std::make_shared<std::thread>(std::bind(&StartEventListener, std::ref(pDHTSession)));
             arraySessions[i] = std::make_pair(pSessionThread, pDHTSession);
             LogPrintf("%s -- Session PeerID %s\n", __func__, pDHTSession->Session->get_settings().get_str(settings_pack::peer_fingerprint));
         }
-        if (fServiceNodeMode) {
+        if (fMasternodeMode) {
             // Start thread used to balance the hash table by re-announcing entries
             fReannounceStarted = true;
             pReannounceThread = std::make_shared<boost::thread>(std::bind(&ReannounceEntries));

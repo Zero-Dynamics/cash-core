@@ -132,7 +132,7 @@ DEBUGGING TESTING OPTIONS
 * "-limitdescendantcount=[n]" ("Do not accept transactions if any ancestor would have [n] or more in-mempool descendants")
 * "-limitdescendantsize=[n]" ("Do not accept transactions if any ancestor would have more than [n] kilobytes of in-mempool descendants.")
 
-debug Categories are "addrman, alert, bench, coindb, db, http, libevent, lock, mempool, mempoolrej, net, proxy, prune, qt, rand, reindex, rpc, selectcoins, tor, zmq, Cash (or specifically: privatesend, instantsend, servicenode, spork, keepass, snpayments, gobject)"
+debug Categories are "addrman, alert, bench, coindb, db, http, libevent, lock, mempool, mempoolrej, net, proxy, prune, qt, rand, reindex, rpc, selectcoins, tor, zmq, Cash (or specifically: privatesend, instantsend, masternode, spork, keepass, mnpayments, gobject)"
 
 * "-debug=[category]" ("Output debugging information (supplying [category] is optional)") +
         ("If [category] is not supplied or if [category] = 1, output all debugging information.") + ("[category] can be:")
@@ -154,20 +154,20 @@ debug Categories are "addrman, alert, bench, coindb, db, http, libevent, lock, m
 * "-printpriority" ("Log transaction priority and fee per kB when mining blocks")
 * "-privdb" ("Sets the DB_PRIVATE flag in the wallet db environment")
 * "-shrinkdebugfile" ("Shrink debug.log file on client startup (default: 1 when no -debug)")
-* "-litemode=[n]" ("Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1)")
+* "-litemode=[n]" ("Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1)")
 
-SERVICENODE OPTIONS
+MASTERNODE OPTIONS
 --------------
-* "-servicenode=[n]" ("Enable the client to act as a ServiceNode (0-1)")
-* "-snconf=[file]" ("Specify ServiceNode configuration file", "servicenode.conf")
-* "-snconflock=[n]" ("Lock ServiceNodes from ServiceNode configuration file")
-* "-servicenodepairingkey=[n]" ("Set the ServiceNode private key")
+* "-masternode=[n]" ("Enable the client to act as a Masternode (0-1)")
+* "-mnconf=[file]" ("Specify Masternode configuration file", "masternode.conf")
+* "-mnconflock=[n]" ("Lock Masternodes from Masternode configuration file")
+* "-masternodepairingkey=[n]" ("Set the Masternode private key")
 
 PRIVATESEND OPTIONS
 -------------------
 * "-enableprivatesend=[n]" ("Enable use of automated PrivateSend for funds stored in this wallet (0-1)")
 * "-privatesendmultisession=[n]" ("Enable multiple PrivateSend mixing sessions per block, experimental (0-1)")
-* "-privatesendrounds=[n]" ("Use N separate ServiceNodes for each denominated input to mix funds (2-16)")
+* "-privatesendrounds=[n]" ("Use N separate Masternodes for each denominated input to mix funds (2-16)")
 * "-privatesendamount=[n]" ("Keep N 0DYNC anonymized")
 * "-liquidityprovider=[n]" ("Provide liquidity to PrivateSend by infrequently mixing coins on a continual basis (0-100, 1=very frequent, high fees, 100=very infrequent, low fees)")
 

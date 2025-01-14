@@ -106,7 +106,7 @@ std::string to_internal(const std::string&);
 } // namespace boost
 
 //Cash only features
-bool fServiceNodeMode = false;
+bool fMasternodeMode = false;
 bool fLiteMode = false;
 /**
     nWalletBackups:
@@ -274,14 +274,14 @@ bool LogAcceptCategory(const char* category)
                 // "cash" is a composite category enabling all Cash-related debug output
                 //addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool"
                 //"|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|"
-                //"cash|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject|dht|bdap|validation|stealth|
+                //"cash|privatesend|instantsend|masternode|spork|keepass|mnpayments|gobject|dht|bdap|validation|stealth|
                 if (ptrCategory->count(std::string("cash"))) {
                     ptrCategory->insert(std::string("privatesend"));
                     ptrCategory->insert(std::string("instantsend"));
-                    ptrCategory->insert(std::string("servicenode"));
+                    ptrCategory->insert(std::string("masternode"));
                     ptrCategory->insert(std::string("spork"));
                     ptrCategory->insert(std::string("keepass"));
-                    ptrCategory->insert(std::string("snpayments"));
+                    ptrCategory->insert(std::string("mnpayments"));
                     ptrCategory->insert(std::string("gobject"));
                     ptrCategory->insert(std::string("dht"));
                     ptrCategory->insert(std::string("bdap"));
@@ -677,9 +677,9 @@ boost::filesystem::path GetConfigFile(const std::string& confPath)
     return pathConfigFile;
 }
 
-boost::filesystem::path GetServiceNodeConfigFile()
+boost::filesystem::path GetMasternodeConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-snconf", "servicenode.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-mnconf", "masternode.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir() / pathConfigFile;
     return pathConfigFile;

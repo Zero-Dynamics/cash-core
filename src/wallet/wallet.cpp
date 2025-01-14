@@ -22,7 +22,7 @@
 #include "consensus/consensus.h"
 #include "consensus/validation.h"
 #include "core_io.h"
-#include "servicenode-sync.h"
+#include "masternode-sync.h"
 #include "fluid/fluid.h"
 #include "fluid/fluiddb.h"
 #include "governance.h"
@@ -1386,7 +1386,7 @@ bool CWallet::AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlockIndex
             return false;
 
         bool fIsMyStealth = false;
-        if (fStealthTx || servicenodeSync.IsBlockchainSynced()) {
+        if (fStealthTx || masternodeSync.IsBlockchainSynced()) {
             // Check if stealth address belongs to this wallet
             fIsMyStealth = ScanForStealthOwnedOutputs(tx);
         }
@@ -3574,7 +3574,7 @@ bool CWallet::SelectCoinsGroupedByAddresses(std::vector<CompactTallyItem>& vecTa
                 // ignore collaterals
                 if (CPrivateSend::IsCollateralAmount(wtx.tx->vout[i].nValue))
                     continue;
-                if (fServiceNodeMode && wtx.tx->vout[i].nValue == 15000 * COIN)
+                if (fMasternodeMode && wtx.tx->vout[i].nValue == 15000 * COIN)
                     continue;
                 // ignore outputs that are 10 times smaller then the smallest denomination
                 // otherwise they will just lead to higher fee / lower priority
@@ -3645,8 +3645,8 @@ bool CWallet::SelectPrivateCoins(CAmount nValueMin, CAmount nValueMax, std::vect
         //do not allow collaterals to be selected
         if (CPrivateSend::IsCollateralAmount(out.tx->tx->vout[out.i].nValue))
             continue;
-        if (fServiceNodeMode && out.tx->tx->vout[out.i].nValue == 15000 * COIN)
-            continue; //servicenode input
+        if (fMasternodeMode && out.tx->tx->vout[out.i].nValue == 15000 * COIN)
+            continue; //masternode input
 
         if (nValueRet + out.tx->tx->vout[out.i].nValue <= nValueMax) {
             CTxIn txin = CTxIn(out.tx->GetHash(), out.i);
@@ -3684,7 +3684,7 @@ bool CWallet::GetCollateralTxPSIn(CTxPSIn& txpsinRet, CAmount& nValueRet) const
     return false;
 }
 
-bool CWallet::GetServiceNodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pubKeyRet, CKey& keyRet, std::string strTxHash, std::string strOutputIndex)
+bool CWallet::GetMasternodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pubKeyRet, CKey& keyRet, std::string strTxHash, std::string strOutputIndex)
 {
     // wait for reindex and/or import to finish
     if (fImporting || fReindex)
@@ -3694,7 +3694,7 @@ bool CWallet::GetServiceNodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pub
     std::vector<COutput> vPossibleCoins;
     AvailableCoins(vPossibleCoins, true, NULL, false, ONLY_15000);
     if (vPossibleCoins.empty()) {
-        LogPrintf("CWallet::GetServiceNodeOutpointAndKeys -- Could not locate any valid servicenode vin\n");
+        LogPrintf("CWallet::GetMasternodeOutpointAndKeys -- Could not locate any valid masternode vin\n");
         return false;
     }
 
@@ -3709,7 +3709,7 @@ bool CWallet::GetServiceNodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pub
         if (out.tx->GetHash() == txHash && out.i == nOutputIndex) // found it!
             return GetOutpointAndKeysFromOutput(out, outpointRet, pubKeyRet, keyRet);
 
-    LogPrintf("CWallet::GetServiceNodeOutpointAndKeys -- Could not locate specified servicenode vin\n");
+    LogPrintf("CWallet::GetMasternodeOutpointAndKeys -- Could not locate specified masternode vin\n");
     return false;
 }
 
@@ -4577,9 +4577,9 @@ DBErrors CWallet::LoadWallet(bool& fFirstRunRet, const bool fImportMnemonic)
     return DB_LOAD_OK;
 }
 
-// Goes through all wallet transactions and checks if they are servicenode collaterals, in which case these are locked
+// Goes through all wallet transactions and checks if they are masternode collaterals, in which case these are locked
 // This avoids accidential spending of collaterals. They can still be unlocked manually if a spend is really intended.
-void CWallet::AutoLockServiceNodeCollaterals()
+void CWallet::AutoLockMasternodeCollaterals()
 {
     LOCK2(cs_main, cs_wallet);
     for (const auto& pair : mapWallet) {

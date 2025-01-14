@@ -5,12 +5,12 @@
 
 //#define ENABLE_CASH_DEBUG
 
-#include "activeservicenode.h"
+#include "activemasternode.h"
 #include "consensus/validation.h"
-#include "servicenode-sync.h"
-#include "servicenode.h"
-#include "servicenodeconfig.h"
-#include "servicenodeman.h"
+#include "masternode-sync.h"
+#include "masternode.h"
+#include "masternodeconfig.h"
+#include "masternodeman.h"
 #include "governance-classes.h"
 #include "governance-validators.h"
 #include "governance-vote.h"
@@ -57,9 +57,9 @@ UniValue gobject(const JSONRPCRequest& request)
             "  getcurrentvotes    - Get only current (tallying) votes for a governance object hash (does not include old votes)\n"
             "  list               - List governance objects (can be filtered by signal and/or object type)\n"
             "  diff               - List differences since last diff\n"
-            "  vote-alias         - Vote on a governance object by servicenode alias (using servicenode.conf setup)\n"
-            "  vote-conf          - Vote on a governance object by servicenode configured in cash.conf\n"
-            "  vote-many          - Vote on a governance object by all servicenodes (using servicenode.conf setup)\n");
+            "  vote-alias         - Vote on a governance object by masternode alias (using masternode.conf setup)\n"
+            "  vote-conf          - Vote on a governance object by masternode configured in cash.conf\n"
+            "  vote-many          - Vote on a governance object by all masternodes (using masternode.conf setup)\n");
 
 
     if (strCommand == "count") {
@@ -170,7 +170,7 @@ UniValue gobject(const JSONRPCRequest& request)
         }
 
         if (govobj.GetObjectType() == GOVERNANCE_OBJECT_TRIGGER) {
-            throw JSONRPCError(RPC_INVALID_PARAMETER, "Trigger objects need not be prepared (however only servicenodes can create them)");
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "Trigger objects need not be prepared (however only masternodes can create them)");
         }
 
         if (govobj.GetObjectType() == GOVERNANCE_OBJECT_WATCHDOG) {
@@ -214,16 +214,16 @@ UniValue gobject(const JSONRPCRequest& request)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Correct usage is 'gobject submit <parent-hash> <revision> <time> <data-hex> <fee-txid>'");
         }
 
-        if (!servicenodeSync.IsBlockchainSynced()) {
-            throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Must wait for client to sync with servicenode network. Try again in a minute or so.");
+        if (!masternodeSync.IsBlockchainSynced()) {
+            throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Must wait for client to sync with masternode network. Try again in a minute or so.");
         }
 
-        bool fSnFound = snodeman.Has(activeServiceNode.outpoint);
+        bool fMnFound = mnodeman.Has(activeMasternode.outpoint);
 
-        DBG(std::cout << "gobject: submit activeServiceNode.pubKeyServiceNode = " << activeServiceNode.pubKeyServiceNode.GetHash().ToString()
-                      << ", outpoint = " << activeServiceNode.outpoint.ToStringShort()
+        DBG(std::cout << "gobject: submit activeMasternode.pubKeyMasternode = " << activeMasternode.pubKeyMasternode.GetHash().ToString()
+                      << ", outpoint = " << activeMasternode.outpoint.ToStringShort()
                       << ", params.size() = " << request.params.size()
-                      << ", fSnFound = " << fSnFound << std::endl;);
+                      << ", fMnFound = " << fMnFound << std::endl;);
 
         // ASSEMBLE NEW GOVERNANCE OBJECT FROM USER PARAMETERS
 
@@ -266,14 +266,14 @@ UniValue gobject(const JSONRPCRequest& request)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Watchdogs are deprecated");
         }
 
-        // Attempt to sign triggers if we are a SN
+        // Attempt to sign triggers if we are a MN
         if (govobj.GetObjectType() == GOVERNANCE_OBJECT_TRIGGER) {
-            if (fSnFound) {
-                govobj.SetServiceNodeOutpoint(activeServiceNode.outpoint);
-                govobj.Sign(activeServiceNode.keyServiceNode, activeServiceNode.pubKeyServiceNode);
+            if (fMnFound) {
+                govobj.SetMasternodeOutpoint(activeMasternode.outpoint);
+                govobj.Sign(activeMasternode.keyMasternode, activeMasternode.pubKeyMasternode);
             } else {
-                LogPrintf("gobject(submit) -- Object submission rejected because node is not a servicenode\n");
-                throw JSONRPCError(RPC_INVALID_PARAMETER, "Only valid servicenodes can submit this type of object");
+                LogPrintf("gobject(submit) -- Object submission rejected because node is not a masternode\n");
+                throw JSONRPCError(RPC_INVALID_PARAMETER, "Only valid masternodes can submit this type of object");
             }
         } else {
             if (request.params.size() != 6) {
@@ -285,11 +285,11 @@ UniValue gobject(const JSONRPCRequest& request)
         std::string strHash = govobj.GetHash().ToString();
 
         std::string strError = "";
-        bool fMissingServiceNode;
+        bool fMissingMasternode;
         bool fMissingConfirmations;
         {
             LOCK(cs_main);
-            if (!govobj.IsValidLocally(strError, fMissingServiceNode, fMissingConfirmations, true) && !fMissingConfirmations) {
+            if (!govobj.IsValidLocally(strError, fMissingMasternode, fMissingConfirmations, true) && !fMissingConfirmations) {
                 LogPrintf("gobject(submit) -- Object submission rejected because object is not valid - hash = %s, strError = %s\n", strHash, strError);
                 throw JSONRPCError(RPC_INTERNAL_ERROR, "Governance object is not valid - " + strHash + " - " + strError);
             }
@@ -297,7 +297,7 @@ UniValue gobject(const JSONRPCRequest& request)
 
         // RELAY THIS OBJECT
         // Reject if rate check fails but don't update buffer
-        if (!governance.ServiceNodeRateCheck(govobj)) {
+        if (!governance.MasternodeRateCheck(govobj)) {
             LogPrintf("gobject(submit) -- Object submission rejected because of rate check failure - hash = %s\n", strHash);
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Object creation rate limit exceeded");
         }
@@ -342,27 +342,27 @@ UniValue gobject(const JSONRPCRequest& request)
 
         UniValue resultsObj(UniValue::VOBJ);
 
-        std::vector<unsigned char> vchServiceNodeModeSignature;
-        std::string strServiceNodeModeSignMessage;
+        std::vector<unsigned char> vchMasternodeModeSignature;
+        std::string strMasternodeModeSignMessage;
 
         UniValue statusObj(UniValue::VOBJ);
         UniValue returnObj(UniValue::VOBJ);
 
-        CServiceNode sn;
-        bool fSnFound = snodeman.Get(activeServiceNode.outpoint, sn);
+        CMasternode mn;
+        bool fMnFound = mnodeman.Get(activeMasternode.outpoint, mn);
 
-        if (!fSnFound) {
+        if (!fMnFound) {
             nFailed++;
             statusObj.push_back(Pair("result", "failed"));
-            statusObj.push_back(Pair("errorMessage", "Can't find servicenode by collateral output"));
+            statusObj.push_back(Pair("errorMessage", "Can't find masternode by collateral output"));
             resultsObj.push_back(Pair("cash.conf", statusObj));
             returnObj.push_back(Pair("overall", strprintf("Voted successfully %d time(s) and failed %d time(s).", nSuccessful, nFailed)));
             returnObj.push_back(Pair("detail", resultsObj));
             return returnObj;
         }
 
-        CGovernanceVote vote(sn.outpoint, hash, eVoteSignal, eVoteOutcome);
-        if (!vote.Sign(activeServiceNode.keyServiceNode, activeServiceNode.pubKeyServiceNode)) {
+        CGovernanceVote vote(mn.outpoint, hash, eVoteSignal, eVoteOutcome);
+        if (!vote.Sign(activeMasternode.keyMasternode, activeMasternode.pubKeyMasternode)) {
             nFailed++;
             statusObj.push_back(Pair("result", "failed"));
             statusObj.push_back(Pair("errorMessage", "Failure to sign."));
@@ -419,53 +419,53 @@ UniValue gobject(const JSONRPCRequest& request)
 
         UniValue resultsObj(UniValue::VOBJ);
 
-        for (const auto& sne : servicenodeConfig.getEntries()) {
+        for (const auto& mne : masternodeConfig.getEntries()) {
             std::string strError;
-            std::vector<unsigned char> vchServiceNodeModeSignature;
-            std::string strServiceNodeModeSignMessage;
+            std::vector<unsigned char> vchMasternodeModeSignature;
+            std::string strMasternodeModeSignMessage;
 
             CPubKey pubKeyCollateralAddress;
             CKey keyCollateralAddress;
-            CPubKey pubKeyServiceNode;
-            CKey keyServiceNode;
+            CPubKey pubKeyMasternode;
+            CKey keyMasternode;
 
             UniValue statusObj(UniValue::VOBJ);
 
-            if (!CMessageSigner::GetKeysFromSecret(sne.getPrivKey(), keyServiceNode, pubKeyServiceNode)) {
+            if (!CMessageSigner::GetKeysFromSecret(mne.getPrivKey(), keyMasternode, pubKeyMasternode)) {
                 nFailed++;
                 statusObj.push_back(Pair("result", "failed"));
-                statusObj.push_back(Pair("errorMessage", "ServiceNode signing error, could not set key correctly"));
-                resultsObj.push_back(Pair(sne.getAlias(), statusObj));
+                statusObj.push_back(Pair("errorMessage", "Masternode signing error, could not set key correctly"));
+                resultsObj.push_back(Pair(mne.getAlias(), statusObj));
                 continue;
             }
 
             uint256 nTxHash;
-            nTxHash.SetHex(sne.getTxHash());
+            nTxHash.SetHex(mne.getTxHash());
 
             int nOutputIndex = 0;
-            if (!ParseInt32(sne.getOutputIndex(), &nOutputIndex)) {
+            if (!ParseInt32(mne.getOutputIndex(), &nOutputIndex)) {
                 continue;
             }
 
             COutPoint outpoint(nTxHash, nOutputIndex);
 
-            CServiceNode sn;
-            bool fSnFound = snodeman.Get(outpoint, sn);
+            CMasternode mn;
+            bool fMnFound = mnodeman.Get(outpoint, mn);
 
-            if (!fSnFound) {
+            if (!fMnFound) {
                 nFailed++;
                 statusObj.push_back(Pair("result", "failed"));
-                statusObj.push_back(Pair("errorMessage", "Can't find servicenode by collateral output"));
-                resultsObj.push_back(Pair(sne.getAlias(), statusObj));
+                statusObj.push_back(Pair("errorMessage", "Can't find masternode by collateral output"));
+                resultsObj.push_back(Pair(mne.getAlias(), statusObj));
                 continue;
             }
 
-            CGovernanceVote vote(sn.outpoint, hash, eVoteSignal, eVoteOutcome);
-            if (!vote.Sign(keyServiceNode, pubKeyServiceNode)) {
+            CGovernanceVote vote(mn.outpoint, hash, eVoteSignal, eVoteOutcome);
+            if (!vote.Sign(keyMasternode, pubKeyMasternode)) {
                 nFailed++;
                 statusObj.push_back(Pair("result", "failed"));
                 statusObj.push_back(Pair("errorMessage", "Failure to sign."));
-                resultsObj.push_back(Pair(sne.getAlias(), statusObj));
+                resultsObj.push_back(Pair(mne.getAlias(), statusObj));
                 continue;
             }
 
@@ -479,7 +479,7 @@ UniValue gobject(const JSONRPCRequest& request)
                 statusObj.push_back(Pair("errorMessage", exception.GetMessage()));
             }
 
-            resultsObj.push_back(Pair(sne.getAlias(), statusObj));
+            resultsObj.push_back(Pair(mne.getAlias(), statusObj));
         }
 
         UniValue returnObj(UniValue::VOBJ);
@@ -490,7 +490,7 @@ UniValue gobject(const JSONRPCRequest& request)
     }
 
 
-    // SERVICENODES CAN VOTE ON GOVERNANCE OBJECTS ON THE NETWORK FOR VARIOUS SIGNALS AND OUTCOMES
+    // MASTERNODES CAN VOTE ON GOVERNANCE OBJECTS ON THE NETWORK FOR VARIOUS SIGNALS AND OUTCOMES
     if (strCommand == "vote-alias") {
         if (request.params.size() != 5)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Correct usage is 'gobject vote-alias <governance-hash> [funding|valid|delete] [yes|no|abstain] <alias-name>'");
@@ -519,71 +519,71 @@ UniValue gobject(const JSONRPCRequest& request)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid vote outcome. Please use one of the following: 'yes', 'no' or 'abstain'");
         }
 
-        // EXECUTE VOTE FOR EACH SERVICENODE, COUNT SUCCESSES VS FAILURES
+        // EXECUTE VOTE FOR EACH MASTERNODE, COUNT SUCCESSES VS FAILURES
 
         int nSuccessful = 0;
         int nFailed = 0;
 
         UniValue resultsObj(UniValue::VOBJ);
 
-        for (const auto& sne : servicenodeConfig.getEntries()) {
+        for (const auto& mne : masternodeConfig.getEntries()) {
             // IF WE HAVE A SPECIFIC NODE REQUESTED TO VOTE, DO THAT
-            if (strAlias != sne.getAlias())
+            if (strAlias != mne.getAlias())
                 continue;
 
             // INIT OUR NEEDED VARIABLES TO EXECUTE THE VOTE
             std::string strError;
-            std::vector<unsigned char> vchServiceNodeModeSignature;
-            std::string strServiceNodeModeSignMessage;
+            std::vector<unsigned char> vchMasternodeModeSignature;
+            std::string strMasternodeModeSignMessage;
 
             CPubKey pubKeyCollateralAddress;
             CKey keyCollateralAddress;
-            CPubKey pubKeyServiceNode;
-            CKey keyServiceNode;
+            CPubKey pubKeyMasternode;
+            CKey keyMasternode;
 
-            // SETUP THE SIGNING KEY FROM SERVICENODE.CONF ENTRY
+            // SETUP THE SIGNING KEY FROM MASTERNODE.CONF ENTRY
 
             UniValue statusObj(UniValue::VOBJ);
 
-            if (!CMessageSigner::GetKeysFromSecret(sne.getPrivKey(), keyServiceNode, pubKeyServiceNode)) {
+            if (!CMessageSigner::GetKeysFromSecret(mne.getPrivKey(), keyMasternode, pubKeyMasternode)) {
                 nFailed++;
                 statusObj.push_back(Pair("result", "failed"));
-                statusObj.push_back(Pair("errorMessage", strprintf("Invalid servicenode key %s.", sne.getPrivKey())));
-                resultsObj.push_back(Pair(sne.getAlias(), statusObj));
+                statusObj.push_back(Pair("errorMessage", strprintf("Invalid masternode key %s.", mne.getPrivKey())));
+                resultsObj.push_back(Pair(mne.getAlias(), statusObj));
                 continue;
             }
 
-            // SEARCH FOR THIS SERVICENODE ON THE NETWORK, THE NODE MUST BE ACTIVE TO VOTE
+            // SEARCH FOR THIS MASTERNODE ON THE NETWORK, THE NODE MUST BE ACTIVE TO VOTE
 
             uint256 nTxHash;
-            nTxHash.SetHex(sne.getTxHash());
+            nTxHash.SetHex(mne.getTxHash());
 
             int nOutputIndex = 0;
-            if (!ParseInt32(sne.getOutputIndex(), &nOutputIndex)) {
+            if (!ParseInt32(mne.getOutputIndex(), &nOutputIndex)) {
                 continue;
             }
 
             COutPoint outpoint(nTxHash, nOutputIndex);
 
-            CServiceNode sn;
-            bool fSnFound = snodeman.Get(outpoint, sn);
+            CMasternode mn;
+            bool fMnFound = mnodeman.Get(outpoint, mn);
 
-            if (!fSnFound) {
+            if (!fMnFound) {
                 nFailed++;
                 statusObj.push_back(Pair("result", "failed"));
-                statusObj.push_back(Pair("errorMessage", "ServiceNode must be publicly available on network to vote. ServiceNode not found."));
-                resultsObj.push_back(Pair(sne.getAlias(), statusObj));
+                statusObj.push_back(Pair("errorMessage", "Masternode must be publicly available on network to vote. Masternode not found."));
+                resultsObj.push_back(Pair(mne.getAlias(), statusObj));
                 continue;
             }
 
             // CREATE NEW GOVERNANCE OBJECT VOTE WITH OUTCOME/SIGNAL
 
             CGovernanceVote vote(outpoint, hash, eVoteSignal, eVoteOutcome);
-            if (!vote.Sign(keyServiceNode, pubKeyServiceNode)) {
+            if (!vote.Sign(keyMasternode, pubKeyMasternode)) {
                 nFailed++;
                 statusObj.push_back(Pair("result", "failed"));
                 statusObj.push_back(Pair("errorMessage", "Failure to sign."));
-                resultsObj.push_back(Pair(sne.getAlias(), statusObj));
+                resultsObj.push_back(Pair(mne.getAlias(), statusObj));
                 continue;
             }
 
@@ -599,7 +599,7 @@ UniValue gobject(const JSONRPCRequest& request)
                 statusObj.push_back(Pair("errorMessage", exception.GetMessage()));
             }
 
-            resultsObj.push_back(Pair(sne.getAlias(), statusObj));
+            resultsObj.push_back(Pair(mne.getAlias(), statusObj));
         }
 
         // REPORT STATS TO THE USER
@@ -671,9 +671,9 @@ UniValue gobject(const JSONRPCRequest& request)
             bObj.push_back(Pair("CollateralHash", pGovObj->GetCollateralHash().ToString()));
             bObj.push_back(Pair("ObjectType", pGovObj->GetObjectType()));
             bObj.push_back(Pair("CreationTime", pGovObj->GetCreationTime()));
-            const COutPoint& servicenodeOutpoint = pGovObj->GetServiceNodeOutpoint();
-            if (servicenodeOutpoint != COutPoint()) {
-                bObj.push_back(Pair("SigningServiceNode", servicenodeOutpoint.ToStringShort()));
+            const COutPoint& masternodeOutpoint = pGovObj->GetMasternodeOutpoint();
+            if (masternodeOutpoint != COutPoint()) {
+                bObj.push_back(Pair("SigningMasternode", masternodeOutpoint.ToStringShort()));
             }
 
             // REPORT STATUS FOR FUNDING VOTES SPECIFICALLY
@@ -722,9 +722,9 @@ UniValue gobject(const JSONRPCRequest& request)
         objResult.push_back(Pair("CollateralHash", pGovObj->GetCollateralHash().ToString()));
         objResult.push_back(Pair("ObjectType", pGovObj->GetObjectType()));
         objResult.push_back(Pair("CreationTime", pGovObj->GetCreationTime()));
-        const COutPoint& servicenodeOutpoint = pGovObj->GetServiceNodeOutpoint();
-        if (servicenodeOutpoint != COutPoint()) {
-            objResult.push_back(Pair("SigningServiceNode", servicenodeOutpoint.ToStringShort()));
+        const COutPoint& masternodeOutpoint = pGovObj->GetMasternodeOutpoint();
+        if (masternodeOutpoint != COutPoint()) {
+            objResult.push_back(Pair("SigningMasternode", masternodeOutpoint.ToStringShort()));
         }
 
         // SHOW (MUCH MORE) INFORMATION ABOUT VOTES FOR GOVERNANCE OBJECT (THAN LIST/DIFF ABOVE)
@@ -753,7 +753,7 @@ UniValue gobject(const JSONRPCRequest& request)
         objDelete.push_back(Pair("AbstainCount", pGovObj->GetAbstainCount(VOTE_SIGNAL_DELETE)));
         objResult.push_back(Pair("DeleteResult", objDelete));
 
-        // -- ENDORSED VIA SERVICENODE-ELECTED BOARD
+        // -- ENDORSED VIA MASTERNODE-ELECTED BOARD
         UniValue objEndorsed(UniValue::VOBJ);
         objEndorsed.push_back(Pair("AbsoluteYesCount", pGovObj->GetAbsoluteYesCount(VOTE_SIGNAL_ENDORSED)));
         objEndorsed.push_back(Pair("YesCount", pGovObj->GetYesCount(VOTE_SIGNAL_ENDORSED)));
@@ -816,11 +816,11 @@ UniValue gobject(const JSONRPCRequest& request)
 
         uint256 hash = ParseHashV(request.params[1], "Governance hash");
 
-        COutPoint snCollateralOutpoint;
+        COutPoint mnCollateralOutpoint;
         if (request.params.size() == 4) {
-            uint256 txid = ParseHashV(request.params[2], "ServiceNode Collateral hash");
+            uint256 txid = ParseHashV(request.params[2], "Masternode Collateral hash");
             std::string strVout = request.params[3].get_str();
-            snCollateralOutpoint = COutPoint(txid, (uint32_t)atoi(strVout));
+            mnCollateralOutpoint = COutPoint(txid, (uint32_t)atoi(strVout));
         }
 
         // FIND OBJECT USER IS LOOKING FOR
@@ -839,7 +839,7 @@ UniValue gobject(const JSONRPCRequest& request)
 
         // GET MATCHING VOTES BY HASH, THEN SHOW USERS VOTE INFORMATION
 
-        std::vector<CGovernanceVote> vecVotes = governance.GetCurrentVotes(hash, snCollateralOutpoint);
+        std::vector<CGovernanceVote> vecVotes = governance.GetCurrentVotes(hash, mnCollateralOutpoint);
         for (const auto& vote : vecVotes) {
             bResult.push_back(Pair(vote.GetHash().ToString(), vote.ToString()));
         }
@@ -854,12 +854,12 @@ UniValue voteraw(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 7)
         throw std::runtime_error(
-            "voteraw <servicenode-tx-hash> <servicenode-tx-index> <governance-hash> <vote-signal> [yes|no|abstain] <time> <vote-sig>\n"
+            "voteraw <masternode-tx-hash> <masternode-tx-index> <governance-hash> <vote-signal> [yes|no|abstain] <time> <vote-sig>\n"
             "Compile and relay a governance vote with provided external signature instead of signing vote internally\n");
 
-    uint256 hashSnTx = ParseHashV(request.params[0], "sn tx hash");
-    int nSnTxIndex = request.params[1].get_int();
-    COutPoint outpoint = COutPoint(hashSnTx, nSnTxIndex);
+    uint256 hashmnTx = ParseHashV(request.params[0], "mn tx hash");
+    int nmnTxIndex = request.params[1].get_int();
+    COutPoint outpoint = COutPoint(hashmnTx, nmnTxIndex);
 
     uint256 hashGovObj = ParseHashV(request.params[2], "Governance hash");
     std::string strVoteSignal = request.params[3].get_str();
@@ -886,11 +886,11 @@ UniValue voteraw(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Malformed base64 encoding");
     }
 
-    CServiceNode sn;
-    bool fSnFound = snodeman.Get(outpoint, sn);
+    CMasternode mn;
+    bool fMnFound = mnodeman.Get(outpoint, mn);
 
-    if (!fSnFound) {
-        throw JSONRPCError(RPC_INTERNAL_ERROR, "Failure to find servicenode in list : " + outpoint.ToStringShort());
+    if (!fMnFound) {
+        throw JSONRPCError(RPC_INTERNAL_ERROR, "Failure to find masternode in list : " + outpoint.ToStringShort());
     }
 
     CGovernanceVote vote(outpoint, hashGovObj, eVoteSignal, eVoteOutcome);
@@ -918,7 +918,7 @@ UniValue getgovernanceinfo(const JSONRPCRequest& request)
             "\nResult:\n"
             "{\n"
             "  \"governanceminquorum\": xxxxx,           (numeric) the absolute minimum number of votes needed to trigger a governance action\n"
-            "  \"servicenodewatchdogmaxseconds\": xxxxx,  (numeric) sentinel watchdog expiration time in seconds (DEPRECATED)\n"
+            "  \"masternodewatchdogmaxseconds\": xxxxx,  (numeric) sentinel watchdog expiration time in seconds (DEPRECATED)\n"
             "  \"sentinelpingmaxseconds\": xxxxx,        (numeric) sentinel ping expiration time in seconds\n"
             "  \"proposalfee\": xxx.xx,                  (numeric) the collateral transaction fee which must be paid to create a proposal in " +
             CURRENCY_UNIT + "\n"
@@ -940,8 +940,8 @@ UniValue getgovernanceinfo(const JSONRPCRequest& request)
 
     UniValue obj(UniValue::VOBJ);
     obj.push_back(Pair("governanceminquorum", Params().GetConsensus().nGovernanceMinQuorum));
-    obj.push_back(Pair("servicenodewatchdogmaxseconds", SERVICENODE_SENTINEL_PING_MAX_SECONDS));
-    obj.push_back(Pair("sentinelpingmaxseconds", SERVICENODE_SENTINEL_PING_MAX_SECONDS));
+    obj.push_back(Pair("masternodewatchdogmaxseconds", MASTERNODE_SENTINEL_PING_MAX_SECONDS));
+    obj.push_back(Pair("sentinelpingmaxseconds", MASTERNODE_SENTINEL_PING_MAX_SECONDS));
     obj.push_back(Pair("proposalfee", ValueFromAmount(GOVERNANCE_PROPOSAL_FEE_TX)));
     obj.push_back(Pair("superblockcycle", Params().GetConsensus().nSuperblockCycle));
     obj.push_back(Pair("lastsuperblock", nLastSuperblock));

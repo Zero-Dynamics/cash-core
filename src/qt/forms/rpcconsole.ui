@@ -297,14 +297,14 @@ QTabBar { alignment: left; }</string>
         </widget>
        </item>
        <item row="12" column="0">
-        <widget class="QLabel" name="servicenodeCountLabel">
+        <widget class="QLabel" name="masternodeCountLabel">
          <property name="text">
-          <string>Number of ServiceNodes</string>
+          <string>Number of Masternodes</string>
          </property>
         </widget>
        </item>
        <item row="12" column="1">
-        <widget class="QLabel" name="servicenodeCount">
+        <widget class="QLabel" name="masternodeCount">
          <property name="text">
           <string>N/A</string>
          </property>

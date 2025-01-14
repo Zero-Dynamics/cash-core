@@ -7,14 +7,14 @@
 #include "bdap/fees.h"
 #include "bdap/utils.h"
 #include "core_io.h" // needed for ScriptToAsmStr
-#include "servicenodeman.h"
+#include "masternodeman.h"
 #include "rpc/protocol.h"
 #include "rpc/server.h"
 #include "primitives/transaction.h"
 #include "spork.h"
 #include "utilmoneystr.h"
 #include "validation.h"
-#include "servicenode-sync.h"
+#include "masternode-sync.h"
 #include "base58.h"
 
 #ifdef ENABLE_WALLET
@@ -118,7 +118,7 @@ static UniValue AddDomainEntry(const JSONRPCRequest& request, BDAP::ObjectType b
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
     bool fUseInstantSend = false;
-    //if (snodeman.EnoughActiveForInstandSend() && sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED))
+    //if (mnodeman.EnoughActiveForInstandSend() && sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED))
     //    fUseInstantSend = true;
 
     // Send the transaction
@@ -189,7 +189,7 @@ UniValue adduser(const JSONRPCRequest& request)
     if(pwalletMain->WalletNeedsUpgrading())
         throw std::runtime_error("Error: Your wallet has not been fully upgraded to version 2.4.  Please unlock your wallet to continue.");
 
-    if (!servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
     }
 
@@ -498,7 +498,7 @@ static UniValue UpdateDomainEntry(const JSONRPCRequest& request, BDAP::ObjectTyp
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strprintf("Insufficient funds for BDAP transaction. %s 0DYNC required.", FormatMoney(monthlyFee + oneTimeFee + depositFee)));
 
     bool fUseInstantSend = false;
-    //if (snodeman.EnoughActiveForInstandSend() && sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED))
+    //if (mnodeman.EnoughActiveForInstandSend() && sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED))
     //    fUseInstantSend = true;
 
     // Send the transaction
@@ -561,7 +561,7 @@ UniValue updateuser(const JSONRPCRequest& request)
            "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("updateuser", "Alice \"Updated, Alice\" 365"));
 
-    if (!servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
     }
 
@@ -608,7 +608,7 @@ UniValue updategroup(const JSONRPCRequest& request)
            "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("updategroup", "0-DYN \"Updated, Zero Dynamics Group\" 700"));
 
-    if (!servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
     }
 
@@ -727,7 +727,7 @@ UniValue deleteuser(const JSONRPCRequest& request)
            "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("deleteuser", "Alice"));
 
-    if (!servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
     }
 
@@ -772,7 +772,7 @@ UniValue deletegroup(const JSONRPCRequest& request)
            "\nAs a JSON-RPC call\n" +
            HelpExampleRpc("deletegroup", "GroupName"));
 
-    if (!servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
     }
 
@@ -887,7 +887,7 @@ UniValue addgroup(const JSONRPCRequest& request)
     if(pwalletMain->WalletNeedsUpgrading())
         throw std::runtime_error("Error: Your wallet has not been fully upgraded to version 1.0.  Please unlock your wallet to continue.");
 
-    if (!servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsBlockchainSynced()) {
         throw std::runtime_error("Error: Cannot create BDAP Objects while wallet is not synced.");
     }
 

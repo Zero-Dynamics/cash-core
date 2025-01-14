@@ -75,7 +75,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</string>
+    <string>Use 2 separate Masternodes to mix funds up to 1000 0DYNC</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -88,7 +88,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</string>
+    <string>Use 8 separate Masternodes to mix funds up to 1000 0DYNC</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -101,7 +101,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Use 16 separate ServiceNodes</string>
+    <string>Use 16 separate Masternodes</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">

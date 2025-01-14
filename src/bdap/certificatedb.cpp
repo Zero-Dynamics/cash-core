@@ -62,49 +62,49 @@ bool CCertificateDB::AddCertificate(const CX509Certificate& certificate)
     bool writeStateCA = true;
     bool writeStateSerial = true;
     bool updateState = true;
-    bool writeStateIssuerSN = true;
-    bool writeStateSubjectSN = true;
+    bool writeStateIssuerMN = true;
+    bool writeStateSubjectMN = true;
     {
         LOCK(cs_bdap_certificate);
 
         std::string labelTxId;
-        std::string labelSubjectSN;
-        std::string labelIssuerSN;
+        std::string labelSubjectMN;
+        std::string labelIssuerMN;
         std::vector<unsigned char> vchTxHash;
         std::vector<unsigned char> vchTxHashRequest;
 
         if (certificate.IsRootCA){  //Root certificate
             vchTxHash = vchFromString(certificate.txHashSigned.ToString());
             labelTxId = "txrootcaid";
-            //labelSubjectSN = "subjectsnrootca";
-            //labelIssuerSN = "issuersnrootca";
+            //labelSubjectMN = "subjectmnrootca";
+            //labelIssuerMN = "issuermnrootca";
         }
         else if (certificate.IsApproved()){  //Approve
             vchTxHash = vchFromString(certificate.txHashSigned.ToString());
             vchTxHashRequest = vchFromString(certificate.txHashRequest.ToString());
             labelTxId = "txapproveid";
-            labelSubjectSN = "subjectsnapprove";
-            labelIssuerSN = "issuersnapprove";
+            labelSubjectMN = "subjectmnapprove";
+            labelIssuerMN = "issuermnapprove";
         }
         else { //Request
             vchTxHash = vchFromString(certificate.txHashRequest.ToString());
             labelTxId = "txrequestid";
-            labelSubjectSN = "subjectsnrequest";
-            labelIssuerSN = "issuersnrequest";
+            labelSubjectMN = "subjectmnrequest";
+            labelIssuerMN = "issuermnrequest";
         }
 
         if (!certificate.IsRootCA) {
             //Subject
             std::vector<std::vector<unsigned char>> vvTxIdSubject;
-            CDBWrapper::Read(make_pair(labelSubjectSN, certificate.Subject), vvTxIdSubject);
+            CDBWrapper::Read(make_pair(labelSubjectMN, certificate.Subject), vvTxIdSubject);
             vvTxIdSubject.push_back(vchTxHash);
-            writeStateSubjectSN = Write(make_pair(labelSubjectSN, certificate.Subject), vvTxIdSubject);
+            writeStateSubjectMN = Write(make_pair(labelSubjectMN, certificate.Subject), vvTxIdSubject);
 
             //Issuer
             std::vector<std::vector<unsigned char>> vvTxIdIssuer;
-            CDBWrapper::Read(make_pair(labelIssuerSN, certificate.Issuer), vvTxIdIssuer);
+            CDBWrapper::Read(make_pair(labelIssuerMN, certificate.Issuer), vvTxIdIssuer);
             vvTxIdIssuer.push_back(vchTxHash);
-            writeStateIssuerSN = Write(make_pair(labelIssuerSN, certificate.Issuer), vvTxIdIssuer);
+            writeStateIssuerMN = Write(make_pair(labelIssuerMN, certificate.Issuer), vvTxIdIssuer);
         }
 
         //Certificate
@@ -129,7 +129,7 @@ bool CCertificateDB::AddCertificate(const CX509Certificate& certificate)
         }
 
     }
-    return writeState && writeStateIssuerSN && writeStateSubjectSN && updateState && writeStateCA && writeStateSerial;
+    return writeState && writeStateIssuerMN && writeStateSubjectMN && updateState && writeStateCA && writeStateSerial;
 }
 
 bool CCertificateDB::ReadCertificateTxId(const std::vector<unsigned char>& vchTxId, CX509Certificate& certificate) 
@@ -174,13 +174,13 @@ bool CCertificateDB::ReadCertificateSerialNumber(const uint64_t& nSerialNumber, 
     return true;
 }
 
-bool CCertificateDB::ReadCertificateSubjectSNRequest(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates, bool getAll) 
+bool CCertificateDB::ReadCertificateSubjectMNRequest(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates, bool getAll) 
 {
     LOCK(cs_bdap_certificate);
     std::vector<std::vector<unsigned char>> vvTxId;
     std::vector<std::vector<unsigned char>> vvTxIdApprove;
     bool readState = false;
-    readState = CDBWrapper::Read(make_pair(std::string("subjectsnrequest"), vchSubject), vvTxId);
+    readState = CDBWrapper::Read(make_pair(std::string("subjectmnrequest"), vchSubject), vvTxId);
 
     if (readState) {
         for (const std::vector<unsigned char>& vchTxId : vvTxId) {
@@ -196,13 +196,13 @@ bool CCertificateDB::ReadCertificateSubjectSNRequest(const std::vector<unsigned 
     return (vCertificates.size() > 0);
 }
 
-bool CCertificateDB::ReadCertificateIssuerSNRequest(const std::vector<unsigned char>& vchIssuer, std::vector<CX509Certificate>& vCertificates, bool getAll) 
+bool CCertificateDB::ReadCertificateIssuerMNRequest(const std::vector<unsigned char>& vchIssuer, std::vector<CX509Certificate>& vCertificates, bool getAll) 
 {
     LOCK(cs_bdap_certificate);
     std::vector<std::vector<unsigned char>> vvTxId;
     std::vector<std::vector<unsigned char>> vvTxIdApprove;
     bool readState = false;
-    readState = CDBWrapper::Read(make_pair(std::string("issuersnrequest"), vchIssuer), vvTxId);
+    readState = CDBWrapper::Read(make_pair(std::string("issuermnrequest"), vchIssuer), vvTxId);
 
     if (readState) {
         for (const std::vector<unsigned char>& vchTxId : vvTxId) {
@@ -218,12 +218,12 @@ bool CCertificateDB::ReadCertificateIssuerSNRequest(const std::vector<unsigned c
     return (vCertificates.size() > 0);
 }
 
-bool CCertificateDB::ReadCertificateSubjectSNApprove(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates) 
+bool CCertificateDB::ReadCertificateSubjectMNApprove(const std::vector<unsigned char>& vchSubject, std::vector<CX509Certificate>& vCertificates) 
 {
     LOCK(cs_bdap_certificate);
     std::vector<std::vector<unsigned char>> vvTxId;
     bool readState = false;
-    readState = CDBWrapper::Read(make_pair(std::string("subjectsnapprove"), vchSubject), vvTxId);
+    readState = CDBWrapper::Read(make_pair(std::string("subjectmnapprove"), vchSubject), vvTxId);
 
     if (readState) {
         for (const std::vector<unsigned char>& vchTxId : vvTxId) {
@@ -237,12 +237,12 @@ bool CCertificateDB::ReadCertificateSubjectSNApprove(const std::vector<unsigned 
     return (vCertificates.size() > 0);
 }
 
-bool CCertificateDB::ReadCertificateIssuerSNApprove(const std::vector<unsigned char>& vchIssuer, std::vector<CX509Certificate>& vCertificates) 
+bool CCertificateDB::ReadCertificateIssuerMNApprove(const std::vector<unsigned char>& vchIssuer, std::vector<CX509Certificate>& vCertificates) 
 {
     LOCK(cs_bdap_certificate);
     std::vector<std::vector<unsigned char>> vvTxId;
     bool readState = false;
-    readState = CDBWrapper::Read(make_pair(std::string("issuersnapprove"), vchIssuer), vvTxId);
+    readState = CDBWrapper::Read(make_pair(std::string("issuermnapprove"), vchIssuer), vvTxId);
 
     if (readState) {
         for (const std::vector<unsigned char>& vchTxId : vvTxId) {
@@ -266,9 +266,9 @@ bool CCertificateDB::EraseCertificateTxId(const std::vector<unsigned char>& vchT
 
     //subjectrequest
     std::vector<std::vector<unsigned char>> vvSubjectRequestTxId;
-    CDBWrapper::Read(make_pair(std::string("subjectsnrequest"), certificate.Subject), vvSubjectRequestTxId);
+    CDBWrapper::Read(make_pair(std::string("subjectmnrequest"), certificate.Subject), vvSubjectRequestTxId);
     if (vvSubjectRequestTxId.size() == 1 && vvSubjectRequestTxId[0] == vchTxId) {
-        CDBWrapper::Erase(make_pair(std::string("subjectsnrequest"), certificate.Subject));
+        CDBWrapper::Erase(make_pair(std::string("subjectmnrequest"), certificate.Subject));
     }
     else {
         std::vector<std::vector<unsigned char>> vvTxIdSubjectRequestNew;
@@ -277,14 +277,14 @@ bool CCertificateDB::EraseCertificateTxId(const std::vector<unsigned char>& vchT
                 vvTxIdSubjectRequestNew.push_back(txid);
             }
         }
-        Write(make_pair(std::string("subjectsnrequest"), certificate.Subject), vvTxIdSubjectRequestNew);
+        Write(make_pair(std::string("subjectmnrequest"), certificate.Subject), vvTxIdSubjectRequestNew);
     }
 
     //issuerrequest
     std::vector<std::vector<unsigned char>> vvIssuerRequestTxId;
-    CDBWrapper::Read(make_pair(std::string("issuersnrequest"), certificate.Issuer), vvIssuerRequestTxId);
+    CDBWrapper::Read(make_pair(std::string("issuermnrequest"), certificate.Issuer), vvIssuerRequestTxId);
     if (vvIssuerRequestTxId.size() == 1 && vvIssuerRequestTxId[0] == vchTxId) {
-        CDBWrapper::Erase(make_pair(std::string("issuersnrequest"), certificate.Issuer));
+        CDBWrapper::Erase(make_pair(std::string("issuermnrequest"), certificate.Issuer));
     }
     else {
         std::vector<std::vector<unsigned char>> vvTxIdIssuerRequestNew;
@@ -293,14 +293,14 @@ bool CCertificateDB::EraseCertificateTxId(const std::vector<unsigned char>& vchT
                 vvTxIdIssuerRequestNew.push_back(txid);
             }
         }
-        Write(make_pair(std::string("issuersnrequest"), certificate.Issuer), vvTxIdIssuerRequestNew);
+        Write(make_pair(std::string("issuermnrequest"), certificate.Issuer), vvTxIdIssuerRequestNew);
     }
 
     //subjectapprove
     std::vector<std::vector<unsigned char>> vvSubjectApproveTxId;
-    CDBWrapper::Read(make_pair(std::string("subjectsnapprove"), certificate.Subject), vvSubjectApproveTxId);
+    CDBWrapper::Read(make_pair(std::string("subjectmnapprove"), certificate.Subject), vvSubjectApproveTxId);
     if (vvSubjectApproveTxId.size() == 1 && vvSubjectApproveTxId[0] == vchTxId) {
-        CDBWrapper::Erase(make_pair(std::string("subjectsnapprove"), certificate.Subject));
+        CDBWrapper::Erase(make_pair(std::string("subjectmnapprove"), certificate.Subject));
     }
     else {
         std::vector<std::vector<unsigned char>> vvTxIdSubjectApproveNew;
@@ -309,14 +309,14 @@ bool CCertificateDB::EraseCertificateTxId(const std::vector<unsigned char>& vchT
                 vvTxIdSubjectApproveNew.push_back(txid);
             }
         }
-        Write(make_pair(std::string("subjectsnapprove"), certificate.Subject), vvTxIdSubjectApproveNew);
+        Write(make_pair(std::string("subjectmnapprove"), certificate.Subject), vvTxIdSubjectApproveNew);
     }
 
     //issuerapprove
     std::vector<std::vector<unsigned char>> vvIssuerApproveTxId;
-    CDBWrapper::Read(make_pair(std::string("issuersnapprove"), certificate.Issuer), vvIssuerApproveTxId);
+    CDBWrapper::Read(make_pair(std::string("issuermnapprove"), certificate.Issuer), vvIssuerApproveTxId);
     if (vvIssuerApproveTxId.size() == 1 && vvIssuerApproveTxId[0] == vchTxId) {
-        CDBWrapper::Erase(make_pair(std::string("issuersnapprove"), certificate.Issuer));
+        CDBWrapper::Erase(make_pair(std::string("issuermnapprove"), certificate.Issuer));
     }
     else {
         std::vector<std::vector<unsigned char>> vvTxIdIssuerApproveNew;
@@ -325,7 +325,7 @@ bool CCertificateDB::EraseCertificateTxId(const std::vector<unsigned char>& vchT
                 vvTxIdIssuerApproveNew.push_back(txid);
             }
         }
-        Write(make_pair(std::string("issuersnapprove"), certificate.Issuer), vvTxIdIssuerApproveNew);
+        Write(make_pair(std::string("issuermnapprove"), certificate.Issuer), vvTxIdIssuerApproveNew);
     }
 
     if (certificate.SerialNumber != 0) {

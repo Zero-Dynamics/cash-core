@@ -70,7 +70,7 @@ endif
 .PHONY: FORCE check-symbols check-security
 # cash #
 CASH_CORE_H = \
-  activeservicenode.h \
+  activemasternode.h \
   addrdb.h \
   addressindex.h \
   addrman.h \
@@ -126,16 +126,16 @@ CASH_CORE_H = \
   dht/sessionevents.h \
   dht/settings.h \
   dht/storage.h \
-  servicenode.h \
-  servicenode-payments.h \
-  servicenode-sync.h \
-  servicenodeman.h \
-  servicenodeconfig.h \
+  masternode.h \
+  masternode-payments.h \
+  masternode-sync.h \
+  masternodeman.h \
+  masternodeconfig.h \
   flat-database.h \
   fluid/banaccount.h \
   fluid/fluid.h \
   fluid/fluiddb.h \
-  fluid/fluidservicenode.h \
+  fluid/fluidmasternode.h \
   fluid/fluidmining.h \
   fluid/fluidmint.h \
   fluid/fluidsovereign.h \
@@ -257,7 +257,7 @@ libcash_util_a-clientversion.$(OBJEXT): obj/build.h
 libcash_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(CASH_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libcash_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libcash_server_a_SOURCES = \
-  activeservicenode.cpp \
+  activemasternode.cpp \
   addrdb.cpp \
   addrman.cpp \
   alert.cpp \
@@ -290,15 +290,15 @@ libcash_server_a_SOURCES = \
   dht/sessionevents.cpp \
   dht/settings.cpp \
   dht/storage.cpp \
-  servicenode.cpp \
-  servicenode-payments.cpp\
-  servicenode-sync.cpp \
-  servicenodeconfig.cpp \
-  servicenodeman.cpp \
+  masternode.cpp \
+  masternode-payments.cpp\
+  masternode-sync.cpp \
+  masternodeconfig.cpp \
+  masternodeman.cpp \
   fluid/banaccount.cpp \
   fluid/fluid.cpp \
   fluid/fluiddb.cpp \
-  fluid/fluidservicenode.cpp \
+  fluid/fluidmasternode.cpp \
   fluid/fluidmining.cpp \
   fluid/fluidmint.cpp \
   fluid/fluidsovereign.cpp \
@@ -340,7 +340,7 @@ libcash_server_a_SOURCES = \
   rpc/certificates.cpp \
   rpc/dht.cpp \
   rpc/domainentry.cpp \
-  rpc/servicenode.cpp \
+  rpc/masternode.cpp \
   rpc/fluid.cpp \
   rpc/governance.cpp \
   rpc/linking.cpp \

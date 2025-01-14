@@ -1,7 +1,7 @@
 // Copyright (c) 2019-2021 Duality Blockchain Solutions Developers
 
 
-#include "fluidservicenode.h"
+#include "fluidmasternode.h"
 
 #include "core_io.h"
 #include "fluid.h"
@@ -10,9 +10,9 @@
 
 #include <boost/thread.hpp>
 
-CFluidServiceNodeDB* pFluidServiceNodeDB = NULL;
+CFluidMasternodeDB* pFluidMasternodeDB = NULL;
 
-bool GetFluidServiceNodeData(const CScript& scriptPubKey, CFluidServiceNode& entry)
+bool GetFluidMasternodeData(const CScript& scriptPubKey, CFluidMasternode& entry)
 {
     std::string fluidOperationString = ScriptToAsmStr(scriptPubKey);
     std::string strOperationCode = GetRidOfScriptStatement(fluidOperationString, 0);
@@ -25,13 +25,13 @@ bool GetFluidServiceNodeData(const CScript& scriptPubKey, CFluidServiceNode& ent
     std::vector<std::string> vecSplitScript;
     SeparateFluidOpString(verificationWithoutOpCode, vecSplitScript);
 
-    if (vecSplitScript.size() == 5 && strOperationCode == "OP_REWARD_SERVICENODE") {
+    if (vecSplitScript.size() == 5 && strOperationCode == "OP_REWARD_MASTERNODE") {
         std::vector<unsigned char> vchFluidOperation = CharVectorFromString(fluidOperationString);
         entry.FluidScript.insert(entry.FluidScript.end(), vchFluidOperation.begin(), vchFluidOperation.end());
         std::string strAmount = vecSplitScript[0];
         CAmount fluidAmount;
         if (ParseFixedPoint(strAmount, 8, &fluidAmount)) {
-            entry.ServiceNodeReward = fluidAmount;
+            entry.MasternodeReward = fluidAmount;
         }
         std::string strTimeStamp = vecSplitScript[1];
         int64_t tokenTimeStamp;
@@ -43,7 +43,7 @@ bool GetFluidServiceNodeData(const CScript& scriptPubKey, CFluidServiceNode& ent
         entry.SovereignAddresses.push_back(CharVectorFromString(fluid.GetAddressFromDigestSignature(vecSplitScript[3], messageTokenKey).ToString()));
         entry.SovereignAddresses.push_back(CharVectorFromString(fluid.GetAddressFromDigestSignature(vecSplitScript[4], messageTokenKey).ToString()));
 
-        LogPrintf("GetFluidServiceNodeData: strAmount = %s, strTimeStamp = %d, Addresses1 = %s, Addresses2 = %s, Addresses3 = %s \n",
+        LogPrintf("GetFluidMasternodeData: strAmount = %s, strTimeStamp = %d, Addresses1 = %s, Addresses2 = %s, Addresses3 = %s \n",
             strAmount, entry.nTimeStamp, StringFromCharVector(entry.SovereignAddresses[0]),
             StringFromCharVector(entry.SovereignAddresses[1]), StringFromCharVector(entry.SovereignAddresses[2]));
 
@@ -52,71 +52,71 @@ bool GetFluidServiceNodeData(const CScript& scriptPubKey, CFluidServiceNode& ent
     return false;
 }
 
-bool GetFluidServiceNodeData(const CTransaction& tx, CFluidServiceNode& entry, int& nOut)
+bool GetFluidMasternodeData(const CTransaction& tx, CFluidMasternode& entry, int& nOut)
 {
     int n = 0;
     for (const CTxOut& txout : tx.vout) {
         CScript txOut = txout.scriptPubKey;
         if (IsTransactionFluid(txOut)) {
             nOut = n;
-            return GetFluidServiceNodeData(txOut, entry);
+            return GetFluidMasternodeData(txOut, entry);
         }
         n++;
     }
     return false;
 }
 
-bool CFluidServiceNode::UnserializeFromTx(const CTransaction& tx)
+bool CFluidMasternode::UnserializeFromTx(const CTransaction& tx)
 {
     int nOut;
-    if (!GetFluidServiceNodeData(tx, *this, nOut)) {
+    if (!GetFluidMasternodeData(tx, *this, nOut)) {
         SetNull();
         return false;
     }
     return true;
 }
 
-bool CFluidServiceNode::UnserializeFromScript(const CScript& fluidScript)
+bool CFluidMasternode::UnserializeFromScript(const CScript& fluidScript)
 {
-    if (!GetFluidServiceNodeData(fluidScript, *this)) {
+    if (!GetFluidMasternodeData(fluidScript, *this)) {
         SetNull();
         return false;
     }
     return true;
 }
 
-void CFluidServiceNode::Serialize(std::vector<unsigned char>& vchData)
+void CFluidMasternode::Serialize(std::vector<unsigned char>& vchData)
 {
     CDataStream dsFluidOp(SER_NETWORK, PROTOCOL_VERSION);
     dsFluidOp << *this;
     vchData = std::vector<unsigned char>(dsFluidOp.begin(), dsFluidOp.end());
 }
 
-CFluidServiceNodeDB::CFluidServiceNodeDB(size_t nCacheSize, bool fMemory, bool fWipe, bool obfuscate) : CDBWrapper(GetDataDir() / "blocks" / "fluid-servicenode", nCacheSize, fMemory, fWipe, obfuscate)
+CFluidMasternodeDB::CFluidMasternodeDB(size_t nCacheSize, bool fMemory, bool fWipe, bool obfuscate) : CDBWrapper(GetDataDir() / "blocks" / "fluid-masternode", nCacheSize, fMemory, fWipe, obfuscate)
 {
 }
 
-bool CFluidServiceNodeDB::AddFluidServiceNodeEntry(const CFluidServiceNode& entry, const int op)
+bool CFluidMasternodeDB::AddFluidMasternodeEntry(const CFluidMasternode& entry, const int op)
 {
     bool writeState = false;
     {
-        LOCK(cs_fluid_servicenode);
+        LOCK(cs_fluid_masternode);
         writeState = Write(make_pair(std::string("script"), entry.FluidScript), entry) && Write(make_pair(std::string("txid"), entry.txHash), entry.FluidScript);
     }
 
     return writeState;
 }
 
-bool CFluidServiceNodeDB::GetLastFluidServiceNodeRecord(CFluidServiceNode& returnEntry, const int nHeight)
+bool CFluidMasternodeDB::GetLastFluidMasternodeRecord(CFluidMasternode& returnEntry, const int nHeight)
 {
-    LOCK(cs_fluid_servicenode);
+    LOCK(cs_fluid_masternode);
     returnEntry.SetNull();
     std::pair<std::string, std::vector<unsigned char> > key;
     std::unique_ptr<CDBIterator> pcursor(NewIterator());
     pcursor->SeekToFirst();
     while (pcursor->Valid()) {
         boost::this_thread::interruption_point();
-        CFluidServiceNode entry;
+        CFluidMasternode entry;
         try {
             if (pcursor->GetKey(key) && key.first == "script") {
                 pcursor->GetValue(entry);
@@ -135,15 +135,15 @@ bool CFluidServiceNodeDB::GetLastFluidServiceNodeRecord(CFluidServiceNode& retur
     return true;
 }
 
-bool CFluidServiceNodeDB::GetAllFluidServiceNodeRecords(std::vector<CFluidServiceNode>& entries)
+bool CFluidMasternodeDB::GetAllFluidMasternodeRecords(std::vector<CFluidMasternode>& entries)
 {
-    LOCK(cs_fluid_servicenode);
+    LOCK(cs_fluid_masternode);
     std::pair<std::string, std::vector<unsigned char> > key;
     std::unique_ptr<CDBIterator> pcursor(NewIterator());
     pcursor->SeekToFirst();
     while (pcursor->Valid()) {
         boost::this_thread::interruption_point();
-        CFluidServiceNode entry;
+        CFluidMasternode entry;
         try {
             if (pcursor->GetKey(key) && key.first == "script") {
                 pcursor->GetValue(entry);
@@ -159,13 +159,13 @@ bool CFluidServiceNodeDB::GetAllFluidServiceNodeRecords(std::vector<CFluidServic
     return true;
 }
 
-bool CFluidServiceNodeDB::IsEmpty()
+bool CFluidMasternodeDB::IsEmpty()
 {
-    LOCK(cs_fluid_servicenode);
+    LOCK(cs_fluid_masternode);
     std::unique_ptr<CDBIterator> pcursor(NewIterator());
     pcursor->SeekToFirst();
     if (pcursor->Valid()) {
-        CFluidServiceNode entry;
+        CFluidMasternode entry;
         try {
             std::pair<std::string, std::vector<unsigned char> > key;
             if (pcursor->GetKey(key) && key.first == "script") {
@@ -180,16 +180,16 @@ bool CFluidServiceNodeDB::IsEmpty()
     return true;
 }
 
-bool CFluidServiceNodeDB::RecordExists(const std::vector<unsigned char>& vchFluidScript)
+bool CFluidMasternodeDB::RecordExists(const std::vector<unsigned char>& vchFluidScript)
 {
-    LOCK(cs_fluid_servicenode);
-    CFluidServiceNode fluidServiceNode;
-    return CDBWrapper::Read(make_pair(std::string("script"), vchFluidScript), fluidServiceNode);
+    LOCK(cs_fluid_masternode);
+    CFluidMasternode fluidMasternode;
+    return CDBWrapper::Read(make_pair(std::string("script"), vchFluidScript), fluidMasternode);
 }
 
-bool CheckFluidServiceNodeDB()
+bool CheckFluidMasternodeDB()
 {
-    if (!pFluidServiceNodeDB)
+    if (!pFluidMasternodeDB)
         return false;
 
     return true;

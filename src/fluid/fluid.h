@@ -31,7 +31,7 @@ public:
     static const int FLUID_ACTIVATE_HEIGHT = 10;
     static const int64_t MAX_FLUID_TIME_DISTORT = 60 * 60;          // Maximum time distort = 1 hour.
     static const CAmount FLUID_TRANSACTION_COST = 1000000 * COIN;    // Cost to send a fluid transaction
-    static const CAmount FLUID_MAX_REWARD_FOR_SERVICENODE = 1000 * COIN; // Max servicenode block reward using fluid OP_REWARD_SERVICENODE
+    static const CAmount FLUID_MAX_REWARD_FOR_MASTERNODE = 1000 * COIN; // Max masternode block reward using fluid OP_REWARD_MASTERNODE
     static const CAmount FLUID_MAX_REWARD_FOR_MINING = 1000 * COIN; // Max mining block reward using fluid OP_REWARD_MINING
     static const CAmount FLUID_MAX_FOR_MINT = 1000000000 * COIN;    // Max minting amount per fluid transaction
 
@@ -78,9 +78,9 @@ public:
 
 /** Standard Reward Payment Determination Functions */
 CAmount GetStandardPoWBlockPayment(const int& nHeight);
-CAmount GetStandardServiceNodePayment(const int& nHeight);
+CAmount GetStandardMasternodePayment(const int& nHeight);
 
-void BuildFluidInformationIndex(CBlockIndex* pindex, CAmount& nExpectedBlockValue, bool fServiceNodePaid);
+void BuildFluidInformationIndex(CBlockIndex* pindex, CAmount& nExpectedBlockValue, bool fMasternodePaid);
 bool IsTransactionFluid(const CScript& txOut);
 bool IsTransactionFluid(const CTransaction& tx, CScript& fluidScript);
 int GetFluidOpCode(const CScript& fluidScript);

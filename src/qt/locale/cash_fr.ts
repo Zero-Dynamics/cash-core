@@ -415,12 +415,12 @@
         <translation>Ouvrir Fichier de &amp;Configuration</translation>
     </message>
     <message>
-        <source>Open &amp;ServiceNode Configuration File</source>
-        <translation>Ouvrir le fichier de configuration ServiceNode</translation>
+        <source>Open &amp;Masternode Configuration File</source>
+        <translation>Ouvrir le fichier de configuration Masternode</translation>
     </message>
     <message>
-        <source>Open ServiceNode configuration file</source>
-        <translation>Ouvrir le fichier de configuration ServiceNode</translation>
+        <source>Open Masternode configuration file</source>
+        <translation>Ouvrir le fichier de configuration Masternode</translation>
     </message>
     <message>
         <source>Open configuration file</source>
@@ -912,16 +912,16 @@ Adresse : %4
         <translation>Veuillez choisir un niveau de confidentialité.</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
-        <translation>Utiliser 2 servicenodes pour mélanger jusqu'à 1000 0DYNC</translation>
+        <source>Use 2 separate masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Utiliser 2 masternodes pour mélanger jusqu'à 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
-        <translation>Utiliser 8 servicenodes pour mélanger jusqu'à 1000 0DYNC</translation>
+        <source>Use 8 separate masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Utiliser 8 masternodes pour mélanger jusqu'à 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate servicenodes</source>
-        <translation>Utiliser 16 servicenodes</translation>
+        <source>Use 16 separate masternodes</source>
+        <translation>Utiliser 16 masternodes</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
@@ -1099,11 +1099,11 @@ Vous conservez le contrôle de votre argent à tout moment.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend commence par diviser les entrées de vos transactions en dénominations standard.
 Ces dénominations sont 0,001, 0,01 0DYNC, 0,1 0DYNC, 1 0DYNC, 10 0DYNC - un peu comme le papier-monnaie que vous utilisez tous les jours.&lt;/li&gt;
-&lt;li&gt;Votre portefeuille envoie ensuite des requêtes à des noeuds logiciels spécialement configurés sur le réseau, appelés "ServiceNodes".
-Ces ServiceNodes sont ensuite informés que vous souhaitez mélanger une certaine dénomination.
-Aucune information identifiable n’est transmise aux ServiceNodes, ils ne savent donc jamais qui est ce dernier. vous êtes.&lt;/li&gt;
+&lt;li&gt;Votre portefeuille envoie ensuite des requêtes à des noeuds logiciels spécialement configurés sur le réseau, appelés "Masternodes".
+Ces Masternodes sont ensuite informés que vous souhaitez mélanger une certaine dénomination.
+Aucune information identifiable n’est transmise aux Masternodes, ils ne savent donc jamais qui est ce dernier. vous êtes.&lt;/li&gt;
 &lt;li&gt;Lorsque deux autres personnes envoient des messages similaires indiquant qu’elles souhaitent mélanger la même dénomination, une session de mixage commence.
-La ServiceNode mélange les entrées et donne des instructions aux trois utilisateurs. des portefeuilles pour payer l’entrée maintenant transformée.
+La Masternode mélange les entrées et donne des instructions aux trois utilisateurs. des portefeuilles pour payer l’entrée maintenant transformée.
 Votre portefeuille paye cette valeur directement à lui-même, mais à une adresse différente (appelée adresse de changement).&lt;/li&gt;
 &lt;li&gt;Afin de masquer complètement vos fonds, votre portefeuille doit répéter ce processus plusieurs fois avec chaque dénomination.
 Chaque fois que le processus est terminé, cela s'appelle un "round". Chaque tour de PrivateSend rend exponentiellement plus difficile la détermination de l'origine de vos fonds.&lt;/li&gt;
@@ -1273,8 +1273,8 @@ Par conséquent, PrivateSend est également désactivé pour les utilisateurs do
         <translation>Expert</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Ce paramètre détermine le nombre de servicenodes uniques par lesquels l'anonymisation sera effectuée.&lt;br/&gt;Plus le nombre de cycles d'anonymisation est important, plus le degré de confidentialité est élevé, mais les frais associés sont d'autant plus importants.</translation>
+        <source>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Ce paramètre détermine le nombre de masternodes uniques par lesquels l'anonymisation sera effectuée.&lt;br/&gt;Plus le nombre de cycles d'anonymisation est important, plus le degré de confidentialité est élevé, mais les frais associés sont d'autant plus importants.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1542,8 +1542,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Démarrer/Arrêtér le mélange</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>Les dénominations que vous avez soumises à la ServiceNode.&lt;br&gt;Pour mélanger, d'autres utilisateurs doivent soumettre les mêmes dénominations.</translation>
+        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>Les dénominations que vous avez soumises à la Masternode.&lt;br&gt;Pour mélanger, d'autres utilisateurs doivent soumettre les mêmes dénominations.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1923,8 +1923,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Chaîne de blocs</translation>
     </message>
     <message>
-        <source>Number of ServiceNodes</source>
-        <translation>Nombre de ServiceNodes</translation>
+        <source>Number of Masternodes</source>
+        <translation>Nombre de Masternodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3415,7 +3415,7 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
 </context>
 <context>
-    <name>ServiceNodeList</name>
+    <name>MasternodeList</name>
     <message>
         <source>Form</source>
         <translation>Formule</translation>
@@ -3429,16 +3429,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Nombre de nœuds:</translation>
     </message>
     <message>
-        <source>My ServiceNodes</source>
-        <translation>Mes servicenodes</translation>
+        <source>My Masternodes</source>
+        <translation>Mes masternodes</translation>
     </message>
     <message>
-        <source>All ServiceNodes</source>
-        <translation>Tous les ServiceNodes</translation>
+        <source>All Masternodes</source>
+        <translation>Tous les Masternodes</translation>
     </message>
     <message>
-        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Remarque: le statut de vos ServiceNodes dans le portefeuille local peut potentiellement être légèrement incorrect.&lt;br /&gt;Attendez toujours que le portefeuille synchronise des données supplémentaires, puis vérifiez à nouveau auprès d'un autre nœud&lt;br /&gt;si votre ServiceNode devrait être en cours d'exécution, mais que le champ &quot;ENABLED&quot; ne soit toujours pas affiché dans le champ &quot;Status&quot;.</translation>
+        <source>Note: Status of your Masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Masternode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Remarque: le statut de vos Masternodes dans le portefeuille local peut potentiellement être légèrement incorrect.&lt;br /&gt;Attendez toujours que le portefeuille synchronise des données supplémentaires, puis vérifiez à nouveau auprès d'un autre nœud&lt;br /&gt;si votre Masternode devrait être en cours d'exécution, mais que le champ &quot;ENABLED&quot; ne soit toujours pas affiché dans le champ &quot;Status&quot;.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3493,36 +3493,36 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL ServiceNodes?</source>
-        <translation>Êtes-vous sûr de vouloir démarrer TOUS les ServiceNodes?</translation>
+        <source>Are you sure you want to start ALL Masternodes?</source>
+        <translation>Êtes-vous sûr de vouloir démarrer TOUS les Masternodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING ServiceNodes?</source>
-        <translation>Etes-vous sûr de vouloir commencer à MISSING ServiceNodes?</translation>
+        <source>Are you sure you want to start MISSING Masternodes?</source>
+        <translation>Etes-vous sûr de vouloir commencer à MISSING Masternodes?</translation>
     </message>
     <message>
-        <source>Confirm missing ServiceNodes start</source>
-        <translation>Confirmer le démarrage manquant des ServiceNodes</translation>
+        <source>Confirm missing Masternodes start</source>
+        <translation>Confirmer le démarrage manquant des Masternodes</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
-        <translation>Confirmez l'absence de ServiceNodes startStatus sera mis à jour automatiquement en (secondes):</translation>
+        <translation>Confirmez l'absence de Masternodes startStatus sera mis à jour automatiquement en (secondes):</translation>
     </message>
     <message>
         <source>Command is not available right now</source>
         <translation>La commande n'est pas disponible pour le moment</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until ServiceNode list is synced</source>
-        <translation>Vous ne pouvez pas utiliser cette commande jusqu'à ce que la liste ServiceNode soit synchronisée</translation>
+        <source>You can&apos;t use this command until Masternode list is synced</source>
+        <translation>Vous ne pouvez pas utiliser cette commande jusqu'à ce que la liste Masternode soit synchronisée</translation>
     </message>
     <message>
-        <source>Confirm ServiceNode start</source>
-        <translation>Confirmer le démarrage de ServiceNode</translation>
+        <source>Confirm Masternode start</source>
+        <translation>Confirmer le démarrage de Masternode</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ServiceNode %1?</source>
-        <translation>Êtes-vous sûr de vouloir démarrer ServiceNode %1?</translation>
+        <source>Are you sure you want to start Masternode %1?</source>
+        <translation>Êtes-vous sûr de vouloir démarrer Masternode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3533,12 +3533,12 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Mise à jour ...</translation>
     </message>
     <message>
-        <source>Successfully started ServiceNode.</source>
-        <translation>ServiceNode a démarré avec succès.</translation>
+        <source>Successfully started Masternode.</source>
+        <translation>Masternode a démarré avec succès.</translation>
     </message>
     <message>
-        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
-        <translation>%d ServiceNodes lancés avec succès, échec du démarrage %d, total %d</translation>
+        <source>Successfully started %d Masternodes, failed to start %d, total %d</source>
+        <translation>%d Masternodes lancés avec succès, échec du démarrage %d, total %d</translation>
     </message>
 </context>
 <context>
@@ -3612,8 +3612,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Cela montre le temps moyen entre les blocs que vous avez minés</translation>
     </message>
     <message>
-        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Les chaînes de blocs et les servicenodes ne sont pas synchronisés, veuillez patienter jusqu'à la synchronisation complète avant l'extraction!</translation>
+        <source>Blockchain/Masternodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Les chaînes de blocs et les masternodes ne sont pas synchronisés, veuillez patienter jusqu'à la synchronisation complète avant l'extraction!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -3838,8 +3838,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Avertissement : wallet.dat corrompu, données récupérées ! Le fichier wallet.dat original a été enregistré en tant que wallet.{timestamp}.bak dans %s ; si votre solde ou transactions sont incorrects vous devriez effectuer une restauration depuis une sauvegarde.</translation>
     </message>
     <message>
-        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Vous devez définir servicenodepairingkey dans la configuration. Veuillez consulter la documentation pour plus d'aide.</translation>
+        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Vous devez définir masternodepairingkey dans la configuration. Veuillez consulter la documentation pour plus d'aide.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4038,8 +4038,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Effacer toutes les transactions du portefeuille et récupère celle qui font partie de la chaine de blocs via -rescan au démarrage</translation>
     </message>
     <message>
-        <source>Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Désactivez toutes les fonctionnalités liées à Cash (ServiceNode, PrivateSend, InstantSend, Budgetisation) (0-1, par défaut: %u)</translation>
+        <source>Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Désactivez toutes les fonctionnalités liées à Cash (Masternode, PrivateSend, InstantSend, Budgetisation) (0-1, par défaut: %u)</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4248,12 +4248,12 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Désactiver le mode sans échec, passer outre un événement sans échec réel (par défaut : %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a servicenode (0-1, default: %u)</source>
-        <translation>Autoriser le client à agir en tant que servicenode (0-1, par défaut : %u)</translation>
+        <source>Enable the client to act as a masternode (0-1, default: %u)</source>
+        <translation>Autoriser le client à agir en tant que masternode (0-1, par défaut : %u)</translation>
     </message>
     <message>
-        <source>Error connecting to ServiceNode.</source>
-        <translation>Erreur de connexion au servicenode.</translation>
+        <source>Error connecting to Masternode.</source>
+        <translation>Erreur de connexion au masternode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Cash</source>
@@ -4392,20 +4392,20 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Chargement du cache de budget...</translation>
     </message>
     <message>
-        <source>Loading servicenode cache...</source>
-        <translation>Chargement du cache de servicenode...</translation>
+        <source>Loading masternode cache...</source>
+        <translation>Chargement du cache de masternode...</translation>
     </message>
     <message>
-        <source>Loading servicenode payment cache...</source>
-        <translation>Chargement du cache de paiement servicenode...</translation>
+        <source>Loading masternode payment cache...</source>
+        <translation>Chargement du cache de paiement masternode...</translation>
     </message>
     <message>
         <source>Lock is already in place.</source>
         <translation>Verrou déjà en place.</translation>
     </message>
     <message>
-        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
-        <translation>Vérouiller les servicenodes depuis le fichier de configuration servicenode (par défaut : %u)</translation>
+        <source>Lock masternodes from masternode configuration file (default: %u)</source>
+        <translation>Vérouiller les masternodes depuis le fichier de configuration masternode (par défaut : %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4428,16 +4428,16 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Un port doit être spécifié avec -whitebind: '%s'</translation>
     </message>
     <message>
-        <source>No ServiceNodes detected.</source>
-        <translation>Aucun ServiceNode détecté.</translation>
+        <source>No Masternodes detected.</source>
+        <translation>Aucun Masternode détecté.</translation>
     </message>
     <message>
-        <source>No compatible ServiceNode found.</source>
-        <translation>Aucun ServiceNode compatible trouvé.</translation>
+        <source>No compatible Masternode found.</source>
+        <translation>Aucun Masternode compatible trouvé.</translation>
     </message>
     <message>
-        <source>Not in the ServiceNode list.</source>
-        <translation>Absent de la liste des ServiceNodes.</translation>
+        <source>Not in the Masternode list.</source>
+        <translation>Absent de la liste des Masternodes.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4476,8 +4476,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Clef privée du serveur (par défaut : %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this servicenode (example: %s)</source>
-        <translation>Définir une adresse:port externe pour accéder à ce servicenode (exemple : %s)</translation>
+        <source>Set external address:port to get to this masternode (example: %s)</source>
+        <translation>Définir une adresse:port externe pour accéder à ce masternode (exemple : %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4508,8 +4508,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Spécifier le délai d'expiration de la connexion en millisecondes (minimum : 1, par défaut : %d)</translation>
     </message>
     <message>
-        <source>Specify servicenode configuration file (default: %s)</source>
-        <translation>Définir le fichier de configuration du servicenode (par défaut : %s)</translation>
+        <source>Specify masternode configuration file (default: %s)</source>
+        <translation>Définir le fichier de configuration du masternode (par défaut : %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4524,16 +4524,16 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Arrêter après l'importation des blocs du disque (par défaut : %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to servicenode: %u / %d</source>
-        <translation>Les entrées suivantes ont été envoyées au servicenode: %u / %d</translation>
+        <source>Submitted following entries to masternode: %u / %d</source>
+        <translation>Les entrées suivantes ont été envoyées au masternode: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Envoyé au servicenode, en attente d'entrées supplémentaires ( %u / %d ) %s</translation>
+        <source>Submitted to masternode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Envoyé au masternode, en attente d'entrées supplémentaires ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to servicenode, waiting in queue %s</source>
-        <translation>Soumis au servicenode, dans la file d'attente %s</translation>
+        <source>Submitted to masternode, waiting in queue %s</source>
+        <translation>Soumis au masternode, dans la file d'attente %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4548,16 +4548,16 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Synchronisation des budgets...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode winners...</source>
-        <translation>Synchroniser les gagnants ServiceNode ...</translation>
+        <source>Synchronizing Masternode winners...</source>
+        <translation>Synchroniser les gagnants Masternode ...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode payments...</source>
-        <translation>Synchroniser les paiements ServiceNode ...</translation>
+        <source>Synchronizing Masternode payments...</source>
+        <translation>Synchroniser les paiements Masternode ...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNodes...</source>
-        <translation>Synchroniser les servicenodes ...</translation>
+        <source>Synchronizing Masternodes...</source>
+        <translation>Synchroniser les masternodes ...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4568,8 +4568,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Synchronisation des sporks...</translation>
     </message>
     <message>
-        <source>This is not a ServiceNode.</source>
-        <translation>Ceci n'est pas un servicenode.</translation>
+        <source>This is not a Masternode.</source>
+        <translation>Ceci n'est pas un masternode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4580,8 +4580,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Utiliser l'intégration KeePass 2 en utilisant le greffon KeePassHttp (par défaut : %u)</translation>
     </message>
     <message>
-        <source>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Utiliser N servicenodes différents pour anonymiser les fonds (2-8, par défaut : %u)</translation>
+        <source>Use N separate masternodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Utiliser N masternodes différents pour anonymiser les fonds (2-8, par défaut : %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4604,32 +4604,32 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Va réessayer ...</translation>
     </message>
     <message>
-        <source>Invalid servicenodepairingkey. Please see documenation.</source>
-        <translation>servicenodepairingkey invalide. Veuillez vous référer à la documentation.</translation>
+        <source>Invalid masternodepairingkey. Please see documenation.</source>
+        <translation>masternodepairingkey invalide. Veuillez vous référer à la documentation.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>
         <translation>(doit être 44400 pour mainnet)</translation>
     </message>
     <message>
-        <source>Can't find random ServiceNode.</source>
-        <translation>ServiceNode aléatoire introuvable.</translation>
+        <source>Can't find random Masternode.</source>
+        <translation>Masternode aléatoire introuvable.</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
         <translation>Ne peux pas mélanger pendant la synchronisation.</translation>
     </message>
     <message>
-        <source>Could not parse servicenode.conf</source>
-        <translation>Impossible d'analyser servicenode.conf</translation>
+        <source>Could not parse masternode.conf</source>
+        <translation>Impossible d'analyser masternode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: '%s'</source>
         <translation>Masque de réseau inconnu spécifié sur -whitelist : « %s »</translation>
     </message>
     <message>
-        <source>Invalid port detected in servicenode.conf</source>
-        <translation>Port non valide détecté dans servicenode.conf</translation>
+        <source>Invalid port detected in masternode.conf</source>
+        <translation>Port non valide détecté dans masternode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4684,16 +4684,16 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Assurez-vous de chiffrer votre portefeuille et de supprimer toutes les sauvegardes non chiffrées après avoir vérifié que le portefeuille fonctionne!</translation>
     </message>
     <message>
-        <source>ServiceNode options:</source>
-        <translation>Options ServiceNode :</translation>
+        <source>Masternode options:</source>
+        <translation>Options Masternode :</translation>
     </message>
     <message>
-        <source>ServiceNode queue is full.</source>
-        <translation>La file d'attente du servicenode est pleine.</translation>
+        <source>Masternode queue is full.</source>
+        <translation>La file d'attente du masternode est pleine.</translation>
     </message>
     <message>
-        <source>ServiceNode:</source>
-        <translation>ServiceNode :</translation>
+        <source>Masternode:</source>
+        <translation>Masternode :</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4796,8 +4796,8 @@ Pour exemple: alertnotify=echo %%s | mail -s "Alerte Cash" admin@foo.com
         <translation>Définir la taille minimale de bloc en octets (par défaut : %d)</translation>
     </message>
     <message>
-        <source>Set the servicenode private key</source>
-        <translation>Définir la clé privée du servicenode</translation>
+        <source>Set the masternode private key</source>
+        <translation>Définir la clé privée du masternode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

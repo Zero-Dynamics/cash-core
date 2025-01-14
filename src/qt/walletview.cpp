@@ -25,7 +25,7 @@
 #include "transactionview.h"
 #include "walletmodel.h"
 
-#include "servicenodeconfig.h"
+#include "masternodeconfig.h"
 #include "ui_interface.h"
 
 #include <QAction>
@@ -87,8 +87,8 @@ WalletView::WalletView(const PlatformStyle* _platformStyle, QWidget* parent) : Q
     transactionsPage->setLayout(vbox);
 
     QSettings settings;
-    if (settings.value("fShowServiceNodesTab").toBool()) {
-        servicenodeListPage = new ServiceNodeList(platformStyle);
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        masternodeListPage = new MasternodeList(platformStyle);
     }
 
     addWidget(overviewPage);
@@ -96,8 +96,8 @@ WalletView::WalletView(const PlatformStyle* _platformStyle, QWidget* parent) : Q
     addWidget(receiveCoinsPage);
     addWidget(transactionsPage);
     addWidget(miningPage);
-    if (settings.value("fShowServiceNodesTab").toBool()) {
-        addWidget(servicenodeListPage);
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        addWidget(masternodeListPage);
     }
     addWidget(bdapPage);
 
@@ -156,8 +156,8 @@ void WalletView::setClientModel(ClientModel* _clientModel)
     sendCoinsPage->setClientModel(_clientModel);
     bdapPage->setClientModel(_clientModel);
     QSettings settings;
-    if (settings.value("fShowServiceNodesTab").toBool()) {
-        servicenodeListPage->setClientModel(_clientModel);
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        masternodeListPage->setClientModel(_clientModel);
     }
 }
 
@@ -173,8 +173,8 @@ void WalletView::setWalletModel(WalletModel* _walletModel)
     transactionView->setModel(_walletModel);
     miningPage->setModel(_walletModel);
     QSettings settings;
-    if (settings.value("fShowServiceNodesTab").toBool()) {
-        servicenodeListPage->setWalletModel(_walletModel);
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        masternodeListPage->setWalletModel(_walletModel);
     }
     bdapPage->setModel(_walletModel);
 
@@ -259,11 +259,11 @@ void WalletView::gotoMiningPage()
     setCurrentWidget(miningPage);
 }
 
-void WalletView::gotoServiceNodePage()
+void WalletView::gotoMasternodePage()
 {
     QSettings settings;
-    if (settings.value("fShowServiceNodesTab").toBool()) {
-        setCurrentWidget(servicenodeListPage);
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        setCurrentWidget(masternodeListPage);
     }
 }
 

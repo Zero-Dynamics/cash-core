@@ -19,7 +19,7 @@
 #include <QSystemTrayIcon>
 
 class ClientModel;
-class ServiceNodeList;
+class MasternodeList;
 class HelpMessageDialog;
 class MiningPage;
 class BdapPage;
@@ -125,7 +125,7 @@ private:
     QAction* receiveCoinsMenuAction;
     QAction* historyAction;
     QAction* miningAction;
-    QAction* servicenodeAction;
+    QAction* masternodeAction;
     QAction* bdapAction;
     QAction* quitAction;
     QAction* usedSendingAddressesAction;
@@ -147,7 +147,7 @@ private:
     QAction* openPeersAction;
     QAction* openRepairAction;
     QAction* openConfEditorAction;
-    QAction* openSNConfEditorAction;
+    QAction* openMNConfEditorAction;
     QAction* showBackupsAction;
     QAction* openAction;
     QAction *mnemonicAction;
@@ -245,8 +245,8 @@ private Q_SLOTS:
     void gotoHistoryPage();
     /** Switch to mining page */
     void gotoMiningPage();
-    /** Switch to ServiceNode page */
-    void gotoServiceNodePage();
+    /** Switch to Masternode page */
+    void gotoMasternodePage();
     /** Switch to BDAP page */
     void gotoBdapPage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */
@@ -275,8 +275,8 @@ private Q_SLOTS:
 
     /** Open external (default) editor with cash.conf */
     void showConfEditor();
-    /** Open external (default) editor with servicenode.conf */
-    void showSNConfEditor();
+    /** Open external (default) editor with masternode.conf */
+    void showMNConfEditor();
     /** Show folder with wallet backups in default file browser */
     void showBackups();
 

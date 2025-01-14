@@ -35,8 +35,8 @@
 #endif
 
 #include "chainparams.h"
-#include "servicenode-sync.h"
-#include "servicenodelist.h"
+#include "masternode-sync.h"
+#include "masternodelist.h"
 #include "init.h"
 #include "ui_interface.h"
 #include "util.h"
@@ -109,7 +109,7 @@ CashGUI::CashGUI(const PlatformStyle* _platformStyle, const NetworkStyle* networ
                                                                                                                  receiveCoinsMenuAction(0),
                                                                                                                  historyAction(0),
                                                                                                                  miningAction(0),
-                                                                                                                 servicenodeAction(0),
+                                                                                                                 masternodeAction(0),
                                                                                                                  bdapAction(0),
                                                                                                                  quitAction(0),
                                                                                                                  usedSendingAddressesAction(0),
@@ -383,16 +383,16 @@ void CashGUI::createActions()
     tabGroup->addAction(miningAction);
 
 #ifdef ENABLE_WALLET
-    servicenodeAction = new QAction(QIcon(":/icons/" + theme + "/servicenodes"), tr("&ServiceNodes"), this);
-    servicenodeAction->setStatusTip(tr("Browse ServiceNodes"));
-    servicenodeAction->setToolTip(servicenodeAction->statusTip());
-    servicenodeAction->setCheckable(true);
+    masternodeAction = new QAction(QIcon(":/icons/" + theme + "/masternodes"), tr("&Masternodes"), this);
+    masternodeAction->setStatusTip(tr("Browse Masternodes"));
+    masternodeAction->setToolTip(masternodeAction->statusTip());
+    masternodeAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    servicenodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
+    masternodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
 #else
-    servicenodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    masternodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
 #endif
-    tabGroup->addAction(servicenodeAction);
+    tabGroup->addAction(masternodeAction);
 
     bdapAction = new QAction(QIcon(":/icons/" + theme + "/bdap"), tr("&BDAP"), this);
     bdapAction->setStatusTip(tr("BDAP"));
@@ -421,8 +421,8 @@ void CashGUI::createActions()
     connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
-    connect(servicenodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(servicenodeAction, SIGNAL(triggered()), this, SLOT(gotoServiceNodePage()));
+    connect(masternodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(masternodeAction, SIGNAL(triggered()), this, SLOT(gotoMasternodePage()));
     connect(bdapAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(bdapAction, SIGNAL(triggered()), this, SLOT(gotoBdapPage()));
 
@@ -473,8 +473,8 @@ void CashGUI::createActions()
     openRepairAction->setStatusTip(tr("Show wallet repair options"));
     openConfEditorAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Open Wallet &Configuration File"), this);
     openConfEditorAction->setStatusTip(tr("Open configuration file"));
-    openSNConfEditorAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Open &ServiceNode Configuration File"), this);
-    openSNConfEditorAction->setStatusTip(tr("Open ServiceNode configuration file"));
+    openMNConfEditorAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Open &Masternode Configuration File"), this);
+    openMNConfEditorAction->setStatusTip(tr("Open Masternode configuration file"));
     showBackupsAction = new QAction(QIcon(":/icons/" + theme + "/browse"), tr("Show Automatic &Backups"), this);
     showBackupsAction->setStatusTip(tr("Show automatically created wallet backups"));
     // initially disable the debug window menu items
@@ -520,7 +520,7 @@ void CashGUI::createActions()
 
     // Open configs and backup folder from menu
     connect(openConfEditorAction, SIGNAL(triggered()), this, SLOT(showConfEditor()));
-    connect(openSNConfEditorAction, SIGNAL(triggered()), this, SLOT(showSNConfEditor()));
+    connect(openMNConfEditorAction, SIGNAL(triggered()), this, SLOT(showMNConfEditor()));
     connect(showBackupsAction, SIGNAL(triggered()), this, SLOT(showBackups()));
 
     // Get restart command-line parameters and handle restart
@@ -596,7 +596,7 @@ void CashGUI::createMenuBar()
         tools->addAction(openRepairAction);
         tools->addSeparator();
         tools->addAction(openConfEditorAction);
-        tools->addAction(openSNConfEditorAction);
+        tools->addAction(openMNConfEditorAction);
         tools->addAction(showBackupsAction);
     }
 
@@ -619,7 +619,7 @@ void CashGUI::createToolBars()
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(miningAction);
-        toolbar->addAction(servicenodeAction);
+        toolbar->addAction(masternodeAction);
         toolbar->addAction(bdapAction);
 
         overviewAction->setChecked(true);
@@ -764,7 +764,7 @@ void CashGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsMenuAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
     miningAction->setEnabled(enabled);
-    servicenodeAction->setEnabled(enabled);
+    masternodeAction->setEnabled(enabled);
     bdapAction->setEnabled(enabled);
     encryptWalletAction->setEnabled(enabled);
     backupWalletAction->setEnabled(enabled);
@@ -803,7 +803,7 @@ void CashGUI::createIconMenu(QMenu* pmenu)
     pmenu->addAction(receiveCoinsAction);
     pmenu->addAction(historyAction);
     pmenu->addAction(miningAction);
-    pmenu->addAction(servicenodeAction);
+    pmenu->addAction(masternodeAction);
     pmenu->addAction(bdapAction);
     pmenu->addSeparator();
     pmenu->addAction(optionsAction);
@@ -814,7 +814,7 @@ void CashGUI::createIconMenu(QMenu* pmenu)
     pmenu->addAction(openRepairAction);
     pmenu->addSeparator();
     pmenu->addAction(openConfEditorAction);
-    pmenu->addAction(openSNConfEditorAction);
+    pmenu->addAction(openMNConfEditorAction);
     pmenu->addAction(showBackupsAction);
 #ifndef Q_OS_MAC // This is built-in on Mac
     pmenu->addSeparator();
@@ -894,9 +894,9 @@ void CashGUI::showConfEditor()
     GUIUtil::openConfigfile();
 }
 
-void CashGUI::showSNConfEditor()
+void CashGUI::showMNConfEditor()
 {
-    GUIUtil::openSNConfigfile();
+    GUIUtil::openMNConfigfile();
 }
 
 void CashGUI::showBackups()
@@ -969,11 +969,11 @@ void CashGUI::gotoMiningPage()
         walletFrame->gotoMiningPage();
 }
 
-void CashGUI::gotoServiceNodePage()
+void CashGUI::gotoMasternodePage()
 {
-    servicenodeAction->setChecked(true);
+    masternodeAction->setChecked(true);
     if (walletFrame)
-        walletFrame->gotoServiceNodePage();
+        walletFrame->gotoMasternodePage();
 }
 
 void CashGUI::gotoBdapPage()
@@ -1104,7 +1104,7 @@ void CashGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerifi
     }
 #endif // ENABLE_WALLET
 
-    if (!servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsBlockchainSynced()) {
         QString timeBehindText = GUIUtil::formatNiceTimeOffset(secs);
 
         progressBarLabel->setVisible(true);
@@ -1155,7 +1155,7 @@ void CashGUI::setAdditionalDataSyncProgress(double nSyncProgress)
         return;
 
     // No additional data sync should be happening while blockchain is not synced, nothing to update
-    if (!servicenodeSync.IsBlockchainSynced())
+    if (!masternodeSync.IsBlockchainSynced())
         return;
 
     // Prevent orphan statusbar messages (e.g. hover Quit in main menu, wait until chain-sync starts -> garbelled text)
@@ -1174,7 +1174,7 @@ void CashGUI::setAdditionalDataSyncProgress(double nSyncProgress)
         walletFrame->showOutOfSyncWarning(false);
 #endif // ENABLE_WALLET
 
-    if (servicenodeSync.IsSynced()) {
+    if (masternodeSync.IsSynced()) {
         progressBarLabel->setVisible(false);
         progressBar->setVisible(false);
         labelBlocksIcon->setPixmap(QIcon(":/icons/" + theme + "/synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
@@ -1190,7 +1190,7 @@ void CashGUI::setAdditionalDataSyncProgress(double nSyncProgress)
         progressBar->setValue(nSyncProgress * 1000000000.0 + 0.5);
     }
 
-    strSyncStatus = QString(servicenodeSync.GetSyncStatus().c_str());
+    strSyncStatus = QString(masternodeSync.GetSyncStatus().c_str());
     progressBarLabel->setText(strSyncStatus);
     tooltip = strSyncStatus + QString("<br>") + tooltip;
 

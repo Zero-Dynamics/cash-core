@@ -115,8 +115,8 @@ public:
         strNetworkID = "main";
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
-        consensus.nServiceNodePaymentsStartBlock = 4320;  // ServiceNode Payments begin on block 4320
-        consensus.nMinCountServiceNodesPaymentStart = 10; // ServiceNode Payments begin once 5 ServiceNodes exist or more.
+        consensus.nMasternodePaymentsStartBlock = 4320;  // Masternode Payments begin on block 4320
+        consensus.nMinCountMasternodesPaymentStart = 10; // Masternode Payments begin once 5 Masternodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
         consensus.nInstantSendKeepLock = 120;
         consensus.nBudgetPaymentsStartBlock = 8640;   // actual historical value
@@ -128,7 +128,7 @@ public:
         consensus.nSuperblockCycle = 87660; // 2880 (Blocks per day) x 365.25 (Days per Year) / 12 = 87660
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
-        consensus.nServiceNodeMinimumConfirmations = 60;
+        consensus.nMasternodeMinimumConfirmations = 60;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -283,8 +283,8 @@ public:
         strNetworkID = "test";
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
-        consensus.nServiceNodePaymentsStartBlock = 43200;  // ServiceNode Payments begin on block 43200
-        consensus.nMinCountServiceNodesPaymentStart = 10; // ServiceNode Payments begin once 10 ServiceNodes exist or more.
+        consensus.nMasternodePaymentsStartBlock = 43200;  // Masternode Payments begin on block 43200
+        consensus.nMinCountMasternodesPaymentStart = 10; // Masternode Payments begin once 10 Masternodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
         consensus.nInstantSendKeepLock = 120;
         consensus.nBudgetPaymentsStartBlock = 8640;   // actual historical value
@@ -296,7 +296,7 @@ public:
         consensus.nSuperblockCycle = 87660; // 2880 (Blocks per day) x 365.25 (Days per Year) / 12 = 87660
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
-        consensus.nServiceNodeMinimumConfirmations = 60;
+        consensus.nMasternodeMinimumConfirmations = 60;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -430,8 +430,8 @@ public:
         strNetworkID = "regtest";
 
         consensus.nRewardsStart = 0; // Rewards starts on block 0
-        consensus.nServiceNodePaymentsStartBlock = 0;
-        consensus.nMinCountServiceNodesPaymentStart = 1; // ServiceNode Payments begin once 1 ServiceNode exists or more.
+        consensus.nMasternodePaymentsStartBlock = 0;
+        consensus.nMinCountMasternodesPaymentStart = 1; // Masternode Payments begin once 1 Masternode exists or more.
         consensus.nInstantSendConfirmationsRequired = 11;
         consensus.nInstantSendKeepLock = 24;
         consensus.nBudgetPaymentsStartBlock = 1000;
@@ -443,7 +443,7 @@ public:
         consensus.nSuperblockCycle = 10;
         consensus.nGovernanceMinQuorum = 1;
         consensus.nGovernanceFilterElements = 100;
-        consensus.nServiceNodeMinimumConfirmations = 1;
+        consensus.nMasternodeMinimumConfirmations = 1;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -568,8 +568,8 @@ public:
         strNetworkID = "privatenet";
 
         consensus.nRewardsStart = 0; // Rewards starts on block 0
-        consensus.nServiceNodePaymentsStartBlock = 0;
-        consensus.nMinCountServiceNodesPaymentStart = 1; // ServiceNode Payments begin once 1 ServiceNode exists or more.
+        consensus.nMasternodePaymentsStartBlock = 0;
+        consensus.nMinCountMasternodesPaymentStart = 1; // Masternode Payments begin once 1 Masternode exists or more.
         consensus.nInstantSendConfirmationsRequired = 11;
         consensus.nInstantSendKeepLock = 24;
         consensus.nBudgetPaymentsStartBlock = 200;
@@ -581,7 +581,7 @@ public:
         consensus.nSuperblockCycle = 24;            // Superblocks can be issued hourly on testnet
         consensus.nGovernanceMinQuorum = 1;
         consensus.nGovernanceFilterElements = 500;
-        consensus.nServiceNodeMinimumConfirmations = 1;
+        consensus.nMasternodeMinimumConfirmations = 1;
         consensus.nMajorityEnforceBlockUpgrade = 510;
         consensus.nMajorityRejectBlockOutdated = 750;
         consensus.nMajorityWindow = 1000;

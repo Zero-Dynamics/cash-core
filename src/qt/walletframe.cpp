@@ -131,11 +131,11 @@ void WalletFrame::gotoMiningPage()
         i.value()->gotoMiningPage();
 }
 
-void WalletFrame::gotoServiceNodePage()
+void WalletFrame::gotoMasternodePage()
 {
     QMap<QString, WalletView*>::const_iterator i;
     for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
-        i.value()->gotoServiceNodePage();
+        i.value()->gotoMasternodePage();
 }
 
 void WalletFrame::gotoBdapPage()

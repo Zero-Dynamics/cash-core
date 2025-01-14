@@ -261,7 +261,7 @@ HEADERS += \
     src/qt/transactiondescdialog.h \
     src/qt/transactiondesc.h \
     src/qt/trafficgraphwidget.h \
-    src/qt/servicenodelist.h \
+    src/qt/masternodelist.h \
     src/qt/splashscreen.h \
     src/qt/signverifymessagedialog.h \
     src/qt/sendcoinsentry.h \
@@ -339,7 +339,7 @@ HEADERS += \
     src/wallet/wallet_ismine.h \
     src/wallet/wallet.h \
     src/wallet/walletdb.h \
-    src/activeservicenode.h \
+    src/activemasternode.h \
     src/addressindex.h \
     src/addrman.h \
     src/alert.h \
@@ -401,11 +401,11 @@ HEADERS += \
     src/spentindex.h \
     src/spork.h \
     src/psnotificationinterface.h \
-    src/servicenode-payments.h \
-    src/servicenode-sync.h \
-    src/servicenode.h \
-    src/servicenodeconfig.h \
-    src/servicenodeman.h \
+    src/masternode-payments.h \
+    src/masternode-sync.h \
+    src/masternode.h \
+    src/masternodeconfig.h \
+    src/masternodeman.h \
     src/streams.h \
     src/sync.h \
     src/threadsafety.h \
@@ -475,7 +475,7 @@ SOURCES += \
     src/qt/sendcoinsentry.cpp \
     src/qt/signverifymessagedialog.cpp \
     src/qt/splashscreen.cpp \
-    src/qt/servicenodelist.cpp \
+    src/qt/masternodelist.cpp \
     src/qt/trafficgraphwidget.cpp \
     src/qt/transactiondesc.cpp \
     src/qt/transactiondescdialog.cpp \
@@ -522,7 +522,7 @@ SOURCES += \
     src/wallet/wallet_ismine.cpp \
     src/wallet/wallet.cpp \
     src/wallet/walletdb.cpp \
-    src/activeservicenode.cpp \
+    src/activemasternode.cpp \
     src/addrman.cpp \
     src/alert.cpp \
     src/amount.cpp \
@@ -573,16 +573,16 @@ SOURCES += \
     src/rpcprotocol.cpp \
     src/rpcrawtransaction.cpp \
     src/rpcserver.cpp \
-    src/rpcservicenode.cpp \
+    src/rpcmasternode.cpp \
     src/privatesend.cpp \
     src/scheduler.cpp \
     src/spork.cpp \
     src/psnotificationinterface.cpp \
-    src/servicenode-payments.cpp \
-    src/servicenode-sync.cpp \
-    src/servicenode.cpp \
-    src/servicenodeconfig.cpp \
-    src/servicenodeman.cpp \
+    src/masternode-payments.cpp \
+    src/masternode-sync.cpp \
+    src/masternode.cpp \
+    src/masternodeconfig.cpp \
+    src/masternodeman.cpp \
     src/sync.cpp \
     src/timedata.cpp \
     src/torcontrol.cpp \
@@ -625,7 +625,7 @@ FORMS += \
     src/qt/forms/bdapupdateaccountdialog.ui \
     src/qt/forms/bdapuserdetaildialog.ui \
     src/qt/forms/coincontroldialog.ui \
-    src/qt/forms/servicenodelist.ui \
+    src/qt/forms/masternodelist.ui \
     src/qt/forms/editaddressdialog.ui \
     src/qt/forms/helpmessagedialog.ui \
     src/qt/forms/intro.ui \

@@ -4,30 +4,30 @@
 
 #include "base58.h"
 #include "fluid.h"
-#include "fluidservicenode.h"
+#include "fluidmasternode.h"
 #include "fluidmining.h"
 #include "fluidmint.h"
 #include "fluidsovereign.h"
 
-CAmount GetFluidServiceNodeReward(const int nHeight)
+CAmount GetFluidMasternodeReward(const int nHeight)
 {
     if (fluid.FLUID_ACTIVATE_HEIGHT > nHeight)
-        return GetStandardServiceNodePayment(nHeight);
+        return GetStandardMasternodePayment(nHeight);
 
-    if (!CheckFluidServiceNodeDB())
-        return GetStandardServiceNodePayment(nHeight);
+    if (!CheckFluidMasternodeDB())
+        return GetStandardMasternodePayment(nHeight);
 
-    if (pFluidServiceNodeDB->IsEmpty())
-        return GetStandardServiceNodePayment(nHeight);
+    if (pFluidMasternodeDB->IsEmpty())
+        return GetStandardMasternodePayment(nHeight);
 
-    CFluidServiceNode lastServiceNodeRecord;
-    if (!pFluidServiceNodeDB->GetLastFluidServiceNodeRecord(lastServiceNodeRecord, nHeight)) {
-        return GetStandardServiceNodePayment(nHeight);
+    CFluidMasternode lastMasternodeRecord;
+    if (!pFluidMasternodeDB->GetLastFluidMasternodeRecord(lastMasternodeRecord, nHeight)) {
+        return GetStandardMasternodePayment(nHeight);
     }
-    if (lastServiceNodeRecord.ServiceNodeReward > 0) {
-        return lastServiceNodeRecord.ServiceNodeReward;
+    if (lastMasternodeRecord.MasternodeReward > 0) {
+        return lastMasternodeRecord.MasternodeReward;
     } else {
-        return GetStandardServiceNodePayment(nHeight);
+        return GetStandardMasternodePayment(nHeight);
     }
 }
 
@@ -98,10 +98,10 @@ bool IsSovereignAddress(const CDebitAddress& inputAddress)
     return false;
 }
 
-bool GetAllFluidServiceNodeRecords(std::vector<CFluidServiceNode>& servicenodeEntries)
+bool GetAllFluidMasternodeRecords(std::vector<CFluidMasternode>& masternodeEntries)
 {
-    if (CheckFluidServiceNodeDB()) {
-        if (!pFluidServiceNodeDB->GetAllFluidServiceNodeRecords(servicenodeEntries)) {
+    if (CheckFluidMasternodeDB()) {
+        if (!pFluidMasternodeDB->GetAllFluidMasternodeRecords(masternodeEntries)) {
             return false;
         }
     } else {

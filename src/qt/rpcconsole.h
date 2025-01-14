@@ -101,8 +101,8 @@ public Q_SLOTS:
     void message(int category, const QString& message, bool html = false);
     /** Set number of connections shown in the UI */
     void setNumConnections(int count);
-    /** Set number of ServiceNodes shown in the UI */
-    void setServiceNodeCount(const QString& strServiceNodes);
+    /** Set number of Masternodes shown in the UI */
+    void setMasternodeCount(const QString& strMasternodes);
     /** Set number of blocks shown in the UI */
     void setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool headers);
     /** Go forward or back in history */

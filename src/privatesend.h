@@ -40,10 +40,10 @@ enum PoolMessage {
     ERR_INVALID_SCRIPT,
     ERR_INVALID_TX,
     ERR_MAXIMUM,
-    ERR_SN_LIST,
+    ERR_MN_LIST,
     ERR_MODE,
     ERR_NON_STANDARD_PUBKEY,
-    ERR_NOT_A_SN, // not used
+    ERR_NOT_A_MN, // not used
     ERR_QUEUE_FULL,
     ERR_RECENT,
     ERR_SESSION,
@@ -168,7 +168,7 @@ class CPrivateSendQueue
 {
 public:
     int nDenom;
-    COutPoint servicenodeOutpoint;
+    COutPoint masternodeOutpoint;
     int64_t nTime;
     bool fReady; //ready for submit
     std::vector<unsigned char> vchSig;
@@ -176,7 +176,7 @@ public:
     bool fTried;
 
     CPrivateSendQueue() : nDenom(0),
-                          servicenodeOutpoint(COutPoint()),
+                          masternodeOutpoint(COutPoint()),
                           nTime(0),
                           fReady(false),
                           vchSig(std::vector<unsigned char>()),
@@ -185,7 +185,7 @@ public:
     }
 
     CPrivateSendQueue(int nDenom, COutPoint outpoint, int64_t nTime, bool fReady) : nDenom(nDenom),
-                                                                                    servicenodeOutpoint(outpoint),
+                                                                                    masternodeOutpoint(outpoint),
                                                                                     nTime(nTime),
                                                                                     fReady(fReady),
                                                                                     vchSig(std::vector<unsigned char>()),
@@ -205,14 +205,14 @@ public:
             CTxIn txin{};
             if (ser_action.ForRead()) {
                 READWRITE(txin);
-                servicenodeOutpoint = txin.prevout;
+                masternodeOutpoint = txin.prevout;
             } else {
-                txin = CTxIn(servicenodeOutpoint);
+                txin = CTxIn(masternodeOutpoint);
                 READWRITE(txin);
             }
         } else {
             // using new format directly
-            READWRITE(servicenodeOutpoint);
+            READWRITE(masternodeOutpoint);
         }
         READWRITE(nTime);
         READWRITE(fReady);
@@ -224,14 +224,14 @@ public:
     uint256 GetSignatureHash() const;
     /** Sign this mixing transaction
      *  \return true if all conditions are met:
-     *     1) we have an active ServiceNode,
-     *     2) we have a valid ServiceNode private key,
+     *     1) we have an active Masternode,
+     *     2) we have a valid Masternode private key,
      *     3) we signed the message successfully, and
      *     4) we verified the message successfully
      */
     bool Sign();
-    /// Check if we have a valid ServiceNode address
-    bool CheckSignature(const CPubKey& pubKeyServiceNode) const;
+    /// Check if we have a valid Masternode address
+    bool CheckSignature(const CPubKey& pubKeyMasternode) const;
 
     bool Relay(CConnman& connman);
 
@@ -240,13 +240,13 @@ public:
 
     std::string ToString() const
     {
-        return strprintf("nDenom=%d, nTime=%lld, fReady=%s, fTried=%s, servicenode=%s",
-            nDenom, nTime, fReady ? "true" : "false", fTried ? "true" : "false", servicenodeOutpoint.ToStringShort());
+        return strprintf("nDenom=%d, nTime=%lld, fReady=%s, fTried=%s, masternode=%s",
+            nDenom, nTime, fReady ? "true" : "false", fTried ? "true" : "false", masternodeOutpoint.ToStringShort());
     }
 
     friend bool operator==(const CPrivateSendQueue& a, const CPrivateSendQueue& b)
     {
-        return a.nDenom == b.nDenom && a.servicenodeOutpoint == b.servicenodeOutpoint && a.nTime == b.nTime && a.fReady == b.fReady;
+        return a.nDenom == b.nDenom && a.masternodeOutpoint == b.masternodeOutpoint && a.nTime == b.nTime && a.fReady == b.fReady;
     }
 };
 
@@ -261,13 +261,13 @@ private:
 
 public:
     CTransactionRef tx;
-    COutPoint servicenodeOutpoint;
+    COutPoint masternodeOutpoint;
     std::vector<unsigned char> vchSig;
     int64_t sigTime;
 
     CPrivateSendBroadcastTx() : nConfirmedHeight(-1),
                                 tx(MakeTransactionRef()),
-                                servicenodeOutpoint(),
+                                masternodeOutpoint(),
                                 vchSig(),
                                 sigTime(0)
     {
@@ -275,7 +275,7 @@ public:
 
     CPrivateSendBroadcastTx(const CTransactionRef& _tx, COutPoint _outpoint, int64_t _sigTime) : nConfirmedHeight(-1),
                                                                                                  tx(_tx),
-                                                                                                 servicenodeOutpoint(_outpoint),
+                                                                                                 masternodeOutpoint(_outpoint),
                                                                                                  vchSig(),
                                                                                                  sigTime(_sigTime)
     {
@@ -293,14 +293,14 @@ public:
             CTxIn txin{};
             if (ser_action.ForRead()) {
                 READWRITE(txin);
-                servicenodeOutpoint = txin.prevout;
+                masternodeOutpoint = txin.prevout;
             } else {
-                txin = CTxIn(servicenodeOutpoint);
+                txin = CTxIn(masternodeOutpoint);
                 READWRITE(txin);
             }
         } else {
             // using new format directly
-            READWRITE(servicenodeOutpoint);
+            READWRITE(masternodeOutpoint);
         }
         if (!(s.GetType() & SER_GETHASH)) {
             READWRITE(vchSig);
@@ -324,7 +324,7 @@ public:
     uint256 GetSignatureHash() const;
 
     bool Sign();
-    bool CheckSignature(const CPubKey& pubKeyServiceNode) const;
+    bool CheckSignature(const CPubKey& pubKeyMasternode) const;
 
     void SetConfirmedHeight(int nConfirmedHeightIn) { nConfirmedHeight = nConfirmedHeightIn; }
     bool IsExpired(int nHeight);
@@ -336,7 +336,7 @@ class CPrivateSendBaseSession
 protected:
     mutable CCriticalSection cs_privatesend;
 
-    std::vector<CPrivateSendEntry> vecEntries; // ServiceNode/clients entries
+    std::vector<CPrivateSendEntry> vecEntries; // Masternode/clients entries
 
     PoolState nState;                // should be one of the POOL_STATE_XXX values
     int64_t nTimeLastSuccessfulStep; // the time when last successful mixing step was performed, in UTC milliseconds

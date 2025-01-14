@@ -36,7 +36,7 @@ Blockchain
 
 Control
 -------
-* debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|cash|privatesend|instantsend|servicenode|spork|keepass|snpayments|gobject )
+* debug ( 0|1|addrman|alert|bench|coindb|db|lock|rand|rpc|selectcoins|mempool|mempoolrej|net|proxy|prune|http|libevent|tor|zmq|cash|privatesend|instantsend|masternode|spork|keepass|mnpayments|gobject )
 * getinfo
 * getmemoryinfo
 * help ( "command" )
@@ -58,18 +58,18 @@ DDNS
 
 Cash
 -------
-* snsync [status|next|reset]
-* servicenode "command"...
-* servicenodebroadcast "command"...
-* servicenodelist ( "mode" "filter" )
-* getservicenoderewardstart [nHeight]
+* mnsync [status|next|reset]
+* masternode "command"...
+* masternodebroadcast "command"...
+* masternodelist ( "mode" "filter" )
+* getmasternoderewardstart [nHeight]
 * getgovernanceinfo
 * getpoolinfo
 * getsuperblockbudget index
 * gobject "command"...
 * privatesend "command"
 * spork [name] ([value])
-* voteraw [servicenode-tx-hash] [servicenode-tx-index] [governance-hash] [vote-signal] (yes|no|abstain) [time] [vote-sig]
+* voteraw [masternode-tx-hash] [masternode-tx-index] [governance-hash] [vote-signal] (yes|no|abstain) [time] [vote-sig]
 
 
 Generating

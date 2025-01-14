@@ -6,16 +6,16 @@
 #include "amount.h"
 
 class CDebitAddress;
-class CFluidServiceNode;
+class CFluidMasternode;
 class CFluidMining;
 class CFluidMint;
 class CFluidSovereign;
 
-CAmount GetFluidServiceNodeReward(const int nHeight);
+CAmount GetFluidMasternodeReward(const int nHeight);
 CAmount GetFluidMiningReward(const int nHeight);
 bool GetMintingInstructions(const int nHeight, CFluidMint& fluidMint);
 bool IsSovereignAddress(const CDebitAddress& inputAddress);
-bool GetAllFluidServiceNodeRecords(std::vector<CFluidServiceNode>& servicenodeEntries);
+bool GetAllFluidMasternodeRecords(std::vector<CFluidMasternode>& masternodeEntries);
 bool GetAllFluidMiningRecords(std::vector<CFluidMining>& miningEntries);
 bool GetAllFluidMintRecords(std::vector<CFluidMint>& mintEntries);
 bool GetAllFluidSovereignRecords(std::vector<CFluidSovereign>& sovereignEntries);

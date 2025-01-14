@@ -268,8 +268,8 @@ Var vänlig och försök igen.</translation>
         <translation>&amp;Transaktioner</translation>
     </message>
     <message>
-        <source>&amp;ServiceNodes</source>
-        <translation>&amp;ServiceNodes</translation>
+        <source>&amp;Masternodes</source>
+        <translation>&amp;Masternodes</translation>
     </message>
     <message>
         <source>&amp;Mining</source>
@@ -280,8 +280,8 @@ Var vänlig och försök igen.</translation>
         <translation>Bläddra i transaktionshistorik</translation>
     </message>
     <message>
-        <source>Browse ServiceNodes</source>
-        <translation>Bläddra i ServiceNodes</translation>
+        <source>Browse Masternodes</source>
+        <translation>Bläddra i Masternodes</translation>
     </message>
     <message>
         <source>Mine Cash(0DYNC)</source>
@@ -428,12 +428,12 @@ Var vänlig och försök igen.</translation>
         <translation>Öppna konfigurationsfil</translation>
     </message>
     <message>
-        <source>Open &amp;ServiceNode Configuration File</source>
-        <translation>Öppna &amp;ServiceNode konfigurationsfil</translation>
+        <source>Open &amp;Masternode Configuration File</source>
+        <translation>Öppna &amp;Masternode konfigurationsfil</translation>
     </message>
     <message>
-        <source>Open ServiceNode configuration file</source>
-        <translation>Öppna ServiceNode konfigurationsfil</translation>
+        <source>Open Masternode configuration file</source>
+        <translation>Öppna Masternode konfigurationsfil</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -956,16 +956,16 @@ Adres: %4
         <translation>Välj din sekretessnivå.</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
-        <translation>Använd 2 separata ServiceNodes för att mixa medel upp till 1000 0DYNC</translation>
+        <source>Use 2 separate Masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Använd 2 separata Masternodes för att mixa medel upp till 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
-        <translation>Använd 8 separata ServiceNodes för att mixa medel upp till 1000 0DYNC</translation>
+        <source>Use 8 separate Masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Använd 8 separata Masternodes för att mixa medel upp till 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
-        <translation>Använd 16 separata ServiceNodes för att mixa medel upp till 1000 0DYNC</translation>
+        <source>Use 16 separate Masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Använd 16 separata Masternodes för att mixa medel upp till 1000 0DYNC</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
@@ -1145,10 +1145,10 @@ Alla Cash i din plånbok består av olika &#39;ingångar&#39;
 som du kan tänka på som separata, diskreta mynt.&lt;br&gt; PrivateSend använder en innovativ process för att blanda dina ingångar med ingångarna till två andra personer, utan att dina mynt någonsin lämnar din plånbok.
 Du behåller kontrollen över dina pengar hela tiden.&lt;hr&gt;&lt;b&gt;PrivateSend Processen fungerar så här:&lt;/b&gt;&lt;ol type=&#39;1&#39;&gt;&lt;li&gt;PrivateSend börjar genom att bryta dina transaktionsinsatser ner till standardbeteckningar.
 Dessa valörer är 0.001, 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC -- likt vanliga pengar du använder varje dag.&lt;/li&gt;
-&lt;li&gt;Din plånbok skickar sedan förfrågningar till specialkonfigurerade mjukvarutoder i nätverket, som heter &#39;ServiceNodes&#39;.
-Dessa servicenoder informeras då att du är intresserad av att blanda en viss benämning. Ingen privat information skickas till servicenoderna, så de vet aldrig &#39;vem&#39; du är.&lt;/li&gt;
+&lt;li&gt;Din plånbok skickar sedan förfrågningar till specialkonfigurerade mjukvarutoder i nätverket, som heter &#39;Masternodes&#39;.
+Dessa masternoder informeras då att du är intresserad av att blanda en viss benämning. Ingen privat information skickas till masternoderna, så de vet aldrig &#39;vem&#39; du är.&lt;/li&gt;
 &lt;li&gt;När två andra människor skickar liknande meddelanden, vilket indikerar att de vill blanda samma valör, börjar en blandningssession.
-ServiceNoden blandar in ingångarna och instruerar alla tre användarna&#39;plånböcker att betala den nuomvandlade inmatningen tillbaka till sig själva.
+Masternoden blandar in ingångarna och instruerar alla tre användarna&#39;plånböcker att betala den nuomvandlade inmatningen tillbaka till sig själva.
 Din plånbok betalar den beteckningen direkt till sig själv, men i en annan adress (kallad ändringsadress).&lt;/li&gt;
 &lt;li&gt;För att fullständigt dölja dina pengar måste din plånbok repetera denna process ett antal gånger med varje valör.
 Varje gång processen är klar, it&#39;s kallad &#39;runda &#39;. varje runda PrivateSend gör det exponentiellt svårare att avgöra var dina pengar har sitt ursprung.&lt;/li&gt;
@@ -1343,8 +1343,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Expert</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Denna inställning bestämmer mängden inviduella ServiceNodes att en ingång kommer att anonymiseras genom &lt;br/&gt;Fler omgångar av anonymisering ger en högre grad av integritet, men kostar också mer i avgifter.</translation>
+        <source>This setting determines the amount of individual Masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>Denna inställning bestämmer mängden inviduella Masternodes att en ingång kommer att anonymiseras genom &lt;br/&gt;Fler omgångar av anonymisering ger en högre grad av integritet, men kostar också mer i avgifter.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1355,12 +1355,12 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Aktivera mynt&amp;kontrollfunktioner</translation>
     </message>
     <message>
-        <source>Show ServiceNodes Tab</source>
-        <translation>Visa ServiceNodes Flik</translation>
+        <source>Show Masternodes Tab</source>
+        <translation>Visa Masternodes Flik</translation>
     </message>
     <message>
-        <source>Show additional tab listing all your ServiceNodes in first sub-tab&lt;br/&gt;and all ServiceNodes on the network in second sub-tab.</source>
-        <translation>Visa ytterligare flik med alla dina ServiceNodes i första underfliken&lt;br/&gt; och alla ServiceNodes på nätverket i andra underfliken.</translation>
+        <source>Show additional tab listing all your Masternodes in first sub-tab&lt;br/&gt;and all Masternodes on the network in second sub-tab.</source>
+        <translation>Visa ytterligare flik med alla dina Masternodes i första underfliken&lt;br/&gt; och alla Masternodes på nätverket i andra underfliken.</translation>
     </message>
     <message>
         <source>Enable advanced PrivateSend interface</source>
@@ -1660,8 +1660,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Stoppa Mixen</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>De valörer du skickade till ServiceNode.&lt;br&gt; För att mixa måste andra användare lämna in exakt samma valörer.</translation>
+        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>De valörer du skickade till Masternode.&lt;br&gt; För att mixa måste andra användare lämna in exakt samma valörer.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -2068,8 +2068,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Blockkedja</translation>
     </message>
     <message>
-        <source>Number of ServiceNodes</source>
-        <translation>Antal ServiceNodes</translation>
+        <source>Number of Masternodes</source>
+        <translation>Antal Masternodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3602,7 +3602,7 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
     </message>
 </context>
 <context>
-    <name>ServiceNodeList</name>
+    <name>MasternodeList</name>
     <message>
         <source>Form</source>
         <translation>Form</translation>
@@ -3616,15 +3616,15 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Antalet Noder:</translation>
     </message>
     <message>
-        <source>My ServiceNodes</source>
+        <source>My Masternodes</source>
         <translation>Mina Dyn-noder</translation>
     </message>
     <message>
-        <source>All ServiceNodes</source>
+        <source>All Masternodes</source>
         <translation>Alla Dyn-noder</translation>
     </message>
     <message>
-        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <source>Note: Status of your Masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Masternode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
         <translation>Obs! Statusen för dina Dynodier i den lokala plånboken kan eventuellt vara lite felaktig.&lt;br /&gt; Vänta alltid på plånboken för att synkronisera ytterligare data och dubbelkolla från en annan nod&lt;br /&gt; om din Dynod ska vara igång men du ser fortfarande inte &quot;aktiverad&quot; i &quot;Status&quot; fält.</translation>
     </message>
     <message>
@@ -3680,16 +3680,16 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>SAKNAD</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL ServiceNodes?</source>
-        <translation>Är du säkert att du vill starta alla ServiceNodes?</translation>
+        <source>Are you sure you want to start ALL Masternodes?</source>
+        <translation>Är du säkert att du vill starta alla Masternodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING ServiceNodes?</source>
-        <translation>Är du säker att du vill starta alla saknade ServiceNodes?</translation>
+        <source>Are you sure you want to start MISSING Masternodes?</source>
+        <translation>Är du säker att du vill starta alla saknade Masternodes?</translation>
     </message>
     <message>
-        <source>Confirm missing ServiceNodes start</source>
-        <translation>Bekräfta saknade ServiceNodes start</translation>
+        <source>Confirm missing Masternodes start</source>
+        <translation>Bekräfta saknade Masternodes start</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3700,16 +3700,16 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Kommandot är inte tillgängligt just nu</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <source>You can&apos;t use this command until Masternode list is synced</source>
         <translation>Du kan inte använda det här kommandot tills Dynod-listan synkroniseras</translation>
     </message>
     <message>
-        <source>Confirm ServiceNode start</source>
-        <translation>Bekräfta ServiceNode start</translation>
+        <source>Confirm Masternode start</source>
+        <translation>Bekräfta Masternode start</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ServiceNode %1?</source>
-        <translation>Är du säker på att du vill starta ServiceNode %1?</translation>
+        <source>Are you sure you want to start Masternode %1?</source>
+        <translation>Är du säker på att du vill starta Masternode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3720,12 +3720,12 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Uppdaterar...</translation>
     </message>
     <message>
-        <source>Successfully started ServiceNode.</source>
-        <translation>Startade framgångsrikt ServiceNode.</translation>
+        <source>Successfully started Masternode.</source>
+        <translation>Startade framgångsrikt Masternode.</translation>
     </message>
     <message>
-        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
-        <translation>Startade framgångsrikt %d ServiceNodes,misslyckades med att starta %d, av totalt %d </translation>
+        <source>Successfully started %d Masternodes, failed to start %d, total %d</source>
+        <translation>Startade framgångsrikt %d Masternodes,misslyckades med att starta %d, av totalt %d </translation>
     </message>
 </context>
 <context>
@@ -3799,8 +3799,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Detta visar den genomsnittliga tiden mellan de block du har minat</translation>
     </message>
     <message>
-        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain/ServiceNodes är inte synkroniserad, vänta tills den är helt synkroniserad före gruvdrift!</translation>
+        <source>Blockchain/Masternodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain/Masternodes är inte synkroniserad, vänta tills den är helt synkroniserad före gruvdrift!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -4029,8 +4029,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Varning: wallet.dat är korrumperad, data räddad! Den ursprungliga wallet.dat är sparad som wallet.{timestamp}.bak i %s; om ditt saldo eller transaktioner är felaktiga kanske du måste återställa från en säkerhetskopia.</translation>
     </message>
     <message>
-        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Du måste specificera en servicenodepairingkey i konfigurationen. Vänligen se dokumentationen för hjälp.</translation>
+        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Du måste specificera en masternodepairingkey i konfigurationen. Vänligen se dokumentationen för hjälp.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4229,8 +4229,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Ta bort alla plånbokstransaktioner och återställ endast de delar av blockchain genom -rescan vid uppstart</translation>
     </message>
     <message>
-        <source>Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Inaktivera all Cash specifik funktionalitet (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, standard: %u).</translation>
+        <source>Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Inaktivera all Cash specifik funktionalitet (Masternodes, PrivateSend, InstantSend, Budgeting) (0-1, standard: %u).</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4436,12 +4436,12 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Inaktivera safemode, åsidosätta en äkta säkerhetsläge händelse (standard: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a ServiceNode (0-1, default: %u)</source>
-        <translation>Aktivera klienten att fungera som en ServiceNode (0-1, standard: %u)</translation>
+        <source>Enable the client to act as a Masternode (0-1, default: %u)</source>
+        <translation>Aktivera klienten att fungera som en Masternode (0-1, standard: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to ServiceNode.</source>
-        <translation>Det gick inte att ansluta till ServiceNode.</translation>
+        <source>Error connecting to Masternode.</source>
+        <translation>Det gick inte att ansluta till Masternode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Cash</source>
@@ -4580,12 +4580,12 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Laddar budgetcache...</translation>
     </message>
     <message>
-        <source>Loading ServiceNode cache...</source>
-        <translation>Laddar ServiceNode-cache...</translation>
+        <source>Loading Masternode cache...</source>
+        <translation>Laddar Masternode-cache...</translation>
     </message>
     <message>
-        <source>Loading ServiceNode payment cache...</source>
-        <translation>Laddar ServiceNode betalnings-cache...</translation>
+        <source>Loading Masternode payment cache...</source>
+        <translation>Laddar Masternode betalnings-cache...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -4600,8 +4600,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Lås är redan på plats.</translation>
     </message>
     <message>
-        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
-        <translation>Låsa ServiceNoder från ServiceNode konfigurationsfil (standard: %u)</translation>
+        <source>Lock Masternodes from Masternode configuration file (default: %u)</source>
+        <translation>Låsa Masternoder från Masternode konfigurationsfil (standard: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4624,16 +4624,16 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Behöver ange en port med -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>No ServiceNodes detected.</source>
-        <translation>Inga ServiceNoder upptäcktes.</translation>
+        <source>No Masternodes detected.</source>
+        <translation>Inga Masternoder upptäcktes.</translation>
     </message>
     <message>
-        <source>No compatible ServiceNode found.</source>
-        <translation>Ingen kompatibel ServiceNode hittades.</translation>
+        <source>No compatible Masternode found.</source>
+        <translation>Ingen kompatibel Masternode hittades.</translation>
     </message>
     <message>
-        <source>Not in the ServiceNode list.</source>
-        <translation>Inte i ServiceNode-listan..</translation>
+        <source>Not in the Masternode list.</source>
+        <translation>Inte i Masternode-listan..</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4672,8 +4672,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Serverns privata nyckel (standard: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this ServiceNode (example: %s)</source>
-        <translation>Ange extern adress: port för att komma till denna ServiceNode (exempel.: %s)</translation>
+        <source>Set external address:port to get to this Masternode (example: %s)</source>
+        <translation>Ange extern adress: port för att komma till denna Masternode (exempel.: %s)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4704,8 +4704,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Ange anslutningstidsavbrott i millisekunder (minst: 1, standard: %d)</translation>
     </message>
     <message>
-        <source>Specify ServiceNode configuration file (default: %s)</source>
-        <translation>Ange ServiceNode konfigurationsfil (standard: %s)</translation>
+        <source>Specify Masternode configuration file (default: %s)</source>
+        <translation>Ange Masternode konfigurationsfil (standard: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4720,16 +4720,16 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Stoppa körning efter importering av block från disk (standard: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to ServiceNode: %u / %d</source>
-        <translation>Inlämnad följande poster till ServiceNode: %u / %d</translation>
+        <source>Submitted following entries to Masternode: %u / %d</source>
+        <translation>Inlämnad följande poster till Masternode: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Inlämnad till ServiceNode, väntar på fler poster ( %u / %d ) %s</translation>
+        <source>Submitted to Masternode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Inlämnad till Masternode, väntar på fler poster ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to ServiceNode, waiting in queue %s</source>
-        <translation>Inlämnad till ServiceNode, väntar i kö %s</translation>
+        <source>Submitted to Masternode, waiting in queue %s</source>
+        <translation>Inlämnad till Masternode, väntar i kö %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4744,16 +4744,16 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Synkronisera budgetar...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode winners...</source>
-        <translation>Synkronisera ServiceNode vinnare...</translation>
+        <source>Synchronizing Masternode winners...</source>
+        <translation>Synkronisera Masternode vinnare...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode payments...</source>
-        <translation>Synkronisera ServiceNode betalning...</translation>
+        <source>Synchronizing Masternode payments...</source>
+        <translation>Synkronisera Masternode betalning...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNodes...</source>
-        <translation>Synkronisera ServiceNodes...</translation>
+        <source>Synchronizing Masternodes...</source>
+        <translation>Synkronisera Masternodes...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
@@ -4764,8 +4764,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Synkronisera sporks...</translation>
     </message>
     <message>
-        <source>This is not a ServiceNode.</source>
-        <translation>Detta är inte en ServiceNode.</translation>
+        <source>This is not a Masternode.</source>
+        <translation>Detta är inte en Masternode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
@@ -4776,8 +4776,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Använd KeePass 2-integration med KeePassHttp-plugin (standard: %u)</translation>
     </message>
     <message>
-        <source>Use N separate ServiceNodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Använd N separata ServiceNodes för att anonymisera tillgångar (2-8, standard: %u)</translation>
+        <source>Use N separate Masternodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Använd N separata Masternodes för att anonymisera tillgångar (2-8, standard: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4800,32 +4800,32 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Kommer att försöka igen...</translation>
     </message>
     <message>
-        <source>Invalid servicenodepairingkey. Please see documenation.</source>
-        <translation>Ogiltig servicenodepairingkey. Se dokumentationen.</translation>
+        <source>Invalid masternodepairingkey. Please see documenation.</source>
+        <translation>Ogiltig masternodepairingkey. Se dokumentationen.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>
         <translation>(måste vara 44400 för mainnet)</translation>
     </message>
     <message>
-        <source>Can&apos;t find random ServiceNode.</source>
-        <translation>Det går inte att hitta slumpmässig ServiceNode.</translation>
+        <source>Can&apos;t find random Masternode.</source>
+        <translation>Det går inte att hitta slumpmässig Masternode.</translation>
     </message>
     <message>
         <source>Can&apos;t mix while sync in progress.</source>
         <translation>Kan inte blandas under pågående synkronisering.</translation>
     </message>
     <message>
-        <source>Could not parse servicenode.conf</source>
-        <translation>Det gick inte att analysera servicenode.conf</translation>
+        <source>Could not parse masternode.conf</source>
+        <translation>Det gick inte att analysera masternode.conf</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Ogiltig nätmask anges i -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid port detected in servicenode.conf</source>
-        <translation>Ogiltig port upptäckt i servicenode.conf</translation>
+        <source>Invalid port detected in masternode.conf</source>
+        <translation>Ogiltig port upptäckt i masternode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4885,16 +4885,16 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
 </translation>
     </message>
     <message>
-        <source>ServiceNode options:</source>
-        <translation>ServiceNode Alternativ:</translation>
+        <source>Masternode options:</source>
+        <translation>Masternode Alternativ:</translation>
     </message>
     <message>
-        <source>ServiceNode queue is full.</source>
-        <translation>ServiceNode kön är uppfylld.</translation>
+        <source>Masternode queue is full.</source>
+        <translation>Masternode kön är uppfylld.</translation>
     </message>
     <message>
-        <source>ServiceNode:</source>
-        <translation>ServiceNode:</translation>
+        <source>Masternode:</source>
+        <translation>Masternode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -5139,8 +5139,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Använd testkedjan</translation>
     </message>
     <message>
-        <source>Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>Inaktivera all Cash specifik funktionalitet (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, standard: %u)
+        <source>Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>Inaktivera all Cash specifik funktionalitet (Masternodes, PrivateSend, InstantSend, Governance) (0-1, standard: %u)
 </translation>
     </message>
     <message>
@@ -5153,8 +5153,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
 </translation>
     </message>
     <message>
-        <source>Use N separate ServiceNodes for each denominated input to mix funds (2-16, default: %u)</source>
-        <translation>Använd N separata ServiceNodes för varje denominerade ingång för att mixa medel (2-16, standard: %u)
+        <source>Use N separate Masternodes for each denominated input to mix funds (2-16, default: %u)</source>
+        <translation>Använd N separata Masternodes för varje denominerade ingång för att mixa medel (2-16, standard: %u)
 </translation>
     </message>
     <message>
@@ -5226,8 +5226,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
 </translation>
     </message>
     <message>
-        <source>Set the ServiceNode private key</source>
-        <translation>Ställ in ServiceNode privata nyckeln</translation>
+        <source>Set the Masternode private key</source>
+        <translation>Ställ in Masternode privata nyckeln</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

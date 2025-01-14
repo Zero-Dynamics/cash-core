@@ -411,12 +411,12 @@
         <translation>Apri il file di configurazione</translation>
     </message>
     <message>
-        <source>Open &amp;ServiceNode Configuration File</source>
-        <translation>Apri il file di configurazione di ServiceNode</translation>
+        <source>Open &amp;Masternode Configuration File</source>
+        <translation>Apri il file di configurazione di Masternode</translation>
     </message>
     <message>
-        <source>Open ServiceNode configuration file</source>
-        <translation>Apri il file di configurazione di ServiceNode</translation>
+        <source>Open Masternode configuration file</source>
+        <translation>Apri il file di configurazione di Masternode</translation>
     </message>
     <message>
         <source>Show Automatic &amp;Backups</source>
@@ -865,16 +865,16 @@ Indirizzo: %4
         <translation>Selezionare il livello di privacy</translation>
     </message>
     <message>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
-        <translation>Usa 2 separati servicenode per mischiare fino al 1000 0DYNC</translation>
+        <source>Use 2 separate masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Usa 2 separati masternode per mischiare fino al 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
-        <translation>Usa 8 separati servicenode per mischiare fino al 1000 0DYNC</translation>
+        <source>Use 8 separate masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Usa 8 separati masternode per mischiare fino al 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate servicenodes</source>
-        <translation>Usa 16 separati servicenode</translation>
+        <source>Use 16 separate masternodes</source>
+        <translation>Usa 16 separati masternode</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
@@ -1053,11 +1053,11 @@ Mantenete il controllo dei vostri soldi in ogni momento.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend inizia suddividendo gli input della tua transazione in tagli standard.
 Queste denominazioni sono 0,001, 0,01 0DYNC, 0,1 0DYNC, 1 0DYNC, 10 0DYNC - una specie di carta moneta che usi ogni giorno.&lt;/li&gt;
-&lt;li&gt;Il tuo portafoglio invia quindi richieste a nodi software appositamente configurati sulla rete, chiamati &#39;ServiceNodes&#39;.
-Questi ServiceNode vengono quindi informati che sei interessato a mescolare una determinata denominazione.
-Nessuna informazione identificabile viene inviata ai ServiceNode, quindi non sanno mai &#39;chi&#39; tu sei.&lt;/li&gt;
+&lt;li&gt;Il tuo portafoglio invia quindi richieste a nodi software appositamente configurati sulla rete, chiamati &#39;Masternodes&#39;.
+Questi Masternode vengono quindi informati che sei interessato a mescolare una determinata denominazione.
+Nessuna informazione identificabile viene inviata ai Masternode, quindi non sanno mai &#39;chi&#39; tu sei.&lt;/li&gt;
 &lt;li&gt;Quando altre due persone inviano messaggi simili, indicando che desiderano mescolare la stessa denominazione, inizia una sessione di missaggio.
-Il ServiceNode mescola gli input e istruisce tutti e tre gli utenti&#39; portafogli per restituire a se stessi l'input ora trasformato.
+Il Masternode mescola gli input e istruisce tutti e tre gli utenti&#39; portafogli per restituire a se stessi l'input ora trasformato.
 Il tuo portafoglio paga quella denominazione direttamente a se stesso, ma in un indirizzo diverso (chiamato indirizzo di modifica).&lt;/li&gt;
 &lt;li&gt;Per oscurare completamente i tuoi fondi, il tuo portafoglio deve ripetere questo processo un numero di volte con ciascuna denominazione.
 Ogni volta che il processo è completato, viene chiamato "round". Ogni round di PrivateSend rende esponenzialmente più difficile determinare da dove provengono i tuoi fondi.&lt;/li&gt;
@@ -1475,7 +1475,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Start/Stop Mixing</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
         <translation>Il valore che hai richiesto al Mastermode. &lt;br&gt; Per mixare, gli altri utenti devono richiedere esattamente gli stessi valori.</translation>
     </message>
     <message>
@@ -1820,8 +1820,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Block chain</translation>
     </message>
     <message>
-        <source>Number of ServiceNodes</source>
-        <translation>Numero di ServiceNodes</translation>
+        <source>Number of Masternodes</source>
+        <translation>Numero di Masternodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3244,7 +3244,7 @@ Più URL vengono separati da una barra verticale |.</translation>
     </message>
 </context>
 <context>
-    <name>ServiceNodeList</name>
+    <name>MasternodeList</name>
     <message>
         <source>Form</source>
         <translation>Modulo</translation>
@@ -3258,16 +3258,16 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Conteggio nodi:</translation>
     </message>
     <message>
-        <source>My ServiceNodes</source>
-        <translation>La mia ServiceNodes</translation>
+        <source>My Masternodes</source>
+        <translation>La mia Masternodes</translation>
     </message>
     <message>
-        <source>All ServiceNodes</source>
+        <source>All Masternodes</source>
         <translation>Tutti i dinodi</translation>
     </message>
     <message>
-        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>Nota: lo stato dei tuoi ServiceNode nel portafoglio locale può essere leggermente errato. &lt;br /&gt;attendi sempre che wallet sincronizzi dati aggiuntivi e quindi ricontrolla da un altro nodo &lt;br /&gt;se il tuo ServiceNode dovrebbe essere in esecuzione ma non vedi &quot;ENABLED&quot; in &quot;Status&quot; campo.</translation>
+        <source>Note: Status of your Masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Masternode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>Nota: lo stato dei tuoi Masternode nel portafoglio locale può essere leggermente errato. &lt;br /&gt;attendi sempre che wallet sincronizzi dati aggiuntivi e quindi ricontrolla da un altro nodo &lt;br /&gt;se il tuo Masternode dovrebbe essere in esecuzione ma non vedi &quot;ENABLED&quot; in &quot;Status&quot; campo.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3322,16 +3322,16 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL ServiceNodes?</source>
-        <translation>Sei sicuro di voler iniziare TUTTI i ServiceNodes?</translation>
+        <source>Are you sure you want to start ALL Masternodes?</source>
+        <translation>Sei sicuro di voler iniziare TUTTI i Masternodes?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING ServiceNodes?</source>
-        <translation>Sei sicuro di voler iniziare MISSING ServiceNodes?</translation>
+        <source>Are you sure you want to start MISSING Masternodes?</source>
+        <translation>Sei sicuro di voler iniziare MISSING Masternodes?</translation>
     </message>
     <message>
-        <source>Confirm missing ServiceNodes start</source>
-        <translation>Conferma l'inizio di ServiceNodes mancanti</translation>
+        <source>Confirm missing Masternodes start</source>
+        <translation>Conferma l'inizio di Masternodes mancanti</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3342,16 +3342,16 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Il comando non è disponibile al momento</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until ServiceNode list is synced</source>
-        <translation>Non è possibile utilizzare questo comando finché non viene sincronizzato l'elenco ServiceNode</translation>
+        <source>You can&apos;t use this command until Masternode list is synced</source>
+        <translation>Non è possibile utilizzare questo comando finché non viene sincronizzato l'elenco Masternode</translation>
     </message>
     <message>
-        <source>Confirm ServiceNode start</source>
-        <translation>Conferma l'avvio del ServiceNode</translation>
+        <source>Confirm Masternode start</source>
+        <translation>Conferma l'avvio del Masternode</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ServiceNode %1?</source>
-        <translation>Sei sicuro di voler avviare ServiceNode %1?</translation>
+        <source>Are you sure you want to start Masternode %1?</source>
+        <translation>Sei sicuro di voler avviare Masternode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3362,12 +3362,12 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>In aggiornamento...</translation>
     </message>
     <message>
-        <source>Successfully started ServiceNode.</source>
-        <translation>ServiceNode avviato correttamente.</translation>
+        <source>Successfully started Masternode.</source>
+        <translation>Masternode avviato correttamente.</translation>
     </message>
     <message>
-        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
-        <translation>%d ServiceNode avviati correttamente, impossibile avviare %d, totale %d</translation>
+        <source>Successfully started %d Masternodes, failed to start %d, total %d</source>
+        <translation>%d Masternode avviati correttamente, impossibile avviare %d, totale %d</translation>
     </message>
 </context>
 <context>
@@ -3441,8 +3441,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Questo mostra il tempo medio tra i blocchi che hai estratto</translation>
     </message>
     <message>
-        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain / ServiceNodes non sono sincronizzati, attendere fino alla completa sincronizzazione prima del mining!</translation>
+        <source>Blockchain/Masternodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain / Masternodes non sono sincronizzati, attendere fino alla completa sincronizzazione prima del mining!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -3663,8 +3663,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Attenzione: wallet.dat corrotto, dati recuperati! Il wallet.dat originale è stato salvato come wallet.{timestamp}.bak in %s; se il tuo saldo o le transazioni non sono corrette dovresti ripristinare da un backup.</translation>
     </message>
     <message>
-        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Devi specificare una servicenodepairingkey nella configurazione. Per favore consulta la documentazione di aiuto.</translation>
+        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Devi specificare una masternodepairingkey nella configurazione. Per favore consulta la documentazione di aiuto.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -3864,7 +3864,7 @@ Più URL vengono separati da una barra verticale |.</translation>
     </message>
     <message>
         <source>PrivateSend is idle.</source>
-        <translation>Nessun ServiceNode trovato.</translation>
+        <translation>Nessun Masternode trovato.</translation>
     </message>
     <message>
         <source>PrivateSend request complete:</source>
@@ -3875,8 +3875,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Richiesta di PrivateSend incompleta:</translation>
     </message>
     <message>
-        <source>Error connecting to ServiceNode.</source>
-        <translation>Errore di connessione al ServiceNode</translation>
+        <source>Error connecting to Masternode.</source>
+        <translation>Errore di connessione al Masternode</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Cash</source>
@@ -3955,28 +3955,28 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Importo non valido per -paytxfee=&lt;amount&gt;: '%s'</translation>
     </message>
     <message>
-        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
-        <translation>Blocca i servicenodes  nel file di configurazione del servicenode (default: %u)</translation>
+        <source>Lock masternodes from masternode configuration file (default: %u)</source>
+        <translation>Blocca i masternodes  nel file di configurazione del masternode (default: %u)</translation>
     </message>
     <message>
         <source>Mixing in progress...</source>
         <translation>Mixing in corso...</translation>
     </message>
     <message>
-        <source>No ServiceNodes detected.</source>
-        <translation>Nessun ServiceNode trovato.</translation>
+        <source>No Masternodes detected.</source>
+        <translation>Nessun Masternode trovato.</translation>
     </message>
     <message>
-        <source>No compatible ServiceNode found.</source>
-        <translation>Nessun compatibile ServiceNode trovato.</translation>
+        <source>No compatible Masternode found.</source>
+        <translation>Nessun compatibile Masternode trovato.</translation>
     </message>
     <message>
-        <source>Not in the ServiceNode list.</source>
-        <translation>Non si trova in lista di ServiceNode.</translation>
+        <source>Not in the Masternode list.</source>
+        <translation>Non si trova in lista di Masternode.</translation>
     </message>
     <message>
-        <source>Invalid servicenodepairingkey. Please see documenation.</source>
-        <translation>servicenodepairingkey non valida. Per favore consulta la documentazione</translation>
+        <source>Invalid masternodepairingkey. Please see documenation.</source>
+        <translation>masternodepairingkey non valida. Per favore consulta la documentazione</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4023,16 +4023,16 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Assicurati di crittografare il tuo portafoglio ed eliminare tutti i backup non crittografati dopo aver verificato che il portafoglio funzioni!</translation>
     </message>
     <message>
-        <source>ServiceNode options:</source>
-        <translation>Opzioni servicenode:</translation>
+        <source>Masternode options:</source>
+        <translation>Opzioni masternode:</translation>
     </message>
     <message>
-        <source>ServiceNode queue is full.</source>
-        <translation>La lista di servicenode e' piena.</translation>
+        <source>Masternode queue is full.</source>
+        <translation>La lista di masternode e' piena.</translation>
     </message>
     <message>
-        <source>ServiceNode:</source>
-        <translation>ServiceNode: </translation>
+        <source>Masternode:</source>
+        <translation>Masternode: </translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -4113,8 +4113,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Imposta la dimensione massima del blocco in byte (predefinita: %d)</translation>
     </message>
     <message>
-        <source>Set the servicenode private key</source>
-        <translation>Configura la chiave privata del ServiceNode</translation>
+        <source>Set the masternode private key</source>
+        <translation>Configura la chiave privata del Masternode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

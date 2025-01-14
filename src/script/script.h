@@ -187,7 +187,7 @@ enum opcodetype {
 
     // Fluid Autonomus Monetary Management System (FAM2S)
     OP_MINT = 0xc0,
-    OP_REWARD_SERVICENODE = 0xc3,
+    OP_REWARD_MASTERNODE = 0xc3,
     OP_REWARD_MINING = 0xc4,
     OP_SWAP_SOVEREIGN_ADDRESS = 0xc5,
     OP_UPDATE_FEES = 0xc6,
@@ -224,7 +224,7 @@ const char* GetOpName(opcodetype opcode);
 // Identification codes for Fluid and BDAP Transactions
 enum ProtocolCodes {
     MINT_TX = 1,
-    SERVICENODE_MODFIY_TX = 2,
+    MASTERNODE_MODFIY_TX = 2,
     MINING_MODIFY_TX = 3,
     BDAP_NEW_TX = 4,
     BDAP_DELETE_TX = 5,
@@ -681,8 +681,8 @@ public:
         case MINT_TX:
             return (size() > 0 && *begin() == OP_MINT);
             break;
-        case SERVICENODE_MODFIY_TX:
-            return (size() > 0 && *begin() == OP_REWARD_SERVICENODE);
+        case MASTERNODE_MODFIY_TX:
+            return (size() > 0 && *begin() == OP_REWARD_MASTERNODE);
             break;
         case MINING_MODIFY_TX:
             return (size() > 0 && *begin() == OP_REWARD_MINING);

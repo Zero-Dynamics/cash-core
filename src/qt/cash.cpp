@@ -11,7 +11,7 @@
 
 #include "clientmodel.h"
 #include "cashgui.h"
-#include "servicenodeconfig.h"
+#include "masternodeconfig.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "intro.h"
@@ -642,11 +642,11 @@ int main(int argc, char* argv[])
     initTranslations(qtTranslatorBase, qtTranslator, translatorBase, translator);
 
 #ifdef ENABLE_WALLET
-    /// 7a. parse servicenode.conf
+    /// 7a. parse masternode.conf
     std::string strErr;
-    if (!servicenodeConfig.read(strErr)) {
+    if (!masternodeConfig.read(strErr)) {
         QMessageBox::critical(0, QObject::tr("Cash"),
-            QObject::tr("Error reading ServiceNode configuration file: %1").arg(strErr.c_str()));
+            QObject::tr("Error reading Masternode configuration file: %1").arg(strErr.c_str()));
         return EXIT_FAILURE;
     }
 

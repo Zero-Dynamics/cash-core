@@ -1938,22 +1938,22 @@ QDialog#TransactionDescDialog QTextEdit { /* Contents of Receive Coin Dialog */
 border:1px solid #440128;
 }
 
-/* SERVICENODE NETWORK PAGE */
+/* MASTERNODE NETWORK PAGE */
 
-QWidget#ServiceNodeList .QTabWidget#tabWidget::pane {
+QWidget#MasternodeList .QTabWidget#tabWidget::pane {
 background-color:#120006;
 border: 1px solid #66023c;
 }
 
-QWidget#ServiceNodeList .QTabWidget {
+QWidget#MasternodeList .QTabWidget {
 border-bottom:1px solid #66023c;
 }
 
-QWidget#ServiceNodeList .QTabWidget::pane {
+QWidget#MasternodeList .QTabWidget::pane {
 border: 1px solid #66023c;
 }
 
-QWidget#ServiceNodeList .QTabWidget QTabBar::tab {
+QWidget#MasternodeList .QTabWidget QTabBar::tab {
 background-color:#440128;
 color:#e5e4e2;
 padding-left:10px;
@@ -1963,41 +1963,41 @@ padding-bottom:5px;
 border-top: 1px solid #66023c;
 }
 
-QWidget#ServiceNodeList .QTabWidget QTabBar::tab:first {
+QWidget#MasternodeList .QTabWidget QTabBar::tab:first {
 border-left: 1px solid #66023c;
 }
 
-QWidget#ServiceNodeList .QTabWidget QTabBar::tab:last {
+QWidget#MasternodeList .QTabWidget QTabBar::tab:last {
 border-right: 1px solid #66023c;
 }
 
-QWidget#ServiceNodeList .QTabWidget QTabBar::tab:selected, QWidget#ServiceNodeList .QTabWidget QTabBar::tab:hover {
+QWidget#MasternodeList .QTabWidget QTabBar::tab:selected, QWidget#MasternodeList .QTabWidget QTabBar::tab:hover {
 background-color:#66023c;
 color:#e5e4e2;
 }
 
-QWidget#ServiceNodeList .QTabWidget .QWidget {
+QWidget#MasternodeList .QTabWidget .QWidget {
 background-color:#120006;
 color:#e5e4e2;
 }
 
-QWidget#ServiceNodeList .QTabWidget .QWidget QAbstractSpinBox {
+QWidget#MasternodeList .QTabWidget .QWidget QAbstractSpinBox {
 min-height:15px;
 }
 
-QWidget#ServiceNodeList .QTabWidget .QWidget QAbstractSpinBox::down-button {
+QWidget#MasternodeList .QTabWidget .QWidget QAbstractSpinBox::down-button {
 width:15px;
 }
 
-QWidget#ServiceNodeList .QTabWidget .QWidget QAbstractSpinBox::up-button {
+QWidget#MasternodeList .QTabWidget .QWidget QAbstractSpinBox::up-button {
 width:15px;
 }
 
-QWidget#ServiceNodeList .QTabWidget .QWidget QComboBox {
+QWidget#MasternodeList .QTabWidget .QWidget QComboBox {
 min-height:15px;
 }
 
-QWidget#ServiceNodeList QWidget { /* Remove Annoying Focus Rectangle */
+QWidget#MasternodeList QWidget { /* Remove Annoying Focus Rectangle */
 outline: 0;
 }
 

@@ -17,7 +17,7 @@
 #include "util.h"
 #include "utilstrencodings.h"
 
-#include "servicenodeconfig.h"
+#include "masternodeconfig.h"
 
 #include <stdio.h>
 
@@ -114,10 +114,10 @@ bool AppInit(int argc, char* argv[])
             return false;
         }
 
-        // parse servicenode.conf
+        // parse masternode.conf
         std::string strErr;
-        if (!servicenodeConfig.read(strErr)) {
-            fprintf(stderr, "Error reading ServiceNode configuration file: %s\n", strErr.c_str());
+        if (!masternodeConfig.read(strErr)) {
+            fprintf(stderr, "Error reading Masternode configuration file: %s\n", strErr.c_str());
             return false;
         }
 

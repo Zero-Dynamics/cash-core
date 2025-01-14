@@ -43,8 +43,8 @@ struct BIP9Deployment {
 struct Params {
     uint256 hashGenesisBlock;
     int nRewardsStart;
-    int nServiceNodePaymentsStartBlock;
-    int nMinCountServiceNodesPaymentStart;
+    int nMasternodePaymentsStartBlock;
+    int nMinCountMasternodesPaymentStart;
     int nInstantSendConfirmationsRequired; // in blocks
     int nInstantSendKeepLock;              // in blocks
     int nBudgetPaymentsStartBlock;
@@ -56,7 +56,7 @@ struct Params {
     int nSuperblockCycle;     // in blocks
     int nGovernanceMinQuorum; // Min absolute vote count to trigger an action
     int nGovernanceFilterElements;
-    int nServiceNodeMinimumConfirmations;
+    int nMasternodeMinimumConfirmations;
     /** Used to check majorities for block version upgrade */
     int nMajorityEnforceBlockUpgrade;
     int nMajorityRejectBlockOutdated;

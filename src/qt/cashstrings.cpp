@@ -52,7 +52,7 @@ static const char UNUSED* cash_strings[] = {
                                  "Delete all wallet transactions and only recover those parts of the "
                                  "blockchain through -rescan on startup"),
     QT_TRANSLATE_NOOP("cash", ""
-                                 "Disable all Cash specific functionality (ServiceNodes, PrivateSend, "
+                                 "Disable all Cash specific functionality (Masternodes, PrivateSend, "
                                  "InstantSend, Governance) (0-1, default: %u)"),
     QT_TRANSLATE_NOOP("cash", ""
                                  "Discover own IP addresses (default: 1 when listening and no -externalip or -"
@@ -252,7 +252,7 @@ static const char UNUSED* cash_strings[] = {
                                  "Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/"
                                  "or -whitelistforcerelay."),
     QT_TRANSLATE_NOOP("cash", ""
-                                 "Use N separate servicenodes for each denominated input to mix funds (%u-%u, "
+                                 "Use N separate masternodes for each denominated input to mix funds (%u-%u, "
                                  "default: %u)"),
     QT_TRANSLATE_NOOP("cash", ""
                                  "Use UPnP to map the listening port (default: 1 when listening and no -proxy)"),
@@ -286,10 +286,10 @@ static const char UNUSED* cash_strings[] = {
                                  "Wallet will not create transactions that violate mempool chain limits "
                                  "(default: %u)"),
     QT_TRANSLATE_NOOP("cash", ""
-                                 "Warning: At least %d of %d servicenodes are running on a newer software "
+                                 "Warning: At least %d of %d masternodes are running on a newer software "
                                  "version. Please check latest releases, you might need to update too."),
     QT_TRANSLATE_NOOP("cash", ""
-                                 "Warning: Every servicenode (out of %d known ones) is running on a newer "
+                                 "Warning: Every masternode (out of %d known ones) is running on a newer "
                                  "software version. Please check latest releases, it's very likely that you "
                                  "missed a major/critical update."),
     QT_TRANSLATE_NOOP("cash", ""
@@ -312,7 +312,7 @@ static const char UNUSED* cash_strings[] = {
                                  "Whitelisted peers cannot be DoS banned and their transactions are always "
                                  "relayed, even if they are already in the mempool, useful e.g. for a gateway"),
     QT_TRANSLATE_NOOP("cash", ""
-                                 "You must specify a servicenodepairingkey in the configuration. Please see "
+                                 "You must specify a masternodepairingkey in the configuration. Please see "
                                  "documentation for help."),
     QT_TRANSLATE_NOOP("cash", ""
                                  "You need to rebuild the database using -reindex to go back to unpruned "
@@ -344,7 +344,7 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Automatic backups disabled"),
     QT_TRANSLATE_NOOP("cash", "Automatically create Tor hidden service (default: %d)"),
     QT_TRANSLATE_NOOP("cash", "Block creation options:"),
-    QT_TRANSLATE_NOOP("cash", "Can't find random ServiceNode."),
+    QT_TRANSLATE_NOOP("cash", "Can't find random Masternode."),
     QT_TRANSLATE_NOOP("cash", "Can't mix while sync in progress."),
     QT_TRANSLATE_NOOP("cash", "Can't mix: no compatible inputs found!"),
     QT_TRANSLATE_NOOP("cash", "Cannot downgrade wallet"),
@@ -359,7 +359,7 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Connection options:"),
     QT_TRANSLATE_NOOP("cash", "Copyright (C)"),
     QT_TRANSLATE_NOOP("cash", "Corrupted block database detected"),
-    QT_TRANSLATE_NOOP("cash", "Could not parse servicenode.conf"),
+    QT_TRANSLATE_NOOP("cash", "Could not parse masternode.conf"),
     QT_TRANSLATE_NOOP("cash", "Debugging/Testing options:"),
     QT_TRANSLATE_NOOP("cash", "Do not load the wallet and disable wallet RPC calls"),
     QT_TRANSLATE_NOOP("cash", "Do you want to rebuild the block database now?"),
@@ -371,7 +371,7 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Enable publish raw block in <address>"),
     QT_TRANSLATE_NOOP("cash", "Enable publish raw transaction (locked via InstantSend) in <address>"),
     QT_TRANSLATE_NOOP("cash", "Enable publish raw transaction in <address>"),
-    QT_TRANSLATE_NOOP("cash", "Enable the client to act as a servicenode (0-1, default: %u)"),
+    QT_TRANSLATE_NOOP("cash", "Enable the client to act as a masternode (0-1, default: %u)"),
     QT_TRANSLATE_NOOP("cash", "Enable transaction replacement in the memory pool (default: %u)"),
     QT_TRANSLATE_NOOP("cash", "Entries are full."),
     QT_TRANSLATE_NOOP("cash", "Entry exceeds maximum size."),
@@ -395,8 +395,8 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Failed to listen on any port. Use -listen=0 if you want this."),
     QT_TRANSLATE_NOOP("cash", "Failed to load fulfilled requests cache from"),
     QT_TRANSLATE_NOOP("cash", "Failed to load governance cache from"),
-    QT_TRANSLATE_NOOP("cash", "Failed to load servicenode cache from"),
-    QT_TRANSLATE_NOOP("cash", "Failed to load servicenode payments cache from"),
+    QT_TRANSLATE_NOOP("cash", "Failed to load masternode cache from"),
+    QT_TRANSLATE_NOOP("cash", "Failed to load masternode payments cache from"),
     QT_TRANSLATE_NOOP("cash", "Failed to parse host:port string"),
     QT_TRANSLATE_NOOP("cash", "Failed to start a new mixing queue"),
     QT_TRANSLATE_NOOP("cash", "Fee (in %s/kB) to add to transactions you send (default: %s)"),
@@ -419,9 +419,9 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Invalid amount for -%s=<amount>: '%s'"),
     QT_TRANSLATE_NOOP("cash", "Invalid amount for -fallbackfee=<amount>: '%s'"),
     QT_TRANSLATE_NOOP("cash", "Invalid amount for -paytxfee=<amount>: '%s' (must be at least %s)"),
-    QT_TRANSLATE_NOOP("cash", "Invalid servicenodepairingkey. Please see documenation."),
+    QT_TRANSLATE_NOOP("cash", "Invalid masternodepairingkey. Please see documenation."),
     QT_TRANSLATE_NOOP("cash", "Invalid netmask specified in -whitelist: '%s'"),
-    QT_TRANSLATE_NOOP("cash", "Invalid port detected in servicenode.conf"),
+    QT_TRANSLATE_NOOP("cash", "Invalid port detected in masternode.conf"),
     QT_TRANSLATE_NOOP("cash", "Invalid script detected."),
     QT_TRANSLATE_NOOP("cash", "Invalid spork address specified with -sporkaddr"),
     QT_TRANSLATE_NOOP("cash", "KeePassHttp id for the established association"),
@@ -440,18 +440,18 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Loading block index..."),
     QT_TRANSLATE_NOOP("cash", "Loading fulfilled requests cache..."),
     QT_TRANSLATE_NOOP("cash", "Loading governance cache..."),
-    QT_TRANSLATE_NOOP("cash", "Loading servicenode cache..."),
-    QT_TRANSLATE_NOOP("cash", "Loading servicenode payment cache..."),
+    QT_TRANSLATE_NOOP("cash", "Loading masternode cache..."),
+    QT_TRANSLATE_NOOP("cash", "Loading masternode payment cache..."),
     QT_TRANSLATE_NOOP("cash", "Loading wallet... (%3.2f %%)"),
     QT_TRANSLATE_NOOP("cash", "Loading wallet..."),
     QT_TRANSLATE_NOOP("cash", "Location of the auth cookie (default: data dir)"),
     QT_TRANSLATE_NOOP("cash", "Lock is already in place."),
-    QT_TRANSLATE_NOOP("cash", "Lock servicenodes from servicenode configuration file (default: %u)"),
+    QT_TRANSLATE_NOOP("cash", "Lock masternodes from masternode configuration file (default: %u)"),
     QT_TRANSLATE_NOOP("cash", "Make the wallet broadcast transactions"),
-    QT_TRANSLATE_NOOP("cash", "ServiceNode cache is empty, skipping payments and governance cache..."),
-    QT_TRANSLATE_NOOP("cash", "ServiceNode options:"),
-    QT_TRANSLATE_NOOP("cash", "ServiceNode queue is full."),
-    QT_TRANSLATE_NOOP("cash", "ServiceNode:"),
+    QT_TRANSLATE_NOOP("cash", "Masternode cache is empty, skipping payments and governance cache..."),
+    QT_TRANSLATE_NOOP("cash", "Masternode options:"),
+    QT_TRANSLATE_NOOP("cash", "Masternode queue is full."),
+    QT_TRANSLATE_NOOP("cash", "Masternode:"),
     QT_TRANSLATE_NOOP("cash", "Maximum per-connection receive buffer, <n>*1000 bytes (default: %u)"),
     QT_TRANSLATE_NOOP("cash", "Maximum per-connection send buffer, <n>*1000 bytes (default: %u)"),
     QT_TRANSLATE_NOOP("cash", "Minimum bytes per sigop in transactions we relay and mine (default: %u)"),
@@ -459,8 +459,8 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Mixing in progress..."),
     QT_TRANSLATE_NOOP("cash", "Mnemonic passphrase is too long, must be at most 256 characters"),
     QT_TRANSLATE_NOOP("cash", "Need to specify a port with -whitebind: '%s'"),
-    QT_TRANSLATE_NOOP("cash", "No ServiceNodes detected."),
-    QT_TRANSLATE_NOOP("cash", "No compatible ServiceNode found."),
+    QT_TRANSLATE_NOOP("cash", "No Masternodes detected."),
+    QT_TRANSLATE_NOOP("cash", "No compatible Masternode found."),
     QT_TRANSLATE_NOOP("cash", "No errors detected."),
     QT_TRANSLATE_NOOP("cash", "No matching denominations found for mixing."),
     QT_TRANSLATE_NOOP("cash", "Node relay options:"),
@@ -468,7 +468,7 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Not compatible with existing transactions."),
     QT_TRANSLATE_NOOP("cash", "Not enough file descriptors available."),
     QT_TRANSLATE_NOOP("cash", "Not enough funds to anonymize."),
-    QT_TRANSLATE_NOOP("cash", "Not in the ServiceNode list."),
+    QT_TRANSLATE_NOOP("cash", "Not in the Masternode list."),
     QT_TRANSLATE_NOOP("cash", "Number of automatic wallet backups (default: %u)"),
     QT_TRANSLATE_NOOP("cash", "Only connect to nodes in network <net> (ipv4, ipv6 or onion)"),
     QT_TRANSLATE_NOOP("cash", "Options:"),
@@ -502,7 +502,7 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Set database cache size in megabytes (%d to %d, default: %d)"),
     QT_TRANSLATE_NOOP("cash", "Set key pool size to <n> (default: %u)"),
     QT_TRANSLATE_NOOP("cash", "Set maximum block size in bytes (default: %d)"),
-    QT_TRANSLATE_NOOP("cash", "Set the servicenode private key"),
+    QT_TRANSLATE_NOOP("cash", "Set the masternode private key"),
     QT_TRANSLATE_NOOP("cash", "Set the number of threads to service RPC calls (default: %d)"),
     QT_TRANSLATE_NOOP("cash", "Show all debugging options (usage: --help -help-debug)"),
     QT_TRANSLATE_NOOP("cash", "Shrink debug.log file on client startup (default: 1 when no -debug)"),
@@ -510,27 +510,27 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Specify configuration file (default: %s)"),
     QT_TRANSLATE_NOOP("cash", "Specify connection timeout in milliseconds (minimum: 1, default: %d)"),
     QT_TRANSLATE_NOOP("cash", "Specify data directory"),
-    QT_TRANSLATE_NOOP("cash", "Specify servicenode configuration file (default: %s)"),
+    QT_TRANSLATE_NOOP("cash", "Specify masternode configuration file (default: %s)"),
     QT_TRANSLATE_NOOP("cash", "Specify pid file (default: %s)"),
     QT_TRANSLATE_NOOP("cash", "Specify wallet file (within data directory)"),
     QT_TRANSLATE_NOOP("cash", "Specify your own public address"),
     QT_TRANSLATE_NOOP("cash", "Spend unconfirmed change when sending transactions (default: %u)"),
     QT_TRANSLATE_NOOP("cash", "Starting network threads..."),
-    QT_TRANSLATE_NOOP("cash", "Submitted following entries to servicenode: %u / %d"),
-    QT_TRANSLATE_NOOP("cash", "Submitted to servicenode, waiting for more entries ( %u / %d ) %s"),
-    QT_TRANSLATE_NOOP("cash", "Submitted to servicenode, waiting in queue %s"),
+    QT_TRANSLATE_NOOP("cash", "Submitted following entries to masternode: %u / %d"),
+    QT_TRANSLATE_NOOP("cash", "Submitted to masternode, waiting for more entries ( %u / %d ) %s"),
+    QT_TRANSLATE_NOOP("cash", "Submitted to masternode, waiting in queue %s"),
     QT_TRANSLATE_NOOP("cash", "Synchroning blockchain..."),
     QT_TRANSLATE_NOOP("cash", "Synchronization failed"),
     QT_TRANSLATE_NOOP("cash", "Synchronization finished"),
     QT_TRANSLATE_NOOP("cash", "Synchronization pending..."),
     QT_TRANSLATE_NOOP("cash", "Synchronizing governance objects..."),
-    QT_TRANSLATE_NOOP("cash", "Synchronizing servicenode payments..."),
-    QT_TRANSLATE_NOOP("cash", "Synchronizing servicenodes..."),
+    QT_TRANSLATE_NOOP("cash", "Synchronizing masternode payments..."),
+    QT_TRANSLATE_NOOP("cash", "Synchronizing masternodes..."),
     QT_TRANSLATE_NOOP("cash", "The source code is available from %s."),
     QT_TRANSLATE_NOOP("cash", "The transaction amount is too small to pay the fee"),
     QT_TRANSLATE_NOOP("cash", "The wallet will avoid paying less than the minimum relay fee."),
     QT_TRANSLATE_NOOP("cash", "This is experimental software."),
-    QT_TRANSLATE_NOOP("cash", "This is not a ServiceNode."),
+    QT_TRANSLATE_NOOP("cash", "This is not a Masternode."),
     QT_TRANSLATE_NOOP("cash", "This is the minimum transaction fee you pay on every transaction."),
     QT_TRANSLATE_NOOP("cash", "This is the transaction fee you will pay if you send a transaction."),
     QT_TRANSLATE_NOOP("cash", "Threshold for disconnecting misbehaving peers (default: %u)"),

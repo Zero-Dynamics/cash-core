@@ -250,10 +250,10 @@ extern const char* TXLOCKREQUEST;
 extern const char* TXLOCKVOTE;
 extern const char* SPORK;
 extern const char* GETSPORKS;
-extern const char* SERVICENODEPAYMENTVOTE;
-extern const char* SERVICENODEPAYMENTSYNC;
-extern const char* SNANNOUNCE;
-extern const char* SNPING;
+extern const char* MASTERNODEPAYMENTVOTE;
+extern const char* MASTERNODEPAYMENTSYNC;
+extern const char* MNANNOUNCE;
+extern const char* MNPING;
 extern const char* PSACCEPT;
 extern const char* PSVIN;
 extern const char* PSFINALTX;
@@ -264,10 +264,10 @@ extern const char* PSTX;
 extern const char* PSQUEUE;
 extern const char* PSEG;
 extern const char* SYNCSTATUSCOUNT;
-extern const char* SNGOVERNANCESYNC;
-extern const char* SNGOVERNANCEOBJECT;
-extern const char* SNGOVERNANCEOBJECTVOTE;
-extern const char* SNVERIFY;
+extern const char* MNGOVERNANCESYNC;
+extern const char* MNGOVERNANCEOBJECT;
+extern const char* MNGOVERNANCEOBJECTVOTE;
+extern const char* MNVERIFY;
 // BDAP VGP Secure Message
 extern const char* VGPMESSAGE;
 }; // namespace NetMsgType
@@ -353,15 +353,15 @@ enum GetDataMsg {
     MSG_TXLOCK_REQUEST = 4,
     MSG_TXLOCK_VOTE = 5,
     MSG_SPORK = 6,
-    MSG_SERVICENODE_PAYMENT_VOTE = 7,
-    MSG_SERVICENODE_PAYMENT_BLOCK = 8,
-    MSG_SERVICENODE_QUORUM = 9, // not implemented
-    MSG_SERVICENODE_ANNOUNCE = 10,
-    MSG_SERVICENODE_PING = 11,
+    MSG_MASTERNODE_PAYMENT_VOTE = 7,
+    MSG_MASTERNODE_PAYMENT_BLOCK = 8,
+    MSG_MASTERNODE_QUORUM = 9, // not implemented
+    MSG_MASTERNODE_ANNOUNCE = 10,
+    MSG_MASTERNODE_PING = 11,
     MSG_PSTX = 12,
     MSG_GOVERNANCE_OBJECT = 13,
     MSG_GOVERNANCE_OBJECT_VOTE = 14,
-    MSG_SERVICENODE_VERIFY = 15,
+    MSG_MASTERNODE_VERIFY = 15,
     // Nodes may always request a MSG_CMPCT_BLOCK in a getdata, however,
     // MSG_CMPCT_BLOCK should not appear in any invs except as a part of getdata.
     MSG_CMPCT_BLOCK = 16, //!< Defined in BIP152

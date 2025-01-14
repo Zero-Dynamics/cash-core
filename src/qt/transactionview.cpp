@@ -109,7 +109,7 @@ TransactionView::TransactionView(const PlatformStyle* platformStyle, QWidget* pa
     typeWidget->addItem(tr("PrivateSend Collateral Payment"), TransactionFilterProxy::TYPE(TransactionRecord::PrivateSendCollateralPayment));
     typeWidget->addItem(tr("Fluid"), TransactionFilterProxy::TYPE(TransactionRecord::Fluid));
     typeWidget->addItem(tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf));
-    typeWidget->addItem(tr("ServiceNode Reward"), TransactionFilterProxy::TYPE(TransactionRecord::SNReward));
+    typeWidget->addItem(tr("Masternode Reward"), TransactionFilterProxy::TYPE(TransactionRecord::MNReward));
     typeWidget->addItem(tr("Mined"), TransactionFilterProxy::TYPE(TransactionRecord::Generated));
     typeWidget->addItem(tr("BDAP"), TransactionFilterProxy::TYPE(TransactionRecord::NewDomainUser) |
                                         TransactionFilterProxy::TYPE(TransactionRecord::UpdateDomainUser) |

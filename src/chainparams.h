@@ -127,7 +127,7 @@ protected:
     int nFulfilledRequestExpireTime;
     std::vector<std::string> vSporkAddresses;
     int nMinSporkKeys;
-    std::string strServiceNodePaymentsPubKey;
+    std::string strMasternodePaymentsPubKey;
     uint64_t nFirstSwitchDifficultyBlock;
     uint64_t nSecondSwitchDifficultyBlock;
     uint64_t nFirstArgon2SwitchTime;

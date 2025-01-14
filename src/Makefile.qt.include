@@ -32,7 +32,7 @@ QT_FORMS_UI = \
   qt/forms/bdapupdateaccountdialog.ui \
   qt/forms/bdapuserdetaildialog.ui \
   qt/forms/coincontroldialog.ui \
-  qt/forms/servicenodelist.ui \
+  qt/forms/masternodelist.ui \
   qt/forms/editaddressdialog.ui \
   qt/forms/helpmessagedialog.ui \
   qt/forms/intro.ui \
@@ -73,7 +73,7 @@ QT_MOC_CPP = \
   qt/moc_cashamountfield.cpp \
   qt/moc_cashgui.cpp \
   qt/moc_cashunits.cpp \
-  qt/moc_servicenodelist.cpp \
+  qt/moc_masternodelist.cpp \
   qt/moc_editaddressdialog.cpp \
   qt/moc_guiutil.cpp \
   qt/moc_intro.cpp \
@@ -149,7 +149,7 @@ CASH_QT_H = \
   qt/cashamountfield.h \
   qt/cashgui.h \
   qt/cashunits.h \
-  qt/servicenodelist.h \
+  qt/masternodelist.h \
   qt/editaddressdialog.h \
   qt/guiconstants.h \
   qt/guiutil.h \
@@ -249,7 +249,7 @@ RES_ICONS = \
   qt/res/icons/tyrian/cash_testnet.ico \
   qt/res/icons/tyrian/cash_testnet.png \
   qt/res/icons/tyrian/cash.png \
-  qt/res/icons/tyrian/servicenode_network.png \
+  qt/res/icons/tyrian/masternode_network.png \
   qt/res/icons/tyrian/edit.png \
   qt/res/icons/tyrian/editcopy.png \
   qt/res/icons/tyrian/editpaste.png \
@@ -339,7 +339,7 @@ CASH_QT_CPP += \
   qt/bdapuserdetaildialog.cpp \
   qt/coincontroldialog.cpp \
   qt/coincontroltreewidget.cpp \
-  qt/servicenodelist.cpp \
+  qt/masternodelist.cpp \
   qt/editaddressdialog.cpp \
   qt/hashrategraphwidget.cpp \
   qt/miningpage.cpp \

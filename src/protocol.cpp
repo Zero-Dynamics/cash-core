@@ -47,12 +47,12 @@ const char* TXLOCKREQUEST = "is";
 const char* TXLOCKVOTE = "txlvote";
 const char* SPORK = "spork";
 const char* GETSPORKS = "getsporks";
-const char* SERVICENODEPAYMENTVOTE = "snw";
-const char* SERVICENODEPAYMENTBLOCK = "snwb";
-const char* SERVICENODEPAYMENTSYNC = "snget";
-const char* SNQUORUM = "sn quorum"; // not implemented
-const char* SNANNOUNCE = "snb";
-const char* SNPING = "snp";
+const char* MASTERNODEPAYMENTVOTE = "mnw";
+const char* MASTERNODEPAYMENTBLOCK = "mnwb";
+const char* MASTERNODEPAYMENTSYNC = "mnget";
+const char* MNQUORUM = "mn quorum"; // not implemented
+const char* MNANNOUNCE = "mnb";
+const char* MNPING = "mnp";
 const char* PSACCEPT = "psa";
 const char* PSVIN = "psi";
 const char* PSFINALTX = "psf";
@@ -63,10 +63,10 @@ const char* PSTX = "pstx";
 const char* PSQUEUE = "psq";
 const char* PSEG = "pseg";
 const char* SYNCSTATUSCOUNT = "ssc";
-const char* SNGOVERNANCESYNC = "govsync";
-const char* SNGOVERNANCEOBJECT = "govobj";
-const char* SNGOVERNANCEOBJECTVOTE = "govobjvote";
-const char* SNVERIFY = "snv";
+const char* MNGOVERNANCESYNC = "govsync";
+const char* MNGOVERNANCEOBJECT = "govobj";
+const char* MNGOVERNANCEOBJECTVOTE = "govobjvote";
+const char* MNVERIFY = "mnv";
 const char* VGPMESSAGE = "vgpmessage";
 }; // namespace NetMsgType
 
@@ -81,15 +81,15 @@ static const char* ppszTypeName[] =
         NetMsgType::TXLOCKREQUEST,
         NetMsgType::TXLOCKVOTE,
         NetMsgType::SPORK,
-        NetMsgType::SERVICENODEPAYMENTVOTE,
-        NetMsgType::SERVICENODEPAYMENTBLOCK,
-        NetMsgType::SNQUORUM, // not implemented
-        NetMsgType::SNANNOUNCE,
-        NetMsgType::SNPING,
+        NetMsgType::MASTERNODEPAYMENTVOTE,
+        NetMsgType::MASTERNODEPAYMENTBLOCK,
+        NetMsgType::MNQUORUM, // not implemented
+        NetMsgType::MNANNOUNCE,
+        NetMsgType::MNPING,
         NetMsgType::PSTX,
-        NetMsgType::SNGOVERNANCEOBJECT,
-        NetMsgType::SNGOVERNANCEOBJECTVOTE,
-        NetMsgType::SNVERIFY,
+        NetMsgType::MNGOVERNANCEOBJECT,
+        NetMsgType::MNGOVERNANCEOBJECTVOTE,
+        NetMsgType::MNVERIFY,
         "compact block", // Should never occur
 };
 
@@ -129,11 +129,11 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::TXLOCKVOTE,
     NetMsgType::SPORK,
     NetMsgType::GETSPORKS,
-    NetMsgType::SERVICENODEPAYMENTVOTE,
-    // NetMsgType::SERVICENODEPAYMENTBLOCK, // there is no message for this, only inventory
-    NetMsgType::SERVICENODEPAYMENTSYNC,
-    NetMsgType::SNANNOUNCE,
-    NetMsgType::SNPING,
+    NetMsgType::MASTERNODEPAYMENTVOTE,
+    // NetMsgType::MASTERNODEPAYMENTBLOCK, // there is no message for this, only inventory
+    NetMsgType::MASTERNODEPAYMENTSYNC,
+    NetMsgType::MNANNOUNCE,
+    NetMsgType::MNPING,
     NetMsgType::PSACCEPT,
     NetMsgType::PSVIN,
     NetMsgType::PSFINALTX,
@@ -144,10 +144,10 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::PSQUEUE,
     NetMsgType::PSEG,
     NetMsgType::SYNCSTATUSCOUNT,
-    NetMsgType::SNGOVERNANCESYNC,
-    NetMsgType::SNGOVERNANCEOBJECT,
-    NetMsgType::SNGOVERNANCEOBJECTVOTE,
-    NetMsgType::SNVERIFY,
+    NetMsgType::MNGOVERNANCESYNC,
+    NetMsgType::MNGOVERNANCEOBJECT,
+    NetMsgType::MNGOVERNANCEOBJECTVOTE,
+    NetMsgType::MNVERIFY,
     NetMsgType::VGPMESSAGE,
 };
 const static std::vector<std::string> allNetMessageTypesVec(allNetMessageTypes, allNetMessageTypes + ARRAYLEN(allNetMessageTypes));

@@ -11,7 +11,7 @@
 
 #include "init.h"
 
-#include "activeservicenode.h"
+#include "activemasternode.h"
 #include "addrman.h"
 #include "amount.h"
 #include "base58.h"
@@ -25,13 +25,13 @@
 #include "bdap/linkingdb.h"
 #include "bdap/linkmanager.h"
 #include "dht/ed25519.h"
-#include "servicenode-payments.h"
-#include "servicenode-sync.h"
-#include "servicenodeconfig.h"
-#include "servicenodeman.h"
+#include "masternode-payments.h"
+#include "masternode-sync.h"
+#include "masternodeconfig.h"
+#include "masternodeman.h"
 #include "flat-database.h"
 #include "fluid/banaccount.h"
-#include "fluid/fluidservicenode.h"
+#include "fluid/fluidmasternode.h"
 #include "fluid/fluidmining.h"
 #include "fluid/fluidmint.h"
 #include "fluid/fluidsovereign.h"
@@ -311,8 +311,8 @@ void PrepareShutdown()
     g_connman.reset();
 
     if (!fLiteMode && !fRPCInWarmup) {
-        CFlatDB<CServiceNodePayments> flatdb2("snpayments.dat", "magicServiceNodePaymentsCache");
-        flatdb2.Dump(snpayments);
+        CFlatDB<CMasternodePayments> flatdb2("mnpayments.dat", "magicMasternodePaymentsCache");
+        flatdb2.Dump(mnpayments);
         CFlatDB<CGovernanceManager> flatdb3("governance.dat", "magicGovernanceCache");
         flatdb3.Dump(governance);
         CFlatDB<CNetFulfilledRequestManager> flatdb4("netfulfilled.dat", "magicFulfilledCache");
@@ -353,8 +353,8 @@ void PrepareShutdown()
         delete pblocktree;
         pblocktree = NULL;
         // Fluid transaction DB's
-        delete pFluidServiceNodeDB;
-        pFluidServiceNodeDB = NULL;
+        delete pFluidMasternodeDB;
+        pFluidMasternodeDB = NULL;
         delete pFluidMiningDB;
         pFluidMiningDB = NULL;
         delete pFluidMintDB;
@@ -614,7 +614,7 @@ std::string HelpMessage(HelpMessageMode mode)
         strUsage += HelpMessageOpt("-limitdescendantsize=<n>", strprintf("Do not accept transactions if any ancestor would have more than <n> kilobytes of in-mempool descendants (default: %u).", DEFAULT_DESCENDANT_SIZE_LIMIT));
     }
     std::string debugCategories = "addrman, alert, bench, cmpctblock, coindb, db, http, leveldb, libevent, lock, mempool, mempoolrej, net, proxy, prune, rand, reindex, rpc, selectcoins, tor, zmq, "
-                                  "cash (or specifically: gobject, instantsend, keepass, servicenode, snpayments, snsync, privatesend, spork)"; // Don't translate these and qt below
+                                  "cash (or specifically: gobject, instantsend, keepass, masternode, mnpayments, mnsync, privatesend, spork)"; // Don't translate these and qt below
     if (mode == HMM_CASH_QT)
         debugCategories += ", qt";
     strUsage += HelpMessageOpt("-debug=<category>", strprintf(_("Output debugging information (default: %u, supplying <category> is optional)"), 0) + ". " +
@@ -644,22 +644,22 @@ std::string HelpMessage(HelpMessageMode mode)
     }
     strUsage += HelpMessageOpt("-shrinkdebugfile", _("Shrink debug.log file on client startup (default: 1 when no -debug)"));
     AppendParamsHelpMessages(strUsage, showDebug);
-    strUsage += HelpMessageOpt("-litemode=<n>", strprintf(_("Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)"), 0));
+    strUsage += HelpMessageOpt("-litemode=<n>", strprintf(_("Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)"), 0));
     strUsage += HelpMessageOpt("-sporkaddr=<hex>", strprintf(_("Override spork address. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.")));
     strUsage += HelpMessageOpt("-minsporkkeys=<n>", strprintf(_("Overrides minimum spork signers to change spork value. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.")));
 
-    strUsage += HelpMessageGroup(_("ServiceNode options:"));
-    strUsage += HelpMessageOpt("-servicenode=<n>", strprintf(_("Enable the client to act as a ServiceNode (0-1, default: %u)"), 0));
-    strUsage += HelpMessageOpt("-snconf=<file>", strprintf(_("Specify ServiceNode configuration file (default: %s)"), "servicenode.conf"));
-    strUsage += HelpMessageOpt("-snconflock=<n>", strprintf(_("Lock ServiceNodes from ServiceNode configuration file (default: %u)"), 1));
-    strUsage += HelpMessageOpt("-servicenodepairingkey=<n>", _("Set the ServiceNode private key"));
+    strUsage += HelpMessageGroup(_("Masternode options:"));
+    strUsage += HelpMessageOpt("-masternode=<n>", strprintf(_("Enable the client to act as a Masternode (0-1, default: %u)"), 0));
+    strUsage += HelpMessageOpt("-mnconf=<file>", strprintf(_("Specify Masternode configuration file (default: %s)"), "masternode.conf"));
+    strUsage += HelpMessageOpt("-mnconflock=<n>", strprintf(_("Lock Masternodes from Masternode configuration file (default: %u)"), 1));
+    strUsage += HelpMessageOpt("-masternodepairingkey=<n>", _("Set the Masternode private key"));
 
 #ifdef ENABLE_WALLET
     strUsage += HelpMessageGroup(_("PrivateSend options:"));
     strUsage += HelpMessageOpt("-enableprivatesend=<n>", strprintf(_("Enable use of automated PrivateSend for funds stored in this wallet (0-1, default: %u)"), 0));
     strUsage += HelpMessageOpt("-privatesendmultisession=<n>", strprintf(_("Enable multiple PrivateSend mixing sessions per block, experimental (0-1, default: %u)"), DEFAULT_PRIVATESEND_MULTISESSION));
-    strUsage += HelpMessageOpt("-privatesendsessions=<n>", strprintf(_("Use N separate servicenodes in parallel to mix funds (%u-%u, default: %u)"), MIN_PRIVATESEND_SESSIONS, MAX_PRIVATESEND_SESSIONS, DEFAULT_PRIVATESEND_SESSIONS));
-    strUsage += HelpMessageOpt("-privatesendrounds=<n>", strprintf(_("Use N separate ServiceNodes for each denominated input to mix funds (2-16, default: %u)"), DEFAULT_PRIVATESEND_ROUNDS));
+    strUsage += HelpMessageOpt("-privatesendsessions=<n>", strprintf(_("Use N separate masternodes in parallel to mix funds (%u-%u, default: %u)"), MIN_PRIVATESEND_SESSIONS, MAX_PRIVATESEND_SESSIONS, DEFAULT_PRIVATESEND_SESSIONS));
+    strUsage += HelpMessageOpt("-privatesendrounds=<n>", strprintf(_("Use N separate Masternodes for each denominated input to mix funds (2-16, default: %u)"), DEFAULT_PRIVATESEND_ROUNDS));
     strUsage += HelpMessageOpt("-privatesendamount=<n>", strprintf(_("Keep N 0DYNC anonymized (default: %u)"), DEFAULT_PRIVATESEND_AMOUNT));
     strUsage += HelpMessageOpt("-liquidityprovider=<n>", strprintf(_("Provide liquidity to PrivateSend by infrequently mixing coins on a continual basis (%u-%u, default: %u, 1=very frequent, high fees, %u=very infrequent, low fees)"),
                                                              MIN_PRIVATESEND_LIQUIDITY, MAX_PRIVATESEND_LIQUIDITY, DEFAULT_PRIVATESEND_LIQUIDITY, MAX_PRIVATESEND_LIQUIDITY));
@@ -877,7 +877,7 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
         }
     } // End scope of CImportingNow
 
-    // force UpdatedBlockTip to initialize nCachedBlockHeight for PS, SN payments and budgets
+    // force UpdatedBlockTip to initialize nCachedBlockHeight for PS, MN payments and budgets
     // but don't call it directly to prevent triggering of other listeners like zmq etc.
     // GetMainSignals().UpdatedBlockTip(chainActive.Tip());
     ppsNotificationInterface->InitializeCurrentBlockTip();
@@ -934,14 +934,14 @@ void InitParameterInteraction()
             LogPrintf("%s: parameter interaction: -whitebind set -> setting -listen=1\n", __func__);
     }
 
-    if (GetBoolArg("-servicenode", false)) {
-        // ServiceNodes MUST accept connections from outside
+    if (GetBoolArg("-masternode", false)) {
+        // Masternodes MUST accept connections from outside
         ForceSetArg("-listen", "1");
-        LogPrintf("%s: parameter interaction: -servicenode=1 -> setting -listen=1\n", __func__);
+        LogPrintf("%s: parameter interaction: -masternode=1 -> setting -listen=1\n", __func__);
         if (GetArg("-maxconnections", DEFAULT_MAX_PEER_CONNECTIONS) < DEFAULT_MAX_PEER_CONNECTIONS) {
-            // ServiceNodes MUST be able to handle at least DEFAULT_MAX_PEER_CONNECTIONS connections
+            // Masternodes MUST be able to handle at least DEFAULT_MAX_PEER_CONNECTIONS connections
             ForceSetArg("-maxconnections", itostr(DEFAULT_MAX_PEER_CONNECTIONS));
-            LogPrintf("%s: parameter interaction: -servicenode=1 -> setting -maxconnections=%d\n", __func__, DEFAULT_MAX_PEER_CONNECTIONS);
+            LogPrintf("%s: parameter interaction: -masternode=1 -> setting -maxconnections=%d\n", __func__, DEFAULT_MAX_PEER_CONNECTIONS);
         }
     }
 
@@ -1728,7 +1728,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
                 delete pcoinscatcher;
                 delete pblocktree;
                 // Fluid transaction DB's
-                delete pFluidServiceNodeDB;
+                delete pFluidMasternodeDB;
                 delete pFluidMiningDB;
                 delete pFluidMintDB;
                 delete pFluidSovereignDB;
@@ -1749,7 +1749,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 
                 bool obfuscate = false;
                 // Init Fluid transaction DB's
-                pFluidServiceNodeDB = new CFluidServiceNodeDB(nTotalCache * 35, false, fReindex, obfuscate);
+                pFluidMasternodeDB = new CFluidMasternodeDB(nTotalCache * 35, false, fReindex, obfuscate);
                 pFluidMiningDB = new CFluidMiningDB(nTotalCache * 35, false, fReindex, obfuscate);
                 pFluidMintDB = new CFluidMintDB(nTotalCache * 35, false, fReindex, obfuscate);
                 pFluidSovereignDB = new CFluidSovereignDB(nTotalCache * 35, false, fReindex, obfuscate);
@@ -1933,8 +1933,8 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
     }
 
     // ********************************************************* Step 11a: setup PrivateSend
-    fServiceNodeMode = GetBoolArg("-servicenode", false);
-    // TODO: servicenode should have no wallet
+    fMasternodeMode = GetBoolArg("-masternode", false);
+    // TODO: masternode should have no wallet
 
     //lite mode disables all Cash-specific functionality
     fLiteMode = GetBoolArg("-litemode", false);
@@ -1947,43 +1947,43 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         return InitError(_("Transaction index can't be disabled in full mode. Either start with -litemode command line switch or enable transaction index."));
     }
 
-    if (fLiteMode && fServiceNodeMode) {
-        return InitError(_("You can not start a servicenode in lite mode."));
+    if (fLiteMode && fMasternodeMode) {
+        return InitError(_("You can not start a masternode in lite mode."));
     }
 
-    if (fServiceNodeMode) {
-        LogPrintf("SERVICENODE:\n");
+    if (fMasternodeMode) {
+        LogPrintf("MASTERNODE:\n");
 
-        std::string strservicenodepairingkey = GetArg("-servicenodepairingkey", "");
-        if (!strservicenodepairingkey.empty()) {
-            if (!CMessageSigner::GetKeysFromSecret(strservicenodepairingkey, activeServiceNode.keyServiceNode, activeServiceNode.pubKeyServiceNode))
-                return InitError(_("Invalid servicenodepairingkey. Please see documenation."));
+        std::string strmasternodepairingkey = GetArg("-masternodepairingkey", "");
+        if (!strmasternodepairingkey.empty()) {
+            if (!CMessageSigner::GetKeysFromSecret(strmasternodepairingkey, activeMasternode.keyMasternode, activeMasternode.pubKeyMasternode))
+                return InitError(_("Invalid masternodepairingkey. Please see documenation."));
 
-            LogPrintf("  pubKeyServiceNode: %s\n", CDebitAddress(activeServiceNode.pubKeyServiceNode.GetID()).ToString());
+            LogPrintf("  pubKeyMasternode: %s\n", CDebitAddress(activeMasternode.pubKeyMasternode.GetID()).ToString());
         } else {
-            return InitError(_("You must specify a servicenodepairingkey in the configuration. Please see documentation for help."));
+            return InitError(_("You must specify a masternodepairingkey in the configuration. Please see documentation for help."));
         }
     }
 
 #ifdef ENABLE_WALLET
-    LogPrintf("Using ServiceNode config file %s\n", GetServiceNodeConfigFile().string());
+    LogPrintf("Using Masternode config file %s\n", GetMasternodeConfigFile().string());
 
-    if (GetBoolArg("-snconflock", true) && pwalletMain && (servicenodeConfig.getCount() > 0)) {
+    if (GetBoolArg("-mnconflock", true) && pwalletMain && (masternodeConfig.getCount() > 0)) {
         LOCK(pwalletMain->cs_wallet);
-        LogPrintf("Locking ServiceNodes:\n");
-        uint256 snTxHash;
+        LogPrintf("Locking Masternodes:\n");
+        uint256 mnTxHash;
         uint32_t outputIndex;
-        for (const auto& sne : servicenodeConfig.getEntries()) {
-            snTxHash.SetHex(sne.getTxHash());
-            outputIndex = (uint32_t)atoi(sne.getOutputIndex());
-            COutPoint outpoint = COutPoint(snTxHash, outputIndex);
+        for (const auto& mne : masternodeConfig.getEntries()) {
+            mnTxHash.SetHex(mne.getTxHash());
+            outputIndex = (uint32_t)atoi(mne.getOutputIndex());
+            COutPoint outpoint = COutPoint(mnTxHash, outputIndex);
             // don't lock non-spendable outpoint (i.e. it's already spent or it's not from this wallet at all)
             if (pwalletMain->IsMine(CTxIn(outpoint)) != ISMINE_SPENDABLE) {
-                LogPrintf("  %s %s - IS NOT SPENDABLE, was not locked\n", sne.getTxHash(), sne.getOutputIndex());
+                LogPrintf("  %s %s - IS NOT SPENDABLE, was not locked\n", mne.getTxHash(), mne.getOutputIndex());
                 continue;
             }
             pwalletMain->LockCoin(outpoint);
-            LogPrintf("  %s %s - locked successfully\n", sne.getTxHash(), sne.getOutputIndex());
+            LogPrintf("  %s %s - locked successfully\n", mne.getTxHash(), mne.getOutputIndex());
         }
     }
 
@@ -2022,12 +2022,12 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         boost::filesystem::path pathDB = GetDataDir();
         std::string strDBName;
 
-        if (snodeman.size()) {
-            strDBName = "snpayments.dat";
-            uiInterface.InitMessage(_("Loading ServiceNode payment cache..."));
-            CFlatDB<CServiceNodePayments> flatdb2(strDBName, "magicServiceNodePaymentsCache");
-            if (!flatdb2.Load(snpayments)) {
-                return InitError(_("Failed to load ServiceNode payments cache from") + "\n" + (pathDB / strDBName).string());
+        if (mnodeman.size()) {
+            strDBName = "mnpayments.dat";
+            uiInterface.InitMessage(_("Loading Masternode payment cache..."));
+            CFlatDB<CMasternodePayments> flatdb2(strDBName, "magicMasternodePaymentsCache");
+            if (!flatdb2.Load(mnpayments)) {
+                return InitError(_("Failed to load Masternode payments cache from") + "\n" + (pathDB / strDBName).string());
             }
 
             strDBName = "governance.dat";
@@ -2038,7 +2038,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             }
             governance.InitOnLoad();
         } else {
-            uiInterface.InitMessage(_("ServiceNode cache is empty, skipping payments and governance cache..."));
+            uiInterface.InitMessage(_("Masternode cache is empty, skipping payments and governance cache..."));
         }
         governance.InitOnLoad();
 
@@ -2070,16 +2070,16 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     if (!fLiteMode) {
         scheduler.scheduleEvery(std::bind(&CNetFulfilledRequestManager::DoMaintenance, std::ref(netfulfilledman)), 60);
-        scheduler.scheduleEvery(std::bind(&CServiceNodeSync::DoMaintenance, std::ref(servicenodeSync), std::ref(*g_connman)), SERVICENODE_SYNC_TICK_SECONDS);
-        scheduler.scheduleEvery(std::bind(&CServiceNodeMan::DoMaintenance, std::ref(snodeman), std::ref(*g_connman)), 1);
-        scheduler.scheduleEvery(std::bind(&CActiveServiceNode::DoMaintenance, std::ref(activeServiceNode), std::ref(*g_connman)), SERVICENODE_MIN_SNP_SECONDS);
+        scheduler.scheduleEvery(std::bind(&CMasternodeSync::DoMaintenance, std::ref(masternodeSync), std::ref(*g_connman)), MASTERNODE_SYNC_TICK_SECONDS);
+        scheduler.scheduleEvery(std::bind(&CMasternodeMan::DoMaintenance, std::ref(mnodeman), std::ref(*g_connman)), 1);
+        scheduler.scheduleEvery(std::bind(&CActiveMasternode::DoMaintenance, std::ref(activeMasternode), std::ref(*g_connman)), MASTERNODE_MIN_MNP_SECONDS);
 
-        scheduler.scheduleEvery(std::bind(&CServiceNodePayments::DoMaintenance, std::ref(snpayments)), 60);
+        scheduler.scheduleEvery(std::bind(&CMasternodePayments::DoMaintenance, std::ref(mnpayments)), 60);
         scheduler.scheduleEvery(std::bind(&CGovernanceManager::DoMaintenance, std::ref(governance), std::ref(*g_connman)), 60 * 5);
 
         scheduler.scheduleEvery(std::bind(&CInstantSend::DoMaintenance, std::ref(instantsend)), 60);
 
-        if (fServiceNodeMode)
+        if (fMasternodeMode)
             scheduler.scheduleEvery(std::bind(&CPrivateSendServer::DoMaintenance, std::ref(privateSendServer), std::ref(*g_connman)), 1);
 #ifdef ENABLE_WALLET
         else

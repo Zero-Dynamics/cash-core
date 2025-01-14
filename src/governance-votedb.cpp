@@ -55,11 +55,11 @@ std::vector<CGovernanceVote> CGovernanceObjectVoteFile::GetVotes() const
     return vecResult;
 }
 
-void CGovernanceObjectVoteFile::RemoveVotesFromServiceNode(const COutPoint& outpointServiceNode)
+void CGovernanceObjectVoteFile::RemoveVotesFromMasternode(const COutPoint& outpointMasternode)
 {
     vote_l_it it = listVotes.begin();
     while (it != listVotes.end()) {
-        if (it->GetServiceNodeOutpoint() == outpointServiceNode) {
+        if (it->GetMasternodeOutpoint() == outpointMasternode) {
             --nMemoryVotes;
             mapVoteIndex.erase(it->GetHash());
             listVotes.erase(it++);

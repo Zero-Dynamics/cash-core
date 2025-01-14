@@ -34,9 +34,9 @@
 #include "validation.h"
 #include "validationinterface.h"
 
-#include "servicenode-payments.h"
-#include "servicenode-sync.h"
-#include "servicenodeman.h"
+#include "masternode-payments.h"
+#include "masternode-sync.h"
+#include "masternodeman.h"
 #include "governance.h"
 #include "instantsend.h"
 #include "spork.h"
@@ -938,19 +938,19 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
         return sporkManager.GetSporkByHash(inv.hash, spork);
     }
 
-    case MSG_SERVICENODE_PAYMENT_VOTE:
-        return snpayments.mapServiceNodePaymentVotes.count(inv.hash);
+    case MSG_MASTERNODE_PAYMENT_VOTE:
+        return mnpayments.mapMasternodePaymentVotes.count(inv.hash);
 
-    case MSG_SERVICENODE_PAYMENT_BLOCK: {
+    case MSG_MASTERNODE_PAYMENT_BLOCK: {
         BlockMap::iterator mi = mapBlockIndex.find(inv.hash);
-        return mi != mapBlockIndex.end() && snpayments.mapServiceNodeBlocks.find(mi->second->nHeight) != snpayments.mapServiceNodeBlocks.end();
+        return mi != mapBlockIndex.end() && mnpayments.mapMasternodeBlocks.find(mi->second->nHeight) != mnpayments.mapMasternodeBlocks.end();
     }
 
-    case MSG_SERVICENODE_ANNOUNCE:
-        return snodeman.mapSeenServiceNodeBroadcast.count(inv.hash) && !snodeman.IsSnbRecoveryRequested(inv.hash);
+    case MSG_MASTERNODE_ANNOUNCE:
+        return mnodeman.mapSeenMasternodeBroadcast.count(inv.hash) && !mnodeman.IsMnbRecoveryRequested(inv.hash);
 
-    case MSG_SERVICENODE_PING:
-        return snodeman.mapSeenServiceNodePing.count(inv.hash);
+    case MSG_MASTERNODE_PING:
+        return mnodeman.mapSeenMasternodePing.count(inv.hash);
 
     case MSG_PSTX: {
         return static_cast<bool>(CPrivateSend::GetPSTX(inv.hash));
@@ -960,8 +960,8 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
     case MSG_GOVERNANCE_OBJECT_VOTE:
         return !governance.ConfirmInventoryRequest(inv);
 
-    case MSG_SERVICENODE_VERIFY:
-        return snodeman.mapSeenServiceNodeVerification.count(inv.hash);
+    case MSG_MASTERNODE_VERIFY:
+        return mnodeman.mapSeenMasternodeVerification.count(inv.hash);
     }
 
     // Don't know what it is, just say we already got one
@@ -1169,22 +1169,22 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                     }
                 }
 
-                if (!push && inv.type == MSG_SERVICENODE_PAYMENT_VOTE) {
-                    if (snpayments.HasVerifiedPaymentVote(inv.hash)) {
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SERVICENODEPAYMENTVOTE, snpayments.mapServiceNodePaymentVotes[inv.hash]));
+                if (!push && inv.type == MSG_MASTERNODE_PAYMENT_VOTE) {
+                    if (mnpayments.HasVerifiedPaymentVote(inv.hash)) {
+                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::MASTERNODEPAYMENTVOTE, mnpayments.mapMasternodePaymentVotes[inv.hash]));
                         push = true;
                     }
                 }
 
-                if (!push && inv.type == MSG_SERVICENODE_PAYMENT_BLOCK) {
+                if (!push && inv.type == MSG_MASTERNODE_PAYMENT_BLOCK) {
                     BlockMap::iterator mi = mapBlockIndex.find(inv.hash);
-                    LOCK(cs_mapServiceNodeBlocks);
-                    if (mi != mapBlockIndex.end() && snpayments.mapServiceNodeBlocks.count(mi->second->nHeight)) {
-                        BOOST_FOREACH (CServiceNodePayee& payee, snpayments.mapServiceNodeBlocks[mi->second->nHeight].vecPayees) {
+                    LOCK(cs_mapMasternodeBlocks);
+                    if (mi != mapBlockIndex.end() && mnpayments.mapMasternodeBlocks.count(mi->second->nHeight)) {
+                        BOOST_FOREACH (CMasternodePayee& payee, mnpayments.mapMasternodeBlocks[mi->second->nHeight].vecPayees) {
                             std::vector<uint256> vecVoteHashes = payee.GetVoteHashes();
                             BOOST_FOREACH (uint256& hash, vecVoteHashes) {
-                                if (snpayments.HasVerifiedPaymentVote(hash)) {
-                                    connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SERVICENODEPAYMENTVOTE, snpayments.mapServiceNodePaymentVotes[hash]));
+                                if (mnpayments.HasVerifiedPaymentVote(hash)) {
+                                    connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::MASTERNODEPAYMENTVOTE, mnpayments.mapMasternodePaymentVotes[hash]));
                                 }
                             }
                         }
@@ -1192,16 +1192,16 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                     }
                 }
 
-                if (!push && inv.type == MSG_SERVICENODE_ANNOUNCE) {
-                    if (snodeman.mapSeenServiceNodeBroadcast.count(inv.hash)) {
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SNANNOUNCE, snodeman.mapSeenServiceNodeBroadcast[inv.hash].second));
+                if (!push && inv.type == MSG_MASTERNODE_ANNOUNCE) {
+                    if (mnodeman.mapSeenMasternodeBroadcast.count(inv.hash)) {
+                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::MNANNOUNCE, mnodeman.mapSeenMasternodeBroadcast[inv.hash].second));
                         push = true;
                     }
                 }
 
-                if (!push && inv.type == MSG_SERVICENODE_PING) {
-                    if (snodeman.mapSeenServiceNodePing.count(inv.hash)) {
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SNPING, snodeman.mapSeenServiceNodePing[inv.hash]));
+                if (!push && inv.type == MSG_MASTERNODE_PING) {
+                    if (mnodeman.mapSeenMasternodePing.count(inv.hash)) {
+                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::MNPING, mnodeman.mapSeenMasternodePing[inv.hash]));
                         push = true;
                     }
                 }
@@ -1228,7 +1228,7 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                     }
                     LogPrint("net", "ProcessGetData -- MSG_GOVERNANCE_OBJECT: topush = %d, inv = %s\n", topush, inv.ToString());
                     if (topush) {
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SNGOVERNANCEOBJECT, ss));
+                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::MNGOVERNANCEOBJECT, ss));
                         push = true;
                     }
                 }
@@ -1246,14 +1246,14 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                     }
                     if (topush) {
                         LogPrint("net", "ProcessGetData -- pushing: inv = %s\n", inv.ToString());
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SNGOVERNANCEOBJECTVOTE, ss));
+                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::MNGOVERNANCEOBJECTVOTE, ss));
                         push = true;
                     }
                 }
 
-                if (!push && inv.type == MSG_SERVICENODE_VERIFY) {
-                    if (snodeman.mapSeenServiceNodeVerification.count(inv.hash)) {
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SNVERIFY, snodeman.mapSeenServiceNodeVerification[inv.hash]));
+                if (!push && inv.type == MSG_MASTERNODE_VERIFY) {
+                    if (mnodeman.mapSeenMasternodeVerification.count(inv.hash)) {
+                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::MNVERIFY, mnodeman.mapSeenMasternodeVerification[inv.hash]));
                         push = true;
                     }
                 }
@@ -1905,28 +1905,28 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
                 return true; // not an error
             }
 
-            CServiceNode sn;
+            CMasternode mn;
 
-            if (!snodeman.Get(pstx.servicenodeOutpoint, sn)) {
-                LogPrint("privatesend", "PSTX -- Can't find servicenode %s to verify %s\n", pstx.servicenodeOutpoint.ToStringShort(), hashTx.ToString());
+            if (!mnodeman.Get(pstx.masternodeOutpoint, mn)) {
+                LogPrint("privatesend", "PSTX -- Can't find masternode %s to verify %s\n", pstx.masternodeOutpoint.ToStringShort(), hashTx.ToString());
                 return false;
             }
 
-            if (!sn.fAllowMixingTx) {
-                LogPrint("privatesend", "PSTX -- ServiceNode %s is sending too many transactions %s\n", pstx.servicenodeOutpoint.ToStringShort(), hashTx.ToString());
+            if (!mn.fAllowMixingTx) {
+                LogPrint("privatesend", "PSTX -- Masternode %s is sending too many transactions %s\n", pstx.masternodeOutpoint.ToStringShort(), hashTx.ToString());
                 return true;
                 // TODO: Not an error? Could it be that someone is relaying old PSTXes
                 // we have no idea about (e.g we were offline)? How to handle them?
             }
 
-            if (!pstx.CheckSignature(sn.pubKeyServiceNode)) {
+            if (!pstx.CheckSignature(mn.pubKeyMasternode)) {
                 LogPrint("privatesend", "PSTX -- CheckSignature() failed for %s\n", hashTx.ToString());
                 return false;
             }
 
-            LogPrintf("PSTX -- Got ServiceNode transaction %s\n", hashTx.ToString());
+            LogPrintf("PSTX -- Got Masternode transaction %s\n", hashTx.ToString());
             mempool.PrioritiseTransaction(hashTx, hashTx.ToString(), 1000, 0.1 * COIN);
-            snodeman.DisallowMixing(pstx.servicenodeOutpoint);
+            mnodeman.DisallowMixing(pstx.masternodeOutpoint);
         }
 
         LOCK(cs_main);
@@ -1941,7 +1941,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         if (!AlreadyHave(inv) && AcceptToMemoryPool(mempool, state, ptx, true, &fMissingInputs, &lRemovedTxn)) {
             // Process custom txes, this changes AlreadyHave to "true"
             if (strCommand == NetMsgType::PSTX) {
-                LogPrintf("PSTX -- ServiceNode transaction accepted, txid=%s, peer=%d\n",
+                LogPrintf("PSTX -- Masternode transaction accepted, txid=%s, peer=%d\n",
                     tx.GetHash().ToString(), pfrom->id);
                 CPrivateSend::AddPSTX(pstx);
             } else if (strCommand == NetMsgType::TXLOCKREQUEST || fCanAutoLock) {
@@ -2820,11 +2820,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             privateSendClient.ProcessMessage(pfrom, strCommand, vRecv, connman);
 #endif // ENABLE_WALLET
             privateSendServer.ProcessMessage(pfrom, strCommand, vRecv, connman);
-            snodeman.ProcessMessage(pfrom, strCommand, vRecv, connman);
-            snpayments.ProcessMessage(pfrom, strCommand, vRecv, connman);
+            mnodeman.ProcessMessage(pfrom, strCommand, vRecv, connman);
+            mnpayments.ProcessMessage(pfrom, strCommand, vRecv, connman);
             instantsend.ProcessMessage(pfrom, strCommand, vRecv, connman);
             sporkManager.ProcessSpork(pfrom, strCommand, vRecv, connman);
-            servicenodeSync.ProcessMessage(pfrom, strCommand, vRecv);
+            masternodeSync.ProcessMessage(pfrom, strCommand, vRecv);
             governance.ProcessMessage(pfrom, strCommand, vRecv, connman);
         } else {
             // Ignore unknown commands for extensibility
@@ -3256,14 +3256,14 @@ bool SendMessages(CNode* pto, CConnman& connman, const std::atomic<bool>& interr
             pto->vInventoryBlockToSend.clear();
 
             // Check whether periodic sends should happen
-            // Note: If this node is running in a ServiceNode mode, it makes no sense to delay outgoing txes
+            // Note: If this node is running in a Masternode mode, it makes no sense to delay outgoing txes
             // because we never produce any txes ourselves i.e. no privacy is lost in this case.
-            bool fSendTrickle = pto->fWhitelisted || fServiceNodeMode;
+            bool fSendTrickle = pto->fWhitelisted || fMasternodeMode;
             if (pto->nNextInvSend < nNow) {
                 fSendTrickle = true;
                 // Use half the delay for regular outbound peers, as there is less privacy concern for them,
-                // and quarter the delay for ServiceNode outbound peers, as there is even less privacy concern in this case.
-                pto->nNextInvSend = PoissonNextSend(nNow, INVENTORY_BROADCAST_INTERVAL >> !pto->fInbound >> pto->fServiceNode);
+                // and quarter the delay for Masternode outbound peers, as there is even less privacy concern in this case.
+                pto->nNextInvSend = PoissonNextSend(nNow, INVENTORY_BROADCAST_INTERVAL >> !pto->fInbound >> pto->fMasternode);
             }
 
             // Time to send but the peer has requested we not relay transactions.

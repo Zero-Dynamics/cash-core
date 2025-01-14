@@ -40,8 +40,8 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 #define COLOR_TX_STATUS_LOCKED QColor(13, 81, 140)
 /* Transaction list -- TX status decoration - Fluid Transaction (Light Blue) */
 #define COLOR_FLUID_TX QColor(0, 35, 102)
-/* Transaction list -- TX status decoration - ServiceNode Reward (Purple)*/
-#define COLOR_SERVICENODE_REWARD QColor(102, 2, 60)
+/* Transaction list -- TX status decoration - Masternode Reward (Purple)*/
+#define COLOR_MASTERNODE_REWARD QColor(102, 2, 60)
 /* Transaction list -- TX status decoration - Generated (Gold) */
 #define COLOR_GENERATED QColor(207, 181, 59)
 /* Transaction list -- TX status decoration - orphan (Light Gray) */

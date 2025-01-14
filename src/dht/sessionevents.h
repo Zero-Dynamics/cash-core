@@ -158,6 +158,6 @@ public:
 };
 
 std::string GetInfoHash(const std::string& pubkey, const std::string& salt);
-std::string GetServiceNodeHashID(const std::string& service_address);
+std::string GetMasternodeHashID(const std::string& service_address);
 
 #endif // CASH_DHT_SESSION_EVENTS_H

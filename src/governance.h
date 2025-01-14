@@ -241,8 +241,8 @@ private:
     //   value - expiration time for deleted objects
     hash_time_m_t mapErasedGovernanceObjects;
 
-    object_info_m_t mapServiceNodeOrphanObjects;
-    txout_int_m_t mapServiceNodeOrphanCounter;
+    object_info_m_t mapMasternodeOrphanObjects;
+    txout_int_m_t mapMasternodeOrphanCounter;
 
     object_m_t mapPostponedObjects;
     hash_s_t setAdditionalRelayObjects;
@@ -253,7 +253,7 @@ private:
 
     vote_cmm_t cmmapOrphanVotes;
 
-    txout_m_t mapLastServiceNodeObject;
+    txout_m_t mapLastMasternodeObject;
 
     hash_s_t setRequestedObjects;
 
@@ -306,7 +306,7 @@ public:
 
     // These commands are only used in RPC
     std::vector<CGovernanceVote> GetMatchingVotes(const uint256& nParentHash) const;
-    std::vector<CGovernanceVote> GetCurrentVotes(const uint256& nParentHash, const COutPoint& snCollateralOutpointFilter) const;
+    std::vector<CGovernanceVote> GetCurrentVotes(const uint256& nParentHash, const COutPoint& mnCollateralOutpointFilter) const;
     std::vector<const CGovernanceObject*> GetAllNewerThan(int64_t nMoreThanTime) const;
 
     void AddGovernanceObject(CGovernanceObject& govobj, CConnman& connman, CNode* pfrom = nullptr);
@@ -325,7 +325,7 @@ public:
         cmapVoteToObject.Clear();
         cmapInvalidVotes.Clear();
         cmmapOrphanVotes.Clear();
-        mapLastServiceNodeObject.clear();
+        mapLastMasternodeObject.clear();
     }
 
     std::string ToString() const;
@@ -349,7 +349,7 @@ public:
         READWRITE(cmapInvalidVotes);
         READWRITE(cmmapOrphanVotes);
         READWRITE(mapObjects);
-        READWRITE(mapLastServiceNodeObject);
+        READWRITE(mapLastMasternodeObject);
         if (ser_action.ForRead() && (strVersion != SERIALIZATION_VERSION_STRING)) {
             Clear();
             return;
@@ -383,11 +383,11 @@ public:
 
     void AddSeenVote(const uint256& nHash, int status);
 
-    void ServiceNodeRateUpdate(const CGovernanceObject& govobj);
+    void MasternodeRateUpdate(const CGovernanceObject& govobj);
 
-    bool ServiceNodeRateCheck(const CGovernanceObject& govobj, bool fUpdateFailStatus = false);
+    bool MasternodeRateCheck(const CGovernanceObject& govobj, bool fUpdateFailStatus = false);
 
-    bool ServiceNodeRateCheck(const CGovernanceObject& govobj, bool fUpdateFailStatus, bool fForce, bool& fRateCheckBypassed);
+    bool MasternodeRateCheck(const CGovernanceObject& govobj, bool fUpdateFailStatus, bool fForce, bool& fRateCheckBypassed);
 
     bool ProcessVoteAndRelay(const CGovernanceVote& vote, CGovernanceException& exception, CConnman& connman)
     {
@@ -398,9 +398,9 @@ public:
         return fOK;
     }
 
-    void CheckServiceNodeOrphanVotes(CConnman& connman);
+    void CheckMasternodeOrphanVotes(CConnman& connman);
 
-    void CheckServiceNodeOrphanObjects(CConnman& connman);
+    void CheckMasternodeOrphanObjects(CConnman& connman);
 
     void CheckPostponedObjects(CConnman& connman);
 

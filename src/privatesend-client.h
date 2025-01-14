@@ -6,7 +6,7 @@
 #ifndef PRIVATESENDCLIENT_H
 #define PRIVATESENDCLIENT_H
 
-#include "servicenode.h"
+#include "masternode.h"
 #include "privatesend-util.h"
 #include "privatesend.h"
 #include "wallet/wallet.h"
@@ -91,7 +91,7 @@ private:
     std::string strLastMessage;
     std::string strAutoDenomResult;
 
-    servicenode_info_t infoMixingServiceNode;
+    masternode_info_t infoMixingMasternode;
     CMutableTransaction txMyCollateral; // client side collateral
     CPendingPsaRequest pendingPsaRequest;
 
@@ -115,7 +115,7 @@ private:
     /// step 2: send denominated inputs and outputs prepared in step 1
     bool SendDenominate(const std::vector<std::pair<CTxPSIn, CTxOut> >& vecPSInOutPairsIn, CConnman& connman);
 
-    /// Get ServiceNodes updates about the progress of mixing
+    /// Get Masternodes updates about the progress of mixing
     bool CheckPoolStateUpdate(PoolState nStateNew, int nEntriesCountNew, PoolStatusUpdate nStatusUpdate, PoolMessage nMessageID, int nSessionIDNew = 0);
     // Set the 'state' value, with some logging and capturing when the state changed
     void SetState(PoolState nStateNew);
@@ -137,7 +137,7 @@ public:
                                   fLastEntryAccepted(false),
                                   strLastMessage(),
                                   strAutoDenomResult(),
-                                  infoMixingServiceNode(),
+                                  infoMixingMasternode(),
                                   txMyCollateral(),
                                   pendingPsaRequest(),
                                   keyHolderStorage()
@@ -152,12 +152,12 @@ public:
 
     std::string GetStatus(bool fWaitForBlock);
 
-    bool GetMixingServiceNodeInfo(servicenode_info_t& snInfoRet) const;
+    bool GetMixingMasternodeInfo(masternode_info_t& mnInfoRet) const;
 
     /// Passively run mixing in the background according to the configuration in settings
     bool DoAutomaticDenominating(CConnman& connman, bool fDryRun = false);
 
-    /// As a client, submit part of a future mixing transaction to a ServiceNode to start the process
+    /// As a client, submit part of a future mixing transaction to a Masternode to start the process
     bool SubmitDenominate(CConnman& connman);
 
     bool ProcessPendingPsaRequest(CConnman& connman);
@@ -170,8 +170,8 @@ public:
 class CPrivateSendClientManager : public CPrivateSendBaseManager
 {
 private:
-    // Keep track of the used ServiceNodes
-    std::vector<COutPoint> vecServiceNodesUsed;
+    // Keep track of the used Masternodes
+    std::vector<COutPoint> vecMasternodesUsed;
 
     std::vector<CAmount> vecDenominationsSkipped;
 
@@ -202,7 +202,7 @@ public:
     int nCachedNumBlocks;    //used for the overview screen
     bool fCreateAutoBackups; //builtin support for automatic backups
 
-    CPrivateSendClientManager() : vecServiceNodesUsed(),
+    CPrivateSendClientManager() : vecMasternodesUsed(),
                                   vecDenominationsSkipped(),
                                   peqSessions(),
                                   nCachedLastSuccessBlock(0),
@@ -232,7 +232,7 @@ public:
     std::string GetStatuses();
     std::string GetSessionDenoms();
 
-    bool GetMixingServiceNodesInfo(std::vector<servicenode_info_t>& vecSnInfoRet) const;
+    bool GetMixingMasternodesInfo(std::vector<masternode_info_t>& vecMnInfoRet) const;
 
     /// Passively run mixing in the background according to the configuration in settings
     bool DoAutomaticDenominating(CConnman& connman, bool fDryRun = false);
@@ -241,8 +241,8 @@ public:
 
     void ProcessPendingPsaRequest(CConnman& connman);
 
-    void AddUsedServiceNode(const COutPoint& outpointSn);
-    servicenode_info_t GetNotUsedServiceNode();
+    void AddUsedMasternode(const COutPoint& outpointMn);
+    masternode_info_t GetNotUsedMasternode();
 
     void UpdatedSuccessBlock();
 

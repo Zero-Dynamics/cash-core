@@ -158,12 +158,12 @@ QTabBar { alignment: left; }</string>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="showServiceNodesTab">
+           <widget class="QCheckBox" name="showMasternodesTab">
             <property name="toolTip">
-             <string>Show additional tab listing all your ServiceNodes in first sub-tab&lt;br/&gt;and all ServiceNodes on the network in second sub-tab.</string>
+             <string>Show additional tab listing all your Masternodes in first sub-tab&lt;br/&gt;and all Masternodes on the network in second sub-tab.</string>
             </property>
             <property name="text">
-             <string>Show ServiceNodes Tab</string>
+             <string>Show Masternodes Tab</string>
             </property>
            </widget>
           </item>
@@ -225,7 +225,7 @@ QTabBar { alignment: left; }</string>
          <item>
           <widget class="QLabel" name="label">
            <property name="toolTip">
-            <string>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</string>
+            <string>This setting determines the amount of individual Masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</string>
            </property>
            <property name="text">
             <string>PrivateSend rounds to use</string>

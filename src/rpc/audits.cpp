@@ -9,8 +9,8 @@
 #include "bdap/fees.h"
 #include "bdap/utils.h"
 #include "core_io.h" // needed for ScriptToAsmStr
-#include "servicenode-sync.h"
-#include "servicenodeman.h"
+#include "masternode-sync.h"
+#include "masternodeman.h"
 #include "rpc/protocol.h"
 #include "rpc/server.h"
 #include "primitives/transaction.h"
@@ -318,7 +318,7 @@ static UniValue GetAudits(const JSONRPCRequest& request)
 
     //Search by owner
     if (searchByOwner) {
-        readAuditState = pAuditDB->ReadAuditSN(vchOwnerFQDN, vAudits);
+        readAuditState = pAuditDB->ReadAuditMN(vchOwnerFQDN, vAudits);
     }
     else { //Search by TxId
         readAuditState = pAuditDB->ReadAuditTxId(vchTxId,singleAudit);

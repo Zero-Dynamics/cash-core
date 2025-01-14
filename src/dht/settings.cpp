@@ -7,8 +7,8 @@
 #include "dht/storage.h"
 #include "chainparams.h"
 #include "clientversion.h"
-#include "servicenode.h"
-#include "servicenodeman.h"
+#include "masternode.h"
+#include "masternodeman.h"
 #include "primitives/transaction.h"
 #include "util.h"
 
@@ -43,24 +43,24 @@ CDHTSettings::CDHTSettings(const uint16_t ordinal, const uint16_t threads, const
 void CDHTSettings::LoadPeerList()
 {
     std::string strPeerList = "";
-    // get all ServiceNodes above the minimum protocol version
-    std::map<COutPoint, CServiceNode> mapServiceNodes = snodeman.GetFullServiceNodeMap();
-    for (auto& snpair : mapServiceNodes) {
-        CServiceNode sn = snpair.second;
-        if (sn.nProtocolVersion >= MIN_DHT_PROTO_VERSION) {
-            std::string strServiceNodeIP = sn.addr.ToString();
-            size_t pos = strServiceNodeIP.find(":");
-            if (pos != std::string::npos && strServiceNodeIP.size() > 5) {
+    // get all Masternodes above the minimum protocol version
+    std::map<COutPoint, CMasternode> mapMasternodes = mnodeman.GetFullMasternodeMap();
+    for (auto& mnpair : mapMasternodes) {
+        CMasternode mn = mnpair.second;
+        if (mn.nProtocolVersion >= MIN_DHT_PROTO_VERSION) {
+            std::string strMasternodeIP = mn.addr.ToString();
+            size_t pos = strMasternodeIP.find(":");
+            if (pos != std::string::npos && strMasternodeIP.size() > 5) {
                 // remove port from IP address string
-                strServiceNodeIP = strServiceNodeIP.substr(0, pos);
+                strMasternodeIP = strMasternodeIP.substr(0, pos);
             }
-            pos = strPeerList.find(strServiceNodeIP);
+            pos = strPeerList.find(strMasternodeIP);
             if (pos == std::string::npos) {
                 if (fMultiThreads) {
-                    strPeerList += strServiceNodeIP + ":" + std::to_string(nPort) + ",";
+                    strPeerList += strMasternodeIP + ":" + std::to_string(nPort) + ",";
                 } else {
                     for (unsigned int i = 0; i < nTotalThreads; i++) {
-                        strPeerList += strServiceNodeIP + ":" + std::to_string(nPort + i) + ",";
+                        strPeerList += strMasternodeIP + ":" + std::to_string(nPort + i) + ",";
                     }
                 }
             }

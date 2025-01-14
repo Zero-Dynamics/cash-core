@@ -6,9 +6,9 @@
 #include "psnotificationinterface.h"
 
 #include "chainparams.h"
-#include "servicenode-payments.h"
-#include "servicenode-sync.h"
-#include "servicenodeman.h"
+#include "masternode-payments.h"
+#include "masternode-sync.h"
+#include "masternodeman.h"
 #include "governance.h"
 #include "instantsend.h"
 #include "privatesend.h"
@@ -24,12 +24,12 @@ void CPSNotificationInterface::InitializeCurrentBlockTip()
 
 void CPSNotificationInterface::AcceptedBlockHeader(const CBlockIndex* pindexNew)
 {
-    servicenodeSync.AcceptedBlockHeader(pindexNew);
+    masternodeSync.AcceptedBlockHeader(pindexNew);
 }
 
 void CPSNotificationInterface::NotifyHeaderTip(const CBlockIndex* pindexNew, bool fInitialDownload)
 {
-    servicenodeSync.NotifyHeaderTip(pindexNew, fInitialDownload, connman);
+    masternodeSync.NotifyHeaderTip(pindexNew, fInitialDownload, connman);
 }
 
 void CPSNotificationInterface::UpdatedBlockTip(const CBlockIndex* pindexNew, const CBlockIndex* pindexFork, bool fInitialDownload)
@@ -37,7 +37,7 @@ void CPSNotificationInterface::UpdatedBlockTip(const CBlockIndex* pindexNew, con
     if (pindexNew == pindexFork) // blocks were disconnected without any new ones
         return;
 
-    servicenodeSync.UpdatedBlockTip(pindexNew, fInitialDownload, connman);
+    masternodeSync.UpdatedBlockTip(pindexNew, fInitialDownload, connman);
 
     // update instantsend autolock activation flag
     instantsend.isAutoLockBip9Active =
@@ -49,13 +49,13 @@ void CPSNotificationInterface::UpdatedBlockTip(const CBlockIndex* pindexNew, con
     if (fLiteMode)
         return;
 
-    snodeman.UpdatedBlockTip(pindexNew);
+    mnodeman.UpdatedBlockTip(pindexNew);
     CPrivateSend::UpdatedBlockTip(pindexNew);
 #ifdef ENABLE_WALLET
     privateSendClient.UpdatedBlockTip(pindexNew);
 #endif // ENABLE_WALLET
     instantsend.UpdatedBlockTip(pindexNew);
-    snpayments.UpdatedBlockTip(pindexNew, connman);
+    mnpayments.UpdatedBlockTip(pindexNew, connman);
     governance.UpdatedBlockTip(pindexNew, connman);
 }
 

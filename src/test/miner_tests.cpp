@@ -9,7 +9,7 @@
 #include "consensus/merkle.h"
 #include "consensus/validation.h"
 #include "validation.h"
-#include "servicenode-payments.h"
+#include "masternode-payments.h"
 #include "miner/miner.h"
 #include "pubkey.h"
 #include "script/standard.h"
@@ -132,7 +132,7 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)
     fCheckpointsEnabled = false;
 
     // force UpdatedBlockTip to initialize nCachedBlockHeight
-    snpayments.UpdatedBlockTip(chainActive.Tip(), *connman);
+    mnpayments.UpdatedBlockTip(chainActive.Tip(), *connman);
 
     // Simple block creation, nothing special yet:
     BOOST_CHECK(pblocktemplate = CreateNewBlock(chainparams, scriptPubKey));

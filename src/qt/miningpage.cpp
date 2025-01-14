@@ -1,7 +1,7 @@
 #include "miningpage.h"
 #include "ui_miningpage.h"
 
-#include "servicenode-sync.h"
+#include "masternode-sync.h"
 #include "guiutil.h"
 #include "miner/miner.h"
 #include "net.h"
@@ -36,7 +36,7 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
         }
     }
 
-    if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsSynced() || !masternodeSync.IsBlockchainSynced()) {
         ui->sliderCPUCores->setVisible(false);
         ui->labelNCPUCores->setText(tr("Slider will show once Cash has finished syncing"));
     } else {
@@ -49,7 +49,7 @@ MiningPage::MiningPage(const PlatformStyle* platformStyle, QWidget* parent) : QW
     ui->sliderCPUCores->setValue(nCPUMaxUseThreads);
 
 #ifdef ENABLE_GPU
-    if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
+    if (!masternodeSync.IsSynced() || !masternodeSync.IsBlockchainSynced()) {
         ui->sliderGPUCores->setVisible(false);
         ui->labelNGPUCores->setText(tr("Slider will show once Cash has finished syncing"));
     } else {
@@ -153,7 +153,7 @@ void MiningPage::setModel(WalletModel* model)
 
 void MiningPage::updateUI()
 {
-    if (servicenodeSync.IsSynced() && servicenodeSync.IsBlockchainSynced()) {
+    if (masternodeSync.IsSynced() && masternodeSync.IsBlockchainSynced()) {
 #ifdef ENABLE_GPU
         if (ui->sliderGPUCores->isHidden()) {
             int nThreads = ui->sliderGPUCores->value();
@@ -198,8 +198,8 @@ void MiningPage::updateUI()
 void MiningPage::updatePushSwitch(QPushButton* pushSwitch, bool minerOn)
 {
     QString theme = GUIUtil::getThemeName();
-    if (!servicenodeSync.IsSynced() || !servicenodeSync.IsBlockchainSynced()) {
-        pushSwitch->setToolTip(tr("Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!"));
+    if (!masternodeSync.IsSynced() || !masternodeSync.IsBlockchainSynced()) {
+        pushSwitch->setToolTip(tr("Blockchain/Masternodes are not synced, please wait until fully synced before mining!"));
         pushSwitch->setText(tr("Disabled"));
         ui->pushSwitchCPUMining->setIcon(QIcon(":/icons/" + theme + "/refresh"));
         ui->pushSwitchGPUMining->setIcon(QIcon(":/icons/" + theme + "/refresh"));

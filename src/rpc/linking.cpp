@@ -16,7 +16,7 @@
 #include "dht/datarecord.h" // for CDataRecord
 #include "dht/session.h" // for CDataRecord
 #include "core_io.h" // needed for ScriptToAsmStr
-#include "servicenodeman.h"
+#include "masternodeman.h"
 #include "hash.h"
 #include "rpc/protocol.h"
 #include "rpc/server.h"

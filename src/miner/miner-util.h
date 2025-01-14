@@ -36,8 +36,8 @@ struct CBlockTemplate {
     CBlock block;
     std::vector<CAmount> vTxFees;
     std::vector<int64_t> vTxSigOps;
-    CTxOut txoutServiceNode;                 // servicenode payment
-    std::vector<CTxOut> voutSuperblock; // servicenode payment
+    CTxOut txoutMasternode;                 // masternode payment
+    std::vector<CTxOut> voutSuperblock; // masternode payment
 };
 
 /** Set pubkey script in generated block */

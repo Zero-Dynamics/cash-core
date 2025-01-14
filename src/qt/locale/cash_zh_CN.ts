@@ -423,8 +423,8 @@
         <translation>打开钱包（&amp;）配置文件</translation>
     </message>
     <message>
-        <source>Open ServiceNode configuration file</source>
-        <translation>打开ServiceNode配置文件</translation>
+        <source>Open Masternode configuration file</source>
+        <translation>打开Masternode配置文件</translation>
     </message>
     <message>
         <source>Open configuration file</source>
@@ -900,15 +900,15 @@ Address: %4
         <translation>请选择隐私等级。</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <source>Use 2 separate Masternodes to mix funds up to 1000 0DYNC</source>
         <translation>使用2个独立的主节点混合资金最多1000动态币</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
+        <source>Use 8 separate Masternodes to mix funds up to 1000 0DYNC</source>
         <translation>使用8个独立的主节点混合资金最多1000动态币</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes</source>
+        <source>Use 16 separate Masternodes</source>
         <translation>使用16个独立主节点</translation>
     </message>
     <message>
@@ -1222,7 +1222,7 @@ Address: %4
         <translation>专家</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <source>This setting determines the amount of individual Masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
         <translation>此选项用以调整进行匿名化操作的主节点数量。&lt;br/&gt;越多的循环次数提供了更高级别的匿名性，同时也会花费更多的手续费.</translation>
     </message>
     <message>
@@ -1499,7 +1499,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>停止混合</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
         <translation>您向主节点所提交的用以面额化混合的0DYNC,&lt;br&gt;当其他用户提交相同的面额化0DYNC数量时,将开始混合.</translation>
     </message>
     <message>
@@ -1886,7 +1886,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>数据链</translation>
     </message>
     <message>
-        <source>Number of ServiceNodes</source>
+        <source>Number of Masternodes</source>
         <translation>主节点数量</translation>
     </message>
     <message>
@@ -3356,7 +3356,7 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
 </context>
 <context>
-    <name>ServiceNodeList</name>
+    <name>MasternodeList</name>
     <message>
         <source>Form</source>
         <translation>表格</translation>
@@ -3370,16 +3370,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>节点数：</translation>
     </message>
     <message>
-        <source>My ServiceNodes</source>
-        <translation>我的ServiceNodes</translation>
+        <source>My Masternodes</source>
+        <translation>我的Masternodes</translation>
     </message>
     <message>
-        <source>All ServiceNodes</source>
-        <translation>所有ServiceNodes</translation>
+        <source>All Masternodes</source>
+        <translation>所有Masternodes</translation>
     </message>
     <message>
-        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>注意：您在本地钱包中的ServiceNodes的状态可能不正确。&lt;br /&gt;请始终等待钱包同步其他数据，然后从另一个节点再次检查&lt;br /&gt;或许您的ServiceNode正在运行，但是您在&quot;状态&quot;字段中，仍然看不到&quot;ENABLED&quot;.</translation>
+        <source>Note: Status of your Masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Masternode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>注意：您在本地钱包中的Masternodes的状态可能不正确。&lt;br /&gt;请始终等待钱包同步其他数据，然后从另一个节点再次检查&lt;br /&gt;或许您的Masternode正在运行，但是您在&quot;状态&quot;字段中，仍然看不到&quot;ENABLED&quot;.</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3434,16 +3434,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL ServiceNodes?</source>
-        <translation>您确定要启动所有ServiceNodes吗？</translation>
+        <source>Are you sure you want to start ALL Masternodes?</source>
+        <translation>您确定要启动所有Masternodes吗？</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING ServiceNodes?</source>
-        <translation>您确定要启动MISSING ServiceNodes吗？</translation>
+        <source>Are you sure you want to start MISSING Masternodes?</source>
+        <translation>您确定要启动MISSING Masternodes吗？</translation>
     </message>
     <message>
-        <source>Confirm missing ServiceNodes start</source>
-        <translation>确认 missing ServiceNodes启动</translation>
+        <source>Confirm missing Masternodes start</source>
+        <translation>确认 missing Masternodes启动</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3454,16 +3454,16 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>命令目前不可用</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until ServiceNode list is synced</source>
-        <translation>在同步ServiceNode列表之前，您无法使用此命令</translation>
+        <source>You can&apos;t use this command until Masternode list is synced</source>
+        <translation>在同步Masternode列表之前，您无法使用此命令</translation>
     </message>
     <message>
-        <source>Confirm ServiceNode start</source>
-        <translation>确认ServiceNode启动</translation>
+        <source>Confirm Masternode start</source>
+        <translation>确认Masternode启动</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ServiceNode %1?</source>
-        <translation>您确定要启动ServiceNode吗%1?</translation>
+        <source>Are you sure you want to start Masternode %1?</source>
+        <translation>您确定要启动Masternode吗%1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3474,12 +3474,12 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>正在更新...</translation>
     </message>
     <message>
-        <source>Successfully started ServiceNode.</source>
-        <translation>成功启动ServiceNode。</translation>
+        <source>Successfully started Masternode.</source>
+        <translation>成功启动Masternode。</translation>
     </message>
     <message>
-        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
-        <translation>已成功启动 ％d 个ServiceNodes，未能启动 ％d 个，共 ％d 个</translation>
+        <source>Successfully started %d Masternodes, failed to start %d, total %d</source>
+        <translation>已成功启动 ％d 个Masternodes，未能启动 ％d 个，共 ％d 个</translation>
     </message>
 </context>
 <context>
@@ -3553,7 +3553,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>这显示了您挖矿的区块之间的平均时间</translation>
     </message>
     <message>
-        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <source>Blockchain/Masternodes are not synced, please wait until fully synced before mining!</source>
         <translation>“ 区块链/主节点”未同步，请等到完全同步后再进行挖矿！</translation>
     </message>
     <message>
@@ -3744,7 +3744,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>警告: 钱包档wallet.dat 损坏，但资料被拯救回来了！原来的wallet.dat 会改储存在%s, 档名是wallet.{timestamp}.bak. 如果余额或交易资料有误，你应该要用备份资料恢复。</translation>
     </message>
     <message>
-        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
+        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
         <translation>您必须在配置中指定一个主节点密钥。请参阅文档以获得帮助。</translation>
     </message>
     <message>
@@ -3904,7 +3904,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>删除钱包里的所有交易信息, 并且在下次启动时, 使用 -rescan 来从区块链中恢复</translation>
     </message>
     <message>
-        <source>Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <source>Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
         <translation>禁止所有动态币附加功能(主节点, 匿名发送, 即时发送, 预算) (0-1, default: %u)</translation>
     </message>
     <message>
@@ -4050,11 +4050,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>未激活安全模式，重新写入真正安全模式项目(默认: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a ServiceNode (0-1, default: %u)</source>
+        <source>Enable the client to act as a Masternode (0-1, default: %u)</source>
         <translation>激活客户端,使其作为主节点(0-1, 默认: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to ServiceNode.</source>
+        <source>Error connecting to Masternode.</source>
         <translation>连接到主节点时发生错误.</translation>
     </message>
     <message>
@@ -4175,11 +4175,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>正在读取预算缓存...</translation>
     </message>
     <message>
-        <source>Loading ServiceNode cache...</source>
+        <source>Loading Masternode cache...</source>
         <translation>正在读取主节点缓存...</translation>
     </message>
     <message>
-        <source>Loading ServiceNode payment cache...</source>
+        <source>Loading Masternode payment cache...</source>
         <translation>正在读取主节点付款缓存...</translation>
     </message>
     <message>
@@ -4187,15 +4187,15 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>硬币正在混合...</translation>
     </message>
     <message>
-        <source>No ServiceNodes detected.</source>
+        <source>No Masternodes detected.</source>
         <translation>没有检测到任何主节点。</translation>
     </message>
     <message>
-        <source>No compatible ServiceNode found.</source>
+        <source>No compatible Masternode found.</source>
         <translation>没有找到任何兼容的主节点。</translation>
     </message>
     <message>
-        <source>Not in the ServiceNode list.</source>
+        <source>Not in the Masternode list.</source>
         <translation>在主节点列表中不存在.</translation>
     </message>
     <message>
@@ -4263,7 +4263,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>指定连接超时毫秒数 (最小值: 1, 默认: %d)</translation>
     </message>
     <message>
-        <source>Specify ServiceNode configuration file (default: %s)</source>
+        <source>Specify Masternode configuration file (default: %s)</source>
         <translation>指定主节点配置文件 (默认: %s)</translation>
     </message>
     <message>
@@ -4291,15 +4291,15 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>正在同步预算...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode winners...</source>
+        <source>Synchronizing Masternode winners...</source>
         <translation>正在同步获得奖励的主节点...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode payments...</source>
-        <translation>正在同步ServiceNode付款...</translation>
+        <source>Synchronizing Masternode payments...</source>
+        <translation>正在同步Masternode付款...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNodes...</source>
+        <source>Synchronizing Masternodes...</source>
         <translation>正在同步主节点...</translation>
     </message>
     <message>
@@ -4311,7 +4311,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>正在同步分叉...</translation>
     </message>
     <message>
-        <source>This is not a ServiceNode.</source>
+        <source>This is not a Masternode.</source>
         <translation>这不是一个主节点。</translation>
     </message>
     <message>
@@ -4335,7 +4335,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>即将重试...</translation>
     </message>
     <message>
-        <source>Invalid servicenodepairingkey. Please see documenation.</source>
+        <source>Invalid masternodepairingkey. Please see documenation.</source>
         <translation>无效主节点私钥。请查阅文档。</translation>
     </message>
     <message>
@@ -4343,7 +4343,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>(设置 44400 为主网)</translation>
     </message>
     <message>
-        <source>Can&apos;t find random ServiceNode.</source>
+        <source>Can&apos;t find random Masternode.</source>
         <translation>无法找到随机主节点.</translation>
     </message>
     <message>
@@ -4351,11 +4351,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>无法在同步过程中进行混合.</translation>
     </message>
     <message>
-        <source>Could not parse servicenode.conf</source>
+        <source>Could not parse masternode.conf</source>
         <translation>无法解析主节点配置文件</translation>
     </message>
     <message>
-        <source>Invalid port detected in servicenode.conf</source>
+        <source>Invalid port detected in masternode.conf</source>
         <translation>在主节点配置文件中检测到无效端口</translation>
     </message>
     <message>
@@ -4395,15 +4395,15 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>正在读取钱包...</translation>
     </message>
     <message>
-        <source>ServiceNode options:</source>
+        <source>Masternode options:</source>
         <translation>主节点选项：</translation>
     </message>
     <message>
-        <source>ServiceNode queue is full.</source>
+        <source>Masternode queue is full.</source>
         <translation>主节点列队已满。</translation>
     </message>
     <message>
-        <source>ServiceNode:</source>
+        <source>Masternode:</source>
         <translation>主节点：</translation>
     </message>
     <message>
@@ -4483,7 +4483,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>以字节为单位设置最大的块(默认： %d)</translation>
     </message>
     <message>
-        <source>Set the ServiceNode private key</source>
+        <source>Set the Masternode private key</source>
         <translation>设置主节点私钥</translation>
     </message>
     <message>

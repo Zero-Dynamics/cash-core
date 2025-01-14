@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ServiceNodeList</class>
- <widget class="QWidget" name="ServiceNodeList">
+ <class>MasternodeList</class>
+ <widget class="QWidget" name="MasternodeList">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -22,12 +22,12 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tabMyServiceNodes">
+     <widget class="QWidget" name="tabMyMasternodes">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
         </property>
         <attribute name="title">
-         <string>My ServiceNodes</string>
+         <string>My Masternodes</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
@@ -46,14 +46,14 @@
                 <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
                </property>
                <property name="text">
-                <string>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see "ENABLED" in "Status" field.</string>
+                <string>Note: Status of your Masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Masternode should be running but you still do not see "ENABLED" in "Status" field.</string>
                </property>
               </widget>
              </item>
             </layout>
            </item>
            <item>
-            <widget class="QTableWidget" name="tableWidgetMyServiceNodes">
+            <widget class="QTableWidget" name="tableWidgetMyMasternodes">
              <property name="minimumSize">
               <size>
                <width>695</width>
@@ -130,7 +130,7 @@
                  <normaloff>:/icons/tyrian/start</normaloff>:/icons/tyrian/start</iconset>
                </property>
                <property name="styleSheet">
-                <string notr="true">QWidget#ServiceNodeList .QPushButton#startAllButton {
+                <string notr="true">QWidget#MasternodeList .QPushButton#startAllButton {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -143,7 +143,7 @@
                   padding-bottom:5px;
                   }
 
-                  QWidget#ServiceNodeList .QPushButton#startAllButton:hover {
+                  QWidget#MasternodeList .QPushButton#startAllButton:hover {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -156,7 +156,7 @@
                   padding-bottom:5px;
                   }
 
-                  QWidget#ServiceNodeList .QPushButton#startAllButton:pressed {
+                  QWidget#MasternodeList .QPushButton#startAllButton:pressed {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -181,7 +181,7 @@
                  <normaloff>:/icons/tyrian/start</normaloff>:/icons/tyrian/start</iconset>
                </property>
                <property name="styleSheet">
-                <string notr="true">QWidget#ServiceNodeList .QPushButton#startButton {
+                <string notr="true">QWidget#MasternodeList .QPushButton#startButton {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -194,7 +194,7 @@
                   padding-bottom:5px;
                   }
 
-                  QWidget#ServiceNodeList .QPushButton#startButton:hover {
+                  QWidget#MasternodeList .QPushButton#startButton:hover {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -207,7 +207,7 @@
                   padding-bottom:5px;
                   }
 
-                  QWidget#ServiceNodeList .QPushButton#startButton:pressed {
+                  QWidget#MasternodeList .QPushButton#startButton:pressed {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -232,7 +232,7 @@
                  <normaloff>:/icons/tyrian/start</normaloff>:/icons/tyrian/start</iconset>
                </property>
                <property name="styleSheet">
-                <string notr="true">QWidget#ServiceNodeList .QPushButton#startMissingButton {
+                <string notr="true">QWidget#MasternodeList .QPushButton#startMissingButton {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -245,7 +245,7 @@
                   padding-bottom:5px;
                   }
 
-                  QWidget#ServiceNodeList .QPushButton#startMissingButton:hover {
+                  QWidget#MasternodeList .QPushButton#startMissingButton:hover {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -258,7 +258,7 @@
                   padding-bottom:5px;
                   }
 
-                  QWidget#ServiceNodeList .QPushButton#startMissingButton:pressed {
+                  QWidget#MasternodeList .QPushButton#startMissingButton:pressed {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -283,7 +283,7 @@
                  <normaloff>:/icons/tyrian/refresh</normaloff>:/icons/tyrian/refresh</iconset>
                </property>
                <property name="styleSheet">
-                <string notr="true">QWidget#ServiceNodeList .QPushButton#UpdateButton {
+                <string notr="true">QWidget#MasternodeList .QPushButton#UpdateButton {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -296,7 +296,7 @@
                   padding-bottom:5px;
                   }
 
-                  QWidget#ServiceNodeList .QPushButton#UpdateButton:hover {
+                  QWidget#MasternodeList .QPushButton#UpdateButton:hover {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #BD9CAD, stop: .1 #99035a, stop: .95 #99035a, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -309,7 +309,7 @@
                   padding-bottom:5px;
                   }
 
-                  QWidget#ServiceNodeList .QPushButton#UpdateButton:pressed {
+                  QWidget#MasternodeList .QPushButton#UpdateButton:pressed {
                   background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #A6738F, stop: .1 #66023c, stop: .95 #66023c, stop: 1 #440128);
                   border:0;
                   border-radius:3px;
@@ -360,16 +360,16 @@
          </item>
         </layout>
        </widget>
-     <widget class="QWidget" name="tabAllServiceNodes">
+     <widget class="QWidget" name="tabAllMasternodes">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(18, 0, 6); color: rgb(229, 228, 226);</string>
         </property>
         <attribute name="title">
-         <string>All ServiceNodes</string>
+         <string>All Masternodes</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout">
          <item row="1" column="0">
-          <widget class="QTableWidget" name="tableWidgetServiceNodes">
+          <widget class="QTableWidget" name="tableWidgetMasternodes">
            <property name="styleSheet">
             <string notr="true">color: rgb(18, 0, 6); background-color:(102, 2, 60);</string>
            </property>
@@ -438,7 +438,7 @@
            <item>
             <widget class="QLineEdit" name="filterLineEdit">
              <property name="toolTip">
-              <string>Filter ServiceNode list</string>
+              <string>Filter Masternode list</string>
              </property>
              <property name="styleSheet">
               <string notr="true">color: rgb(18, 0, 6); background-color: rgb(229, 228, 226);</string>

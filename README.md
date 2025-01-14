@@ -15,37 +15,37 @@ What is [Cash](https://www/cash)?
 * PoW Difficulty Algorithm: Digishield V3
 * PoW Period: Unlimited
 * PoW Target Spacing: 30 Seconds
-* PoW Reward per Block: 25% × ServiceNode Reward, controlled via Fluid Protocol
+* PoW Reward per Block: 25% × Masternode Reward, controlled via Fluid Protocol
 * PoW Reward Start Height: Block 2,880
 * Maturity: 40 Blocks
 * PoW Blocks: ~2,880 per day
-* ServiceNode Collateral Amount: 15,000 0DYNC
-* ServiceNode Min Confirmation: 60 Blocks
-* ServiceNode Reward: 7.3% × network collateral ÷ ( PoW Blocks × 365¼ days), controlled via Fluid Protocol
-* ServiceNode Reward Start Height: Block 4,320
+* Masternode Collateral Amount: 15,000 0DYNC
+* Masternode Min Confirmation: 60 Blocks
+* Masternode Reward: 7.3% × network collateral ÷ ( PoW Blocks × 365¼ days), controlled via Fluid Protocol
+* Masternode Reward Start Height: Block 4,320
 * Total Coins: 2<sup>63</sup> - 1
 * Min TX Fee: 0.00001 0DYNC
 * Max Block Size: 1.5 MB
 
 
-[Cash(0DYNC)](https://www/cash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Cash utlises Proof-of-Work, and can be used to run incentivized ServiceNodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
+[Cash(0DYNC)](https://www/cash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Cash utlises Proof-of-Work, and can be used to run incentivized Masternodes; the second tier of nodes on the network used for BDAP, the DHT, and processing, verifying, validating and storing data.
 
 **MainNet Parameters**
 P2P Port = 44400
 RPC Port = 44450
-ServiceNodes = 44400
+Masternodes = 44400
 Magic Bytes: 0x5d 0x37 0x73 0x89
 
 **TestNet Parameters**
 P2P Port = 44500
 RPC Port = 44550
-ServiceNodes = 44500
+Masternodes = 44500
 Magic Bytes: 0x2d 0x37 0x16 0x42
 
 **RegTest Parameters**
 P2P Port = 44600
 RPC Port = 44650
-ServiceNodes = 44600
+Masternodes = 44600
 Magic Bytes = 0x2d 0x37 0x16 0x42
 
 

@@ -10,8 +10,8 @@
 #include "bdap/utils.h"
 //#include "bdap/x509.h"
 #include "core_io.h" // needed for ScriptToAsmStr
-#include "servicenode-sync.h"
-#include "servicenodeman.h"
+#include "masternode-sync.h"
+#include "masternodeman.h"
 #include "rpc/protocol.h"
 #include "rpc/server.h"
 #include "primitives/transaction.h"
@@ -786,10 +786,10 @@ static UniValue ViewCertificate(const JSONRPCRequest& request)
     std::vector<CX509Certificate> vCertificates;
     if ((subjectDetected) && (issuerDetected)) {
         if (getAll) {
-            pCertificateDB->ReadCertificateSubjectSNApprove(vchSubjectFQDN, vCertificates);
+            pCertificateDB->ReadCertificateSubjectMNApprove(vchSubjectFQDN, vCertificates);
         }
         else {
-            pCertificateDB->ReadCertificateSubjectSNRequest(vchSubjectFQDN, vCertificates, false);
+            pCertificateDB->ReadCertificateSubjectMNRequest(vchSubjectFQDN, vCertificates, false);
         }
 
         for (const CX509Certificate& certificate : vCertificates) {
@@ -802,10 +802,10 @@ static UniValue ViewCertificate(const JSONRPCRequest& request)
     }
     else if (subjectDetected) {
         if (getAll) {
-            pCertificateDB->ReadCertificateSubjectSNApprove(vchSubjectFQDN, vCertificates);
+            pCertificateDB->ReadCertificateSubjectMNApprove(vchSubjectFQDN, vCertificates);
         }
         else {
-            pCertificateDB->ReadCertificateSubjectSNRequest(vchSubjectFQDN, vCertificates, false);
+            pCertificateDB->ReadCertificateSubjectMNRequest(vchSubjectFQDN, vCertificates, false);
         }
 
         for (const CX509Certificate& certificate : vCertificates) {
@@ -817,10 +817,10 @@ static UniValue ViewCertificate(const JSONRPCRequest& request)
     }
     else if (issuerDetected) {
         if (getAll) {
-            pCertificateDB->ReadCertificateIssuerSNApprove(vchIssuerFQDN, vCertificates);
+            pCertificateDB->ReadCertificateIssuerMNApprove(vchIssuerFQDN, vCertificates);
         }
         else {
-            pCertificateDB->ReadCertificateIssuerSNRequest(vchIssuerFQDN, vCertificates, false);
+            pCertificateDB->ReadCertificateIssuerMNRequest(vchIssuerFQDN, vCertificates, false);
         }
 
         for (const CX509Certificate& certificate : vCertificates) {
@@ -898,7 +898,7 @@ static UniValue ViewPending(const JSONRPCRequest& request)
     //for each BDAP account, retrieve pending certificates (as subject and issuer)
     for (const std::vector<unsigned char>& vchBDAPAccount : vvchDHTBDAPAccounts) {
         //retrieve bdap account as subject
-        pCertificateDB->ReadCertificateSubjectSNRequest(vchBDAPAccount, vCertificatesSubject, false);
+        pCertificateDB->ReadCertificateSubjectMNRequest(vchBDAPAccount, vCertificatesSubject, false);
         for (const CX509Certificate& certificate : vCertificatesSubject) {
             UniValue oCertificateList(UniValue::VOBJ);
             BuildX509CertificateJson(certificate, oCertificateList);
@@ -907,7 +907,7 @@ static UniValue ViewPending(const JSONRPCRequest& request)
         };
 
         //retrieve bdap account as issuer
-        pCertificateDB->ReadCertificateIssuerSNRequest(vchBDAPAccount, vCertificatesIssuer, false);
+        pCertificateDB->ReadCertificateIssuerMNRequest(vchBDAPAccount, vCertificatesIssuer, false);
         for (const CX509Certificate& certificate : vCertificatesIssuer) {
             UniValue oCertificateList(UniValue::VOBJ);
             BuildX509CertificateJson(certificate, oCertificateList);

@@ -22,8 +22,8 @@
 #include "util.h"
 #include "validation.h"
 
-#include "servicenode-sync.h"
-#include "servicenodeman.h"
+#include "masternode-sync.h"
+#include "masternodeman.h"
 #include "privatesend-client.h"
 
 #include <boost/bind/bind.hpp>
@@ -43,7 +43,7 @@ static int64_t nLastBlockTipUpdateNotification = 0;
 ClientModel::ClientModel(OptionsModel* _optionsModel, QObject* parent) : QObject(parent),
                                                                          optionsModel(_optionsModel),
                                                                          peerTableModel(0),
-                                                                         cachedServiceNodeCountString(""),
+                                                                         cachedMasternodeCountString(""),
                                                                          banTableModel(0),
                                                                          pollTimer(0)
 {
@@ -55,10 +55,10 @@ ClientModel::ClientModel(OptionsModel* _optionsModel, QObject* parent) : QObject
     connect(pollTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
     pollTimer->start(MODEL_UPDATE_DELAY);
 
-    pollSnTimer = new QTimer(this);
-    connect(pollSnTimer, SIGNAL(timeout()), this, SLOT(updateSnTimer()));
+    pollmnTimer = new QTimer(this);
+    connect(pollmnTimer, SIGNAL(timeout()), this, SLOT(updatemnTimer()));
     // no need to update as frequent as data for balances/txes/blocks
-    pollSnTimer->start(MODEL_UPDATE_DELAY * 4);
+    pollmnTimer->start(MODEL_UPDATE_DELAY * 4);
 
     subscribeToCoreSignals();
 }
@@ -84,16 +84,16 @@ int ClientModel::getNumConnections(unsigned int flags) const
     return 0;
 }
 
-QString ClientModel::getServiceNodeCountString() const
+QString ClientModel::getMasternodeCountString() const
 {
-    // return tr("Total: %1 (PS compatible: %2 / Enabled: %3) (IPv4: %4, IPv6: %5, TOR: %6)").arg(QString::number((int)snodeman.size()))
+    // return tr("Total: %1 (PS compatible: %2 / Enabled: %3) (IPv4: %4, IPv6: %5, TOR: %6)").arg(QString::number((int)mnodeman.size()))
     return tr("Total: %1 (PS compatible: %2 / Enabled: %3)")
-        .arg(QString::number((int)snodeman.size()))
-        .arg(QString::number((int)snodeman.CountEnabled(MIN_PRIVATESEND_PEER_PROTO_VERSION)))
-        .arg(QString::number((int)snodeman.CountEnabled()));
-    // .arg(QString::number((int)snodeman.CountByIP(NET_IPV4)))
-    // .arg(QString::number((int)snodeman.CountByIP(NET_IPV6)))
-    // .arg(QString::number((int)snodeman.CountByIP(NET_TOR)));
+        .arg(QString::number((int)mnodeman.size()))
+        .arg(QString::number((int)mnodeman.CountEnabled(MIN_PRIVATESEND_PEER_PROTO_VERSION)))
+        .arg(QString::number((int)mnodeman.CountEnabled()));
+    // .arg(QString::number((int)mnodeman.CountByIP(NET_IPV4)))
+    // .arg(QString::number((int)mnodeman.CountByIP(NET_IPV6)))
+    // .arg(QString::number((int)mnodeman.CountByIP(NET_TOR)));
 }
 
 int ClientModel::getNumBlocks() const
@@ -180,14 +180,14 @@ void ClientModel::updateTimer()
     Q_EMIT bytesChanged(getTotalBytesRecv(), getTotalBytesSent());
 }
 
-void ClientModel::updateSnTimer()
+void ClientModel::updatemnTimer()
 {
-    QString newServiceNodeCountString = getServiceNodeCountString();
+    QString newMasternodeCountString = getMasternodeCountString();
 
-    if (cachedServiceNodeCountString != newServiceNodeCountString) {
-        cachedServiceNodeCountString = newServiceNodeCountString;
+    if (cachedMasternodeCountString != newMasternodeCountString) {
+        cachedMasternodeCountString = newMasternodeCountString;
 
-        Q_EMIT strServiceNodesChanged(cachedServiceNodeCountString);
+        Q_EMIT strMasternodesChanged(cachedMasternodeCountString);
     }
 }
 

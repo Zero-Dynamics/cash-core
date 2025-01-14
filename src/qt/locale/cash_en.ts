@@ -1090,18 +1090,18 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</source>
-        <translation>Use 2 separate servicenodes to mix funds up to 1000 0DYNC</translation>
+        <source>Use 2 separate masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Use 2 separate masternodes to mix funds up to 1000 0DYNC</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</source>
-        <translation>Use 8 separate servicenodes to mix funds up to 1000 0DYNC</translation>
+        <source>Use 8 separate masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Use 8 separate masternodes to mix funds up to 1000 0DYNC</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 16 separate servicenodes</source>
-        <translation>Use 16 separate servicenodes</translation>
+        <source>Use 16 separate masternodes</source>
+        <translation>Use 16 separate masternodes</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1323,11 +1323,11 @@ You retain control of your money at all times.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend begins by breaking your transaction inputs down into standard denominations.
 These denominations are 0.001, 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC -- sort of like the paper money you use every day.&lt;/li&gt;
-&lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called &#39;ServiceNodes&#39;.
-These ServiceNodes are informed then that you are interested in mixing a certain denomination.
-No identifiable information is sent to the ServiceNodes, so they never know &#39;who&#39; you are.&lt;/li&gt;
+&lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called &#39;Masternodes&#39;.
+These Masternodes are informed then that you are interested in mixing a certain denomination.
+No identifiable information is sent to the Masternodes, so they never know &#39;who&#39; you are.&lt;/li&gt;
 &lt;li&gt;When two other people send similar messages, indicating that they wish to mix the same denomination, a mixing session begins.
-The ServiceNode mixes up the inputs and instructs all three users&#39; wallets to pay the now-transformed input back to themselves.
+The Masternode mixes up the inputs and instructs all three users&#39; wallets to pay the now-transformed input back to themselves.
 Your wallet pays that denomination directly to itself, but in a different address (called a change address).&lt;/li&gt;
 &lt;li&gt;In order to fully obscure your funds, your wallet must repeat this process a number of times with each denomination.
 Each time the process is completed, it&#39;s called a &#39;round&#39;. Each round of PrivateSend makes it exponentially more difficult to determine where your funds originated.&lt;/li&gt;
@@ -1587,8 +1587,8 @@ Consequently, users who have backups disabled will also have PrivateSend disable
     </message>
     <message>
         <location line="-74"/>
-        <source>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>This setting determines the amount of individual servicenodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</translation>
+        <source>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <translation>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</translation>
     </message>
     <message>
         <location line="+80"/>
@@ -1930,8 +1930,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="-469"/>
-        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</translation>
+        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</translation>
     </message>
     <message>
         <location line="+501"/>
@@ -2415,8 +2415,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+289"/>
-        <source>Number of ServiceNodes</source>
-        <translation>Number of ServiceNodes</translation>
+        <source>Number of Masternodes</source>
+        <translation>Number of Masternodes</translation>
     </message>
     <message>
         <location line="+34"/>
@@ -4478,8 +4478,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</translation>
+        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4728,8 +4728,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</translation>
+        <source>Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4985,13 +4985,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+5"/>
-        <source>Enable the client to act as a servicenode (0-1, default: %u)</source>
-        <translation>Enable the client to act as a servicenode (0-1, default: %u)</translation>
+        <source>Enable the client to act as a masternode (0-1, default: %u)</source>
+        <translation>Enable the client to act as a masternode (0-1, default: %u)</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Error connecting to ServiceNode.</source>
-        <translation>Error connecting to ServiceNode.</translation>
+        <source>Error connecting to Masternode.</source>
+        <translation>Error connecting to Masternode.</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -5165,13 +5165,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Loading servicenode cache...</source>
-        <translation>Loading servicenode cache...</translation>
+        <source>Loading masternode cache...</source>
+        <translation>Loading masternode cache...</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Loading servicenode payment cache...</source>
-        <translation>Loading servicenode payment cache...</translation>
+        <source>Loading masternode payment cache...</source>
+        <translation>Loading masternode payment cache...</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5180,8 +5180,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Lock servicenodes from servicenode configuration file (default: %u)</source>
-        <translation>Lock servicenodes from servicenode configuration file (default: %u)</translation>
+        <source>Lock masternodes from masternode configuration file (default: %u)</source>
+        <translation>Lock masternodes from masternode configuration file (default: %u)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5210,18 +5210,18 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>No ServiceNodes detected.</source>
-        <translation>No ServiceNodes detected.</translation>
+        <source>No Masternodes detected.</source>
+        <translation>No Masternodes detected.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>No compatible ServiceNode found.</source>
-        <translation>No compatible ServiceNode found.</translation>
+        <source>No compatible Masternode found.</source>
+        <translation>No compatible Masternode found.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Not in the ServiceNode list.</source>
-        <translation>Not in the ServiceNode list.</translation>
+        <source>Not in the Masternode list.</source>
+        <translation>Not in the Masternode list.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5270,8 +5270,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+4"/>
-        <source>Set external address:port to get to this servicenode (example: %s)</source>
-        <translation>Set external address:port to get to this servicenode (example: %s)</translation>
+        <source>Set external address:port to get to this masternode (example: %s)</source>
+        <translation>Set external address:port to get to this masternode (example: %s)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5310,8 +5310,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify servicenode configuration file (default: %s)</source>
-        <translation>Specify servicenode configuration file (default: %s)</translation>
+        <source>Specify masternode configuration file (default: %s)</source>
+        <translation>Specify masternode configuration file (default: %s)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5330,18 +5330,18 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Submitted following entries to servicenode: %u / %d</source>
-        <translation>Submitted following entries to servicenode: %u / %d</translation>
+        <source>Submitted following entries to masternode: %u / %d</source>
+        <translation>Submitted following entries to masternode: %u / %d</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Submitted to servicenode, waiting for more entries ( %u / %d ) %s</translation>
+        <source>Submitted to masternode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Submitted to masternode, waiting for more entries ( %u / %d ) %s</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Submitted to servicenode, waiting in queue %s</source>
-        <translation>Submitted to servicenode, waiting in queue %s</translation>
+        <source>Submitted to masternode, waiting in queue %s</source>
+        <translation>Submitted to masternode, waiting in queue %s</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5360,13 +5360,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Synchronizing servicenode winners...</source>
-        <translation>Synchronizing servicenode winners...</translation>
+        <source>Synchronizing masternode winners...</source>
+        <translation>Synchronizing masternode winners...</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Synchronizing servicenodes...</source>
-        <translation>Synchronizing servicenodes...</translation>
+        <source>Synchronizing masternodes...</source>
+        <translation>Synchronizing masternodes...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5375,8 +5375,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+4"/>
-        <source>This is not a ServiceNode.</source>
-        <translation>This is not a ServiceNode.</translation>
+        <source>This is not a Masternode.</source>
+        <translation>This is not a Masternode.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5390,8 +5390,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</source>
-        <translation>Use N separate servicenodes to anonymize funds  (2-8, default: %u)</translation>
+        <source>Use N separate masternodes to anonymize funds  (2-8, default: %u)</source>
+        <translation>Use N separate masternodes to anonymize funds  (2-8, default: %u)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -5420,8 +5420,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="-136"/>
-        <source>Invalid servicenodepairingkey. Please see documenation.</source>
-        <translation>Invalid servicenodepairingkey. Please see documenation.</translation>
+        <source>Invalid masternodepairingkey. Please see documenation.</source>
+        <translation>Invalid masternodepairingkey. Please see documenation.</translation>
     </message>
     <message>
         <location line="-88"/>
@@ -5430,8 +5430,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+13"/>
-        <source>Can&apos;t find random ServiceNode.</source>
-        <translation>Can&apos;t find random ServiceNode.</translation>
+        <source>Can&apos;t find random Masternode.</source>
+        <translation>Can&apos;t find random Masternode.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5440,8 +5440,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+16"/>
-        <source>Could not parse servicenode.conf</source>
-        <translation>Could not parse servicenode.conf</translation>
+        <source>Could not parse masternode.conf</source>
+        <translation>Could not parse masternode.conf</translation>
     </message>
     <message>
         <location line="+59"/>
@@ -5450,8 +5450,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Invalid port detected in servicenode.conf</source>
-        <translation>Invalid port detected in servicenode.conf</translation>
+        <source>Invalid port detected in masternode.conf</source>
+        <translation>Invalid port detected in masternode.conf</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5515,18 +5515,18 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+4"/>
-        <source>ServiceNode options:</source>
-        <translation>ServiceNode options:</translation>
+        <source>Masternode options:</source>
+        <translation>Masternode options:</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>ServiceNode queue is full.</source>
-        <translation>ServiceNode queue is full.</translation>
+        <source>Masternode queue is full.</source>
+        <translation>Masternode queue is full.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>ServiceNode:</source>
-        <translation>ServiceNode:</translation>
+        <source>Masternode:</source>
+        <translation>Masternode:</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5655,8 +5655,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+2"/>
-        <source>Set the servicenode private key</source>
-        <translation>Set the servicenode private key</translation>
+        <source>Set the masternode private key</source>
+        <translation>Set the masternode private key</translation>
     </message>
     <message>
         <location line="+3"/>

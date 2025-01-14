@@ -14,7 +14,7 @@
 class CGovernanceVote;
 class CConnman;
 
-// INTENTION OF SERVICENODES REGARDING ITEM
+// INTENTION OF MASTERNODES REGARDING ITEM
 enum vote_outcome_enum_t {
     VOTE_OUTCOME_NONE = 0,
     VOTE_OUTCOME_YES = 1,
@@ -50,7 +50,7 @@ public:
 };
 
 //
-// CGovernanceVote - Allow a servicenode node to vote and broadcast throughout the network
+// CGovernanceVote - Allow a masternode node to vote and broadcast throughout the network
 //
 
 class CGovernanceVote
@@ -63,7 +63,7 @@ private:
     bool fValid;     //if the vote is currently valid / counted
     bool fSynced;    //if we've sent this to our peers
     int nVoteSignal; // see VOTE_ACTIONS above
-    COutPoint servicenodeOutpoint;
+    COutPoint masternodeOutpoint;
     uint256 nParentHash;
     int nVoteOutcome; // see VOTE_OUTCOMES above
     int64_t nTime;
@@ -75,7 +75,7 @@ private:
 
 public:
     CGovernanceVote();
-    CGovernanceVote(const COutPoint& outpointServiceNodeIn, const uint256& nParentHashIn, vote_signal_enum_t eVoteSignalIn, vote_outcome_enum_t eVoteOutcomeIn);
+    CGovernanceVote(const COutPoint& outpointMasternodeIn, const uint256& nParentHashIn, vote_signal_enum_t eVoteSignalIn, vote_outcome_enum_t eVoteOutcomeIn);
 
     bool IsValid() const { return fValid; }
 
@@ -97,8 +97,8 @@ public:
 
     void SetSignature(const std::vector<unsigned char>& vchSigIn) { vchSig = vchSigIn; }
 
-    bool Sign(const CKey& keyServiceNode, const CPubKey& pubKeyServiceNode);
-    bool CheckSignature(const CPubKey& pubKeyServiceNode) const;
+    bool Sign(const CKey& keyMasternode, const CPubKey& pubKeyMasternode);
+    bool CheckSignature(const CPubKey& pubKeyMasternode) const;
     bool IsValid(bool fSignatureCheck) const;
     void Relay(CConnman& connman) const;
 
@@ -107,7 +107,7 @@ public:
         return CGovernanceVoting::ConvertOutcomeToString(GetOutcome());
     }
 
-    const COutPoint& GetServiceNodeOutpoint() const { return servicenodeOutpoint; }
+    const COutPoint& GetMasternodeOutpoint() const { return masternodeOutpoint; }
 
     /**
     *   GetHash()
@@ -131,14 +131,14 @@ public:
             CTxIn txin{};
             if (ser_action.ForRead()) {
                 READWRITE(txin);
-                servicenodeOutpoint = txin.prevout;
+                masternodeOutpoint = txin.prevout;
             } else {
-                txin = CTxIn(servicenodeOutpoint);
+                txin = CTxIn(masternodeOutpoint);
                 READWRITE(txin);
             }
         } else {
             // using new format directly
-            READWRITE(servicenodeOutpoint);
+            READWRITE(masternodeOutpoint);
         }
         READWRITE(nParentHash);
         READWRITE(nVoteOutcome);

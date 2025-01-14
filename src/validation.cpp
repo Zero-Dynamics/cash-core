@@ -24,13 +24,13 @@
 #include "consensus/merkle.h"
 #include "consensus/params.h"
 #include "consensus/validation.h"
-#include "servicenode-payments.h"
-#include "servicenode-sync.h"
-#include "servicenodeman.h"
+#include "masternode-payments.h"
+#include "masternode-sync.h"
+#include "masternodeman.h"
 #include "fluid/banaccount.h"
 #include "fluid/fluid.h"
 #include "fluid/fluiddb.h"
-#include "fluid/fluidservicenode.h"
+#include "fluid/fluidmasternode.h"
 #include "fluid/fluidmining.h"
 #include "fluid/fluidmint.h"
 #include "hash.h"
@@ -2594,7 +2594,7 @@ void ThreadScriptCheck()
 // Protected by cs_main
 VersionBitsCache versionbitscache;
 
-int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Params& params, bool fAssumeServiceNodeIsUpgraded)
+int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Params& params, bool fAssumeMasternodeIsUpgraded)
 {
     LOCK(cs_main);
     int32_t nVersion = VERSIONBITS_TOP_BITS;
@@ -2603,15 +2603,15 @@ int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Para
         Consensus::DeploymentPos pos = Consensus::DeploymentPos(i);
         ThresholdState state = VersionBitsState(pindexPrev, params, pos, versionbitscache);
         const struct BIP9DeploymentInfo& vbinfo = VersionBitsDeploymentInfo[pos];
-        if (vbinfo.check_sn_protocol && state == THRESHOLD_STARTED && !fAssumeServiceNodeIsUpgraded) {
+        if (vbinfo.check_mn_protocol && state == THRESHOLD_STARTED && !fAssumeMasternodeIsUpgraded) {
             CScript payee;
-            servicenode_info_t snInfo;
-            if (!snpayments.GetBlockPayee(pindexPrev->nHeight + 1, payee)) {
+            masternode_info_t mnInfo;
+            if (!mnpayments.GetBlockPayee(pindexPrev->nHeight + 1, payee)) {
                 // no votes for this block
                 continue;
             }
-            if (!snodeman.GetServiceNodeInfo(payee, snInfo)) {
-                // unknown servicenode
+            if (!mnodeman.GetMasternodeInfo(payee, mnInfo)) {
+                // unknown masternode
                 continue;
             }
         }
@@ -2917,7 +2917,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     nTimeConnect += nTime3 - nTime2;
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime3 - nTime2), 0.001 * (nTime3 - nTime2) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime3 - nTime2) / (nInputs - 1), nTimeConnect * 0.000001);
 
-    // 0DYNC : MODIFIED TO CHECK SERVICENODE PAYMENTS AND SUPERBLOCKS
+    // 0DYNC : MODIFIED TO CHECK MASTERNODE PAYMENTS AND SUPERBLOCKS
 
     // It's possible that we simply don't have enough data and this could fail
     // (i.e. block itself could be a correct one and we need to store it),
@@ -2925,12 +2925,12 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     // the peer who sent us this block is missing some data and wasn't able
     // to recognize that block is actually invalid.
     // TODO: resync data (both ways?) and try to reprocess this block later.
-    bool fServiceNodePaid = false;
+    bool fMasternodePaid = false;
 
-    if (chainActive.Height() > Params().GetConsensus().nServiceNodePaymentsStartBlock) {
-        fServiceNodePaid = true;
-    } else if (chainActive.Height() <= Params().GetConsensus().nServiceNodePaymentsStartBlock) {
-        fServiceNodePaid = false;
+    if (chainActive.Height() > Params().GetConsensus().nMasternodePaymentsStartBlock) {
+        fMasternodePaid = true;
+    } else if (chainActive.Height() <= Params().GetConsensus().nMasternodePaymentsStartBlock) {
+        fMasternodePaid = false;
     }
 
     // BEGIN FLUID
@@ -2939,9 +2939,9 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     {
         CBlockIndex* prevIndex = pindex->pprev;
         CAmount newMiningReward = GetFluidMiningReward(pindex->nHeight);
-        CAmount newServiceNodeReward = 0;
-        if (fServiceNodePaid)
-            newServiceNodeReward = GetFluidServiceNodeReward(pindex->nHeight);
+        CAmount newMasternodeReward = 0;
+        if (fMasternodePaid)
+            newMasternodeReward = GetFluidMasternodeReward(pindex->nHeight);
 
         CAmount newMintIssuance = 0;
         CDebitAddress mintAddress;
@@ -2953,14 +2953,14 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                 LogPrintf("ConnectBlock, GetMintingInstructions MintAmount = %u\n", fluidMint.MintAmount);
             }
         }
-        nExpectedBlockValue = newMintIssuance + newMiningReward + newServiceNodeReward;
+        nExpectedBlockValue = newMintIssuance + newMiningReward + newMasternodeReward;
 
         if (!IsBlockValueValid(block, pindex->nHeight, nExpectedBlockValue, strError)) {
             return state.DoS(0, error("ConnectBlock(0DYNC): %s", strError), REJECT_INVALID, "bad-cb-amount");
         }
         if (!IsBlockPayeeValid(*block.vtx[0], pindex->nHeight, nExpectedBlockValue)) {
             mapRejectedBlocks.insert(std::make_pair(block.GetHash(), GetTime()));
-            return state.DoS(0, error("ConnectBlock(0DYNC): couldn't find ServiceNode or Superblock payments"),
+            return state.DoS(0, error("ConnectBlock(0DYNC): couldn't find Masternode or Superblock payments"),
                 REJECT_INVALID, "bad-cb-payee");
         }
     }
@@ -2969,15 +2969,15 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
         CScript scriptFluid;
         if (IsTransactionFluid(tx, scriptFluid)) {
             int OpCode = GetFluidOpCode(scriptFluid);
-            if (OpCode == OP_REWARD_SERVICENODE) {
-                CFluidServiceNode fluidServiceNode(scriptFluid);
-                fluidServiceNode.nHeight = pindex->nHeight;
-                fluidServiceNode.txHash = tx.GetHash();
-                if (CheckFluidServiceNodeDB()) {
-                    if (!CheckSignatureQuorum(fluidServiceNode.FluidScript, strError)) {
-                        return state.DoS(0, error("ConnectBlock(0DYNC): %s", strError), REJECT_INVALID, "invalid-fluid-servicenode-address-signature");
+            if (OpCode == OP_REWARD_MASTERNODE) {
+                CFluidMasternode fluidMasternode(scriptFluid);
+                fluidMasternode.nHeight = pindex->nHeight;
+                fluidMasternode.txHash = tx.GetHash();
+                if (CheckFluidMasternodeDB()) {
+                    if (!CheckSignatureQuorum(fluidMasternode.FluidScript, strError)) {
+                        return state.DoS(0, error("ConnectBlock(0DYNC): %s", strError), REJECT_INVALID, "invalid-fluid-masternode-address-signature");
                     }
-                    pFluidServiceNodeDB->AddFluidServiceNodeEntry(fluidServiceNode, OP_REWARD_SERVICENODE);
+                    pFluidMasternodeDB->AddFluidMasternodeEntry(fluidMasternode, OP_REWARD_MASTERNODE);
                 }
             } else if (OpCode == OP_REWARD_MINING) {
                 CFluidMining fluidMining(scriptFluid);

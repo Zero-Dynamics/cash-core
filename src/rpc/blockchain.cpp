@@ -11,7 +11,7 @@
 #include "checkpoints.h"
 #include "coins.h"
 #include "consensus/validation.h"
-#include "servicenode-sync.h"
+#include "masternode-sync.h"
 #include "hash.h"
 #include "instantsend.h"
 #include "policy/policy.h"
@@ -1246,7 +1246,7 @@ UniValue syncstatus(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
             "syncstatus\n"
-            "Returns an object containing blockchain, spork and ServiceNode sync status.\n"
+            "Returns an object containing blockchain, spork and Masternode sync status.\n"
             "\nResult:\n"
             "{\n"
             "  \"chain_name\": \"xxxx\",          (string)  Current network name as defined in BIP70 (main, test, regtest)\n"
@@ -1255,9 +1255,9 @@ UniValue syncstatus(const JSONRPCRequest& request)
             "  \"headers\": xxxxxx,               (numeric) The current number of headers we have validated\n"
             "  \"blocks\": xxxxxx,                (numeric) The current number of blocks processed in the server\n"
             "  \"current_block_height\": xxxxxx,  (numeric) Maximum starting height from peers when headers are not fully synced.\n"
-            "  \"sync_progress\": xxxx,           (numeric) Estimated blockchain synchronization completion percentage including headers, blocks and ServiceNodes\n"
+            "  \"sync_progress\": xxxx,           (numeric) Estimated blockchain synchronization completion percentage including headers, blocks and Masternodes\n"
             "  \"status_description\": \"xxxx\",  (string)  Displays the current sync step description\n"
-            "  \"fully_synced\": xxxx,            (boolean) Returns true when the blockchain and ServiceNodes are completely synced.\n"
+            "  \"fully_synced\": xxxx,            (boolean) Returns true when the blockchain and Masternodes are completely synced.\n"
             "  \"failed\": xxxx,                  (boolean) True if sync failed.\n"
             "}\n"
             "\nExamples:\n" +
@@ -1285,14 +1285,14 @@ UniValue syncstatus(const JSONRPCRequest& request)
         nChainProgress = ((double)nHeaderCount/(double)nMaxChainHeight * 0.1) + ((double)nBlockHeight/(double)nMaxChainHeight * 0.8);
     }
     else if ((nMaxChainHeight > 0) && ((nMaxChainHeight - nHeaderCount) < 100)) {
-        // Headers completed, add block and ServiceNode sync percent
-        strSyncStatus = servicenodeSync.GetSyncStatus();
+        // Headers completed, add block and Masternode sync percent
+        strSyncStatus = masternodeSync.GetSyncStatus();
         if (strSyncStatus == "Synchronizing blockchain...") {
             nChainProgress = ((double)nBlockHeight/(double)nMaxChainHeight * 0.8) + 0.1;
         }
         else {
-            // This assumes ServiceNode sync takes 10%  of the total download time.
-            nChainProgress = 0.9 + (servicenodeSync.SyncProgress() * 0.1);
+            // This assumes Masternode sync takes 10%  of the total download time.
+            nChainProgress = 0.9 + (masternodeSync.SyncProgress() * 0.1);
         }
     }
     else {
@@ -1311,8 +1311,8 @@ UniValue syncstatus(const JSONRPCRequest& request)
     obj.push_back(Pair("current_block_height", nMaxChainHeight));
     obj.push_back(Pair("sync_progress", nChainProgress));
     obj.push_back(Pair("status_description", strSyncStatus));
-    obj.push_back(Pair("fully_synced", servicenodeSync.IsSynced()));
-    obj.push_back(Pair("failed", servicenodeSync.IsFailed()));
+    obj.push_back(Pair("fully_synced", masternodeSync.IsSynced()));
+    obj.push_back(Pair("failed", masternodeSync.IsFailed()));
 
     return obj;
 }

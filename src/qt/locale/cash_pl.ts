@@ -267,8 +267,8 @@
         <translation>&amp;Tranzakcje</translation>
     </message>
     <message>
-        <source>&amp;ServiceNodes</source>
-        <translation>&amp;ServiceNodes</translation>
+        <source>&amp;Masternodes</source>
+        <translation>&amp;Masternodes</translation>
     </message>
     <message>
         <source>&amp;Mining</source>
@@ -279,8 +279,8 @@
         <translation>Szukaj w historii tranzakcji</translation>
     </message>
     <message>
-        <source>Browse ServiceNodes</source>
-        <translation>Szukaj ServiceNodes</translation>
+        <source>Browse Masternodes</source>
+        <translation>Szukaj Masternodes</translation>
     </message>
     <message>
         <source>Mine Cash(0DYNC)</source>
@@ -427,12 +427,12 @@
         <translation>Otwórz konfirgurację pliku</translation>
     </message>
     <message>
-        <source>Open &amp;ServiceNode Configuration File</source>
-        <translation>Otwórz &amp;Konfigurację Pliku ServiceNode</translation>
+        <source>Open &amp;Masternode Configuration File</source>
+        <translation>Otwórz &amp;Konfigurację Pliku Masternode</translation>
     </message>
     <message>
-        <source>Open ServiceNode configuration file</source>
-        <translation>Otwórz konfigurację pliku ServiceNode</translation>
+        <source>Open Masternode configuration file</source>
+        <translation>Otwórz konfigurację pliku Masternode</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -952,16 +952,16 @@ Adres: %4
         <translation>Proszę wyselekcjonuj poziom prywatności.</translation>
     </message>
     <message>
-        <source>Use 2 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
-        <translation>Użyj 2 osobnych ServiceNodes aby wymieszać fundusze do 1000 0DYNC</translation>
+        <source>Use 2 separate Masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Użyj 2 osobnych Masternodes aby wymieszać fundusze do 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 8 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
-        <translation>Użyj 8 osobnych ServiceNodes aby wymieszać fundusze do 1000 0DYNC</translation>
+        <source>Use 8 separate Masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Użyj 8 osobnych Masternodes aby wymieszać fundusze do 1000 0DYNC</translation>
     </message>
     <message>
-        <source>Use 16 separate ServiceNodes to mix funds up to 1000 0DYNC</source>
-        <translation>Użyj 16 osobnych ServiceNodes aby wymieszać fundusze do 1000 0DYNC</translation>
+        <source>Use 16 separate Masternodes to mix funds up to 1000 0DYNC</source>
+        <translation>Użyj 16 osobnych Masternodes aby wymieszać fundusze do 1000 0DYNC</translation>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 0DYNC to anonymize 1000 0DYNC</source>
@@ -1144,7 +1144,7 @@ Zachowasz kontrolę nad twoimi pieniędzmi przez cały czas.&lt;hr&gt;
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSend zaczyna się przez rozbicie wkładów twojej tranzakcji na standardowe/domyślne denominacje.
 Te denominacje są 0.001, 0.01 0DYNC, 0.1 0DYNC, 1 0DYNC, 10 0DYNC -- na kształt papierowych pieniędzy, których używasz każdego dnia.&lt;/li&gt;
-&lt;li&gt;Twój portfel podczas kiedy wysyła monety, nadaje prośbę do specjalnie skonfigurowanych węzłów na sieci, zwanych &#39;ServiceNodes&#39;.
+&lt;li&gt;Twój portfel podczas kiedy wysyła monety, nadaje prośbę do specjalnie skonfigurowanych węzłów na sieci, zwanych &#39;Masternodes&#39;.
 Te Dynody są informowane wtedy, że jesteś zainteresowany miksowaniem pewnych denominacji.
 Nie identyfikująca informacja została wysłana do Dynod, więc one nigdy nie wiedzą &#39;kim&#39; jesteś.&lt;/li&gt;
 &lt;li&gt;Kiedy dwoje innych osób wyśle podobne wiadomości dając do zrozumienia, że chcą miksować te same denominacje, sesja miksowania rozpoczyna się.
@@ -1342,7 +1342,7 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Ekspert</translation>
     </message>
     <message>
-        <source>This setting determines the amount of individual ServiceNodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
+        <source>This setting determines the amount of individual Masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
         <translation>To ustawienie ustala ilość indywidualnych Dynod których wkład zostanie anonimizowany poprzez.&lt;br/&gt;Więcej rund anonimizacji poda wyższy stopień prywatności ale też kosztuje więcej. </translation>
     </message>
     <message>
@@ -1354,11 +1354,11 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Uruchom monetę &amp;kontroluj funkcję</translation>
     </message>
     <message>
-        <source>Show ServiceNodes Tab</source>
+        <source>Show Masternodes Tab</source>
         <translation>Pokaż tabulator Dynod</translation>
     </message>
     <message>
-        <source>Show additional tab listing all your ServiceNodes in first sub-tab&lt;br/&gt;and all ServiceNodes on the network in second sub-tab.</source>
+        <source>Show additional tab listing all your Masternodes in first sub-tab&lt;br/&gt;and all Masternodes on the network in second sub-tab.</source>
         <translation>Pokaż dodatkowy tabulator listy wszystkich twoich Dynod w pierwszym pod-tabulatorze&lt;br/&gt;oraz wszystkie Dynody w sieci drugiego pod-tabulatora.</translation>
     </message>
     <message>
@@ -1659,7 +1659,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Zatrzymaj mieszanie</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
         <translation>Podanie o denominacje wysłane do Dynod.&lt;br&gt;Aby nastąpiło mieszanie, inni użytkownicy muszą wysłać dokładnie takie same denominacje.</translation>
     </message>
     <message>
@@ -2066,8 +2066,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Block chain</translation>
     </message>
     <message>
-        <source>Number of ServiceNodes</source>
-        <translation>Numer ServiceNodes</translation>
+        <source>Number of Masternodes</source>
+        <translation>Numer Masternodes</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -3602,7 +3602,7 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
     </message>
 </context>
 <context>
-    <name>ServiceNodeList</name>
+    <name>MasternodeList</name>
     <message>
         <source>Form</source>
         <translation>Od</translation>
@@ -3616,15 +3616,15 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Kalkulowanie Node:</translation>
     </message>
     <message>
-        <source>My ServiceNodes</source>
-        <translation>Moje ServiceNodes</translation>
+        <source>My Masternodes</source>
+        <translation>Moje Masternodes</translation>
     </message>
     <message>
-        <source>All ServiceNodes</source>
-        <translation>Wszystkie ServiceNodes</translation>
+        <source>All Masternodes</source>
+        <translation>Wszystkie Masternodes</translation>
     </message>
     <message>
-        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <source>Note: Status of your Masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Masternode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
         <translation>Uwaga: Status twoich Dynod w lakalnym portfelu może być potencjalnie nieprawidłowy.&lt;br /&gt; Zawsze czekaj na portfel aby zsynchronizować dane potem podwójnie sprawdź inny nod&lt;br /&gt;jeśli twój Dynod powinien funkcjonować ale nadal nie widzisz&quot;URUCHOMIONY&quot; w&quot;Statusie&quot; pola.</translation>
     </message>
     <message>
@@ -3680,16 +3680,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>BRAKUJĄCY</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL ServiceNodes?</source>
+        <source>Are you sure you want to start ALL Masternodes?</source>
         <translation>Jesteś pewny, że chcesz rozpocząć/zestartować WSZYSTKIE Dynody?</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING ServiceNodes?</source>
+        <source>Are you sure you want to start MISSING Masternodes?</source>
         <translation>esteś pewny, że chcesz rozpocząć/zestartować BRAKUJĄCE Dynody?</translation>
     </message>
     <message>
-        <source>Confirm missing ServiceNodes start</source>
-        <translation>Potwierdź brakujące ServiceNodes</translation>
+        <source>Confirm missing Masternodes start</source>
+        <translation>Potwierdź brakujące Masternodes</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -3700,16 +3700,16 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Polecenie jest obecnie nie dostępne</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until ServiceNode list is synced</source>
+        <source>You can&apos;t use this command until Masternode list is synced</source>
         <translation>Możesz użyć tego polecenia dopóki lista Dynod jest zsynchroznizowana</translation>
     </message>
     <message>
-        <source>Confirm ServiceNode start</source>
+        <source>Confirm Masternode start</source>
         <translation>Potwierdź start Dynod</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ServiceNode %1?</source>
-        <translation>Jesteś pewien czy chcesz rozpocząć ServiceNode %1?</translation>
+        <source>Are you sure you want to start Masternode %1?</source>
+        <translation>Jesteś pewien czy chcesz rozpocząć Masternode %1?</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3720,11 +3720,11 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Aktualizowanie...</translation>
     </message>
     <message>
-        <source>Successfully started ServiceNode.</source>
-        <translation>ServiceNode pomyślnie rozpoczęta.</translation>
+        <source>Successfully started Masternode.</source>
+        <translation>Masternode pomyślnie rozpoczęta.</translation>
     </message>
     <message>
-        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <source>Successfully started %d Masternodes, failed to start %d, total %d</source>
         <translation>Pomyślnie rozpoczęty %d Dynody, start nie powiódł się %d, total %d</translation>
     </message>
 </context>
@@ -3799,8 +3799,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>To pokazuje średni czas pomiędzy blokami, które wykopałeś</translation>
     </message>
     <message>
-        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
-        <translation>Blockchain/ServiceNodes nie są zsynchronizowane, proszę poczekaj na pełną synchronizację przed kopaniem!</translation>
+        <source>Blockchain/Masternodes are not synced, please wait until fully synced before mining!</source>
+        <translation>Blockchain/Masternodes nie są zsynchronizowane, proszę poczekaj na pełną synchronizację przed kopaniem!</translation>
     </message>
     <message>
         <source>Click &apos;Start mining&apos; to begin mining!</source>
@@ -4029,8 +4029,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Ostrzeżenie: portfel jest skorumpownay, dane ocalone! Oryginalny portfel zachowany jako portfel.{timestamp}bak in %s; jeśli twoje saldo lub tranzakcje są nieprawidłowe powinienieś przywrócić je z kopii zapasowej</translation>
     </message>
     <message>
-        <source>You must specify a servicenodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Musisz sprecyzować servicenodepairingkey w konfiguracji. Proszę, zobacz dokumentację o pomoc.</translation>
+        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
+        <translation>Musisz sprecyzować masternodepairingkey w konfiguracji. Proszę, zobacz dokumentację o pomoc.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4229,8 +4229,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Wykasuj wszystkie tranzakcje z portfela i odzyskaj tylko te części przez blockchain </translation>
     </message>
     <message>
-        <source>Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
-        <translation>Unieruchom wszystkie wyszczególnione funkcje Cash (ServiceNodes, PrivateSend, InstantSend, Budgeting) (0-1, domyślnie: %u).</translation>
+        <source>Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Budgeting) (0-1, default: %u)</source>
+        <translation>Unieruchom wszystkie wyszczególnione funkcje Cash (Masternodes, PrivateSend, InstantSend, Budgeting) (0-1, domyślnie: %u).</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -4436,12 +4436,12 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Unieruchom safemode, przesteruj na safe mode (domyślny: %u)</translation>
     </message>
     <message>
-        <source>Enable the client to act as a ServiceNode (0-1, default: %u)</source>
-        <translation>Uruchom klienta aby zachowywał się jak ServiceNode (0-1, domyślny: %u)</translation>
+        <source>Enable the client to act as a Masternode (0-1, default: %u)</source>
+        <translation>Uruchom klienta aby zachowywał się jak Masternode (0-1, domyślny: %u)</translation>
     </message>
     <message>
-        <source>Error connecting to ServiceNode.</source>
-        <translation>Błąd w połączeniu z ServiceNode.</translation>
+        <source>Error connecting to Masternode.</source>
+        <translation>Błąd w połączeniu z Masternode.</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Cash</source>
@@ -4580,12 +4580,12 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Ładowanie budżetu cache...</translation>
     </message>
     <message>
-        <source>Loading ServiceNode cache...</source>
-        <translation>Ładaowanie ServiceNode-cache...</translation>
+        <source>Loading Masternode cache...</source>
+        <translation>Ładaowanie Masternode-cache...</translation>
     </message>
     <message>
-        <source>Loading ServiceNode payment cache...</source>
-        <translation>Ładaowanie opłaty ServiceNode-cache...</translation>
+        <source>Loading Masternode payment cache...</source>
+        <translation>Ładaowanie opłaty Masternode-cache...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -4600,8 +4600,8 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Zamknięcie jest już na miejscu.</translation>
     </message>
     <message>
-        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
-        <translation>Zamknij ServiceNode od pliku konfiguracji ServiceNode (domyślny: %u)</translation>
+        <source>Lock Masternodes from Masternode configuration file (default: %u)</source>
+        <translation>Zamknij Masternode od pliku konfiguracji Masternode (domyślny: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -4624,15 +4624,15 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Należy wyszczególnić port z whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>No ServiceNodes detected.</source>
+        <source>No Masternodes detected.</source>
         <translation>Wykryto brak Dynod.</translation>
     </message>
     <message>
-        <source>No compatible ServiceNode found.</source>
+        <source>No compatible Masternode found.</source>
         <translation>Znaleziono niekompatybilne Dynody.</translation>
     </message>
     <message>
-        <source>Not in the ServiceNode list.</source>
+        <source>Not in the Masternode list.</source>
         <translation>Nie ma na liście Dynod..</translation>
     </message>
     <message>
@@ -4672,7 +4672,7 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Prywatny klucz servera (domyślny: %s)</translation>
     </message>
     <message>
-        <source>Set external address:port to get to this ServiceNode (example: %s)</source>
+        <source>Set external address:port to get to this Masternode (example: %s)</source>
         <translation>Ustaw zewnętrzny adres w: port aby otrzymać ten Dynod (przykład.: %s)</translation>
     </message>
     <message>
@@ -4704,8 +4704,8 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Wyszczególnij czas końcowy połączenia w milisekundach (minimum: 1, domyślny: %d)</translation>
     </message>
     <message>
-        <source>Specify ServiceNode configuration file (default: %s)</source>
-        <translation>Wyszczególnij plik konfiguracji ServiceNode (domyślny: %s)</translation>
+        <source>Specify Masternode configuration file (default: %s)</source>
+        <translation>Wyszczególnij plik konfiguracji Masternode (domyślny: %s)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -4720,15 +4720,15 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Zatrzymaj działanie po importowaniu bloków z dysku (domyślny: %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to ServiceNode: %u / %d</source>
+        <source>Submitted following entries to Masternode: %u / %d</source>
         <translation>Dostarczono następujące wejścia do Dynoda: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Wysłano do ServiceNode, czakanie na więcej wejść ( %u / %d ) %s</translation>
+        <source>Submitted to Masternode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Wysłano do Masternode, czakanie na więcej wejść ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to ServiceNode, waiting in queue %s</source>
+        <source>Submitted to Masternode, waiting in queue %s</source>
         <translation>Dostarczono do Dynoda, czekanie w kolejce %s</translation>
     </message>
     <message>
@@ -4744,15 +4744,15 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Synchronizacja budżetu...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode winners...</source>
+        <source>Synchronizing Masternode winners...</source>
         <translation>Synchronizacja wygranych Dynod...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode payments...</source>
+        <source>Synchronizing Masternode payments...</source>
         <translation>Synchronizacja opłat Dynod...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNodes...</source>
+        <source>Synchronizing Masternodes...</source>
         <translation>Synchronizacja Dynod...</translation>
     </message>
     <message>
@@ -4764,7 +4764,7 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Synchronizacja sporks...</translation>
     </message>
     <message>
-        <source>This is not a ServiceNode.</source>
+        <source>This is not a Masternode.</source>
         <translation>To nie jest Dynod.</translation>
     </message>
     <message>
@@ -4776,7 +4776,7 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Użyj KeePass 2-integracji przy użyciu KeePassHttp plugin (domyślny: %u)</translation>
     </message>
     <message>
-        <source>Use N separate ServiceNodes to anonymize funds  (2-8, default: %u)</source>
+        <source>Use N separate Masternodes to anonymize funds  (2-8, default: %u)</source>
         <translation>Użyj N, aby oddzielić Dynody do anonimizacji funduszy (2-8, domyślny: %u)</translation>
     </message>
     <message>
@@ -4800,15 +4800,15 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Spróbuję ponownie....</translation>
     </message>
     <message>
-        <source>Invalid servicenodepairingkey. Please see documenation.</source>
-        <translation>Nieprawidłowy servicenodepairingkey. Proszę sprawdź dokumentację.</translation>
+        <source>Invalid masternodepairingkey. Please see documenation.</source>
+        <translation>Nieprawidłowy masternodepairingkey. Proszę sprawdź dokumentację.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>
         <translation>(musi być 44400 do sieci głownej)</translation>
     </message>
     <message>
-        <source>Can&apos;t find random ServiceNode.</source>
+        <source>Can&apos;t find random Masternode.</source>
         <translation>Nie można znaleźć przypadkowych Dynod.</translation>
     </message>
     <message>
@@ -4816,16 +4816,16 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Nie można miksować dopóki trwa synchronizacja.</translation>
     </message>
     <message>
-        <source>Could not parse servicenode.conf</source>
-        <translation>Nie można zanalizować servicenode.conf.</translation>
+        <source>Could not parse masternode.conf</source>
+        <translation>Nie można zanalizować masternode.conf.</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Wyszczególniono nieprawidłową netmask -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid port detected in servicenode.conf</source>
-        <translation>Zdetektowany nieprawidłowy port w servicenode.conf</translation>
+        <source>Invalid port detected in masternode.conf</source>
+        <translation>Zdetektowany nieprawidłowy port w masternode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
@@ -4884,16 +4884,16 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Upewnij się, że odszyfrowałeś portfel i wykasuj wszystkie nie odszyfrowane kopie zapasowe po zweryfikowaniu, że portfel działa!</translation>
     </message>
     <message>
-        <source>ServiceNode options:</source>
+        <source>Masternode options:</source>
         <translation>Opcje Dynod:</translation>
     </message>
     <message>
-        <source>ServiceNode queue is full.</source>
+        <source>Masternode queue is full.</source>
         <translation>Kolejka Dynod jest pełna.</translation>
     </message>
     <message>
-        <source>ServiceNode:</source>
-        <translation>ServiceNode:</translation>
+        <source>Masternode:</source>
+        <translation>Masternode:</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
@@ -5138,8 +5138,8 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Użyj test chain</translation>
     </message>
     <message>
-        <source>Disable all Cash specific functionality (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>Unieruchom wszystkie specyficzne funkcje Cash (ServiceNodes, PrivateSend, InstantSend, Governance) (0-1, domyślny: %u)
+        <source>Disable all Cash specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>Unieruchom wszystkie specyficzne funkcje Cash (Masternodes, PrivateSend, InstantSend, Governance) (0-1, domyślny: %u)
 </translation>
     </message>
     <message>
@@ -5152,8 +5152,8 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
 </translation>
     </message>
     <message>
-        <source>Use N separate ServiceNodes for each denominated input to mix funds (2-16, default: %u)</source>
-        <translation>Użyj N odseperowania ServiceNodes do każdego denominowanego wkładu aby pomieszać fundusze (2-16, domyślny: %u)
+        <source>Use N separate Masternodes for each denominated input to mix funds (2-16, default: %u)</source>
+        <translation>Użyj N odseperowania Masternodes do każdego denominowanego wkładu aby pomieszać fundusze (2-16, domyślny: %u)
 </translation>
     </message>
     <message>
@@ -5225,8 +5225,8 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
 </translation>
     </message>
     <message>
-        <source>Set the ServiceNode private key</source>
-        <translation>Utwórz prywatny klucz ServiceNode</translation>
+        <source>Set the Masternode private key</source>
+        <translation>Utwórz prywatny klucz Masternode</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>

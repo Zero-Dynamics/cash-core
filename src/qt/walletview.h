@@ -10,7 +10,7 @@
 
 #include "amount.h"
 
-#include "servicenodelist.h"
+#include "masternodelist.h"
 
 #include <QStackedWidget>
 
@@ -74,7 +74,7 @@ private:
     QWidget* transactionsPage;
     TransactionView* transactionView;
     MiningPage* miningPage;
-    ServiceNodeList* servicenodeListPage;
+    MasternodeList* masternodeListPage;
     BdapPage* bdapPage;
 
     QProgressDialog* progressDialog;
@@ -92,8 +92,8 @@ public Q_SLOTS:
     void gotoHistoryPage();
     /** Switch to mining page */
     void gotoMiningPage();
-    /** Switch to ServiceNode page */
-    void gotoServiceNodePage();
+    /** Switch to Masternode page */
+    void gotoMasternodePage();
     /** Switch to bdap page */
     void gotoBdapPage();
 

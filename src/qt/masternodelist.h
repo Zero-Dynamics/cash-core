@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CASH_QT_SERVICENODELIST_H
-#define CASH_QT_SERVICENODELIST_H
+#ifndef CASH_QT_MASTERNODELIST_H
+#define CASH_QT_MASTERNODELIST_H
 
 #include "platformstyle.h"
 
@@ -18,13 +18,13 @@
 #include <QTimer>
 #include <QWidget>
 
-#define MY_SERVICENODELIST_UPDATE_SECONDS 60
-#define SERVICENODELIST_UPDATE_SECONDS 15
-#define SERVICENODELIST_FILTER_COOLDOWN_SECONDS 3
+#define MY_MASTERNODELIST_UPDATE_SECONDS 60
+#define MASTERNODELIST_UPDATE_SECONDS 15
+#define MASTERNODELIST_FILTER_COOLDOWN_SECONDS 3
 
 namespace Ui
 {
-class ServiceNodeList;
+class MasternodeList;
 }
 
 class ClientModel;
@@ -34,14 +34,14 @@ QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-/** ServiceNode Manager page widget */
-class ServiceNodeList : public QWidget
+/** Masternode Manager page widget */
+class MasternodeList : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ServiceNodeList(const PlatformStyle* platformStyle, QWidget* parent = 0);
-    ~ServiceNodeList();
+    explicit MasternodeList(const PlatformStyle* platformStyle, QWidget* parent = 0);
+    ~MasternodeList();
 
     void setClientModel(ClientModel* clientModel);
     void setWalletModel(WalletModel* walletModel);
@@ -54,7 +54,7 @@ private:
     bool fFilterUpdated;
 
 public Q_SLOTS:
-    void updateMyServiceNodeInfo(QString strAlias, QString strAddr, const COutPoint& outpoint);
+    void updateMyMasternodeInfo(QString strAlias, QString strAddr, const COutPoint& outpoint);
     void updateMyNodeList(bool fForce = false);
     void updateNodeList();
 
@@ -62,14 +62,14 @@ Q_SIGNALS:
 
 private:
     QTimer* timer;
-    Ui::ServiceNodeList* ui;
+    Ui::MasternodeList* ui;
     ClientModel* clientModel;
     WalletModel* walletModel;
-    // Protects tableWidgetServiceNodes
-    CCriticalSection cs_snlist;
+    // Protects tableWidgetMasternodes
+    CCriticalSection cs_mnlist;
 
-    // Protects tableWidgetMyServiceNodes
-    CCriticalSection cs_mysnlist;
+    // Protects tableWidgetMyMasternodes
+    CCriticalSection cs_mymnlist;
     QString strCurrentFilter;
 
 private Q_SLOTS:
@@ -78,7 +78,7 @@ private Q_SLOTS:
     void on_startButton_clicked();
     void on_startAllButton_clicked();
     void on_startMissingButton_clicked();
-    void on_tableWidgetMyServiceNodes_itemSelectionChanged();
+    void on_tableWidgetMyMasternodes_itemSelectionChanged();
     void on_UpdateButton_clicked();
 };
-#endif // CASH_QT_SERVICENODELIST_H
+#endif // CASH_QT_MASTERNODELIST_H

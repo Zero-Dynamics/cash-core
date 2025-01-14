@@ -32,8 +32,8 @@
 #include "wallet/wallet.h"
 #endif
 
-#include "servicenode-payments.h"
-#include "servicenode-sync.h"
+#include "masternode-payments.h"
+#include "masternode-sync.h"
 #include "governance-classes.h"
 
 #include <univalue.h>
@@ -82,14 +82,14 @@ UniValue getpowrewardstart(const UniValue& params, bool fHelp)
     return Params().GetConsensus().nRewardsStart + 1;
 }
 
-UniValue getservicenoderewardstart(const UniValue& params, bool fHelp)
+UniValue getmasternoderewardstart(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() > 1)
         throw std::runtime_error(
-            "getservicenoderewardstart [nHeight]\n"
-            "Returns block when ServiceNode rewards begin.");
+            "getmasternoderewardstart [nHeight]\n"
+            "Returns block when Masternode rewards begin.");
 
-    return Params().GetConsensus().nServiceNodePaymentsStartBlock + 1;
+    return Params().GetConsensus().nMasternodePaymentsStartBlock + 1;
 }
 
 /**
@@ -567,13 +567,13 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             "  \"curtime\" : ttt,                  (numeric) current timestamp in seconds since epoch (Jan 1 1970 GMT)\n"
             "  \"bits\" : \"xxx\",                 (string) compressed target of next block\n"
             "  \"height\" : n                      (numeric) The height of the next block\n"
-            "  \"servicenode\" : {                   (json object) required ServiceNode payee that must be included in the next block\n"
+            "  \"masternode\" : {                   (json object) required Masternode payee that must be included in the next block\n"
             "      \"payee\" : \"xxxx\",             (string) payee address\n"
             "      \"script\" : \"xxxx\",            (string) payee scriptPubKey\n"
             "      \"amount\": n                   (numeric) required amount to pay\n"
             "  },\n"
-            "  \"servicenode_payments_started\" :  true|false, (boolean) true, if ServiceNode payments started\n"
-            "  \"servicenode_payments_enforced\" : true|false, (boolean) true, if ServiceNode payments are enforced\n"
+            "  \"masternode_payments_started\" :  true|false, (boolean) true, if Masternode payments started\n"
+            "  \"masternode_payments_enforced\" : true|false, (boolean) true, if Masternode payments are enforced\n"
             "  \"superblock\" : [                  (array) required superblock payees that must be included in the next block\n"
             "      {\n"
             "         \"payee\" : \"xxxx\",          (string) payee address\n"
@@ -665,11 +665,11 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     }
 
     CScript payee;
-    if (sporkManager.IsSporkActive(SPORK_8_SERVICENODE_PAYMENT_ENFORCEMENT) && !servicenodeSync.IsWinnersListSynced() && !snpayments.GetBlockPayee(chainActive.Height() + 1, payee))
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Cash is downloading ServiceNode winners...");
+    if (sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT) && !masternodeSync.IsWinnersListSynced() && !mnpayments.GetBlockPayee(chainActive.Height() + 1, payee))
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Cash is downloading Masternode winners...");
 
     // next block is a superblock and we need governance info to correctly construct it
-    if (sporkManager.IsSporkActive(SPORK_9_SUPERBLOCKS_ENABLED) && !servicenodeSync.IsSynced() && CSuperblock::IsValidBlockHeight(chainActive.Height() + 1))
+    if (sporkManager.IsSporkActive(SPORK_9_SUPERBLOCKS_ENABLED) && !masternodeSync.IsSynced() && CSuperblock::IsValidBlockHeight(chainActive.Height() + 1))
         throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Cash is syncing with network...");
 
     static unsigned int nTransactionsUpdatedLast;
@@ -864,18 +864,18 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     result.push_back(Pair("bits", strprintf("%08x", pblock->nBits)));
     result.push_back(Pair("height", nHeight));
 
-    UniValue servicenodeObj(UniValue::VOBJ);
-    if (pblocktemplate->txoutServiceNode != CTxOut()) {
+    UniValue masternodeObj(UniValue::VOBJ);
+    if (pblocktemplate->txoutMasternode != CTxOut()) {
         CTxDestination address1;
-        ExtractDestination(pblocktemplate->txoutServiceNode.scriptPubKey, address1);
+        ExtractDestination(pblocktemplate->txoutMasternode.scriptPubKey, address1);
         CDebitAddress address2(address1);
-        servicenodeObj.push_back(Pair("payee", address2.ToString().c_str()));
-        servicenodeObj.push_back(Pair("script", HexStr(pblocktemplate->txoutServiceNode.scriptPubKey.begin(), pblocktemplate->txoutServiceNode.scriptPubKey.end())));
-        servicenodeObj.push_back(Pair("amount", pblocktemplate->txoutServiceNode.nValue));
+        masternodeObj.push_back(Pair("payee", address2.ToString().c_str()));
+        masternodeObj.push_back(Pair("script", HexStr(pblocktemplate->txoutMasternode.scriptPubKey.begin(), pblocktemplate->txoutMasternode.scriptPubKey.end())));
+        masternodeObj.push_back(Pair("amount", pblocktemplate->txoutMasternode.nValue));
     }
-    result.push_back(Pair("servicenode", servicenodeObj));
-    result.push_back(Pair("servicenode_payments_started", pindexPrev->nHeight + 1 > Params().GetConsensus().nServiceNodePaymentsStartBlock));
-    result.push_back(Pair("servicenode_payments_enforced", sporkManager.IsSporkActive(SPORK_8_SERVICENODE_PAYMENT_ENFORCEMENT)));
+    result.push_back(Pair("masternode", masternodeObj));
+    result.push_back(Pair("masternode_payments_started", pindexPrev->nHeight + 1 > Params().GetConsensus().nMasternodePaymentsStartBlock));
+    result.push_back(Pair("masternode_payments_enforced", sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT)));
 
     UniValue superblockObjArray(UniValue::VARR);
     if (pblocktemplate->voutSuperblock.size()) {
@@ -895,7 +895,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     CScript scriptMint;
     if (areWeMinting) {
         // Add minting output to superblock payments
-        CAmount fluidIssuance = nCoinbaseValue - GetFluidServiceNodeReward(nHeight) - GetFluidMiningReward(nHeight);
+        CAmount fluidIssuance = nCoinbaseValue - GetFluidMasternodeReward(nHeight) - GetFluidMiningReward(nHeight);
         if (fluidIssuance > 0) {
             UniValue entry(UniValue::VOBJ);
             CDebitAddress mintAddress = fluidMint.GetDestinationAddress();
@@ -1150,7 +1150,7 @@ UniValue getsubsidy(const JSONRPCRequest& request)
     if (nHeight < 0)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Block height out of range");
 
-    return (uint64_t)GetFluidServiceNodeReward(nHeight) + GetFluidMiningReward(nHeight);
+    return (uint64_t)GetFluidMasternodeReward(nHeight) + GetFluidMiningReward(nHeight);
 }
 
 static const CRPCCommand commands[] =

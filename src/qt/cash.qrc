@@ -8,7 +8,7 @@
         <file alias="add">res/icons/tyrian/add.png</file>
         <file alias="address-book">res/icons/tyrian/address-book.png</file>
         <file alias="browse">res/icons/tyrian/browse.png</file>
-        <file alias="servicenodes">res/icons/tyrian/servicenode_network.png</file>
+        <file alias="masternodes">res/icons/tyrian/masternode_network.png</file>
         <file alias="prompticon">res/icons/tyrian/chevron.png</file>
         <file alias="connect_0">res/icons/tyrian/connect0_16.png</file>
         <file alias="connect_1">res/icons/tyrian/connect1_16.png</file>

@@ -3,49 +3,49 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CASH_SERVICENODE_H
-#define CASH_SERVICENODE_H
+#ifndef CASH_MASTERNODE_H
+#define CASH_MASTERNODE_H
 
 #include "key.h"
 #include "spork.h"
 #include "validation.h"
 
-class CServiceNode;
-class CServiceNodeBroadcast;
+class CMasternode;
+class CMasternodeBroadcast;
 
-static const int SERVICENODE_CHECK_SECONDS = 5;
-static const int SERVICENODE_MIN_SNB_SECONDS = 5 * 60;
-static const int SERVICENODE_MIN_SNP_SECONDS = 10 * 60;
-static const int SERVICENODE_EXPIRATION_SECONDS = 65 * 60;
-static const int SERVICENODE_SENTINEL_PING_MAX_SECONDS = 120 * 60;
-static const int SERVICENODE_NEW_START_REQUIRED_SECONDS = 180 * 60;
+static const int MASTERNODE_CHECK_SECONDS = 5;
+static const int MASTERNODE_MIN_MNB_SECONDS = 5 * 60;
+static const int MASTERNODE_MIN_MNP_SECONDS = 10 * 60;
+static const int MASTERNODE_EXPIRATION_SECONDS = 65 * 60;
+static const int MASTERNODE_SENTINEL_PING_MAX_SECONDS = 120 * 60;
+static const int MASTERNODE_NEW_START_REQUIRED_SECONDS = 180 * 60;
 
-static const int SERVICENODE_POSE_BAN_MAX_SCORE = 5;
+static const int MASTERNODE_POSE_BAN_MAX_SCORE = 5;
 
 //
-// The ServiceNode Ping Class : Contains a different serialize method for sending pings from ServiceNodes throughout the network
+// The Masternode Ping Class : Contains a different serialize method for sending pings from Masternodes throughout the network
 //
 
 // sentinel version before sentinel ping implementation
 #define DEFAULT_SENTINEL_VERSION 0x010000
-// daemon version before implementation of nDaemonVersion in CServiceNodePing
+// daemon version before implementation of nDaemonVersion in CMasternodePing
 #define DEFAULT_DAEMON_VERSION 100000
 
-class CServiceNodePing
+class CMasternodePing
 {
 public:
-    COutPoint servicenodeOutpoint{};
+    COutPoint masternodeOutpoint{};
     uint256 blockHash{};
-    int64_t sigTime{}; //snb message times
+    int64_t sigTime{}; //mnb message times
     std::vector<unsigned char> vchSig{};
     bool fSentinelIsCurrent = false; // true if last sentinel ping was actual
     // DSB is always 0, other 3 bits corresponds to x.x.x version scheme
     uint32_t nSentinelVersion{DEFAULT_SENTINEL_VERSION};
     uint32_t nDaemonVersion{DEFAULT_DAEMON_VERSION};
 
-    CServiceNodePing() = default;
+    CMasternodePing() = default;
 
-    CServiceNodePing(const COutPoint& outpoint);
+    CMasternodePing(const COutPoint& outpoint);
 
     ADD_SERIALIZE_METHODS;
 
@@ -58,14 +58,14 @@ public:
             CTxIn txin{};
             if (ser_action.ForRead()) {
                 READWRITE(txin);
-                servicenodeOutpoint = txin.prevout;
+                masternodeOutpoint = txin.prevout;
             } else {
-                txin = CTxIn(servicenodeOutpoint);
+                txin = CTxIn(masternodeOutpoint);
                 READWRITE(txin);
             }
         } else {
             // using new format directly
-            READWRITE(servicenodeOutpoint);
+            READWRITE(masternodeOutpoint);
         }
         READWRITE(blockHash);
         READWRITE(sigTime);
@@ -94,12 +94,12 @@ public:
     uint256 GetHash() const;
     uint256 GetSignatureHash() const;
 
-    bool IsExpired() const { return GetAdjustedTime() - sigTime > SERVICENODE_NEW_START_REQUIRED_SECONDS; }
+    bool IsExpired() const { return GetAdjustedTime() - sigTime > MASTERNODE_NEW_START_REQUIRED_SECONDS; }
 
-    bool Sign(const CKey& keyServiceNode, const CPubKey& pubKeyServiceNode);
-    bool CheckSignature(const CPubKey& pubKeyServiceNode, int& nDos) const;
+    bool Sign(const CKey& keyMasternode, const CPubKey& pubKeyMasternode);
+    bool CheckSignature(const CPubKey& pubKeyMasternode, int& nDos) const;
     bool SimpleCheck(int& nDos);
-    bool CheckAndUpdate(CServiceNode* psn, bool fFromNewBroadcast, int& nDos, CConnman& connman);
+    bool CheckAndUpdate(CMasternode* pmn, bool fFromNewBroadcast, int& nDos, CConnman& connman);
     void Relay(CConnman& connman);
 
     std::string GetSentinelString() const;
@@ -108,52 +108,52 @@ public:
     explicit operator bool() const;
 };
 
-inline bool operator==(const CServiceNodePing& a, const CServiceNodePing& b)
+inline bool operator==(const CMasternodePing& a, const CMasternodePing& b)
 {
-    return a.servicenodeOutpoint == b.servicenodeOutpoint && a.blockHash == b.blockHash;
+    return a.masternodeOutpoint == b.masternodeOutpoint && a.blockHash == b.blockHash;
 }
-inline bool operator!=(const CServiceNodePing& a, const CServiceNodePing& b)
+inline bool operator!=(const CMasternodePing& a, const CMasternodePing& b)
 {
     return !(a == b);
 }
-inline CServiceNodePing::operator bool() const
+inline CMasternodePing::operator bool() const
 {
-    return *this != CServiceNodePing();
+    return *this != CMasternodePing();
 }
 
-struct servicenode_info_t {
+struct masternode_info_t {
     // Note: all these constructors can be removed once C++14 is enabled.
     // (in C++11 the member initializers wrongly disqualify this as an aggregate)
-    servicenode_info_t() = default;
-    servicenode_info_t(servicenode_info_t const&) = default;
+    masternode_info_t() = default;
+    masternode_info_t(masternode_info_t const&) = default;
 
-    servicenode_info_t(int activeState, int protoVer, int64_t sTime) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime} {}
+    masternode_info_t(int activeState, int protoVer, int64_t sTime) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime} {}
 
-    servicenode_info_t(int activeState, int protoVer, int64_t sTime, COutPoint const& outpnt, CService const& addr, CPubKey const& pkCollAddr, CPubKey const& pkSN) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime},
+    masternode_info_t(int activeState, int protoVer, int64_t sTime, COutPoint const& outpnt, CService const& addr, CPubKey const& pkCollAddr, CPubKey const& pkMN) : nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime},
                                                                                                                                                                  outpoint{outpnt}, addr{addr},
-                                                                                                                                                                 pubKeyCollateralAddress{pkCollAddr}, pubKeyServiceNode{pkSN} {}
+                                                                                                                                                                 pubKeyCollateralAddress{pkCollAddr}, pubKeyMasternode{pkMN} {}
 
     int nActiveState = 0;
     int nProtocolVersion = 0;
-    int64_t sigTime = 0; //snb message time
+    int64_t sigTime = 0; //mnb message time
 
     COutPoint outpoint{};
     CService addr{};
     CPubKey pubKeyCollateralAddress{};
-    CPubKey pubKeyServiceNode{};
+    CPubKey pubKeyMasternode{};
 
     int64_t nLastPsq = 0; //the psq count from the last psq broadcast of this node
     int64_t nTimeLastChecked = 0;
     int64_t nTimeLastPaid = 0;
-    int64_t nTimeLastPing = 0; //* not in CSN
-    bool fInfoValid = false;   //* not in CSN
+    int64_t nTimeLastPing = 0; //* not in CMN
+    bool fInfoValid = false;   //* not in CMN
 };
 
 //
-// The ServiceNode Class. For managing the PrivateSend process. It contains the input of the 1000 0DYNC, signature to prove
+// The Masternode Class. For managing the PrivateSend process. It contains the input of the 1000 0DYNC, signature to prove
 // it's the one who own that ip address and code for calculating the payment election.
 //
-class CServiceNode : public servicenode_info_t
+class CMasternode : public masternode_info_t
 {
 private:
     // critical section to protect the inner data structures
@@ -161,14 +161,14 @@ private:
 
 public:
     enum state {
-        SERVICENODE_PRE_ENABLED,
-        SERVICENODE_ENABLED,
-        SERVICENODE_EXPIRED,
-        SERVICENODE_OUTPOINT_SPENT,
-        SERVICENODE_UPDATE_REQUIRED,
-        SERVICENODE_SENTINEL_PING_EXPIRED,
-        SERVICENODE_NEW_START_REQUIRED,
-        SERVICENODE_POSE_BAN
+        MASTERNODE_PRE_ENABLED,
+        MASTERNODE_ENABLED,
+        MASTERNODE_EXPIRED,
+        MASTERNODE_OUTPOINT_SPENT,
+        MASTERNODE_UPDATE_REQUIRED,
+        MASTERNODE_SENTINEL_PING_EXPIRED,
+        MASTERNODE_NEW_START_REQUIRED,
+        MASTERNODE_POSE_BAN
     };
 
     enum CollateralStatus {
@@ -179,7 +179,7 @@ public:
     };
 
 
-    CServiceNodePing lastPing{};
+    CMasternodePing lastPing{};
     std::vector<unsigned char> vchSig{};
 
     uint256 nCollateralMinConfBlockHash{};
@@ -189,13 +189,13 @@ public:
     bool fAllowMixingTx{};
     bool fUnitTest = false;
 
-    // KEEP TRACK OF GOVERNANCE ITEMS EACH SERVICENODE HAS VOTE UPON FOR RECALCULATION
+    // KEEP TRACK OF GOVERNANCE ITEMS EACH MASTERNODE HAS VOTE UPON FOR RECALCULATION
     std::map<uint256, int> mapGovernanceObjectsVotedOn;
 
-    CServiceNode();
-    CServiceNode(const CServiceNode& other);
-    CServiceNode(const CServiceNodeBroadcast& snb);
-    CServiceNode(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyServiceNodeNew, int nProtocolVersionIn);
+    CMasternode();
+    CMasternode(const CMasternode& other);
+    CMasternode(const CMasternodeBroadcast& mnb);
+    CMasternode(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyMasternodeNew, int nProtocolVersionIn);
 
     ADD_SERIALIZE_METHODS;
 
@@ -220,7 +220,7 @@ public:
         }
         READWRITE(addr);
         READWRITE(pubKeyCollateralAddress);
-        READWRITE(pubKeyServiceNode);
+        READWRITE(pubKeyMasternode);
         READWRITE(lastPing);
         READWRITE(vchSig);
         READWRITE(sigTime);
@@ -241,7 +241,7 @@ public:
     // CALCULATE A RANK AGAINST OF GIVEN BLOCK
     arith_uint256 CalculateScore(const uint256& blockHash) const;
 
-    bool UpdateFromNewBroadcast(CServiceNodeBroadcast& snb, CConnman& connman);
+    bool UpdateFromNewBroadcast(CMasternodeBroadcast& mnb, CConnman& connman);
 
     static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey);
     static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey, int& nHeightRet);
@@ -260,32 +260,32 @@ public:
         return nTimeToCheckAt - lastPing.sigTime < nSeconds;
     }
 
-    bool IsEnabled() const { return nActiveState == SERVICENODE_ENABLED; }
-    bool IsPreEnabled() const { return nActiveState == SERVICENODE_PRE_ENABLED; }
-    bool IsPoSeBanned() const { return nActiveState == SERVICENODE_POSE_BAN; }
+    bool IsEnabled() const { return nActiveState == MASTERNODE_ENABLED; }
+    bool IsPreEnabled() const { return nActiveState == MASTERNODE_PRE_ENABLED; }
+    bool IsPoSeBanned() const { return nActiveState == MASTERNODE_POSE_BAN; }
     // NOTE: this one relies on nPoSeBanScore, not on nActiveState as everything else here
-    bool IsPoSeVerified() const { return nPoSeBanScore <= -SERVICENODE_POSE_BAN_MAX_SCORE; }
-    bool IsExpired() const { return nActiveState == SERVICENODE_EXPIRED; }
-    bool IsOutpointSpent() const { return nActiveState == SERVICENODE_OUTPOINT_SPENT; }
-    bool IsUpdateRequired() const { return nActiveState == SERVICENODE_UPDATE_REQUIRED; }
-    bool IsSentinelPingExpired() const { return nActiveState == SERVICENODE_SENTINEL_PING_EXPIRED; }
-    bool IsNewStartRequired() const { return nActiveState == SERVICENODE_NEW_START_REQUIRED; }
+    bool IsPoSeVerified() const { return nPoSeBanScore <= -MASTERNODE_POSE_BAN_MAX_SCORE; }
+    bool IsExpired() const { return nActiveState == MASTERNODE_EXPIRED; }
+    bool IsOutpointSpent() const { return nActiveState == MASTERNODE_OUTPOINT_SPENT; }
+    bool IsUpdateRequired() const { return nActiveState == MASTERNODE_UPDATE_REQUIRED; }
+    bool IsSentinelPingExpired() const { return nActiveState == MASTERNODE_SENTINEL_PING_EXPIRED; }
+    bool IsNewStartRequired() const { return nActiveState == MASTERNODE_NEW_START_REQUIRED; }
 
     static bool IsValidStateForAutoStart(int nActiveStateIn)
     {
-        return nActiveStateIn == SERVICENODE_ENABLED ||
-               nActiveStateIn == SERVICENODE_PRE_ENABLED ||
-               nActiveStateIn == SERVICENODE_EXPIRED ||
-               nActiveStateIn == SERVICENODE_SENTINEL_PING_EXPIRED;
+        return nActiveStateIn == MASTERNODE_ENABLED ||
+               nActiveStateIn == MASTERNODE_PRE_ENABLED ||
+               nActiveStateIn == MASTERNODE_EXPIRED ||
+               nActiveStateIn == MASTERNODE_SENTINEL_PING_EXPIRED;
     }
 
     bool IsValidForPayment() const
     {
-        if (nActiveState == SERVICENODE_ENABLED) {
+        if (nActiveState == MASTERNODE_ENABLED) {
             return true;
         }
         if (!sporkManager.IsSporkActive(SPORK_14_REQUIRE_SENTINEL_FLAG) &&
-            (nActiveState == SERVICENODE_SENTINEL_PING_EXPIRED)) {
+            (nActiveState == MASTERNODE_SENTINEL_PING_EXPIRED)) {
             return true;
         }
 
@@ -297,17 +297,17 @@ public:
 
     void IncreasePoSeBanScore()
     {
-        if (nPoSeBanScore < SERVICENODE_POSE_BAN_MAX_SCORE)
+        if (nPoSeBanScore < MASTERNODE_POSE_BAN_MAX_SCORE)
             nPoSeBanScore++;
     }
     void DecreasePoSeBanScore()
     {
-        if (nPoSeBanScore > -SERVICENODE_POSE_BAN_MAX_SCORE)
+        if (nPoSeBanScore > -MASTERNODE_POSE_BAN_MAX_SCORE)
             nPoSeBanScore--;
     }
-    void PoSeBan() { nPoSeBanScore = SERVICENODE_POSE_BAN_MAX_SCORE; }
+    void PoSeBan() { nPoSeBanScore = MASTERNODE_POSE_BAN_MAX_SCORE; }
 
-    servicenode_info_t GetInfo() const;
+    masternode_info_t GetInfo() const;
 
     static std::string StateToString(int nStateIn);
     std::string GetStateString() const;
@@ -326,9 +326,9 @@ public:
 
     void RemoveGovernanceObject(uint256 nGovernanceObjectHash);
 
-    CServiceNode& operator=(CServiceNode const& from)
+    CMasternode& operator=(CMasternode const& from)
     {
-        static_cast<servicenode_info_t&>(*this) = from;
+        static_cast<masternode_info_t&>(*this) = from;
         lastPing = from.lastPing;
         vchSig = from.vchSig;
         nCollateralMinConfBlockHash = from.nCollateralMinConfBlockHash;
@@ -342,26 +342,26 @@ public:
     }
 };
 
-inline bool operator==(const CServiceNode& a, const CServiceNode& b)
+inline bool operator==(const CMasternode& a, const CMasternode& b)
 {
     return a.outpoint == b.outpoint;
 }
-inline bool operator!=(const CServiceNode& a, const CServiceNode& b)
+inline bool operator!=(const CMasternode& a, const CMasternode& b)
 {
     return !(a.outpoint == b.outpoint);
 }
 
 //
-// The ServiceNode Broadcast Class : Contains a different serialize method for sending ServiceNodes through the network
+// The Masternode Broadcast Class : Contains a different serialize method for sending Masternodes through the network
 //
 
-class CServiceNodeBroadcast : public CServiceNode
+class CMasternodeBroadcast : public CMasternode
 {
 public:
     bool fRecovery;
-    CServiceNodeBroadcast() : CServiceNode(), fRecovery(false) {}
-    CServiceNodeBroadcast(const CServiceNode& sn) : CServiceNode(sn), fRecovery(false) {}
-    CServiceNodeBroadcast(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyServiceNodeNew, int nProtocolVersionIn) : CServiceNode(addrNew, outpointNew, pubKeyCollateralAddressNew, pubKeyServiceNodeNew, nProtocolVersionIn), fRecovery(false) {}
+    CMasternodeBroadcast() : CMasternode(), fRecovery(false) {}
+    CMasternodeBroadcast(const CMasternode& sn) : CMasternode(sn), fRecovery(false) {}
+    CMasternodeBroadcast(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyMasternodeNew, int nProtocolVersionIn) : CMasternode(addrNew, outpointNew, pubKeyCollateralAddressNew, pubKeyMasternodeNew, nProtocolVersionIn), fRecovery(false) {}
 
     ADD_SERIALIZE_METHODS;
 
@@ -385,7 +385,7 @@ public:
         }
         READWRITE(addr);
         READWRITE(pubKeyCollateralAddress);
-        READWRITE(pubKeyServiceNode);
+        READWRITE(pubKeyMasternode);
         if (!(s.GetType() & SER_GETHASH)) {
             READWRITE(vchSig);
         }
@@ -399,12 +399,12 @@ public:
     uint256 GetHash() const;
     uint256 GetSignatureHash() const;
 
-    /// Create ServiceNode broadcast, needs to be relayed manually after that
-    static bool Create(const COutPoint& outpoint, const CService& service, const CKey& keyCollateralAddressNew, const CPubKey& pubKeyCollateralAddressNew, const CKey& keyServiceNodeNew, const CPubKey& pubKeyServiceNodeNew, std::string& strErrorRet, CServiceNodeBroadcast& snbRet);
-    static bool Create(const std::string strService, const std::string strKey, const std::string strTxHash, const std::string strOutputIndex, std::string& strErrorRet, CServiceNodeBroadcast& snbRet, bool fOffline = false);
+    /// Create Masternode broadcast, needs to be relayed manually after that
+    static bool Create(const COutPoint& outpoint, const CService& service, const CKey& keyCollateralAddressNew, const CPubKey& pubKeyCollateralAddressNew, const CKey& keyMasternodeNew, const CPubKey& pubKeyMasternodeNew, std::string& strErrorRet, CMasternodeBroadcast& mnbRet);
+    static bool Create(const std::string strService, const std::string strKey, const std::string strTxHash, const std::string strOutputIndex, std::string& strErrorRet, CMasternodeBroadcast& mnbRet, bool fOffline = false);
 
     bool SimpleCheck(int& nDos);
-    bool Update(CServiceNode* psn, int& nDos, CConnman& connman);
+    bool Update(CMasternode* pmn, int& nDos, CConnman& connman);
     bool CheckOutpoint(int& nDos);
 
     bool Sign(const CKey& keyCollateralAddress);
@@ -412,20 +412,20 @@ public:
     void Relay(CConnman& connman) const;
 };
 
-class CServiceNodeVerification
+class CMasternodeVerification
 {
 public:
-    COutPoint servicenodeOutpoint1{};
-    COutPoint servicenodeOutpoint2{};
+    COutPoint masternodeOutpoint1{};
+    COutPoint masternodeOutpoint2{};
     CService addr{};
     int nonce{};
     int nBlockHeight{};
     std::vector<unsigned char> vchSig1{};
     std::vector<unsigned char> vchSig2{};
 
-    CServiceNodeVerification() = default;
+    CMasternodeVerification() = default;
 
-    CServiceNodeVerification(CService addr, int nonce, int nBlockHeight) : addr(addr),
+    CMasternodeVerification(CService addr, int nonce, int nBlockHeight) : addr(addr),
                                                                       nonce(nonce),
                                                                       nBlockHeight(nBlockHeight)
     {
@@ -444,18 +444,18 @@ public:
             if (ser_action.ForRead()) {
                 READWRITE(txin1);
                 READWRITE(txin2);
-                servicenodeOutpoint1 = txin1.prevout;
-                servicenodeOutpoint2 = txin2.prevout;
+                masternodeOutpoint1 = txin1.prevout;
+                masternodeOutpoint2 = txin2.prevout;
             } else {
-                txin1 = CTxIn(servicenodeOutpoint1);
-                txin2 = CTxIn(servicenodeOutpoint2);
+                txin1 = CTxIn(masternodeOutpoint1);
+                txin2 = CTxIn(masternodeOutpoint2);
                 READWRITE(txin1);
                 READWRITE(txin2);
             }
         } else {
             // using new format directly
-            READWRITE(servicenodeOutpoint1);
-            READWRITE(servicenodeOutpoint2);
+            READWRITE(masternodeOutpoint1);
+            READWRITE(masternodeOutpoint2);
         }
         READWRITE(addr);
         READWRITE(nonce);
@@ -470,8 +470,8 @@ public:
 
         CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         // adding dummy values here to match old hashing format
-        ss << servicenodeOutpoint1 << uint8_t{} << 0xffffffff;
-        ss << servicenodeOutpoint2 << uint8_t{} << 0xffffffff;
+        ss << masternodeOutpoint1 << uint8_t{} << 0xffffffff;
+        ss << masternodeOutpoint2 << uint8_t{} << 0xffffffff;
         ss << addr;
         ss << nonce;
         ss << nBlockHeight;
@@ -494,8 +494,8 @@ public:
         // Note: doesn't match serialization
 
         CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
-        ss << servicenodeOutpoint1;
-        ss << servicenodeOutpoint2;
+        ss << masternodeOutpoint1;
+        ss << masternodeOutpoint2;
         ss << addr;
         ss << nonce;
         ss << blockHash;
@@ -504,9 +504,9 @@ public:
 
     void Relay() const
     {
-        CInv inv(MSG_SERVICENODE_VERIFY, GetHash());
+        CInv inv(MSG_MASTERNODE_VERIFY, GetHash());
         g_connman->RelayInv(inv);
     }
 };
 
-#endif // CASH_SERVICENODE_H
+#endif // CASH_MASTERNODE_H

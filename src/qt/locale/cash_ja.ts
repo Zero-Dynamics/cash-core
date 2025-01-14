@@ -239,8 +239,8 @@
         <translation>取引(&amp;T)</translation>
     </message>
     <message>
-        <source>&amp;ServiceNodes</source>
-        <translation>&amp;ServiceNodes</translation>
+        <source>&amp;Masternodes</source>
+        <translation>&amp;Masternodes</translation>
     </message>
     <message>
         <source>&amp;Mining</source>
@@ -251,7 +251,7 @@
         <translation>取引履歴を閲覧</translation>
     </message>
     <message>
-        <source>Browse ServiceNodes</source>
+        <source>Browse Masternodes</source>
         <translation>ダイノードを閲覧する</translation>
     </message>
     <message>
@@ -383,12 +383,12 @@
         <translation>設定ファイルを開く</translation>
     </message>
     <message>
-        <source>Open &amp;ServiceNode Configuration File</source>
-        <translation>ServiceNode構成ファイルを開く</translation>
+        <source>Open &amp;Masternode Configuration File</source>
+        <translation>Masternode構成ファイルを開く</translation>
     </message>
     <message>
-        <source>Open ServiceNode configuration file</source>
-        <translation>ServiceNode構成ファイルを開く</translation>
+        <source>Open Masternode configuration file</source>
+        <translation>Masternode構成ファイルを開く</translation>
     </message>
     <message>
         <source>Open &amp;Configuration File</source>
@@ -945,11 +945,11 @@ PrivateSendは革新的なプロセスを使用して、コインを財布から
 &lt;ol type=&#39;1&#39;&gt;
 &lt;li&gt;PrivateSendは、トランザクション入力を標準額面に分解することから始まります。
 これらの額面は、0.001、0.01 0DYNC、0.1 0DYNC、1 0DYNC、10 0DYNCです。毎日使用する紙幣のようなものです。&lt;/li&gt;
-&lt;li&gt;その後、ウォレットは、&#39;SERVICENODES&#39;と呼ばれるネットワーク上の特別に構成されたソフトウェアノードにリクエストを送信します
-これらのServiceNodesは、特定の金種を混合することに関心があることを通知されます。
-識別可能な情報はServiceNodesに送信されないため、彼らは&#39;誰&#39;あなたは。&lt;/li&gt;
+&lt;li&gt;その後、ウォレットは、&#39;MASTERNODES&#39;と呼ばれるネットワーク上の特別に構成されたソフトウェアノードにリクエストを送信します
+これらのMasternodesは、特定の金種を混合することに関心があることを通知されます。
+識別可能な情報はMasternodesに送信されないため、彼らは&#39;誰&#39;あなたは。&lt;/li&gt;
 &lt; li&gt;他の2人が同様のメッセージを送信し、同じ金種をミックスすることを示すと、ミキシングセッションが開始されます。
-ServiceNodeは入力を混合し、3人のユーザー全員に指示します。変換された入力を自分自身に返すウォレット。
+Masternodeは入力を混合し、3人のユーザー全員に指示します。変換された入力を自分自身に返すウォレット。
 ウォレットはその額面を直接自分自身に支払いますが、別の住所（変更住所と呼ばれます）で支払われます。&lt;/li&gt;
 &lt;li&gt;資金を完全に隠すために、ウォレットは各金種でこのプロセスを何度も繰り返す必要があります。
 プロセスが完了するたびに、「ラウンド」と呼ばれます。 PrivateSendの各ラウンドでは、資金の発信元を特定するのが指数関数的に難しくなります。&lt;/li&gt;
@@ -1323,8 +1323,8 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>ミキシングを停止</translation>
     </message>
     <message>
-        <source>The denominations you submitted to the ServiceNode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>ServiceNodeに送信した金種&lt;br&gt;混合するには、他のユーザーがまったく同じ金種を送信する必要があります。</translation>
+        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
+        <translation>Masternodeに送信した金種&lt;br&gt;混合するには、他のユーザーがまったく同じ金種を送信する必要があります。</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1690,8 +1690,8 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>ブロック チェーン</translation>
     </message>
     <message>
-        <source>Number of ServiceNodes</source>
-        <translation>ServiceNodesの数</translation>
+        <source>Number of Masternodes</source>
+        <translation>Masternodesの数</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -2959,7 +2959,7 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
     </message>
 </context>
 <context>
-    <name>ServiceNodeList</name>
+    <name>MasternodeList</name>
     <message>
         <source>Form</source>
         <translation>形式</translation>
@@ -2973,16 +2973,16 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>ノード数：</translation>
     </message>
     <message>
-        <source>My ServiceNodes</source>
+        <source>My Masternodes</source>
         <translation>私のダイノード</translation>
     </message>
     <message>
-        <source>All ServiceNodes</source>
+        <source>All Masternodes</source>
         <translation>すべてのダイノード</translation>
     </message>
     <message>
-        <source>Note: Status of your ServiceNodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your ServiceNode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>ウォレットが追加データを同期するのを常に待ってから、ServiceNodeを実行する必要があるが、&quot;STATUS&quot;フィールドに&quot;ENABLED&quot;が表示されない場合は、別のノードから再確認してください。</translation>
+        <source>Note: Status of your Masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your Masternode should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
+        <translation>ウォレットが追加データを同期するのを常に待ってから、Masternodeを実行する必要があるが、&quot;STATUS&quot;フィールドに&quot;ENABLED&quot;が表示されない場合は、別のノードから再確認してください。</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
@@ -3037,15 +3037,15 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>MISSING</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ALL ServiceNodes?</source>
-        <translation>すべてのServiceNodeを起動してもよろしいですか？</translation>
+        <source>Are you sure you want to start ALL Masternodes?</source>
+        <translation>すべてのMasternodeを起動してもよろしいですか？</translation>
     </message>
     <message>
-        <source>Are you sure you want to start MISSING ServiceNodes?</source>
-        <translation>MISSING ServiceNodesを開始してもよろしいですか？</translation>
+        <source>Are you sure you want to start MISSING Masternodes?</source>
+        <translation>MISSING Masternodesを開始してもよろしいですか？</translation>
     </message>
     <message>
-        <source>Confirm missing ServiceNodes start</source>
+        <source>Confirm missing Masternodes start</source>
         <translation>欠落しているダイノードの開始を確認する</translation>
     </message>
     <message>
@@ -3057,16 +3057,16 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>コマンドは現在利用できません</translation>
     </message>
     <message>
-        <source>You can&apos;t use this command until ServiceNode list is synced</source>
-        <translation>ServiceNodeリストが同期されるまで、このコマンドは使用できません</translation>
+        <source>You can&apos;t use this command until Masternode list is synced</source>
+        <translation>Masternodeリストが同期されるまで、このコマンドは使用できません</translation>
     </message>
     <message>
-        <source>Confirm ServiceNode start</source>
+        <source>Confirm Masternode start</source>
         <translation>ダイノードの開始を確認</translation>
     </message>
     <message>
-        <source>Are you sure you want to start ServiceNode %1?</source>
-        <translation>ServiceNode %1 を起動してもよろしいですか？</translation>
+        <source>Are you sure you want to start Masternode %1?</source>
+        <translation>Masternode %1 を起動してもよろしいですか？</translation>
     </message>
     <message>
         <source>Please wait...</source>
@@ -3077,11 +3077,11 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>更新しています...</translation>
     </message>
     <message>
-        <source>Successfully started ServiceNode.</source>
-        <translation>ServiceNodeを正常に開始しました。</translation>
+        <source>Successfully started Masternode.</source>
+        <translation>Masternodeを正常に開始しました。</translation>
     </message>
     <message>
-        <source>Successfully started %d ServiceNodes, failed to start %d, total %d</source>
+        <source>Successfully started %d Masternodes, failed to start %d, total %d</source>
         <translation>%d 個のダイノードを正常に起動しました。 %d の起動に失敗しました。合計 %d</translation>
     </message>
 </context>
@@ -3156,7 +3156,7 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>これは、マイニングしたブロック間の平均時間を示しています</translation>
     </message>
     <message>
-        <source>Blockchain/ServiceNodes are not synced, please wait until fully synced before mining!</source>
+        <source>Blockchain/Masternodes are not synced, please wait until fully synced before mining!</source>
         <translation>ブロックチェーン/ダイノードは同期されていません。マイニングする前に完全に同期されるまでお待ちください！</translation>
     </message>
     <message>
@@ -3655,12 +3655,12 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>予算キャッシュを読み込んでいます...</translation>
     </message>
     <message>
-        <source>Loading ServiceNode cache...</source>
-        <translation>ServiceNodeキャッシュを読み込んでいます...</translation>
+        <source>Loading Masternode cache...</source>
+        <translation>Masternodeキャッシュを読み込んでいます...</translation>
     </message>
     <message>
-        <source>Loading ServiceNode payment cache...</source>
-        <translation>ServiceNode支払いキャッシュを読み込んでいます...</translation>
+        <source>Loading Masternode payment cache...</source>
+        <translation>Masternode支払いキャッシュを読み込んでいます...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
@@ -3675,8 +3675,8 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>ロックはすでに配置されています。</translation>
     </message>
     <message>
-        <source>Lock ServiceNodes from ServiceNode configuration file (default: %u)</source>
-        <translation>ServiceNode構成ファイルからのServiceNodeのロック（デフォルト： %u）</translation>
+        <source>Lock Masternodes from Masternode configuration file (default: %u)</source>
+        <translation>Masternode構成ファイルからのMasternodeのロック（デフォルト： %u）</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -3743,8 +3743,8 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>接続のタイムアウトをミリセコンドで指定 (最小値： 1, デフォルト設定：: %d)</translation>
     </message>
     <message>
-        <source>Specify ServiceNode configuration file (default: %s)</source>
-        <translation>ServiceNode構成ファイルを指定します（デフォルト： %s）</translation>
+        <source>Specify Masternode configuration file (default: %s)</source>
+        <translation>Masternode構成ファイルを指定します（デフォルト： %s）</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
@@ -3759,16 +3759,16 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>ディスクからブロックをインポートした後に実行を停止します（デフォルト： %u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to ServiceNode: %u / %d</source>
-        <translation>次のエントリをServiceNodeに送信しました: %u / %d</translation>
+        <source>Submitted following entries to Masternode: %u / %d</source>
+        <translation>次のエントリをMasternodeに送信しました: %u / %d</translation>
     </message>
     <message>
-        <source>Submitted to ServiceNode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>ServiceNodeに送信され、さらにエントリを待機しています ( %u / %d ) %s</translation>
+        <source>Submitted to Masternode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Masternodeに送信され、さらにエントリを待機しています ( %u / %d ) %s</translation>
     </message>
     <message>
-        <source>Submitted to ServiceNode, waiting in queue %s</source>
-        <translation>ServiceNodeに送信され、キューで待機しています %s</translation>
+        <source>Submitted to Masternode, waiting in queue %s</source>
+        <translation>Masternodeに送信され、キューで待機しています %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -3783,15 +3783,15 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>予算を同期しています...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode winners...</source>
-        <translation>ServiceNodeの勝者を同期しています...</translation>
+        <source>Synchronizing Masternode winners...</source>
+        <translation>Masternodeの勝者を同期しています...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNode payments...</source>
-        <translation>ServiceNodeの支払いを同期しています...</translation>
+        <source>Synchronizing Masternode payments...</source>
+        <translation>Masternodeの支払いを同期しています...</translation>
     </message>
     <message>
-        <source>Synchronizing ServiceNodes...</source>
+        <source>Synchronizing Masternodes...</source>
         <translation>ダイノードの同期...</translation>
     </message>
     <message>
@@ -3803,7 +3803,7 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>スポークを同期しています...</translation>
     </message>
     <message>
-        <source>This is not a ServiceNode.</source>
+        <source>This is not a Masternode.</source>
         <translation>これはダイノードではありません。</translation>
     </message>
     <message>
@@ -3855,15 +3855,15 @@ ServiceNodeは入力を混合し、3人のユーザー全員に指示します�
         <translation>ウォレットが機能することを確認したら、必ずウォレットを暗号化し、暗号化されていないバックアップをすべて削除してください！</translation>
     </message>
     <message>
-        <source>ServiceNode options:</source>
+        <source>Masternode options:</source>
         <translation>ダイノードオプション：</translation>
     </message>
     <message>
-        <source>ServiceNode queue is full.</source>
+        <source>Masternode queue is full.</source>
         <translation>ダイノードキューがいっぱいです。</translation>
     </message>
     <message>
-        <source>ServiceNode:</source>
+        <source>Masternode:</source>
         <translation>ダイノード：</translation>
     </message>
     <message>
