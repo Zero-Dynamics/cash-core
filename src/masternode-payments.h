@@ -24,8 +24,8 @@ static const int MNPAYMENTS_SIGNATURES_TOTAL = 20;
 //  vote for masternode and be elected as a payment winner
 // V1 - Last protocol version before update
 // V2 - Newest protocol version
-static const int MIN_MASTERNODE_PAYMENT_PROTO_VERSION_1 = 71110;
-static const int MIN_MASTERNODE_PAYMENT_PROTO_VERSION_2 = 71140; // Only Masternodes > v1.1.0.0 will get paid after Spork 10 activation
+static const int MIN_MASTERNODE_PAYMENT_PROTO_VERSION_1 = 71140;
+static const int MIN_MASTERNODE_PAYMENT_PROTO_VERSION_2 = 71150; // Only MasterNodes > v1.1.0.0 will get paid after Spork 10 activation
 
 extern CCriticalSection cs_vecPayees;
 extern CCriticalSection cs_mapMasternodeBlocks;
