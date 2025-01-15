@@ -1,5 +1,5 @@
 ---
-name: "cash-1.1.5.0"
+name: "cash-1.1.5.1"
 enable_cache: true
 suites:
 - "trusty"
