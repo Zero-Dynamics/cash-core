@@ -615,7 +615,7 @@ bool CWallet::Unlock(const SecureString& strWalletPassphrase, bool fForMixingOnl
             if (CCryptoKeyStore::Unlock(vMasterKey, fForMixingOnly)) {
                 if (fNeedToUpgradeWallet) {
                     if (SyncEdKeyPool()) {
-                        SetMinVersion(FEATURE_HD);
+                        SetMinVersion(FEATURE_LATEST);
                         LogPrintf("%s - Upgraded wallet\n", __func__);
                     }
                 }
@@ -5928,7 +5928,7 @@ bool CWallet::InitLoadWallet()
     }
     pwalletMain = pwallet;
 
-    if (pwallet->GetVersion() < FEATURE_HD) {
+    if (pwallet->GetVersion() < FEATURE_LATEST) {
         LogPrintf("%s - Older wallet version detected. Need to upgrade.\n", __func__);
         if (!pwalletMain->IsLocked()) {
             if (!pwallet->SyncEdKeyPool()) {
@@ -5936,7 +5936,7 @@ bool CWallet::InitLoadWallet()
             }
             else {
                 LogPrintf("%s - Upgrading wallet version\n", __func__);
-                pwallet->SetMinVersion(FEATURE_HD);
+                pwallet->SetMinVersion(FEATURE_LATEST);
                 pwallet->fNeedToUpgradeWallet = false;
             }
         }
