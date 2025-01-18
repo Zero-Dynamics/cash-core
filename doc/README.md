@@ -21,16 +21,17 @@ What is [Cash](https://duality.solutions/cash)?
 * PoW Difficulty Algorithm: Digishield V3
 * PoW Period: Unlimited
 * PoW Target Spacing: 30 Seconds
-* PoW Reward per Block: Controlled via Fluid Protocol
+* PoW Reward per Block: 25% × Masternode Reward, controlled via Fluid Protocol
 * PoW Reward Start Height: Block 2,880
 * Maturity: 40 Blocks
 * PoW Blocks: ~2,880 per day
 * Masternode Collateral Amount: 15,000 0DYNC
-* Masternode Min Confirmation: 17 Blocks
-* Masternode Reward: Controlled via Fluid Protocol
+* Masternode Min Confirmation: 60 Blocks
+* Masternode Reward: 7.3% × network collateral ÷ ( PoW Blocks × 365¼ days), controlled via Fluid Protocol
 * Masternode Reward Start Height: Block 4,320
 * Total Coins: 2<sup>63</sup> - 1
 * Min TX Fee: 0.00001 0DYNC
+* Max Block Size: 1.5 MB
 
 
 [Cash(0DYNC)](https://duality.solutions/cash) allows fast, secure, verifiable transfers of data using blockchain technology and enables third-party developers to build low-cost solutions across varied industry using the BDAP protocol. Cash can be used to run incentivized Masternodes; the second tier of nodes on the network processing, verifying, validating and storing data.
