@@ -352,7 +352,7 @@ std::string CPrivateSendClientSession::GetStatus(bool fWaitForBlock)
             strSuffix = "...";
         return strprintf(_("Found enough users, signing ( waiting %s )"), strSuffix);
     case POOL_STATE_ERROR:
-        return _("PrivateSend request incomplete:") + " " + strLastMessage + " " + _("Will retry...");
+        return _("PrivateSend request incomplete:\n") + " " + strLastMessage + " " + _("Will retry...");
     case POOL_STATE_SUCCESS:
         return _("PrivateSend request complete:") + " " + strLastMessage;
     default:
@@ -366,7 +366,7 @@ std::string CPrivateSendClientManager::GetStatuses()
     std::string strStatus;
     bool fWaitForBlock = WaitForAnotherBlock();
     for (auto& session : peqSessions) {
-        strStatus += session.GetStatus(fWaitForBlock) + "; ";
+        strStatus += session.GetStatus(fWaitForBlock) + ";\n";
     }
     return strStatus;
 }
@@ -376,7 +376,7 @@ std::string CPrivateSendClientManager::GetSessionDenoms()
     LOCK(cs_peqsessions);
     std::string strSessionDenoms;
     for (auto& session : peqSessions) {
-        strSessionDenoms += (session.nSessionDenom ? CPrivateSend::GetDenominationsToString(session.nSessionDenom) : "N/A") + "; ";
+        strSessionDenoms += (session.nSessionDenom ? CPrivateSend::GetDenominationsToString(session.nSessionDenom) : "N/A") + ";\n";
     }
     return strSessionDenoms.empty() ? "N/A" : strSessionDenoms;
 }
