@@ -213,21 +213,21 @@ QString CashUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plus
     QString unitName = name(unit);
 
     if (unitName == "0DYNC") {
-        unitName = "₵ ";
+        unitName = "κ ";
     } else if (unitName == "m0DYNC") {
-        unitName = "m₵ ";
+        unitName = "mκ ";
     } else if (unitName == "μ0DYNC") {
-        unitName = "μ₵ "; 
+        unitName = "μκ "; 
     } else if (unitName == "satoshis") {
-        unitName = "10<sup>-8</sup>₵ ";
+        unitName = "10<sup>-8</sup>κ ";
     } else if (unitName == "t0DYNC") {
-        unitName = "t₵ ";
+        unitName = "tκ ";
     } else if (unitName == "tm0DYNC") {
-        unitName = "tm₵ ";
+        unitName = "tmκ ";
     } else if (unitName == "tμ0DYNC") {
-        unitName = "tμ₵ "; 
+        unitName = "tμκ "; 
     } else if (unitName == "tsatoshis") {
-        unitName = "t10<sup>-8</sup>₵ ";
+        unitName = "t10<sup>-8</sup>κ ";
     }
 
     return QString("<span style='white-space: nowrap; font-family: Arial;'>%1 %2</span>").arg(unitName).arg(str);
@@ -259,21 +259,21 @@ QString CashUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool pluss
     QString unitName = name(unit);
 
     if (unitName == "0DYNC") {
-        unitName = "₵    ";
+        unitName = "κ    ";
     } else if (unitName == "m0DYNC") {
-        unitName = "m₵   ";
+        unitName = "mκ   ";
     } else if (unitName == "μ0DYNC") {
-        unitName = "μ₵   "; 
+        unitName = "μκ   "; 
     } else if (unitName == "satoshis") {
-        unitName = "10<sup>-8</sup>₵  ";
+        unitName = "10<sup>-8</sup>κ  ";
     } else if (unitName == "t0DYNC") {
-        unitName = "t₵   ";
+        unitName = "tκ   ";
     } else if (unitName == "tm0DYNC") {
-        unitName = "tm₵  ";
+        unitName = "tmκ  ";
     } else if (unitName == "tμ0DYNC") {
-        unitName = "tμ₵  "; 
+        unitName = "tμκ  "; 
     } else if (unitName == "tsatoshis") {
-        unitName = "t10<sup>-8</sup>₵  ";
+        unitName = "t10<sup>-8</sup>κ  ";
     }
 
     return QString("<table style='width: 100%; table-layout: fixed; font-family: Arial;'>"
