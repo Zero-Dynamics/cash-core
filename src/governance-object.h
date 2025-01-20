@@ -38,7 +38,7 @@ static const int GOVERNANCE_OBJECT_WATCHDOG = 3;
 
 static const CAmount GOVERNANCE_PROPOSAL_FEE_TX = (20.0 * COIN);
 
-static const int64_t GOVERNANCE_FEE_CONFIRMATIONS = 10;
+static const int64_t GOVERNANCE_FEE_CONFIRMATIONS = 40;
 static const int64_t GOVERNANCE_MIN_RELAY_FEE_CONFIRMATIONS = 1;
 static const int64_t GOVERNANCE_UPDATE_MIN = 60 * 60;
 static const int64_t GOVERNANCE_DELETION_DELAY = 10 * 60;
