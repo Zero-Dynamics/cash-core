@@ -14,28 +14,28 @@
 class CPrivateSendClientManager;
 class CConnman;
 
-static const int DENOMS_COUNT_MAX = 100;
+static const int DENOMS_COUNT_MAX = 1000;
 
 static const int MIN_PRIVATESEND_SESSIONS = 1;
 static const int MIN_PRIVATESEND_ROUNDS = 2;
 static const int MIN_PRIVATESEND_AMOUNT = 2;
 static const int MIN_PRIVATESEND_LIQUIDITY = 0;
-static const int MAX_PRIVATESEND_SESSIONS = 10;
-static const int MAX_PRIVATESEND_ROUNDS = 16;
-static const int MAX_PRIVATESEND_AMOUNT = 100000000;
-static const int MAX_PRIVATESEND_LIQUIDITY = 100000;
-static const int DEFAULT_PRIVATESEND_SESSIONS = 4;
-static const int DEFAULT_PRIVATESEND_ROUNDS = 4;
-static const int DEFAULT_PRIVATESEND_AMOUNT = 250;
+static const int MAX_PRIVATESEND_SESSIONS = 20;
+static const int MAX_PRIVATESEND_ROUNDS = 32;
+static const int MAX_PRIVATESEND_AMOUNT = MAX_MONEY / COIN;
+static const int MAX_PRIVATESEND_LIQUIDITY = 1000;
+static const int DEFAULT_PRIVATESEND_SESSIONS = 8;
+static const int DEFAULT_PRIVATESEND_ROUNDS = 8;
+static const int DEFAULT_PRIVATESEND_AMOUNT = 1000;
 static const int DEFAULT_PRIVATESEND_LIQUIDITY = 0;
 
 static const bool DEFAULT_PRIVATESEND_MULTISESSION = false;
 
 // Warn user if mixing in gui or try to create backup if mixing in daemon mode
 // when we have only this many keys left
-static const int PRIVATESEND_KEYS_THRESHOLD_WARNING = 50;
+static const int PRIVATESEND_KEYS_THRESHOLD_WARNING = 500;
 // Stop mixing completely, it's too dangerous to continue when we have only this many keys left
-static const int PRIVATESEND_KEYS_THRESHOLD_STOP = 25;
+static const int PRIVATESEND_KEYS_THRESHOLD_STOP = 250;
 
 // The main object for accessing mixing
 extern CPrivateSendClientManager privateSendClient;
