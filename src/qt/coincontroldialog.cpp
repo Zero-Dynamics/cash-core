@@ -544,7 +544,7 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
                 nBytes -= 34;
 
         // Fee
-        nPayFee = CWallet::GetMinimumFee(nBytes, nTxConfirmTarget, mempool);
+        nPayFee = CWallet::GetMinimumFee(nBytes, nTxConfirmTarget, mempool, nPayAmount);
         if (nPayFee > 0 && coinControl->nMinimumTotalFee > nPayFee)
             nPayFee = coinControl->nMinimumTotalFee;
 
@@ -613,13 +613,13 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
     dialog->findChild<QLabel*>("labelCoinControlChange")->setEnabled(nPayAmount > 0);
 
     // stats
-    l1->setText(QString::number(nQuantity));                                 // Quantity
-    l2->setText(CashUnits::formatWithUnit(nDisplayUnit, nAmount));        // Amount
-    l3->setText(CashUnits::formatWithUnit(nDisplayUnit, nPayFee));        // Fee
-    l4->setText(CashUnits::formatWithUnit(nDisplayUnit, nAfterFee));      // After Fee
-    l5->setText(((nBytes > 0) ? ASYMP_UTF8 : "") + QString::number(nBytes)); // Bytes
-    l7->setText(fDust ? tr("yes") : tr("no"));                               // Dust
-    l8->setText(CashUnits::formatWithUnit(nDisplayUnit, nChange));        // Change
+    l1->setText(QString::number(nQuantity));                                  // Quantity
+    l2->setText(CashUnits::formatWithUnit(nDisplayUnit, nAmount));            // Amount
+    l3->setText(CashUnits::formatWithUnit(nDisplayUnit, nPayFee));            // Fee
+    l4->setText(CashUnits::formatWithUnit(nDisplayUnit, nAfterFee));          // After Fee
+    l5->setText(((nBytes > 0) ? ASYMP_UTF8 : "") + QString::number(nBytes));  // Bytes
+    l7->setText(fDust ? tr("yes") : tr("no"));                                // Dust
+    l8->setText(CashUnits::formatWithUnit(nDisplayUnit, nChange));            // Change
     if (nPayFee > 0 && (coinControl->nMinimumTotalFee < nPayFee)) {
         l3->setText(ASYMP_UTF8 + l3->text());
         l4->setText(ASYMP_UTF8 + l4->text());
