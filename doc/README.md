@@ -30,7 +30,7 @@ What is [Cash](https://duality.solutions/cash)?
 * Masternode Reward: 7.3% × network collateral ÷ ( PoW Blocks × 365¼ days), controlled via Fluid Protocol
 * Masternode Reward Start Height: Block 4,320
 * Total Coins: 2<sup>63</sup> - 1
-* Min TX Fee: 0.00001 0DYNC
+* Min TX Fee: 0.0001 0DYNC
 * Max Block Size: 1.5 MB
 
 

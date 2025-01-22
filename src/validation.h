@@ -62,13 +62,13 @@ static const bool DEFAULT_WHITELISTFORCERELAY = true;
  * We are ~100 times smaller then bitcoin now (2016-03-01), set minRelayTxFee only 10 times higher
  * so it's still 10 times lower comparing to bitcoin.
  */
-static const unsigned int DEFAULT_MIN_RELAY_TX_FEE = 100;
+static const unsigned int DEFAULT_MIN_RELAY_TX_FEE = 5000;
 //! -maxtxfee default
-static const CAmount DEFAULT_TRANSACTION_MAXFEE = 0.05 * COIN;
+static const CAmount DEFAULT_TRANSACTION_MAXFEE = 4 * COIN;
 //! Discourage users to set fees higher than this amount (in satoshis) per kB
-static const CAmount HIGH_TX_FEE_PER_KB = 100000.00 * COIN;
+static const CAmount HIGH_TX_FEE_PER_KB = 0.05 * COIN;
 //! -maxtxfee will warn if called with a higher fee than this amount (in satoshis)
-static const CAmount HIGH_MAX_TX_FEE = 100 * HIGH_TX_FEE_PER_KB;
+static const CAmount HIGH_MAX_TX_FEE = 80 * HIGH_TX_FEE_PER_KB;
 /** Default for -limitancestorcount, max number of in-mempool ancestors */
 static const unsigned int DEFAULT_ANCESTOR_LIMIT = 25;
 /** Default for -limitancestorsize, maximum kilobytes of tx + all in-mempool ancestors */
