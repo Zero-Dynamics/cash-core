@@ -272,7 +272,13 @@ std::unique_ptr<CBlockTemplate> CreateNewBlock(const CChainParams& chainparams, 
             }
         }
 
-        CAmount blockReward = GetFluidMiningReward(nHeight);
+        CAmount blockReward;
+        if (chainActive.Height() > Params().GetConsensus().nFeeRewardStart) {
+            blockReward = nFees + GetFluidMiningReward(nHeight);
+        } else if (chainActive.Height() <= Params().GetConsensus().nFeeRewardStart) {
+            blockReward = GetFluidMiningReward(nHeight);
+        }
+
         CDebitAddress mintAddress;
         CAmount fluidIssuance = 0;
         CFluidMint fluidMint;

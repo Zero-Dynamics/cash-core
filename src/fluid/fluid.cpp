@@ -553,16 +553,16 @@ CAmount GetStandardPoWBlockPayment(const int& nHeight)
         return BLOCKCHAIN_INIT_REWARD; // Burn transaction fees
     } else if (nHeight > Params().GetConsensus().nRewardsStart) {
         LogPrint("creation", "GetStandardPoWBlockPayment() : create=%s PoW Reward=%d\n", FormatMoney(PHASE_1_POW_REWARD), PHASE_1_POW_REWARD);
-        return PHASE_1_POW_REWARD; // 1 0DYNC  and burn transaction fees
+        return PHASE_1_POW_REWARD; // .1 0DYNC
     } else
-        return BLOCKCHAIN_INIT_REWARD; // Burn transaction fees
+        return BLOCKCHAIN_INIT_REWARD;
 }
 
 CAmount GetStandardMasternodePayment(const int& nHeight)
 {
     if (nHeight > Params().GetConsensus().nMasternodePaymentsStartBlock) {
         LogPrint("fluid", "GetStandardMasternodePayment() : create=%s MN Payment=%d\n", FormatMoney(PHASE_2_MASTERNODE_PAYMENT), PHASE_2_MASTERNODE_PAYMENT);
-        return PHASE_2_MASTERNODE_PAYMENT; // 1.618 0DYNC
+        return PHASE_2_MASTERNODE_PAYMENT; // 0.4 0DYNC
     } else {
         return BLOCKCHAIN_INIT_REWARD; // 0 0DYNC
     }

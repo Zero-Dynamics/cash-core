@@ -115,6 +115,7 @@ public:
         strNetworkID = "main";
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
+        consensus.nFeeRewardStart = 1000000;           //TxFee Rewards begin on block 1000000
         consensus.nMasternodePaymentsStartBlock = 4320;  // Masternode Payments begin on block 4320
         consensus.nMinCountMasternodesPaymentStart = 10; // Masternode Payments begin once 5 Masternodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
@@ -283,6 +284,7 @@ public:
         strNetworkID = "test";
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
+        consensus.nFeeRewardStart = 10080;           //TxFee Rewards begin on block 10080        
         consensus.nMasternodePaymentsStartBlock = 43200;  // Masternode Payments begin on block 43200
         consensus.nMinCountMasternodesPaymentStart = 10; // Masternode Payments begin once 10 Masternodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
@@ -430,6 +432,7 @@ public:
         strNetworkID = "regtest";
 
         consensus.nRewardsStart = 0; // Rewards starts on block 0
+        consensus.nFeeRewardStart = 1440;           //TxFee Rewards begin on block 1440            
         consensus.nMasternodePaymentsStartBlock = 0;
         consensus.nMinCountMasternodesPaymentStart = 1; // Masternode Payments begin once 1 Masternode exists or more.
         consensus.nInstantSendConfirmationsRequired = 11;
@@ -568,6 +571,7 @@ public:
         strNetworkID = "privatenet";
 
         consensus.nRewardsStart = 0; // Rewards starts on block 0
+        consensus.nFeeRewardStart = 1440;           //TxFee Rewards begin on block 1440           
         consensus.nMasternodePaymentsStartBlock = 0;
         consensus.nMinCountMasternodesPaymentStart = 1; // Masternode Payments begin once 1 Masternode exists or more.
         consensus.nInstantSendConfirmationsRequired = 11;

@@ -2953,7 +2953,12 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                 LogPrintf("ConnectBlock, GetMintingInstructions MintAmount = %u\n", fluidMint.MintAmount);
             }
         }
-        nExpectedBlockValue = newMintIssuance + newMiningReward + newMasternodeReward;
+        
+        if (chainActive.Height() > Params().GetConsensus().nFeeRewardStart) {
+            nExpectedBlockValue = nFees + newMintIssuance + newMiningReward + newMasternodeReward;
+        } else if (chainActive.Height() <= Params().GetConsensus().nFeeRewardStart) {
+            nExpectedBlockValue = newMintIssuance + newMiningReward + newMasternodeReward;
+        }
 
         if (!IsBlockValueValid(block, pindex->nHeight, nExpectedBlockValue, strError)) {
             return state.DoS(0, error("ConnectBlock(0DYNC): %s", strError), REJECT_INVALID, "bad-cb-amount");
