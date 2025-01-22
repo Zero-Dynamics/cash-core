@@ -550,7 +550,7 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
 
         // InstantSend Fee
         if (coinControl->fUseInstantSend)
-            nPayFee = std::max(nPayFee, CTxLockRequest(txDummy).GetMinFee(true));
+            nPayFee = std::max(CAmount(10000), std::min(CAmount(12500000), std::max(nPayAmount / COIN * 5000, CTxLockRequest(txDummy).GetMinFee(true)))); 
 
         // Allow free? (require at least hard-coded threshold and default to that if no estimate)
         double mempoolEstimatePriority = mempool.estimateSmartPriority(nTxConfirmTarget);

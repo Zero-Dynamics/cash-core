@@ -4346,7 +4346,11 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                 }
 
                 if (fUseInstantSend) {
-                    nFeeNeeded = std::max(nFeeNeeded, CTxLockRequest(txNew).GetMinFee(true));
+                    CAmount nMinFee = 10000;
+                    CAmount nIncrementalFee = 5000;
+                    CAmount nMaxFee = 12500000;    
+                    nValue = nValue / COIN;                    
+                    nFeeNeeded = std::max(nMinFee, std::min(nMaxFee, std::max(nValue * nIncrementalFee, CTxLockRequest(txNew).GetMinFee(true))));
                 }
 
                 if (coinControl && coinControl->fOverrideFeeRate)

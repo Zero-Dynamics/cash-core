@@ -165,15 +165,15 @@ public:
 class CTxLockRequest
 {
 private:
-    static const CAmount MIN_FEE = 0.0125 * COIN;
+    static const CAmount MIN_FEE = 5000;
     /// If transaction has less or equal inputs than MAX_INPUTS_FOR_AUTO_IX,
     /// it will be automatically locked
-    static const int MAX_INPUTS_FOR_AUTO_IX = 4;
+    static const int MAX_INPUTS_FOR_AUTO_IX = 2500;
 
 public:
     /// Warn for a large number of inputs to an IS tx - fees could be substantial
     /// and the number txlvote responses requested large (10 * # of inputs)
-    static const int WARN_MANY_INPUTS = 100;
+    static const int WARN_MANY_INPUTS = 2500;
 
     CTransactionRef tx;
 
