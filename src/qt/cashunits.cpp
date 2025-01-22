@@ -88,6 +88,37 @@ QString CashUnits::name(int unit)
     }
 }
 
+QString CashUnits::symbol(int unit)
+{
+    if (Params().NetworkIDString() == CBaseChainParams::MAIN) {    
+        switch (unit) {
+        case ODYNC:
+            return QString("κ");
+        case mODYNC:
+            return QString("mκ");
+        case uODYNC:
+            return QString("uκ");
+        case satoshis:
+            return QString("satoshis");
+        default:
+            return QString("???");
+        }
+    } else {
+        switch (unit) {
+        case ODYNC:
+            return QString("tκ");
+        case mODYNC:
+            return QString("mtκ");
+        case uODYNC:
+            return QString::fromUtf8("μtκ");
+        case satoshis:
+            return QString("tsatoshis");
+        default:
+            return QString("???");
+        }
+    }        
+}
+
 QString CashUnits::description(int unit)
 {
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
@@ -196,7 +227,7 @@ QString CashUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorSty
 
 QString CashUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
-    return format(unit, amount, plussign, separators) + QString(" ") + name(unit);
+    return symbol(unit) + QString(" ") + format(unit, amount, plussign, separators);
 }
 
 QString CashUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
@@ -204,33 +235,7 @@ QString CashUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plus
     QString str(formatWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
 
-    str.replace("0DYNC", "");
-    str.replace("m", "");
-    str.replace("μ", "");
-    str.replace("satoshis", "");
-    str.replace("t", "");
-
-    QString unitName = name(unit);
-
-    if (unitName == "0DYNC") {
-        unitName = "κ ";
-    } else if (unitName == "m0DYNC") {
-        unitName = "mκ ";
-    } else if (unitName == "μ0DYNC") {
-        unitName = "μκ "; 
-    } else if (unitName == "satoshis") {
-        unitName = "10<sup>-8</sup>κ ";
-    } else if (unitName == "t0DYNC") {
-        unitName = "tκ ";
-    } else if (unitName == "tm0DYNC") {
-        unitName = "tmκ ";
-    } else if (unitName == "tμ0DYNC") {
-        unitName = "tμκ "; 
-    } else if (unitName == "tsatoshis") {
-        unitName = "t10<sup>-8</sup>κ ";
-    }
-
-    return QString("<span style='white-space: nowrap; font-family: Arial;'>%1 %2</span>").arg(unitName).arg(str);
+ return QString("<span style='white-space: nowrap;font-family: Arial;'>%1</span>").arg(str);
 }
 
 QString CashUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
@@ -242,7 +247,7 @@ QString CashUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign,
     if (decimals(unit) > digits)
         result.chop(decimals(unit) - digits);
 
-    return result + QString(" ") + name(unit);
+    return symbol(unit) + QString(" ") + result;
 }
 
 QString CashUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
@@ -250,38 +255,7 @@ QString CashUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool pluss
     QString str(floorWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
 
-    str.replace("0DYNC", "");
-    str.replace("m", "");
-    str.replace("μ", "");
-    str.replace("satoshis", "");
-    str.replace("t", "");
-
-    QString unitName = name(unit);
-
-    if (unitName == "0DYNC") {
-        unitName = "κ    ";
-    } else if (unitName == "m0DYNC") {
-        unitName = "mκ   ";
-    } else if (unitName == "μ0DYNC") {
-        unitName = "μκ   "; 
-    } else if (unitName == "satoshis") {
-        unitName = "10<sup>-8</sup>κ  ";
-    } else if (unitName == "t0DYNC") {
-        unitName = "tκ   ";
-    } else if (unitName == "tm0DYNC") {
-        unitName = "tmκ  ";
-    } else if (unitName == "tμ0DYNC") {
-        unitName = "tμκ  "; 
-    } else if (unitName == "tsatoshis") {
-        unitName = "t10<sup>-8</sup>κ  ";
-    }
-
-    return QString("<table style='width: 100%; table-layout: fixed; font-family: Arial;'>"
-                   "<tr>"
-                   "<td style='text-align: left; white-space: nowrap; min-width: 38%;'>%1</td>"
-                   "<td style='text-align: right; white-space: nowrap; min-width: 62%;'>%2</td>"
-                   "</tr>"
-                   "</table>").arg(unitName).arg(str);
+    return QString("<span style='white-space: nowrap;font-family: Arial;'>%1</span>").arg(str);
 }
 
 bool CashUnits::parse(int unit, const QString& value, CAmount* val_out)
@@ -322,7 +296,7 @@ QString CashUnits::getAmountColumnTitle(int unit)
 {
     QString amountTitle = QObject::tr("Amount");
     if (CashUnits::valid(unit)) {
-        amountTitle += " (" + CashUnits::name(unit) + ")";
+        amountTitle += " (" + CashUnits::symbol(unit) + ")";
     }
     return amountTitle;
 }
