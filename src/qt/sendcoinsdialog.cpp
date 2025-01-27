@@ -139,19 +139,6 @@ void SendCoinsDialog::setModel(WalletModel* _model)
     }
 }
 
-SendCoinsDialog::~SendCoinsDialog()
-{
-    QSettings settings;
-    settings.setValue("fFeeSectionMinimized", fFeeMinimized);
-    settings.setValue("nFeeRadio", ui->groupFee->checkedId());
-    settings.setValue("nCustomFeeRadio", ui->groupCustomFee->checkedId());
-    /*settings.setValue("nSmartFeeSliderPosition", ui->sliderSmartFee->value());
-    settings.setValue("nTransactionFee", (qint64)ui->customFee->value());
-    settings.setValue("fPayOnlyMinFee", ui->checkBoxMinimumFee->isChecked());*/
-
-    delete ui;
-}
-
 void SendCoinsDialog::on_sendButton_clicked()
 {
     if (!model || !model->getOptionsModel())
