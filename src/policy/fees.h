@@ -177,7 +177,7 @@ static const double SUFFICIENT_FEETXS = 1;
 
 // Minimum and Maximum values for tracking feerates
 static constexpr double MIN_FEERATE = 25000;
-static const double MAX_FEERATE = 4e8;
+static const double MAX_FEERATE = 1000e8;
 static const double INF_FEERATE = MAX_MONEY;
 static const double INF_PRIORITY = MAX_MONEY;
 

@@ -4345,12 +4345,30 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     nFeeNeeded = coinControl->nMinimumTotalFee;
                 }
 
-                if (fUseInstantSend) {
+                if (fUseInstantSend && nCoinType != ONLY_DENOMINATED) {
                     CAmount nMinFee = 10000;
                     CAmount nIncrementalFee = 5000;
-                    CAmount nMaxFee = 12500000;    
-                    nValue = nValue / COIN;                    
+                    CAmount nMaxFee = 12500000;
+                    nValue = nValue / COIN;
                     nFeeNeeded = std::max(nMinFee, std::min(nMaxFee, std::max(nValue * nIncrementalFee, CTxLockRequest(txNew).GetMinFee(true))));
+                }
+
+                CAmount nSmallestDenomination = CPrivateSend::GetSmallestDenomination();
+
+                if (!fUseInstantSend && nCoinType == ONLY_DENOMINATED) {
+                    CAmount nMinFee = 3500000;
+                    CAmount nIncrementalFee = 35000;
+                    nValue = nValue / COIN;
+                    CAmount nRawFee = std::max(nMinFee, std::max(nValue * nIncrementalFee, CTxLockRequest(txNew).GetMinFee(true)));
+                    nFeeNeeded = std::ceil(nRawFee / (double)nSmallestDenomination) * nSmallestDenomination;
+                }
+
+                if (fUseInstantSend && nCoinType == ONLY_DENOMINATED) {
+                    CAmount nMinFee = 4000000;
+                    CAmount nIncrementalFee = 40000;
+                    nValue = nValue / COIN;
+                    CAmount nRawFee = std::max(nMinFee, std::max(nValue * nIncrementalFee, CTxLockRequest(txNew).GetMinFee(true)));
+                    nFeeNeeded = std::ceil(nRawFee / (double)nSmallestDenomination) * nSmallestDenomination;
                 }
 
                 if (coinControl && coinControl->fOverrideFeeRate)
