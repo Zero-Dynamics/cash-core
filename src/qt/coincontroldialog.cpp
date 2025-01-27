@@ -334,19 +334,19 @@ void CoinControlDialog::clipboardQuantity()
 // copy label "Amount" to clipboard
 void CoinControlDialog::clipboardAmount()
 {
-    GUIUtil::setClipboard(ui->labelCoinControlAmount->text().left(ui->labelCoinControlAmount->text().indexOf(" ")));
+    GUIUtil::setClipboard(ui->labelCoinControlAmount->text().mid(ui->labelCoinControlAmount->text().indexOf(" ") + 1));
 }
 
 // copy label "Fee" to clipboard
 void CoinControlDialog::clipboardFee()
 {
-    GUIUtil::setClipboard(ui->labelCoinControlFee->text().left(ui->labelCoinControlFee->text().indexOf(" ")).replace(ASYMP_UTF8, ""));
+    GUIUtil::setClipboard(ui->labelCoinControlFee->text().mid(ui->labelCoinControlFee->text().indexOf(" ") + 1).replace(ASYMP_UTF8, ""));
 }
 
 // copy label "After fee" to clipboard
 void CoinControlDialog::clipboardAfterFee()
 {
-    GUIUtil::setClipboard(ui->labelCoinControlAfterFee->text().left(ui->labelCoinControlAfterFee->text().indexOf(" ")).replace(ASYMP_UTF8, ""));
+    GUIUtil::setClipboard(ui->labelCoinControlAfterFee->text().mid(ui->labelCoinControlAfterFee->text().indexOf(" ") + 1).replace(ASYMP_UTF8, ""));
 }
 
 // copy label "Bytes" to clipboard
@@ -364,7 +364,7 @@ void CoinControlDialog::clipboardLowOutput()
 // copy label "Change" to clipboard
 void CoinControlDialog::clipboardChange()
 {
-    GUIUtil::setClipboard(ui->labelCoinControlChange->text().left(ui->labelCoinControlChange->text().indexOf(" ")).replace(ASYMP_UTF8, ""));
+    GUIUtil::setClipboard(ui->labelCoinControlChange->text().mid(ui->labelCoinControlChange->text().indexOf(" ") + 1).replace(ASYMP_UTF8, ""));
 }
 
 // treeview: sort
