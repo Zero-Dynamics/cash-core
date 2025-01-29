@@ -347,7 +347,7 @@ inline int Argon2d_Phase0_Hash(const void* in, const size_t size, const void* ou
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 2048; // Memory in KiB (2097 KB)
+    context.m_cost = 2048; // Memory in KiB (2 MiB)
     context.lanes = 12;    // Degree of Parallelism
     context.threads = 1;   // Threads
     context.t_cost = 3;    // Iterations
@@ -387,7 +387,7 @@ inline int Argon2d_Phase1_Hash(const void* in, const size_t size, const void* ou
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 1000; // Memory in KiB (1 MB)
+    context.m_cost = 1000; // Memory in KiB (1000 KiB)
     context.lanes = 8;     // Degree of Parallelism
     context.threads = 1;   // Threads
     context.t_cost = 2;    // Iterations
@@ -406,10 +406,10 @@ inline int Argon2d_Phase1_Hash(const void* in, const size_t size, const void* ou
 /// Secret length: 0
 /// Associated data: None
 /// Associated data length: 0
-/// Memory cost: 2000 kibibytes
-/// Lanes: 24 parallel threads
+/// Memory cost: 8192 kibibytes
+/// Lanes: 64 parallel threads
 /// Threads: 1 threads
-/// Time Constraint: 3 iterations
+/// Time Constraint: 16 iterations
 inline int Argon2d_Phase2_Hash(const void* in, const size_t size, const void* out)
 {
     argon2_context context;
@@ -427,10 +427,10 @@ inline int Argon2d_Phase2_Hash(const void* in, const size_t size, const void* ou
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 2000; // Memory in KiB (2 MB)
-    context.lanes = 24;    // Degree of Parallelism
+    context.m_cost = 8192; // Memory in KiB (8 MiB)
+    context.lanes = 64;    // Degree of Parallelism
     context.threads = 1;   // Threads
-    context.t_cost = 3;    // Iterations
+    context.t_cost = 16;    // Iterations
 
     return argon2_ctx(&context, Argon2_d);
 }
