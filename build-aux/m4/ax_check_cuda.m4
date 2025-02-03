@@ -76,10 +76,7 @@ then
 
    # Initialize NVCCFLAGS with default values if not already set
    if test -z "$NVCCFLAGS"; then
-   NVCCFLAGS="-gencode=arch=compute_50,code=sm_50 \
-      -gencode=arch=compute_52,code=sm_52 \
-      -gencode=arch=compute_53,code=sm_53 \
-      -gencode=arch=compute_60,code=sm_60 \
+   NVCCFLAGS="-gencode=arch=compute_60,code=sm_60 \
       -gencode=arch=compute_61,code=sm_61 \
       -gencode=arch=compute_62,code=sm_62 \
       -gencode=arch=compute_70,code=sm_70 \
@@ -90,6 +87,11 @@ then
       -gencode=arch=compute_87,code=sm_87 \
       -gencode=arch=compute_89,code=sm_89 \
       -gencode=arch=compute_90,code=sm_90 \
+      -gencode=arch=compute_90a,code=sm_90a \
+      -gencode=arch=compute_100,code=sm_100 \
+      -gencode=arch=compute_100a,code=sm_100a \
+      -gencode=arch=compute_101,code=sm_101 \
+      -gencode=arch=compute_120,code=sm_120 \
       -w -lineinfo"
    fi
 
