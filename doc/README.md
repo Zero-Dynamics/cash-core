@@ -12,19 +12,19 @@ Graph on Pull Request History
 
 ![0DYNC logo](https://github.com/zero-dynamics/cash-core/blob/master/src/qt/res/icons/tyrian/about.png)
 
-**Copyright (c) 2016-2021 [Duality Blockchain Solutions](https://duality.solutions/)**
+**Copyright (c) 2024-2025 [Zero Dynamics](https://zero-dynamics.org/)**
 
-What is [Cash](https://duality.solutions/cash)?
+What is [Cash](https://zero-dynamics.org/)?
 ----------------
 * Coin Suffix: 0DYNC
 * PoW Mining Algorithm: Argon2d
 * PoW Difficulty Algorithm: Digishield V3
 * PoW Period: Unlimited
-* PoW Target Spacing: 30 Seconds
+* PoW Target Spacing: 54 Seconds
 * PoW Reward per Block: 25% × Masternode Reward, controlled via Fluid Protocol
 * PoW Reward Start Height: Block 2,880
 * Maturity: 40 Blocks
-* PoW Blocks: ~2,880 per day
+* PoW Blocks: ~1,600 per day
 * Masternode Collateral Amount: 15,000 0DYNC
 * Masternode Min Confirmation: 60 Blocks
 * Masternode Reward: 7.3% × network collateral ÷ ( PoW Blocks × 365¼ days), controlled via Fluid Protocol
