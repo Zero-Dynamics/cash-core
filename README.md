@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/zero-dynamics/cash-core.png?branch=master)](https://travis-ci.org/zero-dynamics/cash-core)
 
-# **Cash (0DYNC) v1.1.5.1**
+# **Cash (0DYNC) v1.2.0.0**
 
 ![0DYNC logo](https://github.com/zero-dynamics/cash-core/blob/master/src/qt/res/icons/tyrian/about.png)
 
