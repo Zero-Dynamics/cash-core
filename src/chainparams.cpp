@@ -290,7 +290,7 @@ public:
 
         consensus.nRewardsStart = 2880;               // PoW Rewards begin on block 2880
         consensus.nFeeRewardStart = 10080;           //TxFee Rewards begin on block 10080        
-        consensus.nMasternodePaymentsStartBlock = 43200;  // Masternode Payments begin on block 43200
+        consensus.nMasternodePaymentsStartBlock = 4320;  // Masternode Payments begin on block 4320
         consensus.nMinCountMasternodesPaymentStart = 10; // Masternode Payments begin once 10 Masternodes exist or more.
         consensus.nInstantSendConfirmationsRequired = 41;
         consensus.nInstantSendKeepLock = 120;
