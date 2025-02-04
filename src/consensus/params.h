@@ -43,7 +43,8 @@ struct BIP9Deployment {
 struct Params {
     uint256 hashGenesisBlock;
     int nRewardsStart;
-    int nFeeRewardStart;    
+    int nFeeRewardStart; 
+    int nFirstBlockSpacingSwitchBlock;
     int nMasternodePaymentsStartBlock;
     int nMinCountMasternodesPaymentStart;
     int nInstantSendConfirmationsRequired; // in blocks
@@ -68,16 +69,24 @@ struct Params {
      * (nPowTargetTimespan / nPowTargetSpacing) which is also used for BIP9 deployments.
      * Examples: 1916 for 95%, 1512 for testchains.
      */
-    uint32_t nRuleChangeActivationThreshold;
-    uint32_t nMinerConfirmationWindow;
+    uint32_t nRuleChangeActivationThreshold;    
+    uint32_t nRuleChangeActivationThresholdOld;
+    uint32_t nRuleChangeActivationThresholdNew;
+    uint32_t nMinerConfirmationWindow;    
+    uint32_t nMinerConfirmationWindowNew;
+    uint32_t nMinerConfirmationWindowOld;
     BIP9Deployment vDeployments[MAX_VERSION_BITS_DEPLOYMENTS];
     /** Proof of work parameters */
     uint256 powLimit;
     bool fPowAllowMinDifficultyBlocks;
     bool fPowNoRetargeting;
     int64_t nPowTargetSpacing;
-    int64_t nPowTargetTimespan;    
-    int64_t nPowAveragingWindow;
+    int64_t nPowTargetSpacingOld;
+    int64_t nPowTargetSpacingNew;    
+    int64_t nPowTargetTimespan;
+    int64_t nPowAveragingWindow;    
+    int64_t nPowAveragingWindowOld;
+    int64_t nPowAveragingWindowNew;
     int64_t nPowMaxAdjustUp;
     int64_t nPowMaxAdjustDown;
     int64_t nUpdateDiffAlgoHeight;
@@ -85,10 +94,38 @@ struct Params {
 
     uint256 defaultAssumeValid;
 
-    int64_t AveragingWindowTimespan() const { return nPowAveragingWindow * nPowTargetSpacing; }
-    int64_t MinActualTimespan() const { return (AveragingWindowTimespan() * (100 - nPowMaxAdjustUp)) / 100; }
-    int64_t MaxActualTimespan() const { return (AveragingWindowTimespan() * (100 + nPowMaxAdjustDown)) / 100; }
-    int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
+    int64_t GetCurrentPowTargetSpacing(const int& nHeight) const {
+        if (nHeight > nFirstBlockSpacingSwitchBlock)
+            return nPowTargetSpacingNew;
+        else
+            return nPowTargetSpacingOld;
+    }
+
+    int64_t GetCurrentPowAveragingWindow(const int& nHeight) const {
+        if (nHeight > nFirstBlockSpacingSwitchBlock)
+            return nPowAveragingWindowNew;
+        else
+            return nPowAveragingWindowOld;
+    }
+
+    int64_t GetCurrentRuleChangeActivationThreshold(const int& nHeight) const {
+        if (nHeight > nFirstBlockSpacingSwitchBlock)
+            return nRuleChangeActivationThresholdNew;
+        else
+            return nRuleChangeActivationThresholdOld;
+    }
+
+    int64_t GetCurrentMinerConfirmationWindow(const int& nHeight) const {
+        if (nHeight > nFirstBlockSpacingSwitchBlock)
+            return nMinerConfirmationWindowNew;
+        else
+            return nMinerConfirmationWindowOld;
+    }
+
+    int64_t AveragingWindowTimespan(const int& nHeight) const { return GetCurrentPowAveragingWindow(nHeight) * GetCurrentPowTargetSpacing(nHeight); }
+    int64_t MinActualTimespan(const int& nHeight) const { return (AveragingWindowTimespan(nHeight) * (100 - nPowMaxAdjustUp)) / 100; }
+    int64_t MaxActualTimespan(const int& nHeight) const { return (AveragingWindowTimespan(nHeight) * (100 + nPowMaxAdjustDown)) / 100; }
+    int64_t DifficultyAdjustmentInterval(const int& nHeight) const { return nPowTargetTimespan / GetCurrentPowTargetSpacing(nHeight); }
 };
 } // namespace Consensus
 

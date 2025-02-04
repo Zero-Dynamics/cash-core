@@ -33,8 +33,11 @@ const struct BIP9DeploymentInfo VersionBitsDeploymentInfo[Consensus::MAX_VERSION
 
 ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex* pindexPrev, const Consensus::Params& params, ThresholdConditionCache& cache) const
 {
-    int nPeriod = Period(params);
-    int nThreshold = Threshold(params);
+
+    int nHeight = pindexPrev ? pindexPrev->nHeight : 0;
+
+    int nPeriod = Period(params, nHeight);
+    int nThreshold = Threshold(params, nHeight);
     int64_t nTimeStart = BeginTime(params);
     int64_t nTimeTimeout = EndTime(params);
 
@@ -124,7 +127,7 @@ int AbstractThresholdConditionChecker::GetStateSinceHeightFor(const CBlockIndex*
         return 0;
     }
 
-    const int nPeriod = Period(params);
+    const int nPeriod = Period(params, pindexPrev->nHeight);
 
     // A block's state is always the same as that of the first of its period, so it is computed based on a pindexPrev whose height equals a multiple of nPeriod - 1.
     // To ease understanding of the following height calculation, it helps to remember that
@@ -158,8 +161,8 @@ private:
 protected:
     int64_t BeginTime(const Consensus::Params& params) const override { return params.vDeployments[id].nStartTime; }
     int64_t EndTime(const Consensus::Params& params) const override { return params.vDeployments[id].nTimeout; }
-    int Period(const Consensus::Params& params) const override { return params.vDeployments[id].nWindowSize ? params.vDeployments[id].nWindowSize : params.nMinerConfirmationWindow; }
-    int Threshold(const Consensus::Params& params) const override { return params.vDeployments[id].nThreshold ? params.vDeployments[id].nThreshold : params.nRuleChangeActivationThreshold; }
+    int Period(const Consensus::Params& params, int nHeight) const { return params.vDeployments[id].nWindowSize ? params.vDeployments[id].nWindowSize : params.GetCurrentMinerConfirmationWindow(nHeight); }
+    int Threshold(const Consensus::Params& params, int nHeight) const { return params.vDeployments[id].nThreshold ? params.vDeployments[id].nThreshold : params.GetCurrentRuleChangeActivationThreshold(nHeight); }
 
     bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const override
     {

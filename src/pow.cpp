@@ -42,10 +42,10 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     }
 
     // Parameters for previous DigiShield difficulty calculation
-    int averagingWindow = params.nPowAveragingWindow;
-    int windowTimespan = params.AveragingWindowTimespan();
-    int minTimespan = params.MinActualTimespan();
-    int maxTimespan = params.MaxActualTimespan();
+    int averagingWindow = params.GetCurrentPowAveragingWindow(nextHeight);
+    int windowTimespan = params.AveragingWindowTimespan(nextHeight);
+    int minTimespan = params.MinActualTimespan(nextHeight);
+    int maxTimespan = params.MaxActualTimespan(nextHeight);
 
     if (nextHeight <= firstSwitchDifficultyBlock) {
         return DigiShield(pindexLast, averagingWindow, windowTimespan, minTimespan, maxTimespan, params);
