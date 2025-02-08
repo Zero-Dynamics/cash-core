@@ -97,7 +97,25 @@ crypto_argon2gpu_opencl_libcash_gpu_opencl_a_SOURCES = \
 	crypto/argon2gpu/opencl/kernel-loader.cpp \
 	crypto/argon2gpu/opencl/kernel-runner.cpp \
 	crypto/argon2gpu/opencl/processing-unit.cpp \
-	crypto/argon2gpu/opencl/program-context.cpp
+	crypto/argon2gpu/opencl/program-context.cpp \
+	CL/cl.h \
+	CL/cl_d3d10.h \
+	CL/cl_d3d11.h \
+	CL/cl_dx9_media_sharing.h \
+	CL/cl_dx9_media_sharing_intel.h \
+	CL/cl_egl.h \
+	CL/cl_ext.h \
+	CL/cl_ext_intel.h \
+	CL/cl_function_types.h \
+	CL/l_gl_ext.h \
+	CL/cl_gl.h \
+	CL/cl_half.h \
+	CL/cl_icd.h \
+	CL/l_layer.h \
+	CL/cl_platform.h \
+	CL/cl_va_api_media_sharing_intel.h \
+	CL/cl_version.h \
+	CL/opencl.h
 
 nodist_crypto_argon2gpu_opencl_libcash_gpu_opencl_a_SOURCES = $(GENERATED_KERNEL_FILES)
 
