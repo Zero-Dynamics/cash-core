@@ -4029,8 +4029,8 @@ Mest förekommande; som typ på &quot; transaktioner &quot; flik.</translation>
         <translation>Varning: wallet.dat är korrumperad, data räddad! Den ursprungliga wallet.dat är sparad som wallet.{timestamp}.bak i %s; om ditt saldo eller transaktioner är felaktiga kanske du måste återställa från en säkerhetskopia.</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Du måste specificera en masternodepairingkey i konfigurationen. Vänligen se dokumentationen för hjälp.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>Du måste specificera en masternodeprivkey i konfigurationen. Vänligen se dokumentationen för hjälp.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4800,8 +4800,8 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Kommer att försöka igen...</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>Ogiltig masternodepairingkey. Se dokumentationen.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>Ogiltig masternodeprivkey. Se dokumentationen.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

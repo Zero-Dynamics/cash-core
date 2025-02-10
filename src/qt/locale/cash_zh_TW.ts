@@ -3294,8 +3294,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>警告: 錢包檔 wallet.dat 壞掉，但資料被拯救回來了！原來的 wallet.dat 會改儲存在 %s, 檔名是 wallet.{timestamp}.bak. 如果餘額或交易資料有誤，你應該要用備份資料復原回來。</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>您必須在配置文件中指定一個masternodepairingkey。請參閱文檔以獲得幫助。</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>您必須在配置文件中指定一個masternodeprivkey。請參閱文檔以獲得幫助。</translation>
     </message>
     <message>
         <source>(default: 1)</source>

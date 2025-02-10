@@ -77,8 +77,8 @@ Shut down the daemon and then edit the file.
 
 ```sudo nano .cash/cash.conf```
 
-### Edit the masternodepairingkey
-If you generated a new Masternode private key, you will need to update the masternodepairingkey value in your remote cash.conf file.
+### Edit the masternodeprivkey
+If you generated a new Masternode private key, you will need to update the masternodeprivkey value in your remote cash.conf file.
 
 ## Start your Masternodes
 

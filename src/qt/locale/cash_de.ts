@@ -4026,8 +4026,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Warnung: wallet.dat ist defekt, Daten gerettet! Die original wallet.dat wurde als wallet.{Timestamp}.bak in %s; sollte Ihr Guthaben oder Transaktionen nicht korrekt sein, sollten Sie von einem Backup wiederherstellen.</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Sie müssen einen masternodepairingkey in der Konfiguration angeben. Für Hilfe schauen Sie in der Dokumentation nach.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>Sie müssen einen masternodeprivkey in der Konfiguration angeben. Für Hilfe schauen Sie in der Dokumentation nach.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4798,8 +4798,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s &quot;Cash Alarm&quot; admin@foo.co
         <translation>Wird erneut versucht...</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>Masternodepairingkey ist nicht gültig. Bitte sehen Sie in der Dokumentation nach.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>masternodeprivkey ist nicht gültig. Bitte sehen Sie in der Dokumentation nach.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

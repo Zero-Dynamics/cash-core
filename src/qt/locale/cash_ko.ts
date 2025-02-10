@@ -4014,8 +4014,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>경고: wallet.dat가 손상되어 데이터가 복구되었습니다! wallet.으로 저장된 원래 wallet.dat.{timestamp}.bak %s; 잔액 또는 거래가 올바르지 않은 경우 백업에서 복원해야합니다.</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>구성에서 masternodepairingkey를 지정해야합니다. 설명서를 참조하십시오.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>구성에서 masternodeprivkey를 지정해야합니다. 설명서를 참조하십시오.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4784,8 +4784,8 @@ rpcpassword=%s
         <translation>다시 시도 할 것입니다...</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>잘못된 masternodepairingkey입니다. 문서를 참조하십시오.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>잘못된 masternodeprivkey입니다. 문서를 참조하십시오.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

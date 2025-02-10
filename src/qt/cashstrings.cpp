@@ -312,7 +312,7 @@ static const char UNUSED* cash_strings[] = {
                                  "Whitelisted peers cannot be DoS banned and their transactions are always "
                                  "relayed, even if they are already in the mempool, useful e.g. for a gateway"),
     QT_TRANSLATE_NOOP("cash", ""
-                                 "You must specify a masternodepairingkey in the configuration. Please see "
+                                 "You must specify a masternodeprivkey in the configuration. Please see "
                                  "documentation for help."),
     QT_TRANSLATE_NOOP("cash", ""
                                  "You need to rebuild the database using -reindex to go back to unpruned "
@@ -419,7 +419,7 @@ static const char UNUSED* cash_strings[] = {
     QT_TRANSLATE_NOOP("cash", "Invalid amount for -%s=<amount>: '%s'"),
     QT_TRANSLATE_NOOP("cash", "Invalid amount for -fallbackfee=<amount>: '%s'"),
     QT_TRANSLATE_NOOP("cash", "Invalid amount for -paytxfee=<amount>: '%s' (must be at least %s)"),
-    QT_TRANSLATE_NOOP("cash", "Invalid masternodepairingkey. Please see documenation."),
+    QT_TRANSLATE_NOOP("cash", "Invalid masternodeprivkey. Please see documenation."),
     QT_TRANSLATE_NOOP("cash", "Invalid netmask specified in -whitelist: '%s'"),
     QT_TRANSLATE_NOOP("cash", "Invalid port detected in masternode.conf"),
     QT_TRANSLATE_NOOP("cash", "Invalid script detected."),

@@ -652,7 +652,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-masternode=<n>", strprintf(_("Enable the client to act as a Masternode (0-1, default: %u)"), 0));
     strUsage += HelpMessageOpt("-mnconf=<file>", strprintf(_("Specify Masternode configuration file (default: %s)"), "masternode.conf"));
     strUsage += HelpMessageOpt("-mnconflock=<n>", strprintf(_("Lock Masternodes from Masternode configuration file (default: %u)"), 1));
-    strUsage += HelpMessageOpt("-masternodepairingkey=<n>", _("Set the Masternode private key"));
+    strUsage += HelpMessageOpt("-masternodeprivkey=<n>", _("Set the Masternode private key"));
 
 #ifdef ENABLE_WALLET
     strUsage += HelpMessageGroup(_("PrivateSend options:"));
@@ -1954,14 +1954,14 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
     if (fMasternodeMode) {
         LogPrintf("MASTERNODE:\n");
 
-        std::string strmasternodepairingkey = GetArg("-masternodepairingkey", "");
-        if (!strmasternodepairingkey.empty()) {
-            if (!CMessageSigner::GetKeysFromSecret(strmasternodepairingkey, activeMasternode.keyMasternode, activeMasternode.pubKeyMasternode))
-                return InitError(_("Invalid masternodepairingkey. Please see documenation."));
+        std::string strmasternodeprivkey = GetArg("-masternodeprivkey", "");
+        if (!strmasternodeprivkey.empty()) {
+            if (!CMessageSigner::GetKeysFromSecret(strmasternodeprivkey, activeMasternode.keyMasternode, activeMasternode.pubKeyMasternode))
+                return InitError(_("Invalid masternodeprivkey. Please see documenation."));
 
             LogPrintf("  pubKeyMasternode: %s\n", CDebitAddress(activeMasternode.pubKeyMasternode.GetID()).ToString());
         } else {
-            return InitError(_("You must specify a masternodepairingkey in the configuration. Please see documentation for help."));
+            return InitError(_("You must specify a masternodeprivkey in the configuration. Please see documentation for help."));
         }
     }
 

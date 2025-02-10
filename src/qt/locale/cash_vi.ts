@@ -3848,8 +3848,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Cảnh báo: wallet.dat đã bị hỏng, dữ liệu đã được cứu! Tệp gốc wallet.dat đã được lưu thành wallet.{timestamp}.bak trong %s; nếu số dư hoặc các giao dịch của bạn không chính xác, bạn có thể khôi phục từ bản sao lưu.</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Bạn cần chỉ rõ masternodepairingkey trong tệp cấu hình. Hãy xem tài liệu để có hướng dẫn.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>Bạn cần chỉ rõ masternodeprivkey trong tệp cấu hình. Hãy xem tài liệu để có hướng dẫn.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4613,8 +4613,8 @@ ví dụ: alertnotify=echo %%s | mail -s "Cash Alert" admin@foo.com
         <translation>Sẽ thử lại...</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>masternodepairingkey không hợp lệ. Hãy xem lại tài liệu.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>masternodeprivkey không hợp lệ. Hãy xem lại tài liệu.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

@@ -4029,8 +4029,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Ostrzeżenie: portfel jest skorumpownay, dane ocalone! Oryginalny portfel zachowany jako portfel.{timestamp}bak in %s; jeśli twoje saldo lub tranzakcje są nieprawidłowe powinienieś przywrócić je z kopii zapasowej</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Musisz sprecyzować masternodepairingkey w konfiguracji. Proszę, zobacz dokumentację o pomoc.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>Musisz sprecyzować masternodeprivkey w konfiguracji. Proszę, zobacz dokumentację o pomoc.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4800,8 +4800,8 @@ Na przykład: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.co
         <translation>Spróbuję ponownie....</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>Nieprawidłowy masternodepairingkey. Proszę sprawdź dokumentację.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>Nieprawidłowy masternodeprivkey. Proszę sprawdź dokumentację.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

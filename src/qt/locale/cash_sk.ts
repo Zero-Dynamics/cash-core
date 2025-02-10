@@ -3421,8 +3421,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Upozornenie: wallet.dat poškodený, údaje zachránené! Pôvodný wallet.dat bol uložený ako wallet.{timestamp}.bak v %s; ak váš zostatok alebo transakcie nie sú správne, mali by ste obnoviť zo zálohy.</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>V konfigurácii musíte špecifikovať masternodepairingkey. Pre pomoc sa prosím pozrite do dokumentácie.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>V konfigurácii musíte špecifikovať masternodeprivkey. Pre pomoc sa prosím pozrite do dokumentácie.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4179,8 +4179,8 @@ napríklad: alertnotify=echo %%s | mail -s "Cash Upozornenie" admin@foo.com
         <translation>Skúsime znovu...</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>Neplatný masternodepairingkey. Prosím pozrite do dokumentácie.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>Neplatný masternodeprivkey. Prosím pozrite do dokumentácie.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

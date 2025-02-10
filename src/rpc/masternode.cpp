@@ -150,7 +150,7 @@ UniValue masternode(const JSONRPCRequest& request)
             "\nAvailable commands:\n"
             "  count        - Get information about number of masternodes (DEPRECATED options: 'total', 'ps', 'enabled', 'qualify', 'all')\n"
             "  current      - Print info on current masternode winner to be paid the next block (calculated locally)\n"
-            "  genkey       - Generate new masternodepairingkey\n"
+            "  genkey       - Generate new masternodeprivkey\n"
 #ifdef ENABLE_WALLET
             "  outputs      - Print masternode compatible outputs\n"
             "  start-alias  - Start single remote masternode by assigned alias configured in masternode.conf\n"

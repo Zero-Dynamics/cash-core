@@ -4478,8 +4478,8 @@ https://www.transifex.com/projects/p/cash/</translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5420,8 +5420,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Cash Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="-136"/>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>Invalid masternodepairingkey. Please see documenation.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>Invalid masternodeprivkey. Please see documenation.</translation>
     </message>
     <message>
         <location line="-88"/>

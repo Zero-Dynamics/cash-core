@@ -3824,8 +3824,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Aviso: wallet.dar corrompido mas os dados foram recuperados! A carteira original foi gravada como wallet{data/hora}.bak in %s; se o seu saldo ou transacções forem incorrectos deverá recuperar a partir de uma cópia de segurança.</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Tem que especificar uma masternodepairingkey na configuração. Por favor verifique a documentação para ajuda.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>Tem que especificar uma masternodeprivkey na configuração. Por favor verifique a documentação para ajuda.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4486,8 +4486,8 @@ https://www.transifex.com/projects/p/cash/</translation>
         <translation>Tentar de novo...</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>masternodepairingkey inválida. Por favor reveja a documentação.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>masternodeprivkey inválida. Por favor reveja a documentação.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

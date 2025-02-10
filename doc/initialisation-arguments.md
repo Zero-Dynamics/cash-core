@@ -161,7 +161,7 @@ MASTERNODE OPTIONS
 * "-masternode=[n]" ("Enable the client to act as a Masternode (0-1)")
 * "-mnconf=[file]" ("Specify Masternode configuration file", "masternode.conf")
 * "-mnconflock=[n]" ("Lock Masternodes from Masternode configuration file")
-* "-masternodepairingkey=[n]" ("Set the Masternode private key")
+* "-masternodeprivkey=[n]" ("Set the Masternode private key")
 
 PRIVATESEND OPTIONS
 -------------------

@@ -4012,8 +4012,8 @@ https://www.transifex.com/duality-blockchain-solutions-llc/cash-dyn/</translatio
         <translation>Предупреждение: wallet.dat поврежден, но данные спасены! Исходный файл wallet.dat сохранен как кошелек. {Timestamp} .bak в %s; если ваш баланс или транзакции неверны, вы должны восстановиться из резервной копии.</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Вы должны указать ключ masternodepairingkey в конфигурации. Пожалуйста, смотрите документацию.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>Вы должны указать ключ masternodeprivkey в конфигурации. Пожалуйста, смотрите документацию.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4784,8 +4784,8 @@ rpcpassword =%s
         <translation>Повторная попытка...</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>Неверный ключ masternodepairingkey. Пожалуйста, обратитесь к документации.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>Неверный ключ masternodeprivkey. Пожалуйста, обратитесь к документации.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

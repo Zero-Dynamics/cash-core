@@ -3808,8 +3808,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Varoitus: Wallet.dat lompakkotiedosto on vioittunut, tiedot pelastettu. Alkuperäinen wallet.dat lompakkotiedosto on tallennettu wallet.{timestamp}.bak kansioon %s, jos saldosi tai siirtohistoria on virheellinen, sinun tulisi palauttaa lompakkotiedosto varmuuskopiosta.</translation>
     </message>
     <message>
-        <source>You must specify a masternodepairingkey in the configuration. Please see documentation for help.</source>
-        <translation>Sinun täytyy määritellä masternodepairingkey asetustiedostoon. Katso lisätietoja dokumentaatiosta.</translation>
+        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
+        <translation>Sinun täytyy määritellä masternodeprivkey asetustiedostoon. Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
         <source>(default: 1)</source>
@@ -4588,8 +4588,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "Cash Hälytys" admin@foo.com
         <translation>Yritetään uudelleen...</translation>
     </message>
     <message>
-        <source>Invalid masternodepairingkey. Please see documenation.</source>
-        <translation>Virheellinen masternoden yksityisavain (masternodepairingkey). Katso lisätietoja dokumentaatiosta.</translation>
+        <source>Invalid masternodeprivkey. Please see documenation.</source>
+        <translation>Virheellinen masternoden yksityisavain (masternodeprivkey). Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
         <source>(must be 44400 for mainnet)</source>

@@ -838,7 +838,7 @@
 * [RPC] Add import/removeprunedfunds rpc call
 * [RPC] Rename masternodeprivkey->Masternode Pairing Key
 * P2P: add maxtimeadjustment command line option
-* masternodeprivkey->masternodepairingkey
+* masternodeprivkey->masternodeprivkey
 * [Qt] remove trailing output-index from transaction-id
 * [build-aux] Update Boost & check macros to latest serials
 * Strip colour profiles from png's
