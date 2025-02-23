@@ -1,9 +1,9 @@
 package=backtrace
-$(package)_version=11427f31a64b11583fec94b4c2a265c7dafb1ab3
+$(package)_version=0034e33946824057b48c5e686a3aefc761b37384
 $(package)_download_path=https://github.com/ianlancetaylor/libbacktrace/archive
 $(package)_download_file=$($(package)_version).tar.gz
 $(package)_file_name=$(package)_$($(package)_version).tar.gz
-$(package)_sha256_hash=76a8348ff04d80141aeb1c0e55879f17f241f38238def0eb1df7c6d1ac1a2c26
+$(package)_sha256_hash=8a5d15df5f4a6c20d9defd4192498615e5ca1b81b872b2433200eb8c75122dbf
 
 define $(package)_set_vars
 $(package)_config_opts=--disable-shared --enable-host-shared --prefix=$(host_prefix)
