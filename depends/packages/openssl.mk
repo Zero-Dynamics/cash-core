@@ -1,20 +1,23 @@
 package=openssl
-$(package)_version=1.1.1w
-$(package)_download_path=https://www.openssl.org/source
+$(package)_version=3.4.1
+$(package)_download_path=https://github.com/openssl/openssl/releases/download/$(package)-$($(package)_version)
 $(package)_file_name=$(package)-$($(package)_version).tar.gz
-$(package)_sha256_hash=cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8
+$(package)_sha256_hash=002a2d6b30b58bf4bea46c43bdd96365aaf8daa6c428782aa4feee06da197df3
 
 define $(package)_set_vars
 $(package)_config_env=AR="$($(package)_ar)" ARFLAGS=$($(package)_arflags) RANLIB="$($(package)_ranlib)" CC="$($(package)_cc)"
+$(package)_config_env+=WINDRES="x86_64-w64-mingw32-windres"
+$(package)_config_env+=RC="x86_64-w64-mingw32-windres"
 $(package)_config_env_arm_android=ANDROID_NDK_HOME="$(host_prefix)/native" PATH="$(host_prefix)/native/bin" CC=clang AR=ar RANLIB=ranlib
 $(package)_config_env_aarch64_android=ANDROID_NDK_HOME="$(host_prefix)/native" PATH="$(host_prefix)/native/bin" CC=clang AR=ar RANLIB=ranlib
 $(package)_build_env_arm_android=ANDROID_NDK_HOME="$(host_prefix)/native"
 $(package)_build_env_aarch64_android=ANDROID_NDK_HOME="$(host_prefix)/native"
+$(package)_config_env_x86_64_darwin+=LD="x86_64-apple-darwin-ld"
 $(package)_config_opts=--prefix=$(host_prefix) --openssldir=$(host_prefix)/etc/openssl
+$(package)_config_opts+=enable-asm
 $(package)_config_opts+=no-capieng
 $(package)_config_opts+=no-dso
 $(package)_config_opts+=no-dtls1
-$(package)_config_opts+=no-ec_nistp_64_gcc_128
 $(package)_config_opts+=no-gost
 $(package)_config_opts+=no-heartbeats
 $(package)_config_opts+=no-md2
